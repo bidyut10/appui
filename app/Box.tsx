@@ -1,4 +1,6 @@
-export const Box = ({ children }) => {
+import React from "react";
+
+export const Box = ({ children }: React.PropsWithChildren) => {
   return (
     <div
       className="h-[450px] flex flex-1 justify-center items-center border border-neutral-100"
