@@ -2,6 +2,10 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import cover from "@/public/bh.png";
+import { Play } from "@/icons/Play";
+import { Pause } from "@/icons/Pause";
+import { SkipNext } from "@/icons/SkipNext";
+import { SkipPrevious } from "@/icons/SkipPrevious";
 
 export const NowPlayingBar = () => {
   const [playing, setPlaying] = useState(true);
@@ -16,11 +20,11 @@ export const NowPlayingBar = () => {
         <p className="text-[10px] text-neutral-500 truncate">The Weeknd</p>
       </div>
       <div className="flex items-center gap-2">
-        <button className="text-neutral-500 hover:text-white text-sm cursor-pointer">⏮</button>
+        <button className="text-neutral-500 hover:text-white text-sm cursor-pointer"><SkipPrevious/></button>
         <button onClick={() => setPlaying(!playing)} className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-neutral-900 text-xs cursor-pointer hover:scale-105 transition-transform">
-          {playing ? "⏸" : "▶"}
+          {playing ? <Pause/>: <Play/>}
         </button>
-        <button className="text-neutral-500 hover:text-white text-sm cursor-pointer">⏭</button>
+        <button className="text-neutral-500 hover:text-white text-sm cursor-pointer"><SkipNext/></button>
       </div>
       <div className="hidden sm:block w-16 h-1 bg-neutral-800 rounded-full overflow-hidden">
         <div className="h-full w-[60%] bg-emerald-500 rounded-full" />

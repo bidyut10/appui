@@ -14,17 +14,17 @@ export const PricingCard = forwardRef<
 >(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
-    className={`relative w-64 bg-white border border-neutral-100 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`}
+    className={`relative w-80 bg-white border border-neutral-100 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`}
     {...props}
   >
-    <div className="absolute top-0 inset-x-0 h-1 bg-linear-to-r from-violet-500 via-fuchsia-500 to-pink-500" />
+    <div className="absolute top-0 inset-x-0 h-1 bg-linear-to-r from-violet-500 via-cyan-500 to-green-500" />
 
     <div className="p-6">
       <div className="flex items-center justify-between mb-4">
         <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-400">
           Pro Plan
         </span>
-        <span className="px-2 py-0.5 bg-violet-50 text-violet-600 text-[10px] font-medium rounded-full">
+        <span className="px-2 py-0.5 bg-green-50 text-green-600 text-[10px] font-medium rounded-full">
           Popular
         </span>
       </div>
@@ -49,7 +49,7 @@ export const PricingCard = forwardRef<
         ))}
       </ul>
 
-      <button className="w-full h-10 bg-neutral-900 text-white text-sm font-medium rounded-xl hover:bg-neutral-800 transition-colors cursor-pointer active:scale-[0.98]">
+      <button className="w-full h-10 bg-neutral-900 text-white text-sm font-medium rounded-lg hover:bg-neutral-950 transition-colors cursor-pointer active:scale-[0.98]">
         Get Started
       </button>
       <p className="text-center text-[10px] text-neutral-400 mt-3">

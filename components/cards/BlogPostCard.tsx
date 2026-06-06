@@ -21,7 +21,7 @@ export const BlogPostCard = forwardRef<
         className="object-cover transition-transform duration-700 group-hover:scale-105"
       />
       <div className="absolute top-3 left-3">
-        <span className="px-2.5 py-1 bg-white/90 backdrop-blur-sm text-[10px] font-mono uppercase tracking-wider text-neutral-700 rounded-full">
+        <span className="px-2.5 pt-1.5 pb-1 bg-white/10 text-[10px] font-mono uppercase tracking-wider text-neutral-700 rounded-full">
           Tutorial
         </span>
       </div>

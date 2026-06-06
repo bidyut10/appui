@@ -5,7 +5,7 @@ export const PricingLifetimeCard = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className = "", ...props }, ref) => (
-  <div ref={ref} className={`relative w-64 bg-white border-2 border-amber-200 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`} {...props}>
+  <div ref={ref} className={`relative w-80 bg-white border-2 border-amber-200 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`} {...props}>
     <div className="absolute top-3 right-3 px-2 py-0.5 bg-amber-400 text-amber-950 text-[9px] font-bold rounded-full uppercase tracking-wider">Lifetime</div>
     <div className="p-6">
       <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-400">One-time</span>
@@ -21,7 +21,7 @@ export const PricingLifetimeCard = forwardRef<
           </li>
         ))}
       </ul>
-      <button className="w-full h-10 bg-amber-500 text-amber-950 text-xs font-bold rounded-xl hover:bg-amber-400 transition-colors cursor-pointer shadow-sm">Get Lifetime Access</button>
+      <button className="w-full h-10 bg-amber-500 text-amber-950 text-xs font-bold rounded-lg hover:bg-amber-400 transition-colors cursor-pointer shadow-sm">Get Lifetime Access</button>
       <p className="text-[10px] text-neutral-400 text-center mt-3">🔥 847 sold · Limited time</p>
     </div>
   </div>

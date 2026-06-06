@@ -2,6 +2,10 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import cover from "@/public/bh.png";
+import { Play } from "@/icons/Play";
+import { Pause } from "@/icons/Pause";
+import { SkipPrevious } from "@/icons/SkipPrevious";
+import { SkipNext } from "@/icons/SkipNext";
 
 export const MusicPlayerCard = () => {
   const [playing, setPlaying] = useState(true);
@@ -27,11 +31,11 @@ export const MusicPlayerCard = () => {
           </div>
         </div>
         <div className="flex items-center justify-center gap-5 mt-3">
-          <button className="text-neutral-500 hover:text-white transition-colors cursor-pointer text-lg">⏮</button>
+          <button className="text-neutral-500 hover:text-white transition-colors cursor-pointer text-lg"><SkipPrevious/></button>
           <button onClick={() => setPlaying(!playing)} className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:scale-105 transition-transform cursor-pointer">
-            {playing ? "⏸" : "▶"}
+            {playing ? <Pause/> : <Play/>}
           </button>
-          <button className="text-neutral-500 hover:text-white transition-colors cursor-pointer text-lg">⏭</button>
+          <button className="text-neutral-500 hover:text-white transition-colors cursor-pointer text-lg"><SkipNext/></button>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React, { forwardRef } from "react";
 import Image from "next/image";
 import cover from "@/public/dithar.png";
+import { Play } from "@/icons/Play";
 
 const tracks = [
   { title: "Blinding Lights", artist: "The Weeknd", duration: "3:20" },
@@ -27,7 +28,7 @@ export const MusicPlaylistCard = forwardRef<
       {tracks.map((t, i) => (
         <div key={t.title} className="flex items-center gap-3 px-4 py-2.5 hover:bg-neutral-50 transition-colors cursor-pointer group">
           <span className="text-[10px] font-mono text-neutral-400 w-4 group-hover:hidden">{i + 1}</span>
-          <span className="text-[10px] w-4 hidden group-hover:block">▶</span>
+          <span className="text-[10px] w-4 hidden group-hover:block"><Play/></span>
           <div className="flex-1 min-w-0">
             <p className="text-xs font-medium text-neutral-800 truncate">{t.title}</p>
             <p className="text-[10px] text-neutral-400">{t.artist}</p>

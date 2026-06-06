@@ -8,7 +8,7 @@ export type IconProps = {
 
 export const X = ({
   size = 48,
-  color = "#18181b",
+  color = "currentColor",
   className,
   ...props
 }: IconProps) => (

@@ -6,7 +6,7 @@ export type IconProps = {
   className?: string;
 } & SVGProps<SVGSVGElement>;
 
-export const Star = ({
+export const Pause = ({
   size = 16,
   color = "currentColor",
   className,
@@ -20,8 +20,7 @@ export const Star = ({
     fill={color}
     className={className}
     {...props}
-    strokeWidth={1.8}
   >
-    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+    <path d="M6 18h4c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1H6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1M7 8h2v8H7zM14 6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h4c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1zm3 10h-2V8h2z" />
   </svg>
 );

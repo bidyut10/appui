@@ -25,7 +25,7 @@ export const MultiFileDropzone = () => {
               </button>
             </div>
           ))}
-          <button className="aspect-square rounded-xl border-2 border-dashed border-neutral-200 flex flex-col items-center justify-center text-neutral-400 hover:border-violet-300 hover:text-violet-500 hover:bg-violet-50/30 transition-all cursor-pointer">
+          <button className="aspect-square rounded-xl border-2 border-dashed border-neutral-200 flex flex-col items-center justify-center text-neutral-400 hover:border-neutral-300 hover:text-neutral-500 hover:bg-neutral-50/30 transition-all cursor-pointer">
             <span className="text-lg leading-none">+</span>
             <span className="text-[8px] mt-0.5">Add</span>
           </button>

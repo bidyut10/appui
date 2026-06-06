@@ -2,6 +2,7 @@ import React, { forwardRef } from "react";
 import Image from "next/image";
 import profileImage from "@/public/boy.png";
 import { Star } from "@/icons/Star";
+import { QuoteRight } from "@/icons/QuoteRight";
 
 export const TestimonialCard = forwardRef<
   HTMLDivElement,
@@ -13,7 +14,7 @@ export const TestimonialCard = forwardRef<
     {...props}
   >
     <div className="absolute top-5 right-5 text-neutral-100 text-6xl font-serif leading-none select-none">
-      &ldquo;
+      <QuoteRight size={24}/>
     </div>
 
     <div className="flex gap-0.5 mb-4">

@@ -5,7 +5,7 @@ export const PricingEnterpriseCard = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className = "", ...props }, ref) => (
-  <div ref={ref} className={`w-64 bg-neutral-950 border border-neutral-800 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`} {...props}>
+  <div ref={ref} className={`w-80 bg-neutral-950 border border-neutral-800 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`} {...props}>
     <div className="p-6">
       <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">Enterprise</span>
       <div className="mt-3 mb-1">
@@ -19,7 +19,7 @@ export const PricingEnterpriseCard = forwardRef<
           </li>
         ))}
       </ul>
-      <button className="w-full h-10 bg-white text-neutral-900 text-xs font-semibold rounded-xl hover:bg-neutral-100 transition-colors cursor-pointer">Contact Sales</button>
+      <button className="w-full h-10 bg-white text-neutral-900 text-xs font-semibold rounded-lg hover:bg-neutral-100 transition-colors cursor-pointer">Contact Sales</button>
     </div>
   </div>
 ));

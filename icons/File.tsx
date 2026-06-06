@@ -7,7 +7,7 @@ export type IconProps = {
 } & SVGProps<SVGSVGElement>;
 
 export const File = ({
-  size = 24,
+  size = 16,
   color = "currentColor",
   className,
   ...props
