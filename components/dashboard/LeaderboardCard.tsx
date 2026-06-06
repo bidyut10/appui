@@ -12,7 +12,7 @@ export const LeaderboardCard = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className = "", ...props }, ref) => (
-  <div ref={ref} className={`w-64 bg-white border border-neutral-100 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`} {...props}>
+  <div ref={ref} className={`w-80 bg-white border border-neutral-100 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`} {...props}>
     <div className="px-4 py-3 border-b border-neutral-100">
       <h4 className="text-sm font-semibold text-neutral-900">Leaderboard</h4>
       <p className="text-[10px] text-neutral-400 mt-0.5">Top contributors this week</p>

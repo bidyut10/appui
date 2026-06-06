@@ -8,7 +8,7 @@ export const CalendarWidgetCard = () => {
   const [selected, setSelected] = useState(14);
 
   return (
-    <div className="w-64 bg-white border border-neutral-100 shadow-lg rounded-2xl p-4 font-sans">
+    <div className="w-80 bg-white border border-neutral-100 shadow-lg rounded-2xl p-4 font-sans">
       <div className="flex items-center justify-between mb-3">
         <h4 className="text-sm font-semibold text-neutral-900">June 2026</h4>
         <div className="flex gap-1">

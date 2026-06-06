@@ -4,7 +4,7 @@ export const ConversionFunnelCard = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className = "", ...props }, ref) => (
-  <div ref={ref} className={`w-64 p-5 bg-white border border-neutral-100 shadow-lg rounded-2xl font-sans ${className}`} {...props}>
+  <div ref={ref} className={`w-72 p-5 bg-white border border-neutral-100 shadow-lg rounded-2xl font-sans ${className}`} {...props}>
     <h4 className="text-sm font-semibold text-neutral-900 mb-1">Conversion Funnel</h4>
     <p className="text-[11px] text-neutral-400 mb-4">Visitor → Customer journey</p>
     <div className="space-y-2">

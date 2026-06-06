@@ -12,8 +12,8 @@ export const MetricCard = forwardRef<
     {...props}
   >
     <div className="flex items-center justify-between mb-4">
-      <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center">
-        <UserGroup size={16} className="text-blue-600" />
+      <div className="w-9 h-9 rounded-xl bg-neutral-50 flex items-center justify-center">
+        <UserGroup size={16} className="text-neutral-600" />
       </div>
       <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-400">
         This week

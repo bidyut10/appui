@@ -40,7 +40,7 @@ export const TaskSummaryCard = forwardRef<
       ))}
     </div>
     <div className="px-4 py-2.5 border-t border-neutral-100">
-      <button className="w-full h-8 text-[11px] font-medium text-neutral-600 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition-colors cursor-pointer flex items-center justify-center gap-1">
+      <button className="w-full h-8 text-[11px] font-medium text-neutral-600 border border-neutral-200 rounded-lg hover:bg-neutral-50 transition-colors cursor-pointer flex items-center justify-center gap-1">
         <Clock size={11} /> Add task
       </button>
     </div>

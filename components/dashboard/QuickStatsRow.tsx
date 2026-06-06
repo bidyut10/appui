@@ -11,7 +11,7 @@ export const QuickStatsRow = forwardRef<
       { label: "Avg. Session", value: "4m 12s", change: "+8%", up: true },
       { label: "Conversion", value: "3.8%", change: "+0.4%", up: true },
     ].map(({ label, value, change, up }) => (
-      <div key={label} className="p-3 bg-white border border-neutral-100 rounded-xl shadow-sm">
+      <div key={label} className="p-3 bg-white border border-neutral-100 rounded-xl shadow-lg">
         <p className="text-[10px] font-mono uppercase tracking-wider text-neutral-400">{label}</p>
         <p className="text-lg font-semibold text-neutral-900 mt-0.5">{value}</p>
         <span className={`text-[10px] font-medium ${up ? "text-emerald-600" : "text-red-500"}`}>{change}</span>

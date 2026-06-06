@@ -4,7 +4,7 @@ export const StorageUsageCard = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className = "", ...props }, ref) => (
-  <div ref={ref} className={`w-64 p-5 bg-white border border-neutral-100 shadow-lg rounded-2xl font-sans ${className}`} {...props}>
+  <div ref={ref} className={`w-72 p-5 bg-white border border-neutral-100 shadow-lg rounded-2xl font-sans ${className}`} {...props}>
     <div className="flex items-center justify-between mb-4">
       <h4 className="text-sm font-semibold text-neutral-900">Storage</h4>
       <span className="text-[10px] font-mono text-neutral-400">Pro Plan</span>

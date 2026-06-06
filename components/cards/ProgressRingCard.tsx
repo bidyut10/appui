@@ -11,7 +11,7 @@ export const ProgressRingCard = forwardRef<
   return (
     <div
       ref={ref}
-      className={`w-56 p-5 bg-white border border-neutral-100 shadow-lg rounded-2xl font-sans ${className}`}
+      className={`w-64 p-5 bg-white border border-neutral-100 shadow-lg rounded-2xl font-sans ${className}`}
       {...props}
     >
       <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-4">
