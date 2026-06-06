@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
-import { Clock } from "@/icons/Clock";
-import { Location } from "@/icons/Location";
+import { PlaneTakeoff } from "@/icons/PlaneTakeoff";
+import { QrCode } from "@/icons/QrCode";
 
 export const FlightBoardingCard = forwardRef<
   HTMLDivElement,
@@ -8,56 +8,101 @@ export const FlightBoardingCard = forwardRef<
 >(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
-    className={`w-72 bg-white border border-neutral-100 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`}
+    className={`w-96 overflow-visible ${className}`}
     {...props}
   >
-    <div className="bg-neutral-900 px-4 py-3 flex items-center justify-between">
-      <div>
-        <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">Boarding Pass</p>
-        <p className="text-white text-sm font-semibold mt-0.5">AI 2847</p>
-      </div>
-      <span className="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-[10px] font-mono rounded-full">
-        On Time
-      </span>
-    </div>
+    <div className="relative overflow-hidden rounded-3xl border border-neutral-100 bg-white shadow-lg">
+      <div className="absolute left-20 top-0 bottom-0 border-l border-dashed border-neutral-200" />
 
-    <div className="p-4">
-      <div className="flex items-center justify-between mb-4">
-        <div>
-          <p className="text-2xl font-light text-neutral-900 tracking-tight">CCU</p>
-          <p className="text-[10px] text-neutral-400 mt-0.5">Kolkata</p>
-        </div>
-        <div className="flex-1 mx-4 flex flex-col items-center">
-          <div className="w-full h-px bg-neutral-200 relative">
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-0 h-0 border-t-[4px] border-b-[4px] border-l-[6px] border-transparent border-l-neutral-300" />
+      <div className="grid grid-cols-[80px_1fr]">
+        <div className="flex flex-col items-center justify-center gap-2 px-8">
+          <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-white shadow">
+            <QrCode size={42} className="text-neutral-600" />
           </div>
-          <Clock size={12} className="text-neutral-400 mt-1" />
-          <span className="text-[10px] text-neutral-400 mt-0.5">2h 15m</span>
-        </div>
-        <div className="text-right">
-          <p className="text-2xl font-light text-neutral-900 tracking-tight">DEL</p>
-          <p className="text-[10px] text-neutral-400 mt-0.5">Delhi</p>
-        </div>
-      </div>
 
-      <div className="grid grid-cols-3 gap-3 pt-3 border-t border-dashed border-neutral-200">
-        {[
-          { label: "Passenger", val: "John Doe" },
-          { label: "Seat", val: "14A" },
-          { label: "Gate", val: "B12" },
-        ].map(({ label, val }) => (
-          <div key={label}>
-            <p className="text-[9px] font-mono uppercase tracking-wider text-neutral-400">{label}</p>
-            <p className="text-xs font-semibold text-neutral-900 mt-0.5">{val}</p>
+          <span className="text-[9px] uppercase tracking-[0.25em] text-neutral-400">
+            Scan
+          </span>
+        </div>
+
+        <div className="p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-400">
+                Flight
+              </p>
+
+              <p className="mt-1 text-sm font-semibold text-neutral-900">
+                AI 2847
+              </p>
+            </div>
+
+            <span className="rounded-full bg-emerald-50 px-2 py-1 text-[9px] font-medium text-emerald-600">
+              On Time
+            </span>
           </div>
-        ))}
-      </div>
 
-      <div className="mt-3 flex items-center gap-1.5 text-[10px] text-neutral-400">
-        <Location size={10} />
-        <span>Terminal 2 · Departs 14:30</span>
+          <div className="mt-4 flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-semibold tracking-tight text-neutral-950">
+                CCU
+              </h2>
+
+              <p className="text-[10px] text-neutral-400">Kolkata</p>
+            </div>
+
+            <div className="mx-2 flex flex-1 flex-col items-center">
+              <div className="relative w-full">
+                <div className="border-t border-dashed border-neutral-300" />
+
+                <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 bg-white px-1.5">
+                  <PlaneTakeoff size={11} className="text-neutral-500" />
+                </div>
+              </div>
+
+              <span className="mt-1.5 text-[9px] text-neutral-500">2h 15m</span>
+            </div>
+
+            <div className="text-right">
+              <h2 className="text-2xl font-semibold tracking-tight text-neutral-950">
+                DEL
+              </h2>
+
+              <p className="text-[10px] text-neutral-400">Delhi</p>
+            </div>
+          </div>
+
+          <div className="mt-4 flex flex-wrap gap-1.5">
+            <span className="rounded-full bg-neutral-100 px-2.5 py-1 text-[10px] text-neutral-700">
+              Seat 14A
+            </span>
+
+            <span className="rounded-full bg-neutral-100 px-2.5 py-1 text-[10px] text-neutral-700">
+              Gate B12
+            </span>
+
+            <span className="rounded-full bg-neutral-100 px-2.5 py-1 text-[10px] text-neutral-700">
+              14:00
+            </span>
+          </div>
+
+          <div className="mt-3 flex items-center justify-between border-t border-neutral-100 pt-3">
+            <div>
+              <p className="text-[10px] text-neutral-400">Passenger</p>
+
+              <p className="mt-1 text-sm font-medium text-neutral-900">
+                John Doe
+              </p>
+            </div>
+
+            <span className="rounded-full bg-neutral-100 px-2.5 py-1 text-[10px] text-neutral-600">
+              T2
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 ));
+
 FlightBoardingCard.displayName = "FlightBoardingCard";

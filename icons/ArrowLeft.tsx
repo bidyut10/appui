@@ -6,7 +6,7 @@ export type IconProps = {
   className?: string;
 } & SVGProps<SVGSVGElement>;
 
-export const ArrowRight = ({
+export const ArrowLeft = ({
   size = 16,
   color = "currentColor",
   className,
@@ -25,7 +25,7 @@ export const ArrowRight = ({
     {...props}
     fill="none"
   >
-    <path d="M5 12h14" />
-    <path d="m12 5 7 7-7 7" />
+    <path d="m12 19-7-7 7-7" />
+    <path d="M19 12H5" />
   </svg>
 );

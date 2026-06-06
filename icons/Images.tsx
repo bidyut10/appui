@@ -6,7 +6,7 @@ export type IconProps = {
   className?: string;
 } & SVGProps<SVGSVGElement>;
 
-export const Bookmark = ({
+export const Images = ({
   size = 16,
   color = "currentColor",
   className,
@@ -15,16 +15,14 @@ export const Bookmark = ({
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
-    strokeWidth="2"
     width={size}
     height={size}
-    stroke={color}
-    fill="none"
+    fill={color}
     className={className}
     {...props}
-    strokeLinecap="round"
-    strokeLinejoin="round"
   >
-    <path d="M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z" />
+    <path d="M12 12 11 11 9 14 19 14 15 8 12 12z" />
+    <path d="m20,2h-12c-1.1,0-2,.9-2,2v12c0,1.1.9,2,2,2h12c1.1,0,2-.9,2-2V4c0-1.1-.9-2-2-2Zm-12,14V4h12v12s-12,0-12,0Z" />
+    <path d="m4,8h-2v12c0,1.1.9,2,2,2h12v-2H4v-12Z" />
   </svg>
 );

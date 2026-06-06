@@ -6,7 +6,7 @@ export const CreditCardGlass = forwardRef<
 >(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
-    className={`group relative w-72 h-44 rounded-2xl overflow-hidden cursor-pointer font-sans ${className}`}
+    className={`group relative w-80 h-48 rounded-2xl overflow-hidden cursor-pointer font-sans ${className}`}
     {...props}
   >
     <div className="absolute inset-0 bg-linear-to-br from-neutral-800 via-neutral-900 to-black" />

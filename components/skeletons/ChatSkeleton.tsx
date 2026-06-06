@@ -4,7 +4,7 @@ export const ChatSkeleton = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className = "", ...props }, ref) => (
-  <div ref={ref} className={`w-72 bg-white border border-neutral-100 rounded-2xl overflow-hidden font-sans ${className}`} {...props}>
+  <div ref={ref} className={`w-72 bg-white border border-neutral-100 rounded-2xl overflow-hidden shadow-lg font-sans ${className}`} {...props}>
     <div className="px-4 py-3 border-b border-neutral-100 flex items-center gap-2">
       <div className="w-8 h-8 rounded-full bg-neutral-200 animate-pulse" />
       <div className="space-y-1.5">

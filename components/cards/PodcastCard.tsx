@@ -33,8 +33,8 @@ export const PodcastCard = forwardRef<
       <p className="text-[11px] text-neutral-500 mb-4">with Sarah Chen · 48 min</p>
 
       <div className="flex items-center gap-3">
-        <button className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:scale-105 transition-transform cursor-pointer shrink-0">
-          <svg viewBox="0 0 24 24" width={16} height={16} fill="currentColor" className="text-neutral-900 ml-0.5">
+        <button className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:scale-105 transition-transform cursor-pointer shrink-0">
+          <svg viewBox="0 0 24 24" width={16} height={16} fill="currentColor" className="text-neutral-100 ml-0.5">
             <path d="M8 5v14l11-7z" />
           </svg>
         </button>

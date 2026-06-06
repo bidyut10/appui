@@ -1,5 +1,6 @@
 import React, { forwardRef } from "react";
 import { Location } from "@/icons/Location";
+import { Sun } from "@/icons/Sun";
 
 export const WeatherWidgetCard = forwardRef<
   HTMLDivElement,
@@ -20,23 +21,10 @@ export const WeatherWidgetCard = forwardRef<
       </div>
 
       <div className="flex-1 flex flex-col items-center justify-center">
-        <svg viewBox="0 0 64 64" width={56} height={56} className="text-yellow-300 mb-2">
-          <circle cx="32" cy="32" r="14" fill="currentColor" opacity="0.9" />
-          {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
-            <rect
-              key={angle}
-              x="30"
-              y="4"
-              width="4"
-              height="10"
-              rx="2"
-              fill="currentColor"
-              opacity="0.7"
-              transform={`rotate(${angle} 32 32)`}
-            />
-          ))}
-        </svg>
-        <p className="text-5xl font-extralight text-white tracking-tight">32°</p>
+        <Sun size={56} className="text-yellow-300 mb-2 fill-yellow-300" />
+        <p className="text-5xl font-extralight text-white tracking-tight">
+          32°
+        </p>
         <p className="text-sm text-white/70 mt-1">Partly Cloudy</p>
       </div>
 
@@ -46,8 +34,13 @@ export const WeatherWidgetCard = forwardRef<
           { label: "Wind", val: "12 km/h" },
           { label: "UV", val: "High" },
         ].map(({ label, val }) => (
-          <div key={label} className="bg-white/15 backdrop-blur-sm rounded-xl p-2 text-center border border-white/10">
-            <p className="text-[9px] text-white/50 uppercase tracking-wider">{label}</p>
+          <div
+            key={label}
+            className="bg-white/15 backdrop-blur-sm rounded-xl p-2 text-center border border-white/10"
+          >
+            <p className="text-[9px] text-white/50 uppercase tracking-wider">
+              {label}
+            </p>
             <p className="text-xs font-semibold text-white mt-0.5">{val}</p>
           </div>
         ))}

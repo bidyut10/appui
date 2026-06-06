@@ -3,22 +3,34 @@ import Image from "next/image";
 import img1 from "@/public/dithar.png";
 import img2 from "@/public/bg.png";
 import img3 from "@/public/bh.png";
+import { Sun } from "@/icons/Sun";
 
 export const GalleryGridCard = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className = "", ...props }, ref) => (
-  <div ref={ref} className={`w-72 bg-white border border-neutral-100 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`} {...props}>
+  <div
+    ref={ref}
+    className={`w-72 bg-white border border-neutral-100 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`}
+    {...props}
+  >
     <div className="p-3 pb-2 flex items-center justify-between">
       <div>
-        <h3 className="text-sm font-semibold text-neutral-900">Summer Collection</h3>
+        <h3 className="text-sm font-semibold text-neutral-900">
+          Summer Collection
+        </h3>
         <p className="text-[10px] text-neutral-400">24 photos · Jun 2026</p>
       </div>
-      <span className="text-[10px] font-mono text-violet-600 bg-violet-50 px-2 py-0.5 rounded-full">Gallery</span>
+      <Sun className="text-neutral-500" size={16} />
     </div>
     <div className="grid grid-cols-3 gap-1 px-3 pb-3">
       <div className="col-span-2 row-span-2 relative aspect-square rounded-xl overflow-hidden">
-        <Image src={img1} alt="" fill className="object-cover hover:scale-105 transition-transform duration-500" />
+        <Image
+          src={img1}
+          alt=""
+          fill
+          className="object-cover hover:scale-105 transition-transform duration-500"
+        />
       </div>
       <div className="relative aspect-square rounded-xl overflow-hidden">
         <Image src={img2} alt="" fill className="object-cover" />

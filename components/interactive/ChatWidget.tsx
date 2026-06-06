@@ -56,9 +56,9 @@ export const ChatWidget = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type a message…"
-          className="flex-1 h-9 px-3 rounded-xl border border-neutral-200 bg-neutral-50 text-xs outline-none focus:border-neutral-400 focus:ring-2 focus:ring-blue-100 transition-all"
+          className="flex-1 h-9 px-3 rounded-lg border border-neutral-200 bg-neutral-50 text-xs outline-none focus:border-neutral-400 focus:ring-none transition-all"
         />
-        <button className="w-9 h-9 rounded-xl bg-neutral-900 flex items-center justify-center text-white hover:bg-neutral-800 transition-colors cursor-pointer active:scale-95 shrink-0">
+        <button className="w-9 h-9 rounded-lg bg-neutral-900 flex items-center justify-center text-white hover:bg-neutral-800 transition-colors cursor-pointer active:scale-95 shrink-0">
           <Send size={14} />
         </button>
       </div>

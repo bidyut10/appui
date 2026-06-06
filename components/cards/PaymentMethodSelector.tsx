@@ -23,14 +23,14 @@ export const PaymentMethodSelector = () => {
           <button
             key={m.id}
             onClick={() => setSelected(m.id)}
-            className={`w-full flex items-center gap-3 p-3 rounded-xl border transition-all cursor-pointer ${
+            className={`w-full flex items-center gap-3 p-3 rounded-lg border transition-all cursor-pointer ${
               selected === m.id
-                ? "border-violet-300 bg-violet-50/50 ring-2 ring-violet-100"
+                ? "border-neutral-300 bg-neutral-50/50"
                 : "border-neutral-100 hover:border-neutral-200"
             }`}
           >
             <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${
-              selected === m.id ? "border-violet-600 bg-violet-600" : "border-neutral-300"
+              selected === m.id ? "border-neutral-800 bg-neutral-800" : "border-neutral-300"
             }`}>
               {selected === m.id && <Check size={10} className="text-white" />}
             </div>
@@ -43,7 +43,7 @@ export const PaymentMethodSelector = () => {
               </p>
             </div>
             {"brand" in m && m.brand && (
-              <span className="text-[10px] font-mono font-bold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">
+              <span className="text-[10px] font-mono font-bold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded">
                 {m.brand}
               </span>
             )}

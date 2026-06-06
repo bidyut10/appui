@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { ChevronDown } from "@/icons/ChevronDown";
 import { Send } from "@/icons/Send";
 
-const models = ["GPT-4o", "Claude 3.5", "Gemini Pro", "Llama 3"];
+const models = ["Claude 3.5", "GPT-4o", "Gemini Pro", "Llama 3"];
 
 export const AIPromptCard = () => {
-  const [model, setModel] = useState("GPT-4o");
+  const [model, setModel] = useState("Claude 3.5");
   const [open, setOpen] = useState(false);
   const [prompt, setPrompt] = useState("");
 
@@ -39,12 +39,12 @@ export const AIPromptCard = () => {
 
         <div className="flex items-center justify-between mt-3">
           <div className="flex gap-1.5">
-            {["🎨 Design", "💻 Code", "✍️ Write"].map((tag) => (
-              <span key={tag} className="px-2 py-0.5 bg-neutral-100 text-[9px] text-neutral-500 rounded-full">{tag}</span>
+            {["Design", "Code", "Write"].map((tag) => (
+              <span key={tag} className="px-2 py-1 bg-neutral-100 text-[9px] text-neutral-500 rounded-full">{tag}</span>
             ))}
           </div>
           <button className="h-8 px-3 bg-neutral-900 text-white text-[11px] font-medium rounded-lg flex items-center gap-1 hover:bg-neutral-800 transition-colors cursor-pointer">
-            Generate <Send size={11} />
+            Generate <Send size={11} className="rotate-45" />
           </button>
         </div>
       </div>

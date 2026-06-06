@@ -10,7 +10,7 @@ export const ProductImageCard = forwardRef<
 >(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
-    className={`group w-60 bg-white border border-neutral-100 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`}
+    className={`group w-80 bg-white border border-neutral-100 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`}
     {...props}
   >
     <div className="relative h-44 overflow-hidden bg-neutral-50">
@@ -20,7 +20,7 @@ export const ProductImageCard = forwardRef<
         fill
         className="object-cover transition-transform duration-500 group-hover:scale-105"
       />
-      <span className="absolute top-3 left-3 px-2 py-0.5 bg-neutral-900 text-white text-[10px] font-mono uppercase tracking-wider rounded-full">
+      <span className="absolute top-3 left-3 px-2 py-0.5 bg-neutral-50/20 text-white text-[10px] font-mono uppercase tracking-wider rounded-full">
         New
       </span>
       <button className="absolute top-3 right-3 w-7 h-7 rounded-full bg-white/90 shadow-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer hover:scale-110">

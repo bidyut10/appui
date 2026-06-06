@@ -12,7 +12,7 @@ const steps = [
 ];
 
 export const OnboardingSteps = () => {
-  const [current, setCurrent] = useState(1);
+  const [current, setCurrent] = useState(0);
 
   return (
     <div className="w-72 font-sans">
@@ -46,7 +46,7 @@ export const OnboardingSteps = () => {
                 </span>
               </button>
               {i < steps.length - 1 && (
-                <div className="flex-1 h-px mx-2 mt-[-18px] relative">
+                <div className="flex-1 h-px mx-2 -mt-4.5 relative">
                   <div className="absolute inset-0 bg-neutral-200 rounded-full" />
                   <div
                     className="absolute inset-y-0 left-0 bg-emerald-500 rounded-full transition-all duration-500"
@@ -59,7 +59,7 @@ export const OnboardingSteps = () => {
         })}
       </div>
 
-      <div className="p-5 bg-white border border-neutral-100 rounded-2xl shadow-sm">
+      <div className="p-5 bg-white border border-neutral-100 rounded-xl shadow-lg">
         <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-2">
           Step {current + 1} of {steps.length}
         </p>
@@ -76,7 +76,7 @@ export const OnboardingSteps = () => {
         <button
           onClick={() => setCurrent(Math.min(current + 1, steps.length - 1))}
           disabled={current === steps.length - 1}
-          className="w-full h-9 bg-neutral-900 text-white text-xs font-medium rounded-xl hover:bg-neutral-800 transition-colors cursor-pointer active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed"
+          className="w-full h-9 bg-neutral-900 text-white text-xs font-medium rounded-lg hover:bg-neutral-950 transition-colors cursor-pointer active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {current === steps.length - 1 ? "Get Started" : "Continue"}
         </button>

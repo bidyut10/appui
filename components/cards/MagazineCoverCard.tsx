@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import Image from "next/image";
-import coverImage from "@/public/bh.png";
+import coverImage from "@/public/dithar.png";
 import { ArrowRight } from "@/icons/ArrowRight";
 
 export const MagazineCoverCard = forwardRef<
@@ -21,7 +21,7 @@ export const MagazineCoverCard = forwardRef<
     <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
 
     <div className="absolute top-4 left-4">
-      <span className="inline-block px-2.5 py-1 bg-white/15 backdrop-blur-md border border-white/20 rounded-full text-[10px] font-medium text-white uppercase tracking-widest">
+      <span className="inline-block px-2.5 pt-1 pb-0.5 bg-white/15 backdrop-blur-md border border-white/20 rounded-full text-[10px] font-medium text-white uppercase tracking-widest">
         Featured
       </span>
     </div>

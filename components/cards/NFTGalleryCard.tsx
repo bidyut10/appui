@@ -9,10 +9,10 @@ export const NFTGalleryCard = forwardRef<
 >(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
-    className={`group w-60 bg-white border border-neutral-100 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`}
+    className={`group w-80 bg-white border border-neutral-100 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`}
     {...props}
   >
-    <div className="relative aspect-square overflow-hidden bg-neutral-100">
+    <div className="relative h-56 w-full aspect-square overflow-hidden bg-neutral-100">
       <Image
         src={artImage}
         alt="NFT Art"

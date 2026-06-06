@@ -1,35 +1,90 @@
 "use client";
-import React, { useState } from "react";
+
+import { useState } from "react";
+import Image from "next/image";
+import bgImage from "@/public/bg.png";
 import { Mail } from "@/icons/Mail";
 import { ArrowRight } from "@/icons/ArrowRight";
+import { ArrowLeft } from "@/icons/ArrowLeft";
+import { Check } from "@/icons/Check";
 
 export const AuthForgotPasswordCard = () => {
   const [sent, setSent] = useState(false);
 
   return (
-    <div className="w-72 bg-white border border-neutral-100 shadow-lg rounded-2xl p-6 font-sans">
-      <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center mb-4">
-        <Mail size={18} className="text-amber-600" />
+    <div className="relative w-96 h-105 overflow-hidden rounded-2xl shadow-lg">
+      <Image src={bgImage} alt="Background" fill className="object-cover" />
+
+      <div className="absolute inset-0 bg-black/50" />
+
+      <div className="relative h-full p-6 flex flex-col">
+        {!sent ? (
+          <>
+            <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-black/10 bg-black/10 shadow-sm">
+              <Mail size={22} className="text-neutral-50" />
+            </div>
+
+            <div className="text-center">
+              <h3 className="text-lg font-semibold text-neutral-50">
+                Forgot Password
+              </h3>
+
+              <p className="mt-2 text-xs leading-relaxed text-neutral-100">
+                Enter the email associated with your account and we&apos;ll send
+                you a password reset link.
+              </p>
+            </div>
+
+            <div className="mt-8">
+              <label className="mb-2 block text-xs font-medium text-neutral-50">
+                Email Address
+              </label>
+
+              <input
+                type="email"
+                placeholder="john@example.com"
+                className="h-11 w-full rounded-lg border border-black/40 bg-black/40 px-4 text-sm text-neutral-100 outline-none backdrop-blur-xl transition-all placeholder:text-neutral-500 focus:border-neutral-700/50"
+              />
+            </div>
+
+            <button
+              onClick={() => setSent(true)}
+              className="mt-4 flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-neutral-950 text-sm font-medium text-white transition-all hover:bg-black"
+            >
+              Send Reset Link
+              <ArrowRight size={14} />
+            </button>
+
+            <div className="mt-auto pt-4">
+              <button className="flex w-full items-center justify-center gap-1 text-xs text-neutral-50 transition-colors hover:text-neutral-100 cursor-pointer">
+                <ArrowLeft size={12} />
+                Back to Login
+              </button>
+            </div>
+          </>
+        ) : (
+          <div className="flex flex-1 flex-col items-center justify-center">
+            <Check size={32} className="text-green-400 mb-5" />
+
+            <h3 className="text-lg font-semibold text-neutral-50">
+              Check Your Email
+            </h3>
+
+            <p className="mt-2 max-w-55 text-center text-xs leading-relaxed text-neutral-100">
+              We&apos;ve sent a password reset link to your email address. The link
+              will expire in 15 minutes.
+            </p>
+
+            <button
+              onClick={() => setSent(false)}
+              className="mt-6 flex items-center gap-1 text-xs text-neutral-50 transition-colors hover:text-white cursor-pointer"
+            >
+              <ArrowLeft size={12} />
+              Back
+            </button>
+          </div>
+        )}
       </div>
-      <h3 className="text-base font-semibold text-neutral-900 mb-1">Forgot password?</h3>
-      <p className="text-[11px] text-neutral-500 leading-relaxed mb-5">
-        {sent ? "Check your inbox for a reset link. It expires in 15 minutes." : "Enter your email and we'll send you a reset link."}
-      </p>
-      {!sent ? (
-        <>
-          <input type="email" placeholder="you@company.com" className="w-full h-10 px-3 rounded-xl border border-neutral-200 bg-neutral-50 text-xs outline-none focus:border-amber-300 focus:ring-2 focus:ring-amber-100 transition-all mb-3" />
-          <button onClick={() => setSent(true)} className="w-full h-10 bg-neutral-900 text-white text-xs font-semibold rounded-xl flex items-center justify-center gap-1 hover:bg-neutral-800 transition-colors cursor-pointer">
-            Send Reset Link <ArrowRight size={12} />
-          </button>
-        </>
-      ) : (
-        <div className="p-3 bg-emerald-50 border border-emerald-100 rounded-xl text-xs text-emerald-700 font-medium text-center">
-          Reset link sent successfully!
-        </div>
-      )}
-      <button className="w-full text-[11px] text-neutral-400 mt-4 hover:text-neutral-600 transition-colors cursor-pointer">
-        ← Back to login
-      </button>
     </div>
   );
 };

@@ -8,7 +8,7 @@ export const TravelPostcardCard = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className = "", ...props }, ref) => (
-  <div ref={ref} className={`w-72 bg-[#fffdf5] border border-[#e8e0d0] shadow-[4px_4px_0_#e8e0d0] rounded-sm overflow-hidden font-serif ${className}`} {...props}>
+  <div ref={ref} className={`w-72 bg-[#fffdf5] border border-[#e8e0d0] shadow-[4px_4px_0_#e8e0d0] overflow-hidden font-serif ${className}`} {...props}>
     <div className="relative h-40">
       <Image src={landscape} alt="Travel" fill className="object-cover sepia-[0.2]" />
       <div className="absolute top-2 right-2 w-8 h-10 bg-white/90 border border-neutral-200 flex flex-col items-center justify-center shadow-sm">

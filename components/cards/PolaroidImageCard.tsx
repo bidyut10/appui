@@ -11,7 +11,7 @@ export const PolaroidImageCard = forwardRef<
     className={`group w-56 ${className}`}
     {...props}
   >
-    <div className="bg-white p-3 pb-10 shadow-[0_8px_30px_rgba(0,0,0,0.12)] rotate-[-2deg] group-hover:rotate-0 transition-transform duration-500 ease-out">
+    <div className="bg-white p-3 pb-10 shadow-[0_8px_30px_rgba(0,0,0,0.12)] -rotate-2 group-hover:rotate-0 transition-transform duration-500 ease-out">
       <div className="relative w-full aspect-square overflow-hidden bg-neutral-100">
         <Image
           src={photo}
@@ -21,10 +21,10 @@ export const PolaroidImageCard = forwardRef<
         />
       </div>
       <p className="mt-4 text-center font-serif italic text-sm text-neutral-600">
-        golden hour, kolkata ☀
+        Golden hour, Kolkata ☀
       </p>
       <p className="text-center text-[10px] text-neutral-400 mt-0.5 font-mono">
-        jun 2026
+        June, 2026
       </p>
     </div>
   </div>

@@ -32,9 +32,9 @@ export const WalletPassCard = forwardRef<
     </div>
 
     <div className="relative bg-white px-4 py-3">
-      <div className="absolute -top-3 left-0 right-0 flex justify-between px-2">
+      <div className="absolute -top-1.5 left-0 right-0 flex justify-between px-2">
         {Array.from({ length: 12 }).map((_, i) => (
-          <div key={i} className="w-3 h-3 rounded-full bg-[#fafafa]" />
+          <div key={i} className="w-3 h-3 rounded-full bg-white" />
         ))}
       </div>
       <div className="flex items-center justify-between pt-1">

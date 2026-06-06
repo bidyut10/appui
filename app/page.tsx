@@ -233,7 +233,7 @@ export default function Home() {
           <Box><AIPromptCard /></Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><AIChatHistoryCard /></Box>
+          <Box><AIChatHistoryCard /></Box> 
           <Box><ChatWidget /></Box>
           <Box><ChatSkeleton /></Box>
         </div>
