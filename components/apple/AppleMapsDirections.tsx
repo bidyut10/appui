@@ -1,3 +1,7 @@
+import { Locate } from "@/icons/Locate";
+import { MoveDown } from "@/icons/MoveDown";
+import { MoveLeft } from "@/icons/MoveLeft";
+import { MoveUp } from "@/icons/MoveUp";
 import React, { forwardRef } from "react";
 
 export const AppleMapsDirections = forwardRef<
@@ -17,10 +21,10 @@ export const AppleMapsDirections = forwardRef<
     </div>
     <div className="divide-y divide-neutral-100">
       {[
-        { icon: "↑", instruction: "Head north on Park Street", dist: "200 m" },
-        { icon: "↰", instruction: "Turn left onto Jawaharlal Nehru Rd", dist: "1.2 km", active: true },
-        { icon: "→", instruction: "Turn right onto Strand Road", dist: "800 m" },
-        { icon: "◎", instruction: "Arrive at Howrah Bridge", dist: "" },
+        { icon: <MoveUp/>, instruction: "Head north on Park Street", dist: "200 m" },
+        { icon: <MoveLeft/>, instruction: "Turn left onto Jawaharlal Nehru Rd", dist: "1.2 km", active: true },
+        { icon: <MoveDown/>, instruction: "Turn right onto Strand Road", dist: "800 m" },
+        { icon: <Locate/>, instruction: "Arrive at Howrah Bridge", dist: "" },
       ].map((step) => (
         <div key={step.instruction} className={`flex items-center gap-3 px-4 py-3 ${"active" in step && step.active ? "bg-blue-50" : ""}`}>
           <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${

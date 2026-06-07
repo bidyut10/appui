@@ -1,3 +1,4 @@
+import { Battery } from "@/icons/Battery";
 import React, { forwardRef } from "react";
 
 export const AppleWidgetStack = forwardRef<
@@ -16,8 +17,8 @@ export const AppleWidgetStack = forwardRef<
 
     <div className="bg-[#1c1c1e] rounded-[1.25rem] p-4 h-36 flex flex-col justify-between shadow-lg">
       <p className="text-[10px] font-semibold text-white/40 uppercase">Battery</p>
-      <div className="flex items-center gap-2">
-        <div className="text-3xl">🔋</div>
+      <div className="flex items-center gap-2 text-white">
+        <div className="text-3xl"><Battery className="rotate-270" size={28}/></div>
         <p className="text-2xl font-light text-white">87%</p>
       </div>
       <p className="text-[10px] text-[#34C759]">Fully charged</p>

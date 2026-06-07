@@ -5,7 +5,7 @@ export const AppleWeatherPremium = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className = "", ...props }, ref) => (
-  <div ref={ref} className={`relative w-72 h-80 rounded-[2rem] overflow-hidden shadow-2xl font-sans ${className}`} {...props}>
+  <div ref={ref} className={`relative w-72 h-80 rounded-4xl overflow-hidden shadow-2xl font-sans ${className}`} {...props}>
     <div className="absolute inset-0 bg-linear-to-b from-[#1a3a5c] via-[#2d5f8a] to-[#4a90c2]" />
     <div className="absolute top-[15%] left-[20%] w-24 h-24 bg-white/10 rounded-full blur-2xl" />
 
@@ -24,7 +24,7 @@ export const AppleWeatherPremium = forwardRef<
       <div className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl p-4">
         <div className="grid grid-cols-4 gap-3 text-center">
           {[
-            { label: "UV Index", val: "6", sub: "High" },
+            { label: "UV", val: "6", sub: "High" },
             { label: "Humidity", val: "68%", sub: "" },
             { label: "Wind", val: "12", sub: "km/h" },
             { label: "Rain", val: "10%", sub: "" },

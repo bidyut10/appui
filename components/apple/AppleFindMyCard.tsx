@@ -1,4 +1,6 @@
 import React, { forwardRef } from "react";
+import { Key } from "@/icons/Key";
+import { MapPinned } from "@/icons/MapPinned";
 
 export const AppleFindMyCard = forwardRef<
   HTMLDivElement,
@@ -13,14 +15,14 @@ export const AppleFindMyCard = forwardRef<
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <div className="w-16 h-16 rounded-full bg-[#007AFF]/20 border-2 border-[#007AFF]/40 flex items-center justify-center animate-pulse">
           <div className="w-8 h-8 rounded-full bg-[#007AFF] flex items-center justify-center shadow-lg shadow-blue-300">
-            <span className="text-white text-sm">📍</span>
+            <span className="text-white text-sm"><MapPinned/></span>
           </div>
         </div>
       </div>
     </div>
     <div className="p-4">
       <div className="flex items-center gap-3 mb-3">
-        <div className="w-10 h-10 rounded-xl bg-[#f2f2f7] flex items-center justify-center text-lg">🔑</div>
+        <div className="w-10 h-10 rounded-xl bg-[#f2f2f7] flex items-center justify-center text-lg"><Key/></div>
         <div>
           <h4 className="text-[15px] font-semibold text-neutral-900">AirTag — Keys</h4>
           <p className="text-[13px] text-[#34C759] font-medium">Nearby · Living Room</p>

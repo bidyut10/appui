@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import { Box } from "./Box";
 import { FacebookPostCard } from "@/components/cards/FacebookPostCard";
 import { GithubContributionCard } from "@/components/cards/GithubContributionCard";
@@ -96,7 +97,6 @@ import { FilterSortDropdown } from "@/components/dropdowns/FilterSortDropdown";
 import { WorkspaceSwitcherDropdown } from "@/components/dropdowns/WorkspaceSwitcherDropdown";
 import { LanguagePickerDropdown } from "@/components/dropdowns/LanguagePickerDropdown";
 import { ThemeColorDropdown } from "@/components/dropdowns/ThemeColorDropdown";
-import { MegaMenuDropdown } from "@/components/dropdowns/MegaMenuDropdown";
 import { DateRangeDropdown } from "@/components/dropdowns/DateRangeDropdown";
 import { ContextMenuDropdown } from "@/components/dropdowns/ContextMenuDropdown";
 import { NotificationToast } from "@/components/toasts/NotificationToast";
@@ -158,6 +158,131 @@ import { AppleWidgetStack } from "@/components/apple/AppleWidgetStack";
 import { AppleStoreAppTile } from "@/components/apple/AppleStoreAppTile";
 import { AppleFitnessSummary } from "@/components/apple/AppleFitnessSummary";
 
+type Row = (React.ReactNode | null)[];
+
+const rows: Row[] = [
+  // Social & Profile Cards
+  [<InstagramPostCard />, <FacebookPostCard />, <LinkedInPostCard />],
+  [<TwitterPostCard />, <BusinessCard />, <GithubContributionCard />],
+  [<NotepadCard />, <FacebookProfileCard />, <GoogleProfileCard />],
+  [<TwitterProfileCard />, <LinkedInProfileCard />, <GithubProfileCard />],
+
+  // Image Cards
+  [<MagazineCoverCard />, <PolaroidImageCard />, <GlassOverlayImageCard />],
+  [<GalleryGridCard />, <BeforeAfterImageCard />, <PortraitImageCard />],
+  [<TravelPostcardCard />, <DuotoneImageCard />, <ImageCarouselCard />],
+  [<ProductImageCard />, <NFTGalleryCard />, <StackedCardsEffect />],
+
+  // Specialty Cards
+  [<EventTicketCard />, <CreditCardGlass />, <WalletPassCard />],
+  [<PodcastCard />, <WeatherWidgetCard />, <FlightBoardingCard />],
+
+  // AI Chat Cards
+  [<AIAssistantCard />, <AIStreamingCard />, <AIPromptCard />],
+  [<AIChatHistoryCard />, <ChatWidget />, <ChatSkeleton />],
+
+  // Auth Cards
+  [<AuthLoginCard />, <AuthSplitLoginCard />, <AuthOTPCard />],
+  [<AuthForgotPasswordCard />, <PaymentMethodSelector />, <OnboardingSteps />],
+
+  // Pricing Cards
+  [<PricingCard />, <TogglePricingCards />, <PricingEnterpriseCard />],
+  [<PricingLifetimeCard />, <FeatureComparison />, <PricingSkeleton />],
+
+  // Music & Video
+  [<MusicPlayerCard />, <MusicPlaylistCard />, <VideoThumbnailCard />],
+  [<NowPlayingBar />, <PodcastCard />, <AppStoreReviewCard />],
+
+  // File Upload
+  [<FileUploadZone />, <FileUploadProgress />, <FileUploadList />],
+  [<ImageUploadPreview />, <CloudUploadCard />, <MultiFileDropzone />],
+
+  // Business & SaaS
+  [<TestimonialCard />, <MetricCard />, <ProgressRingCard />],
+  [<AvatarGroupCard />, <BlogPostCard />, <TeamMemberCard />],
+  [<ActivityFeedCard />, <FeatureTabsCard />, <SocialProofBar />],
+
+  // Dashboard — Layout
+  [<DashboardWelcomeHeader />, <DashboardSidebarMini />, <QuickStatsRow />],
+
+  // Dashboard — Analytics & Revenue
+  [<RevenueStatCard />, <SalesOverviewCard />, <AnalyticsMiniCard />],
+  [<UserGrowthCard />, <TrafficSourcesCard />, <ConversionFunnelCard />],
+
+  // Dashboard — Data & Operations
+  [<TopProductsCard />, <RecentOrdersCard />, <LeaderboardCard />],
+  [<TaskSummaryCard />, <CalendarWidgetCard />, <StorageUsageCard />],
+  [<ServerStatusCard />, <MetricCard />, <ProgressRingCard />],
+
+  // Website Essentials — Navigation & UI
+  [<BreadcrumbNav />, <PaginationBar />, <AlertBanners />],
+  [<ConfirmDialogCard />, <SettingsToggleCard />, <FAQSectionCard />],
+
+  // Website Essentials — Account & Support
+  [<ContactInfoCard />, <MapLocationCard />, <BillingHistoryCard />],
+  [<InviteTeamCard />, <SecuritySettingsCard />, <Error404Card />],
+  [<MaintenanceCard />, <EmptyState />, <CookieBanner />],
+
+  // Apple Design — Premium & Glass
+  [
+    <AppleGlassCard />,
+    null, // <AppleProductHero />
+    null, // <AppleLockScreen />
+  ],
+
+  // Apple Design — Maps
+  [<AppleMapsCard />, <AppleMapsDirections />, <AppleMapsExplore />],
+
+  // Apple Design — Apps & Widgets
+  [
+    null, // <AppleMusicWidget />
+    <AppleWeatherPremium />,
+    <AppleHealthRings />,
+  ],
+  [<AppleRemindersWidget />, <AppleNotesWidget />, <AppleFitnessSummary />],
+  [<AppleWidgetStack />, <AppleWalletStack />, <AppleFindMyCard />],
+
+  // Apple Design — System UI
+  [<AppleSettingsList />, <AppleControlCenter />, <AppleNotificationBanner />],
+  [<AppleSpotlight />, <ApplePayButton />, <AppleStoreAppTile />],
+
+  // Mockups
+  [<PhoneMockupCard />, <BrowserMockupCard />, <LaptopMockupCard />],
+
+  // Skeletons
+  [<CardSkeleton />, <ProfileSkeleton />, <DashboardSkeleton />],
+  [<ImageGridSkeleton />, <TableSkeleton />, <DashboardSkeleton />],
+
+  // Website Sections
+  [<BentoFeatureGrid />, <GradientHero />, <GlassNavbar />],
+  [<NewsletterSignup />, <LogoMarquee />, <CTAGradientBanner />],
+  [<Timeline />, <MiniFooter />, <NotificationToast />],
+
+  // Interactive
+  [<NotificationBell />, <KanbanBoard />, <CookieBanner />],
+
+  // Navigation & Accordions
+  [<HomeMenuBar />, <BorderedAccordion />, <MinimalAccordion />],
+
+  // Search Bars
+  [<SearchBar />, <SearchBarWithResults />, <CommandPaletteSearch />],
+  [
+    <SpotlightSearchBar />,
+    <CategoryFilterSearch />,
+    null, // <MegaMenuDropdown />
+  ],
+
+  // Dropdowns
+  [<HomeDropdown />, <UserMenuDropdown />, <ShareMenuDropdown />],
+  [
+    <QuickActionsDropdown />,
+    <FilterSortDropdown />,
+    <WorkspaceSwitcherDropdown />,
+  ],
+  [<LanguagePickerDropdown />, <ThemeColorDropdown />, <DateRangeDropdown />],
+  [<ContextMenuDropdown />, null, null],
+];
+
 export default function Home() {
   return (
     <div className="flex min-h-screen w-full flex-col items-center pb-10">
@@ -170,655 +295,13 @@ export default function Home() {
       </div>
 
       <div className="w-full space-y-2 px-2">
-        {/* Social & Profile Cards */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <InstagramPostCard />
-          </Box>
-          <Box>
-            <FacebookPostCard />
-          </Box>
-          <Box>
-            <LinkedInPostCard />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <TwitterPostCard />
-          </Box>
-          <Box>
-            <BusinessCard />
-          </Box>
-          <Box>
-            <GithubContributionCard />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <NotepadCard />
-          </Box>
-          <Box>
-            <FacebookProfileCard />
-          </Box>
-          <Box>
-            <GoogleProfileCard />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <TwitterProfileCard />
-          </Box>
-          <Box>
-            <LinkedInProfileCard />
-          </Box>
-          <Box>
-            <GithubProfileCard />
-          </Box>
-        </div>
-
-        {/* Image Cards */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <MagazineCoverCard />
-          </Box>
-          <Box>
-            <PolaroidImageCard />
-          </Box>
-          <Box>
-            <GlassOverlayImageCard />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <GalleryGridCard />
-          </Box>
-          <Box>
-            <BeforeAfterImageCard />
-          </Box>
-          <Box>
-            <PortraitImageCard />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <TravelPostcardCard />
-          </Box>
-          <Box>
-            <DuotoneImageCard />
-          </Box>
-          <Box>
-            <ImageCarouselCard />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <ProductImageCard />
-          </Box>
-          <Box>
-            <NFTGalleryCard />
-          </Box>
-          <Box>
-            <StackedCardsEffect />
-          </Box>
-        </div>
-
-        {/* Specialty Cards */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <EventTicketCard />
-          </Box>
-          <Box>
-            <CreditCardGlass />
-          </Box>
-          <Box>
-            <WalletPassCard />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <PodcastCard />
-          </Box>
-          <Box>
-            <WeatherWidgetCard />
-          </Box>
-          <Box>
-            <FlightBoardingCard />
-          </Box>
-        </div>
-
-        {/* AI Chat Cards */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <AIAssistantCard />
-          </Box>
-          <Box>
-            <AIStreamingCard />
-          </Box>
-          <Box>
-            <AIPromptCard />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <AIChatHistoryCard />
-          </Box>
-          <Box>
-            <ChatWidget />
-          </Box>
-          <Box>
-            <ChatSkeleton />
-          </Box>
-        </div>
-
-        {/* Auth Cards */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <AuthLoginCard />
-          </Box>
-          <Box>
-            <AuthSplitLoginCard />
-          </Box>
-          <Box>
-            <AuthOTPCard />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <AuthForgotPasswordCard />
-          </Box>
-          <Box>
-            <PaymentMethodSelector />
-          </Box>
-          <Box>
-            <OnboardingSteps />
-          </Box>
-        </div>
-
-        {/* Pricing Cards */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <PricingCard />
-          </Box>
-          <Box>
-            <TogglePricingCards />
-          </Box>
-          <Box>
-            <PricingEnterpriseCard />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <PricingLifetimeCard />
-          </Box>
-          <Box>
-            <FeatureComparison />
-          </Box>
-          <Box>
-            <PricingSkeleton />
-          </Box>
-        </div>
-
-        {/* Music & Video */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <MusicPlayerCard />
-          </Box>
-          <Box>
-            <MusicPlaylistCard />
-          </Box>
-          <Box>
-            <VideoThumbnailCard />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <NowPlayingBar />
-          </Box>
-          <Box>
-            <PodcastCard />
-          </Box>
-          <Box>
-            <AppStoreReviewCard />
-          </Box>
-        </div>
-
-        {/* File Upload */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <FileUploadZone />
-          </Box>
-          <Box>
-            <FileUploadProgress />
-          </Box>
-          <Box>
-            <FileUploadList />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <ImageUploadPreview />
-          </Box>
-          <Box>
-            <CloudUploadCard />
-          </Box>
-          <Box>
-            <MultiFileDropzone />
-          </Box>
-        </div>
-
-        {/* Business & SaaS */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <TestimonialCard />
-          </Box>
-          <Box>
-            <MetricCard />
-          </Box>
-          <Box>
-            <ProgressRingCard />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <AvatarGroupCard />
-          </Box>
-          <Box>
-            <BlogPostCard />
-          </Box>
-          <Box>
-            <TeamMemberCard />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <ActivityFeedCard />
-          </Box>
-          <Box>
-            <FeatureTabsCard />
-          </Box>
-          <Box>
-            <SocialProofBar />
-          </Box>
-        </div>
-
-        {/* Dashboard — Layout */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <DashboardWelcomeHeader />
-          </Box>
-          <Box>
-            <DashboardSidebarMini />
-          </Box>
-          <Box>
-            <QuickStatsRow />
-          </Box>
-        </div>
-
-        {/* Dashboard — Analytics & Revenue */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <RevenueStatCard />
-          </Box>
-          <Box>
-            <SalesOverviewCard />
-          </Box>
-          <Box>
-            <AnalyticsMiniCard />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <UserGrowthCard />
-          </Box>
-          <Box>
-            <TrafficSourcesCard />
-          </Box>
-          <Box>
-            <ConversionFunnelCard />
-          </Box>
-        </div>
-
-        {/* Dashboard — Data & Operations */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <TopProductsCard />
-          </Box>
-          <Box>
-            <RecentOrdersCard />
-          </Box>
-          <Box>
-            <LeaderboardCard />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <TaskSummaryCard />
-          </Box>
-          <Box>
-            <CalendarWidgetCard />
-          </Box>
-          <Box>
-            <StorageUsageCard />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <ServerStatusCard />
-          </Box>
-          <Box>
-            <MetricCard />
-          </Box>
-          <Box>
-            <ProgressRingCard />
-          </Box>
-        </div>
-
-        {/* Website Essentials — Navigation & UI */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <BreadcrumbNav />
-          </Box>
-          <Box>
-            <PaginationBar />
-          </Box>
-          <Box>
-            <AlertBanners />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <ConfirmDialogCard />
-          </Box>
-          <Box>
-            <SettingsToggleCard />
-          </Box>
-          <Box>
-            <FAQSectionCard />
-          </Box>
-        </div>
-
-        {/* Website Essentials — Account & Support */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <ContactInfoCard />
-          </Box>
-          <Box>
-            <MapLocationCard />
-          </Box>
-          <Box>
-            <BillingHistoryCard />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <InviteTeamCard />
-          </Box>
-          <Box>
-            <SecuritySettingsCard />
-          </Box>
-          <Box>
-            <Error404Card />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <MaintenanceCard />
-          </Box>
-          <Box>
-            <EmptyState />
-          </Box>
-          <Box>
-            <CookieBanner />
-          </Box>
-        </div>
-
-        {/* Apple Design — Premium & Glass */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <AppleGlassCard />
-          </Box>
-          <Box>
-            <div>{/* <AppleProductHero /> */}</div>
-          </Box>
-          <Box>
-            <div>{/* <AppleLockScreen /> */}</div>
-          </Box>
-        </div>
-
-        {/* Apple Design — Maps */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <AppleMapsCard />
-          </Box>
-          <Box>
-            <AppleMapsDirections />
-          </Box>
-          <Box>
-            <AppleMapsExplore />
-          </Box>
-        </div>
-
-        {/* Apple Design — Apps & Widgets */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <AppleMusicWidget />
-          </Box>
-          <Box>
-            <AppleWeatherPremium />
-          </Box>
-          <Box>
-            <AppleHealthRings />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <AppleRemindersWidget />
-          </Box>
-          <Box>
-            <AppleNotesWidget />
-          </Box>
-          <Box>
-            <AppleFitnessSummary />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <AppleWidgetStack />
-          </Box>
-          <Box>
-            <AppleWalletStack />
-          </Box>
-          <Box>
-            <AppleFindMyCard />
-          </Box>
-        </div>
-
-        {/* Apple Design — System UI */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <AppleSettingsList />
-          </Box>
-          <Box>
-            <AppleControlCenter />
-          </Box>
-          <Box>
-            <AppleNotificationBanner />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <AppleSpotlight />
-          </Box>
-          <Box>
-            <ApplePayButton />
-          </Box>
-          <Box>
-            <AppleStoreAppTile />
-          </Box>
-        </div>
-
-        {/* Mockups */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <PhoneMockupCard />
-          </Box>
-          <Box>
-            <BrowserMockupCard />
-          </Box>
-          <Box>
-            <LaptopMockupCard />
-          </Box>
-        </div>
-
-        {/* Skeletons */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <CardSkeleton />
-          </Box>
-          <Box>
-            <ProfileSkeleton />
-          </Box>
-          <Box>
-            <DashboardSkeleton />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <ImageGridSkeleton />
-          </Box>
-          <Box>
-            <TableSkeleton />
-          </Box>
-          <Box>
-            <DashboardSkeleton />
-          </Box>
-        </div>
-
-        {/* Website Sections */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <BentoFeatureGrid />
-          </Box>
-          <Box>
-            <GradientHero />
-          </Box>
-          <Box>
-            <GlassNavbar />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <NewsletterSignup />
-          </Box>
-          <Box>
-            <LogoMarquee />
-          </Box>
-          <Box>
-            <CTAGradientBanner />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <Timeline />
-          </Box>
-          <Box>
-            <MiniFooter />
-          </Box>
-          <Box>
-            <NotificationToast />
-          </Box>
-        </div>
-
-        {/* Interactive */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <NotificationBell />
-          </Box>
-          <Box>
-            <KanbanBoard />
-          </Box>
-          <Box>
-            <CookieBanner />
-          </Box>
-        </div>
-
-        {/* Navigation & Accordions */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <HomeMenuBar />
-          </Box>
-          <Box>
-            <BorderedAccordion />
-          </Box>
-          <Box>
-            <MinimalAccordion />
-          </Box>
-        </div>
-
-        {/* Search Bars */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <SearchBar />
-          </Box>
-          <Box>
-            <SearchBarWithResults />
-          </Box>
-          <Box>
-            <CommandPaletteSearch />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <SpotlightSearchBar />
-          </Box>
-          <Box>
-            <CategoryFilterSearch />
-          </Box>
-          <Box>
-            {/* <MegaMenuDropdown /> */}
-            <div></div>
-          </Box>
-        </div>
-
-        {/* Dropdowns */}
-        <div className="flex w-full gap-2">
-          <Box>
-            <HomeDropdown />
-          </Box>
-          <Box>
-            <UserMenuDropdown />
-          </Box>
-          <Box>
-            <ShareMenuDropdown />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <QuickActionsDropdown />
-          </Box>
-          <Box>
-            <FilterSortDropdown />
-          </Box>
-          <Box>
-            <WorkspaceSwitcherDropdown />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <LanguagePickerDropdown />
-          </Box>
-          <Box>
-            <ThemeColorDropdown />
-          </Box>
-          <Box>
-            <DateRangeDropdown />
-          </Box>
-        </div>
-        <div className="flex w-full gap-2">
-          <Box>
-            <ContextMenuDropdown />
-          </Box>
-        </div>
+        {rows.map((row, i) => (
+          <div key={i} className="flex w-full gap-2">
+            {row.map((node, j) => (
+              <Box key={j}>{node}</Box>
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   );
