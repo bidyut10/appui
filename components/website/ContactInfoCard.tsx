@@ -19,7 +19,7 @@ export const ContactInfoCard = forwardRef<
         { icon: Clock, label: "Hours", val: "Mon–Fri, 9AM–6PM IST" },
       ].map(({ icon: Icon, label, val }) => (
         <div key={label} className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-neutral-100 flex items-center justify-center shrink-0">
+          <div className="w-9 h-9 rounded-lg bg-neutral-100 flex items-center justify-center shrink-0">
             <Icon size={15} className="text-neutral-600" />
           </div>
           <div>
@@ -29,7 +29,7 @@ export const ContactInfoCard = forwardRef<
         </div>
       ))}
     </div>
-    <button className="w-full h-9 mt-4 bg-neutral-900 text-white text-xs font-medium rounded-xl hover:bg-neutral-800 transition-colors cursor-pointer">
+    <button className="w-full h-9 mt-4 bg-neutral-900 text-white text-xs font-medium rounded-lg hover:bg-neutral-950 transition-colors cursor-pointer">
       Send Message
     </button>
   </div>

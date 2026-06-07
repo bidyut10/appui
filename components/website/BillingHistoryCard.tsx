@@ -30,7 +30,7 @@ export const BillingHistoryCard = forwardRef<
       ))}
     </div>
     <div className="px-4 py-2.5 border-t border-neutral-100 text-center">
-      <button className="text-[11px] font-medium text-violet-600 hover:underline cursor-pointer">Download all invoices</button>
+      <button className="text-[11px] font-medium text-neutral-800 hover:underline cursor-pointer">Download all invoices</button>
     </div>
   </div>
 ));

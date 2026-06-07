@@ -172,325 +172,652 @@ export default function Home() {
       <div className="w-full space-y-2 px-2">
         {/* Social & Profile Cards */}
         <div className="flex w-full gap-2">
-          <Box><InstagramPostCard /></Box>
-          <Box><FacebookPostCard /></Box>
-          <Box><LinkedInPostCard /></Box>
+          <Box>
+            <InstagramPostCard />
+          </Box>
+          <Box>
+            <FacebookPostCard />
+          </Box>
+          <Box>
+            <LinkedInPostCard />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><TwitterPostCard /></Box>
-          <Box><BusinessCard /></Box>
-          <Box><GithubContributionCard /></Box>
+          <Box>
+            <TwitterPostCard />
+          </Box>
+          <Box>
+            <BusinessCard />
+          </Box>
+          <Box>
+            <GithubContributionCard />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><NotepadCard /></Box>
-          <Box><FacebookProfileCard /></Box>
-          <Box><GoogleProfileCard /></Box>
+          <Box>
+            <NotepadCard />
+          </Box>
+          <Box>
+            <FacebookProfileCard />
+          </Box>
+          <Box>
+            <GoogleProfileCard />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><TwitterProfileCard /></Box>
-          <Box><LinkedInProfileCard /></Box>
-          <Box><GithubProfileCard /></Box>
+          <Box>
+            <TwitterProfileCard />
+          </Box>
+          <Box>
+            <LinkedInProfileCard />
+          </Box>
+          <Box>
+            <GithubProfileCard />
+          </Box>
         </div>
 
         {/* Image Cards */}
         <div className="flex w-full gap-2">
-          <Box><MagazineCoverCard /></Box>
-          <Box><PolaroidImageCard /></Box>
-          <Box><GlassOverlayImageCard /></Box>
+          <Box>
+            <MagazineCoverCard />
+          </Box>
+          <Box>
+            <PolaroidImageCard />
+          </Box>
+          <Box>
+            <GlassOverlayImageCard />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><GalleryGridCard /></Box>
-          <Box><BeforeAfterImageCard /></Box>
-          <Box><PortraitImageCard /></Box>
+          <Box>
+            <GalleryGridCard />
+          </Box>
+          <Box>
+            <BeforeAfterImageCard />
+          </Box>
+          <Box>
+            <PortraitImageCard />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><TravelPostcardCard /></Box>
-          <Box><DuotoneImageCard /></Box>
-          <Box><ImageCarouselCard /></Box>
+          <Box>
+            <TravelPostcardCard />
+          </Box>
+          <Box>
+            <DuotoneImageCard />
+          </Box>
+          <Box>
+            <ImageCarouselCard />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><ProductImageCard /></Box>
-          <Box><NFTGalleryCard /></Box>
-          <Box><StackedCardsEffect /></Box>
+          <Box>
+            <ProductImageCard />
+          </Box>
+          <Box>
+            <NFTGalleryCard />
+          </Box>
+          <Box>
+            <StackedCardsEffect />
+          </Box>
         </div>
 
         {/* Specialty Cards */}
         <div className="flex w-full gap-2">
-          <Box><EventTicketCard /></Box>
-          <Box><CreditCardGlass /></Box>
-          <Box><WalletPassCard /></Box>
+          <Box>
+            <EventTicketCard />
+          </Box>
+          <Box>
+            <CreditCardGlass />
+          </Box>
+          <Box>
+            <WalletPassCard />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><PodcastCard /></Box>
-          <Box><WeatherWidgetCard /></Box>
-          <Box><FlightBoardingCard /></Box>
+          <Box>
+            <PodcastCard />
+          </Box>
+          <Box>
+            <WeatherWidgetCard />
+          </Box>
+          <Box>
+            <FlightBoardingCard />
+          </Box>
         </div>
 
         {/* AI Chat Cards */}
         <div className="flex w-full gap-2">
-          <Box><AIAssistantCard /></Box>
-          <Box><AIStreamingCard /></Box>
-          <Box><AIPromptCard /></Box>
+          <Box>
+            <AIAssistantCard />
+          </Box>
+          <Box>
+            <AIStreamingCard />
+          </Box>
+          <Box>
+            <AIPromptCard />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><AIChatHistoryCard /></Box> 
-          <Box><ChatWidget /></Box>
-          <Box><ChatSkeleton /></Box>
+          <Box>
+            <AIChatHistoryCard />
+          </Box>
+          <Box>
+            <ChatWidget />
+          </Box>
+          <Box>
+            <ChatSkeleton />
+          </Box>
         </div>
 
         {/* Auth Cards */}
         <div className="flex w-full gap-2">
-          <Box><AuthLoginCard /></Box>
-          <Box><AuthSplitLoginCard /></Box>
-          <Box><AuthOTPCard /></Box>
+          <Box>
+            <AuthLoginCard />
+          </Box>
+          <Box>
+            <AuthSplitLoginCard />
+          </Box>
+          <Box>
+            <AuthOTPCard />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><AuthForgotPasswordCard /></Box>
-          <Box><PaymentMethodSelector /></Box>
-          <Box><OnboardingSteps /></Box>
+          <Box>
+            <AuthForgotPasswordCard />
+          </Box>
+          <Box>
+            <PaymentMethodSelector />
+          </Box>
+          <Box>
+            <OnboardingSteps />
+          </Box>
         </div>
 
         {/* Pricing Cards */}
         <div className="flex w-full gap-2">
-          <Box><PricingCard /></Box>
-          <Box><TogglePricingCards /></Box>
-          <Box><PricingEnterpriseCard /></Box>
+          <Box>
+            <PricingCard />
+          </Box>
+          <Box>
+            <TogglePricingCards />
+          </Box>
+          <Box>
+            <PricingEnterpriseCard />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><PricingLifetimeCard /></Box>
-          <Box><FeatureComparison /></Box>
-          <Box><PricingSkeleton /></Box>
+          <Box>
+            <PricingLifetimeCard />
+          </Box>
+          <Box>
+            <FeatureComparison />
+          </Box>
+          <Box>
+            <PricingSkeleton />
+          </Box>
         </div>
 
         {/* Music & Video */}
         <div className="flex w-full gap-2">
-          <Box><MusicPlayerCard /></Box>
-          <Box><MusicPlaylistCard /></Box>
-          <Box><VideoThumbnailCard /></Box>
+          <Box>
+            <MusicPlayerCard />
+          </Box>
+          <Box>
+            <MusicPlaylistCard />
+          </Box>
+          <Box>
+            <VideoThumbnailCard />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><NowPlayingBar /></Box>
-          <Box><PodcastCard /></Box>
-          <Box><AppStoreReviewCard /></Box>
+          <Box>
+            <NowPlayingBar />
+          </Box>
+          <Box>
+            <PodcastCard />
+          </Box>
+          <Box>
+            <AppStoreReviewCard />
+          </Box>
         </div>
 
         {/* File Upload */}
         <div className="flex w-full gap-2">
-          <Box><FileUploadZone /></Box>
-          <Box><FileUploadProgress /></Box>
-          <Box><FileUploadList /></Box>
+          <Box>
+            <FileUploadZone />
+          </Box>
+          <Box>
+            <FileUploadProgress />
+          </Box>
+          <Box>
+            <FileUploadList />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><ImageUploadPreview /></Box>
-          <Box><CloudUploadCard /></Box>
-          <Box><MultiFileDropzone /></Box>
+          <Box>
+            <ImageUploadPreview />
+          </Box>
+          <Box>
+            <CloudUploadCard />
+          </Box>
+          <Box>
+            <MultiFileDropzone />
+          </Box>
         </div>
 
         {/* Business & SaaS */}
         <div className="flex w-full gap-2">
-          <Box><TestimonialCard /></Box>
-          <Box><MetricCard /></Box>
-          <Box><ProgressRingCard /></Box>
+          <Box>
+            <TestimonialCard />
+          </Box>
+          <Box>
+            <MetricCard />
+          </Box>
+          <Box>
+            <ProgressRingCard />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><AvatarGroupCard /></Box>
-          <Box><BlogPostCard /></Box>
-          <Box><TeamMemberCard /></Box>
+          <Box>
+            <AvatarGroupCard />
+          </Box>
+          <Box>
+            <BlogPostCard />
+          </Box>
+          <Box>
+            <TeamMemberCard />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><ActivityFeedCard /></Box>
-          <Box><FeatureTabsCard /></Box>
-          <Box><SocialProofBar /></Box>
+          <Box>
+            <ActivityFeedCard />
+          </Box>
+          <Box>
+            <FeatureTabsCard />
+          </Box>
+          <Box>
+            <SocialProofBar />
+          </Box>
         </div>
 
         {/* Dashboard — Layout */}
         <div className="flex w-full gap-2">
-          <Box><DashboardWelcomeHeader /></Box>
-          <Box><DashboardSidebarMini /></Box>
-          <Box><QuickStatsRow /></Box>
+          <Box>
+            <DashboardWelcomeHeader />
+          </Box>
+          <Box>
+            <DashboardSidebarMini />
+          </Box>
+          <Box>
+            <QuickStatsRow />
+          </Box>
         </div>
 
         {/* Dashboard — Analytics & Revenue */}
         <div className="flex w-full gap-2">
-          <Box><RevenueStatCard /></Box>
-          <Box><SalesOverviewCard /></Box>
-          <Box><AnalyticsMiniCard /></Box>
+          <Box>
+            <RevenueStatCard />
+          </Box>
+          <Box>
+            <SalesOverviewCard />
+          </Box>
+          <Box>
+            <AnalyticsMiniCard />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><UserGrowthCard /></Box>
-          <Box><TrafficSourcesCard /></Box>
-          <Box><ConversionFunnelCard /></Box>
+          <Box>
+            <UserGrowthCard />
+          </Box>
+          <Box>
+            <TrafficSourcesCard />
+          </Box>
+          <Box>
+            <ConversionFunnelCard />
+          </Box>
         </div>
 
         {/* Dashboard — Data & Operations */}
         <div className="flex w-full gap-2">
-          <Box><TopProductsCard /></Box>
-          <Box><RecentOrdersCard /></Box>
-          <Box><LeaderboardCard /></Box>
+          <Box>
+            <TopProductsCard />
+          </Box>
+          <Box>
+            <RecentOrdersCard />
+          </Box>
+          <Box>
+            <LeaderboardCard />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><TaskSummaryCard /></Box>
-          <Box><CalendarWidgetCard /></Box>
-          <Box><StorageUsageCard /></Box>
+          <Box>
+            <TaskSummaryCard />
+          </Box>
+          <Box>
+            <CalendarWidgetCard />
+          </Box>
+          <Box>
+            <StorageUsageCard />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><ServerStatusCard /></Box>
-          <Box><MetricCard /></Box>
-          <Box><ProgressRingCard /></Box>
+          <Box>
+            <ServerStatusCard />
+          </Box>
+          <Box>
+            <MetricCard />
+          </Box>
+          <Box>
+            <ProgressRingCard />
+          </Box>
         </div>
 
         {/* Website Essentials — Navigation & UI */}
         <div className="flex w-full gap-2">
-          <Box><BreadcrumbNav /></Box>
-          <Box><PaginationBar /></Box>
-          <Box><AlertBanners /></Box>
+          <Box>
+            <BreadcrumbNav />
+          </Box>
+          <Box>
+            <PaginationBar />
+          </Box>
+          <Box>
+            <AlertBanners />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><ConfirmDialogCard /></Box>
-          <Box><SettingsToggleCard /></Box>
-          <Box><FAQSectionCard /></Box>
+          <Box>
+            <ConfirmDialogCard />
+          </Box>
+          <Box>
+            <SettingsToggleCard />
+          </Box>
+          <Box>
+            <FAQSectionCard />
+          </Box>
         </div>
 
         {/* Website Essentials — Account & Support */}
         <div className="flex w-full gap-2">
-          <Box><ContactInfoCard /></Box>
-          <Box><MapLocationCard /></Box>
-          <Box><BillingHistoryCard /></Box>
+          <Box>
+            <ContactInfoCard />
+          </Box>
+          <Box>
+            <MapLocationCard />
+          </Box>
+          <Box>
+            <BillingHistoryCard />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><InviteTeamCard /></Box>
-          <Box><SecuritySettingsCard /></Box>
-          <Box><Error404Card /></Box>
+          <Box>
+            <InviteTeamCard />
+          </Box>
+          <Box>
+            <SecuritySettingsCard />
+          </Box>
+          <Box>
+            <Error404Card />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><MaintenanceCard /></Box>
-          <Box><EmptyState /></Box>
-          <Box><CookieBanner /></Box>
+          <Box>
+            <MaintenanceCard />
+          </Box>
+          <Box>
+            <EmptyState />
+          </Box>
+          <Box>
+            <CookieBanner />
+          </Box>
         </div>
 
         {/* Apple Design — Premium & Glass */}
         <div className="flex w-full gap-2">
-          <Box><AppleGlassCard /></Box>
-          <Box><AppleProductHero /></Box>
-          <Box><AppleLockScreen /></Box>
+          <Box>
+            <AppleGlassCard />
+          </Box>
+          <Box>
+            <div>{/* <AppleProductHero /> */}</div>
+          </Box>
+          <Box>
+            <div>{/* <AppleLockScreen /> */}</div>
+          </Box>
         </div>
 
         {/* Apple Design — Maps */}
         <div className="flex w-full gap-2">
-          <Box><AppleMapsCard /></Box>
-          <Box><AppleMapsDirections /></Box>
-          <Box><AppleMapsExplore /></Box>
+          <Box>
+            <AppleMapsCard />
+          </Box>
+          <Box>
+            <AppleMapsDirections />
+          </Box>
+          <Box>
+            <AppleMapsExplore />
+          </Box>
         </div>
 
         {/* Apple Design — Apps & Widgets */}
         <div className="flex w-full gap-2">
-          <Box><AppleMusicWidget /></Box>
-          <Box><AppleWeatherPremium /></Box>
-          <Box><AppleHealthRings /></Box>
+          <Box>
+            <AppleMusicWidget />
+          </Box>
+          <Box>
+            <AppleWeatherPremium />
+          </Box>
+          <Box>
+            <AppleHealthRings />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><AppleRemindersWidget /></Box>
-          <Box><AppleNotesWidget /></Box>
-          <Box><AppleFitnessSummary /></Box>
+          <Box>
+            <AppleRemindersWidget />
+          </Box>
+          <Box>
+            <AppleNotesWidget />
+          </Box>
+          <Box>
+            <AppleFitnessSummary />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><AppleWidgetStack /></Box>
-          <Box><AppleWalletStack /></Box>
-          <Box><AppleFindMyCard /></Box>
+          <Box>
+            <AppleWidgetStack />
+          </Box>
+          <Box>
+            <AppleWalletStack />
+          </Box>
+          <Box>
+            <AppleFindMyCard />
+          </Box>
         </div>
 
         {/* Apple Design — System UI */}
         <div className="flex w-full gap-2">
-          <Box><AppleSettingsList /></Box>
-          <Box><AppleControlCenter /></Box>
-          <Box><AppleNotificationBanner /></Box>
+          <Box>
+            <AppleSettingsList />
+          </Box>
+          <Box>
+            <AppleControlCenter />
+          </Box>
+          <Box>
+            <AppleNotificationBanner />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><AppleSpotlight /></Box>
-          <Box><ApplePayButton /></Box>
-          <Box><AppleStoreAppTile /></Box>
+          <Box>
+            <AppleSpotlight />
+          </Box>
+          <Box>
+            <ApplePayButton />
+          </Box>
+          <Box>
+            <AppleStoreAppTile />
+          </Box>
         </div>
 
         {/* Mockups */}
         <div className="flex w-full gap-2">
-          <Box><PhoneMockupCard /></Box>
-          <Box><BrowserMockupCard /></Box>
-          <Box><LaptopMockupCard /></Box>
+          <Box>
+            <PhoneMockupCard />
+          </Box>
+          <Box>
+            <BrowserMockupCard />
+          </Box>
+          <Box>
+            <LaptopMockupCard />
+          </Box>
         </div>
 
         {/* Skeletons */}
         <div className="flex w-full gap-2">
-          <Box><CardSkeleton /></Box>
-          <Box><ProfileSkeleton /></Box>
-          <Box><DashboardSkeleton /></Box>
+          <Box>
+            <CardSkeleton />
+          </Box>
+          <Box>
+            <ProfileSkeleton />
+          </Box>
+          <Box>
+            <DashboardSkeleton />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><ImageGridSkeleton /></Box>
-          <Box><TableSkeleton /></Box>
-          <Box><DashboardSkeleton /></Box>
+          <Box>
+            <ImageGridSkeleton />
+          </Box>
+          <Box>
+            <TableSkeleton />
+          </Box>
+          <Box>
+            <DashboardSkeleton />
+          </Box>
         </div>
 
         {/* Website Sections */}
         <div className="flex w-full gap-2">
-          <Box><BentoFeatureGrid /></Box>
-          <Box><GradientHero /></Box>
-          <Box><GlassNavbar /></Box>
+          <Box>
+            <BentoFeatureGrid />
+          </Box>
+          <Box>
+            <GradientHero />
+          </Box>
+          <Box>
+            <GlassNavbar />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><NewsletterSignup /></Box>
-          <Box><LogoMarquee /></Box>
-          <Box><CTAGradientBanner /></Box>
+          <Box>
+            <NewsletterSignup />
+          </Box>
+          <Box>
+            <LogoMarquee />
+          </Box>
+          <Box>
+            <CTAGradientBanner />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><Timeline /></Box>
-          <Box><MiniFooter /></Box>
-          <Box><NotificationToast /></Box>
+          <Box>
+            <Timeline />
+          </Box>
+          <Box>
+            <MiniFooter />
+          </Box>
+          <Box>
+            <NotificationToast />
+          </Box>
         </div>
 
         {/* Interactive */}
         <div className="flex w-full gap-2">
-          <Box><NotificationBell /></Box>
-          <Box><KanbanBoard /></Box>
-          <Box><CookieBanner /></Box>
+          <Box>
+            <NotificationBell />
+          </Box>
+          <Box>
+            <KanbanBoard />
+          </Box>
+          <Box>
+            <CookieBanner />
+          </Box>
         </div>
 
         {/* Navigation & Accordions */}
         <div className="flex w-full gap-2">
-          <Box><HomeMenuBar /></Box>
-          <Box><BorderedAccordion /></Box>
-          <Box><MinimalAccordion /></Box>
+          <Box>
+            <HomeMenuBar />
+          </Box>
+          <Box>
+            <BorderedAccordion />
+          </Box>
+          <Box>
+            <MinimalAccordion />
+          </Box>
         </div>
 
         {/* Search Bars */}
         <div className="flex w-full gap-2">
-          <Box><SearchBar /></Box>
-          <Box><SearchBarWithResults /></Box>
-          <Box><CommandPaletteSearch /></Box>
+          <Box>
+            <SearchBar />
+          </Box>
+          <Box>
+            <SearchBarWithResults />
+          </Box>
+          <Box>
+            <CommandPaletteSearch />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><SpotlightSearchBar /></Box>
-          <Box><CategoryFilterSearch /></Box>
-          <Box><MegaMenuDropdown /></Box>
+          <Box>
+            <SpotlightSearchBar />
+          </Box>
+          <Box>
+            <CategoryFilterSearch />
+          </Box>
+          <Box>
+            {/* <MegaMenuDropdown /> */}
+            <div></div>
+          </Box>
         </div>
 
         {/* Dropdowns */}
         <div className="flex w-full gap-2">
-          <Box><HomeDropdown /></Box>
-          <Box><UserMenuDropdown /></Box>
-          <Box><ShareMenuDropdown /></Box>
+          <Box>
+            <HomeDropdown />
+          </Box>
+          <Box>
+            <UserMenuDropdown />
+          </Box>
+          <Box>
+            <ShareMenuDropdown />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><QuickActionsDropdown /></Box>
-          <Box><FilterSortDropdown /></Box>
-          <Box><WorkspaceSwitcherDropdown /></Box>
+          <Box>
+            <QuickActionsDropdown />
+          </Box>
+          <Box>
+            <FilterSortDropdown />
+          </Box>
+          <Box>
+            <WorkspaceSwitcherDropdown />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><LanguagePickerDropdown /></Box>
-          <Box><ThemeColorDropdown /></Box>
-          <Box><DateRangeDropdown /></Box>
+          <Box>
+            <LanguagePickerDropdown />
+          </Box>
+          <Box>
+            <ThemeColorDropdown />
+          </Box>
+          <Box>
+            <DateRangeDropdown />
+          </Box>
         </div>
         <div className="flex w-full gap-2">
-          <Box><ContextMenuDropdown /></Box>
+          <Box>
+            <ContextMenuDropdown />
+          </Box>
         </div>
       </div>
     </div>

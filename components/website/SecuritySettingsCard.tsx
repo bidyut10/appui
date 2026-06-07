@@ -5,13 +5,13 @@ export const SecuritySettingsCard = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className = "", ...props }, ref) => (
-  <div ref={ref} className={`w-72 bg-white border border-neutral-100 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`} {...props}>
+  <div ref={ref} className={`w-84 bg-white border border-neutral-100 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`} {...props}>
     <div className="px-4 py-3 border-b border-neutral-100">
       <h4 className="text-sm font-semibold text-neutral-900">Security</h4>
       <p className="text-[11px] text-neutral-400 mt-0.5">Protect your account</p>
     </div>
     <div className="p-4 space-y-3">
-      <div className="flex items-center justify-between p-3 bg-emerald-50 border border-emerald-100 rounded-xl">
+      <div className="flex items-center justify-between p-3 bg-emerald-50 border border-emerald-100 rounded-lg">
         <div className="flex items-center gap-2">
           <Check size={14} className="text-emerald-600" />
           <div>
@@ -31,7 +31,7 @@ export const SecuritySettingsCard = forwardRef<
             <p className="text-xs font-medium text-neutral-800">{label}</p>
             <p className="text-[10px] text-neutral-400 mt-0.5">{desc}</p>
           </div>
-          <button className="text-[10px] font-medium text-violet-600 hover:underline cursor-pointer">{action}</button>
+          <button className="text-[10px] font-medium text-neutral-800 hover:underline cursor-pointer">{action}</button>
         </div>
       ))}
     </div>

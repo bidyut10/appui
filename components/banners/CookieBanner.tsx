@@ -11,7 +11,7 @@ export const CookieBanner = () => {
     return (
       <button
         onClick={() => { setVisible(true); setAccepted(null); }}
-        className="px-4 py-2 text-xs font-medium text-neutral-600 border border-neutral-200 rounded-xl hover:bg-neutral-50 transition-colors cursor-pointer"
+        className="px-4 py-2 text-xs font-medium text-neutral-600 border border-neutral-200 rounded-lg hover:bg-neutral-50 transition-colors cursor-pointer"
       >
         Show cookie banner
       </button>
@@ -22,7 +22,7 @@ export const CookieBanner = () => {
     <div className="w-80 bg-white border border-neutral-200/80 rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] overflow-hidden font-sans">
       <div className="p-5">
         <div className="flex items-start gap-3 mb-4">
-          <div className="w-9 h-9 rounded-xl bg-amber-50 flex items-center justify-center shrink-0">
+          <div className="w-9 h-9 rounded-xl bg-neutral-50 flex items-center justify-center shrink-0">
             <Settings size={16} className="text-amber-600" />
           </div>
           <div>
@@ -47,13 +47,13 @@ export const CookieBanner = () => {
           <div className="flex gap-2">
             <button
               onClick={() => { setAccepted("all"); setTimeout(() => setVisible(false), 1200); }}
-              className="flex-1 h-9 bg-neutral-900 text-white text-xs font-medium rounded-xl hover:bg-neutral-800 transition-colors cursor-pointer active:scale-95"
+              className="flex-1 h-9 bg-neutral-900 text-white text-xs font-medium rounded-lg hover:bg-neutral-800 transition-colors cursor-pointer active:scale-95"
             >
               Accept All
             </button>
             <button
               onClick={() => { setAccepted("essential"); setTimeout(() => setVisible(false), 1200); }}
-              className="flex-1 h-9 border border-neutral-200 text-neutral-700 text-xs font-medium rounded-xl hover:bg-neutral-50 transition-colors cursor-pointer"
+              className="flex-1 h-9 border border-neutral-200 text-neutral-700 text-xs font-medium rounded-lg hover:bg-neutral-50 transition-colors cursor-pointer"
             >
               Essential Only
             </button>
