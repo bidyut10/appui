@@ -1,70 +1,227 @@
-import React, { forwardRef } from "react";
-import profile_logo from "@/public/boy.png";
+import {
+  forwardRef,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
+} from "react";
+import type { StaticImageData } from "next/image";
 import Image from "next/image";
+
+import { cn } from "@/lib/utils";
+
+import profile_logo from "@/public/boy.png";
+
 import { Clock } from "@/icons/Clock";
 import { Ellipsis } from "@/icons/Ellipsis";
 import { Like } from "@/icons/Like";
 import { Chat } from "@/icons/Chat";
 import { Repeat } from "@/icons/Repeat";
 import { Send } from "@/icons/Send";
+
+/**
+ * LinkedIn-inspired post card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content, images, and icons with your own assets.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ *
+ * React Users: Replace `next/image` with a standard `img` element.
+ */
+export type LinkedInPostCardProps = {
+  username?: string;
+  headline?: string;
+  timestamp?: string;
+
+  content?: string;
+  hashtags?: string;
+
+  websiteName?: string;
+  websiteDescription?: string;
+
+  reactions?: number;
+  comments?: number;
+  reposts?: number;
+
+  avatar?: StaticImageData | string;
+
+  avatarAlt?: string;
+
+  menuIcon?: ReactNode;
+  likeIcon?: ReactNode;
+  commentIcon?: ReactNode;
+  repostIcon?: ReactNode;
+  sendIcon?: ReactNode;
+
+  onLike?: () => void;
+  onComment?: () => void;
+  onRepost?: () => void;
+  onSend?: () => void;
+} & ComponentPropsWithoutRef<"div">;
+
 export const LinkedInPostCard = forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className = "", ...props }, ref) => (
-  <div
-    ref={ref}
-    className={`max-w-sm rounded-xl border border-neutral-100 bg-white p-5 font-sans shadow-lg ${className}`}
-    {...props}
-  >
-    <div className="mb-3 flex gap-3">
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-neutral-800">
-        <Image src={profile_logo} alt="twitter-logo-boy" className="w-8" />
-      </div>
-      <div>
-        <p className="text-sm font-semibold text-neutral-900">John Doe</p>
-        <p className="text-xs text-neutral-500">Software Developer · 1st</p>
-        <p className="text-xs text-neutral-400">
-          2h · <Clock className="inline h-3 w-3" />
-        </p>
-      </div>
-      <div className="ml-auto">
-        <Ellipsis className="h-5 w-5 text-neutral-400" />
-      </div>
-    </div>
-    <p className="mb-3 text-sm leading-relaxed text-neutral-800">
-      Excited to share my latest open-source UI library — built with
-      accessibility and performance in mind.
-      <br />
-      <span className="text-blue-600">#OpenSource #UI #React #FrontendDev</span>
-    </p>
-    <div className="mb-3 rounded-lg border border-neutral-200 bg-neutral-50 p-3">
-      <p className="text-xs font-semibold text-neutral-800">nexticons.in</p>
-      <p className="text-xs text-neutral-500">
-        Minimal, performant UI components for modern apps.
-      </p>
-    </div>
-    <div className="flex items-center justify-between border-t border-neutral-100 pt-3 text-xs text-neutral-500">
-      <span className="flex items-center gap-1">
-        <Like size={13} className="text-blue-600" /> 842 reactions
-      </span>
-      <span>57 comments · 23 reposts</span>
-    </div>
-    <div className="mt-3 flex gap-1 border-t border-neutral-100 pt-3">
-      {[
-        { icon: <Like size={14} />, label: "Like" },
-        { icon: <Chat size={14} />, label: "Comment" },
-        { icon: <Repeat size={14} />, label: "Repost" },
-        { icon: <Send size={14} />, label: "Send" },
-      ].map(({ icon, label }) => (
-        <button
-          key={label}
-          className="flex flex-1 cursor-pointer flex-col items-center gap-1 rounded-md py-1 text-[11px] font-medium text-neutral-500 transition-colors hover:bg-neutral-50 hover:text-neutral-900"
+  LinkedInPostCardProps
+>(
+  (
+    {
+      className,
+
+      username = "Bidyut Kundu",
+      headline = "Software Developer · 1st",
+      timestamp = "2h",
+
+      content = "Excited to share my latest open-source UI library — built with accessibility and performance in mind.",
+      hashtags = "#OpenSource #UI #React #FrontendDev",
+
+      websiteName = "nexticons.in",
+      websiteDescription = "Minimal, performant UI components for modern apps.",
+
+      reactions = 842,
+      comments = 57,
+      reposts = 23,
+
+      avatar = profile_logo,
+
+      avatarAlt = "User avatar",
+
+      menuIcon,
+      likeIcon,
+      commentIcon,
+      repostIcon,
+      sendIcon,
+
+      onLike,
+      onComment,
+      onRepost,
+      onSend,
+
+      ...props
+    },
+    ref,
+  ) => {
+    return (
+      <div
+        ref={ref}
+        data-slot="linkedin-post-card"
+        className={cn(
+          "max-w-sm rounded-xl border border-neutral-100 bg-white p-5 font-sans shadow-lg",
+          className,
+        )}
+        {...props}
+      >
+        {/* Post header */}
+        <div data-slot="linkedin-post-card-header" className="mb-3 flex gap-3">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-neutral-800">
+            <Image src={avatar} alt={avatarAlt} className="w-8" sizes="32px" />
+          </div>
+
+          <div>
+            <p
+              title={username}
+              className="text-sm font-semibold text-neutral-900"
+            >
+              {username}
+            </p>
+
+            <p title={headline} className="text-xs text-neutral-500">
+              {headline}
+            </p>
+
+            <p className="text-xs text-neutral-400">
+              {timestamp} · <Clock className="inline" size={12} />
+            </p>
+          </div>
+
+          <div className="ml-auto text-neutral-400">
+            {menuIcon ?? <Ellipsis size={15} />}
+          </div>
+        </div>
+
+        {/* Post content */}
+        <p
+          data-slot="linkedin-post-card-content"
+          className="mb-3 text-sm leading-relaxed text-neutral-800"
         >
-          {icon}
-          {label}
-        </button>
-      ))}
-    </div>
-  </div>
-));
+          {content}
+          <br />
+          <span className="text-blue-600">{hashtags}</span>
+        </p>
+
+        {/* Link preview */}
+        <div
+          data-slot="linkedin-post-card-preview"
+          className="mb-3 rounded-lg border border-neutral-200 bg-neutral-50 p-3"
+        >
+          <p className="text-xs font-semibold text-neutral-800">
+            {websiteName}
+          </p>
+
+          <p className="text-xs text-neutral-500">{websiteDescription}</p>
+        </div>
+
+        {/* Engagement summary */}
+        <div
+          data-slot="linkedin-post-card-stats"
+          className="flex items-center justify-between border-t border-neutral-100 pt-3 text-xs text-neutral-500"
+        >
+          <span className="flex items-center gap-1">
+            {likeIcon ?? <Like size={13} className="text-blue-600" />}
+            {reactions.toLocaleString()} reactions
+          </span>
+
+          <span>
+            {comments.toLocaleString()} comments · {reposts.toLocaleString()}{" "}
+            reposts
+          </span>
+        </div>
+
+        {/* Post actions */}
+        <div
+          data-slot="linkedin-post-card-actions"
+          className="mt-3 flex gap-1 border-t border-neutral-100 pt-3"
+        >
+          <button
+            type="button"
+            aria-label={`Like post from ${username}`}
+            onClick={onLike}
+            className="flex flex-1 cursor-pointer flex-col items-center gap-1 rounded-md py-1 text-[11px] font-medium text-neutral-500 transition-colors hover:bg-neutral-50 hover:text-neutral-900"
+          >
+            {likeIcon ?? <Like size={14} />}
+            Like
+          </button>
+
+          <button
+            type="button"
+            aria-label={`Comment on post from ${username}`}
+            onClick={onComment}
+            className="flex flex-1 cursor-pointer flex-col items-center gap-1 rounded-md py-1 text-[11px] font-medium text-neutral-500 transition-colors hover:bg-neutral-50 hover:text-neutral-900"
+          >
+            {commentIcon ?? <Chat size={14} />}
+            Comment
+          </button>
+
+          <button
+            type="button"
+            aria-label={`Repost post from ${username}`}
+            onClick={onRepost}
+            className="flex flex-1 cursor-pointer flex-col items-center gap-1 rounded-md py-1 text-[11px] font-medium text-neutral-500 transition-colors hover:bg-neutral-50 hover:text-neutral-900"
+          >
+            {repostIcon ?? <Repeat size={14} />}
+            Repost
+          </button>
+
+          <button
+            type="button"
+            aria-label={`Send post from ${username}`}
+            onClick={onSend}
+            className="flex flex-1 cursor-pointer flex-col items-center gap-1 rounded-md py-1 text-[11px] font-medium text-neutral-500 transition-colors hover:bg-neutral-50 hover:text-neutral-900"
+          >
+            {sendIcon ?? <Send size={14} />}
+            Send
+          </button>
+        </div>
+      </div>
+    );
+  },
+);
+
 LinkedInPostCard.displayName = "LinkedInPostCard";
