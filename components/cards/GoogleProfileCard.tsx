@@ -157,7 +157,7 @@ export const GoogleProfileCard = forwardRef<
               type="button"
               aria-label={manageAccountLabel}
               onClick={onManageAccount}
-              className="rounded-lg flex w-full cursor-pointer items-center justify-center gap-2 bg-neutral-800 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-neutral-950"
+              className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-neutral-800 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-neutral-950"
             >
               {googleIcon ?? <Google size={14} />}
               <span>{manageAccountLabel}</span>

@@ -163,7 +163,7 @@ export const FacebookProfileCard = forwardRef<
                 type="button"
                 aria-label={`Add ${name} as a friend`}
                 onClick={onAddFriend}
-                className="flex-1 rounded-md bg-neutral-800 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-neutral-950 cursor-pointer"
+                className="flex-1 cursor-pointer rounded-md bg-neutral-800 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-neutral-950"
               >
                 {addFriendLabel}
               </button>
@@ -174,7 +174,7 @@ export const FacebookProfileCard = forwardRef<
                 type="button"
                 aria-label={`Send message to ${name}`}
                 onClick={onMessage}
-                className="flex-1 rounded-md border border-neutral-200 py-1.5 text-xs font-medium text-neutral-700 transition-colors hover:bg-neutral-50 cursor-pointer"
+                className="flex-1 cursor-pointer rounded-md border border-neutral-200 py-1.5 text-xs font-medium text-neutral-700 transition-colors hover:bg-neutral-50"
               >
                 {messageLabel}
               </button>
