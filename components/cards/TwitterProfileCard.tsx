@@ -1,72 +1,201 @@
-import React, { forwardRef } from "react";
-import { Location } from "@/icons/Location";
-import { Web } from "@/icons/Web";
+import {
+  forwardRef,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
+} from "react";
+import type { StaticImageData } from "next/image";
 import Image from "next/image";
+
+import { cn } from "@/lib/utils";
+
 import bg_image from "@/public/dbg.png";
 import profile_logo from "@/public/boy.png";
 
+import { Location } from "@/icons/Location";
+import { Web } from "@/icons/Web";
+
+/**
+ * Twitter-inspired profile card built with Next.js,
+ * React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content, images, and actions with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ *
+ * React Users: Replace `next/image` with a standard `img` element.
+ */
+export type TwitterProfileCardProps = {
+  name?: string;
+  username?: string;
+
+  bio?: string;
+  location?: string;
+  website?: string;
+
+  following?: string | number;
+  followers?: string | number;
+
+  coverImage?: StaticImageData | string;
+  avatar?: StaticImageData | string;
+
+  coverImageAlt?: string;
+  avatarAlt?: string;
+
+  followLabel?: string;
+
+  locationIcon?: ReactNode;
+  websiteIcon?: ReactNode;
+
+  followButton?: ReactNode;
+
+  onFollow?: () => void;
+} & ComponentPropsWithoutRef<"div">;
+
 export const TwitterProfileCard = forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className = "", ...props }, ref) => (
-  <div
-    ref={ref}
-    className={`w-72 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg ${className}`}
-    {...props}
-  >
-    <div className="relative">
-      <Image
-        src={bg_image}
-        alt="twitter-logo-boy"
-        className="h-24 w-full object-cover"
-      />
+  TwitterProfileCardProps
+>(
+  (
+    {
+      className,
 
-      <div className="absolute -bottom-8 left-5 flex h-16 w-16 items-center justify-center rounded-full border-4 border-white bg-neutral-800">
-        <Image src={profile_logo} alt="twitter-logo-boy" className="w-7" />
-      </div>
-    </div>
+      name = "Bidyut Kundu",
+      username = "@bidyutkundu",
 
-    <div className="px-5 pt-12 pb-5">
-      <div className="flex items-start justify-between">
-        <div>
-          <p className="text-lg leading-none font-medium text-neutral-900">
-            John Doe
-          </p>
-          <p className="mt-1 text-sm text-neutral-400">@johndoe</p>
+      bio = "Building things on the web · Minimalism enthusiast · Open-source",
+
+      location = "West Bengal",
+      website = "opensourceui.in",
+
+      following = 320,
+      followers = "1.2K",
+
+      coverImage = bg_image,
+      avatar = profile_logo,
+
+      coverImageAlt = "Profile cover image",
+      avatarAlt = "Profile avatar",
+
+      followLabel = "Follow",
+
+      locationIcon,
+      websiteIcon,
+
+      followButton,
+
+      onFollow,
+
+      ...props
+    },
+    ref,
+  ) => {
+    return (
+      <div
+        ref={ref}
+        data-slot="twitter-profile-card"
+        className={cn(
+          "w-72 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
+          className,
+        )}
+        {...props}
+      >
+        {/* Cover image */}
+        <div data-slot="twitter-profile-card-cover" className="relative">
+          <Image
+            src={coverImage}
+            alt={coverImageAlt}
+            className="h-24 w-full object-cover"
+            sizes="288px"
+          />
+
+          {/* Profile avatar */}
+          <div className="absolute -bottom-8 left-5 flex h-16 w-16 items-center justify-center rounded-full border-4 border-white bg-neutral-800">
+            <Image src={avatar} alt={avatarAlt} className="w-7" sizes="28px" />
+          </div>
         </div>
 
-        <button className="cursor-pointer rounded-full bg-neutral-900 px-4 py-2 text-xs font-medium text-white transition-colors hover:bg-black">
-          Follow
-        </button>
+        <div
+          data-slot="twitter-profile-card-content"
+          className="px-5 pt-12 pb-5"
+        >
+          {/* Header */}
+          <div className="flex items-start justify-between">
+            <div>
+              <p
+                title={name}
+                className="text-lg leading-none font-semibold text-neutral-900"
+              >
+                {name}
+              </p>
+
+              <p title={username} className="mt-1 text-sm text-neutral-400">
+                {username}
+              </p>
+            </div>
+
+            {followButton ?? (
+              <button
+                type="button"
+                aria-label={`Follow ${name}`}
+                onClick={onFollow}
+                className="cursor-pointer rounded-full bg-neutral-800 px-3 pt-1 pb-0.5 text-[10px] font-medium text-white transition-colors hover:bg-black"
+              >
+                {followLabel}
+              </button>
+            )}
+          </div>
+
+          {/* Bio */}
+          <p
+            data-slot="twitter-profile-card-bio"
+            title={bio}
+            className="mt-4 text-sm leading-relaxed text-neutral-700"
+          >
+            {bio}
+          </p>
+
+          {/* Profile details */}
+          <div
+            data-slot="twitter-profile-card-details"
+            className="mt-4 flex flex-wrap gap-4 text-sm text-neutral-500"
+          >
+            <span className="flex items-center gap-1">
+              {locationIcon ?? <Location size={13} />}
+              {location}
+            </span>
+
+            <span className="flex items-center gap-1">
+              {websiteIcon ?? <Web size={13} />}
+              {website}
+            </span>
+          </div>
+
+          {/* Stats */}
+          <div
+            data-slot="twitter-profile-card-stats"
+            className="mt-4 flex gap-5 text-sm text-neutral-500"
+          >
+            <span>
+              <b className="text-neutral-900">
+                {typeof following === "number"
+                  ? following.toLocaleString()
+                  : following}
+              </b>{" "}
+              Following
+            </span>
+
+            <span>
+              <b className="text-neutral-900">
+                {typeof followers === "number"
+                  ? followers.toLocaleString()
+                  : followers}
+              </b>{" "}
+              Followers
+            </span>
+          </div>
+        </div>
       </div>
-
-      <p className="mt-4 text-sm leading-relaxed text-neutral-700">
-        Building things on the web · Minimalism enthusiast · Open-source
-      </p>
-
-      <div className="mt-4 flex flex-wrap gap-4 text-sm text-neutral-500">
-        <span className="flex items-center gap-1">
-          <Location size={13} />
-          West Bengal
-        </span>
-
-        <span className="flex items-center gap-1">
-          <Web size={13} />
-          example.com
-        </span>
-      </div>
-
-      <div className="mt-4 flex gap-5 text-sm text-neutral-500">
-        <span>
-          <b className="text-neutral-900">320</b> Following
-        </span>
-
-        <span>
-          <b className="text-neutral-900">1.2K</b> Followers
-        </span>
-      </div>
-    </div>
-  </div>
-));
+    );
+  },
+);
 
 TwitterProfileCard.displayName = "TwitterProfileCard";
