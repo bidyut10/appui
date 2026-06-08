@@ -7,13 +7,13 @@ export const ProfileSkeleton = forwardRef<
   return (
     <div
       ref={ref}
-      className={`flex items-center space-x-4 w-64 p-4 border border-neutral-100 rounded-xl bg-white shadow-sm ${className}`}
+      className={`flex w-64 items-center space-x-4 rounded-xl border border-neutral-100 bg-white p-4 shadow-sm ${className}`}
       {...props}
     >
-      <div className="w-12 h-12 rounded-full bg-neutral-200 animate-pulse shrink-0"></div>
-      <div className="space-y-2 flex-1">
-        <div className="h-3 bg-neutral-200 rounded animate-pulse w-3/4"></div>
-        <div className="h-2.5 bg-neutral-100 rounded animate-pulse w-1/2"></div>
+      <div className="h-12 w-12 shrink-0 animate-pulse rounded-full bg-neutral-200"></div>
+      <div className="flex-1 space-y-2">
+        <div className="h-3 w-3/4 animate-pulse rounded bg-neutral-200"></div>
+        <div className="h-2.5 w-1/2 animate-pulse rounded bg-neutral-100"></div>
       </div>
     </div>
   );

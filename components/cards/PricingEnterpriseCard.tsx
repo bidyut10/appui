@@ -5,21 +5,43 @@ export const PricingEnterpriseCard = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className = "", ...props }, ref) => (
-  <div ref={ref} className={`w-80 bg-neutral-950 border border-neutral-800 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`} {...props}>
+  <div
+    ref={ref}
+    className={`w-80 overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-950 font-sans shadow-lg ${className}`}
+    {...props}
+  >
     <div className="p-6">
-      <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">Enterprise</span>
+      <span className="font-mono text-[10px] tracking-widest text-neutral-500 uppercase">
+        Enterprise
+      </span>
       <div className="mt-3 mb-1">
-        <span className="text-3xl font-light text-white tracking-tight">Custom</span>
+        <span className="text-3xl font-light tracking-tight text-white">
+          Custom
+        </span>
       </div>
-      <p className="text-xs text-neutral-500 leading-relaxed mb-5">For large teams with advanced security and compliance needs.</p>
-      <ul className="space-y-2.5 mb-6">
-        {["Unlimited everything", "SSO & SAML", "Dedicated support", "Custom SLA", "Audit logs"].map((f) => (
-          <li key={f} className="flex items-center gap-2 text-xs text-neutral-400">
-            <Check size={10} className="text-emerald-500 shrink-0" />{f}
+      <p className="mb-5 text-xs leading-relaxed text-neutral-500">
+        For large teams with advanced security and compliance needs.
+      </p>
+      <ul className="mb-6 space-y-2.5">
+        {[
+          "Unlimited everything",
+          "SSO & SAML",
+          "Dedicated support",
+          "Custom SLA",
+          "Audit logs",
+        ].map((f) => (
+          <li
+            key={f}
+            className="flex items-center gap-2 text-xs text-neutral-400"
+          >
+            <Check size={10} className="shrink-0 text-emerald-500" />
+            {f}
           </li>
         ))}
       </ul>
-      <button className="w-full h-10 bg-white text-neutral-900 text-xs font-semibold rounded-lg hover:bg-neutral-100 transition-colors cursor-pointer">Contact Sales</button>
+      <button className="h-10 w-full cursor-pointer rounded-lg bg-white text-xs font-semibold text-neutral-900 transition-colors hover:bg-neutral-100">
+        Contact Sales
+      </button>
     </div>
   </div>
 ));

@@ -45,10 +45,10 @@ export function MenuBar({
       role="tablist"
       aria-label="Navigation"
       className={[
-        "flex items-center h-11 px-[4.5px] gap-0.5",
+        "flex h-11 items-center gap-0.5 px-[4.5px]",
         "bg-white dark:bg-neutral-900",
         "border border-neutral-200 dark:border-neutral-800",
-        "rounded-xl w-fit max-w-full overflow-x-auto",
+        "w-fit max-w-full overflow-x-auto rounded-xl",
         "scrollbar-none",
         className,
       ].join(" ")}
@@ -60,7 +60,7 @@ export function MenuBar({
               key={`sep-${i}`}
               role="separator"
               aria-orientation="vertical"
-              className="w-px h-4.5 bg-neutral-200 dark:bg-neutral-700 shrink-0 mx-1"
+              className="mx-1 h-4.5 w-px shrink-0 bg-neutral-200 dark:bg-neutral-700"
             />
           );
         }
@@ -77,17 +77,17 @@ export function MenuBar({
             disabled={item.disabled}
             onClick={() => handleSelect(item)}
             className={[
-              "inline-flex items-center gap-1.5 h-8 px-2.5 rounded-lg shrink-0",
-              "text-[13px] whitespace-nowrap transition-colors duration-100 cursor-pointer",
+              "inline-flex h-8 shrink-0 items-center gap-1.5 rounded-lg px-2.5",
+              "cursor-pointer text-[13px] whitespace-nowrap transition-colors duration-100",
               "outline-none focus-visible:ring-2 focus-visible:ring-blue-500",
-              "disabled:opacity-40 disabled:cursor-not-allowed",
+              "disabled:cursor-not-allowed disabled:opacity-40",
               isActive
-                ? "bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-50 font-medium"
-                : "text-neutral-500 dark:text-neutral-400 font-normal hover:bg-neutral-50 dark:hover:bg-neutral-800/60 hover:text-neutral-900 dark:hover:text-neutral-100",
+                ? "bg-neutral-100 font-medium text-neutral-900 dark:bg-neutral-800 dark:text-neutral-50"
+                : "font-normal text-neutral-500 hover:bg-neutral-50 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800/60 dark:hover:text-neutral-100",
             ].join(" ")}
           >
             {item.icon && (
-              <span className="size-3.5 shrink-0 flex items-center justify-center">
+              <span className="flex size-3.5 shrink-0 items-center justify-center">
                 {item.icon}
               </span>
             )}
@@ -97,7 +97,7 @@ export function MenuBar({
             {item.badge && (
               <span
                 className={[
-                  "inline-flex items-center h-4 px-1.5 rounded-full text-[10px] font-medium leading-none",
+                  "inline-flex h-4 items-center rounded-full px-1.5 text-[10px] leading-none font-medium",
                   isActive
                     ? "bg-blue-200 text-blue-900 dark:bg-blue-900 dark:text-blue-100"
                     : "bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300",

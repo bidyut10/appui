@@ -10,7 +10,11 @@ export const FileUploadProgress = () => {
     if (!uploading) return;
     const interval = setInterval(() => {
       setProgress((p) => {
-        if (p >= 100) { setUploading(false); clearInterval(interval); return 100; }
+        if (p >= 100) {
+          setUploading(false);
+          clearInterval(interval);
+          return 100;
+        }
         return p + 2;
       });
     }, 60);
@@ -18,26 +22,26 @@ export const FileUploadProgress = () => {
   }, [uploading]);
 
   return (
-    <div className="w-72 bg-white border border-neutral-100 shadow-lg rounded-2xl p-4 font-sans">
-      <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 rounded-xl bg-neutral-50 flex items-center justify-center shrink-0">
+    <div className="w-72 rounded-2xl border border-neutral-100 bg-white p-4 font-sans shadow-lg">
+      <div className="mb-4 flex items-center gap-3">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-neutral-50">
           <File size={18} className="text-neutral-400" />
         </div>
-        <div className="flex-1 min-w-0">
-          <p className="text-xs font-semibold text-neutral-900 truncate">
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-xs font-semibold text-neutral-900">
             design-system-v2.fig
           </p>
           <p className="text-[10px] text-neutral-400">4.2 MB · Figma file</p>
         </div>
         {uploading ? (
-          <span className="text-[10px] font-mono text-emerald-600">
+          <span className="font-mono text-[10px] text-emerald-600">
             {progress}%
           </span>
         ) : (
-          <span className="text-[10px] font-mono text-emerald-600">Done</span>
+          <span className="font-mono text-[10px] text-emerald-600">Done</span>
         )}
       </div>
-      <div className="h-1.5 bg-neutral-100 rounded-full overflow-hidden">
+      <div className="h-1.5 overflow-hidden rounded-full bg-neutral-100">
         <div
           className={`h-full rounded-full transition-all duration-300 ${uploading ? "bg-emerald-500" : "bg-emerald-500"}`}
           style={{ width: `${progress}%` }}
@@ -49,7 +53,7 @@ export const FileUploadProgress = () => {
             setProgress(0);
             setUploading(true);
           }}
-          className="w-full mt-3 h-8 text-[11px] font-medium text-neutral-600 border border-neutral-200 rounded-lg hover:bg-neutral-50 transition-colors cursor-pointer"
+          className="mt-3 h-8 w-full cursor-pointer rounded-lg border border-neutral-200 text-[11px] font-medium text-neutral-600 transition-colors hover:bg-neutral-50"
         >
           Upload another
         </button>

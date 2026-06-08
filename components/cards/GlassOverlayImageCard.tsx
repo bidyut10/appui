@@ -12,7 +12,7 @@ export const GlassOverlayImageCard = forwardRef<
 >(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
-    className={`group relative w-72 h-80 rounded-3xl overflow-hidden shadow-lg ${className}`}
+    className={`group relative h-80 w-72 overflow-hidden rounded-3xl shadow-lg ${className}`}
     {...props}
   >
     <Image
@@ -23,23 +23,23 @@ export const GlassOverlayImageCard = forwardRef<
     />
 
     <div className="absolute top-3 right-3 flex gap-2">
-      <button className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-colors cursor-pointer">
+      <button className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-white/30 bg-white/20 text-white backdrop-blur-md transition-colors hover:bg-white/30">
         <Heart size={14} />
       </button>
 
-      <button className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-colors cursor-pointer">
+      <button className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-white/30 bg-white/20 text-white backdrop-blur-md transition-colors hover:bg-white/30">
         <Share size={14} />
       </button>
     </div>
 
-    <div className="absolute bottom-3 left-3 right-3">
-      <div className="bg-white/15 backdrop-blur-xl border border-white/25 rounded-2xl p-4">
-        <div className="flex items-center gap-1.5 text-white/70 text-[10px] mb-1.5">
+    <div className="absolute right-3 bottom-3 left-3">
+      <div className="rounded-2xl border border-white/25 bg-white/15 p-4 backdrop-blur-xl">
+        <div className="mb-1.5 flex items-center gap-1.5 text-[10px] text-white/70">
           <Location size={10} />
           <span>Bishnupur, West Bengal</span>
         </div>
 
-        <h3 className="text-white font-semibold text-sm leading-snug mb-2">
+        <h3 className="mb-2 text-sm leading-snug font-semibold text-white">
           Where the river meets the mangrove forest
         </h3>
 
@@ -57,10 +57,10 @@ export const GlassOverlayImageCard = forwardRef<
               ))}
             </div>
 
-            <span className="text-[10px] text-white/60 ml-3">+12 saved</span>
+            <span className="ml-3 text-[10px] text-white/60">+12 saved</span>
           </div>
 
-          <span className="text-[10px] flex items-center gap-1 font-mono text-white/50 uppercase tracking-wider">
+          <span className="flex items-center gap-1 font-mono text-[10px] tracking-wider text-white/50 uppercase">
             Explore
             <ArrowRight size={10} className="relative -top-px" />
           </span>

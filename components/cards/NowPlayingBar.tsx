@@ -11,23 +11,32 @@ export const NowPlayingBar = () => {
   const [playing, setPlaying] = useState(true);
 
   return (
-    <div className="w-80 bg-neutral-950 border border-neutral-800 rounded-2xl px-4 py-3 flex items-center gap-3 font-sans shadow-lg">
-      <div className="relative w-10 h-10 rounded-lg overflow-hidden shrink-0">
+    <div className="flex w-80 items-center gap-3 rounded-2xl border border-neutral-800 bg-neutral-950 px-4 py-3 font-sans shadow-lg">
+      <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg">
         <Image src={cover} alt="Now playing" fill className="object-cover" />
       </div>
-      <div className="flex-1 min-w-0">
-        <p className="text-xs font-medium text-white truncate">Midnight Dreams</p>
-        <p className="text-[10px] text-neutral-500 truncate">The Weeknd</p>
+      <div className="min-w-0 flex-1">
+        <p className="truncate text-xs font-medium text-white">
+          Midnight Dreams
+        </p>
+        <p className="truncate text-[10px] text-neutral-500">The Weeknd</p>
       </div>
       <div className="flex items-center gap-2">
-        <button className="text-neutral-500 hover:text-white text-sm cursor-pointer"><SkipPrevious/></button>
-        <button onClick={() => setPlaying(!playing)} className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-neutral-900 text-xs cursor-pointer hover:scale-105 transition-transform">
-          {playing ? <Pause/>: <Play/>}
+        <button className="cursor-pointer text-sm text-neutral-500 hover:text-white">
+          <SkipPrevious />
         </button>
-        <button className="text-neutral-500 hover:text-white text-sm cursor-pointer"><SkipNext/></button>
+        <button
+          onClick={() => setPlaying(!playing)}
+          className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white text-xs text-neutral-900 transition-transform hover:scale-105"
+        >
+          {playing ? <Pause /> : <Play />}
+        </button>
+        <button className="cursor-pointer text-sm text-neutral-500 hover:text-white">
+          <SkipNext />
+        </button>
       </div>
-      <div className="hidden sm:block w-16 h-1 bg-neutral-800 rounded-full overflow-hidden">
-        <div className="h-full w-[60%] bg-emerald-500 rounded-full" />
+      <div className="hidden h-1 w-16 overflow-hidden rounded-full bg-neutral-800 sm:block">
+        <div className="h-full w-[60%] rounded-full bg-emerald-500" />
       </div>
     </div>
   );

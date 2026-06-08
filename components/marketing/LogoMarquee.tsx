@@ -17,27 +17,23 @@ export const LogoMarquee = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className = "", ...props }, ref) => (
-  <div
-    ref={ref}
-    className={`w-80 font-sans ${className}`}
-    {...props}
-  >
-    <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-400 text-center mb-4">
+  <div ref={ref} className={`w-80 font-sans ${className}`} {...props}>
+    <p className="mb-4 text-center font-mono text-[10px] tracking-[0.2em] text-neutral-400 uppercase">
       Trusted by teams at
     </p>
 
     <div className="relative overflow-hidden rounded-2xl border border-neutral-100 bg-neutral-50/50 py-4">
-      <div className="absolute left-0 top-0 bottom-0 w-12 bg-linear-to-r from-neutral-50 to-transparent z-10" />
-      <div className="absolute right-0 top-0 bottom-0 w-12 bg-linear-to-l from-neutral-50 to-transparent z-10" />
+      <div className="absolute top-0 bottom-0 left-0 z-10 w-12 bg-linear-to-r from-neutral-50 to-transparent" />
+      <div className="absolute top-0 right-0 bottom-0 z-10 w-12 bg-linear-to-l from-neutral-50 to-transparent" />
 
-      <div className="flex animate-marquee gap-8 w-max">
+      <div className="animate-marquee flex w-max gap-8">
         {[...logos, ...logos, ...logos].map(({ name, icon: Icon }, i) => (
           <div
             key={`${name}-${i}`}
-            className="flex items-center gap-2 opacity-40 hover:opacity-70 transition-opacity shrink-0"
+            className="flex shrink-0 items-center gap-2 opacity-40 transition-opacity hover:opacity-70"
           >
             <Icon size={20} />
-            <span className="text-xs font-semibold text-neutral-600 tracking-tight">
+            <span className="text-xs font-semibold tracking-tight text-neutral-600">
               {name}
             </span>
           </div>

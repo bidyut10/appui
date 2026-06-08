@@ -11,16 +11,23 @@ export const ProgressRingCard = forwardRef<
   return (
     <div
       ref={ref}
-      className={`w-64 p-5 bg-white border border-neutral-100 shadow-lg rounded-2xl font-sans ${className}`}
+      className={`w-64 rounded-2xl border border-neutral-100 bg-white p-5 font-sans shadow-lg ${className}`}
       {...props}
     >
-      <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-4">
+      <p className="mb-4 font-mono text-[10px] tracking-widest text-neutral-400 uppercase">
         Project Progress
       </p>
 
-      <div className="relative w-28 h-28 mx-auto mb-4">
-        <svg viewBox="0 0 100 100" className="w-full h-full -rotate-90">
-          <circle cx="50" cy="50" r="40" fill="none" stroke="#f5f5f5" strokeWidth="6" />
+      <div className="relative mx-auto mb-4 h-28 w-28">
+        <svg viewBox="0 0 100 100" className="h-full w-full -rotate-90">
+          <circle
+            cx="50"
+            cy="50"
+            r="40"
+            fill="none"
+            stroke="#f5f5f5"
+            strokeWidth="6"
+          />
           <circle
             cx="50"
             cy="50"
@@ -41,8 +48,12 @@ export const ProgressRingCard = forwardRef<
           </defs>
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-2xl font-light text-neutral-900">{progress}%</span>
-          <span className="text-[9px] text-neutral-400 font-mono">Complete</span>
+          <span className="text-2xl font-light text-neutral-900">
+            {progress}%
+          </span>
+          <span className="font-mono text-[9px] text-neutral-400">
+            Complete
+          </span>
         </div>
       </div>
 
@@ -53,11 +64,16 @@ export const ProgressRingCard = forwardRef<
           { label: "Testing", val: 30, color: "bg-neutral-200" },
         ].map(({ label, val, color }) => (
           <div key={label} className="flex items-center gap-2">
-            <span className="text-[10px] text-neutral-500 w-16">{label}</span>
-            <div className="flex-1 h-1.5 bg-neutral-100 rounded-full overflow-hidden">
-              <div className={`h-full ${color} rounded-full`} style={{ width: `${val}%` }} />
+            <span className="w-16 text-[10px] text-neutral-500">{label}</span>
+            <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-neutral-100">
+              <div
+                className={`h-full ${color} rounded-full`}
+                style={{ width: `${val}%` }}
+              />
             </div>
-            <span className="text-[10px] font-mono text-neutral-400 w-6 text-right">{val}%</span>
+            <span className="w-6 text-right font-mono text-[10px] text-neutral-400">
+              {val}%
+            </span>
           </div>
         ))}
       </div>

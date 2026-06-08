@@ -14,28 +14,28 @@ export const AvatarGroupCard = forwardRef<
 >(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
-    className={`w-64 p-5 bg-white border border-neutral-100 shadow-lg rounded-2xl font-sans text-center ${className}`}
+    className={`w-64 rounded-2xl border border-neutral-100 bg-white p-5 text-center font-sans shadow-lg ${className}`}
     {...props}
   >
-    <div className="flex justify-center -space-x-3 mb-4">
+    <div className="mb-4 flex justify-center -space-x-3">
       {avatars.map((a, i) => (
         <div
           key={a.initial}
-          className={`w-10 h-10 rounded-full bg-linear-to-br ${a.color} border-2 border-white flex items-center justify-center text-[10px] font-bold text-white shadow-sm`}
+          className={`h-10 w-10 rounded-full bg-linear-to-br ${a.color} flex items-center justify-center border-2 border-white text-[10px] font-bold text-white shadow-sm`}
           style={{ zIndex: avatars.length - i }}
         >
           {a.initial}
         </div>
       ))}
-      <div className="w-10 h-10 rounded-full bg-neutral-100 border-2 border-white flex items-center justify-center text-[10px] font-semibold text-neutral-500 shadow-sm">
+      <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-neutral-100 text-[10px] font-semibold text-neutral-500 shadow-sm">
         +847
       </div>
     </div>
 
-    <p className="text-sm font-semibold text-neutral-900 mb-1">
+    <p className="mb-1 text-sm font-semibold text-neutral-900">
       Join 12,400+ developers
     </p>
-    <p className="text-xs text-neutral-500 leading-relaxed mb-4">
+    <p className="mb-4 text-xs leading-relaxed text-neutral-500">
       Trusted by teams at startups and enterprises worldwide.
     </p>
 
@@ -45,7 +45,9 @@ export const AvatarGroupCard = forwardRef<
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
         </svg>
       ))}
-      <span className="text-[11px] text-neutral-500 ml-1">4.9 from 2,400 reviews</span>
+      <span className="ml-1 text-[11px] text-neutral-500">
+        4.9 from 2,400 reviews
+      </span>
     </div>
   </div>
 ));

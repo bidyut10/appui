@@ -11,21 +11,32 @@ export const TopProductsCard = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className = "", ...props }, ref) => (
-  <div ref={ref} className={`w-72 bg-white border border-neutral-100 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`} {...props}>
-    <div className="px-4 py-3 border-b border-neutral-100 flex items-center justify-between">
+  <div
+    ref={ref}
+    className={`w-72 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg ${className}`}
+    {...props}
+  >
+    <div className="flex items-center justify-between border-b border-neutral-100 px-4 py-3">
       <h4 className="text-sm font-semibold text-neutral-900">Top Products</h4>
-      <span className="text-[10px] font-mono text-neutral-400">This month</span>
+      <span className="font-mono text-[10px] text-neutral-400">This month</span>
     </div>
     <div className="divide-y divide-neutral-50">
       {products.map((p, i) => (
-        <div key={p.name} className="flex items-center gap-3 px-4 py-3 hover:bg-neutral-50/50 transition-colors">
-          <span className="text-[10px] font-mono text-neutral-400 w-4">{i + 1}</span>
-          <div className="flex-1 min-w-0">
+        <div
+          key={p.name}
+          className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-neutral-50/50"
+        >
+          <span className="w-4 font-mono text-[10px] text-neutral-400">
+            {i + 1}
+          </span>
+          <div className="min-w-0 flex-1">
             <p className="text-xs font-medium text-neutral-800">{p.name}</p>
             <p className="text-[10px] text-neutral-400">{p.sales} sales</p>
           </div>
           <div className="text-right">
-            <p className="text-xs font-semibold text-neutral-900">{p.revenue}</p>
+            <p className="text-xs font-semibold text-neutral-900">
+              {p.revenue}
+            </p>
             <p className="text-[10px] text-emerald-600">{p.trend}</p>
           </div>
         </div>

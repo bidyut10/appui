@@ -8,68 +8,76 @@ export const AuthLoginCard = () => {
   const [mode, setMode] = useState<"login" | "signup">("login");
 
   return (
-    <div className="w-96 bg-white border border-neutral-100 shadow-lg rounded-2xl overflow-hidden font-sans">
+    <div className="w-96 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg">
       <div className="p-6">
-        <div className="flex items-center gap-2 mb-5">
-          <div className="w-8 h-8 rounded-lg bg-neutral-900 flex items-center justify-center">
-            <span className="text-white text-xs font-bold">A</span>
+        <div className="mb-5 flex items-center gap-2">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900">
+            <span className="text-xs font-bold text-white">A</span>
           </div>
           <div>
             <h3 className="text-sm font-semibold text-neutral-900">
               {mode === "login" ? "Welcome back" : "Create account"}
             </h3>
             <p className="text-[11px] text-neutral-400">
-              {mode === "login" ? "Sign in to continue" : "Start building today"}
+              {mode === "login"
+                ? "Sign in to continue"
+                : "Start building today"}
             </p>
           </div>
         </div>
 
-        <div className="flex gap-2 mb-5">
-          <button className="flex-1 h-9 flex items-center justify-center gap-2 border border-neutral-200 rounded-lg text-xs font-medium text-neutral-700 hover:bg-neutral-50 transition-colors cursor-pointer">
+        <div className="mb-5 flex gap-2">
+          <button className="flex h-9 flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg border border-neutral-200 text-xs font-medium text-neutral-700 transition-colors hover:bg-neutral-50">
             <Github size={14} />
             GitHub
           </button>
-          <button className="flex-1 h-9 flex items-center justify-center gap-2 border border-neutral-200 rounded-lg text-xs font-medium text-neutral-700 hover:bg-neutral-50 transition-colors cursor-pointer">
+          <button className="flex h-9 flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg border border-neutral-200 text-xs font-medium text-neutral-700 transition-colors hover:bg-neutral-50">
             <Mail size={14} />
             Google
           </button>
         </div>
 
-        <div className="flex items-center gap-3 mb-5">
-          <div className="flex-1 h-px bg-neutral-200" />
-          <span className="text-[10px] text-neutral-400 font-mono">OR</span>
-          <div className="flex-1 h-px bg-neutral-200" />
+        <div className="mb-5 flex items-center gap-3">
+          <div className="h-px flex-1 bg-neutral-200" />
+          <span className="font-mono text-[10px] text-neutral-400">OR</span>
+          <div className="h-px flex-1 bg-neutral-200" />
         </div>
 
-        <div className="space-y-3 mb-5">
+        <div className="mb-5 space-y-3">
           <div>
-            <label className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 mb-1 block">Email</label>
+            <label className="mb-1 block font-mono text-[10px] tracking-wider text-neutral-400 uppercase">
+              Email
+            </label>
             <input
               type="email"
               placeholder="you@company.com"
-              className="w-full h-9 px-3 rounded-lg border border-neutral-200 bg-neutral-50 text-xs outline-none focus:border-neutral-400 focus:ring-none transition-all"
+              className="focus:ring-none h-9 w-full rounded-lg border border-neutral-200 bg-neutral-50 px-3 text-xs transition-all outline-none focus:border-neutral-400"
             />
           </div>
           <div>
-            <label className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 mb-1 block">Password</label>
+            <label className="mb-1 block font-mono text-[10px] tracking-wider text-neutral-400 uppercase">
+              Password
+            </label>
             <input
               type="password"
               placeholder="••••••••"
-              className="w-full h-9 px-3 rounded-lg border border-neutral-200 bg-neutral-50 text-xs outline-none focus:border-neutral-400 focus:ring-none transition-all"
+              className="focus:ring-none h-9 w-full rounded-lg border border-neutral-200 bg-neutral-50 px-3 text-xs transition-all outline-none focus:border-neutral-400"
             />
           </div>
         </div>
 
-        <button className="w-full h-10 bg-neutral-900 text-white text-xs font-semibold rounded-lg flex items-center justify-center gap-1.5 hover:bg-neutral-800 transition-colors cursor-pointer active:scale-[0.98]">
+        <button className="flex h-10 w-full cursor-pointer items-center justify-center gap-1.5 rounded-lg bg-neutral-900 text-xs font-semibold text-white transition-colors hover:bg-neutral-800 active:scale-[0.98]">
           {mode === "login" ? "Sign In" : "Create Account"}
           <ArrowRight size={12} />
         </button>
 
-        <p className="text-center text-[11px] text-neutral-400 mt-4">
-          {mode === "login" ? "Don't have an account?" : "Already have an account?"}{" "}
+        <p className="mt-4 text-center text-[11px] text-neutral-400">
+          {mode === "login"
+            ? "Don't have an account?"
+            : "Already have an account?"}{" "}
           <button
             onClick={() => setMode(mode === "login" ? "signup" : "login")}
-            className="text-neutral-950 font-medium hover:underline cursor-pointer"
+            className="cursor-pointer font-medium text-neutral-950 hover:underline"
           >
             {mode === "login" ? "Sign up" : "Sign in"}
           </button>

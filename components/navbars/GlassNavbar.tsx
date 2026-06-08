@@ -15,34 +15,32 @@ export const GlassNavbar = () => {
   const [active, setActive] = useState("Home");
 
   return (
-    <nav className="w-80 px-2 py-2 bg-white/70 backdrop-blur-xl border border-neutral-200/60 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.06)] flex items-center justify-between font-sans">
+    <nav className="flex w-80 items-center justify-between rounded-2xl border border-neutral-200/60 bg-white/70 px-2 py-2 font-sans shadow-[0_8px_32px_rgba(0,0,0,0.06)] backdrop-blur-xl">
       <div className="flex items-center gap-1">
-        <div className="w-8 h-8 rounded-xl bg-neutral-900 flex items-center justify-center mr-1">
-          <span className="text-white text-xs font-bold">A</span>
+        <div className="mr-1 flex h-8 w-8 items-center justify-center rounded-xl bg-neutral-900">
+          <span className="text-xs font-bold text-white">A</span>
         </div>
         {links.map(({ label, icon: Icon, badge }) => (
           <button
             key={label}
             onClick={() => setActive(label)}
-            className={`
-              relative flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium transition-all duration-200 cursor-pointer
-              ${active === label
+            className={`relative flex cursor-pointer items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-medium transition-all duration-200 ${
+              active === label
                 ? "bg-neutral-900 text-white shadow-sm"
-                : "text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100/80"
-              }
-            `}
+                : "text-neutral-500 hover:bg-neutral-100/80 hover:text-neutral-900"
+            } `}
           >
             <Icon size={13} />
             {label}
             {badge && active !== label && (
-              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-violet-500 text-white text-[8px] font-bold flex items-center justify-center">
+              <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-violet-500 text-[8px] font-bold text-white">
                 {badge}
               </span>
             )}
           </button>
         ))}
       </div>
-      <button className="w-8 h-8 rounded-xl bg-neutral-100 flex items-center justify-center hover:bg-neutral-200 transition-colors cursor-pointer">
+      <button className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl bg-neutral-100 transition-colors hover:bg-neutral-200">
         <User size={14} className="text-neutral-600" />
       </button>
     </nav>

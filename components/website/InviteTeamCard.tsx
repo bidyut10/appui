@@ -14,9 +14,9 @@ export const InviteTeamCard = () => {
   const [openRole, setOpenRole] = useState(false);
 
   return (
-    <div className="w-84 bg-white border border-neutral-100 shadow-lg rounded-2xl p-5 font-sans">
-      <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 rounded-lg bg-neutral-50 flex items-center justify-center">
+    <div className="w-84 rounded-2xl border border-neutral-100 bg-white p-5 font-sans shadow-lg">
+      <div className="mb-4 flex items-center gap-3">
+        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-50">
           <UserGroup size={18} className="text-neutral-600" />
         </div>
 
@@ -29,23 +29,23 @@ export const InviteTeamCard = () => {
         </div>
       </div>
 
-      <div className="flex -space-x-2 mb-4">
+      <div className="mb-4 flex -space-x-2">
         {["JD", "SK", "MR"].map((i) => (
           <div
             key={i}
-            className="w-8 h-8 rounded-full bg-linear-to-br from-green-500 to-cyan-500 border-2 border-white flex items-center justify-center text-[9px] font-bold text-white"
+            className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-linear-to-br from-green-500 to-cyan-500 text-[9px] font-bold text-white"
           >
             {i}
           </div>
         ))}
 
-        <div className="w-8 h-8 rounded-full bg-neutral-100 border-2 border-white flex items-center justify-center text-[10px] text-neutral-400">
+        <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-neutral-100 text-[10px] text-neutral-400">
           +2
         </div>
       </div>
 
       {sent ? (
-        <div className="p-3 bg-emerald-50 border border-emerald-100 rounded-xl text-xs text-emerald-700 font-medium text-center">
+        <div className="rounded-xl border border-emerald-100 bg-emerald-50 p-3 text-center text-xs font-medium text-emerald-700">
           Invitation sent to {email}
         </div>
       ) : (
@@ -53,20 +53,20 @@ export const InviteTeamCard = () => {
           <div className="relative flex-1">
             <Mail
               size={13}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400"
+              className="absolute top-1/2 left-3 -translate-y-1/2 text-neutral-400"
             />
 
             <input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="colleague@company.com"
-              className="w-full h-9 pl-9 pr-3 rounded-lg border border-neutral-200 bg-neutral-50 text-xs outline-none focus:border-neutral-300 transition-all"
+              className="h-9 w-full rounded-lg border border-neutral-200 bg-neutral-50 pr-3 pl-9 text-xs transition-all outline-none focus:border-neutral-300"
             />
           </div>
 
           <button
             onClick={() => email && setSent(true)}
-            className="h-9 px-3 bg-neutral-900 text-white text-xs font-medium rounded-lg hover:bg-neutral-800 transition-colors cursor-pointer shrink-0"
+            className="h-9 shrink-0 cursor-pointer rounded-lg bg-neutral-900 px-3 text-xs font-medium text-white transition-colors hover:bg-neutral-800"
           >
             Invite
           </button>
@@ -76,7 +76,7 @@ export const InviteTeamCard = () => {
       <div className="relative mt-2">
         <button
           onClick={() => setOpenRole((v) => !v)}
-          className="flex w-full items-center justify-between h-8 px-3 rounded-lg border border-neutral-200 bg-neutral-50 text-[11px] text-neutral-600 hover:bg-neutral-100 transition-colors cursor-pointer"
+          className="flex h-8 w-full cursor-pointer items-center justify-between rounded-lg border border-neutral-200 bg-neutral-50 px-3 text-[11px] text-neutral-600 transition-colors hover:bg-neutral-100"
         >
           <span>{role}</span>
 
@@ -88,7 +88,7 @@ export const InviteTeamCard = () => {
         </button>
 
         {openRole && (
-          <div className="absolute left-0 right-0 top-full mt-1 overflow-hidden rounded-xl border border-neutral-700/80 bg-neutral-900 shadow-2xl z-50">
+          <div className="absolute top-full right-0 left-0 z-50 mt-1 overflow-hidden rounded-xl border border-neutral-700/80 bg-neutral-900 shadow-2xl">
             {["Member", "Admin", "Viewer"].map((item) => (
               <button
                 key={item}
@@ -96,7 +96,7 @@ export const InviteTeamCard = () => {
                   setRole(item);
                   setOpenRole(false);
                 }}
-                className={`w-full px-3 py-2.5 text-left text-[11px] font-medium transition-colors cursor-pointer ${
+                className={`w-full cursor-pointer px-3 py-2.5 text-left text-[11px] font-medium transition-colors ${
                   role === item
                     ? "bg-neutral-800 text-white"
                     : "text-neutral-300 hover:bg-neutral-800"

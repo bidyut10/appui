@@ -6,25 +6,40 @@ export const AppleProductHero = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className = "", ...props }, ref) => (
-  <div ref={ref} className={`w-96 bg-[#fbfbfd] rounded-3xl overflow-hidden font-sans shadow-lg text-center ${className}`} {...props}>
-    <div className="pt-8 px-6">
-      <p className="text-[12px] font-semibold text-[#bf4800] uppercase tracking-wide">New</p>
-      <h2 className="text-xl font-semibold text-neutral-900 tracking-tight mt-1 leading-tight">
+  <div
+    ref={ref}
+    className={`w-96 overflow-hidden rounded-3xl bg-[#fbfbfd] text-center font-sans shadow-lg ${className}`}
+    {...props}
+  >
+    <div className="px-6 pt-8">
+      <p className="text-[12px] font-semibold tracking-wide text-[#bf4800] uppercase">
+        New
+      </p>
+      <h2 className="mt-1 text-xl leading-tight font-semibold tracking-tight text-neutral-900">
         IPhone 16 Pro
       </h2>
-      <p className="text-sm text-neutral-500 mt-1 font-light">Titanium. So strong. So light. So Pro.</p>
-      <p className="text-sm text-neutral-900 mt-3">From $999 or $41.62/mo. for 24 mo.*</p>
-      <div className="flex items-center justify-center gap-3 mt-4">
-        <button className="h-9 px-5 bg-[#007AFF] text-white text-[13px] font-medium rounded-full cursor-pointer hover:bg-[#0066d6] transition-colors">
+      <p className="mt-1 text-sm font-light text-neutral-500">
+        Titanium. So strong. So light. So Pro.
+      </p>
+      <p className="mt-3 text-sm text-neutral-900">
+        From $999 or $41.62/mo. for 24 mo.*
+      </p>
+      <div className="mt-4 flex items-center justify-center gap-3">
+        <button className="h-9 cursor-pointer rounded-full bg-[#007AFF] px-5 text-[13px] font-medium text-white transition-colors hover:bg-[#0066d6]">
           Learn more
         </button>
-        <button className="h-9 px-5 text-[#007AFF] text-[13px] font-medium cursor-pointer hover:underline">
+        <button className="h-9 cursor-pointer px-5 text-[13px] font-medium text-[#007AFF] hover:underline">
           Buy ›
         </button>
       </div>
     </div>
-    <div className="relative h-48 mt-4">
-      <Image src={product} alt="iPhone" fill className="object-contain object-bottom" />
+    <div className="relative mt-4 h-48">
+      <Image
+        src={product}
+        alt="iPhone"
+        fill
+        className="object-contain object-bottom"
+      />
     </div>
   </div>
 ));

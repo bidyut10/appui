@@ -6,16 +6,24 @@ export const BreadcrumbNav = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className = "", ...props }, ref) => (
-  <nav ref={ref} className={`flex items-center gap-1.5 font-sans ${className}`} {...props}>
-    <button className="flex items-center gap-1 text-xs text-neutral-500 hover:text-neutral-900 transition-colors cursor-pointer">
+  <nav
+    ref={ref}
+    className={`flex items-center gap-1.5 font-sans ${className}`}
+    {...props}
+  >
+    <button className="flex cursor-pointer items-center gap-1 text-xs text-neutral-500 transition-colors hover:text-neutral-900">
       <Home size={13} />
       Home
     </button>
-    <ChevronDown size={12} className="text-neutral-300 -rotate-90" />
-    <button className="text-xs text-neutral-500 hover:text-neutral-900 transition-colors cursor-pointer">Dashboard</button>
-    <ChevronDown size={12} className="text-neutral-300 -rotate-90" />
-    <button className="text-xs text-neutral-500 hover:text-neutral-900 transition-colors cursor-pointer">Analytics</button>
-    <ChevronDown size={12} className="text-neutral-300 -rotate-90" />
+    <ChevronDown size={12} className="-rotate-90 text-neutral-300" />
+    <button className="cursor-pointer text-xs text-neutral-500 transition-colors hover:text-neutral-900">
+      Dashboard
+    </button>
+    <ChevronDown size={12} className="-rotate-90 text-neutral-300" />
+    <button className="cursor-pointer text-xs text-neutral-500 transition-colors hover:text-neutral-900">
+      Analytics
+    </button>
+    <ChevronDown size={12} className="-rotate-90 text-neutral-300" />
     <span className="text-xs font-medium text-neutral-900">Revenue Report</span>
   </nav>
 ));

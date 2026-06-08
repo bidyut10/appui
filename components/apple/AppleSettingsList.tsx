@@ -19,22 +19,33 @@ const sections = [
 ];
 
 export const AppleSettingsList = () => {
-  const [toggles, setToggles] = useState<Record<string, boolean>>({ "0-0": false });
+  const [toggles, setToggles] = useState<Record<string, boolean>>({
+    "0-0": false,
+  });
 
   return (
-    <div className="w-72 bg-[#f2f2f7] rounded-[1.25rem] p-3 font-sans">
-      <p className="text-[11px] font-semibold text-neutral-500 uppercase tracking-wide px-3 mb-2">Settings</p>
+    <div className="w-72 rounded-[1.25rem] bg-[#f2f2f7] p-3 font-sans">
+      <p className="mb-2 px-3 text-[11px] font-semibold tracking-wide text-neutral-500 uppercase">
+        Settings
+      </p>
       {sections.map((section, si) => (
-        <div key={si} className="bg-white rounded-xl overflow-hidden mb-2 shadow-sm">
+        <div
+          key={si}
+          className="mb-2 overflow-hidden rounded-xl bg-white shadow-sm"
+        >
           {section.items.map((item, ii) => {
             const key = `${si}-${ii}`;
             return (
               <div key={item.label}>
-                <button className="w-full flex items-center gap-3 px-4 py-3 hover:bg-neutral-50 transition-colors cursor-pointer">
+                <button className="flex w-full cursor-pointer items-center gap-3 px-4 py-3 transition-colors hover:bg-neutral-50">
                   <span className="text-base">{item.icon}</span>
-                  <span className="text-[15px] text-neutral-900 flex-1 text-left">{item.label}</span>
+                  <span className="flex-1 text-left text-[15px] text-neutral-900">
+                    {item.label}
+                  </span>
                   {"value" in item && item.value && (
-                    <span className="text-[15px] text-neutral-400">{item.value}</span>
+                    <span className="text-[15px] text-neutral-400">
+                      {item.value}
+                    </span>
                   )}
                   {item.toggle ? (
                     <div
@@ -42,15 +53,19 @@ export const AppleSettingsList = () => {
                         e.stopPropagation();
                         setToggles((t) => ({ ...t, [key]: !t[key] }));
                       }}
-                      className={`relative w-[51px] h-[31px] rounded-full transition-colors cursor-pointer ${toggles[key] ? "bg-[#34c759]" : "bg-neutral-200"}`}
+                      className={`relative h-[31px] w-[51px] cursor-pointer rounded-full transition-colors ${toggles[key] ? "bg-[#34c759]" : "bg-neutral-200"}`}
                     >
-                      <div className={`absolute top-[2px] w-[27px] h-[27px] bg-white rounded-full shadow-md transition-transform ${toggles[key] ? "translate-x-[22px]" : "translate-x-[2px]"}`} />
+                      <div
+                        className={`absolute top-[2px] h-[27px] w-[27px] rounded-full bg-white shadow-md transition-transform ${toggles[key] ? "translate-x-[22px]" : "translate-x-[2px]"}`}
+                      />
                     </div>
                   ) : (
-                    <span className="text-neutral-300 text-lg">›</span>
+                    <span className="text-lg text-neutral-300">›</span>
                   )}
                 </button>
-                {ii < section.items.length - 1 && <div className="h-px bg-neutral-100 ml-14" />}
+                {ii < section.items.length - 1 && (
+                  <div className="ml-14 h-px bg-neutral-100" />
+                )}
               </div>
             );
           })}

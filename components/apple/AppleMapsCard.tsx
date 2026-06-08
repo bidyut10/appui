@@ -33,19 +33,12 @@ export const AppleMapsCard = forwardRef<
   return (
     <div
       ref={ref}
-      className={`w-72 bg-white rounded-[1.25rem] overflow-hidden shadow-xl shadow-black/10 font-sans ${className}`}
+      className={`w-72 overflow-hidden rounded-[1.25rem] bg-white font-sans shadow-xl shadow-black/10 ${className}`}
       {...props}
     >
       <div className="relative h-44 overflow-hidden bg-[#f4f3ef]">
-        <svg
-          className="absolute inset-0 w-full h-full"
-          viewBox="0 0 288 176"
-        >
-          <rect
-            width="288"
-            height="176"
-            fill="#f4f3ef"
-          />
+        <svg className="absolute inset-0 h-full w-full" viewBox="0 0 288 176">
+          <rect width="288" height="176" fill="#f4f3ef" />
 
           <path
             d="M-20 35 C50 10 130 60 320 25"
@@ -113,41 +106,38 @@ export const AppleMapsCard = forwardRef<
           />
         </svg>
 
-        <div className="absolute left-7 bottom-[52px]">
-          <div className="w-4 h-4 rounded-full bg-emerald-500 border-2 border-white shadow-md" />
+        <div className="absolute bottom-[52px] left-7">
+          <div className="h-4 w-4 rounded-full border-2 border-white bg-emerald-500 shadow-md" />
         </div>
 
-        <div className="absolute right-6 top-[46px]">
-          <div className="w-4 h-4 rounded-full bg-red-500 border-2 border-white shadow-md" />
+        <div className="absolute top-[46px] right-6">
+          <div className="h-4 w-4 rounded-full border-2 border-white bg-red-500 shadow-md" />
         </div>
 
-        <div className="absolute left-12 top-8 px-2.5 py-1 rounded-lg bg-white/90 backdrop-blur-xl shadow-md">
+        <div className="absolute top-8 left-12 rounded-lg bg-white/90 px-2.5 py-1 shadow-md backdrop-blur-xl">
           <span className="text-[9px] font-medium text-neutral-600">
             Victoria Memorial
           </span>
         </div>
 
-        <div className="absolute right-10 bottom-16 px-2.5 py-1 rounded-lg bg-white/90 backdrop-blur-xl shadow-md">
+        <div className="absolute right-10 bottom-16 rounded-lg bg-white/90 px-2.5 py-1 shadow-md backdrop-blur-xl">
           <span className="text-[9px] font-medium text-neutral-600">
             Howrah Bridge
           </span>
         </div>
 
         <div className="absolute top-3 right-3 flex flex-col gap-2">
-          <button className="w-9 h-9 rounded-xl bg-white/90 backdrop-blur-xl shadow-md flex items-center justify-center cursor-pointer">
+          <button className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-xl bg-white/90 shadow-md backdrop-blur-xl">
             <Plus size={12} />
           </button>
 
-          <button className="w-9 h-9 rounded-xl bg-white/90 backdrop-blur-xl shadow-md flex items-center justify-center cursor-pointer">
+          <button className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-xl bg-white/90 shadow-md backdrop-blur-xl">
             <Minus size={12} />
           </button>
         </div>
 
-        <div className="absolute bottom-3 left-3 px-3 py-2 bg-white/90 backdrop-blur-xl rounded-2xl shadow-md flex items-center gap-1.5">
-          <Location
-            size={11}
-            className="text-[#007AFF]"
-          />
+        <div className="absolute bottom-3 left-3 flex items-center gap-1.5 rounded-2xl bg-white/90 px-3 py-2 shadow-md backdrop-blur-xl">
+          <Location size={11} className="text-[#007AFF]" />
           <span className="text-[11px] font-medium text-neutral-800">
             Park Street
           </span>
@@ -155,19 +145,19 @@ export const AppleMapsCard = forwardRef<
       </div>
 
       <div className="p-4">
-        <div className="flex items-start justify-between mb-4">
+        <div className="mb-4 flex items-start justify-between">
           <div>
             <h4 className="text-[15px] font-semibold text-neutral-900">
               Kolkata → Howrah
             </h4>
 
-            <p className="text-[13px] text-neutral-500 mt-0.5">
+            <p className="mt-0.5 text-[13px] text-neutral-500">
               {routeData[mode as keyof typeof routeData].time} ·{" "}
               {routeData[mode as keyof typeof routeData].distance}
             </p>
 
-            <div className="flex items-center gap-2 mt-2">
-              <span className="px-2 py-1 rounded-full bg-emerald-50 text-emerald-600 text-[10px] font-medium">
+            <div className="mt-2 flex items-center gap-2">
+              <span className="rounded-full bg-emerald-50 px-2 py-1 text-[10px] font-medium text-emerald-600">
                 Fastest Route
               </span>
 
@@ -177,17 +167,17 @@ export const AppleMapsCard = forwardRef<
             </div>
           </div>
 
-          <button className="w-11 h-11 rounded-full bg-[#007AFF] flex items-center justify-center text-white cursor-pointer shadow-lg shadow-blue-300/40">
+          <button className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-[#007AFF] text-white shadow-lg shadow-blue-300/40">
             <Play size={13} />
           </button>
         </div>
 
-        <div className="bg-neutral-100 rounded-2xl p-1 flex">
+        <div className="flex rounded-2xl bg-neutral-100 p-1">
           <button
             onClick={() => setMode("drive")}
-            className={`flex-1 flex flex-col items-center gap-1 py-2 rounded-xl transition-all cursor-pointer ${
+            className={`flex flex-1 cursor-pointer flex-col items-center gap-1 rounded-xl py-2 transition-all ${
               mode === "drive"
-                ? "bg-white shadow-sm text-neutral-900"
+                ? "bg-white text-neutral-900 shadow-sm"
                 : "text-neutral-500"
             }`}
           >
@@ -197,9 +187,9 @@ export const AppleMapsCard = forwardRef<
 
           <button
             onClick={() => setMode("bike")}
-            className={`flex-1 flex flex-col items-center gap-1 py-2 rounded-xl transition-all cursor-pointer ${
+            className={`flex flex-1 cursor-pointer flex-col items-center gap-1 rounded-xl py-2 transition-all ${
               mode === "bike"
-                ? "bg-white shadow-sm text-neutral-900"
+                ? "bg-white text-neutral-900 shadow-sm"
                 : "text-neutral-500"
             }`}
           >
@@ -209,9 +199,9 @@ export const AppleMapsCard = forwardRef<
 
           <button
             onClick={() => setMode("transit")}
-            className={`flex-1 flex flex-col items-center gap-1 py-2 rounded-xl transition-all cursor-pointer ${
+            className={`flex flex-1 cursor-pointer flex-col items-center gap-1 rounded-xl py-2 transition-all ${
               mode === "transit"
-                ? "bg-white shadow-sm text-neutral-900"
+                ? "bg-white text-neutral-900 shadow-sm"
                 : "text-neutral-500"
             }`}
           >

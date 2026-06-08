@@ -11,31 +11,43 @@ export const MusicPlayerCard = () => {
   const [playing, setPlaying] = useState(true);
 
   return (
-    <div className="w-72 bg-neutral-950 rounded-2xl overflow-hidden shadow-lg font-sans">
+    <div className="w-72 overflow-hidden rounded-2xl bg-neutral-950 font-sans shadow-lg">
       <div className="relative h-36">
-        <Image src={cover} alt="Album" fill className="object-cover opacity-80" />
+        <Image
+          src={cover}
+          alt="Album"
+          fill
+          className="object-cover opacity-80"
+        />
         <div className="absolute inset-0 bg-linear-to-t from-neutral-950 via-neutral-950/40 to-transparent" />
       </div>
-      <div className="p-4 -mt-6 relative">
-        <h3 className="text-white text-sm font-semibold">Midnight Dreams</h3>
-        <p className="text-neutral-500 text-[11px]">The Weeknd · After Hours</p>
+      <div className="relative -mt-6 p-4">
+        <h3 className="text-sm font-semibold text-white">Midnight Dreams</h3>
+        <p className="text-[11px] text-neutral-500">The Weeknd · After Hours</p>
         <div className="mt-4">
-          <div className="h-1 bg-neutral-800 rounded-full overflow-hidden">
-            <div className="h-full w-[42%] bg-emerald-500 rounded-full relative">
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-white rounded-full shadow" />
+          <div className="h-1 overflow-hidden rounded-full bg-neutral-800">
+            <div className="relative h-full w-[42%] rounded-full bg-emerald-500">
+              <div className="absolute top-1/2 right-0 h-2.5 w-2.5 -translate-y-1/2 rounded-full bg-white shadow" />
             </div>
           </div>
-          <div className="flex justify-between mt-1">
-            <span className="text-[9px] font-mono text-neutral-600">1:24</span>
-            <span className="text-[9px] font-mono text-neutral-600">3:42</span>
+          <div className="mt-1 flex justify-between">
+            <span className="font-mono text-[9px] text-neutral-600">1:24</span>
+            <span className="font-mono text-[9px] text-neutral-600">3:42</span>
           </div>
         </div>
-        <div className="flex items-center justify-center gap-5 mt-3">
-          <button className="text-neutral-500 hover:text-white transition-colors cursor-pointer text-lg"><SkipPrevious/></button>
-          <button onClick={() => setPlaying(!playing)} className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:scale-105 transition-transform cursor-pointer">
-            {playing ? <Pause/> : <Play/>}
+        <div className="mt-3 flex items-center justify-center gap-5">
+          <button className="cursor-pointer text-lg text-neutral-500 transition-colors hover:text-white">
+            <SkipPrevious />
           </button>
-          <button className="text-neutral-500 hover:text-white transition-colors cursor-pointer text-lg"><SkipNext/></button>
+          <button
+            onClick={() => setPlaying(!playing)}
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white transition-transform hover:scale-105"
+          >
+            {playing ? <Pause /> : <Play />}
+          </button>
+          <button className="cursor-pointer text-lg text-neutral-500 transition-colors hover:text-white">
+            <SkipNext />
+          </button>
         </div>
       </div>
     </div>

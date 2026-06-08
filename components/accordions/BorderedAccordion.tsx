@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { ChevronDown } from "@/icons/ChevronDown";
 import React, { useState, forwardRef } from "react";
 
@@ -32,17 +32,13 @@ export const BorderedAccordion = forwardRef<HTMLDivElement, AccordionProps>(
     const [openIdx, setOpenIdx] = useState<number | null>(0);
 
     return (
-      <div
-        ref={ref}
-        className={`w-72 space-y-2 ${className}`}
-        {...props}
-      >
+      <div ref={ref} className={`w-72 space-y-2 ${className}`} {...props}>
         {items.map((item, idx) => {
           const isOpen = openIdx === idx;
           return (
             <div
               key={idx}
-              className={`border rounded-lg transition-colors duration-200 ${
+              className={`rounded-lg border transition-colors duration-200 ${
                 isOpen
                   ? "border-blue-50 bg-white"
                   : "border-neutral-200 bg-white"
@@ -50,20 +46,20 @@ export const BorderedAccordion = forwardRef<HTMLDivElement, AccordionProps>(
             >
               <button
                 onClick={() => setOpenIdx(isOpen ? null : idx)}
-                className="w-full px-4 py-3 flex items-center justify-between text-left text-sm font-medium cursor-pointer  text-neutral-800 focus:outline-none"
+                className="flex w-full cursor-pointer items-center justify-between px-4 py-3 text-left text-sm font-medium text-neutral-800 focus:outline-none"
               >
                 {item.title}
                 <ChevronDown
-                  className={`w-4 h-4 text-neutral-400 transition-transform duration-300 ${
+                  className={`h-4 w-4 text-neutral-400 transition-transform duration-300 ${
                     isOpen ? "rotate-180" : ""
                   }`}
                 />
               </button>
               <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out px-4 ${
+                className={`overflow-hidden px-4 transition-all duration-300 ease-in-out ${
                   isOpen
-                    ? "max-h-40 opacity-100 pb-3"
-                    : "max-h-0 opacity-0 pb-0"
+                    ? "max-h-40 pb-3 opacity-100"
+                    : "max-h-0 pb-0 opacity-0"
                 }`}
               >
                 <div className="text-sm text-neutral-600">{item.content}</div>

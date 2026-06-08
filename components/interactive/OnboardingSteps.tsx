@@ -16,7 +16,7 @@ export const OnboardingSteps = () => {
 
   return (
     <div className="w-72 font-sans">
-      <div className="flex items-center justify-between mb-6">
+      <div className="mb-6 flex items-center justify-between">
         {steps.map((step, i) => {
           const done = i < current;
           const active = i === current;
@@ -24,10 +24,10 @@ export const OnboardingSteps = () => {
             <React.Fragment key={step.label}>
               <button
                 onClick={() => setCurrent(i)}
-                className="flex flex-col items-center gap-1.5 cursor-pointer group"
+                className="group flex cursor-pointer flex-col items-center gap-1.5"
               >
                 <div
-                  className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
+                  className={`flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-300 ${
                     done
                       ? "bg-emerald-500 text-white shadow-sm shadow-emerald-200"
                       : active
@@ -39,17 +39,21 @@ export const OnboardingSteps = () => {
                 </div>
                 <span
                   className={`text-[10px] font-medium ${
-                    active ? "text-neutral-900" : done ? "text-emerald-600" : "text-neutral-400"
+                    active
+                      ? "text-neutral-900"
+                      : done
+                        ? "text-emerald-600"
+                        : "text-neutral-400"
                   }`}
                 >
                   {step.label}
                 </span>
               </button>
               {i < steps.length - 1 && (
-                <div className="flex-1 h-px mx-2 -mt-4.5 relative">
-                  <div className="absolute inset-0 bg-neutral-200 rounded-full" />
+                <div className="relative mx-2 -mt-4.5 h-px flex-1">
+                  <div className="absolute inset-0 rounded-full bg-neutral-200" />
                   <div
-                    className="absolute inset-y-0 left-0 bg-emerald-500 rounded-full transition-all duration-500"
+                    className="absolute inset-y-0 left-0 rounded-full bg-emerald-500 transition-all duration-500"
                     style={{ width: done ? "100%" : "0%" }}
                   />
                 </div>
@@ -59,24 +63,27 @@ export const OnboardingSteps = () => {
         })}
       </div>
 
-      <div className="p-5 bg-white border border-neutral-100 rounded-xl shadow-lg">
-        <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-2">
+      <div className="rounded-xl border border-neutral-100 bg-white p-5 shadow-lg">
+        <p className="mb-2 font-mono text-[10px] tracking-widest text-neutral-400 uppercase">
           Step {current + 1} of {steps.length}
         </p>
-        <h4 className="text-sm font-semibold text-neutral-900 mb-1">
+        <h4 className="mb-1 text-sm font-semibold text-neutral-900">
           {current === 0 && "Set up your profile"}
           {current === 1 && "Choose your preferences"}
           {current === 2 && "You're all set!"}
         </h4>
-        <p className="text-xs text-neutral-500 leading-relaxed mb-4">
-          {current === 0 && "Add your name and avatar to personalize your experience."}
-          {current === 1 && "Pick your theme, language, and notification settings."}
-          {current === 2 && "Your workspace is ready. Start building something amazing."}
+        <p className="mb-4 text-xs leading-relaxed text-neutral-500">
+          {current === 0 &&
+            "Add your name and avatar to personalize your experience."}
+          {current === 1 &&
+            "Pick your theme, language, and notification settings."}
+          {current === 2 &&
+            "Your workspace is ready. Start building something amazing."}
         </p>
         <button
           onClick={() => setCurrent(Math.min(current + 1, steps.length - 1))}
           disabled={current === steps.length - 1}
-          className="w-full h-9 bg-neutral-900 text-white text-xs font-medium rounded-lg hover:bg-neutral-950 transition-colors cursor-pointer active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed"
+          className="h-9 w-full cursor-pointer rounded-lg bg-neutral-900 text-xs font-medium text-white transition-colors hover:bg-neutral-950 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
         >
           {current === steps.length - 1 ? "Get Started" : "Continue"}
         </button>

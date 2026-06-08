@@ -7,19 +7,24 @@ import { Check } from "@/icons/Check";
 const initialFiles = [
   { name: "hero-banner.png", size: "2.4 MB", status: "done" as const },
   { name: "logo.svg", size: "48 KB", status: "done" as const },
-  { name: "styles.css", size: "12 KB", status: "uploading" as const, progress: 67 },
+  {
+    name: "styles.css",
+    size: "12 KB",
+    status: "uploading" as const,
+    progress: 67,
+  },
 ];
 
 export const FileUploadList = () => {
   const [files, setFiles] = useState(initialFiles);
 
   return (
-    <div className="w-72 bg-white border border-neutral-100 shadow-lg rounded-2xl overflow-hidden font-sans">
-      <div className="px-4 py-3 border-b border-neutral-100 flex items-center justify-between">
+    <div className="w-72 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg">
+      <div className="flex items-center justify-between border-b border-neutral-100 px-4 py-3">
         <h4 className="text-sm font-semibold text-neutral-900">
           Uploaded Files
         </h4>
-        <span className="text-[10px] font-mono text-neutral-400">
+        <span className="font-mono text-[10px] text-neutral-400">
           {files.length} files
         </span>
       </div>
@@ -27,7 +32,7 @@ export const FileUploadList = () => {
         {files.map((f) => (
           <div key={f.name} className="flex items-center gap-3 px-4 py-3">
             <div
-              className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${f.status === "done" ? "bg-neutral-50" : "bg-neutral-50"}`}
+              className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${f.status === "done" ? "bg-neutral-50" : "bg-neutral-50"}`}
             >
               {f.status === "done" ? (
                 <Check size={14} className="text-emerald-600" />
@@ -35,15 +40,15 @@ export const FileUploadList = () => {
                 <File size={14} className="text-neutral-600" />
               )}
             </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-xs font-medium text-neutral-800 truncate">
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-xs font-medium text-neutral-800">
                 {f.name}
               </p>
               <p className="text-[10px] text-neutral-400">{f.size}</p>
               {f.status === "uploading" && "progress" in f && (
-                <div className="h-1 bg-neutral-100 rounded-full mt-1.5 overflow-hidden">
+                <div className="mt-1.5 h-1 overflow-hidden rounded-full bg-neutral-100">
                   <div
-                    className="h-full bg-emerald-500 rounded-full"
+                    className="h-full rounded-full bg-emerald-500"
                     style={{ width: `${f.progress}%` }}
                   />
                 </div>
@@ -53,15 +58,15 @@ export const FileUploadList = () => {
               onClick={() =>
                 setFiles((prev) => prev.filter((x) => x.name !== f.name))
               }
-              className="w-6 h-6 rounded-md flex items-center justify-center text-neutral-400 hover:bg-neutral-100 hover:text-neutral-600 transition-colors cursor-pointer shrink-0"
+              className="flex h-6 w-6 shrink-0 cursor-pointer items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-neutral-600"
             >
               <X size={12} />
             </button>
           </div>
         ))}
       </div>
-      <div className="px-4 py-3 border-t border-neutral-100">
-        <button className="w-full h-8 border border-dashed border-neutral-300 rounded-lg text-[11px] font-medium text-neutral-500 hover:border-neutral-300 hover:text-neutral-600 hover:bg-neutral-50/50 transition-colors cursor-pointer">
+      <div className="border-t border-neutral-100 px-4 py-3">
+        <button className="h-8 w-full cursor-pointer rounded-lg border border-dashed border-neutral-300 text-[11px] font-medium text-neutral-500 transition-colors hover:border-neutral-300 hover:bg-neutral-50/50 hover:text-neutral-600">
           + Add more files
         </button>
       </div>

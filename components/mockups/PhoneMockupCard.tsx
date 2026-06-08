@@ -6,20 +6,31 @@ export const PhoneMockupCard = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className = "", ...props }, ref) => (
-  <div ref={ref} className={`flex flex-col items-center font-sans ${className}`} {...props}>
-    <div className="relative w-44 h-[320px] bg-neutral-900 rounded-[2rem] p-2 shadow-2xl shadow-neutral-900/30">
-      <div className="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-5 bg-neutral-900 rounded-full z-10" />
-      <div className="relative w-full h-full bg-white rounded-[1.5rem] overflow-hidden">
-        <Image src={screenContent} alt="App screen" fill className="object-cover" />
+  <div
+    ref={ref}
+    className={`flex flex-col items-center font-sans ${className}`}
+    {...props}
+  >
+    <div className="relative h-[320px] w-44 rounded-[2rem] bg-neutral-900 p-2 shadow-2xl shadow-neutral-900/30">
+      <div className="absolute top-3 left-1/2 z-10 h-5 w-20 -translate-x-1/2 rounded-full bg-neutral-900" />
+      <div className="relative h-full w-full overflow-hidden rounded-[1.5rem] bg-white">
+        <Image
+          src={screenContent}
+          alt="App screen"
+          fill
+          className="object-cover"
+        />
         <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
-        <div className="absolute bottom-4 inset-x-4">
-          <p className="text-white text-xs font-semibold">AppUI Mobile</p>
-          <p className="text-white/60 text-[9px] mt-0.5">Component preview</p>
+        <div className="absolute inset-x-4 bottom-4">
+          <p className="text-xs font-semibold text-white">AppUI Mobile</p>
+          <p className="mt-0.5 text-[9px] text-white/60">Component preview</p>
         </div>
       </div>
-      <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-24 h-1 bg-neutral-700 rounded-full" />
+      <div className="absolute bottom-1.5 left-1/2 h-1 w-24 -translate-x-1/2 rounded-full bg-neutral-700" />
     </div>
-    <p className="text-[10px] font-mono text-neutral-400 mt-3 uppercase tracking-wider">iPhone 15 Pro</p>
+    <p className="mt-3 font-mono text-[10px] tracking-wider text-neutral-400 uppercase">
+      iPhone 15 Pro
+    </p>
   </div>
 ));
 PhoneMockupCard.displayName = "PhoneMockupCard";

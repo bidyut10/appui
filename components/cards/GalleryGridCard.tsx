@@ -11,10 +11,10 @@ export const GalleryGridCard = forwardRef<
 >(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
-    className={`w-72 bg-white border border-neutral-100 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`}
+    className={`w-72 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg ${className}`}
     {...props}
   >
-    <div className="p-3 pb-2 flex items-center justify-between">
+    <div className="flex items-center justify-between p-3 pb-2">
       <div>
         <h3 className="text-sm font-semibold text-neutral-900">
           Summer Collection
@@ -24,21 +24,21 @@ export const GalleryGridCard = forwardRef<
       <Sun className="text-neutral-500" size={16} />
     </div>
     <div className="grid grid-cols-3 gap-1 px-3 pb-3">
-      <div className="col-span-2 row-span-2 relative aspect-square rounded-xl overflow-hidden">
+      <div className="relative col-span-2 row-span-2 aspect-square overflow-hidden rounded-xl">
         <Image
           src={img1}
           alt=""
           fill
-          className="object-cover hover:scale-105 transition-transform duration-500"
+          className="object-cover transition-transform duration-500 hover:scale-105"
         />
       </div>
-      <div className="relative aspect-square rounded-xl overflow-hidden">
+      <div className="relative aspect-square overflow-hidden rounded-xl">
         <Image src={img2} alt="" fill className="object-cover" />
       </div>
-      <div className="relative aspect-square rounded-xl overflow-hidden">
+      <div className="relative aspect-square overflow-hidden rounded-xl">
         <Image src={img3} alt="" fill className="object-cover" />
-        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-          <span className="text-white text-xs font-semibold">+21</span>
+        <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+          <span className="text-xs font-semibold text-white">+21</span>
         </div>
       </div>
     </div>

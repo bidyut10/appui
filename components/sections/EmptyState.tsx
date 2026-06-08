@@ -11,31 +11,31 @@ export const EmptyState = forwardRef<
     className={`w-72 text-center font-sans ${className}`}
     {...props}
   >
-    <div className="relative mx-auto w-24 h-24 mb-5">
-      <div className="absolute inset-0 bg-linear-to-br from-pink-100 to-fuchsia-100 rounded-3xl rotate-6" />
-      <div className="absolute inset-0 bg-white border border-neutral-200 rounded-3xl flex items-center justify-center shadow-sm">
+    <div className="relative mx-auto mb-5 h-24 w-24">
+      <div className="absolute inset-0 rotate-6 rounded-3xl bg-linear-to-br from-pink-100 to-fuchsia-100" />
+      <div className="absolute inset-0 flex items-center justify-center rounded-3xl border border-neutral-200 bg-white shadow-sm">
         <Folder size={32} className="text-neutral-300" />
       </div>
-      <div className="absolute -top-1 -right-1 w-5 h-5 bg-pink-500 rounded-full flex items-center justify-center">
-        <span className="text-white text-[10px] font-bold">0</span>
+      <div className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-pink-500">
+        <span className="text-[10px] font-bold text-white">0</span>
       </div>
     </div>
 
-    <h3 className="text-base font-semibold text-neutral-900 mb-1.5">
+    <h3 className="mb-1.5 text-base font-semibold text-neutral-900">
       No projects yet
     </h3>
-    <p className="text-xs text-neutral-500 leading-relaxed mb-5 max-w-55 mx-auto">
+    <p className="mx-auto mb-5 max-w-55 text-xs leading-relaxed text-neutral-500">
       Create your first project to start building with our component library.
     </p>
 
-    <button className="inline-flex items-center gap-1.5 h-9 px-5 bg-neutral-900 text-white text-xs font-medium rounded-lg hover:bg-neutral-800 transition-colors cursor-pointer active:scale-95">
+    <button className="inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-lg bg-neutral-900 px-5 text-xs font-medium text-white transition-colors hover:bg-neutral-800 active:scale-95">
       Create Project
       <ArrowRight size={12} />
     </button>
 
-    <p className="text-[10px] text-neutral-400 mt-4">
+    <p className="mt-4 text-[10px] text-neutral-400">
       or{" "}
-      <button className="text-neutral-800 hover:underline cursor-pointer">
+      <button className="cursor-pointer text-neutral-800 hover:underline">
         import from template
       </button>
     </p>

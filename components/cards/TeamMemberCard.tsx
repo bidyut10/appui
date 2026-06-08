@@ -10,7 +10,7 @@ export const TeamMemberCard = forwardRef<
 >(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
-    className={`group relative w-56 h-72 rounded-2xl overflow-hidden cursor-pointer ${className}`}
+    className={`group relative h-72 w-56 cursor-pointer overflow-hidden rounded-2xl ${className}`}
     {...props}
   >
     <Image
@@ -21,21 +21,23 @@ export const TeamMemberCard = forwardRef<
     />
     <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
 
-    <div className="absolute top-3 right-3 flex gap-1.5 opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-300">
-      <button className="w-7 h-7 rounded-lg bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-colors cursor-pointer">
+    <div className="absolute top-3 right-3 flex translate-y-1 gap-1.5 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+      <button className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg border border-white/30 bg-white/20 text-white backdrop-blur-md transition-colors hover:bg-white/30">
         <Github size={13} />
       </button>
-      <button className="w-7 h-7 rounded-lg bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-colors cursor-pointer">
+      <button className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg border border-white/30 bg-white/20 text-white backdrop-blur-md transition-colors hover:bg-white/30">
         <Mail size={13} />
       </button>
     </div>
 
-    <div className="absolute bottom-0 left-0 right-0 p-4">
-      <p className="text-[10px] font-mono uppercase tracking-widest text-white/50 mb-1">
+    <div className="absolute right-0 bottom-0 left-0 p-4">
+      <p className="mb-1 font-mono text-[10px] tracking-widest text-white/50 uppercase">
         Lead Engineer
       </p>
-      <h3 className="text-white text-lg font-semibold leading-tight">John Doe</h3>
-      <p className="text-xs text-white/60 mt-1.5 leading-relaxed opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+      <h3 className="text-lg leading-tight font-semibold text-white">
+        John Doe
+      </h3>
+      <p className="mt-1.5 translate-y-2 text-xs leading-relaxed text-white/60 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
         Building design tools that developers love. Previously at Stripe.
       </p>
     </div>

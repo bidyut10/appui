@@ -8,9 +8,17 @@ export const ContactInfoCard = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className = "", ...props }, ref) => (
-  <div ref={ref} className={`w-72 bg-white border border-neutral-100 shadow-lg rounded-2xl p-5 font-sans ${className}`} {...props}>
-    <h4 className="text-sm font-semibold text-neutral-900 mb-1">Get in Touch</h4>
-    <p className="text-[11px] text-neutral-500 mb-4">We&apos;d love to hear from you</p>
+  <div
+    ref={ref}
+    className={`w-72 rounded-2xl border border-neutral-100 bg-white p-5 font-sans shadow-lg ${className}`}
+    {...props}
+  >
+    <h4 className="mb-1 text-sm font-semibold text-neutral-900">
+      Get in Touch
+    </h4>
+    <p className="mb-4 text-[11px] text-neutral-500">
+      We&apos;d love to hear from you
+    </p>
     <div className="space-y-3">
       {[
         { icon: Mail, label: "Email", val: "hello@appui.dev" },
@@ -19,17 +27,19 @@ export const ContactInfoCard = forwardRef<
         { icon: Clock, label: "Hours", val: "Mon–Fri, 9AM–6PM IST" },
       ].map(({ icon: Icon, label, val }) => (
         <div key={label} className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-neutral-100 flex items-center justify-center shrink-0">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-neutral-100">
             <Icon size={15} className="text-neutral-600" />
           </div>
           <div>
-            <p className="text-[10px] font-mono uppercase tracking-wider text-neutral-400">{label}</p>
-            <p className="text-xs font-medium text-neutral-800 mt-0.5">{val}</p>
+            <p className="font-mono text-[10px] tracking-wider text-neutral-400 uppercase">
+              {label}
+            </p>
+            <p className="mt-0.5 text-xs font-medium text-neutral-800">{val}</p>
           </div>
         </div>
       ))}
     </div>
-    <button className="w-full h-9 mt-4 bg-neutral-900 text-white text-xs font-medium rounded-lg hover:bg-neutral-950 transition-colors cursor-pointer">
+    <button className="mt-4 h-9 w-full cursor-pointer rounded-lg bg-neutral-900 text-xs font-medium text-white transition-colors hover:bg-neutral-950">
       Send Message
     </button>
   </div>

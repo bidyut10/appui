@@ -26,10 +26,10 @@ export const TwitterProfileCard = forwardRef<
       </div>
     </div>
 
-    <div className="px-5 pb-5 pt-12">
+    <div className="px-5 pt-12 pb-5">
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-lg font-medium text-neutral-900 leading-none">
+          <p className="text-lg leading-none font-medium text-neutral-900">
             John Doe
           </p>
           <p className="mt-1 text-sm text-neutral-400">@johndoe</p>

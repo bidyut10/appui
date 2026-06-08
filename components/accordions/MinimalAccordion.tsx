@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { ChevronDown } from "@/icons/ChevronDown";
 import React, { useState, forwardRef } from "react";
 
@@ -33,21 +33,24 @@ export const MinimalAccordion = forwardRef<HTMLDivElement, AccordionProps>(
         {items.map((item, idx) => {
           const isOpen = openIdx === idx;
           return (
-            <div key={idx} className="border-b px-4 bg-white border-neutral-100">
+            <div
+              key={idx}
+              className="border-b border-neutral-100 bg-white px-4"
+            >
               <button
                 onClick={() => setOpenIdx(isOpen ? null : idx)}
-                className="w-full py-3 cursor-pointer flex items-center justify-between text-left text-sm font-medium text-neutral-800 hover:text-black focus:outline-none"
+                className="flex w-full cursor-pointer items-center justify-between py-3 text-left text-sm font-medium text-neutral-800 hover:text-black focus:outline-none"
               >
                 {item.title}
                 <ChevronDown
-                  className={`w-4 h-4 text-neutral-400 transition-transform duration-300 ${
+                  className={`h-4 w-4 text-neutral-400 transition-transform duration-300 ${
                     isOpen ? "rotate-180" : ""
                   }`}
                 />
               </button>
               <div
                 className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                  isOpen ? "max-h-40 opacity-100 mb-3" : "max-h-0 opacity-0"
+                  isOpen ? "mb-3 max-h-40 opacity-100" : "max-h-0 opacity-0"
                 }`}
               >
                 <div className="text-sm text-neutral-500">{item.content}</div>

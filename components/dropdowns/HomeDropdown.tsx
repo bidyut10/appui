@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { Dropdown } from "./Dropdown";
 import { ChevronDown } from "@/icons/ChevronDown";
@@ -22,9 +22,9 @@ export interface DropdownProps {
 export const HomeDropdown = () => (
   <Dropdown
     trigger={
-      <button className="group w-full inline-flex items-center justify-between gap-4 h-11 px-5 text-sm border border-neutral-200 bg-white rounded-xl hover:border-neutral-300 hover:shadow-sm transition-all duration-300 cursor-pointer font-medium text-neutral-800 active:scale-95">
+      <button className="group inline-flex h-11 w-full cursor-pointer items-center justify-between gap-4 rounded-xl border border-neutral-200 bg-white px-5 text-sm font-medium text-neutral-800 transition-all duration-300 hover:border-neutral-300 hover:shadow-sm active:scale-95">
         <span className="tracking-tight">Project Settings</span>
-        <ChevronDown className="w-4 h-4 text-neutral-400 transition-transform duration-300 group-hover:translate-y-0.5" />
+        <ChevronDown className="h-4 w-4 text-neutral-400 transition-transform duration-300 group-hover:translate-y-0.5" />
       </button>
     }
     items={[

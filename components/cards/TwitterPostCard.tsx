@@ -14,43 +14,43 @@ export const TwitterPostCard = forwardRef<
 >(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
-    className={`max-w-md p-5 bg-white border border-neutral-100 shadow-lg rounded-2xl font-sans ${className}`}
+    className={`max-w-md rounded-2xl border border-neutral-100 bg-white p-5 font-sans shadow-lg ${className}`}
     {...props}
   >
     <div className="flex gap-3">
-      <div className="w-11 h-11 bg-neutral-800 rounded-full shrink-0 flex items-center justify-center">
+      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-800">
         <Image src={profile_logo} alt="twitter-logo-boy" className="w-8" />
       </div>
-      <div className="flex-1 min-w-0">
+      <div className="min-w-0 flex-1">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1 flex-wrap">
-            <span className="font-bold text-neutral-900 text-sm">John Doe</span>
-            <span className="text-neutral-400 text-xs">@johndoe · 2h</span>
+          <div className="flex flex-wrap items-center gap-1">
+            <span className="text-sm font-bold text-neutral-900">John Doe</span>
+            <span className="text-xs text-neutral-400">@johndoe · 2h</span>
           </div>
-          <Ellipsis className="w-4 h-4 text-neutral-400 shrink-0" />
+          <Ellipsis className="h-4 w-4 shrink-0 text-neutral-400" />
         </div>
-        <p className="mt-2 text-neutral-800 text-sm leading-relaxed">
+        <p className="mt-2 text-sm leading-relaxed text-neutral-800">
           Building the future of UI with minimalist design and performance-first
           components. Obsessed with the little details. ✦{" "}
           <span className="text-sky-500">#WebDev #Design</span>
         </p>
-        <div className="flex justify-between mt-4 text-neutral-400 max-w-xs">
-          <button className="flex items-center gap-1 cursor-pointer hover:text-sky-500 transition-colors">
+        <div className="mt-4 flex max-w-xs justify-between text-neutral-400">
+          <button className="flex cursor-pointer items-center gap-1 transition-colors hover:text-sky-500">
             <Chat size={14} />
             <span className="text-xs">12</span>
           </button>
-          <button className="flex items-center gap-1 cursor-pointer hover:text-emerald-500 transition-colors">
+          <button className="flex cursor-pointer items-center gap-1 transition-colors hover:text-emerald-500">
             <Repeat size={16} />
             <span className="text-xs">38</span>
           </button>
-          <button className="flex items-center gap-1 cursor-pointer hover:text-rose-500 transition-colors">
+          <button className="flex cursor-pointer items-center gap-1 transition-colors hover:text-rose-500">
             <Heart size={15} />
             <span className="text-xs">450</span>
           </button>
-          <button className="flex items-center gap-1 cursor-pointer hover:text-sky-500 transition-colors">
+          <button className="flex cursor-pointer items-center gap-1 transition-colors hover:text-sky-500">
             <Bookmark size={15} />
           </button>
-          <button className="flex items-center gap-1 cursor-pointer hover:text-sky-500 transition-colors">
+          <button className="flex cursor-pointer items-center gap-1 transition-colors hover:text-sky-500">
             <Share size={14} />
           </button>
         </div>

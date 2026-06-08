@@ -45,18 +45,35 @@ export const AlertBanners = () => {
 
   return (
     <div className="w-80 space-y-2 font-sans">
-      {alerts.map((a, i) => visible[i] && (
-        <div key={a.type} className={`flex items-start gap-3 p-3 border rounded-xl ${a.bg}`}>
-          <span className="text-sm shrink-0 mt-0.5">{a.icon}</span>
-          <div className="flex-1 min-w-0">
-            <p className={`text-xs font-semibold ${a.text}`}>{a.title}</p>
-            <p className={`text-[11px] mt-0.5 opacity-80 ${a.text}`}>{a.msg}</p>
-          </div>
-          <button onClick={() => setVisible((v) => { const n = [...v]; n[i] = false; return n; })} className="text-neutral-400 hover:text-neutral-600 cursor-pointer shrink-0">
-            <X size={12} />
-          </button>
-        </div>
-      ))}
+      {alerts.map(
+        (a, i) =>
+          visible[i] && (
+            <div
+              key={a.type}
+              className={`flex items-start gap-3 rounded-xl border p-3 ${a.bg}`}
+            >
+              <span className="mt-0.5 shrink-0 text-sm">{a.icon}</span>
+              <div className="min-w-0 flex-1">
+                <p className={`text-xs font-semibold ${a.text}`}>{a.title}</p>
+                <p className={`mt-0.5 text-[11px] opacity-80 ${a.text}`}>
+                  {a.msg}
+                </p>
+              </div>
+              <button
+                onClick={() =>
+                  setVisible((v) => {
+                    const n = [...v];
+                    n[i] = false;
+                    return n;
+                  })
+                }
+                className="shrink-0 cursor-pointer text-neutral-400 hover:text-neutral-600"
+              >
+                <X size={12} />
+              </button>
+            </div>
+          ),
+      )}
     </div>
   );
 };

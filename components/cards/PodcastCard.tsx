@@ -9,7 +9,7 @@ export const PodcastCard = forwardRef<
 >(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
-    className={`group w-72 bg-neutral-900 rounded-2xl overflow-hidden shadow-lg font-sans ${className}`}
+    className={`group w-72 overflow-hidden rounded-2xl bg-neutral-900 font-sans shadow-lg ${className}`}
     {...props}
   >
     <div className="relative h-32 overflow-hidden">
@@ -17,33 +17,35 @@ export const PodcastCard = forwardRef<
         src={coverImage}
         alt="Podcast cover"
         fill
-        className="object-cover opacity-70 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
+        className="object-cover opacity-70 transition-all duration-700 group-hover:scale-105 group-hover:opacity-80"
       />
       <div className="absolute inset-0 bg-linear-to-t from-neutral-900 via-neutral-900/40 to-transparent" />
       <div className="absolute bottom-3 left-4">
-        <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-400">
+        <span className="font-mono text-[10px] tracking-widest text-emerald-400 uppercase">
           Episode 42
         </span>
       </div>
     </div>
 
     <div className="p-4">
-      <h3 className="text-sm font-semibold text-white leading-snug mb-1">
+      <h3 className="mb-1 text-sm leading-snug font-semibold text-white">
         Building Design Systems That Scale
       </h3>
-      <p className="text-[11px] text-neutral-500 mb-4">with Sarah Chen · 48 min</p>
+      <p className="mb-4 text-[11px] text-neutral-500">
+        with Sarah Chen · 48 min
+      </p>
 
       <div className="flex items-center gap-3">
-        <button className="w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center hover:scale-105 transition-transform cursor-pointer shrink-0">
-          <Play/>
+        <button className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition-transform hover:scale-105">
+          <Play />
         </button>
         <div className="flex-1">
-          <div className="h-1 bg-neutral-800 rounded-full overflow-hidden">
-            <div className="h-full w-[35%] bg-emerald-500 rounded-full" />
+          <div className="h-1 overflow-hidden rounded-full bg-neutral-800">
+            <div className="h-full w-[35%] rounded-full bg-emerald-500" />
           </div>
-          <div className="flex justify-between mt-1">
-            <span className="text-[9px] font-mono text-neutral-600">16:42</span>
-            <span className="text-[9px] font-mono text-neutral-600">48:00</span>
+          <div className="mt-1 flex justify-between">
+            <span className="font-mono text-[9px] text-neutral-600">16:42</span>
+            <span className="font-mono text-[9px] text-neutral-600">48:00</span>
           </div>
         </div>
       </div>

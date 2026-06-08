@@ -10,7 +10,7 @@ export const FacebookProfileCard = forwardRef<
 >(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
-    className={`w-72 bg-white border border-neutral-100 shadow-lg rounded-xl overflow-hidden font-sans ${className}`}
+    className={`w-72 overflow-hidden rounded-xl border border-neutral-100 bg-white font-sans shadow-lg ${className}`}
     {...props}
   >
     <div className="relative">
@@ -20,7 +20,7 @@ export const FacebookProfileCard = forwardRef<
         className="h-24 w-full object-cover"
       />
 
-      <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full border-4 border-white bg-neutral-800 flex items-center justify-center shadow">
+      <div className="absolute -bottom-10 left-1/2 flex h-20 w-20 -translate-x-1/2 items-center justify-center rounded-full border-4 border-white bg-neutral-800 shadow">
         <Image
           src={profile_logo}
           alt="facebook-profile-avatar"
@@ -29,16 +29,16 @@ export const FacebookProfileCard = forwardRef<
       </div>
     </div>
 
-    <div className="px-4 pb-4 pt-12 flex flex-col items-center text-center">
-      <h4 className="mt-2 font-bold text-neutral-900 text-lg">John Doe</h4>
+    <div className="flex flex-col items-center px-4 pt-12 pb-4 text-center">
+      <h4 className="mt-2 text-lg font-bold text-neutral-900">John Doe</h4>
 
-      <p className="text-neutral-500 text-xs">@johndoe · West Bengal</p>
+      <p className="text-xs text-neutral-500">@johndoe · West Bengal</p>
 
-      <p className="text-neutral-600 text-xs mt-1.5 leading-relaxed">
+      <p className="mt-1.5 text-xs leading-relaxed text-neutral-600">
         Software dev · Open-source advocate · Building cool UIs
       </p>
 
-      <div className="flex gap-6 mt-3 text-xs text-neutral-500">
+      <div className="mt-3 flex gap-6 text-xs text-neutral-500">
         <div className="text-center">
           <p className="font-bold text-neutral-900">1.2K</p>
           <p>Friends</p>
@@ -50,12 +50,12 @@ export const FacebookProfileCard = forwardRef<
         </div>
       </div>
 
-      <div className="mt-4 flex gap-2 w-full">
-        <button className="flex-1 py-1.5 text-xs font-semibold bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors">
+      <div className="mt-4 flex w-full gap-2">
+        <button className="flex-1 rounded-md bg-blue-500 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-blue-600">
           Add Friend
         </button>
 
-        <button className="flex-1 py-1.5 text-xs font-medium border border-neutral-200 rounded-md hover:bg-neutral-50 transition-colors text-neutral-700">
+        <button className="flex-1 rounded-md border border-neutral-200 py-1.5 text-xs font-medium text-neutral-700 transition-colors hover:bg-neutral-50">
           Message
         </button>
       </div>

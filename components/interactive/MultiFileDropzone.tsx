@@ -15,22 +15,30 @@ export const MultiFileDropzone = () => {
 
   return (
     <div className="w-72 font-sans">
-      <div className="border-2 border-dashed border-neutral-200 rounded-2xl p-3 hover:border-neutral-300 transition-colors">
-        <div className="grid grid-cols-3 gap-2 mb-3">
+      <div className="rounded-2xl border-2 border-dashed border-neutral-200 p-3 transition-colors hover:border-neutral-300">
+        <div className="mb-3 grid grid-cols-3 gap-2">
           {files.map((f) => (
-            <div key={f.id} className="relative aspect-square rounded-xl overflow-hidden group">
+            <div
+              key={f.id}
+              className="group relative aspect-square overflow-hidden rounded-xl"
+            >
               <Image src={f.src} alt={f.name} fill className="object-cover" />
-              <button onClick={() => setFiles((p) => p.filter((x) => x.id !== f.id))} className="absolute top-1 right-1 w-5 h-5 rounded-full bg-black/60 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+              <button
+                onClick={() => setFiles((p) => p.filter((x) => x.id !== f.id))}
+                className="absolute top-1 right-1 flex h-5 w-5 cursor-pointer items-center justify-center rounded-full bg-black/60 text-white opacity-0 transition-opacity group-hover:opacity-100"
+              >
                 <X size={10} />
               </button>
             </div>
           ))}
-          <button className="aspect-square rounded-xl border-2 border-dashed border-neutral-200 flex flex-col items-center justify-center text-neutral-400 hover:border-neutral-300 hover:text-neutral-500 hover:bg-neutral-50/30 transition-all cursor-pointer">
+          <button className="flex aspect-square cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-neutral-200 text-neutral-400 transition-all hover:border-neutral-300 hover:bg-neutral-50/30 hover:text-neutral-500">
             <span className="text-lg leading-none">+</span>
-            <span className="text-[8px] mt-0.5">Add</span>
+            <span className="mt-0.5 text-[8px]">Add</span>
           </button>
         </div>
-        <p className="text-[10px] text-neutral-400 text-center">{files.length} of 6 files · Drop more here</p>
+        <p className="text-center text-[10px] text-neutral-400">
+          {files.length} of 6 files · Drop more here
+        </p>
       </div>
     </div>
   );

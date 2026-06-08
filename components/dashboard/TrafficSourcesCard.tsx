@@ -11,27 +11,43 @@ export const TrafficSourcesCard = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className = "", ...props }, ref) => (
-  <div ref={ref} className={`w-64 p-5 bg-white border border-neutral-100 shadow-lg rounded-2xl font-sans ${className}`} {...props}>
-    <h4 className="text-sm font-semibold text-neutral-900 mb-1">Traffic Sources</h4>
-    <p className="text-[11px] text-neutral-400 mb-4">Last 30 days · 24,580 visits</p>
-    <div className="flex items-center justify-center mb-4">
-      <div className="relative w-24 h-24">
-        <svg viewBox="0 0 36 36" className="w-full h-full -rotate-90">
-          {sources.reduce<{ els: React.ReactNode[]; offset: number }>(
-            (acc, s, i) => {
-              const dash = s.pct;
-              acc.els.push(
-                <circle key={i} cx="18" cy="18" r="15.9" fill="none" strokeWidth="3"
-                  stroke={["#3b82f6", "#8b5cf6", "#d946ef", "#f59e0b"][i]}
-                  strokeDasharray={`${dash} ${100 - dash}`}
-                  strokeDashoffset={-acc.offset}
-                />
-              );
-              acc.offset += dash;
-              return acc;
-            },
-            { els: [], offset: 0 }
-          ).els}
+  <div
+    ref={ref}
+    className={`w-64 rounded-2xl border border-neutral-100 bg-white p-5 font-sans shadow-lg ${className}`}
+    {...props}
+  >
+    <h4 className="mb-1 text-sm font-semibold text-neutral-900">
+      Traffic Sources
+    </h4>
+    <p className="mb-4 text-[11px] text-neutral-400">
+      Last 30 days · 24,580 visits
+    </p>
+    <div className="mb-4 flex items-center justify-center">
+      <div className="relative h-24 w-24">
+        <svg viewBox="0 0 36 36" className="h-full w-full -rotate-90">
+          {
+            sources.reduce<{ els: React.ReactNode[]; offset: number }>(
+              (acc, s, i) => {
+                const dash = s.pct;
+                acc.els.push(
+                  <circle
+                    key={i}
+                    cx="18"
+                    cy="18"
+                    r="15.9"
+                    fill="none"
+                    strokeWidth="3"
+                    stroke={["#3b82f6", "#8b5cf6", "#d946ef", "#f59e0b"][i]}
+                    strokeDasharray={`${dash} ${100 - dash}`}
+                    strokeDashoffset={-acc.offset}
+                  />,
+                );
+                acc.offset += dash;
+                return acc;
+              },
+              { els: [], offset: 0 },
+            ).els
+          }
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <span className="text-lg font-semibold text-neutral-900">24K</span>
@@ -42,9 +58,11 @@ export const TrafficSourcesCard = forwardRef<
     <div className="space-y-2">
       {sources.map((s) => (
         <div key={s.name} className="flex items-center gap-2">
-          <div className={`w-2 h-2 rounded-full ${s.color}`} />
-          <span className="text-[11px] text-neutral-600 flex-1">{s.name}</span>
-          <span className="text-[11px] font-mono text-neutral-500">{s.pct}%</span>
+          <div className={`h-2 w-2 rounded-full ${s.color}`} />
+          <span className="flex-1 text-[11px] text-neutral-600">{s.name}</span>
+          <span className="font-mono text-[11px] text-neutral-500">
+            {s.pct}%
+          </span>
         </div>
       ))}
     </div>

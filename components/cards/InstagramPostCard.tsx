@@ -14,28 +14,28 @@ export const InstagramPostCard = forwardRef<
 >(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
-    className={`max-w-xs bg-white border border-neutral-100 shadow-lg rounded-xl font-sans overflow-hidden ${className}`}
+    className={`max-w-xs overflow-hidden rounded-xl border border-neutral-100 bg-white font-sans shadow-lg ${className}`}
     {...props}
   >
     <div className="flex items-center gap-2 px-3 py-2.5">
-      <div className="w-8 h-8 rounded-full p-0.5 bg-linear-to-tr from-yellow-400 via-pink-500 to-purple-600">
-        <div className="w-full h-full rounded-full bg-white p-0.5">
-          <div className="w-full h-full rounded-full bg-neutral-900 flex items-center justify-center">
-            <Image src={profile_logo} alt="twitter-logo-boy" className="w-4" />
+      <div className="h-8 w-8 rounded-full bg-linear-to-tr from-yellow-400 via-pink-500 to-purple-600 p-0.5">
+        <div className="h-full w-full rounded-full bg-white p-0.5">
+          <div className="flex h-full w-full items-center justify-center rounded-full bg-neutral-900">
+            <Image src={profile_logo} alt="avatar-logo-img" className="w-4" />
           </div>
         </div>
       </div>
       <div>
-        <p className="font-semibold text-neutral-900 text-xs">johndoe.dev</p>
-        <p className="text-neutral-400 text-[10px]">West Bengal, India</p>
+        <p className="text-xs font-semibold text-neutral-900">johndoe.dev</p>
+        <p className="text-[10px] text-neutral-400">West Bengal, India</p>
       </div>
-      <Ellipsis className="w-4 h-4 text-neutral-400 ml-auto" />
+      <Ellipsis className="ml-auto h-4 w-4 text-neutral-400" />
     </div>
 
     <Image src={bg_image} alt="twitter-logo-boy" className="h-36" />
 
     <div className="px-3 pt-2.5 pb-3">
-      <div className="flex items-center justify-between mb-2">
+      <div className="mb-2 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <button className="cursor-pointer hover:opacity-70">
             <Like size={15} className="text-neutral-800" />
@@ -51,13 +51,13 @@ export const InstagramPostCard = forwardRef<
           <Bookmark size={15} className="text-neutral-800" />
         </button>
       </div>
-      <p className="text-xs font-semibold text-neutral-900 mb-1">1,204 likes</p>
-      <p className="text-xs text-neutral-800 leading-relaxed">
+      <p className="mb-1 text-xs font-semibold text-neutral-900">1,204 likes</p>
+      <p className="text-xs leading-relaxed text-neutral-800">
         <span className="font-semibold">johndoe.dev</span> New card UI drop 🃏
         Minimal, clean, and open-source.{" "}
         <span className="text-blue-500">#uidesign #reactjs #webdev</span>
       </p>
-      <p className="text-[10px] text-neutral-400 mt-1 uppercase tracking-wide">
+      <p className="mt-1 text-[10px] tracking-wide text-neutral-400 uppercase">
         2 hours ago
       </p>
     </div>

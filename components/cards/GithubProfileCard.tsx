@@ -13,7 +13,7 @@ export const GithubProfileCard = forwardRef<
 >(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
-    className={`w-72 bg-white border border-neutral-100 shadow-lg rounded-2xl overflow-hidden font-sans ${className}`}
+    className={`w-72 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg ${className}`}
     {...props}
   >
     <div className="relative">
@@ -28,12 +28,12 @@ export const GithubProfileCard = forwardRef<
       </div>
     </div>
 
-    <div className="px-5 pb-5 pt-10 flex flex-col">
+    <div className="flex flex-col px-5 pt-10 pb-5">
       <h4 className="mt-2 font-bold text-neutral-900">@johndoe10</h4>
 
-      <p className="text-neutral-500 text-xs">John Doe</p>
+      <p className="text-xs text-neutral-500">John Doe</p>
 
-      <p className="text-neutral-600 text-xs mt-1 leading-relaxed">
+      <p className="mt-1 text-xs leading-relaxed text-neutral-600">
         Open-source developer · Building minimal UI systems
       </p>
 
@@ -60,34 +60,34 @@ export const GithubProfileCard = forwardRef<
       </div>
 
       <div className="mt-3 flex gap-2">
-        <button className="flex-1 py-1.5 text-xs cursor-pointer font-mono font-medium bg-neutral-900 text-white rounded-md hover:bg-black transition-colors">
+        <button className="flex-1 cursor-pointer rounded-md bg-neutral-900 py-1.5 font-mono text-xs font-medium text-white transition-colors hover:bg-black">
           Follow
         </button>
 
-        <button className="flex-1 py-1.5 text-xs cursor-pointer font-mono font-medium border border-neutral-200 rounded-md hover:bg-neutral-50 transition-colors text-neutral-700">
+        <button className="flex-1 cursor-pointer rounded-md border border-neutral-200 py-1.5 font-mono text-xs font-medium text-neutral-700 transition-colors hover:bg-neutral-50">
           Message
         </button>
       </div>
     </div>
 
-    <div className="border-t border-neutral-100 px-5 py-3 flex justify-around text-center">
+    <div className="flex justify-around border-t border-neutral-100 px-5 py-3 text-center">
       <div>
         <p className="text-sm font-bold text-neutral-900">42</p>
-        <p className="text-[10px] text-neutral-400 uppercase tracking-wide">
+        <p className="text-[10px] tracking-wide text-neutral-400 uppercase">
           Repos
         </p>
       </div>
 
       <div>
         <p className="text-sm font-bold text-neutral-900">550</p>
-        <p className="text-[10px] text-neutral-400 uppercase tracking-wide">
+        <p className="text-[10px] tracking-wide text-neutral-400 uppercase">
           Commits
         </p>
       </div>
 
       <div>
         <p className="text-sm font-bold text-neutral-900">18</p>
-        <p className="text-[10px] text-neutral-400 uppercase tracking-wide">
+        <p className="text-[10px] tracking-wide text-neutral-400 uppercase">
           Stars
         </p>
       </div>

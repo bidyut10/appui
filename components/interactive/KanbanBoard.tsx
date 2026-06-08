@@ -17,17 +17,13 @@ const columns = [
     title: "In Progress",
     color: "border-t-blue-400",
     dot: "bg-blue-400",
-    cards: [
-      { title: "Build bento grid", tag: "Feature", assignee: "MR" },
-    ],
+    cards: [{ title: "Build bento grid", tag: "Feature", assignee: "MR" }],
   },
   {
     title: "Done",
     color: "border-t-emerald-400",
     dot: "bg-emerald-400",
-    cards: [
-      { title: "Setup design tokens", tag: "Dev", assignee: "AL" },
-    ],
+    cards: [{ title: "Setup design tokens", tag: "Dev", assignee: "AL" }],
   },
 ];
 
@@ -36,9 +32,9 @@ export const KanbanBoard = () => {
 
   return (
     <div className="w-80 font-sans">
-      <div className="flex items-center justify-between mb-3 px-0.5">
+      <div className="mb-3 flex items-center justify-between px-0.5">
         <h4 className="text-sm font-semibold text-neutral-900">Sprint Board</h4>
-        <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider">
+        <span className="font-mono text-[10px] tracking-wider text-neutral-400 uppercase">
           4 tasks
         </span>
       </div>
@@ -46,35 +42,41 @@ export const KanbanBoard = () => {
       <div className="flex gap-2 overflow-x-auto pb-1">
         {columns.map((col) => (
           <div key={col.title} className="w-36 shrink-0">
-            <div className={`flex items-center gap-1.5 mb-2 pb-1.5 border-t-2 ${col.color}`}>
-              <div className={`w-1.5 h-1.5 rounded-full ${col.dot}`} />
-              <span className="text-[10px] font-medium text-neutral-600">{col.title}</span>
-              <span className="text-[10px] text-neutral-400 ml-auto">{col.cards.length}</span>
+            <div
+              className={`mb-2 flex items-center gap-1.5 border-t-2 pb-1.5 ${col.color}`}
+            >
+              <div className={`h-1.5 w-1.5 rounded-full ${col.dot}`} />
+              <span className="text-[10px] font-medium text-neutral-600">
+                {col.title}
+              </span>
+              <span className="ml-auto text-[10px] text-neutral-400">
+                {col.cards.length}
+              </span>
             </div>
 
             <div className="space-y-1.5">
               {col.cards.map((card) => (
                 <div
                   key={card.title}
-                  onClick={() => setActiveCard(activeCard === card.title ? null : card.title)}
-                  className={`
-                    p-2.5 bg-white border rounded-xl cursor-pointer transition-all duration-200
-                    ${activeCard === card.title
-                      ? "border-violet-300 shadow-sm shadow-violet-100 ring-2 ring-violet-100"
+                  onClick={() =>
+                    setActiveCard(activeCard === card.title ? null : card.title)
+                  }
+                  className={`cursor-pointer rounded-xl border bg-white p-2.5 transition-all duration-200 ${
+                    activeCard === card.title
+                      ? "border-violet-300 shadow-sm ring-2 shadow-violet-100 ring-violet-100"
                       : "border-neutral-100 hover:border-neutral-200 hover:shadow-sm"
-                    }
-                  `}
+                  } `}
                 >
-                  <p className="text-[11px] font-medium text-neutral-800 leading-snug mb-2">
+                  <p className="mb-2 text-[11px] leading-snug font-medium text-neutral-800">
                     {card.title}
                   </p>
                   <div className="flex items-center justify-between">
-                    <span className="px-1.5 py-px bg-neutral-100 text-[8px] font-mono text-neutral-500 rounded">
+                    <span className="rounded bg-neutral-100 px-1.5 py-px font-mono text-[8px] text-neutral-500">
                       {card.tag}
                     </span>
                     <div className="flex items-center gap-1">
                       <Clock size={8} className="text-neutral-300" />
-                      <div className="w-4 h-4 rounded-full bg-linear-to-br from-violet-400 to-fuchsia-500 flex items-center justify-center text-[6px] font-bold text-white">
+                      <div className="flex h-4 w-4 items-center justify-center rounded-full bg-linear-to-br from-violet-400 to-fuchsia-500 text-[6px] font-bold text-white">
                         {card.assignee}
                       </div>
                     </div>
@@ -82,7 +84,7 @@ export const KanbanBoard = () => {
                 </div>
               ))}
 
-              <button className="w-full py-1.5 text-[10px] text-neutral-400 hover:text-neutral-600 hover:bg-neutral-50 rounded-lg transition-colors cursor-pointer flex items-center justify-center gap-1">
+              <button className="flex w-full cursor-pointer items-center justify-center gap-1 rounded-lg py-1.5 text-[10px] text-neutral-400 transition-colors hover:bg-neutral-50 hover:text-neutral-600">
                 <Pin size={9} />
                 Add card
               </button>

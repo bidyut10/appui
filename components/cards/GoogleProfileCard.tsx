@@ -6,12 +6,12 @@ export const GoogleProfileCard = forwardRef<
 >(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
-    className={`w-72 p-6 bg-white border border-neutral-100 shadow-lg rounded-3xl flex flex-col items-center text-center font-sans ${className}`}
+    className={`flex w-72 flex-col items-center rounded-3xl border border-neutral-100 bg-white p-6 text-center font-sans shadow-lg ${className}`}
     {...props}
   >
-    <div className="w-16 h-16 rounded-full overflow-hidden border border-neutral-100 mb-3 shadow-inner">
-      <div className="w-full h-full bg-linear-to-tr from-blue-500 via-red-500 to-yellow-400 flex items-center justify-center">
-        <span className="text-white text-2xl font-bold">J</span>
+    <div className="mb-3 h-16 w-16 overflow-hidden rounded-full border border-neutral-100 shadow-inner">
+      <div className="flex h-full w-full items-center justify-center bg-linear-to-tr from-blue-500 via-red-500 to-yellow-400">
+        <span className="text-2xl font-bold text-white">J</span>
       </div>
     </div>
     <h3 className="text-lg font-medium text-neutral-900">John Doe</h3>
@@ -20,13 +20,13 @@ export const GoogleProfileCard = forwardRef<
       {["Google Search", "Gmail", "Drive"].map((s) => (
         <span
           key={s}
-          className="px-2 py-1 bg-neutral-50 rounded-full text-neutral-600 border border-neutral-200"
+          className="rounded-full border border-neutral-200 bg-neutral-50 px-2 py-1 text-neutral-600"
         >
           {s}
         </span>
       ))}
     </div>
-    <button className="mt-5 px-6 py-2 border border-neutral-200 rounded-full text-sm font-medium hover:bg-neutral-50 transition-colors text-neutral-700">
+    <button className="mt-5 rounded-full border border-neutral-200 px-6 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-50">
       Manage Google Account
     </button>
   </div>

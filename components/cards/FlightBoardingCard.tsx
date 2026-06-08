@@ -6,13 +6,9 @@ export const FlightBoardingCard = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className = "", ...props }, ref) => (
-  <div
-    ref={ref}
-    className={`w-96 overflow-visible ${className}`}
-    {...props}
-  >
+  <div ref={ref} className={`w-96 overflow-visible ${className}`} {...props}>
     <div className="relative overflow-hidden rounded-3xl border border-neutral-100 bg-white shadow-lg">
-      <div className="absolute left-20 top-0 bottom-0 border-l border-dashed border-neutral-200" />
+      <div className="absolute top-0 bottom-0 left-20 border-l border-dashed border-neutral-200" />
 
       <div className="grid grid-cols-[80px_1fr]">
         <div className="flex flex-col items-center justify-center gap-2 px-8">
@@ -20,7 +16,7 @@ export const FlightBoardingCard = forwardRef<
             <QrCode size={42} className="text-neutral-600" />
           </div>
 
-          <span className="text-[9px] uppercase tracking-[0.25em] text-neutral-400">
+          <span className="text-[9px] tracking-[0.25em] text-neutral-400 uppercase">
             Scan
           </span>
         </div>
@@ -28,7 +24,7 @@ export const FlightBoardingCard = forwardRef<
         <div className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-400">
+              <p className="text-[10px] tracking-[0.2em] text-neutral-400 uppercase">
                 Flight
               </p>
 
@@ -55,7 +51,7 @@ export const FlightBoardingCard = forwardRef<
               <div className="relative w-full">
                 <div className="border-t border-dashed border-neutral-300" />
 
-                <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 bg-white px-1.5">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-1.5">
                   <PlaneTakeoff size={11} className="text-neutral-500" />
                 </div>
               </div>

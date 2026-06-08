@@ -12,32 +12,32 @@ export const PaginationBar = () => {
       <button
         onClick={() => setPage(Math.max(1, page - 1))}
         disabled={page === 1}
-        className="w-8 h-8 rounded-lg bg-white border border-neutral-200 flex items-center justify-center text-neutral-500 hover:bg-neutral-50 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer text-sm transition-colors"
+        className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-neutral-200 bg-white text-sm text-neutral-500 transition-colors hover:bg-neutral-50 disabled:cursor-not-allowed disabled:opacity-40"
       >
-        <ChevronLeft/>
+        <ChevronLeft />
       </button>
       {pages.map((p) => (
         <button
           key={p}
           onClick={() => setPage(p)}
-          className={`w-8 h-8 rounded-lg text-xs font-medium cursor-pointer transition-colors ${
+          className={`h-8 w-8 cursor-pointer rounded-lg text-xs font-medium transition-colors ${
             page === p
               ? "bg-neutral-900 text-white shadow-sm"
-              : "border border-neutral-200 text-neutral-600 bg-white hover:bg-neutral-50"
+              : "border border-neutral-200 bg-white text-neutral-600 hover:bg-neutral-50"
           }`}
         >
           {p}
         </button>
       ))}
-      <span className="text-neutral-400 text-xs px-1">…</span>
-      <button className="w-8 h-8 rounded-lg border border-neutral-200 text-xs font-medium text-neutral-600 hover:bg-neutral-50 cursor-pointer transition-colors">
+      <span className="px-1 text-xs text-neutral-400">…</span>
+      <button className="h-8 w-8 cursor-pointer rounded-lg border border-neutral-200 text-xs font-medium text-neutral-600 transition-colors hover:bg-neutral-50">
         12
       </button>
       <button
         onClick={() => setPage(Math.min(12, page + 1))}
-        className="w-8 h-8 rounded-lg bg-white border border-neutral-200 flex items-center justify-center text-neutral-500 hover:bg-neutral-50 cursor-pointer text-sm transition-colors"
+        className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-neutral-200 bg-white text-sm text-neutral-500 transition-colors hover:bg-neutral-50"
       >
-        <ChevronRight/>
+        <ChevronRight />
       </button>
     </div>
   );

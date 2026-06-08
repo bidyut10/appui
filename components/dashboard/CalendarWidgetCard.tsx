@@ -8,17 +8,26 @@ export const CalendarWidgetCard = () => {
   const [selected, setSelected] = useState(14);
 
   return (
-    <div className="w-80 bg-white border border-neutral-100 shadow-lg rounded-2xl p-4 font-sans">
-      <div className="flex items-center justify-between mb-3">
+    <div className="w-80 rounded-2xl border border-neutral-100 bg-white p-4 font-sans shadow-lg">
+      <div className="mb-3 flex items-center justify-between">
         <h4 className="text-sm font-semibold text-neutral-900">June 2026</h4>
         <div className="flex gap-1">
-          <button className="w-6 h-6 rounded-md flex items-center justify-center text-neutral-400 hover:bg-neutral-100 cursor-pointer text-xs">‹</button>
-          <button className="w-6 h-6 rounded-md flex items-center justify-center text-neutral-400 hover:bg-neutral-100 cursor-pointer text-xs">›</button>
+          <button className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-md text-xs text-neutral-400 hover:bg-neutral-100">
+            ‹
+          </button>
+          <button className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-md text-xs text-neutral-400 hover:bg-neutral-100">
+            ›
+          </button>
         </div>
       </div>
-      <div className="grid grid-cols-7 gap-0.5 mb-1">
+      <div className="mb-1 grid grid-cols-7 gap-0.5">
         {days.map((d) => (
-          <span key={d} className="text-[9px] font-mono text-neutral-400 text-center py-1">{d}</span>
+          <span
+            key={d}
+            className="py-1 text-center font-mono text-[9px] text-neutral-400"
+          >
+            {d}
+          </span>
         ))}
       </div>
       <div className="grid grid-cols-7 gap-0.5">
@@ -26,20 +35,24 @@ export const CalendarWidgetCard = () => {
           <button
             key={d}
             onClick={() => setSelected(d)}
-            className={`w-7 h-7 rounded-lg text-[11px] font-medium cursor-pointer transition-colors ${
-              d === selected ? "bg-neutral-900 text-white" :
-              d === 6 ? "bg-violet-50 text-violet-700" :
-              "text-neutral-700 hover:bg-neutral-100"
+            className={`h-7 w-7 cursor-pointer rounded-lg text-[11px] font-medium transition-colors ${
+              d === selected
+                ? "bg-neutral-900 text-white"
+                : d === 6
+                  ? "bg-violet-50 text-violet-700"
+                  : "text-neutral-700 hover:bg-neutral-100"
             }`}
           >
             {d}
           </button>
         ))}
       </div>
-      <div className="mt-3 pt-3 border-t border-neutral-100">
-        <p className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 mb-1.5">Today</p>
-        <div className="flex items-center gap-2 p-2 bg-violet-50 rounded-lg">
-          <div className="w-1 h-8 bg-violet-500 rounded-full" />
+      <div className="mt-3 border-t border-neutral-100 pt-3">
+        <p className="mb-1.5 font-mono text-[10px] tracking-wider text-neutral-400 uppercase">
+          Today
+        </p>
+        <div className="flex items-center gap-2 rounded-lg bg-violet-50 p-2">
+          <div className="h-8 w-1 rounded-full bg-violet-500" />
           <div>
             <p className="text-xs font-medium text-neutral-900">Team Standup</p>
             <p className="text-[10px] text-neutral-500">10:00 AM · 30 min</p>

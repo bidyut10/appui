@@ -76,10 +76,10 @@ export const AuthOTPCard = () => {
     <div className="relative w-96 overflow-hidden rounded-2xl shadow-lg">
       <Image src={bgImage} alt="Background" fill className="object-cover" />
 
-      <div className="absolute inset-0 bg-white/05" />
+      <div className="bg-white/05 absolute inset-0" />
 
       <div className="relative p-7">
-        <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/50 bg-white/10 backdrop-blur-xl shadow-sm">
+        <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/50 bg-white/10 shadow-sm backdrop-blur-xl">
           <svg
             viewBox="0 0 24 24"
             width={24}
@@ -118,7 +118,7 @@ export const AuthOTPCard = () => {
               onPaste={handlePaste}
               onChange={(e) => handleChange(e.target.value, i)}
               onKeyDown={(e) => handleKeyDown(e, i)}
-              className={`h-12 w-11 rounded-lg border text-center text-lg font-semibold outline-none transition-all backdrop-blur-xs ${
+              className={`h-12 w-11 rounded-lg border text-center text-lg font-semibold backdrop-blur-xs transition-all outline-none ${
                 digit
                   ? "border-neutral-500/60 bg-white/10 text-neutral-900 shadow-sm"
                   : "border-neutral-500/60 bg-white/10 text-neutral-900 backdrop-blur-xl"

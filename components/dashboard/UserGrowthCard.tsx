@@ -7,15 +7,15 @@ export const UserGrowthCard = forwardRef<
 >(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
-    className={`w-64 p-5 bg-white border border-neutral-100 shadow-lg rounded-2xl font-sans ${className}`}
+    className={`w-64 rounded-2xl border border-neutral-100 bg-white p-5 font-sans shadow-lg ${className}`}
     {...props}
   >
-    <div className="flex items-center gap-3 mb-4">
-      <div className="w-10 h-10 rounded-xl bg-neutral-50 flex items-center justify-center">
+    <div className="mb-4 flex items-center gap-3">
+      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-50">
         <UserGroup size={18} className="text-neutral-600" />
       </div>
       <div>
-        <p className="text-[10px] font-mono uppercase tracking-wider text-neutral-400">
+        <p className="font-mono text-[10px] tracking-wider text-neutral-400 uppercase">
           Active Users
         </p>
         <p className="text-xl font-semibold text-neutral-900">12,847</p>
@@ -28,7 +28,7 @@ export const UserGrowthCard = forwardRef<
         { label: "Churned", val: "-24", pct: 12, color: "bg-red-400" },
       ].map(({ label, val, pct, color }) => (
         <div key={label}>
-          <div className="flex justify-between text-[11px] mb-1">
+          <div className="mb-1 flex justify-between text-[11px]">
             <span className="text-neutral-600">{label}</span>
             <span
               className={`font-medium ${val.startsWith("-") ? "text-red-500" : "text-emerald-600"}`}
@@ -36,7 +36,7 @@ export const UserGrowthCard = forwardRef<
               {val}
             </span>
           </div>
-          <div className="h-1.5 bg-neutral-100 rounded-full overflow-hidden">
+          <div className="h-1.5 overflow-hidden rounded-full bg-neutral-100">
             <div
               className={`h-full ${color} rounded-full`}
               style={{ width: `${pct}%` }}

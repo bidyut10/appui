@@ -14,7 +14,7 @@ export const ImageCarouselCard = () => {
   const [current, setCurrent] = useState(0);
 
   return (
-    <div className="w-72 bg-white border border-neutral-100 shadow-lg rounded-2xl overflow-hidden font-sans">
+    <div className="w-72 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg">
       <div className="relative h-44 overflow-hidden">
         <Image
           src={slides[current]}
@@ -27,25 +27,25 @@ export const ImageCarouselCard = () => {
           onClick={() =>
             setCurrent((c) => (c - 1 + slides.length) % slides.length)
           }
-          className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-neutral-700 hover:bg-white transition-colors cursor-pointer shadow-sm"
+          className="absolute top-1/2 left-2 flex h-7 w-7 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/80 text-neutral-700 shadow-sm backdrop-blur-sm transition-colors hover:bg-white"
         >
           <ChevronLeft size={16} />
         </button>
 
         <button
           onClick={() => setCurrent((c) => (c + 1) % slides.length)}
-          className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-neutral-700 hover:bg-white transition-colors cursor-pointer shadow-sm"
+          className="absolute top-1/2 right-2 flex h-7 w-7 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/80 text-neutral-700 shadow-sm backdrop-blur-sm transition-colors hover:bg-white"
         >
           <ChevronRight size={16} />
         </button>
 
-        <div className="absolute bottom-3 inset-x-0 flex justify-center gap-1.5">
+        <div className="absolute inset-x-0 bottom-3 flex justify-center gap-1.5">
           {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                i === current ? "bg-white w-5" : "bg-white/50 w-1.5"
+              className={`h-1.5 cursor-pointer rounded-full transition-all ${
+                i === current ? "w-5 bg-white" : "w-1.5 bg-white/50"
               }`}
             />
           ))}
@@ -59,7 +59,7 @@ export const ImageCarouselCard = () => {
               Coastal Views
             </h3>
 
-            <p className="text-xs text-neutral-400 mt-1">
+            <p className="mt-1 text-xs text-neutral-400">
               Beautiful landscapes
             </p>
           </div>
