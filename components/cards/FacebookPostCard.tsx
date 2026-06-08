@@ -119,7 +119,7 @@ export const FacebookPostCard = forwardRef<
           </div>
 
           <div className="ml-auto text-neutral-400">
-            {menuIcon ?? <Ellipsis size={15}/>}
+            {menuIcon ?? <Ellipsis size={15} />}
           </div>
         </div>
 
