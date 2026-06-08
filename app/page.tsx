@@ -178,8 +178,8 @@ const rows: Row[] = [
   [<PodcastCard />, <WeatherWidgetCard />, <FlightBoardingCard />],
 
   // AI Chat Cards
-  [<AIAssistantCard />, <AIStreamingCard />, <AIPromptCard />],
-  [<AIChatHistoryCard />, <ChatWidget />, <ChatSkeleton />],
+  [null, <AIStreamingCard />, null],
+  [null, <ChatWidget />, <ChatSkeleton />],
 
   // Auth Cards
   [<AuthLoginCard />, <AuthSplitLoginCard />, <AuthOTPCard />],

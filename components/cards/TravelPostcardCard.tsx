@@ -1,7 +1,4 @@
-import {
-  forwardRef,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
@@ -104,7 +101,7 @@ export const TravelPostcardCard = forwardRef<
             {message}
           </p>
 
-          <h3 className="mb-2 text-lg font-normal italic leading-snug text-[#3d3530]">
+          <h3 className="mb-2 text-lg leading-snug font-normal text-[#3d3530] italic">
             {title}
           </h3>
 
