@@ -28,8 +28,8 @@ export const FacebookPostCard = forwardRef<
           3 hours ago · <Clock className="inline h-3 w-3" />
         </p>
       </div>
-      <div className="ml-auto">
-        <Ellipsis className="h-5 w-5 text-neutral-400" />
+      <div className="ml-auto h-5 w-5 text-neutral-400">
+        <Ellipsis />
       </div>
     </div>
     <p className="mb-3 text-sm leading-relaxed text-neutral-800">
@@ -43,11 +43,11 @@ export const FacebookPostCard = forwardRef<
     />
     <div className="mb-2 flex items-center justify-between px-1 text-xs text-neutral-500">
       <span className="flex items-center gap-1">
-        <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-blue-500">
-          <Like size={9} className="fill-white text-white" />
+        <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-blue-500 text-white">
+          <Like size={9} />
         </span>
-        <span className="-ml-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-rose-500">
-          <Heart size={9} className="fill-white text-white" />
+        <span className="-ml-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-rose-500 text-white">
+          <Heart size={9} />
         </span>
         312
       </span>

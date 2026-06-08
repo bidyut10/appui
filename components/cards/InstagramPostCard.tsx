@@ -6,6 +6,8 @@ import {
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
+import { cn } from "@/lib/utils";
+
 import { Ellipsis } from "@/icons/Ellipsis";
 import { Like } from "@/icons/Like";
 import { Chat } from "@/icons/Chat";
@@ -15,35 +17,15 @@ import { Send } from "@/icons/Send";
 import profile_logo from "@/public/boy.png";
 import bg_image from "@/public/dbg.png";
 
-/*
-|--------------------------------------------------------------------------
-| Instagram Post Card
-|--------------------------------------------------------------------------
-|
-| A reusable Instagram-inspired post card built with Next.js, React,
-| TypeScript, and Tailwind CSS. Designed for social feeds, content
-| previews, portfolios, and modern web applications.
-|
-|--------------------------------------------------------------------------
-| Before Using This Component
-|--------------------------------------------------------------------------
-|
-| • Replace the demo images with your own assets.
-| • Update the sample content to match your project.
-| • Swap the icons with your preferred icon library if needed.
-| • All props are optional and come with default values for quick setup.
-|
-| React Users
-| If you are using React instead of Next.js, replace the `next/image`
-| component with a standard `img` tag and update the image imports
-| according to your project setup.
-|
-| Looking for icons?
-| Visit nexticons.in to browse and copy free icons without adding
-| another dependency to your project.
-|
-*/
-
+/**
+ * Instagram-inspired post card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content, images, and icons with your own assets.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ *
+ * React Users: Replace `next/image` with a standard `img` element.
+ */
 export type InstagramPostCardProps = {
   username?: string;
   location?: string;
@@ -75,7 +57,7 @@ export const InstagramPostCard = forwardRef<
 >(
   (
     {
-      className = "",
+      className,
 
       username = "bidyut.dev",
       location = "West Bengal, India",
@@ -108,72 +90,100 @@ export const InstagramPostCard = forwardRef<
       <div
         ref={ref}
         data-slot="instagram-post-card"
-        className={`max-w-xs overflow-hidden rounded-xl border border-neutral-100 bg-white font-sans shadow-lg ${className}`}
+        className={cn(
+          "max-w-xs overflow-hidden rounded-xl border border-neutral-100 bg-white font-sans shadow-lg",
+          className,
+        )}
         {...props}
       >
-        {/* Profile section */}
-        <div className="flex items-center gap-2 px-3 py-2.5">
+        {/* Profile header */}
+        <div
+          data-slot="instagram-post-card-header"
+          className="flex items-center gap-2 px-3 py-2.5"
+        >
           <div className="h-8 w-8 rounded-full bg-linear-to-tr from-yellow-400 via-pink-500 to-purple-600 p-0.5">
             <div className="h-full w-full rounded-full bg-white p-0.5">
               <div className="flex h-full w-full items-center justify-center rounded-full bg-neutral-900">
-                <Image src={avatar} alt={avatarAlt} className="w-4" />
+                <Image
+                  src={avatar}
+                  alt={avatarAlt}
+                  className="w-4"
+                  sizes="16px"
+                />
               </div>
             </div>
           </div>
 
           <div>
-            <p className="text-xs font-semibold text-neutral-900">{username}</p>
+            <p
+              title={username}
+              className="text-xs font-semibold text-neutral-900"
+            >
+              {username}
+            </p>
 
-            <p className="text-[10px] text-neutral-400">{location}</p>
+            <p title={location} className="text-[10px] text-neutral-400">
+              {location}
+            </p>
           </div>
 
-          <div className="ml-auto h-4 w-4 text-neutral-400">
-            <Ellipsis />
+          <div className="ml-auto text-neutral-400">
+            <Ellipsis size={15} />
           </div>
         </div>
 
-        {/* Main post image */}
-        <Image src={postImage} alt={imageAlt} className="h-36" />
+        {/* Post image */}
+        <Image
+          data-slot="instagram-post-card-image"
+          src={postImage}
+          alt={imageAlt}
+          className="h-36"
+          sizes="320px"
+        />
 
+        {/* Post content */}
         <div className="px-3 pt-2.5 pb-3">
-          {/* Post actions */}
-          <div className="mb-2 flex items-center justify-between">
+          {/* Engagement actions */}
+          <div
+            data-slot="instagram-post-card-actions"
+            className="mb-2 flex items-center justify-between"
+          >
             <div className="flex items-center gap-3">
               <button
                 type="button"
-                aria-label={`Like ${username}'s post`}
+                aria-label={`Like post from ${username}`}
                 onClick={onLike}
-                className="h-4 w-4 cursor-pointer text-neutral-700 hover:text-black"
+                className="cursor-pointer text-neutral-700 transition-colors hover:text-black"
               >
-                {likeIcon ?? <Like />}
+                {likeIcon ?? <Like size={15} />}
               </button>
 
               <button
                 type="button"
-                aria-label={`Comment on ${username}'s post`}
+                aria-label={`Comment on post from ${username}`}
                 onClick={onComment}
-                className="h-4 w-4 cursor-pointer text-neutral-700 hover:text-black"
+                className="cursor-pointer text-neutral-700 transition-colors hover:text-black"
               >
-                {commentIcon ?? <Chat />}
+                {commentIcon ?? <Chat size={15} />}
               </button>
 
               <button
                 type="button"
-                aria-label={`Share ${username}'s post`}
+                aria-label={`Share post from ${username}`}
                 onClick={onShare}
-                className="h-4 w-4 cursor-pointer text-neutral-700 hover:text-black"
+                className="cursor-pointer text-neutral-700 transition-colors hover:text-black"
               >
-                {shareIcon ?? <Send />}
+                {shareIcon ?? <Send size={15} />}
               </button>
             </div>
 
             <button
               type="button"
-              aria-label={`Save ${username}'s post`}
+              aria-label={`Save post from ${username}`}
               onClick={onBookmark}
-              className="h-4 w-4 cursor-pointer text-neutral-700 hover:text-black"
+              className="cursor-pointer text-neutral-700 transition-colors hover:text-black"
             >
-              {bookmarkIcon ?? <Bookmark />}
+              {bookmarkIcon ?? <Bookmark size={15} />}
             </button>
           </div>
 
