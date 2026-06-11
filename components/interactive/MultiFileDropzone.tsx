@@ -1,45 +1,152 @@
 "use client";
-import React, { useState } from "react";
+
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
+import type { StaticImageData } from "next/image";
 import Image from "next/image";
+
+import { cn } from "@/lib/utils";
+
 import img1 from "@/public/boy.png";
 import img2 from "@/public/dithar.png";
+
 import { X } from "@/icons/X";
 
-const initial = [
-  { id: 1, src: img1, name: "avatar.png" },
-  { id: 2, src: img2, name: "cover.jpg" },
+/*
+| Multi-file upload preview card built with Next.js, React,
+| TypeScript, and Tailwind CSS.
+|
+| Replace the demo files with your own uploaded images.
+|
+| React Users:
+| Replace `next/image` with a standard `img` element.
+*/
+
+export type MultiFileItem = {
+  id: number;
+  src: StaticImageData | string;
+  name: string;
+};
+
+export type MultiFileDropzoneProps = {
+  initialFiles?: MultiFileItem[];
+  maxFiles?: number;
+  onAdd?: () => void;
+  onRemove?: (file: MultiFileItem) => void;
+} & ComponentPropsWithoutRef<"div">;
+
+const defaultFiles: MultiFileItem[] = [
+  {
+    id: 1,
+    src: img1,
+    name: "avatar.png",
+  },
+  {
+    id: 2,
+    src: img2,
+    name: "cover.jpg",
+  },
 ];
 
-export const MultiFileDropzone = () => {
-  const [files, setFiles] = useState(initial);
+export const MultiFileDropzone = forwardRef<
+  HTMLDivElement,
+  MultiFileDropzoneProps
+>(
+  (
+    {
+      className,
+      initialFiles = defaultFiles,
+      maxFiles = 6,
+      onAdd,
+      onRemove,
+      ...props
+    },
+    ref,
+  ) => {
+    const [files, setFiles] = useState(initialFiles);
 
-  return (
-    <div className="w-72 font-sans">
-      <div className="rounded-2xl border-2 border-dashed border-neutral-200 p-3 transition-colors hover:border-neutral-300">
-        <div className="mb-3 grid grid-cols-3 gap-2">
-          {files.map((f) => (
+    const handleRemove = (file: MultiFileItem) => {
+      setFiles((prev) => prev.filter((item) => item.id !== file.id));
+      onRemove?.(file);
+    };
+
+    return (
+      <div
+        ref={ref}
+        data-slot="multi-file-dropzone"
+        className={cn("w-72 font-sans", className)}
+        {...props}
+      >
+        <div
+          data-slot="multi-file-dropzone-container"
+          className="overflow-hidden rounded-2xl border-2 border-dashed border-neutral-200 bg-white shadow-lg transition-colors hover:border-neutral-300"
+        >
+          <div className="p-3">
+            {/* -------------------------------------------------------------------------- */}
+            {/*                               Thumbnail Grid                               */}
+            {/* -------------------------------------------------------------------------- */}
+
             <div
-              key={f.id}
-              className="group relative aspect-square overflow-hidden rounded-xl"
+              data-slot="multi-file-dropzone-grid"
+              className="mb-3 grid grid-cols-3 gap-2"
             >
-              <Image src={f.src} alt={f.name} fill className="object-cover" />
-              <button
-                onClick={() => setFiles((p) => p.filter((x) => x.id !== f.id))}
-                className="absolute top-1 right-1 flex h-5 w-5 cursor-pointer items-center justify-center rounded-full bg-black/60 text-white opacity-0 transition-opacity group-hover:opacity-100"
-              >
-                <X size={10} />
-              </button>
+              {files.map((file) => (
+                <div
+                  key={file.id}
+                  data-slot="multi-file-dropzone-item"
+                  className="group relative aspect-square overflow-hidden rounded-xl"
+                >
+                  <Image
+                    src={file.src}
+                    alt={file.name}
+                    fill
+                    sizes="88px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+
+                  <button
+                    type="button"
+                    aria-label={`Remove ${file.name}`}
+                    onClick={() => handleRemove(file)}
+                    className="absolute top-1 right-1 flex h-5 w-5 cursor-pointer items-center justify-center rounded-full bg-black/60 text-white opacity-0 backdrop-blur-sm transition-all duration-200 group-hover:opacity-100 hover:bg-black/80"
+                  >
+                    <X size={10} />
+                  </button>
+                </div>
+              ))}
+
+              {files.length < maxFiles && (
+                <button
+                  type="button"
+                  data-slot="multi-file-dropzone-add-button"
+                  onClick={onAdd}
+                  className="group flex aspect-square cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-neutral-200 text-neutral-400 transition-all duration-200 hover:border-neutral-300 hover:bg-neutral-50 hover:text-neutral-500"
+                >
+                  <span className="text-lg leading-none transition-transform duration-200 group-hover:scale-110">
+                    +
+                  </span>
+
+                  <span className="mt-0.5 text-[8px] font-medium">Add</span>
+                </button>
+              )}
             </div>
-          ))}
-          <button className="flex aspect-square cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-neutral-200 text-neutral-400 transition-all hover:border-neutral-300 hover:bg-neutral-50/30 hover:text-neutral-500">
-            <span className="text-lg leading-none">+</span>
-            <span className="mt-0.5 text-[8px]">Add</span>
-          </button>
+          </div>
+
+          {/* -------------------------------------------------------------------------- */}
+          {/*                                   Footer                                   */}
+          {/* -------------------------------------------------------------------------- */}
+
+          <div
+            data-slot="multi-file-dropzone-footer"
+            className="border-t border-neutral-100 bg-neutral-50/50 px-3 py-2.5"
+          >
+            <p className="text-center text-[10px] font-medium text-neutral-500">
+              {files.length} of {maxFiles} files uploaded
+            </p>
+          </div>
         </div>
-        <p className="text-center text-[10px] text-neutral-400">
-          {files.length} of 6 files · Drop more here
-        </p>
       </div>
-    </div>
-  );
-};
+    );
+  },
+);
+
+MultiFileDropzone.displayName = "MultiFileDropzone";

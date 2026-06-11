@@ -1,48 +1,117 @@
 "use client";
-import React, { useRef, useState } from "react";
+
+import {
+  forwardRef,
+  useRef,
+  useState,
+  type ComponentPropsWithoutRef,
+} from "react";
+
 import Image from "next/image";
+
+import { cn } from "@/lib/utils";
+
 import previewImg from "@/public/dithar.png";
+
 import { X } from "@/icons/X";
 
-export const ImageUploadPreview = () => {
+/*
+| Image upload preview card built with Next.js, React,
+| TypeScript, and Tailwind CSS.
+|
+| Replace the demo image, metadata, and upload logic
+| with your own image upload implementation.
+*/
+
+export type ImageUploadPreviewProps = ComponentPropsWithoutRef<"div">;
+
+export const ImageUploadPreview = forwardRef<
+  HTMLDivElement,
+  ImageUploadPreviewProps
+>(({ className, ...props }, ref) => {
   const [preview, setPreview] = useState(true);
+
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const handleOpenFilePicker = () => {
+    inputRef.current?.click();
+  };
+
+  const handleRemovePreview = () => {
+    setPreview(false);
+  };
+
+  const handleFileChange = () => {
+    setPreview(true);
+  };
+
   return (
-    <div className="w-72 font-sans">
+    <div
+      ref={ref}
+      data-slot="image-upload-preview"
+      className={cn("w-72 font-sans", className)}
+      {...props}
+    >
       <input
         ref={inputRef}
         type="file"
         accept="image/*"
         className="hidden"
-        onChange={() => setPreview(true)}
+        onChange={handleFileChange}
       />
+
       {preview ? (
-        <div className="group relative overflow-hidden rounded-2xl border border-neutral-200 shadow-lg">
-          <div className="relative h-44">
+        <div
+          data-slot="image-upload-preview-card"
+          className="group relative overflow-hidden rounded-2xl border border-neutral-200 shadow-lg"
+        >
+          {/* Preview Image */}
+          <div
+            data-slot="image-upload-preview-image-container"
+            className="relative h-44"
+          >
             <Image
               src={previewImg}
               alt="Preview"
               fill
+              sizes="288px"
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/20" />
+
+            <div
+              data-slot="image-upload-preview-overlay"
+              className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/20"
+            />
+
             <button
-              onClick={() => setPreview(false)}
+              type="button"
+              aria-label="Remove image"
+              onClick={handleRemovePreview}
+              data-slot="image-upload-preview-remove"
               className="absolute top-2 right-2 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-black/50 text-white opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100"
             >
               <X size={12} />
             </button>
           </div>
-          <div className="flex items-center justify-between bg-white p-3">
-            <div>
+
+          {/* Footer */}
+          <div
+            data-slot="image-upload-preview-footer"
+            className="flex items-center justify-between bg-white p-3"
+          >
+            <div data-slot="image-upload-preview-details">
               <p className="text-xs font-medium text-neutral-900">
                 profile-photo.jpg
               </p>
+
               <p className="text-[10px] text-neutral-400">1.2 MB · 1920×1080</p>
             </div>
+
             <button
-              onClick={() => inputRef.current?.click()}
+              type="button"
+              aria-label="Replace image"
+              onClick={handleOpenFilePicker}
+              data-slot="image-upload-preview-replace"
               className="cursor-pointer text-[10px] font-medium text-neutral-600 hover:underline"
             >
               Replace
@@ -51,10 +120,22 @@ export const ImageUploadPreview = () => {
         </div>
       ) : (
         <div
-          onClick={() => inputRef.current?.click()}
+          role="button"
+          tabIndex={0}
+          data-slot="image-upload-preview-dropzone"
+          onClick={handleOpenFilePicker}
+          onKeyDown={(event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              handleOpenFilePicker();
+            }
+          }}
           className="flex h-44 cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-neutral-200 transition-all hover:border-neutral-300 hover:bg-neutral-50/30"
         >
-          <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-2xl bg-neutral-100">
+          <div
+            data-slot="image-upload-preview-upload-icon"
+            className="mb-2 flex h-12 w-12 items-center justify-center rounded-2xl bg-neutral-100"
+          >
             <svg
               viewBox="0 0 24 24"
               width={20}
@@ -69,7 +150,9 @@ export const ImageUploadPreview = () => {
               <path d="M21 15l-5-5L5 21" />
             </svg>
           </div>
+
           <p className="text-xs font-medium text-neutral-600">Upload image</p>
+
           <p className="mt-0.5 text-[10px] text-neutral-400">
             PNG, JPG up to 5MB
           </p>
@@ -77,4 +160,6 @@ export const ImageUploadPreview = () => {
       )}
     </div>
   );
-};
+});
+
+ImageUploadPreview.displayName = "ImageUploadPreview";

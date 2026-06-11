@@ -1,4 +1,8 @@
-import { forwardRef, type ComponentPropsWithoutRef } from "react";
+import {
+  forwardRef,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
+} from "react";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
@@ -21,9 +25,12 @@ import { Play } from "@/icons/Play";
 
 export type PodcastCardProps = {
   episodeNumber?: string;
+
   title?: string;
   host?: string;
+
   duration?: string;
+  totalDuration?: string;
 
   currentTime?: string;
   progress?: number;
@@ -31,7 +38,8 @@ export type PodcastCardProps = {
   artwork?: StaticImageData | string;
   artworkAlt?: string;
 
-  playIcon?: React.ReactNode;
+  playIcon?: ReactNode;
+  playLabel?: string;
 
   onPlay?: () => void;
 } & ComponentPropsWithoutRef<"div">;
@@ -42,9 +50,12 @@ export const PodcastCard = forwardRef<HTMLDivElement, PodcastCardProps>(
       className,
 
       episodeNumber = "Episode 42",
+
       title = "Building Design Systems That Scale",
       host = "Sarah Chen",
+
       duration = "48 min",
+      totalDuration = "48:00",
 
       currentTime = "16:42",
       progress = 35,
@@ -53,97 +64,113 @@ export const PodcastCard = forwardRef<HTMLDivElement, PodcastCardProps>(
       artworkAlt = "Podcast cover",
 
       playIcon,
+      playLabel,
 
       onPlay,
 
       ...props
     },
     ref,
-  ) => (
-    <div
-      ref={ref}
-      data-slot="podcast-card"
-      className={cn(
-        "group w-72 overflow-hidden rounded-2xl bg-neutral-900 font-sans shadow-lg",
-        className,
-      )}
-      {...props}
-    >
-      {/* Cover Artwork */}
+  ) => {
+    const safeProgress = Math.min(100, Math.max(0, progress));
+
+    return (
       <div
-        data-slot="podcast-card-cover"
-        className="relative h-32 overflow-hidden"
+        ref={ref}
+        data-slot="podcast-card"
+        className={cn(
+          "group w-72 overflow-hidden rounded-2xl bg-neutral-900 font-sans shadow-lg",
+          className,
+        )}
+        {...props}
       >
-        <Image
-          src={artwork}
-          alt={artworkAlt}
-          fill
-          sizes="288px"
-          className="object-cover opacity-70 transition-all duration-700 group-hover:scale-105 group-hover:opacity-80"
-        />
-
-        <div className="absolute inset-0 bg-linear-to-t from-neutral-900 via-neutral-900/40 to-transparent" />
-
+        {/* Cover Artwork */}
         <div
-          data-slot="podcast-card-episode"
-          className="absolute bottom-3 left-4"
+          data-slot="podcast-card-cover"
+          className="relative h-32 overflow-hidden"
         >
-          <span className="font-mono text-[10px] tracking-widest text-emerald-400 uppercase">
-            {episodeNumber}
-          </span>
-        </div>
-      </div>
+          <Image
+            src={artwork}
+            alt={artworkAlt}
+            fill
+            sizes="288px"
+            draggable={false}
+            className="object-cover opacity-70 transition-all duration-700 group-hover:scale-105 group-hover:opacity-80"
+          />
 
-      {/* Content */}
-      <div data-slot="podcast-card-content" className="p-4">
-        <h3 className="mb-1 text-sm leading-snug font-semibold text-white">
-          {title}
-        </h3>
+          <div
+            data-slot="podcast-card-overlay"
+            className="absolute inset-0 bg-linear-to-t from-neutral-900 via-neutral-900/40 to-transparent"
+          />
 
-        <p className="mb-4 text-[11px] text-neutral-500">
-          with {host} · {duration}
-        </p>
-
-        <div
-          data-slot="podcast-card-player"
-          className="flex items-center gap-3"
-        >
-          <button
-            type="button"
-            aria-label={`Play ${title}`}
-            onClick={onPlay}
-            className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition-transform hover:scale-105 active:scale-95"
+          <div
+            data-slot="podcast-card-episode"
+            className="absolute bottom-3 left-4"
           >
-            {playIcon ?? <Play size={16} />}
-          </button>
+            <span className="font-mono text-[10px] tracking-widest text-emerald-400 uppercase">
+              {episodeNumber}
+            </span>
+          </div>
+        </div>
 
-          <div className="flex-1">
-            <div
-              data-slot="podcast-card-progress"
-              className="h-1 overflow-hidden rounded-full bg-neutral-800"
+        {/* Content */}
+        <div data-slot="podcast-card-content" className="p-4">
+          <h3
+            data-slot="podcast-card-title"
+            className="mb-1 text-sm leading-snug font-semibold text-white"
+          >
+            {title}
+          </h3>
+
+          <p
+            data-slot="podcast-card-meta"
+            className="mb-4 text-[11px] text-neutral-500"
+          >
+            with {host} · {duration}
+          </p>
+
+          <div
+            data-slot="podcast-card-player"
+            className="flex items-center gap-3"
+          >
+            <button
+              type="button"
+              aria-label={playLabel ?? `Play ${title}`}
+              onClick={onPlay}
+              data-slot="podcast-card-play-button"
+              className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition-transform hover:scale-105 active:scale-95"
             >
+              {playIcon ?? <Play size={16} />}
+            </button>
+
+            <div className="flex-1">
               <div
-                className="h-full rounded-full bg-emerald-500 transition-all duration-300"
-                style={{
-                  width: `${Math.min(100, Math.max(0, progress))}%`,
-                }}
-              />
-            </div>
+                data-slot="podcast-card-progress"
+                className="h-1 overflow-hidden rounded-full bg-neutral-800"
+              >
+                <div
+                  className="h-full rounded-full bg-emerald-500 transition-all duration-300"
+                  style={{
+                    width: `${safeProgress}%`,
+                  }}
+                />
+              </div>
 
-            <div className="mt-1 flex justify-between">
-              <span className="font-mono text-[9px] text-neutral-600">
-                {currentTime}
-              </span>
+              <div className="mt-1 flex justify-between">
+                <span className="font-mono text-[9px] text-neutral-600">
+                  {currentTime}
+                </span>
 
-              <span className="font-mono text-[9px] text-neutral-600">
-                {duration}
-              </span>
+                <span className="font-mono text-[9px] text-neutral-600">
+                  {totalDuration}
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  ),
+    );
+  },
 );
 
 PodcastCard.displayName = "PodcastCard";
