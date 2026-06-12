@@ -1,79 +1,215 @@
 "use client";
-import React, { useState } from "react";
+
+import {
+  forwardRef,
+  useState,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
+} from "react";
+
+import { cn } from "@/lib/utils";
+
 import { X } from "@/icons/X";
 import { Info } from "@/icons/Info";
 import { Check } from "@/icons/Check";
 import { Alert } from "@/icons/Alert";
 
-const alerts = [
+/* -------------------------------------------------------------------------- */
+/*                                   Types                                    */
+/* -------------------------------------------------------------------------- */
+
+export type AlertBannerItem = {
+  id?: string;
+  type?: "info" | "success" | "warning" | "error";
+
+  title: string;
+  message: string;
+
+  icon?: ReactNode;
+
+  bgClass?: string;
+  textClass?: string;
+};
+
+export type AlertBannersProps = {
+  alerts?: AlertBannerItem[];
+
+  defaultVisible?: boolean[];
+
+  onDismiss?: (alert: AlertBannerItem, index: number) => void;
+} & ComponentPropsWithoutRef<"div">;
+
+/* -------------------------------------------------------------------------- */
+/*                              Default Alert Data                            */
+/* -------------------------------------------------------------------------- */
+
+const defaultAlerts: AlertBannerItem[] = [
   {
     type: "info",
-    bg: "bg-blue-50 border-blue-200",
-    text: "text-blue-800",
-    icon: <Info className="text-blue-800" />,
     title: "New update available",
-    msg: "Version 2.4 is ready to install.",
+    message: "Version 2.4 is ready to install.",
   },
   {
     type: "success",
-    bg: "bg-emerald-50 border-emerald-200",
-    text: "text-emerald-800",
-    icon: <Check className="text-emerald-800" />,
     title: "Payment successful",
-    msg: "Your subscription has been renewed.",
+    message: "Your subscription has been renewed.",
   },
   {
     type: "warning",
-    bg: "bg-amber-50 border-amber-200",
-    text: "text-amber-800",
-    icon: <Alert className="text-amber-800" />,
     title: "Storage almost full",
-    msg: "You have used 90% of your storage quota.",
+    message: "You have used 90% of your storage quota.",
   },
   {
     type: "error",
-    bg: "bg-red-50 border-red-200",
-    text: "text-red-800",
-    icon: <X className="text-red-800" />,
     title: "Connection failed",
-    msg: "Unable to reach the server. Try again.",
+    message: "Unable to reach the server. Try again.",
   },
 ];
 
-export const AlertBanners = () => {
-  const [visible, setVisible] = useState([true, true, true, true]);
+/* -------------------------------------------------------------------------- */
+/*                              Alert Variants                                */
+/* -------------------------------------------------------------------------- */
 
-  return (
-    <div className="w-80 space-y-2 font-sans">
-      {alerts.map(
-        (a, i) =>
-          visible[i] && (
+const alertStyles = {
+  info: {
+    bg: "bg-blue-50 border-blue-200",
+    text: "text-blue-800",
+    icon: <Info className="text-blue-800" />,
+  },
+
+  success: {
+    bg: "bg-emerald-50 border-emerald-200",
+    text: "text-emerald-800",
+    icon: <Check className="text-emerald-800" />,
+  },
+
+  warning: {
+    bg: "bg-amber-50 border-amber-200",
+    text: "text-amber-800",
+    icon: <Alert className="text-amber-800" />,
+  },
+
+  error: {
+    bg: "bg-red-50 border-red-200",
+    text: "text-red-800",
+    icon: <X className="text-red-800" />,
+  },
+} as const;
+
+/* -------------------------------------------------------------------------- */
+/*                              Alert Banners                                 */
+/* -------------------------------------------------------------------------- */
+
+export const AlertBanners = forwardRef<HTMLDivElement, AlertBannersProps>(
+  (
+    {
+      className,
+
+      alerts = defaultAlerts,
+
+      defaultVisible,
+
+      onDismiss,
+
+      ...props
+    },
+    ref,
+  ) => {
+    const [visible, setVisible] = useState<boolean[]>(
+      defaultVisible ?? alerts.map(() => true),
+    );
+
+    const dismissAlert = (index: number) => {
+      setVisible((current) => {
+        const next = [...current];
+        next[index] = false;
+        return next;
+      });
+
+      onDismiss?.(alerts[index], index);
+    };
+
+    return (
+      <div
+        ref={ref}
+        data-slot="alert-banners"
+        className={cn("w-80 space-y-2 font-sans", className)}
+        {...props}
+      >
+        {/* ---------------------------------------------------------------------- */}
+        {/*                                 Alerts                                 */}
+        {/* ---------------------------------------------------------------------- */}
+
+        {alerts.map((alert, index) => {
+          if (!visible[index]) return null;
+
+          const variant = alertStyles[alert.type ?? "info"];
+
+          return (
             <div
-              key={a.type}
-              className={`flex items-start gap-3 rounded-xl border p-3 ${a.bg}`}
+              key={alert.id ?? `${alert.title}-${index}`}
+              data-slot="alert-banner"
+              className={cn(
+                "flex items-start gap-3 rounded-xl border p-3",
+                alert.bgClass ?? variant.bg,
+              )}
             >
-              <span className="mt-0.5 shrink-0 text-sm">{a.icon}</span>
-              <div className="min-w-0 flex-1">
-                <p className={`text-xs font-semibold ${a.text}`}>{a.title}</p>
-                <p className={`mt-0.5 text-[11px] opacity-80 ${a.text}`}>
-                  {a.msg}
+              {/* -------------------------------------------------------------- */}
+              {/* Icon                                                           */}
+              {/* -------------------------------------------------------------- */}
+
+              <span
+                data-slot="alert-banner-icon"
+                className="mt-0.5 shrink-0 text-sm"
+              >
+                {alert.icon ?? variant.icon}
+              </span>
+
+              {/* -------------------------------------------------------------- */}
+              {/* Content                                                        */}
+              {/* -------------------------------------------------------------- */}
+
+              <div data-slot="alert-banner-content" className="min-w-0 flex-1">
+                <p
+                  data-slot="alert-banner-title"
+                  className={cn(
+                    "text-xs font-semibold",
+                    alert.textClass ?? variant.text,
+                  )}
+                >
+                  {alert.title}
+                </p>
+
+                <p
+                  data-slot="alert-banner-message"
+                  className={cn(
+                    "mt-0.5 text-[11px] opacity-80",
+                    alert.textClass ?? variant.text,
+                  )}
+                >
+                  {alert.message}
                 </p>
               </div>
+
+              {/* -------------------------------------------------------------- */}
+              {/* Close Button                                                   */}
+              {/* -------------------------------------------------------------- */}
+
               <button
-                onClick={() =>
-                  setVisible((v) => {
-                    const n = [...v];
-                    n[i] = false;
-                    return n;
-                  })
-                }
-                className="shrink-0 cursor-pointer text-neutral-400 hover:text-neutral-600"
+                type="button"
+                data-slot="alert-banner-close"
+                onClick={() => dismissAlert(index)}
+                className="shrink-0 cursor-pointer text-neutral-400 transition-colors hover:text-neutral-600"
+                aria-label={`Dismiss ${alert.title}`}
               >
                 <X size={12} />
               </button>
             </div>
-          ),
-      )}
-    </div>
-  );
-};
+          );
+        })}
+      </div>
+    );
+  },
+);
+
+AlertBanners.displayName = "AlertBanners";
