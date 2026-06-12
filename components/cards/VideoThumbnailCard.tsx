@@ -73,6 +73,7 @@ export const VideoThumbnailCard = forwardRef<
           src={thumbnailImage}
           alt={title}
           fill
+          sizes="288px"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
 

@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import { cn } from "@/lib/utils";
 
 const avatars = [
-  { initial: "JD", color: "from-violet-400 to-fuchsia-500" },
+  { initial: "JD", color: "from-teal-400 to-cyan-500" },
   { initial: "SK", color: "from-blue-400 to-cyan-500" },
   { initial: "MR", color: "from-emerald-400 to-teal-500" },
   { initial: "AL", color: "from-amber-400 to-orange-500" },

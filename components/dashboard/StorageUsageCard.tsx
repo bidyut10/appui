@@ -17,9 +17,9 @@ export interface StorageUsageCardProps extends React.ComponentPropsWithoutRef<"d
 }
 
 const DEFAULT_ITEMS: StorageItem[] = [
-  { type: "Images", size: "1.2 GB", color: "bg-violet-500" },
+  { type: "Images", size: "1.2 GB", color: "bg-teal-500" },
   { type: "Documents", size: "680 MB", color: "bg-blue-500" },
-  { type: "Videos", size: "420 MB", color: "bg-fuchsia-500" },
+  { type: "Videos", size: "420 MB", color: "bg-cyan-500" },
 ];
 
 export const StorageUsageCard = React.forwardRef<

@@ -8,7 +8,7 @@ const workspaces = [
   {
     name: "AppUI Design",
     initial: "A",
-    color: "from-violet-500 to-fuchsia-500",
+    color: "from-teal-500 to-cyan-500",
     active: true,
   },
   {
@@ -20,7 +20,7 @@ const workspaces = [
   {
     name: "Client — Stripe",
     initial: "S",
-    color: "from-indigo-500 to-purple-500",
+    color: "from-blue-500 to-blue-500",
     active: false,
   },
 ];
@@ -88,7 +88,7 @@ export const WorkspaceSwitcherDropdown = () => {
             <span className="flex-1 text-xs font-medium text-neutral-800">
               {ws.name}
             </span>
-            {selected === i && <Check size={14} className="text-violet-600" />}
+            {selected === i && <Check size={14} className="text-teal-600" />}
           </button>
         ))}
         <div className="my-1 h-px bg-neutral-100" />

@@ -92,7 +92,7 @@ export const AIStreamingCard = forwardRef<HTMLDivElement, AIStreamingCardProps>(
               {[0, 1, 2].map((dot) => (
                 <span
                   key={dot}
-                  className="h-1 w-1 animate-pulse rounded-full bg-violet-400"
+                  className="h-1 w-1 animate-pulse rounded-full bg-teal-400"
                   style={{
                     animationDelay: `${dot * 200}ms`,
                   }}
@@ -108,7 +108,7 @@ export const AIStreamingCard = forwardRef<HTMLDivElement, AIStreamingCardProps>(
             {text}
 
             {!done && (
-              <span className="ml-0.5 inline-block h-3.5 w-1.5 animate-pulse bg-violet-400" />
+              <span className="ml-0.5 inline-block h-3.5 w-1.5 animate-pulse bg-teal-400" />
             )}
           </p>
 

@@ -12,8 +12,8 @@ export const GradientHero = forwardRef<
     {...props}
   >
     <div className="absolute inset-0 bg-neutral-950" />
-    <div className="absolute top-[-40%] left-[-20%] h-64 w-64 rounded-full bg-violet-600/40 blur-[80px]" />
-    <div className="absolute right-[-10%] bottom-[-30%] h-56 w-56 rounded-full bg-fuchsia-500/30 blur-[70px]" />
+    <div className="absolute top-[-40%] left-[-20%] h-64 w-64 rounded-full bg-teal-600/40 blur-[80px]" />
+    <div className="absolute right-[-10%] bottom-[-30%] h-56 w-56 rounded-full bg-cyan-500/30 blur-[70px]" />
     <div className="absolute top-[20%] right-[10%] h-32 w-32 rounded-full bg-blue-500/20 blur-[50px]" />
 
     <div className="relative z-10 p-7">
@@ -27,7 +27,7 @@ export const GradientHero = forwardRef<
       <h2 className="mb-3 text-2xl leading-[1.15] font-semibold tracking-tight text-white">
         Build beautiful
         <br />
-        <span className="bg-linear-to-r from-violet-400 via-fuchsia-400 to-pink-400 bg-clip-text text-transparent">
+        <span className="bg-linear-to-r from-teal-400 via-cyan-400 to-pink-400 bg-clip-text text-transparent">
           websites faster
         </span>
       </h2>
@@ -51,7 +51,7 @@ export const GradientHero = forwardRef<
           {["JD", "SK", "MR", "AL"].map((i) => (
             <div
               key={i}
-              className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-950 bg-linear-to-br from-violet-400 to-fuchsia-500 text-[7px] font-bold text-white"
+              className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-950 bg-linear-to-br from-teal-400 to-cyan-500 text-[7px] font-bold text-white"
             />
           ))}
         </div>

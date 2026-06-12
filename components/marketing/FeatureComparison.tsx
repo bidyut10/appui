@@ -52,7 +52,7 @@ export const FeatureComparison = forwardRef<
           Free
         </p>
 
-        <p className="text-center text-[10px] font-semibold tracking-[0.2em] text-violet-600 uppercase">
+        <p className="text-center text-[10px] font-semibold tracking-[0.2em] text-teal-600 uppercase">
           Pro
         </p>
 

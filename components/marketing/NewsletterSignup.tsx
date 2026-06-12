@@ -10,11 +10,11 @@ export const NewsletterSignup = () => {
 
   return (
     <div className="relative w-80 overflow-hidden rounded-2xl border border-neutral-100 bg-white p-6 font-sans shadow-lg">
-      <div className="absolute top-0 right-0 h-32 w-32 rounded-bl-full bg-linear-to-bl from-violet-100 to-transparent opacity-60" />
+      <div className="absolute top-0 right-0 h-32 w-32 rounded-bl-full bg-linear-to-bl from-teal-100 to-transparent opacity-60" />
 
       <div className="relative z-10">
-        <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-violet-50">
-          <Mail size={18} className="text-violet-600" />
+        <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-teal-50">
+          <Mail size={18} className="text-teal-600" />
         </div>
 
         <h3 className="mb-1.5 text-lg font-semibold tracking-tight text-neutral-900">
@@ -41,7 +41,7 @@ export const NewsletterSignup = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@company.com"
-              className="h-10 flex-1 rounded-xl border border-neutral-200 bg-neutral-50 px-3.5 text-xs text-neutral-900 transition-all outline-none placeholder:text-neutral-400 focus:border-violet-300 focus:ring-2 focus:ring-violet-100"
+              className="h-10 flex-1 rounded-xl border border-neutral-200 bg-neutral-50 px-3.5 text-xs text-neutral-900 transition-all outline-none placeholder:text-neutral-400 focus:border-teal-300 focus:ring-2 focus:ring-teal-100"
             />
             <button
               onClick={() => email && setSubmitted(true)}

@@ -1,35 +1,108 @@
-import React, { forwardRef } from "react";
+"use client";
+
+import {
+  forwardRef,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
+} from "react";
+
+import { cn } from "@/lib/utils";
+
+/* -------------------------------------------------------------------------- */
+/*                                   Types                                    */
+/* -------------------------------------------------------------------------- */
+
+export type AppleNotesWidgetProps = {
+  timestamp?: string;
+  title?: string;
+  items?: string[];
+  actions?: ReactNode[];
+  onActionClick?: (index: number) => void;
+} & ComponentPropsWithoutRef<"div">;
+
+/* -------------------------------------------------------------------------- */
+/*                              Default Content                               */
+/* -------------------------------------------------------------------------- */
+
+const defaultItems = [
+  "Finalize component library v2",
+  "Review Apple-style glass cards",
+  "Ship before Friday demo",
+  "Get feedback from team",
+];
+
+const defaultActions = ["☑️", "📷", "✏️", "↗️"];
+
+/* -------------------------------------------------------------------------- */
+/*                                Component                                   */
+/* -------------------------------------------------------------------------- */
 
 export const AppleNotesWidget = forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className = "", ...props }, ref) => (
-  <div ref={ref} className={`w-64 font-sans ${className}`} {...props}>
-    <div className="relative rotate-[-1deg] rounded-lg bg-[#fef9c3] p-4 shadow-md shadow-yellow-200/50">
-      <div className="absolute top-0 left-1/2 h-3 w-8 -translate-x-1/2 rounded-b-sm bg-yellow-300/60" />
-      <p className="mb-2 font-mono text-[10px] text-yellow-700/50">
-        Jun 6, 2026 at 10:30 AM
-      </p>
-      <h4 className="mb-2 text-[15px] font-semibold text-yellow-900">
-        Design Meeting Notes
-      </h4>
-      <ul className="space-y-1.5 text-[13px] leading-relaxed text-yellow-900/80">
-        <li>• Finalize component library v2</li>
-        <li>• Review Apple-style glass cards</li>
-        <li>• Ship before Friday demo</li>
-        <li>• Get feedback from team</li>
-      </ul>
-      <div className="mt-4 flex gap-2 border-t border-yellow-300/40 pt-3">
-        {["☑️", "📷", "✏️", "↗️"].map((icon) => (
-          <button
-            key={icon}
-            className="cursor-pointer text-sm opacity-60 transition-opacity hover:opacity-100"
-          >
-            {icon}
-          </button>
-        ))}
+  AppleNotesWidgetProps
+>(
+  (
+    {
+      className,
+      timestamp = "Jun 6, 2026 at 10:30 AM",
+      title = "Design Meeting Notes",
+      items = defaultItems,
+      actions = defaultActions,
+      onActionClick,
+      ...props
+    },
+    ref,
+  ) => (
+    <div
+      ref={ref}
+      data-slot="apple-notes-widget"
+      className={cn("w-64 font-sans", className)}
+      {...props}
+    >
+      <div className="relative rotate-[-1deg] rounded-lg bg-[#fef9c3] p-4 shadow-md shadow-yellow-200/50">
+        <div className="absolute top-0 left-1/2 h-3 w-8 -translate-x-1/2 rounded-b-sm bg-yellow-300/60" />
+
+        <p
+          data-slot="apple-notes-widget-timestamp"
+          className="mb-2 font-mono text-[10px] text-yellow-700/50"
+        >
+          {timestamp}
+        </p>
+
+        <h4
+          data-slot="apple-notes-widget-title"
+          className="mb-2 text-[15px] font-semibold text-yellow-900"
+        >
+          {title}
+        </h4>
+
+        <ul
+          data-slot="apple-notes-widget-items"
+          className="space-y-1.5 text-[13px] leading-relaxed text-yellow-900/80"
+        >
+          {items.map((item) => (
+            <li key={item}>• {item}</li>
+          ))}
+        </ul>
+
+        <div
+          data-slot="apple-notes-widget-actions"
+          className="mt-4 flex gap-2 border-t border-yellow-300/40 pt-3"
+        >
+          {actions.map((icon, index) => (
+            <button
+              key={`${icon}-${index}`}
+              type="button"
+              onClick={() => onActionClick?.(index)}
+              className="cursor-pointer text-sm opacity-60 transition-opacity hover:opacity-100"
+            >
+              {icon}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
-  </div>
-));
+  ),
+);
+
 AppleNotesWidget.displayName = "AppleNotesWidget";

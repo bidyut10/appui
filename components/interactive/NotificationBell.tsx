@@ -77,7 +77,7 @@ export const NotificationBell = () => {
           <h4 className="text-sm font-semibold text-neutral-900">
             Notifications
           </h4>
-          <button className="cursor-pointer text-[10px] font-medium text-violet-600 hover:underline">
+          <button className="cursor-pointer text-[10px] font-medium text-teal-600 hover:underline">
             Mark all read
           </button>
         </div>
@@ -86,7 +86,7 @@ export const NotificationBell = () => {
           {notifications.map((n) => (
             <div
               key={n.title}
-              className={`flex cursor-pointer items-start gap-3 px-4 py-3 transition-colors hover:bg-neutral-50 ${n.unread ? "bg-violet-50/30" : ""}`}
+              className={`flex cursor-pointer items-start gap-3 px-4 py-3 transition-colors hover:bg-neutral-50 ${n.unread ? "bg-teal-50/30" : ""}`}
             >
               <div
                 className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${n.color}`}
@@ -102,7 +102,7 @@ export const NotificationBell = () => {
                 <p className="mt-0.5 text-[10px] text-neutral-400">{n.time}</p>
               </div>
               {n.unread && (
-                <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-500" />
+                <div className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-500" />
               )}
             </div>
           ))}

@@ -69,7 +69,7 @@ export const AuthForgotPasswordCard = forwardRef<
         {...props}
       >
         {/* Background */}
-        <Image src={bgImage} alt="Background" fill className="object-cover" />
+        <Image src={bgImage} alt="Background" fill sizes="384px" className="object-cover" />
 
         <div
           data-slot="auth-forgot-password-card-overlay"

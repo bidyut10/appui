@@ -76,6 +76,7 @@ export const MusicPlayerCard = forwardRef<HTMLDivElement, MusicPlayerCardProps>(
             src={coverImage}
             alt={title}
             fill
+            sizes="288px"
             className="object-cover opacity-80"
           />
 

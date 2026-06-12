@@ -1,3 +1,5 @@
+"use client";
+
 import {
   forwardRef,
   type ComponentPropsWithoutRef,
@@ -39,6 +41,7 @@ export type InstagramPostCardProps = {
 
   avatarAlt?: string;
   imageAlt?: string;
+  imagePriority?: boolean;
 
   likeIcon?: ReactNode;
   commentIcon?: ReactNode;
@@ -71,6 +74,7 @@ export const InstagramPostCard = forwardRef<
 
       avatarAlt = "User avatar",
       imageAlt = "Instagram post image",
+      imagePriority = false,
 
       likeIcon,
       commentIcon,
@@ -101,7 +105,7 @@ export const InstagramPostCard = forwardRef<
           data-slot="instagram-post-card-header"
           className="flex items-center gap-2 px-3 py-2.5"
         >
-          <div className="h-8 w-8 rounded-full bg-linear-to-tr from-yellow-400 via-pink-500 to-purple-600 p-0.5">
+          <div className="h-8 w-8 rounded-full bg-linear-to-tr from-yellow-400 via-pink-500 to-blue-600 p-0.5">
             <div className="h-full w-full rounded-full bg-white p-0.5">
               <div className="flex h-full w-full items-center justify-center rounded-full bg-neutral-900">
                 <Image
@@ -139,6 +143,7 @@ export const InstagramPostCard = forwardRef<
           alt={imageAlt}
           className="h-36"
           sizes="320px"
+          priority={imagePriority}
         />
 
         {/* Post content */}

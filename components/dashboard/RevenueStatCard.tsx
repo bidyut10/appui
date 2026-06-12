@@ -41,7 +41,7 @@ export const RevenueStatCard = forwardRef<HTMLDivElement, RevenueStatCardProps>(
       ref={ref}
       data-slot="revenue-stat-card"
       className={cn(
-        "w-64 rounded-2xl border border-neutral-100 bg-white p-5 font-sans shadow-lg",
+        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-sm ring-1 ring-black/[0.03]",
         className,
       )}
       {...props}
@@ -53,14 +53,14 @@ export const RevenueStatCard = forwardRef<HTMLDivElement, RevenueStatCardProps>(
       >
         <p
           data-slot="revenue-stat-title"
-          className="font-mono text-[10px] tracking-widest text-neutral-400 uppercase"
+          className="text-[11px] font-medium text-neutral-500"
         >
           {title}
         </p>
 
         <span
           data-slot="revenue-stat-growth"
-          className="rounded-full bg-emerald-50 px-1.5 py-0.5 text-[10px] font-medium text-emerald-600"
+          className="rounded-md bg-emerald-50 px-1.5 py-0.5 text-[11px] font-semibold text-emerald-700 tabular-nums"
         >
           {growth}
         </span>
@@ -69,7 +69,7 @@ export const RevenueStatCard = forwardRef<HTMLDivElement, RevenueStatCardProps>(
       {/* Revenue */}
       <p
         data-slot="revenue-stat-value"
-        className="text-3xl font-light tracking-tight text-neutral-900"
+        className="text-[2rem] font-semibold leading-none tracking-tight text-neutral-900 tabular-nums"
       >
         {revenue}
       </p>

@@ -35,7 +35,7 @@ export const CloudUploadCard = forwardRef<HTMLDivElement, CloudUploadCardProps>(
             "relative cursor-pointer overflow-hidden rounded-2xl border-2 border-dashed transition-all duration-300",
             hovering
               ? "border-neutral-400 bg-neutral-50/50"
-              : "border-neutral-200 bg-linear-to-br from-neutral-50/30 to-violet-50/30",
+              : "border-neutral-200 bg-linear-to-br from-neutral-50/30 to-teal-50/30",
           )}
         >
           {/* Content */}

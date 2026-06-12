@@ -12,7 +12,7 @@ export const EmptyState = forwardRef<
     {...props}
   >
     <div className="relative mx-auto mb-5 h-24 w-24">
-      <div className="absolute inset-0 rotate-6 rounded-3xl bg-linear-to-br from-pink-100 to-fuchsia-100" />
+      <div className="absolute inset-0 rotate-6 rounded-3xl bg-linear-to-br from-pink-100 to-cyan-100" />
       <div className="absolute inset-0 flex items-center justify-center rounded-3xl border border-neutral-200 bg-white shadow-sm">
         <Folder size={32} className="text-neutral-300" />
       </div>

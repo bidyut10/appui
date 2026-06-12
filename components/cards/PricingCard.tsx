@@ -68,7 +68,7 @@ export const PricingCard = forwardRef<HTMLDivElement, PricingCardProps>(
       {/* Top Accent */}
       <div
         data-slot="pricing-card-accent"
-        className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-violet-500 via-cyan-500 to-green-500"
+        className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-teal-500 via-cyan-500 to-green-500"
       />
 
       <div data-slot="pricing-card-content" className="p-6">

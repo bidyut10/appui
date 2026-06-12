@@ -44,13 +44,13 @@ const defaultSources: TrafficSource[] = [
   {
     name: "Direct",
     percentage: 28,
-    color: "bg-violet-500",
+    color: "bg-teal-500",
     strokeColor: "#8b5cf6",
   },
   {
     name: "Social Media",
     percentage: 18,
-    color: "bg-fuchsia-500",
+    color: "bg-cyan-500",
     strokeColor: "#d946ef",
   },
   {

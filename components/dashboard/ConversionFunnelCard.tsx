@@ -40,13 +40,13 @@ const defaultStages: ConversionStage[] = [
     stage: "Signups",
     count: "3,842",
     percentage: 65,
-    color: "bg-violet-500",
+    color: "bg-teal-500",
   },
   {
     stage: "Trials",
     count: "1,204",
     percentage: 40,
-    color: "bg-fuchsia-500",
+    color: "bg-cyan-500",
   },
   {
     stage: "Paid",

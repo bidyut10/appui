@@ -50,7 +50,7 @@ export const Timeline = forwardRef<
             className={`absolute top-1 -left-6 flex h-3.5 w-3.5 items-center justify-center rounded-full border-2 ${
               step.done
                 ? step.active
-                  ? "border-violet-500 bg-violet-500"
+                  ? "border-teal-500 bg-teal-500"
                   : "border-emerald-500 bg-emerald-500"
                 : "border-neutral-300 bg-white"
             }`}

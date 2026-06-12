@@ -55,14 +55,14 @@ export const LanguagePickerDropdown = () => {
               setOpen(false);
             }}
             className={`flex w-full cursor-pointer items-center gap-2.5 rounded-xl px-2.5 py-2 text-left transition-colors ${
-              selected === i ? "bg-violet-50" : "hover:bg-neutral-50"
+              selected === i ? "bg-teal-50" : "hover:bg-neutral-50"
             }`}
           >
             <span className="text-base">{lang.flag}</span>
             <span className="flex-1 text-xs font-medium text-neutral-800">
               {lang.name}
             </span>
-            {selected === i && <Check size={13} className="text-violet-600" />}
+            {selected === i && <Check size={13} className="text-teal-600" />}
           </button>
         ))}
       </div>

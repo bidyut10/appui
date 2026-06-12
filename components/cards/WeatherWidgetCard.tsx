@@ -64,7 +64,7 @@ export const WeatherWidgetCard = forwardRef<
       {/* Background */}
       <div
         data-slot="weather-widget-card-background"
-        className="absolute inset-0 bg-linear-to-br from-sky-400 via-blue-500 to-indigo-600"
+        className="absolute inset-0 bg-linear-to-br from-sky-400 via-blue-500 to-blue-600"
       />
 
       {/* Glow */}

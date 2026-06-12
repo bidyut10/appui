@@ -39,7 +39,7 @@ const defaultMetrics: UserGrowthMetric[] = [
     label: "Returning",
     value: "+128",
     percentage: 45,
-    color: "bg-violet-500",
+    color: "bg-teal-500",
   },
   {
     label: "Churned",

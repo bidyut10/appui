@@ -48,12 +48,12 @@ export const CreditCardGlass = forwardRef<HTMLDivElement, CreditCardGlassProps>(
       {/* Glow Effects */}
       <div
         data-slot="credit-card-glass-glow-top"
-        className="absolute top-[-20%] right-[-10%] h-40 w-40 rounded-full bg-violet-500/30 blur-[50px] transition-colors duration-700 group-hover:bg-violet-500/40"
+        className="absolute top-[-20%] right-[-10%] h-40 w-40 rounded-full bg-teal-500/30 blur-[50px] transition-colors duration-700 group-hover:bg-teal-500/40"
       />
 
       <div
         data-slot="credit-card-glass-glow-bottom"
-        className="absolute bottom-[-30%] left-[-10%] h-48 w-48 rounded-full bg-fuchsia-500/20 blur-[60px]"
+        className="absolute bottom-[-30%] left-[-10%] h-48 w-48 rounded-full bg-cyan-500/20 blur-[60px]"
       />
 
       {/* Card Content */}

@@ -20,6 +20,7 @@ export const BentoFeatureGrid = forwardRef<
         src={bgImage}
         alt="Feature preview"
         fill
+        sizes="320px"
         className="object-cover opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:opacity-70"
       />
       <div className="absolute inset-0 bg-linear-to-t from-neutral-900 via-neutral-900/40 to-transparent" />
@@ -35,11 +36,11 @@ export const BentoFeatureGrid = forwardRef<
       </div>
     </div>
 
-    <div className="group flex flex-col justify-between rounded-2xl border border-violet-100 bg-violet-50 p-3 transition-colors hover:bg-violet-100/80">
-      <ReactJs size={20} className="text-violet-600" />
+    <div className="group flex flex-col justify-between rounded-2xl border border-teal-100 bg-teal-50 p-3 transition-colors hover:bg-teal-100/80">
+      <ReactJs size={20} className="text-teal-600" />
       <div>
-        <p className="text-xs font-semibold text-violet-900">React 19</p>
-        <p className="mt-0.5 text-[10px] text-violet-600/70">
+        <p className="text-xs font-semibold text-teal-900">React 19</p>
+        <p className="mt-0.5 text-[10px] text-teal-600/70">
           Server components ready
         </p>
       </div>
@@ -58,7 +59,7 @@ export const BentoFeatureGrid = forwardRef<
       <NextJs size={18} />
     </div>
 
-    <div className="flex flex-col items-center justify-center rounded-2xl bg-linear-to-br from-fuchsia-500 to-violet-600 p-3 text-white">
+    <div className="flex flex-col items-center justify-center rounded-2xl bg-linear-to-br from-cyan-500 to-teal-600 p-3 text-white">
       <p className="font-mono text-[10px] tracking-widest uppercase opacity-70">
         Free
       </p>

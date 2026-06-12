@@ -114,7 +114,7 @@ export const CalendarWidgetCard = forwardRef<
                 selected === date
                   ? "bg-neutral-900 text-white"
                   : date === highlightedDate
-                    ? "bg-violet-50 text-violet-700"
+                    ? "bg-teal-50 text-teal-700"
                     : "text-neutral-700 hover:bg-neutral-100",
               )}
             >
@@ -132,8 +132,8 @@ export const CalendarWidgetCard = forwardRef<
             Today
           </p>
 
-          <div className="flex items-center gap-2 rounded-lg bg-violet-50 p-2">
-            <div className="h-8 w-1 rounded-full bg-violet-500" />
+          <div className="flex items-center gap-2 rounded-lg bg-teal-50 p-2">
+            <div className="h-8 w-1 rounded-full bg-teal-500" />
 
             <div>
               <p className="text-xs font-medium text-neutral-900">

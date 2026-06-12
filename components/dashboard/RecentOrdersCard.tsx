@@ -1,3 +1,5 @@
+"use client";
+
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
@@ -131,7 +133,7 @@ export const RecentOrdersCard = forwardRef<
           type="button"
           data-slot="recent-orders-view-all"
           onClick={onViewAll}
-          className="cursor-pointer text-[10px] font-medium text-violet-600 hover:underline"
+          className="cursor-pointer text-[10px] font-medium text-teal-600 hover:underline"
         >
           {viewAllLabel}
         </button>

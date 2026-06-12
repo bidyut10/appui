@@ -120,6 +120,33 @@ import { QuickStatsRow } from "@/components/dashboard/QuickStatsRow";
 import { DashboardWelcomeHeader } from "@/components/dashboard/DashboardWelcomeHeader";
 import { DashboardSidebarMini } from "@/components/dashboard/DashboardSidebarMini";
 import { AnalyticsMiniCard } from "@/components/dashboard/AnalyticsMiniCard";
+import { MrrBreakdownCard } from "@/components/dashboard/MrrBreakdownCard";
+import { SessionHeatmapCard } from "@/components/dashboard/SessionHeatmapCard";
+import { ApiLatencyCard } from "@/components/dashboard/ApiLatencyCard";
+import { TeamCapacityCard } from "@/components/dashboard/TeamCapacityCard";
+import { GoalProgressCard } from "@/components/dashboard/GoalProgressCard";
+import { SupportQueueCard } from "@/components/dashboard/SupportQueueCard";
+import { GeoVisitorsCard } from "@/components/dashboard/GeoVisitorsCard";
+import { BurnRunwayCard } from "@/components/dashboard/BurnRunwayCard";
+import { KpiSparklineGrid } from "@/components/dashboard/KpiSparklineGrid";
+import { ActivityTimelineWidget } from "@/components/dashboard/ActivityTimelineWidget";
+import { ChurnRiskCard } from "@/components/dashboard/ChurnRiskCard";
+import { InvoicePipelineCard } from "@/components/dashboard/InvoicePipelineCard";
+import { UptimeMonitorCard } from "@/components/dashboard/UptimeMonitorCard";
+import { NotificationDigestCard } from "@/components/dashboard/NotificationDigestCard";
+import { RetentionCohortCard } from "@/components/dashboard/RetentionCohortCard";
+import { LivePulseMetricCard } from "@/components/dashboard/LivePulseMetricCard";
+import { ExperimentAbCard } from "@/components/dashboard/ExperimentAbCard";
+import { RevenueBridgeCard } from "@/components/dashboard/RevenueBridgeCard";
+import { NpsSpectrumCard } from "@/components/dashboard/NpsSpectrumCard";
+import { DailyBriefingCard } from "@/components/dashboard/DailyBriefingCard";
+import { RadialMultiGaugeCard } from "@/components/dashboard/RadialMultiGaugeCard";
+import { DealPipelineCard } from "@/components/dashboard/DealPipelineCard";
+import { TrendMilestoneCard } from "@/components/dashboard/TrendMilestoneCard";
+import { BudgetDialCard } from "@/components/dashboard/BudgetDialCard";
+import { ChannelLollipopCard } from "@/components/dashboard/ChannelLollipopCard";
+import { SlaCountdownCard } from "@/components/dashboard/SlaCountdownCard";
+import { SplitCompareCard } from "@/components/dashboard/SplitCompareCard";
 import { BreadcrumbNav } from "@/components/website/BreadcrumbNav";
 import { PaginationBar } from "@/components/website/PaginationBar";
 import { AlertBanners } from "@/components/website/AlertBanners";
@@ -151,12 +178,56 @@ import { AppleWalletStack } from "@/components/apple/AppleWalletStack";
 import { AppleWidgetStack } from "@/components/apple/AppleWidgetStack";
 import { AppleStoreAppTile } from "@/components/apple/AppleStoreAppTile";
 import { AppleFitnessSummary } from "@/components/apple/AppleFitnessSummary";
+import { TerminalLogCard } from "@/components/cards/TerminalLogCard";
+import { ThermalReceiptCard } from "@/components/cards/ThermalReceiptCard";
+import { VoiceWaveCard } from "@/components/cards/VoiceWaveCard";
+import { HabitStreakCard } from "@/components/cards/HabitStreakCard";
+import { CinemaTicketCard } from "@/components/cards/CinemaTicketCard";
+import { EditorialQuoteCard } from "@/components/cards/EditorialQuoteCard";
+import { CourierTrackingCard } from "@/components/cards/CourierTrackingCard";
+import { CryptoTickerCard } from "@/components/cards/CryptoTickerCard";
+import { NeumorphicSettingsCard } from "@/components/cards/NeumorphicSettingsCard";
+import { RecipeIngredientCard } from "@/components/cards/RecipeIngredientCard";
+import { KeyboardShortcutsCard } from "@/components/cards/KeyboardShortcutsCard";
+import { AuroraProfileCard } from "@/components/cards/AuroraProfileCard";
+import { FocusTimerCard } from "@/components/interactive/FocusTimerCard";
+import { CommandDockBar } from "@/components/sections/CommandDockBar";
+import { TypographicPosterCard } from "@/components/text/TypographicPosterCard";
+import { PullQuoteCard } from "@/components/text/PullQuoteCard";
+import { TabloidHeadlineCard } from "@/components/text/TabloidHeadlineCard";
+import { ReadingProgressCard } from "@/components/text/ReadingProgressCard";
+import { LinedJournalCard } from "@/components/text/LinedJournalCard";
+import { TypeSpecimenCard } from "@/components/text/TypeSpecimenCard";
+import { ProfileMenuPreviewCard } from "@/components/dropdowns/ProfileMenuPreviewCard";
+import { SortMenuPreviewCard } from "@/components/dropdowns/SortMenuPreviewCard";
+import { NotificationPanelPreviewCard } from "@/components/dropdowns/NotificationPanelPreviewCard";
+import { WorkspaceSwitcherPreviewCard } from "@/components/dropdowns/WorkspaceSwitcherPreviewCard";
+import { ActionMenuPreviewCard } from "@/components/dropdowns/ActionMenuPreviewCard";
+import { FilterPillsWidget } from "@/components/widgets/FilterPillsWidget";
+import { LiveActivityPillCard } from "@/components/widgets/LiveActivityPillCard";
+import { AppointmentPickerCard } from "@/components/widgets/AppointmentPickerCard";
+import { InboxSummaryCard } from "@/components/widgets/InboxSummaryCard";
+import { CheckoutStepperCard } from "@/components/widgets/CheckoutStepperCard";
+import { DateRangePillsWidget } from "@/components/widgets/DateRangePillsWidget";
+import { MetricBentoWidget } from "@/components/widgets/MetricBentoWidget";
+import { StatsRibbonWidget } from "@/components/widgets/StatsRibbonWidget";
+import { ComparePeriodWidget } from "@/components/widgets/ComparePeriodWidget";
+import { ScoreRingWidget } from "@/components/widgets/ScoreRingWidget";
+import { FilmStripCard } from "@/components/cards/FilmStripCard";
+import { EditorialSpreadCard } from "@/components/cards/EditorialSpreadCard";
+import { PhotoContactSheetCard } from "@/components/cards/PhotoContactSheetCard";
+import { ProductCatalogCard } from "@/components/cards/ProductCatalogCard";
+import { StampPostcardCard } from "@/components/cards/StampPostcardCard";
+import { RetailPriceTagCard } from "@/components/cards/RetailPriceTagCard";
+import { SplitFeatureCard } from "@/components/cards/SplitFeatureCard";
+import { ChapterOpenerCard } from "@/components/text/ChapterOpenerCard";
+import { StatEditorialCard } from "@/components/text/StatEditorialCard";
 
 type Row = (React.ReactNode | null)[];
 
 const rows: Row[] = [
   // Social & Profile Cards
-  [<InstagramPostCard />, <FacebookPostCard />, <LinkedInPostCard />],
+  [<InstagramPostCard imagePriority />, <FacebookPostCard />, <LinkedInPostCard />],
   [<TwitterPostCard />, <BusinessCard />, <GithubContributionCard />],
   [<NotepadCard />, <FacebookProfileCard />, <GoogleProfileCard />],
   [<TwitterProfileCard />, <LinkedInProfileCard />, <GithubProfileCard />],
@@ -185,28 +256,47 @@ const rows: Row[] = [
 
   // Music & Video
   [<MusicPlayerCard />, <MusicPlaylistCard />, <VideoThumbnailCard />],
-  [<NowPlayingBar />, <PodcastCard />, <AppStoreReviewCard />],
+  [<NowPlayingBar />, <AppStoreReviewCard />, <VoiceWaveCard />],
 
   // File Upload
   [<FileUploadZone />, <FileUploadProgress />, <FileUploadList />],
   [<ImageUploadPreview />, <CloudUploadCard />, <MultiFileDropzone />],
 
   // Business & SaaS
-  [<TestimonialCard />, <MetricCard />, <ProgressRingCard />],
+  [<TestimonialCard />, <MetricCard />, <AuroraProfileCard />],
   [<AvatarGroupCard />, <BlogPostCard />, <TeamMemberCard />],
-  [<ActivityFeedCard />, <FeatureTabsCard />, <SocialProofBar />],
+  [<ActivityFeedCard />, <FeatureTabsCard />, <ProgressRingCard />],
 
-  // Dashboard — Layout
-  [<DashboardWelcomeHeader />, <DashboardSidebarMini />, <QuickStatsRow />],
+  // Dashboard — Layout & Controls
+  [<DashboardWelcomeHeader />, <StatsRibbonWidget />, <DateRangePillsWidget />],
 
-  // Dashboard — Analytics & Revenue
+  // Dashboard — Live & Hero Metrics
+  [<LivePulseMetricCard />, <SplitCompareCard />, <ScoreRingWidget />],
+  [<DailyBriefingCard />, <ComparePeriodWidget />, <MetricBentoWidget />],
+
+  // Dashboard — Core KPIs
+  [<QuickStatsRow />, <KpiSparklineGrid />, <MrrBreakdownCard />],
+  [<TrendMilestoneCard />, <RevenueBridgeCard />, <NpsSpectrumCard />],
+
+  // Dashboard — Analytics & Charts
   [<RevenueStatCard />, <SalesOverviewCard />, <AnalyticsMiniCard />],
-  [<UserGrowthCard />, <TrafficSourcesCard />, <ConversionFunnelCard />],
+  [<UserGrowthCard />, <ChannelLollipopCard />, <RetentionCohortCard />],
+  [<ApiLatencyCard />, <SessionHeatmapCard />, <GeoVisitorsCard />],
+  [<RadialMultiGaugeCard />, <BudgetDialCard />, <ExperimentAbCard />],
+
+  // Dashboard — Finance & Goals
+  [<BurnRunwayCard />, <GoalProgressCard />, <InvoicePipelineCard />],
+  [<SupportQueueCard />, <ChurnRiskCard />, <TeamCapacityCard />],
+  [<DealPipelineCard />, <SlaCountdownCard />, <TrafficSourcesCard />],
 
   // Dashboard — Data & Operations
   [<TopProductsCard />, <RecentOrdersCard />, <LeaderboardCard />],
   [<TaskSummaryCard />, <CalendarWidgetCard />, <StorageUsageCard />],
-  [<ServerStatusCard />, <MetricCard />, <ProgressRingCard />],
+  [<ServerStatusCard />, <UptimeMonitorCard />, <NotificationDigestCard />],
+
+  // Dashboard — Activity & Funnels
+  [<ActivityTimelineWidget />, <ConversionFunnelCard />, <FocusTimerCard />],
+  [<LiveActivityPillCard />, <CryptoTickerCard />, <InboxSummaryCard />],
 
   // Website Essentials — Navigation & UI
   [<BreadcrumbNav />, <PaginationBar />, <AlertBanners />],
@@ -238,22 +328,22 @@ const rows: Row[] = [
 
   // Apple Design — System UI
   [<AppleSettingsList />, <AppleControlCenter />, <AppleNotificationBanner />],
-  [<AppleSpotlight />, <ApplePayButton />, <AppleStoreAppTile />],
+  [<AppleSpotlight />, <ApplePayButton />, <CommandDockBar />],
 
   // Mockups
   [<PhoneMockupCard />, <BrowserMockupCard />, <LaptopMockupCard />],
 
   // Skeletons
   [<CardSkeleton />, <ProfileSkeleton />, <DashboardSkeleton />],
-  [<ImageGridSkeleton />, <TableSkeleton />, <DashboardSkeleton />],
+  [<ImageGridSkeleton />, <TableSkeleton />, <ChatSkeleton />],
 
   // Website Sections
   [<BentoFeatureGrid />, <GradientHero />, <GlassNavbar />],
-  [<NewsletterSignup />, <LogoMarquee />, <CTAGradientBanner />],
-  [<Timeline />, <MiniFooter />, <NotificationToast />],
+  [<NewsletterSignup />, <LogoMarquee />, <SocialProofBar />],
+  [<Timeline />, <MiniFooter />, <CTAGradientBanner />],
 
   // Interactive
-  [<NotificationBell />, <KanbanBoard />, <CookieBanner />],
+  [<NotificationBell />, <KanbanBoard />, <NeumorphicSettingsCard />],
 
   // Navigation & Accordions
   [<HomeMenuBar />, <BorderedAccordion />, <MinimalAccordion />],
@@ -275,22 +365,55 @@ const rows: Row[] = [
   ],
   [<LanguagePickerDropdown />, <ThemeColorDropdown />, <DateRangeDropdown />],
   [<ContextMenuDropdown />, null, null],
+
+  // New — Developer & Terminal
+  [<TerminalLogCard />, <KeyboardShortcutsCard />, <ThermalReceiptCard />],
+
+  // New — Editorial & Cinema
+  [<EditorialQuoteCard />, <CinemaTicketCard />, <AppleStoreAppTile />],
+
+  // New — Lifestyle & Tracking
+  [<RecipeIngredientCard />, <CourierTrackingCard />, <HabitStreakCard />],
+
+  // Typography & Editorial
+  [<TypographicPosterCard />, <PullQuoteCard />, <TabloidHeadlineCard />],
+  [<ReadingProgressCard />, <LinedJournalCard />, <TypeSpecimenCard />],
+  [<ChapterOpenerCard />, <StatEditorialCard />, <SplitFeatureCard />],
+
+  // Dropdown & Menu Previews
+  [<ProfileMenuPreviewCard />, <SortMenuPreviewCard />, <ActionMenuPreviewCard />],
+  [
+    <NotificationPanelPreviewCard />,
+    <WorkspaceSwitcherPreviewCard />,
+    <FilterPillsWidget />,
+  ],
+
+  // Image & Print Media
+  [<FilmStripCard />, <EditorialSpreadCard />, <PhotoContactSheetCard />],
+  [<ProductCatalogCard />, <StampPostcardCard />, <RetailPriceTagCard />],
+
+  // Light Widgets & Pickers
+  [<AppointmentPickerCard />, <FilterPillsWidget />, <CheckoutStepperCard />],
+  [<DashboardSidebarMini />, null, <NotificationToast />],
 ];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen w-full flex-col items-center pb-10">
-      <div className="mb-10 flex max-w-xl flex-col items-center text-center">
-        <h1 className="mb-2">Introduction</h1>
+    <div className="flex min-h-screen w-full flex-col items-center px-3 pb-10 sm:px-4">
+      <div className="mb-8 flex max-w-xl flex-col items-center px-2 text-center sm:mb-10">
+        <h1 className="mb-2 text-xl sm:text-2xl">Introduction</h1>
         <p className="max-w-lg text-sm leading-relaxed text-neutral-500">
           A handcrafted collection of copy-paste components for production apps.
           Every component is live-previewed, open source, and yours to use.
         </p>
       </div>
 
-      <div className="w-full space-y-2 px-2">
+      <div className="w-full max-w-[1600px] space-y-2">
         {rows.map((row, i) => (
-          <div key={i} className="flex w-full gap-2">
+          <div
+            key={i}
+            className="flex w-full flex-col gap-2 sm:flex-row sm:gap-2"
+          >
             {row.map((node, j) => (
               <Box key={j}>{node}</Box>
             ))}

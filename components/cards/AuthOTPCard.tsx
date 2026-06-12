@@ -145,7 +145,7 @@ export const AuthOTPCard = forwardRef<HTMLDivElement, AuthOTPCardProps>(
         {...props}
       >
         {/* Background */}
-        <Image src={imageSrc} alt="Background" fill className="object-cover" />
+        <Image src={imageSrc} alt="Background" fill sizes="384px" className="object-cover" />
 
         <div
           data-slot="auth-otp-card-overlay"

@@ -92,7 +92,7 @@ export const FilterSortDropdown = () => {
               onClick={() => toggleFilter(f)}
               className={`cursor-pointer rounded-full px-2.5 py-1 text-[10px] font-medium transition-colors ${
                 activeFilters.includes(f)
-                  ? "bg-violet-600 text-white"
+                  ? "bg-teal-600 text-white"
                   : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
               }`}
             >

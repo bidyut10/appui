@@ -81,7 +81,7 @@ export const EventTicketCard = forwardRef<HTMLDivElement, EventTicketCardProps>(
             className="object-cover"
           />
 
-          <div className="absolute inset-0 bg-violet-900/40" />
+          <div className="absolute inset-0 bg-teal-900/40" />
 
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
             <span className="font-mono text-[10px] tracking-wider uppercase opacity-70">
@@ -108,7 +108,7 @@ export const EventTicketCard = forwardRef<HTMLDivElement, EventTicketCardProps>(
             style={{ boxShadow: "inset 0 0 0 4px white" }}
           />
 
-          <span className="font-mono text-[10px] tracking-widest text-violet-600 uppercase">
+          <span className="font-mono text-[10px] tracking-widest text-teal-600 uppercase">
             Live Event
           </span>
 

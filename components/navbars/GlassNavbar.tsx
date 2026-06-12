@@ -33,7 +33,7 @@ export const GlassNavbar = () => {
             <Icon size={13} />
             {label}
             {badge && active !== label && (
-              <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-violet-500 text-[8px] font-bold text-white">
+              <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-teal-500 text-[8px] font-bold text-white">
                 {badge}
               </span>
             )}

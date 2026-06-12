@@ -28,7 +28,7 @@ const DEFAULT_LEADERS = [
     score: 2180,
     rank: 4,
     initial: "EW",
-    color: "from-violet-400 to-fuchsia-500",
+    color: "from-teal-400 to-cyan-500",
   },
   {
     name: "John Doe",

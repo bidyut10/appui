@@ -15,13 +15,13 @@ export const SpotlightSearchBar = () => {
       <div
         className={`relative overflow-hidden rounded-2xl border transition-all duration-300 ${
           focused
-            ? "border-violet-300 shadow-[0_0_0_4px_rgba(139,92,246,0.1),0_8px_30px_rgba(139,92,246,0.12)]"
+            ? "border-teal-300 shadow-[0_0_0_4px_rgba(20,184,166,0.1),0_8px_30px_rgba(20,184,166,0.12)]"
             : "border-neutral-200 shadow-sm"
         } `}
       >
-        <div className="absolute inset-0 bg-linear-to-r from-violet-50/80 via-white to-fuchsia-50/80" />
+        <div className="absolute inset-0 bg-linear-to-r from-teal-50/80 via-white to-cyan-50/80" />
         <div className="relative flex items-center">
-          <div className="ml-3.5 flex h-8 w-8 items-center justify-center rounded-xl bg-linear-to-br from-violet-500 to-fuchsia-500 shadow-sm">
+          <div className="ml-3.5 flex h-8 w-8 items-center justify-center rounded-xl bg-linear-to-br from-teal-500 to-cyan-500 shadow-sm">
             <Search className="h-3.5 w-3.5 text-white" />
           </div>
           <input

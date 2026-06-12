@@ -17,6 +17,7 @@ export const LaptopMockupCard = forwardRef<
           src={screenContent}
           alt="Dashboard"
           fill
+          sizes="288px"
           className="object-cover object-top"
         />
       </div>

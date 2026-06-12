@@ -1,3 +1,5 @@
+"use client";
+
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";

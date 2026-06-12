@@ -68,11 +68,11 @@ export const DuotoneImageCard = forwardRef<
         <div className="absolute inset-0 bg-neutral-600 opacity-80 mix-blend-color transition-opacity duration-500 group-hover:opacity-70" />
 
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-linear-to-t from-indigo-950/90 via-indigo-900/30 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-slate-950/90 via-slate-900/30 to-transparent" />
 
         {/* Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-          <span className="mb-3 font-mono text-[10px] tracking-[0.3em] text-indigo-300 uppercase">
+          <span className="mb-3 font-mono text-[10px] tracking-[0.3em] text-blue-300 uppercase">
             {badge}
           </span>
 
@@ -82,7 +82,7 @@ export const DuotoneImageCard = forwardRef<
             <span className="font-bold">{highlightedTitle}</span>
           </h3>
 
-          <p className="mt-3 text-xs leading-relaxed text-indigo-200/60">
+          <p className="mt-3 text-xs leading-relaxed text-blue-200/60">
             {description}
           </p>
         </div>

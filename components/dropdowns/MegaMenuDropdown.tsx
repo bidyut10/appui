@@ -63,11 +63,11 @@ export const MegaMenuDropdown = () => {
                   className="group/item w-full cursor-pointer rounded-xl px-2 py-2 text-left transition-colors hover:bg-neutral-50"
                 >
                   <div className="flex items-center gap-1.5">
-                    <span className="text-xs font-semibold text-neutral-800 transition-colors group-hover/item:text-violet-700">
+                    <span className="text-xs font-semibold text-neutral-800 transition-colors group-hover/item:text-teal-700">
                       {item.name}
                     </span>
                     {"badge" in item && item.badge && (
-                      <span className="rounded-full bg-violet-100 px-1 py-px text-[8px] font-bold text-violet-600">
+                      <span className="rounded-full bg-teal-100 px-1 py-px text-[8px] font-bold text-teal-600">
                         {item.badge}
                       </span>
                     )}
@@ -85,7 +85,7 @@ export const MegaMenuDropdown = () => {
           <span className="text-[10px] text-neutral-500">
             50+ components available
           </span>
-          <button className="flex cursor-pointer items-center gap-1 text-[10px] font-semibold text-violet-600 hover:underline">
+          <button className="flex cursor-pointer items-center gap-1 text-[10px] font-semibold text-teal-600 hover:underline">
             View all <ArrowRight size={10} />
           </button>
         </div>

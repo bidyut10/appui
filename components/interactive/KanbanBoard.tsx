@@ -63,7 +63,7 @@ export const KanbanBoard = () => {
                   }
                   className={`cursor-pointer rounded-xl border bg-white p-2.5 transition-all duration-200 ${
                     activeCard === card.title
-                      ? "border-violet-300 shadow-sm ring-2 shadow-violet-100 ring-violet-100"
+                      ? "border-teal-300 shadow-sm ring-2 shadow-teal-100 ring-teal-100"
                       : "border-neutral-100 hover:border-neutral-200 hover:shadow-sm"
                   } `}
                 >
@@ -76,7 +76,7 @@ export const KanbanBoard = () => {
                     </span>
                     <div className="flex items-center gap-1">
                       <Clock size={8} className="text-neutral-300" />
-                      <div className="flex h-4 w-4 items-center justify-center rounded-full bg-linear-to-br from-violet-400 to-fuchsia-500 text-[6px] font-bold text-white">
+                      <div className="flex h-4 w-4 items-center justify-center rounded-full bg-linear-to-br from-teal-400 to-cyan-500 text-[6px] font-bold text-white">
                         {card.assignee}
                       </div>
                     </div>

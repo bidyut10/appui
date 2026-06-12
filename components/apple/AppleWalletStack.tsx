@@ -1,63 +1,110 @@
-import React, { forwardRef } from "react";
+"use client";
 
-const passes: { name: string; title: string; color: string; detail: string }[] =
-  [
-    {
-      name: "Boarding Pass",
-      title: "AI 2847",
-      color: "from-blue-600 to-blue-800",
-      detail: "CCU → DEL",
-    },
-    {
-      name: "Event Ticket",
-      title: "Design Conf 2026",
-      color: "from-purple-600 to-indigo-800",
-      detail: "VIP Pass",
-    },
-    {
-      name: "Membership",
-      title: "AppUI Pro",
-      color: "from-neutral-700 to-neutral-900",
-      detail: "Valid until Dec 2026",
-    },
-  ];
+import { forwardRef, type ComponentPropsWithoutRef } from "react";
+
+import { cn } from "@/lib/utils";
+
+/* -------------------------------------------------------------------------- */
+/*                                   Types                                    */
+/* -------------------------------------------------------------------------- */
+
+export type AppleWalletPass = {
+  name: string;
+  title: string;
+  color: string;
+  detail: string;
+};
+
+export type AppleWalletStackProps = {
+  passes?: AppleWalletPass[];
+  onPassClick?: (pass: AppleWalletPass, index: number) => void;
+} & ComponentPropsWithoutRef<"div">;
+
+/* -------------------------------------------------------------------------- */
+/*                              Default Content                               */
+/* -------------------------------------------------------------------------- */
+
+const defaultPasses: AppleWalletPass[] = [
+  {
+    name: "Boarding Pass",
+    title: "AI 2847",
+    color: "from-blue-600 to-blue-800",
+    detail: "CCU → DEL",
+  },
+  {
+    name: "Event Ticket",
+    title: "Design Conf 2026",
+    color: "from-blue-600 to-blue-800",
+    detail: "VIP Pass",
+  },
+  {
+    name: "Membership",
+    title: "AppUI Pro",
+    color: "from-neutral-700 to-neutral-900",
+    detail: "Valid until Dec 2026",
+  },
+];
+
+/* -------------------------------------------------------------------------- */
+/*                                Component                                   */
+/* -------------------------------------------------------------------------- */
 
 export const AppleWalletStack = forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className = "", ...props }, ref) => (
-  <div
-    ref={ref}
-    className={`relative h-64 w-72 font-sans ${className}`}
-    {...props}
-  >
-    {passes.map((pass, i) => (
-      <div
-        key={pass.name}
-        className={`absolute inset-x-0 bg-linear-to-br ${pass.color} cursor-pointer rounded-2xl p-4 text-white shadow-lg transition-transform hover:-translate-y-1`}
-        style={{ top: `${i * 28}px`, zIndex: passes.length - i }}
-      >
-        <p className="text-[10px] font-medium tracking-wider text-white/60 uppercase">
-          {pass.name}
-        </p>
-        <p className="mt-1 text-lg font-semibold tracking-tight">
-          {pass.title}
-        </p>
-        <p className="mt-1 text-[12px] text-white/60">{pass.detail}</p>
-        {i === 0 && (
-          <div className="absolute right-4 bottom-3 flex h-10 w-10 items-center justify-center rounded-lg bg-white/10">
-            <div className="grid h-6 w-6 grid-cols-3 gap-px">
-              {Array.from({ length: 9 }).map((_, j) => (
-                <div
-                  key={j}
-                  className={`${j % 2 === 0 ? "bg-white" : "bg-transparent"}`}
-                />
-              ))}
+  AppleWalletStackProps
+>(
+  (
+    {
+      className,
+      passes = defaultPasses,
+      onPassClick,
+      ...props
+    },
+    ref,
+  ) => (
+    <div
+      ref={ref}
+      data-slot="apple-wallet-stack"
+      className={cn("relative h-64 w-72 font-sans", className)}
+      {...props}
+    >
+      {passes.map((pass, index) => (
+        <div
+          key={pass.name}
+          data-slot="apple-wallet-stack-pass"
+          onClick={() => onPassClick?.(pass, index)}
+          className={cn(
+            "absolute inset-x-0 bg-linear-to-br cursor-pointer rounded-2xl p-4 text-white shadow-lg transition-transform hover:-translate-y-1",
+            pass.color,
+            onPassClick && "cursor-pointer",
+          )}
+          style={{ top: `${index * 28}px`, zIndex: passes.length - index }}
+        >
+          <p className="text-[10px] font-medium tracking-wider text-white/60 uppercase">
+            {pass.name}
+          </p>
+          <p className="mt-1 text-lg font-semibold tracking-tight">
+            {pass.title}
+          </p>
+          <p className="mt-1 text-[12px] text-white/60">{pass.detail}</p>
+          {index === 0 && (
+            <div className="absolute right-4 bottom-3 flex h-10 w-10 items-center justify-center rounded-lg bg-white/10">
+              <div className="grid h-6 w-6 grid-cols-3 gap-px">
+                {Array.from({ length: 9 }).map((_, j) => (
+                  <div
+                    key={j}
+                    className={cn(
+                      j % 2 === 0 ? "bg-white" : "bg-transparent",
+                    )}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-        )}
-      </div>
-    ))}
-  </div>
-));
+          )}
+        </div>
+      ))}
+    </div>
+  ),
+);
+
 AppleWalletStack.displayName = "AppleWalletStack";

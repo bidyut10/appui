@@ -16,10 +16,10 @@ const themes = [
     dot: "bg-white",
   },
   {
-    name: "Violet",
-    bg: "bg-violet-50",
-    border: "border-violet-200",
-    dot: "bg-violet-600",
+    name: "Teal",
+    bg: "bg-teal-50",
+    border: "border-teal-200",
+    dot: "bg-teal-600",
   },
   {
     name: "Rose",
@@ -89,7 +89,7 @@ export const ThemeColorDropdown = () => {
               }}
               className={`relative flex cursor-pointer flex-col items-center gap-1.5 rounded-xl border p-2 transition-all ${
                 selected === i
-                  ? "border-violet-300 bg-violet-50/50 ring-2 ring-violet-100"
+                  ? "border-teal-300 bg-teal-50/50 ring-2 ring-teal-100"
                   : "border-neutral-100 hover:border-neutral-200"
               }`}
             >
@@ -102,7 +102,7 @@ export const ThemeColorDropdown = () => {
                 {theme.name}
               </span>
               {selected === i && (
-                <div className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-violet-600">
+                <div className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-teal-600">
                   <Check size={8} className="text-white" />
                 </div>
               )}

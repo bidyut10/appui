@@ -24,6 +24,7 @@ export const BrowserMockupCard = forwardRef<
         src={screenContent}
         alt="Website"
         fill
+        sizes="320px"
         className="object-cover object-top"
       />
     </div>

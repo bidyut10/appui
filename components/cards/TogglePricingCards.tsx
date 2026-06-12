@@ -147,7 +147,7 @@ export const TogglePricingCards = forwardRef<
                 )}
               >
                 {plan.popular && (
-                  <span className="font-mono text-[8px] tracking-wider text-violet-300 uppercase">
+                  <span className="font-mono text-[8px] tracking-wider text-teal-300 uppercase">
                     Popular
                   </span>
                 )}
@@ -185,7 +185,7 @@ export const TogglePricingCards = forwardRef<
                       <Check
                         size={8}
                         className={
-                          plan.popular ? "text-violet-400" : "text-emerald-500"
+                          plan.popular ? "text-teal-400" : "text-emerald-500"
                         }
                       />
 

@@ -17,6 +17,7 @@ export const TeamMemberCard = forwardRef<
       src={profileImage}
       alt="Team member"
       fill
+      sizes="224px"
       className="object-cover transition-transform duration-700 group-hover:scale-110"
     />
     <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />

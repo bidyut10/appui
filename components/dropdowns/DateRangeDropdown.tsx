@@ -78,9 +78,9 @@ export const DateRangeDropdown = () => {
                   key={d}
                   className={`h-6 w-6 cursor-pointer rounded-md text-[10px] font-medium transition-colors ${
                     d >= 1 && d <= 7
-                      ? "bg-violet-600 text-white"
+                      ? "bg-teal-600 text-white"
                       : d === 14
-                        ? "bg-violet-100 text-violet-700"
+                        ? "bg-teal-100 text-teal-700"
                         : "text-neutral-600 hover:bg-neutral-100"
                   }`}
                 >

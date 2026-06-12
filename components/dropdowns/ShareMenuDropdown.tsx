@@ -24,7 +24,7 @@ const shareOptions = [
   {
     label: "LinkedIn",
     icon: Link2Icon,
-    color: "bg-indigo-50 text-indigo-600 hover:bg-indigo-100",
+    color: "bg-blue-50 text-blue-600 hover:bg-blue-100",
   },
 ];
 

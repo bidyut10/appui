@@ -18,6 +18,7 @@ export const PhoneMockupCard = forwardRef<
           src={screenContent}
           alt="App screen"
           fill
+          sizes="160px"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />

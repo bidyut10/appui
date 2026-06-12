@@ -56,7 +56,7 @@ export const WalletPassCard = forwardRef<HTMLDivElement, WalletPassCardProps>(
       {/* Pass Header */}
       <div
         data-slot="wallet-pass-card-header"
-        className="bg-linear-to-br from-indigo-600 to-violet-700 p-4"
+        className="bg-linear-to-br from-blue-600 to-teal-700 p-4"
       >
         <div className="mb-6 flex items-center justify-between">
           <span className="font-mono text-[10px] tracking-widest text-white/60 uppercase">

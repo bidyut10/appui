@@ -23,6 +23,7 @@ export const BlogPostCard = forwardRef<
         src={coverImage}
         alt="Blog cover"
         fill
+        sizes="288px"
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
       />
 
@@ -38,7 +39,7 @@ export const BlogPostCard = forwardRef<
     {/* Content */}
     <div className="p-5">
       <div className="mb-3 flex items-center gap-2">
-        <div className="h-5 w-5 rounded-full bg-gradient-to-br from-violet-400 to-fuchsia-500 shadow-sm" />
+        <div className="h-5 w-5 rounded-full bg-gradient-to-br from-teal-400 to-cyan-500 shadow-sm" />
 
         <span className="text-[11px] font-medium text-neutral-600">
           John Doe
@@ -51,7 +52,7 @@ export const BlogPostCard = forwardRef<
         </span>
       </div>
 
-      <h3 className="mb-2 text-base leading-snug font-semibold tracking-tight text-neutral-900 transition-colors duration-300 group-hover:text-violet-700">
+      <h3 className="mb-2 text-base leading-snug font-semibold tracking-tight text-neutral-900 transition-colors duration-300 group-hover:text-teal-700">
         Building a Design System from Scratch in 2026
       </h3>
 
@@ -72,7 +73,7 @@ export const BlogPostCard = forwardRef<
           ))}
         </div>
 
-        <span className="text-neutral-400 transition-all duration-300 group-hover:translate-x-1 group-hover:text-violet-600">
+        <span className="text-neutral-400 transition-all duration-300 group-hover:translate-x-1 group-hover:text-teal-600">
           <ArrowRight size={14} />
         </span>
       </div>

@@ -93,7 +93,7 @@ export const ProgressRingCard = forwardRef<
         {
           label: "Development",
           value: 73,
-          color: "bg-violet-500",
+          color: "bg-teal-500",
         },
         {
           label: "Testing",
@@ -264,7 +264,7 @@ export const ProgressRingCard = forwardRef<
                   data-slot="progress-ring-card-stage-bar"
                   className={cn(
                     "h-full rounded-full",
-                    stage.color ?? "bg-violet-500",
+                    stage.color ?? "bg-teal-500",
                   )}
                   style={{
                     width: `${stage.value}%`,
