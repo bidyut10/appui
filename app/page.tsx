@@ -401,10 +401,21 @@ export default function Home() {
   return (
     <div className="flex min-h-screen w-full flex-col items-center px-3 pb-10 sm:px-4">
       <div className="mb-8 flex max-w-xl flex-col items-center px-2 text-center sm:mb-10">
-        <h1 className="mb-2 text-xl sm:text-2xl">Introduction</h1>
+        <h1 className="mt-20 mb-2 text-xl sm:text-2xl">Introduction</h1>
         <p className="max-w-lg text-sm leading-relaxed text-neutral-500">
           A handcrafted collection of copy-paste components for production apps.
           Every component is live-previewed, open source, and yours to use.
+          <span className="mt-2 block">
+            Made by{" "}
+            <a
+              href="https://x.com/BidyutKundu12"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-500 underline decoration-neutral-300 underline-offset-4 transition-colors duration-300 hover:text-neutral-900 hover:decoration-neutral-900"
+            >
+              Bidyut Kundu
+            </a>
+          </span>
         </p>
       </div>
 
