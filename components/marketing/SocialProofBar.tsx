@@ -1,53 +1,106 @@
-import { Star } from "@/icons/Star";
-import React, { forwardRef } from "react";
+import React, { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-const stats = [
+import { cn } from "@/lib/utils";
+
+import { Star } from "@/icons/Star";
+
+type Stat = {
+  value: string;
+  label: string;
+};
+
+type Platform = {
+  name: string;
+  rating?: number;
+};
+
+const defaultStats: Stat[] = [
   { value: "50+", label: "Components" },
   { value: "12K", label: "Developers" },
   { value: "99%", label: "Satisfaction" },
   { value: "4.9", label: "Rating" },
 ];
 
-export const SocialProofBar = forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className = "", ...props }, ref) => (
-  <div ref={ref} className={`w-96 font-sans ${className}`} {...props}>
-    <div className="grid grid-cols-4 gap-px overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-200 shadow-lg">
-      {stats.map(({ value, label }, i) => (
-        <div
-          key={label}
-          className={`bg-white p-4 text-center ${i === 0 ? "rounded-l-2xl" : ""} ${i === stats.length - 1 ? "rounded-r-2xl" : ""}`}
-        >
-          <p className="text-xl font-light tracking-tight text-neutral-900">
-            {value}
-          </p>
-          <p className="mt-1 font-mono text-[10px] tracking-wider text-neutral-400 uppercase">
-            {label}
-          </p>
-        </div>
-      ))}
-    </div>
+const defaultPlatforms: Platform[] = [
+  { name: "Product Hunt", rating: 5 },
+  { name: "Hacker News", rating: 5 },
+  { name: "Dev.to", rating: 5 },
+];
 
-    <div className="mt-4 flex items-center justify-center gap-6">
-      {["Product Hunt", "Hacker News", "Dev.to"].map((platform) => (
-        <div
-          key={platform}
-          className="flex items-center justify-center gap-1.5"
-        >
-          <div className="flex gap-px">
-            {[1, 2, 3, 4, 5].map((s) => (
-              <Star
-                key={s}
-                className="rounded-full fill-amber-400 text-amber-400"
-                size={9}
-              />
-            ))}
-          </div>
-          <span className="text-[10px] text-neutral-500">{platform}</span>
+export type SocialProofBarProps = {
+  stats?: Stat[];
+  platforms?: Platform[];
+} & ComponentPropsWithoutRef<"div">;
+
+export const SocialProofBar = forwardRef<HTMLDivElement, SocialProofBarProps>(
+  (
+    { className, stats = defaultStats, platforms = defaultPlatforms, ...props },
+    ref,
+  ) => (
+    <div
+      ref={ref}
+      data-slot="social-proof-bar"
+      className={cn("w-96 font-sans", className)}
+      {...props}
+    >
+      {/* Stats Grid */}
+
+      <div
+        data-slot="social-proof-bar-stats"
+        className="overflow-hidden rounded-2xl border border-neutral-200/70 bg-neutral-200 shadow-xl ring-1 ring-black/[0.03]"
+      >
+        <div className="grid grid-cols-4 gap-px">
+          {stats.map(({ value, label }, index) => (
+            <div
+              key={label}
+              data-slot="social-proof-bar-stat"
+              className={cn(
+                "bg-white p-4 text-center transition-colors duration-200 hover:bg-neutral-50",
+                index === 0 && "rounded-l-2xl",
+                index === stats.length - 1 && "rounded-r-2xl",
+              )}
+            >
+              <p className="text-xl font-light tracking-tight text-neutral-900">
+                {value}
+              </p>
+
+              <p className="mt-1 font-mono text-[10px] tracking-wider text-neutral-400 uppercase">
+                {label}
+              </p>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
+
+      {/* Ratings */}
+
+      <div
+        data-slot="social-proof-bar-platforms"
+        className="mt-4 flex items-center justify-center gap-6"
+      >
+        {platforms.map(({ name, rating = 5 }) => (
+          <div
+            key={name}
+            data-slot="social-proof-bar-platform"
+            className="flex items-center justify-center gap-1.5"
+          >
+            <div className="flex gap-px">
+              {Array.from({ length: rating }).map((_, index) => (
+                <Star
+                  key={index}
+                  size={9}
+                  aria-hidden="true"
+                  className="fill-amber-400 text-amber-400"
+                />
+              ))}
+            </div>
+
+            <span className="text-[10px] text-neutral-500">{name}</span>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
-));
+  ),
+);
+
 SocialProofBar.displayName = "SocialProofBar";
