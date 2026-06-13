@@ -13,8 +13,16 @@
   animation: marquee 20s linear infinite;
 }
 
+/* 1. Cross-browser support (Firefox) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #a1a1aa transparent;
+}
+
+/* 2. WebKit (Chrome, Safari, Edge) scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 8px;  /* Slightly wider than 5px for better usability */
+  height: 8px; /* Applies to horizontal scrollbars as well */
 }
 
 ::-webkit-scrollbar-track {
@@ -22,10 +30,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #f2f1f1;
+  background-color: #a1a1aa; 
   border-radius: 10px;
+  border: 2px solid transparent; 
+  background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #f2f1f1;
+  background-color: #71717a; 
 }

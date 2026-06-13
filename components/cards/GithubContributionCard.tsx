@@ -65,7 +65,7 @@ export const GithubContributionCard = forwardRef<
         ref={ref}
         data-slot="github-contribution-card"
         className={cn(
-          "w-fit rounded-xl border border-neutral-100 bg-white p-6 font-sans shadow-lg",
+          "w-fit max-w-full rounded-xl border border-neutral-100 bg-white p-6 font-sans shadow-lg",
           className,
         )}
         {...props}
@@ -106,25 +106,27 @@ export const GithubContributionCard = forwardRef<
         </div>
 
         {/* Contribution graph */}
-        <div
-          data-slot="github-contribution-card-grid"
-          className="grid gap-0.75"
-          style={{ gridTemplateColumns: "repeat(26, 1fr)" }}
-        >
-          {cells.map((shade, index) => {
-            const bg =
-              shade > 0.85
-                ? "bg-emerald-600"
-                : shade > 0.6
-                  ? "bg-emerald-400"
-                  : shade > 0.35
-                    ? "bg-emerald-200"
-                    : "bg-neutral-100";
+        <div className="w-full [scrollbar-width:none] overflow-x-auto [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          <div
+            data-slot="github-contribution-card-grid"
+            className="grid min-w-max gap-0.75"
+            style={{ gridTemplateColumns: "repeat(26, 1fr)" }}
+          >
+            {cells.map((shade, index) => {
+              const bg =
+                shade > 0.85
+                  ? "bg-emerald-600"
+                  : shade > 0.6
+                    ? "bg-emerald-400"
+                    : shade > 0.35
+                      ? "bg-emerald-200"
+                      : "bg-neutral-100";
 
-            return (
-              <div key={index} className={cn("h-3 w-3 rounded-[3px]", bg)} />
-            );
-          })}
+              return (
+                <div key={index} className={cn("h-3 w-3 rounded-[3px]", bg)} />
+              );
+            })}
+          </div>
         </div>
 
         {/* Legend */}

@@ -226,137 +226,99 @@ import { StatEditorialCard } from "@/components/text/StatEditorialCard";
 type Row = (React.ReactNode | null)[];
 
 const rows: Row[] = [
-  // Social & Profile Cards
-  [<InstagramPostCard imagePriority />, <FacebookPostCard />, <LinkedInPostCard />],
+  [
+    <InstagramPostCard imagePriority />,
+    <FacebookPostCard />,
+    <LinkedInPostCard />,
+  ],
   [<TwitterPostCard />, <BusinessCard />, <GithubContributionCard />],
   [<NotepadCard />, <FacebookProfileCard />, <GoogleProfileCard />],
   [<TwitterProfileCard />, <LinkedInProfileCard />, <GithubProfileCard />],
 
-  // Image Cards
   [<MagazineCoverCard />, <PolaroidImageCard />, <GlassOverlayImageCard />],
   [<GalleryGridCard />, <BeforeAfterImageCard />, <PortraitImageCard />],
   [<TravelPostcardCard />, <DuotoneImageCard />, <ImageCarouselCard />],
   [<ProductImageCard />, <NFTGalleryCard />, <StackedCardsEffect />],
 
-  // Specialty Cards
   [<EventTicketCard />, <CreditCardGlass />, <WalletPassCard />],
   [<PodcastCard />, <WeatherWidgetCard />, <FlightBoardingCard />],
 
-  // AI Chat Cards
-  [null, <AIStreamingCard />, null],
-  [null, <ChatWidget />, <ChatSkeleton />],
+  [<NotificationToast />, <AIStreamingCard />, <DashboardSidebarMini />],
+  [<CheckoutStepperCard />, <ChatWidget />, <ChatSkeleton />],
 
-  // Auth Cards
   [<AuthLoginCard />, <AuthSplitLoginCard />, <AuthOTPCard />],
   [<AuthForgotPasswordCard />, <PaymentMethodSelector />, <OnboardingSteps />],
 
-  // Pricing Cards
   [<PricingCard />, <TogglePricingCards />, <PricingEnterpriseCard />],
   [<PricingLifetimeCard />, <FeatureComparison />, <PricingSkeleton />],
 
-  // Music & Video
   [<MusicPlayerCard />, <MusicPlaylistCard />, <VideoThumbnailCard />],
   [<NowPlayingBar />, <AppStoreReviewCard />, <VoiceWaveCard />],
 
-  // File Upload
   [<FileUploadZone />, <FileUploadProgress />, <FileUploadList />],
   [<ImageUploadPreview />, <CloudUploadCard />, <MultiFileDropzone />],
 
-  // Business & SaaS
   [<TestimonialCard />, <MetricCard />, <AuroraProfileCard />],
   [<AvatarGroupCard />, <BlogPostCard />, <TeamMemberCard />],
   [<ActivityFeedCard />, <FeatureTabsCard />, <ProgressRingCard />],
 
-  // Dashboard — Layout & Controls
   [<DashboardWelcomeHeader />, <StatsRibbonWidget />, <DateRangePillsWidget />],
 
-  // Dashboard — Live & Hero Metrics
-  [<LivePulseMetricCard />, <SplitCompareCard />, <ScoreRingWidget />],
   [<DailyBriefingCard />, <ComparePeriodWidget />, <MetricBentoWidget />],
 
-  // Dashboard — Core KPIs
   [<QuickStatsRow />, <KpiSparklineGrid />, <MrrBreakdownCard />],
   [<TrendMilestoneCard />, <RevenueBridgeCard />, <NpsSpectrumCard />],
 
-  // Dashboard — Analytics & Charts
   [<RevenueStatCard />, <SalesOverviewCard />, <AnalyticsMiniCard />],
   [<UserGrowthCard />, <ChannelLollipopCard />, <RetentionCohortCard />],
   [<ApiLatencyCard />, <SessionHeatmapCard />, <GeoVisitorsCard />],
   [<RadialMultiGaugeCard />, <BudgetDialCard />, <ExperimentAbCard />],
 
-  // Dashboard — Finance & Goals
   [<BurnRunwayCard />, <GoalProgressCard />, <InvoicePipelineCard />],
   [<SupportQueueCard />, <ChurnRiskCard />, <TeamCapacityCard />],
   [<DealPipelineCard />, <SlaCountdownCard />, <TrafficSourcesCard />],
 
-  // Dashboard — Data & Operations
   [<TopProductsCard />, <RecentOrdersCard />, <LeaderboardCard />],
   [<TaskSummaryCard />, <CalendarWidgetCard />, <StorageUsageCard />],
   [<ServerStatusCard />, <UptimeMonitorCard />, <NotificationDigestCard />],
 
-  // Dashboard — Activity & Funnels
   [<ActivityTimelineWidget />, <ConversionFunnelCard />, <FocusTimerCard />],
   [<LiveActivityPillCard />, <CryptoTickerCard />, <InboxSummaryCard />],
 
-  // Website Essentials — Navigation & UI
   [<BreadcrumbNav />, <PaginationBar />, <AlertBanners />],
   [<ConfirmDialogCard />, <SettingsToggleCard />, <FAQSectionCard />],
 
-  // Website Essentials — Account & Support
   [<ContactInfoCard />, <MapLocationCard />, <BillingHistoryCard />],
   [<InviteTeamCard />, <SecuritySettingsCard />, <Error404Card />],
   [<MaintenanceCard />, <EmptyState />, <CookieBanner />],
 
-  // Apple Design — Premium & Glass
-  [
-    <AppleGlassCard />,
-    null, // <AppleProductHero />
-    null, // <AppleLockScreen />
-  ],
+  [<AppleGlassCard />, <FilterPillsWidget />, <AppointmentPickerCard />],
 
-  // Apple Design — Maps
   [<AppleMapsCard />, <AppleMapsDirections />, <AppleMapsExplore />],
 
-  // Apple Design — Apps & Widgets
-  [
-    null, // <AppleMusicWidget />
-    <AppleWeatherPremium />,
-    <AppleHealthRings />,
-  ],
+  [<RetailPriceTagCard />, <AppleWeatherPremium />, <AppleHealthRings />],
   [<AppleRemindersWidget />, <AppleNotesWidget />, <AppleFitnessSummary />],
   [<AppleWidgetStack />, <AppleWalletStack />, <AppleFindMyCard />],
 
-  // Apple Design — System UI
   [<AppleSettingsList />, <AppleControlCenter />, <AppleNotificationBanner />],
   [<AppleSpotlight />, <ApplePayButton />, <CommandDockBar />],
 
-  // Mockups
   [<PhoneMockupCard />, <BrowserMockupCard />, <LaptopMockupCard />],
 
-  // Skeletons
   [<CardSkeleton />, <ProfileSkeleton />, <DashboardSkeleton />],
   [<ImageGridSkeleton />, <TableSkeleton />, <ChatSkeleton />],
 
-  // Website Sections
   [<BentoFeatureGrid />, <GradientHero />, <GlassNavbar />],
   [<NewsletterSignup />, <LogoMarquee />, <SocialProofBar />],
   [<Timeline />, <MiniFooter />, <CTAGradientBanner />],
 
-  // Interactive
   [<NotificationBell />, <KanbanBoard />, <NeumorphicSettingsCard />],
 
-  // Navigation & Accordions
   [<HomeMenuBar />, <BorderedAccordion />, <MinimalAccordion />],
 
-  // Search Bars
   [<SearchBar />, <SearchBarWithResults />, <CommandPaletteSearch />],
-  [
-    <SpotlightSearchBar />,
-    <CategoryFilterSearch />,
-    null, // <MegaMenuDropdown />
-  ],
+  [<SpotlightSearchBar />, <CategoryFilterSearch />, <ChapterOpenerCard />],
 
-  // Dropdowns
   [<HomeDropdown />, <UserMenuDropdown />, <ShareMenuDropdown />],
   [
     <QuickActionsDropdown />,
@@ -364,37 +326,31 @@ const rows: Row[] = [
     <WorkspaceSwitcherDropdown />,
   ],
   [<LanguagePickerDropdown />, <ThemeColorDropdown />, <DateRangeDropdown />],
-  [<ContextMenuDropdown />, null, null],
+  [<ContextMenuDropdown />, <StatEditorialCard />, <SplitFeatureCard />],
 
-  // New — Developer & Terminal
   [<TerminalLogCard />, <KeyboardShortcutsCard />, <ThermalReceiptCard />],
 
-  // New — Editorial & Cinema
   [<EditorialQuoteCard />, <CinemaTicketCard />, <AppleStoreAppTile />],
 
-  // New — Lifestyle & Tracking
   [<RecipeIngredientCard />, <CourierTrackingCard />, <HabitStreakCard />],
 
-  // Typography & Editorial
   [<TypographicPosterCard />, <PullQuoteCard />, <TabloidHeadlineCard />],
   [<ReadingProgressCard />, <LinedJournalCard />, <TypeSpecimenCard />],
-  [<ChapterOpenerCard />, <StatEditorialCard />, <SplitFeatureCard />],
 
-  // Dropdown & Menu Previews
-  [<ProfileMenuPreviewCard />, <SortMenuPreviewCard />, <ActionMenuPreviewCard />],
+  [
+    <ProfileMenuPreviewCard />,
+    <SortMenuPreviewCard />,
+    <ActionMenuPreviewCard />,
+  ],
   [
     <NotificationPanelPreviewCard />,
     <WorkspaceSwitcherPreviewCard />,
     <FilterPillsWidget />,
   ],
 
-  // Image & Print Media
   [<FilmStripCard />, <EditorialSpreadCard />, <PhotoContactSheetCard />],
-  [<ProductCatalogCard />, <StampPostcardCard />, <RetailPriceTagCard />],
-
-  // Light Widgets & Pickers
-  [<AppointmentPickerCard />, <FilterPillsWidget />, <CheckoutStepperCard />],
-  [<DashboardSidebarMini />, null, <NotificationToast />],
+  [<ProductCatalogCard />, <StampPostcardCard />, <LivePulseMetricCard />],
+  [<ScoreRingWidget />, <SplitCompareCard />, null],
 ];
 
 export default function Home() {
@@ -402,9 +358,11 @@ export default function Home() {
     <div className="flex min-h-screen w-full flex-col items-center px-3 pb-10 sm:px-4">
       <div className="mb-8 flex max-w-xl flex-col items-center px-2 text-center sm:mb-10">
         <h1 className="mt-20 mb-2 text-xl sm:text-2xl">Introduction</h1>
-        <p className="max-w-lg text-sm leading-relaxed text-neutral-500">
-          A handcrafted collection of copy-paste components for production apps.
-          Every component is live-previewed, open source, and yours to use.
+        <p className="max-w-xl text-sm leading-relaxed text-neutral-500">
+          I built these 250+ production-ready Next.js components for my own
+          projects. Everything is cleanly styled with Tailwind v4 and paired
+          with SVGs from nexticons.in. You can explore all the live designs
+          right now—the copy-and-paste code feature is shipping soon.
           <span className="mt-2 block">
             Made by{" "}
             <a
@@ -419,11 +377,11 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="w-full max-w-[1600px] space-y-2">
+      <div className="w-full max-w-400 space-y-2">
         {rows.map((row, i) => (
           <div
             key={i}
-            className="flex w-full flex-col gap-2 sm:flex-row sm:gap-2"
+            className="flex w-full flex-col gap-2 min-[1194px]:flex-row min-[1194px]:gap-4"
           >
             {row.map((node, j) => (
               <Box key={j}>{node}</Box>

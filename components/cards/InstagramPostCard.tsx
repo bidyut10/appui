@@ -95,7 +95,7 @@ export const InstagramPostCard = forwardRef<
         ref={ref}
         data-slot="instagram-post-card"
         className={cn(
-          "max-w-xs overflow-hidden rounded-xl border border-neutral-100 bg-white font-sans shadow-lg",
+          "w-sm overflow-hidden rounded-xl border border-neutral-100 bg-white font-sans shadow-lg",
           className,
         )}
         {...props}

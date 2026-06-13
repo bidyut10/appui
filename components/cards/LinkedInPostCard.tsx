@@ -105,7 +105,7 @@ export const LinkedInPostCard = forwardRef<
         ref={ref}
         data-slot="linkedin-post-card"
         className={cn(
-          "max-w-sm rounded-xl border border-neutral-100 bg-white p-5 font-sans shadow-lg",
+          "w-sm rounded-xl border border-neutral-100 bg-white p-5 font-sans shadow-lg",
           className,
         )}
         {...props}
