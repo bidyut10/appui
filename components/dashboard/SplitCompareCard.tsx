@@ -39,7 +39,7 @@ export const SplitCompareCard = forwardRef<
       ref={ref}
       data-slot="split-compare-card"
       className={cn(
-        "grid w-full max-w-sm grid-cols-[1fr_auto_1fr] overflow-hidden rounded-[1.25rem] border border-neutral-200/80 font-sans shadow-lg ring-1 ring-black/[0.03]",
+        "grid w-sm grid-cols-[1fr_auto_1fr] overflow-hidden rounded-[1.25rem] border border-neutral-200/80 font-sans shadow-lg ring-1 ring-black/[0.03]",
         className,
       )}
       {...props}

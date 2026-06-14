@@ -59,7 +59,7 @@ export const RedditPostCard = forwardRef<HTMLDivElement, RedditPostCardProps>(
         ref={ref}
         data-slot="reddit-post-card"
         className={cn(
-          "flex w-72 overflow-hidden rounded-2xl border border-neutral-200 bg-white font-sans shadow-lg",
+          "flex w-72 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
           className,
         )}
         {...props}

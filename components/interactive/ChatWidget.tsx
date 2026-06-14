@@ -125,7 +125,7 @@ export const ChatWidget = forwardRef<HTMLDivElement, ChatWidgetProps>(
                   "max-w-[85%] rounded-2xl px-3.5 py-2.5 text-xs leading-relaxed transition-all",
                   message.from === "user"
                     ? "rounded-br-md bg-amber-400 text-black"
-                    : "rounded-bl-md border border-neutral-200 bg-white text-neutral-700",
+                    : "rounded-bl-md border border-neutral-100 bg-white text-neutral-700",
                 )}
               >
                 {message.text}
@@ -134,7 +134,7 @@ export const ChatWidget = forwardRef<HTMLDivElement, ChatWidgetProps>(
           ))}
 
           <div data-slot="chat-widget-typing" className="flex justify-start">
-            <div className="flex items-center gap-1 rounded-2xl rounded-bl-md border border-neutral-200 bg-white px-3 py-2">
+            <div className="flex items-center gap-1 rounded-2xl rounded-bl-md border border-neutral-100 bg-white px-3 py-2">
               {[0, 1, 2].map((dot) => (
                 <span
                   key={dot}

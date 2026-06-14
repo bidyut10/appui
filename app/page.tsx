@@ -351,14 +351,15 @@ import { StorageVaultWidget } from "@/components/widgets/StorageVaultWidget";
 
 type Row = [React.ReactNode, React.ReactNode, React.ReactNode];
 
-const rows: Row[] = [
+const rows: Row[] = [  [< RomanAnalogClockWidget/>, <VoiceAssistantWidget />, <WiFiToggleWidget />],
+[<FocusBreathWidget />,<WorldClockTimelineWidget />,<MinimalAirplaneButton />],
   [
+    <ThreadsPostCard />,
     <InstagramPostCard imagePriority />,
-    <TikTokPostCard />,
-    <YouTubeVideoCard />,
+    <StackedCardsEffect />,
   ],
-  [<ThreadsPostCard />, <RedditPostCard />, <PinterestPinCard />],
-  [<TwitterPostCard />, <FacebookPostCard />, <LinkedInPostCard />],
+  [<FacebookPostCard />, <PolaroidImageCard />, <TikTokPostCard />],
+  [<TwitterPostCard />, <PinterestPinCard />, <LinkedInPostCard />],
 
   [
     <TypewriterTextWidget />,
@@ -366,11 +367,10 @@ const rows: Row[] = [
     <TypographyShowcaseWidget />,
   ],
   [<GitHubRepoCard />, <AIChatCard />, <GitHubPullRequestCard />],
-  [<DiscordChatCard />, <VoiceAssistantWidget />, <WiFiToggleWidget />],
 
-  [<GmailInboxWidget />, <RomanAnalogClockWidget />, <AuroraProfileCard />],
+  [<GmailInboxWidget />, < DiscordChatCard/>, <AuroraProfileCard />],
   [<OutlookMailboxWidget />, <PeriodTrackerWidget />, <VoiceWaveCard />],
-  [<WorldClockTimelineWidget />, <CountdownEventWidget />, <BlobProfileCard />],
+  [null, <CountdownEventWidget />, <BlobProfileCard />],
 
   [<JournalWritingCard />, <DropCapEditorialCard />, <MarkdownEditorWidget />],
   [<CommentThreadWidget />, <LinedJournalCard />, <QuickNotesWidget />],
@@ -380,13 +380,13 @@ const rows: Row[] = [
   [<PricingCard />, <TogglePricingCards />, <CheckoutStepperCard />],
   [<AuthLoginCard />, <AuthOTPCard />, <NeumorphicSettingsCard />],
 
-  [<BeforeAfterImageCard />, <PhotoAlbumCard />, <PolaroidImageCard />],
+  [<BeforeAfterImageCard />, <PhotoAlbumCard />, <RedditPostCard />],
   [<ImageExifCard />, <MinimalPhotoCard />, <VideoReelCard />],
   [<MagazineCoverCard />, <GlassOverlayImageCard />, <PortraitImageCard />],
-  [<ImageCarouselCard />, <StackedCardsEffect />, <DuotoneImageCard />],
+  [<ImageCarouselCard />, <YouTubeVideoCard />, <DuotoneImageCard />],
 
   [<CompactMusicPlayerWidget />, <NowPlayingBar />, <WellnessPlaylistWidget />],
-  [<MinimalWeatherWidget />, <WeatherWidgetCard />, <FocusBreathWidget />],
+  [<MinimalWeatherWidget />, <WeatherWidgetCard />, null],
   [<HabitStreakCard />, <CircularStatsWidget />, <ProgressRingCard />],
 
   [<RevenueStatCard />, <AudioRecorderWidget />, <MetricCard />],
@@ -578,7 +578,7 @@ const rows: Row[] = [
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen w-full flex-col items-center px-3 pb-10 sm:px-4">
+    <div className="flex min-h-screen w-full min-w-0 flex-col items-center overflow-x-hidden px-3 pb-10 sm:px-4">
       <div className="mb-8 flex max-w-xl flex-col items-center px-2 text-center sm:mb-10">
         <h1 className="mt-20 mb-2 text-xl sm:text-2xl">Introduction</h1>
         <p className="max-w-xl text-sm leading-relaxed text-neutral-500">
@@ -600,11 +600,11 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="w-full max-w-400 space-y-3">
+      <div className="w-full min-w-0 max-w-400 space-y-3">
         {rows.map((row, i) => (
           <div
             key={i}
-            className="flex w-full flex-col gap-3 min-[1194px]:flex-row min-[1194px]:gap-4"
+            className="flex w-full min-w-0 flex-col gap-3 min-[1194px]:flex-row min-[1194px]:gap-4"
           >
             {row.map((node, j) => (
               <Box key={j}>{node}</Box>

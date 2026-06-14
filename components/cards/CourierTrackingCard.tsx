@@ -82,7 +82,7 @@ export const CourierTrackingCard = forwardRef<
         ref={ref}
         data-slot="courier-tracking-card"
         className={cn(
-          "w-full max-w-xs rounded-2xl border border-sky-100 bg-white p-4 font-sans shadow-lg shadow-sky-50 sm:p-5",
+          "w-xs rounded-2xl border border-sky-100 bg-white p-4 font-sans shadow-lg shadow-sky-50 sm:p-5",
           className,
         )}
         {...props}

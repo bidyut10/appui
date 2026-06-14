@@ -43,7 +43,7 @@ export const CinemaTicketCard = forwardRef<
     <div
       ref={ref}
       data-slot="cinema-ticket-card"
-      className={cn("w-full max-w-xs font-sans", className)}
+      className={cn("w-xs font-sans", className)}
       {...props}
     >
       <div className="flex overflow-hidden rounded-2xl bg-neutral-950 shadow-2xl shadow-black/30">

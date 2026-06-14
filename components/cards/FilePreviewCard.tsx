@@ -34,13 +34,13 @@ export const FilePreviewCard = forwardRef<HTMLDivElement, FilePreviewCardProps>(
       ref={ref}
       data-slot="file-preview-card"
       className={cn(
-        "w-64 overflow-hidden rounded-2xl border border-neutral-200 bg-white font-sans shadow-lg",
+        "w-64 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
         className,
       )}
       {...props}
     >
       <div className="flex h-28 items-center justify-center bg-neutral-50">
-        <div className="flex h-16 w-14 flex-col overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm">
+        <div className="flex h-16 w-14 flex-col overflow-hidden rounded-md border border-neutral-100 bg-white shadow-sm">
           <div className="h-3 bg-red-500" />
           <div className="flex flex-1 flex-col gap-1 p-2">
             <span className="h-0.5 w-full rounded bg-neutral-200" />

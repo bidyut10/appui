@@ -63,7 +63,7 @@ export const ProfileMenuPreviewCard = forwardRef<
     <div
       ref={ref}
       data-slot="profile-menu-preview-card"
-      className={cn("w-full max-w-[220px] font-sans", className)}
+      className={cn("w-[220px] font-sans", className)}
       {...props}
     >
       <div className="overflow-hidden rounded-2xl border border-neutral-200/80 bg-white shadow-xl shadow-neutral-200/50">

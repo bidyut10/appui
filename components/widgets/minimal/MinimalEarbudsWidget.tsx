@@ -14,7 +14,7 @@ export const MinimalEarbudsWidget = forwardRef<
     ref={ref}
     data-slot="minimal-earbuds-widget"
     className={cn(
-      "flex h-44 w-44 flex-col items-center justify-center gap-3 rounded-[2rem] border border-neutral-200 bg-white font-sans shadow-lg",
+      "flex h-44 w-44 flex-col items-center justify-center gap-3 rounded-[2rem] border border-neutral-100 bg-white font-sans shadow-lg",
       className,
     )}
     {...props}

@@ -86,7 +86,7 @@ export const DateRangeDropdown = forwardRef<
             aria-label={`Date range: ${preset}`}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
-            className="inline-flex h-10 cursor-pointer items-center gap-2 rounded-xl border border-neutral-200 bg-white px-3 transition-all hover:border-neutral-300 hover:shadow-sm"
+            className="inline-flex h-10 cursor-pointer items-center gap-2 rounded-xl border border-neutral-100 bg-white px-3 transition-all hover:border-neutral-300 hover:shadow-sm"
           >
             <Clock size={14} className="text-neutral-500" />
             <span className="text-xs font-medium text-neutral-700">

@@ -40,7 +40,7 @@ export const ScoreRingWidget = forwardRef<HTMLDivElement, ScoreRingWidgetProps>(
         ref={ref}
         data-slot="score-ring-widget"
         className={cn(
-          "flex w-full max-w-[200px] flex-col items-center rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-lg ring-1 ring-black/[0.03]",
+          "flex w-[200px] flex-col items-center rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-lg ring-1 ring-black/[0.03]",
           className,
         )}
         {...props}

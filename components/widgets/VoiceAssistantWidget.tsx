@@ -37,7 +37,7 @@ export const VoiceAssistantWidget = forwardRef<
       ref={ref}
       data-slot="voice-assistant-widget"
       className={cn(
-        "flex h-44 w-44 flex-col items-center justify-between overflow-hidden rounded-3xl border border-neutral-200 bg-white p-4 font-sans shadow-lg",
+        "flex h-44 w-44 flex-col items-center justify-between overflow-hidden rounded-3xl border border-neutral-100 bg-white p-4 font-sans shadow-lg",
         className,
       )}
       {...props}

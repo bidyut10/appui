@@ -57,7 +57,7 @@ const MinimalSquareToggle = forwardRef<
           "flex h-44 w-44 cursor-pointer flex-col justify-between rounded-[1.75rem] p-4 text-left font-sans shadow-lg transition-all active:scale-[0.98]",
           dark
             ? "bg-black text-white"
-            : "border border-neutral-200 bg-white text-neutral-900",
+            : "border border-neutral-100 bg-white text-neutral-900",
           on && (dark ? "ring-2 ring-white/20" : "ring-2 ring-neutral-900/10"),
           className,
         )}

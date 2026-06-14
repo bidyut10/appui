@@ -36,7 +36,7 @@ export const FocusBreathWidget = forwardRef<
       ref={ref}
       data-slot="focus-breath-widget"
       className={cn(
-        "flex h-44 w-44 flex-col items-center justify-center overflow-hidden rounded-3xl border border-neutral-200 bg-white font-sans shadow-lg",
+        "flex h-44 w-44 flex-col items-center justify-center overflow-hidden rounded-3xl border border-neutral-100 bg-white font-sans shadow-lg",
         className,
       )}
       {...props}
@@ -45,7 +45,7 @@ export const FocusBreathWidget = forwardRef<
         className="flex h-24 w-24 items-center justify-center rounded-full bg-neutral-100 transition-transform duration-[4000ms] ease-in-out"
         style={{ transform: `scale(${scale})` }}
       >
-        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-neutral-200 bg-white">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-neutral-100 bg-white">
           <span className="text-[10px] font-semibold tracking-widest text-neutral-500 uppercase">
             {phase}
           </span>

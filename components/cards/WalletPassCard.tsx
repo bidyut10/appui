@@ -69,7 +69,7 @@ export const WalletPassCard = forwardRef<HTMLDivElement, WalletPassCardProps>(
           aria-label={flipped ? "Show pass front" : "Show pass back"}
           aria-pressed={flipped}
           data-slot="wallet-pass-card-flip"
-          className="relative h-[13.5rem] w-full cursor-pointer border-0 bg-transparent p-0 outline-none"
+          className="relative h-[13.5rem] w-full cursor-pointer overflow-hidden rounded-2xl border-0 bg-white p-0 shadow-lg outline-none"
           style={{
             animation: flipped
               ? undefined
@@ -85,7 +85,7 @@ export const WalletPassCard = forwardRef<HTMLDivElement, WalletPassCardProps>(
           >
             {/* Front */}
             <div
-              className="absolute inset-0 overflow-hidden rounded-2xl shadow-lg"
+              className="absolute inset-0 flex flex-col overflow-hidden rounded-2xl bg-white"
               style={{ backfaceVisibility: "hidden" }}
             >
               <div className="bg-linear-to-br from-blue-600 to-teal-700 p-4">
@@ -120,12 +120,12 @@ export const WalletPassCard = forwardRef<HTMLDivElement, WalletPassCardProps>(
                 </div>
               </div>
 
-              <div className="relative bg-white px-4 py-3">
+              <div className="relative flex-1 bg-white px-4 py-3">
                 <div className="absolute -top-1.5 right-0 left-0 flex justify-between px-2">
                   {Array.from({ length: 12 }).map((_, i) => (
                     <div
                       key={i}
-                      className="h-3 w-3 rounded-full bg-neutral-100"
+                      className="h-3 w-3 rounded-full bg-white ring-1 ring-white"
                     />
                   ))}
                 </div>
@@ -145,17 +145,17 @@ export const WalletPassCard = forwardRef<HTMLDivElement, WalletPassCardProps>(
 
             {/* Back */}
             <div
-              className="absolute inset-0 overflow-hidden rounded-2xl bg-white shadow-lg"
+              className="absolute inset-0 overflow-hidden rounded-2xl bg-white"
               style={{
                 backfaceVisibility: "hidden",
                 transform: "rotateY(180deg)",
               }}
             >
-              <div className="flex h-full flex-col items-center justify-center bg-linear-to-b from-neutral-50 to-white p-5">
+              <div className="flex h-full flex-col items-center justify-center bg-white p-5">
                 <p className="font-mono text-[10px] tracking-widest text-neutral-400 uppercase">
                   Scan at entry
                 </p>
-                <div className="my-3 grid h-20 w-20 grid-cols-5 gap-px rounded-lg border border-neutral-200 bg-white p-2">
+                <div className="my-3 grid h-20 w-20 grid-cols-5 gap-px rounded-lg border border-neutral-100 bg-white p-2">
                   {Array.from({ length: 25 }).map((_, i) => (
                     <div
                       key={i}

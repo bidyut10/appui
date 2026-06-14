@@ -197,7 +197,7 @@ export const InviteTeamCard = forwardRef<HTMLDivElement, InviteTeamCardProps>(
           </button>
 
           {openRole && (
-            <div className="absolute top-full right-0 left-0 z-50 mt-1 overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-xl">
+            <div className="absolute top-full right-0 left-0 z-50 mt-1 overflow-hidden rounded-xl border border-neutral-100 bg-white shadow-xl">
               {roles.map((item) => (
                 <button
                   key={item}

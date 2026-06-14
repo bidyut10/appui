@@ -77,7 +77,7 @@ export const CountdownEventWidget = forwardRef<
         ref={ref}
         data-slot="countdown-event-widget"
         className={cn(
-          "w-64 rounded-2xl border border-neutral-200 bg-white p-5 font-sans shadow-lg",
+          "w-64 rounded-2xl border border-neutral-100 bg-white p-5 font-sans shadow-lg",
           className,
         )}
         {...props}

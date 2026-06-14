@@ -108,7 +108,7 @@ export const NotificationBell = forwardRef<
           aria-expanded={open}
           onClick={() => setOpen(!open)}
           data-slot="notification-bell-trigger"
-          className="relative flex h-11 w-11 cursor-pointer items-center justify-center rounded-xl border border-neutral-200 bg-white transition-all hover:border-neutral-300 hover:shadow-sm active:scale-95"
+          className="relative flex h-11 w-11 cursor-pointer items-center justify-center rounded-xl border border-neutral-100 bg-white transition-all hover:border-neutral-300 hover:shadow-sm active:scale-95"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

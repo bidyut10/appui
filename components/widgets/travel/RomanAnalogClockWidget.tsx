@@ -34,7 +34,7 @@ export const RomanAnalogClockWidget = forwardRef<
       ref={ref}
       data-slot="roman-analog-clock-widget"
       className={cn(
-        "flex h-44 w-44 items-center justify-center overflow-hidden rounded-3xl border border-neutral-200 bg-white p-5 font-sans shadow-lg",
+        "flex h-44 w-44 items-center justify-center overflow-hidden rounded-3xl border border-neutral-100 bg-white p-5 font-sans shadow-lg",
         className,
       )}
       {...props}

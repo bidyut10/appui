@@ -61,7 +61,7 @@ export const SplitFeatureCard = forwardRef<
       ref={ref}
       data-slot="split-feature-card"
       className={cn(
-        "w-full max-w-md overflow-hidden rounded-[1.25rem] border border-neutral-200/80 bg-white font-sans shadow-lg ring-1 ring-black/[0.03]",
+        "w-md overflow-hidden rounded-[1.25rem] border border-neutral-200/80 bg-white font-sans shadow-lg ring-1 ring-black/[0.03]",
         className,
       )}
       {...props}

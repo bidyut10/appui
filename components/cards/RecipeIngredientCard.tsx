@@ -56,7 +56,7 @@ export const RecipeIngredientCard = forwardRef<
       ref={ref}
       data-slot="recipe-ingredient-card"
       className={cn(
-        "w-full max-w-xs overflow-hidden rounded-2xl border border-amber-200/60 bg-[#fffdf8] font-sans shadow-lg shadow-amber-100/40",
+        "w-xs overflow-hidden rounded-2xl border border-amber-200/60 bg-[#fffdf8] font-sans shadow-lg shadow-amber-100/40",
         className,
       )}
       {...props}

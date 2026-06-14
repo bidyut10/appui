@@ -1,15 +1,25 @@
-"use client";
-
-import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
+import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
-const SCALES = [
-  { name: "Display", size: "text-2xl", weight: "font-bold", sample: "Aa" },
-  { name: "Heading", size: "text-lg", weight: "font-semibold", sample: "Aa" },
-  { name: "Body", size: "text-sm", weight: "font-normal", sample: "Aa" },
-  { name: "Caption", size: "text-[10px]", weight: "font-medium", sample: "Aa" },
-];
+function SpecimenRow({
+  size,
+  className,
+  children,
+}: {
+  size: string;
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="flex items-baseline gap-3">
+      <span className="w-7 shrink-0 text-right font-mono text-[9px] leading-none text-neutral-300 tabular-nums select-none">
+        {size}
+      </span>
+      <p className={cn("min-w-0 flex-1", className)}>{children}</p>
+    </div>
+  );
+}
 
 export type TypographyShowcaseWidgetProps = {
   title?: string;
@@ -18,49 +28,52 @@ export type TypographyShowcaseWidgetProps = {
 export const TypographyShowcaseWidget = forwardRef<
   HTMLDivElement,
   TypographyShowcaseWidgetProps
->(({ className, title = "Type scale", ...props }, ref) => {
-  const [active, setActive] = useState(0);
+>(({ className, title = "Type scale", ...props }, ref) => (
+  <div
+    ref={ref}
+    data-slot="typography-showcase-widget"
+    className={cn("w-xs bg-white p-5 font-sans", className)}
+    {...props}
+  >
+    <p className="mb-5 font-mono text-[10px] tracking-widest text-neutral-400 uppercase">
+      {title}
+    </p>
 
-  return (
-    <div
-      ref={ref}
-      data-slot="typography-showcase-widget"
-      className={cn(
-        "w-64 rounded-2xl border border-neutral-200 bg-white p-4 font-sans shadow-lg",
-        className,
-      )}
-      {...props}
-    >
-      <p className="mb-3 text-sm font-bold text-neutral-900">{title}</p>
-      <div className="space-y-2">
-        {SCALES.map((scale, i) => (
-          <button
-            key={scale.name}
-            type="button"
-            onClick={() => setActive(i)}
-            className={cn(
-              "flex w-full items-center justify-between rounded-xl border px-3 py-2.5 text-left transition-colors",
-              active === i
-                ? "border-neutral-900 bg-neutral-50"
-                : "border-neutral-100 hover:border-neutral-200",
-            )}
-          >
-            <div>
-              <p className="text-[10px] font-semibold text-neutral-400 uppercase">
-                {scale.name}
-              </p>
-              <p className={cn(scale.size, scale.weight, "text-neutral-900")}>
-                {scale.sample}
-              </p>
-            </div>
-            <span className="font-mono text-[9px] text-neutral-400">
-              {scale.size.replace("text-", "")}
-            </span>
-          </button>
-        ))}
-      </div>
+    <div className="space-y-1">
+      <SpecimenRow
+        size="24"
+        className="text-2xl font-bold tracking-tight text-neutral-900"
+      >
+        Morning brief
+      </SpecimenRow>
+      <SpecimenRow
+        size="18"
+        className="text-lg font-semibold text-neutral-800"
+      >
+        Sunday · Partly cloudy
+      </SpecimenRow>
     </div>
-  );
-});
+
+    <div className="mt-4 flex gap-3">
+      <span aria-hidden className="w-7 shrink-0" />
+      <div className="min-w-0 flex-1 border-t border-neutral-100" />
+    </div>
+
+    <div className="mt-4 space-y-3">
+      <SpecimenRow
+        size="14"
+        className="text-sm leading-relaxed text-neutral-600"
+      >
+        Rain holds off until evening. Good window for a walk before 4 PM.
+      </SpecimenRow>
+      <SpecimenRow
+        size="10"
+        className="text-[10px] font-medium text-neutral-400"
+      >
+        6:42 AM · Weather
+      </SpecimenRow>
+    </div>
+  </div>
+));
 
 TypographyShowcaseWidget.displayName = "TypographyShowcaseWidget";

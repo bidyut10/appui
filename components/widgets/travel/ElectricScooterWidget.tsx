@@ -39,7 +39,7 @@ export const ElectricScooterWidget = forwardRef<
       ref={ref}
       data-slot="electric-scooter-widget"
       className={cn(
-        "flex w-72 items-stretch gap-3 rounded-3xl border border-neutral-200 bg-white p-3 font-sans shadow-lg",
+        "flex w-72 items-stretch gap-3 rounded-3xl border border-neutral-100 bg-white p-3 font-sans shadow-lg",
         className,
       )}
       {...props}

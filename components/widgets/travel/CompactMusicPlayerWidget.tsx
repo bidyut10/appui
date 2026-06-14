@@ -40,7 +40,7 @@ export const CompactMusicPlayerWidget = forwardRef<
         ref={ref}
         data-slot="compact-music-player-widget"
         className={cn(
-          "w-72 rounded-3xl border border-neutral-200 bg-white p-4 font-sans shadow-lg",
+          "w-72 rounded-3xl border border-neutral-100 bg-white p-4 font-sans shadow-lg",
           className,
         )}
         {...props}

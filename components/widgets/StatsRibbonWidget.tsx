@@ -35,7 +35,7 @@ export const StatsRibbonWidget = forwardRef<
     ref={ref}
     data-slot="stats-ribbon-widget"
     className={cn(
-      "flex w-full max-w-md overflow-hidden rounded-2xl border border-neutral-200 bg-white font-sans shadow-lg",
+      "flex w-md overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
       className,
     )}
     {...props}

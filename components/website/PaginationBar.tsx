@@ -74,7 +74,7 @@ export const PaginationBar = forwardRef<HTMLDivElement, PaginationBarProps>(
           data-slot="pagination-previous"
           onClick={() => setPage(currentPage - 1)}
           disabled={currentPage === 1}
-          className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-neutral-200 bg-white text-sm text-neutral-500 transition-colors hover:bg-neutral-50 disabled:cursor-not-allowed disabled:opacity-40"
+          className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-neutral-100 bg-white text-sm text-neutral-500 transition-colors hover:bg-neutral-50 disabled:cursor-not-allowed disabled:opacity-40"
         >
           <ChevronLeft />
         </button>
@@ -90,7 +90,7 @@ export const PaginationBar = forwardRef<HTMLDivElement, PaginationBarProps>(
               "h-8 w-8 cursor-pointer rounded-lg text-xs font-medium transition-colors",
               currentPage === pageNumber
                 ? "bg-neutral-900 text-white shadow-sm"
-                : "border border-neutral-200 bg-white text-neutral-600 hover:bg-neutral-50",
+                : "border border-neutral-100 bg-white text-neutral-600 hover:bg-neutral-50",
             )}
           >
             {pageNumber}
@@ -120,7 +120,7 @@ export const PaginationBar = forwardRef<HTMLDivElement, PaginationBarProps>(
           data-slot="pagination-next"
           onClick={() => setPage(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-neutral-200 bg-white text-sm text-neutral-500 transition-colors hover:bg-neutral-50 disabled:cursor-not-allowed disabled:opacity-40"
+          className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg border border-neutral-100 bg-white text-sm text-neutral-500 transition-colors hover:bg-neutral-50 disabled:cursor-not-allowed disabled:opacity-40"
         >
           <ChevronRight />
         </button>

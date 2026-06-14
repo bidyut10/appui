@@ -93,7 +93,7 @@ export const LanguagePickerDropdown = forwardRef<
             aria-label={`Selected language: ${current.name}`}
             aria-expanded={open}
             onClick={() => setOpen((prev) => !prev)}
-            className="inline-flex h-10 cursor-pointer items-center gap-2 rounded-xl border border-neutral-200 bg-white px-3 transition-all hover:border-neutral-300 hover:shadow-sm"
+            className="inline-flex h-10 cursor-pointer items-center gap-2 rounded-xl border border-neutral-100 bg-white px-3 transition-all hover:border-neutral-300 hover:shadow-sm"
           >
             <span className="flex h-5 w-5 items-center justify-center rounded bg-neutral-100 text-[9px] font-bold text-neutral-500">
               {current.countryCode}

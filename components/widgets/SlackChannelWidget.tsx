@@ -85,7 +85,7 @@ export const SlackChannelWidget = forwardRef<
         ref={ref}
         data-slot="slack-channel-widget"
         className={cn(
-          "w-full max-w-sm overflow-hidden rounded-2xl border border-neutral-200 bg-white font-sans shadow-lg",
+          "w-sm overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
           className,
         )}
         {...props}

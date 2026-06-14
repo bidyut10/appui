@@ -21,7 +21,6 @@ import { Send } from "@/icons/Send";
  */
 export type ThreadsPostCardProps = {
   username?: string;
-  handle?: string;
   content?: string;
   time?: string;
   likes?: number;
@@ -37,7 +36,6 @@ export const ThreadsPostCard = forwardRef<HTMLDivElement, ThreadsPostCardProps>(
     {
       className,
       username = "bidyut.dev",
-      handle = "bidyut.dev",
       content = "Just dropped 14 new email & editor widgets. All white background, all interactive. Which one should I build next?",
       time = "1h",
       likes = 892,
@@ -58,7 +56,7 @@ export const ThreadsPostCard = forwardRef<HTMLDivElement, ThreadsPostCardProps>(
         ref={ref}
         data-slot="threads-post-card"
         className={cn(
-          "w-72 rounded-2xl border border-neutral-200 bg-white p-4 font-sans shadow-lg",
+          "w-72 rounded-2xl border border-neutral-100 bg-white p-4 font-sans shadow-lg",
           className,
         )}
         {...props}
@@ -89,7 +87,7 @@ export const ThreadsPostCard = forwardRef<HTMLDivElement, ThreadsPostCardProps>(
             </p>
 
             {showImage && (
-              <div className="relative mt-2.5 aspect-[16/10] overflow-hidden rounded-xl border border-neutral-100">
+              <div className="relative mt-2.5 aspect-16/10 overflow-hidden rounded-xl border border-neutral-100">
                 <Image
                   src={postImage}
                   alt="Thread attachment"

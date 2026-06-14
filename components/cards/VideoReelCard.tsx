@@ -52,7 +52,7 @@ export const VideoReelCard = forwardRef<HTMLDivElement, VideoReelCardProps>(
         ref={ref}
         data-slot="video-reel-card"
         className={cn(
-          "w-56 overflow-hidden rounded-2xl border border-neutral-200 bg-white font-sans shadow-lg",
+          "w-56 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
           className,
         )}
         {...props}

@@ -59,7 +59,7 @@ export const DailyBriefingCard = forwardRef<
       ref={ref}
       data-slot="daily-briefing-card"
       className={cn(
-        "w-full max-w-sm border-l-4 border-l-teal-500 bg-white py-5 pr-5 pl-5 font-sans",
+        "w-sm border-l-4 border-l-teal-500 bg-white py-5 pr-5 pl-5 font-sans",
         className,
       )}
       {...props}

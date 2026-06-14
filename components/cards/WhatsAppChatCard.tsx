@@ -80,7 +80,7 @@ export const WhatsAppChatCard = forwardRef<
         ref={ref}
         data-slot="whatsapp-chat-card"
         className={cn(
-          "w-64 overflow-hidden rounded-2xl border border-neutral-200 bg-white font-sans shadow-lg",
+          "w-64 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
           className,
         )}
         {...props}

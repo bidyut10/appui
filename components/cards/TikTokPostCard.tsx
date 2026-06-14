@@ -98,12 +98,12 @@ export const TikTokPostCard = forwardRef<HTMLDivElement, TikTokPostCardProps>(
         ref={ref}
         data-slot="tiktok-post-card"
         className={cn(
-          "w-64 overflow-hidden rounded-2xl border border-neutral-200 bg-white font-sans shadow-lg",
+          "w-64 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
           className,
         )}
         {...props}
       >
-        <div className="relative aspect-[9/14] overflow-hidden bg-neutral-900">
+        <div className="relative aspect-9/14 overflow-hidden bg-neutral-900">
           <Image
             src={videoThumbnail}
             alt="TikTok video"
@@ -118,7 +118,7 @@ export const TikTokPostCard = forwardRef<HTMLDivElement, TikTokPostCardProps>(
           <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/10 to-black/30" />
 
           {/* Side actions — minimal TikTok-style rail */}
-          <div className="absolute right-2.5 bottom-[4.5rem] flex flex-col items-center gap-2.5">
+          <div className="absolute right-2.5 bottom-18 flex flex-col items-center gap-2.5">
             <button
               type="button"
               onClick={toggleFollow}

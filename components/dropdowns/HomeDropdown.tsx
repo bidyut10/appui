@@ -47,7 +47,7 @@ export const HomeDropdown = forwardRef<HTMLDivElement, HomeDropdownProps>(
         <button
           type="button"
           aria-label={triggerLabel}
-          className="group inline-flex h-11 w-full cursor-pointer items-center justify-between gap-4 rounded-xl border border-neutral-200 bg-white px-5 text-sm font-medium text-neutral-800 transition-all duration-300 hover:border-neutral-300 hover:shadow-sm active:scale-95"
+          className="group inline-flex h-11 w-full cursor-pointer items-center justify-between gap-4 rounded-xl border border-neutral-100 bg-white px-5 text-sm font-medium text-neutral-800 transition-all duration-300 hover:border-neutral-300 hover:shadow-sm active:scale-95"
         >
           <span className="tracking-tight">{triggerLabel}</span>
           <ChevronDown className="h-4 w-4 text-neutral-400 transition-transform duration-300 group-hover:translate-y-0.5" />

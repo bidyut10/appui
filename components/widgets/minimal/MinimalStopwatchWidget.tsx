@@ -33,7 +33,7 @@ export const MinimalStopwatchWidget = forwardRef<
       onClick={() => setRunning(!running)}
       data-slot="minimal-stopwatch-widget"
       className={cn(
-        "flex h-40 w-40 max-w-full cursor-pointer flex-col items-center justify-center gap-2 overflow-hidden rounded-[1.75rem] border border-neutral-200 bg-white font-mono shadow-lg transition-transform active:scale-[0.98]",
+        "flex h-40 w-40 max-w-full cursor-pointer flex-col items-center justify-center gap-2 overflow-hidden rounded-[1.75rem] border border-neutral-100 bg-white font-mono shadow-lg transition-transform active:scale-[0.98]",
         className,
       )}
       {...props}

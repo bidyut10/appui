@@ -32,7 +32,7 @@ export const PeriodTrackerWidget = forwardRef<
         ref={ref}
         data-slot="period-tracker-widget"
         className={cn(
-          "w-64 rounded-3xl border border-neutral-100 bg-white p-4 font-sans shadow-lg",
+          "w-64 rounded-xl border border-neutral-100 bg-white p-4 font-sans shadow-lg",
           className,
         )}
         {...props}

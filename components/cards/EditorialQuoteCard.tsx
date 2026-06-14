@@ -42,7 +42,7 @@ export const EditorialQuoteCard = forwardRef<
         ref={ref}
         data-slot="editorial-quote-card"
         className={cn(
-          "w-full max-w-sm border-2 border-neutral-900 bg-[#f6f2eb] p-5 font-sans sm:p-6",
+          "w-sm border-2 border-neutral-900 bg-[#f6f2eb] p-5 font-sans sm:p-6",
           className,
         )}
         {...props}

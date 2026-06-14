@@ -50,7 +50,7 @@ export const TextRevealWidget = forwardRef<
         ref={ref}
         data-slot="text-reveal-widget"
         className={cn(
-          "w-72 rounded-2xl border border-neutral-200 bg-white p-5 font-sans shadow-lg",
+          "w-72 rounded-2xl border border-neutral-100 bg-white p-5 font-sans shadow-lg",
           className,
         )}
         {...props}

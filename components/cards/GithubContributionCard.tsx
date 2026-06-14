@@ -334,7 +334,7 @@ export const GithubContributionCard = forwardRef<
         ref={ref}
         data-slot="github-contribution-card"
         className={cn(
-          "w-full max-w-sm rounded-md border border-neutral-200 bg-white p-4 font-sans shadow-lg",
+          "w-sm rounded-md border border-neutral-100 bg-white p-4 font-sans shadow-lg",
           scrollHoverGroup,
           className,
         )}
@@ -376,7 +376,7 @@ export const GithubContributionCard = forwardRef<
               <div
                 role="listbox"
                 aria-label="Contribution years"
-                className="absolute top-full right-0 z-50 mt-1 max-h-40 w-20 overflow-y-auto rounded-md border border-neutral-200 bg-white py-1 shadow-lg"
+                className="absolute top-full right-0 z-50 mt-1 max-h-40 w-20 overflow-y-auto rounded-md border border-neutral-100 bg-white py-1 shadow-lg"
               >
                 {availableYears.map((y) => (
                   <button

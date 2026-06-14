@@ -30,7 +30,7 @@ export const PullQuoteCard = forwardRef<HTMLDivElement, PullQuoteCardProps>(
       ref={ref}
       data-slot="pull-quote-card"
       className={cn(
-        "w-full max-w-sm bg-white px-5 py-6 font-serif sm:px-6",
+        "w-sm bg-white px-5 py-6 font-serif sm:px-6",
         className,
       )}
       {...props}

@@ -118,7 +118,7 @@ export const ThemeColorDropdown = forwardRef<
             aria-label={`Selected theme: ${current.name}`}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
-            className="inline-flex h-10 cursor-pointer items-center gap-2.5 rounded-xl border border-neutral-200 bg-white px-3 transition-all hover:border-neutral-300 hover:shadow-sm"
+            className="inline-flex h-10 cursor-pointer items-center gap-2.5 rounded-xl border border-neutral-100 bg-white px-3 transition-all hover:border-neutral-300 hover:shadow-sm"
           >
             <div
               className={cn(

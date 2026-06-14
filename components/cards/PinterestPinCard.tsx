@@ -48,7 +48,7 @@ export const PinterestPinCard = forwardRef<
         ref={ref}
         data-slot="pinterest-pin-card"
         className={cn(
-          "group w-56 overflow-hidden rounded-2xl border border-neutral-200 bg-white font-sans shadow-lg transition-shadow hover:shadow-lg",
+          "group w-56 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg transition-shadow hover:shadow-lg",
           className,
         )}
         {...props}

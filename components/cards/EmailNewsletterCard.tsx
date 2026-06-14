@@ -45,7 +45,7 @@ export const EmailNewsletterCard = forwardRef<
       ref={ref}
       data-slot="email-newsletter-card"
       className={cn(
-        "w-72 overflow-hidden rounded-2xl border border-neutral-200 bg-white font-sans shadow-lg",
+        "w-72 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
         className,
       )}
       {...props}

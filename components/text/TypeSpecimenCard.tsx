@@ -45,7 +45,7 @@ export const TypeSpecimenCard = forwardRef<
       ref={ref}
       data-slot="type-specimen-card"
       className={cn(
-        "w-full max-w-sm rounded-2xl border border-neutral-200 bg-white p-5 font-sans",
+        "w-sm rounded-2xl border border-neutral-100 bg-white p-5 font-sans",
         className,
       )}
       {...props}

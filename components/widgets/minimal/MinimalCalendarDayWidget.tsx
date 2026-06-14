@@ -16,7 +16,7 @@ export const MinimalCalendarDayWidget = forwardRef<
     ref={ref}
     data-slot="minimal-calendar-day-widget"
     className={cn(
-      "flex h-44 w-44 items-center justify-center rounded-[2rem] border border-neutral-200 bg-white font-serif shadow-lg",
+      "flex h-44 w-44 items-center justify-center rounded-[2rem] border border-neutral-100 bg-white font-serif shadow-lg",
       className,
     )}
     {...props}

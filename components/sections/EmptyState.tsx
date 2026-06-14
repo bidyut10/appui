@@ -43,7 +43,7 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStateProps>(
         className="relative mx-auto mb-5 h-24 w-24"
       >
         <div className="absolute inset-0 rotate-6 rounded-3xl bg-linear-to-br from-pink-100 to-cyan-100" />
-        <div className="absolute inset-0 flex items-center justify-center rounded-3xl border border-neutral-200 bg-white shadow-sm">
+        <div className="absolute inset-0 flex items-center justify-center rounded-3xl border border-neutral-100 bg-white shadow-sm">
           <Folder size={32} className="text-neutral-300" />
         </div>
         <div className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-pink-500">

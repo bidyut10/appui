@@ -102,7 +102,7 @@ export const ShareMenuDropdown = forwardRef<
             aria-label={triggerLabel}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
-            className="group inline-flex h-11 cursor-pointer items-center gap-2 rounded-xl border border-neutral-200 bg-white px-5 text-sm font-medium transition-all duration-300 hover:border-neutral-300 hover:shadow-sm active:scale-95"
+            className="group inline-flex h-11 cursor-pointer items-center gap-2 rounded-xl border border-neutral-100 bg-white px-5 text-sm font-medium transition-all duration-300 hover:border-neutral-300 hover:shadow-sm active:scale-95"
           >
             <Share size={15} className="text-neutral-500" />
             <span className="text-neutral-800">{triggerLabel}</span>

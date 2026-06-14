@@ -55,7 +55,7 @@ export const GitHubRepoCard = forwardRef<HTMLDivElement, GitHubRepoCardProps>(
         ref={ref}
         data-slot="github-repo-card"
         className={cn(
-          "w-72 rounded-2xl border border-neutral-200 bg-white p-4 font-sans shadow-lg",
+          "w-72 rounded-xl border border-neutral-100 bg-white p-4 font-sans shadow-lg",
           className,
         )}
         {...props}
@@ -93,10 +93,10 @@ export const GitHubRepoCard = forwardRef<HTMLDivElement, GitHubRepoCardProps>(
             aria-pressed={starred}
             data-slot="github-repo-card-star"
             className={cn(
-              "flex cursor-pointer items-center gap-1 rounded-lg border px-2.5 py-1 text-[11px] font-semibold transition-colors",
+              "flex cursor-pointer items-center gap-1 rounded-lg px-2.5 py-1 text-[11px] font-semibold transition-colors",
               starred
-                ? "border-amber-300 bg-amber-50 text-amber-700"
-                : "border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100",
+                ? "bg-amber-50 text-amber-700"
+                : "bg-neutral-50 text-neutral-700",
             )}
           >
             <Star

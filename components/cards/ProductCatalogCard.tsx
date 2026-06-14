@@ -52,7 +52,7 @@ export const ProductCatalogCard = forwardRef<
       ref={ref}
       data-slot="product-catalog-card"
       className={cn(
-        "w-full max-w-xs rounded-2xl border border-neutral-200 bg-white p-4 font-sans",
+        "w-xs rounded-2xl border border-neutral-100 bg-white p-4 font-sans",
         className,
       )}
       {...props}

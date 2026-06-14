@@ -46,7 +46,7 @@ export const FileUploadQueueCard = forwardRef<
       ref={ref}
       data-slot="file-upload-queue-card"
       className={cn(
-        "w-64 rounded-2xl border border-neutral-200 bg-white p-4 font-sans shadow-lg",
+        "w-64 rounded-2xl border border-neutral-100 bg-white p-4 font-sans shadow-lg",
         className,
       )}
       {...props}

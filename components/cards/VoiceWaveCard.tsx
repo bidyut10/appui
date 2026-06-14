@@ -138,7 +138,7 @@ export const VoiceWaveCard = forwardRef<HTMLDivElement, VoiceWaveCardProps>(
         ref={ref}
         data-slot="voice-wave-card"
         className={cn(
-          "w-full max-w-xs rounded-2xl bg-linear-to-br from-teal-950 via-neutral-900 to-black p-4 font-sans shadow-lg",
+          "w-xs rounded-2xl bg-linear-to-br from-teal-950 via-neutral-900 to-black p-4 font-sans shadow-lg",
           className,
         )}
         {...props}

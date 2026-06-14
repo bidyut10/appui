@@ -92,7 +92,7 @@ export const TeamPresenceWidget = forwardRef<
       ref={ref}
       data-slot="team-presence-widget"
       className={cn(
-        "w-full max-w-sm rounded-2xl border border-neutral-200 bg-white p-4 font-sans shadow-lg",
+        "w-sm rounded-2xl border border-neutral-100 bg-white p-4 font-sans shadow-lg",
         className,
       )}
       {...props}

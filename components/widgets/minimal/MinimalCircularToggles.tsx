@@ -10,9 +10,9 @@ import {
 import { cn } from "@/lib/utils";
 import { Sound } from "@/icons/Sound";
 import { Location } from "@/icons/Location";
-import { PlaneTakeoff } from "@/icons/PlaneTakeoff";
 import { Settings } from "@/icons/Settings";
 import { Camera } from "@/icons/Camera";
+import { Plane } from "@/icons/Plane";
 
 type MinimalCircularToggleProps = {
   label: string;
@@ -48,12 +48,11 @@ const MinimalCircularToggle = forwardRef<
         aria-pressed={active}
         data-slot="minimal-circular-toggle"
         className={cn(
-          "flex h-44 w-44 cursor-pointer flex-col items-center justify-between rounded-[1.75rem] p-4 font-sans shadow-lg transition-all active:scale-[0.98]",
+          "flex h-44 w-44 cursor-pointer flex-col items-center justify-between rounded-[1.75rem] p-4 font-sans shadow-lg transition-all",
           variant === "red" && "bg-[#eb0000] text-white",
           variant === "white" &&
-            "border border-neutral-200 bg-white text-neutral-900",
+            "border border-neutral-100 bg-white text-neutral-900",
           variant === "black" && "bg-black text-white",
-          active && "ring-2 ring-neutral-900/10",
           !active && variant === "red" && "opacity-90",
           className,
         )}
@@ -151,7 +150,7 @@ export const MinimalAirplaneButton = forwardRef<
   <MinimalCircularToggle
     ref={ref}
     label="Aeroplane mode"
-    icon={<PlaneTakeoff size={22} />}
+    icon={<Plane size={22} className="rotate-90"/>}
     variant="white"
     status="No connections"
     {...props}

@@ -142,7 +142,7 @@ export const GoogleProfileCard = forwardRef<
           {shortcuts.map((shortcut, index) => (
             <span
               key={`${shortcut}-${index}`}
-              className="rounded-full border border-neutral-200 bg-white px-3.5 py-1.5 text-[9px] font-medium text-neutral-700 shadow-[0_1px_2px_rgba(0,0,0,0.06)] transition-colors hover:bg-neutral-50"
+              className="rounded-full border border-neutral-100 bg-white px-3.5 py-1.5 text-[9px] font-medium text-neutral-700 shadow-[0_1px_2px_rgba(0,0,0,0.06)] transition-colors hover:bg-neutral-50"
             >
               {shortcut}
             </span>

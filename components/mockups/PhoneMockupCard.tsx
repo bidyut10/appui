@@ -39,7 +39,6 @@ export const PhoneMockupCard = forwardRef<HTMLDivElement, PhoneMockupCardProps>(
             <p className="mt-0.5 text-[9px] text-white/60">Component preview</p>
           </div>
         </div>
-        <div className="absolute bottom-1.5 left-1/2 h-1 w-24 -translate-x-1/2 rounded-full bg-neutral-700" />
       </div>
       <p className="mt-3 font-mono text-[10px] tracking-wider text-neutral-400 uppercase">
         iPhone 15 Pro

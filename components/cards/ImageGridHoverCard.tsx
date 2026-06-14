@@ -42,7 +42,7 @@ export const ImageGridHoverCard = forwardRef<
         ref={ref}
         data-slot="image-grid-hover-card"
         className={cn(
-          "w-72 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-3 font-sans shadow-lg",
+          "w-72 overflow-hidden rounded-2xl border border-neutral-100 bg-white p-3 font-sans shadow-lg",
           className,
         )}
         {...props}

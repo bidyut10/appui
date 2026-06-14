@@ -61,13 +61,13 @@ export const SortMenuPreviewCard = forwardRef<
       <div
         ref={ref}
         data-slot="sort-menu-preview-card"
-        className={cn("relative w-full max-w-[200px] font-sans", className)}
+        className={cn("relative w-[200px] font-sans", className)}
         {...props}
       >
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="flex w-full cursor-pointer items-center justify-between rounded-xl border border-neutral-200 bg-white px-3 py-2.5 text-[13px] font-medium text-neutral-800 shadow-sm"
+          className="flex w-full cursor-pointer items-center justify-between rounded-xl border border-neutral-100 bg-white px-3 py-2.5 text-[13px] font-medium text-neutral-800 shadow-sm"
         >
           {triggerLabel}
           <ChevronDown
@@ -80,7 +80,7 @@ export const SortMenuPreviewCard = forwardRef<
         </button>
 
         {open && (
-          <div className="absolute top-full right-0 left-0 z-10 mt-1.5 overflow-hidden rounded-xl border border-neutral-200 bg-white py-1 shadow-xl">
+          <div className="absolute top-full right-0 left-0 z-10 mt-1.5 overflow-hidden rounded-xl border border-neutral-100 bg-white py-1 shadow-xl">
             {options.map((option) => (
               <button
                 key={option.id}

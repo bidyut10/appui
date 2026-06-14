@@ -48,7 +48,7 @@ export const KeyboardShortcutsCard = forwardRef<
       ref={ref}
       data-slot="keyboard-shortcuts-card"
       className={cn(
-        "w-full max-w-xs rounded-2xl border border-neutral-200 bg-white p-4 font-sans shadow-lg sm:p-5",
+        "w-xs rounded-2xl border border-neutral-100 bg-white p-4 font-sans shadow-lg sm:p-5",
         className,
       )}
       {...props}
@@ -80,7 +80,7 @@ export const KeyboardShortcutsCard = forwardRef<
               {shortcut.keys.map((key) => (
                 <kbd
                   key={key}
-                  className="flex h-6 min-w-6 items-center justify-center rounded-md border border-neutral-200 bg-white px-1.5 font-mono text-[10px] font-medium text-neutral-600 shadow-sm"
+                  className="flex h-6 min-w-6 items-center justify-center rounded-md border border-neutral-100 bg-white px-1.5 font-mono text-[10px] font-medium text-neutral-600 shadow-sm"
                 >
                   {key}
                 </kbd>

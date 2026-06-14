@@ -43,7 +43,7 @@ export const ImageQuoteOverlayCard = forwardRef<
       onKeyDown={(e) => e.key === "Enter" && onClick?.()}
       data-slot="image-quote-overlay-card"
       className={cn(
-        "group relative h-80 w-64 cursor-pointer overflow-hidden rounded-2xl border border-neutral-200 bg-white text-left shadow-lg",
+        "group relative h-80 w-64 cursor-pointer overflow-hidden rounded-2xl border border-neutral-100 bg-white text-left shadow-lg",
         className,
       )}
       {...props}

@@ -42,10 +42,10 @@ export const LiveActivityPillCard = forwardRef<
     <div
       ref={ref}
       data-slot="live-activity-pill-card"
-      className={cn("w-full max-w-xs font-sans", className)}
+      className={cn("w-xs font-sans", className)}
       {...props}
     >
-      <div className="flex items-center gap-3 rounded-2xl border border-neutral-200 bg-white/90 px-4 py-3 shadow-lg backdrop-blur-xl">
+      <div className="flex items-center gap-3 rounded-2xl border border-neutral-100 bg-white/90 px-4 py-3 shadow-lg backdrop-blur-xl">
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal-500 text-white">
           {icon}
         </div>

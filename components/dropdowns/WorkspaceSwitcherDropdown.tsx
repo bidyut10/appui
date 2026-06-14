@@ -108,7 +108,7 @@ export const WorkspaceSwitcherDropdown = forwardRef<
             aria-label={`Current workspace: ${current.name}`}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
-            className="group inline-flex h-11 cursor-pointer items-center gap-2.5 rounded-xl border border-neutral-200 bg-white pr-3 pl-2 transition-all hover:border-neutral-300 hover:shadow-sm"
+            className="group inline-flex h-11 cursor-pointer items-center gap-2.5 rounded-xl border border-neutral-100 bg-white pr-3 pl-2 transition-all hover:border-neutral-300 hover:shadow-sm"
           >
             <div
               className={cn(

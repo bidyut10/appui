@@ -44,7 +44,7 @@ export const DribbbleShotCard = forwardRef<
       onKeyDown={(e) => e.key === "Enter" && onClick?.()}
       data-slot="dribbble-shot-card"
       className={cn(
-        "group w-64 cursor-pointer overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-lg transition-shadow hover:shadow-xl",
+        "group w-64 cursor-pointer overflow-hidden rounded-2xl border border-neutral-100 bg-white shadow-lg transition-shadow hover:shadow-xl",
         className,
       )}
       {...props}

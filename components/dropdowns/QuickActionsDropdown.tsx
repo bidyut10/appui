@@ -86,7 +86,7 @@ export const QuickActionsDropdown = forwardRef<
             aria-label={triggerAriaLabel}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
-            className="group inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-xl border border-neutral-200 bg-white transition-all duration-300 hover:border-neutral-300 hover:shadow-sm active:scale-95"
+            className="group inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-xl border border-neutral-100 bg-white transition-all duration-300 hover:border-neutral-300 hover:shadow-sm active:scale-95"
           >
             <Ellipsis className="h-4 w-4 text-neutral-500" />
           </button>

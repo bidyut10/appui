@@ -95,7 +95,7 @@ export const ApprovalQueueWidget = forwardRef<
         ref={ref}
         data-slot="approval-queue-widget"
         className={cn(
-          "w-full max-w-sm rounded-2xl border border-neutral-200 bg-white p-4 font-sans shadow-lg",
+          "w-sm rounded-2xl border border-neutral-100 bg-white p-4 font-sans shadow-lg",
           className,
         )}
         {...props}
@@ -158,7 +158,7 @@ export const ApprovalQueueWidget = forwardRef<
                       type="button"
                       onClick={() => handleReject(item)}
                       data-slot="approval-queue-widget-reject"
-                      className="flex flex-1 cursor-pointer items-center justify-center gap-1 rounded-lg border border-neutral-200 bg-white py-1.5 text-[11px] font-semibold text-neutral-600 transition-colors hover:bg-neutral-50"
+                      className="flex flex-1 cursor-pointer items-center justify-center gap-1 rounded-lg border border-neutral-100 bg-white py-1.5 text-[11px] font-semibold text-neutral-600 transition-colors hover:bg-neutral-50"
                     >
                       <X size={12} />
                       Reject

@@ -72,7 +72,7 @@ export const WorkspaceSwitcherPreviewCard = forwardRef<
         ref={ref}
         data-slot="workspace-switcher-preview-card"
         className={cn(
-          "w-full max-w-[240px] overflow-hidden rounded-2xl border border-neutral-200 bg-white font-sans shadow-lg",
+          "w-[240px] overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
           className,
         )}
         {...props}

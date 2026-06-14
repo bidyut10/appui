@@ -1,10 +1,15 @@
 "use client";
 
-import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
+import {
+  forwardRef,
+  useEffect,
+  useState,
+  type ComponentPropsWithoutRef,
+} from "react";
 
 import { cn } from "@/lib/utils";
 
-import { Edit } from "@/icons/Edit";
+import { Signature } from "@/icons/Signature";
 
 /**
  * Premium journal writing card with lined paper and word count.
@@ -36,24 +41,40 @@ export const JournalWritingCard = forwardRef<
     ref,
   ) => {
     const [text, setText] = useState(defaultText);
+    const [saveState, setSaveState] = useState<"saved" | "saving">("saved");
     const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+
+    useEffect(() => {
+      if (!text) {
+        setSaveState("saved");
+        return;
+      }
+
+      setSaveState("saving");
+      const timer = window.setTimeout(() => setSaveState("saved"), 900);
+      return () => window.clearTimeout(timer);
+    }, [text]);
 
     return (
       <div
         ref={ref}
         data-slot="journal-writing-card"
         className={cn(
-          "w-72 overflow-hidden rounded-2xl border border-neutral-200 bg-white font-sans shadow-lg",
+          "w-72 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
           className,
         )}
         {...props}
       >
-        <div className="flex items-center justify-between border-b border-neutral-100 bg-neutral-50/80 px-4 py-3">
-          <div>
-            <p className="text-sm font-bold text-neutral-900">{title}</p>
-            <p className="text-[10px] text-neutral-400">{date}</p>
+        <div className="flex items-start justify-between gap-3 border-b border-neutral-100 bg-amber-400 px-4 py-3">
+          <div className="min-w-0">
+            <p className="text-sm font-semibold leading-tight text-neutral-900">
+              {title}
+            </p>
+            <p className="mt-0.5 text-[10px] leading-none text-neutral-700">
+              {date}
+            </p>
           </div>
-          <Edit size={14} className="text-neutral-400" />
+          <Signature size={14} className="mt-0.5 shrink-0 text-neutral-800" />
         </div>
 
         <div
@@ -75,14 +96,34 @@ export const JournalWritingCard = forwardRef<
             data-slot="journal-writing-card-input"
             className="scroll-hover relative z-10 h-[200px] w-full resize-none bg-transparent px-4 pt-3 pb-2 font-serif text-[14px] leading-7 text-neutral-800 outline-none placeholder:text-neutral-300"
           />
-          <div className="absolute top-0 left-6 h-full w-px bg-rose-200/80" />
+          <div className="absolute top-0 left-3 h-full w-px bg-rose-200/80" />
         </div>
 
-        <div className="flex items-center justify-between border-t border-neutral-100 px-4 py-2">
-          <span className="text-[10px] text-neutral-400">{words} words</span>
-          <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-medium text-emerald-700">
-            Auto-saved
+        <div className="flex h-9 items-center justify-between border-t border-neutral-100 px-4">
+          <span className="text-[10px] leading-none text-neutral-400">
+            {words} words
           </span>
+          <div
+            className="flex h-4 items-center justify-end gap-1.5"
+            aria-live="polite"
+            aria-label={saveState === "saving" ? "Saving" : "Saved"}
+          >
+            {saveState === "saving" && (
+              <span className="text-[10px] leading-none text-neutral-400">
+                Saving…
+              </span>
+            )}
+            <span className="relative inline-flex h-2 w-2 shrink-0">
+              {saveState === "saving" ? (
+                <>
+                  <span className="absolute inset-0 animate-ping rounded-full bg-amber-400 opacity-60" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-500" />
+                </>
+              ) : (
+                <span className="inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+              )}
+            </span>
+          </div>
         </div>
       </div>
     );

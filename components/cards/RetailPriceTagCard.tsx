@@ -36,7 +36,7 @@ export const RetailPriceTagCard = forwardRef<
     <div
       ref={ref}
       data-slot="retail-price-tag-card"
-      className={cn("relative w-full max-w-[160px] font-sans", className)}
+      className={cn("relative w-[160px] font-sans", className)}
       {...props}
     >
       <div className="absolute -top-1 left-1/2 z-10 h-3 w-3 -translate-x-1/2 rounded-full border-2 border-neutral-300 bg-white shadow-sm" />

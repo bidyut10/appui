@@ -34,7 +34,7 @@ export const RidePickupWidget = forwardRef<
       ref={ref}
       data-slot="ride-pickup-widget"
       className={cn(
-        "flex h-52 w-44 flex-col rounded-3xl border border-neutral-200 bg-white font-sans shadow-lg",
+        "flex h-52 w-44 flex-col rounded-3xl border border-neutral-100 bg-white font-sans shadow-lg",
         className,
       )}
       {...props}

@@ -67,7 +67,7 @@ export const MarkdownEditorWidget = forwardRef<
         ref={ref}
         data-slot="markdown-editor-widget"
         className={cn(
-          "w-full max-w-sm overflow-hidden rounded-2xl border border-neutral-200 bg-white font-sans shadow-lg",
+          "w-80 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
           scrollHoverGroup,
           className,
         )}
@@ -99,7 +99,7 @@ export const MarkdownEditorWidget = forwardRef<
         {preview ? (
           <ScrollHoverArea
             data-slot="markdown-editor-widget-preview"
-            className="h-[180px]"
+            className="h-64"
             viewportClassName="px-4 py-3 text-[13px] leading-relaxed text-neutral-700"
           >
             <div dangerouslySetInnerHTML={{ __html: html }} />
@@ -107,7 +107,7 @@ export const MarkdownEditorWidget = forwardRef<
         ) : (
           <ScrollHoverArea
             data-slot="markdown-editor-widget-scroll"
-            className="h-[180px]"
+            className="h-64"
           >
             <textarea
               value={markdown}

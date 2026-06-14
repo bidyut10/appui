@@ -58,7 +58,7 @@ export const ThermalReceiptCard = forwardRef<
       ref={ref}
       data-slot="thermal-receipt-card"
       className={cn(
-        "w-full max-w-[220px] font-mono sm:max-w-[200px]",
+        "w-[220px] font-mono sm:max-w-[200px]",
         className,
       )}
       {...props}

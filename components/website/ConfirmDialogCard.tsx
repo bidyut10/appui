@@ -116,7 +116,7 @@ export const ConfirmDialogCard = forwardRef<
         aria-describedby="confirm-dialog-description"
         data-slot="confirm-dialog-card"
         className={cn(
-          "w-72 rounded-2xl border border-neutral-200 bg-white p-5 text-center font-sans shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)]",
+          "w-72 rounded-2xl border border-neutral-100 bg-white p-5 text-center font-sans shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)]",
           className,
         )}
         {...props}

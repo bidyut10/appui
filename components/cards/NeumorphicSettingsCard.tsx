@@ -77,7 +77,7 @@ export const NeumorphicSettingsCard = forwardRef<
         ref={ref}
         data-slot="neumorphic-settings-card"
         className={cn(
-          "w-full max-w-xs rounded-3xl bg-[#e8ecf1] p-5 font-sans shadow-inner",
+          "w-xs rounded-3xl bg-[#e8ecf1] p-5 font-sans shadow-inner",
           className,
         )}
         {...props}

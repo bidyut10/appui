@@ -1,80 +1,118 @@
 "use client";
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
+import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
-import { Images } from "@/icons/Images";
 
-import bgImage from "@/public/dbg.png";
+import img1 from "@/public/dbg.png";
+import img2 from "@/public/bh.png";
+import img3 from "@/public/dithar.png";
+import img4 from "@/public/bg.png";
 
-const PHOTOS = [
-  { id: "1", label: "Studio" },
-  { id: "2", label: "Portrait" },
-  { id: "3", label: "Street" },
-  { id: "4", label: "Travel" },
-];
+export type AlbumPhoto = {
+  id: string;
+  place: string;
+  date: string;
+  src: StaticImageData | string;
+};
 
+/**
+ * Minimal photo viewer — single frame with dot navigation.
+ *
+ * Replace the demo frames with your own photos.
+ */
 export type PhotoAlbumCardProps = {
-  title?: string;
-  count?: number;
-  image?: typeof bgImage;
+  photos?: AlbumPhoto[];
+  onSlideChange?: (index: number, photo: AlbumPhoto) => void;
 } & ComponentPropsWithoutRef<"div">;
 
+const defaultPhotos: AlbumPhoto[] = [
+  { id: "1", place: "Kyoto", date: "Mar 12", src: img1 },
+  { id: "2", place: "Osaka", date: "Apr 03", src: img2 },
+  { id: "3", place: "Hokkaido", date: "Jan 28", src: img3 },
+  { id: "4", place: "Tokyo", date: "Jun 14", src: img4 },
+];
+
 export const PhotoAlbumCard = forwardRef<HTMLDivElement, PhotoAlbumCardProps>(
-  (
-    {
-      className,
-      title = "Summer collection",
-      count = 128,
-      image = bgImage,
-      ...props
-    },
-    ref,
-  ) => {
-    const [active, setActive] = useState("1");
+  ({ className, photos = defaultPhotos, onSlideChange, ...props }, ref) => {
+    const [index, setIndex] = useState(0);
+    const total = photos.length;
+
+    const select = (next: number) => {
+      setIndex(next);
+      onSlideChange?.(next, photos[next]);
+    };
+
+    const prev = () => select((index - 1 + total) % total);
+    const next = () => select((index + 1) % total);
+
+    const current = photos[index];
 
     return (
       <div
         ref={ref}
         data-slot="photo-album-card"
         className={cn(
-          "w-64 overflow-hidden rounded-2xl border border-neutral-200 bg-white font-sans shadow-lg",
+          "w-80 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
           className,
         )}
         {...props}
       >
-        <div className="flex items-center justify-between px-4 pt-4 pb-2">
-          <div>
-            <p className="text-sm font-bold text-neutral-900">{title}</p>
-            <p className="text-[10px] text-neutral-400">{count} photos</p>
-          </div>
-          <Images size={16} className="text-neutral-400" />
+        <div className="relative aspect-square bg-neutral-100">
+          {photos.map((photo, i) => (
+            <Image
+              key={photo.id}
+              src={photo.src}
+              alt={photo.place}
+              fill
+              priority={i === 0}
+              className={cn(
+                "object-cover transition-opacity duration-300 ease-out",
+                i === index ? "opacity-100" : "opacity-0",
+              )}
+              sizes="320px"
+            />
+          ))}
+
+          <button
+            type="button"
+            aria-label="Previous photo"
+            onClick={prev}
+            className="absolute inset-y-0 left-0 z-10 w-1/3 cursor-pointer"
+          />
+          <button
+            type="button"
+            aria-label="Next photo"
+            onClick={next}
+            className="absolute inset-y-0 right-0 z-10 w-1/3 cursor-pointer"
+          />
         </div>
 
-        <div className="grid grid-cols-2 gap-1 p-2 pt-0">
-          {PHOTOS.map((photo) => (
-            <button
-              key={photo.id}
-              type="button"
-              onClick={() => setActive(photo.id)}
-              className={cn(
-                "relative h-20 w-full overflow-hidden rounded-lg",
-                active === photo.id && "ring-2 ring-neutral-900 ring-offset-1",
-              )}
-            >
-              <Image
-                src={image}
-                alt={photo.label}
-                fill
-                className="object-cover"
-                sizes="120px"
+        <div className="flex items-center justify-between gap-4 border-t border-neutral-100 px-4 py-3">
+          <div className="min-w-0">
+            <p className="truncate text-sm font-semibold text-neutral-900">
+              {current.place}
+            </p>
+            <p className="text-xs text-neutral-400">{current.date}</p>
+          </div>
+
+          <div className="flex shrink-0 items-center gap-1.5">
+            {photos.map((photo, i) => (
+              <button
+                key={photo.id}
+                type="button"
+                aria-label={`Show ${photo.place}`}
+                aria-pressed={i === index}
+                onClick={() => select(i)}
+                className={cn(
+                  "h-1.5 rounded-full transition-all duration-200",
+                  i === index ? "w-5 bg-neutral-900" : "w-1.5 bg-neutral-300",
+                )}
               />
-              <span className="absolute bottom-1 left-1 rounded bg-black/50 px-1.5 py-0.5 text-[8px] font-medium text-white">
-                {photo.label}
-              </span>
-            </button>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     );

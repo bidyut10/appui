@@ -47,7 +47,7 @@ export const UptimeMonitorCard = forwardRef<
       ref={ref}
       data-slot="uptime-monitor-card"
       className={cn(
-        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-lg ring-1 ring-black/[0.03]",
+        "w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-lg ring-1 ring-black/[0.03]",
         className,
       )}
       {...props}
@@ -69,7 +69,7 @@ export const UptimeMonitorCard = forwardRef<
                   <div
                     key={`${service.name}-${row}`}
                     className={cn(
-                      "mx-auto h-2 w-full max-w-4 rounded-sm",
+                      "mx-auto h-2 w-4 rounded-sm",
                       isDown ? "bg-amber-400" : "bg-emerald-400",
                     )}
                   />

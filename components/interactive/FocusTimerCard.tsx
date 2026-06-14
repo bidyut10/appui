@@ -74,7 +74,7 @@ export const FocusTimerCard = forwardRef<HTMLDivElement, FocusTimerCardProps>(
         ref={ref}
         data-slot="focus-timer-card"
         className={cn(
-          "w-full max-w-xs rounded-3xl bg-neutral-950 p-5 font-sans shadow-xl sm:p-6",
+          "w-xs rounded-3xl bg-neutral-950 p-5 font-sans shadow-xl sm:p-6",
           className,
         )}
         {...props}

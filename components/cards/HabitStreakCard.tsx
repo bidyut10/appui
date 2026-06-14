@@ -82,7 +82,7 @@ export const HabitStreakCard = forwardRef<HTMLDivElement, HabitStreakCardProps>(
         ref={ref}
         data-slot="habit-streak-card"
         className={cn(
-          "w-full max-w-xs rounded-3xl border border-orange-100 bg-linear-to-b from-orange-50 to-white p-5 font-sans shadow-lg shadow-orange-100/50",
+          "w-xs rounded-3xl border border-orange-100 bg-linear-to-b from-orange-50 to-white p-5 font-sans shadow-lg shadow-orange-100/50",
           className,
         )}
         {...props}
@@ -140,7 +140,7 @@ export const HabitStreakCard = forwardRef<HTMLDivElement, HabitStreakCardProps>(
                 onClick={() => toggleDay(index)}
                 data-slot="habit-streak-card-day"
                 className={cn(
-                  "flex aspect-square w-full max-w-8 cursor-pointer items-center justify-center rounded-full text-[10px] font-bold transition-all duration-300 active:scale-90",
+                  "flex aspect-square w-8 cursor-pointer items-center justify-center rounded-full text-[10px] font-bold transition-all duration-300 active:scale-90",
                   day.completed
                     ? "bg-orange-500 text-white shadow-sm shadow-orange-300"
                     : day.isToday

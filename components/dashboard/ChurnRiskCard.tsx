@@ -43,7 +43,7 @@ export const ChurnRiskCard = forwardRef<HTMLDivElement, ChurnRiskCardProps>(
       ref={ref}
       data-slot="churn-risk-card"
       className={cn(
-        "w-full max-w-sm rounded-[1.25rem] border border-rose-100 bg-linear-to-b from-rose-50/50 to-white p-5 font-sans shadow-lg ring-1 ring-rose-100/50",
+        "w-sm rounded-[1.25rem] border border-rose-100 bg-linear-to-b from-rose-50/50 to-white p-5 font-sans shadow-lg ring-1 ring-rose-100/50",
         className,
       )}
       {...props}

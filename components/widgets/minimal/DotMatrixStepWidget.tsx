@@ -19,7 +19,7 @@ export const DotMatrixStepWidget = forwardRef<
     ref={ref}
     data-slot="dot-matrix-step-widget"
     className={cn(
-      "flex h-44 w-44 flex-col justify-between rounded-[2rem] border border-neutral-200 bg-white p-4 font-sans shadow-lg",
+      "flex h-44 w-44 flex-col justify-between rounded-[2rem] border border-neutral-100 bg-white p-4 font-sans shadow-lg",
       className,
     )}
     {...props}

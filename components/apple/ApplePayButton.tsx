@@ -86,7 +86,7 @@ export const ApplePayButton = forwardRef<HTMLDivElement, ApplePayButtonProps>(
           {paymentMethods.map((icon, index) => (
             <div
               key={index}
-              className="flex h-7 w-10 items-center justify-center rounded-md border border-neutral-200 bg-white text-sm shadow-sm"
+              className="flex h-7 w-10 items-center justify-center rounded-md border border-neutral-100 bg-white text-sm shadow-sm"
             >
               {icon}
             </div>

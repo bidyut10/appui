@@ -27,7 +27,7 @@ export const LinedJournalCard = forwardRef<
   <div
     ref={ref}
     data-slot="lined-journal-card"
-    className={cn("w-full max-w-xs font-sans", className)}
+    className={cn("w-xs font-sans", className)}
     {...props}
   >
     <div
@@ -38,7 +38,7 @@ export const LinedJournalCard = forwardRef<
         backgroundPosition: "0 12px",
       }}
     >
-      <div className="absolute top-0 bottom-0 left-10 w-px bg-rose-300/70" />
+      <div className="absolute top-0 bottom-0 left-4 w-px bg-rose-300/70" />
       <p className="relative mb-6 font-mono text-[10px] text-blue-400/80">
         {date}
       </p>

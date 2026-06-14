@@ -28,7 +28,7 @@ export const TypewriterTextWidget = forwardRef<
   (
     {
       className,
-      label = "Hero headline",
+      label = "Typewriter Effect",
       phrases = [
         "Build faster with copy-paste UI.",
         "Ship polished cards in minutes.",
@@ -80,7 +80,7 @@ export const TypewriterTextWidget = forwardRef<
         ref={ref}
         data-slot="typewriter-text-widget"
         className={cn(
-          "w-72 rounded-2xl border border-neutral-200 bg-white p-5 font-sans shadow-lg",
+          "w-xs bg-white p-5 font-sans",
           className,
         )}
         {...props}
@@ -88,7 +88,7 @@ export const TypewriterTextWidget = forwardRef<
         <p className="mb-2 font-mono text-[10px] tracking-widest text-neutral-400 uppercase">
           {label}
         </p>
-        <p className="min-h-[3.5rem] text-lg leading-snug font-semibold text-neutral-900">
+        <p className="min-h-14 text-lg leading-snug font-semibold text-neutral-900">
           {mounted ? text : phrases[0]}
           <span className="ml-0.5 inline-block h-[1.1em] w-0.5 animate-pulse bg-teal-500 align-middle" />
         </p>

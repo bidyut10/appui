@@ -33,7 +33,7 @@ export const ChapterOpenerCard = forwardRef<
       ref={ref}
       data-slot="chapter-opener-card"
       className={cn(
-        "w-full max-w-sm border-y border-neutral-900 bg-white py-8 text-center font-serif",
+        "w-sm border-y border-neutral-100 bg-white py-8 text-center font-serif",
         className,
       )}
       {...props}

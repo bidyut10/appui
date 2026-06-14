@@ -135,7 +135,7 @@ export const SalesOverviewCard = forwardRef<
             {open && (
               <div
                 data-slot="sales-overview-year-menu"
-                className="absolute top-full right-0 z-50 mt-2 w-24 overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-xl"
+                className="absolute top-full right-0 z-50 mt-2 w-24 overflow-hidden rounded-xl border border-neutral-100 bg-white shadow-xl"
               >
                 {(years ?? []).map((item) => (
                   <button

@@ -84,7 +84,7 @@ export const TravelPostcardCard = forwardRef<
           />
 
           {/* Map badge */}
-          <div className="absolute top-2 right-2 flex h-10 w-8 flex-col items-center justify-center border border-neutral-200 bg-white/90 shadow-sm">
+          <div className="absolute top-2 right-2 flex h-10 w-8 flex-col items-center justify-center border border-neutral-100 bg-white/90 shadow-sm">
             {icon ?? <MapPinned size={10} className="text-red-500" />}
             <span className="mt-0.5 font-mono text-[6px] text-neutral-500">
               {country}

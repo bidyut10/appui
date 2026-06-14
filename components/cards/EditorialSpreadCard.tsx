@@ -44,7 +44,7 @@ export const EditorialSpreadCard = forwardRef<
       ref={ref}
       data-slot="editorial-spread-card"
       className={cn(
-        "w-full max-w-sm overflow-hidden border border-neutral-200 bg-white font-serif shadow-lg",
+        "w-sm overflow-hidden border border-neutral-100 bg-white font-serif shadow-lg",
         className,
       )}
       {...props}

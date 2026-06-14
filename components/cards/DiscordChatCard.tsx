@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import profileImage from "@/public/boy.png";
 
 import { Send } from "@/icons/Send";
+import { Discord } from "@/icons/Discord";
 
 export type DiscordMessage = {
   id: string;
@@ -88,42 +89,46 @@ export const DiscordChatCard = forwardRef<HTMLDivElement, DiscordChatCardProps>(
         ref={ref}
         data-slot="discord-chat-card"
         className={cn(
-          "w-72 overflow-hidden rounded-2xl border border-neutral-200 bg-white font-sans shadow-lg",
+          "w-72 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
           className,
         )}
         {...props}
       >
-        <div className="border-b border-neutral-100 bg-[#5865F2]/5 px-4 py-2.5">
-          <p className="text-[10px] font-medium text-neutral-500">{server}</p>
-          <p className="text-sm font-bold text-neutral-900">
-            <span className="text-neutral-400"># </span>
-            {channel}
+        <div className="flex items-center gap-2.5 border-b border-neutral-100 px-4 py-3">
+          <Discord size={15} color="#5865F2" className="shrink-0" />
+          <p className="min-w-0 flex-1 truncate text-sm text-neutral-800">
+            <span className="text-neutral-300">·</span>
+            <span className="text-[11px] text-neutral-400">{server}</span>
           </p>
         </div>
 
         <div className="scroll-hover max-h-40 space-y-3 overflow-y-auto px-3 py-3">
           {items.map((msg) => (
-            <div key={msg.id} className="flex gap-2">
-              <Image
-                src={msg.avatar ?? profileImage}
-                alt={msg.author}
-                width={32}
-                height={32}
-                className="h-8 w-8 shrink-0 rounded-full"
-              />
-              <div>
-                <span
-                  className={cn(
-                    "text-[12px] font-semibold",
-                    msg.roleColor ?? "text-neutral-800",
-                  )}
-                >
-                  {msg.author}
-                </span>
-                <span className="ml-2 text-[10px] text-neutral-400">
-                  {msg.time}
-                </span>
-                <p className="text-[12px] leading-relaxed text-neutral-700">
+            <div key={msg.id} className="flex items-start gap-2.5">
+              <div className="h-7 w-7 shrink-0 overflow-hidden rounded-full bg-neutral-100">
+                <Image
+                  src={msg.avatar ?? profileImage}
+                  alt={msg.author}
+                  width={28}
+                  height={28}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="flex items-baseline gap-2">
+                  <span
+                    className={cn(
+                      "text-[12px] font-semibold",
+                      msg.roleColor ?? "text-neutral-800",
+                    )}
+                  >
+                    {msg.author}
+                  </span>
+                  <span className="text-[10px] text-neutral-400">
+                    {msg.time}
+                  </span>
+                </div>
+                <p className="mt-0.5 text-[12px] leading-relaxed text-neutral-700">
                   {msg.content}
                 </p>
               </div>

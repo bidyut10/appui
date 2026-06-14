@@ -39,7 +39,7 @@ export const StampPostcardCard = forwardRef<
     <div
       ref={ref}
       data-slot="stamp-postcard-card"
-      className={cn("w-full max-w-sm font-sans", className)}
+      className={cn("w-sm font-sans", className)}
       {...props}
     >
       <div className="relative overflow-hidden rounded-sm border border-neutral-200 bg-[#fffef8] shadow-md">

@@ -34,7 +34,7 @@ export const MinimalAnalogClockWidget = forwardRef<
       ref={ref}
       data-slot="minimal-analog-clock-widget"
       className={cn(
-        "flex h-44 w-44 items-center justify-center overflow-hidden rounded-[2rem] border border-neutral-200 bg-white p-5 shadow-lg",
+        "flex h-44 w-44 items-center justify-center overflow-hidden rounded-[2rem] border border-neutral-100 bg-white p-5 shadow-lg",
         className,
       )}
       {...props}

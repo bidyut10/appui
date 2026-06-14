@@ -36,7 +36,7 @@ export const FilmStripCard = forwardRef<HTMLDivElement, FilmStripCardProps>(
     <div
       ref={ref}
       data-slot="film-strip-card"
-      className={cn("w-full max-w-sm font-mono", className)}
+      className={cn("w-sm font-mono", className)}
       {...props}
     >
       <p className="mb-2 text-center text-[9px] tracking-widest text-neutral-400 uppercase">

@@ -56,7 +56,7 @@ export const GitHubPullRequestCard = forwardRef<
         ref={ref}
         data-slot="github-pull-request-card"
         className={cn(
-          "w-72 rounded-2xl border border-neutral-200 bg-white p-4 font-sans shadow-lg",
+          "w-72 rounded-2xl border border-neutral-100 bg-white p-4 font-sans shadow-lg",
           className,
         )}
         {...props}
@@ -115,7 +115,7 @@ export const GitHubPullRequestCard = forwardRef<
           <button
             type="button"
             onClick={onComment}
-            className="flex flex-1 cursor-pointer items-center justify-center gap-1 rounded-lg border border-neutral-200 bg-white py-2 text-[11px] font-semibold text-neutral-700 hover:bg-neutral-50"
+            className="flex flex-1 cursor-pointer items-center justify-center gap-1 rounded-lg border border-neutral-100 bg-white py-2 text-[11px] font-semibold text-neutral-700 hover:bg-neutral-50"
           >
             <Chat size={12} />
             Comment

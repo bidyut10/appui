@@ -51,7 +51,7 @@ export const PhotoContactSheetCard = forwardRef<
       ref={ref}
       data-slot="photo-contact-sheet-card"
       className={cn(
-        "w-full max-w-xs rounded-sm bg-neutral-100 p-3 font-mono shadow-inner",
+        "w-xs rounded-sm bg-neutral-100 p-3 font-mono shadow-inner",
         className,
       )}
       {...props}

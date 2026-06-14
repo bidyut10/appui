@@ -97,7 +97,7 @@ export const FileTreeWidget = forwardRef<HTMLDivElement, FileTreeWidgetProps>(
       ref={ref}
       data-slot="file-tree-widget"
       className={cn(
-        "w-64 rounded-2xl border border-neutral-200 bg-white p-3 font-sans shadow-lg",
+        "w-64 rounded-2xl border border-neutral-100 bg-white p-3 font-sans shadow-lg",
         className,
       )}
       {...props}

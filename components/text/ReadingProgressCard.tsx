@@ -41,7 +41,7 @@ export const ReadingProgressCard = forwardRef<
       ref={ref}
       data-slot="reading-progress-card"
       className={cn(
-        "w-full max-w-sm rounded-2xl border border-neutral-200 bg-white p-5 font-sans shadow-lg",
+        "w-sm border border-neutral-100 bg-white p-5 font-sans",
         className,
       )}
       {...props}

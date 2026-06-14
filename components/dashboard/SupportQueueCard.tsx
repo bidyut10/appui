@@ -67,7 +67,7 @@ export const SupportQueueCard = forwardRef<
       ref={ref}
       data-slot="support-queue-card"
       className={cn(
-        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white font-sans shadow-lg ring-1 ring-black/[0.03]",
+        "w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white font-sans shadow-lg ring-1 ring-black/[0.03]",
         className,
       )}
       {...props}

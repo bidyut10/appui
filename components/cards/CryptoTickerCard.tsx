@@ -73,7 +73,7 @@ export const CryptoTickerCard = forwardRef<
       ref={ref}
       data-slot="crypto-ticker-card"
       className={cn(
-        "w-full max-w-xs overflow-hidden rounded-2xl bg-[#0a0a0b] font-sans shadow-lg",
+        "w-xs overflow-hidden rounded-2xl bg-[#0a0a0b] font-sans shadow-lg",
         className,
       )}
       {...props}

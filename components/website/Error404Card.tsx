@@ -94,7 +94,7 @@ export const Error404Card = forwardRef<HTMLDivElement, Error404CardProps>(
         <button
           type="button"
           onClick={onSecondaryAction}
-          className="flex h-9 cursor-pointer items-center gap-1 rounded-lg border border-neutral-200 bg-white px-4 text-xs font-medium text-neutral-700 transition-colors hover:bg-neutral-50"
+          className="flex h-9 cursor-pointer items-center gap-1 rounded-lg border border-neutral-100 bg-white px-4 text-xs font-medium text-neutral-700 transition-colors hover:bg-neutral-50"
         >
           {secondaryActionLabel}
           <ArrowRight size={12} />

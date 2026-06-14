@@ -69,7 +69,7 @@ export const InboxSummaryCard = forwardRef<
       ref={ref}
       data-slot="inbox-summary-card"
       className={cn(
-        "w-full max-w-xs rounded-2xl border border-neutral-200 bg-white p-4 font-sans shadow-lg",
+        "w-xs rounded-2xl border border-neutral-100 bg-white p-4 font-sans shadow-lg",
         className,
       )}
       {...props}

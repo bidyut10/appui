@@ -76,7 +76,7 @@ export const UserMenuDropdown = forwardRef<
         <button
           type="button"
           aria-label={`User menu for ${userName}`}
-          className="group inline-flex h-12 cursor-pointer items-center gap-3 rounded-full border border-neutral-200 bg-white pr-4 pl-1.5 transition-all duration-300 hover:border-neutral-300 hover:shadow-sm active:scale-95"
+          className="group inline-flex h-12 cursor-pointer items-center gap-3 rounded-full border border-neutral-100 bg-white pr-4 pl-1.5 transition-all duration-300 hover:border-neutral-300 hover:shadow-sm active:scale-95"
         >
           <div className="h-9 w-9 overflow-hidden rounded-full border-2 border-neutral-100">
             <Image

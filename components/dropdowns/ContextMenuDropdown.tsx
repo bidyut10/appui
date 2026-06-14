@@ -97,7 +97,7 @@ export const ContextMenuDropdown = forwardRef<
                 setOpen(!open);
               }
             }}
-            className="flex h-28 w-48 cursor-context-menu flex-col items-center justify-center rounded-xl border border-neutral-200 bg-white transition-all hover:border-neutral-300 hover:shadow-sm"
+            className="flex h-28 w-48 cursor-context-menu flex-col items-center justify-center rounded-xl border border-neutral-100 bg-white transition-all hover:border-neutral-300 hover:shadow-sm"
           >
             <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-neutral-100">
               <Folder size={18} className="text-neutral-400" />

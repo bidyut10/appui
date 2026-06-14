@@ -136,7 +136,7 @@ export const SearchBarWithResults = forwardRef<
             aria-expanded={open && filtered.length > 0}
             aria-autocomplete="list"
             data-slot="search-bar-with-results-input"
-            className="h-10 w-full rounded-xl border border-neutral-200 bg-white pr-8 pl-9 text-sm text-neutral-900 shadow-sm transition-all outline-none placeholder:text-neutral-400 focus:border-blue-300 focus:ring-2 focus:ring-blue-100"
+            className="h-10 w-full rounded-xl border border-neutral-100 bg-white pr-8 pl-9 text-sm text-neutral-900 shadow-sm transition-all outline-none placeholder:text-neutral-400 focus:border-blue-300 focus:ring-2 focus:ring-blue-100"
           />
           {value && (
             <button
@@ -158,7 +158,7 @@ export const SearchBarWithResults = forwardRef<
         {open && filtered.length > 0 && (
           <div
             data-slot="search-bar-with-results-dropdown"
-            className="absolute top-full z-50 mt-2 w-full origin-top overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-lg"
+            className="absolute top-full z-50 mt-2 w-full origin-top overflow-hidden rounded-xl border border-neutral-100 bg-white shadow-lg"
             style={{ animation: "search-results-in 0.2s ease-out" }}
           >
             {filtered.map((item, index) => (

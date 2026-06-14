@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
-import screenContent from "@/public/bh.png";
+import screenContent from "@/public/dithar.png";
 
 /**
  * Browser Mockup Card built with React, TypeScript, and Tailwind CSS.
@@ -22,10 +22,10 @@ export const BrowserMockupCard = forwardRef<
   <div
     ref={ref}
     data-slot="browser-mockup-card"
-    className={cn("w-80 font-sans", className)}
+    className={cn("w-96 font-sans", className)}
     {...props}
   >
-    <div className="flex items-center gap-2 rounded-t-xl bg-neutral-200 px-3 py-2">
+    <div className="flex items-center gap-2 rounded-t-xl bg-neutral-50 px-3 py-2">
       <div className="flex gap-1.5">
         <div className="h-2.5 w-2.5 rounded-full bg-red-400" />
         <div className="h-2.5 w-2.5 rounded-full bg-amber-400" />

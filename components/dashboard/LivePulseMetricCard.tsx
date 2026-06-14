@@ -41,7 +41,7 @@ export const LivePulseMetricCard = forwardRef<
       ref={ref}
       data-slot="live-pulse-metric-card"
       className={cn(
-        "relative w-full max-w-sm overflow-hidden rounded-[1.25rem] bg-neutral-900 p-5 font-sans text-white shadow-lg",
+        "relative w-sm overflow-hidden rounded-[1.25rem] bg-neutral-900 p-5 font-sans text-white shadow-lg",
         className,
       )}
       {...props}

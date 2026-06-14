@@ -63,8 +63,8 @@ function StatItem({
   const count = useCountUp(stat.value, 1200, enabled);
 
   return (
-    <div className="rounded-xl border border-neutral-100 bg-neutral-50/80 p-3 text-center">
-      <p className="font-mono text-2xl font-bold text-neutral-900 tabular-nums">
+    <div className="p-3 text-start">
+      <p className="font-mono text-2xl font-semibold text-green-900 tabular-nums">
         {stat.prefix}
         {count}
         {stat.suffix}
@@ -93,7 +93,7 @@ export const StatTickerWidget = forwardRef<
         ref={ref}
         data-slot="stat-ticker-widget"
         className={cn(
-          "w-72 rounded-2xl border border-neutral-200 bg-white p-4 font-sans shadow-lg",
+          "w-xs bg-white p-4 font-sans",
           className,
         )}
         {...props}

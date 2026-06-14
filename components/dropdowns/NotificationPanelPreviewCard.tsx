@@ -61,10 +61,10 @@ export const NotificationPanelPreviewCard = forwardRef<
     <div
       ref={ref}
       data-slot="notification-panel-preview-card"
-      className={cn("w-full max-w-[260px] font-sans", className)}
+      className={cn("w-[260px] font-sans", className)}
       {...props}
     >
-      <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-xl shadow-neutral-200/60">
+      <div className="overflow-hidden rounded-2xl border border-neutral-100 bg-white shadow-xl shadow-neutral-200/60">
         <div className="flex items-center justify-between border-b border-neutral-100 px-4 py-3">
           <div className="flex items-center gap-2">
             <Bell size={15} className="text-neutral-600" />

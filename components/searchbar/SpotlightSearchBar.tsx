@@ -203,7 +203,7 @@ export const SpotlightSearchBar = forwardRef<
             ) : (
               <kbd
                 data-slot="spotlight-search-bar-shortcut"
-                className="absolute right-3 flex h-5 items-center rounded-md border border-neutral-200 bg-white/80 px-1.5 font-mono text-[10px] text-neutral-400"
+                className="absolute right-3 flex h-5 items-center rounded-md border border-neutral-100 bg-white/80 px-1.5 font-mono text-[10px] text-neutral-400"
               >
                 /
               </kbd>
@@ -214,7 +214,7 @@ export const SpotlightSearchBar = forwardRef<
         {showPanel && (
           <div
             data-slot="spotlight-search-bar-dropdown"
-            className="absolute top-[calc(100%+8px)] z-50 w-full overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-xl"
+            className="absolute top-[calc(100%+8px)] z-50 w-full overflow-hidden rounded-2xl border border-neutral-100 bg-white shadow-xl"
             style={{
               animation: "spotlight-expand 0.25s cubic-bezier(0.34,1.2,0.64,1)",
             }}

@@ -57,7 +57,7 @@ export const CheckoutStepperCard = forwardRef<
       ref={ref}
       data-slot="checkout-stepper-card"
       className={cn(
-        "w-full max-w-sm rounded-2xl border border-neutral-200 bg-white p-5 font-sans shadow-lg",
+        "w-sm rounded-2xl border border-neutral-100 bg-white p-5 font-sans shadow-lg",
         className,
       )}
       {...props}

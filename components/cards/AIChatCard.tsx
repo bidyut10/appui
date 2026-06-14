@@ -52,7 +52,7 @@ export const AIChatCard = forwardRef<HTMLDivElement, AIChatCardProps>(
         ref={ref}
         data-slot="ai-chat-card"
         className={cn(
-          "flex h-80 w-64 flex-col rounded-2xl border border-neutral-200 bg-white font-sans shadow-lg",
+          "flex h-80 w-xs flex-col rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
           className,
         )}
         {...props}
@@ -80,7 +80,7 @@ export const AIChatCard = forwardRef<HTMLDivElement, AIChatCardProps>(
         </div>
 
         <div className="border-t border-neutral-100 p-3">
-          <div className="flex items-center gap-2 rounded-xl border border-neutral-200 bg-neutral-50 px-3 py-2">
+          <div className="flex items-center gap-2 rounded-lg border border-neutral-100 bg-neutral-50/30 px-3 py-2">
             <input
               type="text"
               placeholder="Ask anything..."

@@ -17,7 +17,7 @@ export const MinimalTimezoneWidget = forwardRef<
     ref={ref}
     data-slot="minimal-timezone-widget"
     className={cn(
-      "flex h-44 w-44 flex-col justify-center rounded-[2rem] border border-neutral-200 bg-white p-4 font-sans shadow-lg",
+      "flex h-44 w-44 flex-col justify-center rounded-[2rem] border border-neutral-100 bg-white p-4 font-sans shadow-lg",
       className,
     )}
     {...props}

@@ -102,7 +102,7 @@ export const FilterSortDropdown = forwardRef<
             aria-label={triggerLabel}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
-            className="group inline-flex h-10 cursor-pointer items-center gap-2 rounded-xl border border-neutral-200 bg-white px-4 text-xs font-medium transition-all hover:border-neutral-300 hover:shadow-sm"
+            className="group inline-flex h-10 cursor-pointer items-center gap-2 rounded-xl border border-neutral-100 bg-white px-4 text-xs font-medium transition-all hover:border-neutral-300 hover:shadow-sm"
           >
             <svg
               viewBox="0 0 24 24"

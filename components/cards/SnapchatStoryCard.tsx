@@ -57,7 +57,7 @@ export const SnapchatStoryCard = forwardRef<
         ref={ref}
         data-slot="snapchat-story-card"
         className={cn(
-          "w-56 overflow-hidden rounded-2xl border border-neutral-200 bg-white font-sans shadow-lg",
+          "w-56 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
           className,
         )}
         {...props}

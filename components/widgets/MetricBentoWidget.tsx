@@ -126,7 +126,7 @@ export const MetricBentoWidget = forwardRef<
     ref={ref}
     data-slot="metric-bento-widget"
     className={cn(
-      "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-3 font-sans shadow-lg ring-1 ring-black/[0.03]",
+      "w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-3 font-sans shadow-lg ring-1 ring-black/[0.03]",
       className,
     )}
     {...props}

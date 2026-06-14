@@ -104,7 +104,7 @@ export const DatePickerWidget = forwardRef<
         ref={ref}
         data-slot="date-picker-widget"
         className={cn(
-          "w-64 rounded-2xl border border-neutral-200 bg-white p-4 font-sans shadow-lg",
+          "w-64 rounded-2xl border border-neutral-100 bg-white p-4 font-sans shadow-lg",
           className,
         )}
         {...props}

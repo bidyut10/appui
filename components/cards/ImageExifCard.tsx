@@ -36,7 +36,7 @@ export const ImageExifCard = forwardRef<HTMLDivElement, ImageExifCardProps>(
       ref={ref}
       data-slot="image-exif-card"
       className={cn(
-        "w-64 overflow-hidden rounded-2xl border border-neutral-200 bg-white font-sans shadow-lg",
+        "w-64 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
         className,
       )}
       {...props}

@@ -55,7 +55,7 @@ export const WorldClockTimelineWidget = forwardRef<
           "flex h-44 w-44 flex-col justify-between rounded-3xl p-4 font-sans shadow-lg",
           dark
             ? "bg-neutral-900 text-white"
-            : "border border-neutral-200 bg-white text-neutral-900",
+            : "border border-neutral-100 bg-white text-neutral-900",
           className,
         )}
         {...props}

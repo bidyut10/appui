@@ -64,7 +64,7 @@ export const GitHubCodeBlockCard = forwardRef<
         ref={ref}
         data-slot="github-code-block-card"
         className={cn(
-          "w-72 overflow-hidden rounded-2xl border border-neutral-200 bg-white font-sans shadow-lg",
+          "w-72 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
           className,
         )}
         {...props}
@@ -82,7 +82,7 @@ export const GitHubCodeBlockCard = forwardRef<
             type="button"
             onClick={handleCopy}
             aria-label="Copy code"
-            className="flex h-7 cursor-pointer items-center gap-1 rounded-md border border-neutral-200 bg-white px-2 text-[10px] font-medium text-neutral-600 transition-colors hover:bg-neutral-50"
+            className="flex h-7 cursor-pointer items-center gap-1 rounded-md border border-neutral-100 bg-white px-2 text-[10px] font-medium text-neutral-600 transition-colors hover:bg-neutral-50"
           >
             {copied ? (
               <Check size={12} className="text-emerald-600" />
