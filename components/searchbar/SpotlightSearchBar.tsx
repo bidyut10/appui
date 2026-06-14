@@ -8,7 +8,7 @@ import {
   type ReactNode,
 } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { Search } from "@/icons/Search";
 import { Clock } from "@/icons/Clock";
@@ -240,7 +240,7 @@ export const SpotlightSearchBar = forwardRef<
             )}
 
             {showResults && (
-              <div className="scroll-hover max-h-56 overflow-y-auto p-2">
+              <div className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-h-56 overflow-y-auto p-2">
                 {filtered.length === 0 ? (
                   <p className="px-3 py-6 text-center text-sm text-neutral-400">
                     No matches for &ldquo;{value}&rdquo;

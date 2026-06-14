@@ -3,15 +3,14 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { Check } from "@/icons/Check";
 
-import bgImage from "@/public/dbg.png";
 
 export type BlobProfileCardProps = {
   name?: string;
   handle?: string;
-  image?: typeof bgImage;
+  image?: string;
 } & ComponentPropsWithoutRef<"div">;
 
 export const BlobProfileCard = forwardRef<HTMLDivElement, BlobProfileCardProps>(
@@ -20,7 +19,7 @@ export const BlobProfileCard = forwardRef<HTMLDivElement, BlobProfileCardProps>(
       className,
       name = "Natalie Portman",
       handle = "@natalieportman",
-      image = bgImage,
+      image = "/dbg.png",
       ...props
     },
     ref,

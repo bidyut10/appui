@@ -1,9 +1,8 @@
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import landscape from "@/public/bg.png";
 
 /**
  * Stamp postcard card built with Next.js, React,
@@ -18,7 +17,7 @@ export type StampPostcardCardProps = {
   message?: string;
   location?: string;
   stampValue?: string;
-  imageSrc?: StaticImageData | string;
+  imageSrc?: string;
 } & ComponentPropsWithoutRef<"div">;
 
 export const StampPostcardCard = forwardRef<
@@ -31,7 +30,7 @@ export const StampPostcardCard = forwardRef<
       message = "Wish you were here! The Sundarbans at golden hour — absolutely unreal.",
       location = "Sundarbans, WB",
       stampValue = "₹5",
-      imageSrc = landscape,
+      imageSrc = "/bg.png",
       ...props
     },
     ref,

@@ -7,7 +7,7 @@ import {
   type ComponentPropsWithoutRef,
 } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { Signature } from "@/icons/Signature";
 
@@ -94,7 +94,7 @@ export const JournalWritingCard = forwardRef<
             placeholder={placeholder}
             aria-label="Journal entry"
             data-slot="journal-writing-card-input"
-            className="scroll-hover relative z-10 h-[200px] w-full resize-none bg-transparent px-4 pt-3 pb-2 font-serif text-[14px] leading-7 text-neutral-800 outline-none placeholder:text-neutral-300"
+            className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden relative z-10 h-[200px] w-full resize-none bg-transparent px-4 pt-3 pb-2 font-serif text-[14px] leading-7 text-neutral-800 outline-none placeholder:text-neutral-300"
           />
           <div className="absolute top-0 left-3 h-full w-px bg-rose-200/80" />
         </div>

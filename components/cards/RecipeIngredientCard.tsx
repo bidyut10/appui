@@ -1,6 +1,6 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { Leaf } from "@/icons/Leaf";
 import { Soup } from "@/icons/Soup";

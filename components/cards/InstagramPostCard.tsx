@@ -5,10 +5,9 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { Ellipsis } from "@/icons/Ellipsis";
 import { Like } from "@/icons/Like";
@@ -16,8 +15,6 @@ import { Chat } from "@/icons/Chat";
 import { Bookmark } from "@/icons/Bookmark";
 import { Send } from "@/icons/Send";
 
-import profile_logo from "@/public/boy.png";
-import bg_image from "@/public/dbg.png";
 
 /**
  * Instagram-inspired post card built with Next.js, React,
@@ -36,8 +33,8 @@ export type InstagramPostCardProps = {
   hashtags?: string;
   timestamp?: string;
 
-  avatar?: StaticImageData | string;
-  postImage?: StaticImageData | string;
+  avatar?: string;
+  postImage?: string;
 
   avatarAlt?: string;
   imageAlt?: string;
@@ -69,8 +66,8 @@ export const InstagramPostCard = forwardRef<
       hashtags = "#uidesign #reactjs #webdev",
       timestamp = "2 hours ago",
 
-      avatar = profile_logo,
-      postImage = bg_image,
+      avatar = "/boy.png",
+      postImage = "/dbg.png",
 
       avatarAlt = "User avatar",
       imageAlt = "Instagram post image",
@@ -111,6 +108,8 @@ export const InstagramPostCard = forwardRef<
                 <Image
                   src={avatar}
                   alt={avatarAlt}
+                  width={16}
+                  height={16}
                   className="w-4"
                   sizes="16px"
                 />
@@ -137,14 +136,17 @@ export const InstagramPostCard = forwardRef<
         </div>
 
         {/* Post image */}
-        <Image
-          data-slot="instagram-post-card-image"
-          src={postImage}
-          alt={imageAlt}
-          className="h-36"
-          sizes="320px"
-          priority={imagePriority}
-        />
+        <div className="relative h-36 w-full">
+          <Image
+            data-slot="instagram-post-card-image"
+            src={postImage}
+            alt={imageAlt}
+            fill
+            className="object-cover"
+            sizes="320px"
+            priority={imagePriority}
+          />
+        </div>
 
         {/* Post content */}
         <div className="px-3 pt-2.5 pb-3">

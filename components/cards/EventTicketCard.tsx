@@ -1,10 +1,8 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import coverImage from "@/public/dbg.png";
 
 import { Location } from "@/icons/Location";
 import { Clock } from "@/icons/Clock";
@@ -32,7 +30,7 @@ export type EventTicketCardProps = {
   ticketId?: string;
   ticketType?: string;
 
-  coverImageSrc?: StaticImageData | string;
+  coverImageSrc?: string;
   coverImageAlt?: string;
 } & ComponentPropsWithoutRef<"div">;
 
@@ -51,7 +49,7 @@ export const EventTicketCard = forwardRef<HTMLDivElement, EventTicketCardProps>(
       ticketId = "#DS2026-0042",
       ticketType = "VIP Pass",
 
-      coverImageSrc = coverImage,
+      coverImageSrc = "/dbg.png",
       coverImageAlt = "Event cover image",
 
       ...props

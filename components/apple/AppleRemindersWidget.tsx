@@ -6,7 +6,7 @@ import {
   type ReactNode,
 } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 /**
  * Apple Reminders Widget built with React, TypeScript, and Tailwind CSS.

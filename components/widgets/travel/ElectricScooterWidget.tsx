@@ -3,11 +3,10 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { Leaf } from "@/icons/Leaf";
 import { Bike } from "@/icons/Bike";
 
-import bgImage from "@/public/dbg.png";
 
 export type ElectricScooterWidgetProps = {
   title?: string;
@@ -15,7 +14,7 @@ export type ElectricScooterWidgetProps = {
   distance?: string;
   avgSpeed?: string;
   duration?: string;
-  image?: typeof bgImage;
+  image?: string;
 } & ComponentPropsWithoutRef<"div">;
 
 export const ElectricScooterWidget = forwardRef<
@@ -30,7 +29,7 @@ export const ElectricScooterWidget = forwardRef<
       distance = "3.2km",
       avgSpeed = "18.4km/h",
       duration = "22 min",
-      image = bgImage,
+      image = "/dbg.png",
       ...props
     },
     ref,

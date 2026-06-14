@@ -1,12 +1,10 @@
 "use client";
 
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import heroImage from "@/public/dbg.png";
 
 /**
  * Email newsletter preview card — campaign-style white layout.
@@ -19,7 +17,7 @@ export type EmailNewsletterCardProps = {
   headline?: string;
   body?: string;
   ctaLabel?: string;
-  heroImage?: StaticImageData | string;
+  "/dbg.png"?: string;
   onCta?: () => void;
 } & ComponentPropsWithoutRef<"div">;
 
@@ -35,7 +33,7 @@ export const EmailNewsletterCard = forwardRef<
       headline = "What's new this month",
       body = "Fresh Gmail widgets, typewriter text, GitHub PR cards, and Discord-style chat UIs — all copy-paste ready.",
       ctaLabel = "Browse components",
-      heroImage: image = heroImage,
+      "/dbg.png": image = "/dbg.png",
       onCta,
       ...props
     },

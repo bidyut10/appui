@@ -1,12 +1,10 @@
 "use client";
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import profileImage from "@/public/boy.png";
 
 import { Send } from "@/icons/Send";
 import { Discord } from "@/icons/Discord";
@@ -14,7 +12,7 @@ import { Discord } from "@/icons/Discord";
 export type DiscordMessage = {
   id: string;
   author: string;
-  avatar?: StaticImageData | string;
+  avatar?: string;
   content: string;
   time: string;
   roleColor?: string;
@@ -37,7 +35,7 @@ const defaultMessages: DiscordMessage[] = [
   {
     id: "1",
     author: "Sarah",
-    avatar: profileImage,
+    avatar: "/boy.png",
     content: "The new GitHub repo card looks clean — shipping tonight?",
     time: "10:41 AM",
     roleColor: "text-violet-400",
@@ -45,7 +43,7 @@ const defaultMessages: DiscordMessage[] = [
   {
     id: "2",
     author: "Marcus",
-    avatar: profileImage,
+    avatar: "/boy.png",
     content: "Yep, PR is ready. Typewriter widget is my favorite.",
     time: "10:43 AM",
     roleColor: "text-teal-400",
@@ -74,7 +72,7 @@ export const DiscordChatCard = forwardRef<HTMLDivElement, DiscordChatCardProps>(
         {
           id: String(prev.length + 1),
           author: "You",
-          avatar: profileImage,
+          avatar: "/boy.png",
           content: draft.trim(),
           time: "Now",
           roleColor: "text-blue-400",
@@ -102,12 +100,12 @@ export const DiscordChatCard = forwardRef<HTMLDivElement, DiscordChatCardProps>(
           </p>
         </div>
 
-        <div className="scroll-hover max-h-40 space-y-3 overflow-y-auto px-3 py-3">
+        <div className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-h-40 space-y-3 overflow-y-auto px-3 py-3">
           {items.map((msg) => (
             <div key={msg.id} className="flex items-start gap-2.5">
               <div className="h-7 w-7 shrink-0 overflow-hidden rounded-full bg-neutral-100">
                 <Image
-                  src={msg.avatar ?? profileImage}
+                  src={msg.avatar ?? "/boy.png"}
                   alt={msg.author}
                   width={28}
                   height={28}

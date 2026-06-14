@@ -3,12 +3,10 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import photo from "@/public/dithar.png";
 
 /**
  * Polaroid-style image card built with Next.js,
@@ -20,7 +18,7 @@ import photo from "@/public/dithar.png";
  * Tip: Replace image + caption dynamically for feed systems.
  */
 export type PolaroidImageCardProps = {
-  image?: StaticImageData | string;
+  image?: string;
   imageAlt?: string;
 
   caption?: string;
@@ -39,7 +37,7 @@ export const PolaroidImageCard = forwardRef<
     {
       className,
 
-      image = photo,
+      image = "/dithar.png",
       imageAlt = "Polaroid photo",
 
       caption = "Golden hour, Kolkata ☀",

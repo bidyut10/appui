@@ -1,12 +1,10 @@
 "use client";
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import profileImage from "@/public/boy.png";
 
 import { Send } from "@/icons/Send";
 
@@ -29,7 +27,7 @@ export type ChatWidgetProps = {
   title?: string;
   subtitle?: string;
 
-  avatar?: StaticImageData | string;
+  avatar?: string;
   avatarAlt?: string;
   messages?: ChatMessage[];
 
@@ -44,7 +42,7 @@ export const ChatWidget = forwardRef<HTMLDivElement, ChatWidgetProps>(
       title = "Support Assistant",
       subtitle = "Typically replies instantly",
 
-      avatar = profileImage,
+      avatar = "/boy.png",
       avatarAlt,
 
       messages = [
@@ -88,11 +86,13 @@ export const ChatWidget = forwardRef<HTMLDivElement, ChatWidgetProps>(
 
           <div className="relative flex items-center gap-3">
             <div className="relative">
-              <div className="h-10 w-10 overflow-hidden rounded-full ring-2 ring-white/10">
+              <div className="relative h-10 w-10 overflow-hidden rounded-full ring-2 ring-white/10">
                 <Image
                   src={avatar}
                   alt={avatarAlt ?? title}
-                  className="h-full w-full object-cover"
+                  fill
+                  sizes="40px"
+                  className="object-cover"
                 />
               </div>
 
@@ -109,7 +109,7 @@ export const ChatWidget = forwardRef<HTMLDivElement, ChatWidgetProps>(
 
         <div
           data-slot="chat-widget-messages"
-          className="scroll-hover flex h-72 flex-1 flex-col gap-3 overflow-y-auto bg-linear-to-b from-neutral-50 to-white p-4"
+          className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden flex h-72 flex-1 flex-col gap-3 overflow-y-auto bg-linear-to-b from-neutral-50 to-white p-4"
         >
           {messages.map((message, index) => (
             <div

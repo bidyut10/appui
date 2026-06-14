@@ -2,7 +2,7 @@
 
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { Star } from "@/icons/Star";
 
@@ -102,7 +102,7 @@ export const AppleStoreAppTile = forwardRef<
 
       <div
         data-slot="apple-store-app-tile-tags"
-        className="scroll-hover flex gap-2 overflow-x-auto px-4 pb-3"
+        className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden flex gap-2 overflow-x-auto px-4 pb-3"
       >
         {tags.map((tag) => (
           <span

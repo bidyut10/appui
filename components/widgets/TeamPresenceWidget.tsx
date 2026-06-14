@@ -1,18 +1,16 @@
 "use client";
 
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import profileImage from "@/public/boy.png";
 
 export type TeamMember = {
   id: string;
   name: string;
   role: string;
-  avatar?: StaticImageData | string;
+  avatar?: string;
   status: "online" | "away" | "busy" | "offline";
 };
 
@@ -40,35 +38,35 @@ const defaultMembers: TeamMember[] = [
     id: "1",
     name: "Sarah Chen",
     role: "Design",
-    avatar: profileImage,
+    avatar: "/boy.png",
     status: "online",
   },
   {
     id: "2",
     name: "Marcus Webb",
     role: "Engineering",
-    avatar: profileImage,
+    avatar: "/boy.png",
     status: "online",
   },
   {
     id: "3",
     name: "Priya Nair",
     role: "Product",
-    avatar: profileImage,
+    avatar: "/boy.png",
     status: "away",
   },
   {
     id: "4",
     name: "Alex Rivera",
     role: "QA",
-    avatar: profileImage,
+    avatar: "/boy.png",
     status: "busy",
   },
   {
     id: "5",
     name: "John Duo",
     role: "DevOps",
-    avatar: profileImage,
+    avatar: "/boy.png",
     status: "offline",
   },
 ];
@@ -116,7 +114,7 @@ export const TeamPresenceWidget = forwardRef<
           >
             <div className="relative h-9 w-9 shrink-0">
               <Image
-                src={member.avatar ?? profileImage}
+                src={member.avatar ?? "/boy.png"}
                 alt={member.name}
                 width={36}
                 height={36}

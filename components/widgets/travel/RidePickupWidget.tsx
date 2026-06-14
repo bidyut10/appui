@@ -3,16 +3,15 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { Car } from "@/icons/Car";
 
-import bgImage from "@/public/dbg.png";
 
 export type RidePickupWidgetProps = {
   eta?: string;
   message?: string;
   vehicle?: string;
-  image?: typeof bgImage;
+  image?: string;
 } & ComponentPropsWithoutRef<"div">;
 
 export const RidePickupWidget = forwardRef<
@@ -25,7 +24,7 @@ export const RidePickupWidget = forwardRef<
       eta = "2 min",
       message = "Meet at the pickup point",
       vehicle = "Mercedes-Benz S00121",
-      image = bgImage,
+      image = "/dbg.png",
       ...props
     },
     ref,

@@ -6,7 +6,7 @@ import {
   type ReactNode,
 } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { Key } from "@/icons/Key";
 import { MapPinned } from "@/icons/MapPinned";

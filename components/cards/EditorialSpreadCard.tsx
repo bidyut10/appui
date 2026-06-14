@@ -1,9 +1,8 @@
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import coverImage from "@/public/dbg.png";
 
 /**
  * Editorial magazine spread card built with Next.js, React,
@@ -18,7 +17,7 @@ export type EditorialSpreadCardProps = {
   headline?: string;
   dek?: string;
   body?: string;
-  imageSrc?: StaticImageData | string;
+  imageSrc?: string;
   imageAlt?: string;
   byline?: string;
 } & ComponentPropsWithoutRef<"div">;
@@ -33,7 +32,7 @@ export const EditorialSpreadCard = forwardRef<
       headline = "The quiet revolution in component design",
       dek = "Why the best interfaces feel inevitable, not invented",
       body = "Every surface tells a story. The spacing, the weight of a headline, the pause before a button — these aren't decoration. They're decisions.",
-      imageSrc = coverImage,
+      imageSrc = "/dbg.png",
       imageAlt = "Editorial",
       byline = "By Editorial Team",
       ...props

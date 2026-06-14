@@ -1,6 +1,6 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { Bell } from "@/icons/Bell";
 
@@ -78,7 +78,7 @@ export const NotificationPanelPreviewCard = forwardRef<
             </span>
           )}
         </div>
-        <div className="scroll-hover max-h-56 divide-y divide-neutral-50 overflow-y-auto">
+        <div className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-h-56 divide-y divide-neutral-50 overflow-y-auto">
           {items.map((item) => (
             <div
               key={item.title}

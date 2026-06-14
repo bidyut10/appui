@@ -1,12 +1,10 @@
 "use client";
 
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import bgImage from "@/public/dbg.png";
 
 /**
  * Full-bleed image card with quote overlay — editorial white typography.
@@ -16,7 +14,7 @@ import bgImage from "@/public/dbg.png";
 export type ImageQuoteOverlayCardProps = {
   quote?: string;
   author?: string;
-  image?: StaticImageData | string;
+  image?: string;
   onClick?: () => void;
 } & ComponentPropsWithoutRef<"div">;
 
@@ -29,7 +27,7 @@ export const ImageQuoteOverlayCard = forwardRef<
       className,
       quote = "Design is the silent ambassador of your brand.",
       author = "Paul Rand",
-      image = bgImage,
+      image = "/dbg.png",
       onClick,
       ...props
     },

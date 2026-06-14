@@ -1,13 +1,10 @@
 "use client";
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import profileImage from "@/public/boy.png";
-import thumbImage from "@/public/bh.png";
 
 import { Play } from "@/icons/Play";
 import { Pause } from "@/icons/Pause";
@@ -26,8 +23,8 @@ export type YouTubeVideoCardProps = {
   views?: string;
   uploaded?: string;
   duration?: string;
-  avatar?: StaticImageData | string;
-  thumbnail?: StaticImageData | string;
+  avatar?: string;
+  thumbnail?: string;
   onSubscribe?: () => void;
 } & ComponentPropsWithoutRef<"div">;
 
@@ -43,8 +40,8 @@ export const YouTubeVideoCard = forwardRef<
       views = "128K views",
       uploaded = "3 days ago",
       duration = "12:48",
-      avatar = profileImage,
-      thumbnail = thumbImage,
+      avatar = "/boy.png",
+      thumbnail = "/bh.png",
       onSubscribe,
       ...props
     },

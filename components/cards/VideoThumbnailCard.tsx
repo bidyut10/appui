@@ -2,11 +2,9 @@
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 
-import { cn } from "@/lib/utils";
-
-import thumbnail from "@/public/dbg.png";
+import { cn } from "@/lib/cn";
 
 import { Clock } from "@/icons/Clock";
 import { Play } from "@/icons/Play";
@@ -22,7 +20,7 @@ import { Pause } from "@/icons/Pause";
  * Need icons? Visit nexticons.in for free copy-paste icons.
  */
 export type VideoThumbnailCardProps = {
-  thumbnailImage?: StaticImageData | string;
+  thumbnailImage?: string;
 
   title?: string;
 
@@ -43,7 +41,7 @@ export const VideoThumbnailCard = forwardRef<
     {
       className,
 
-      thumbnailImage = thumbnail,
+      thumbnailImage = "/dbg.png",
 
       title = "Building a Design System from Scratch",
 

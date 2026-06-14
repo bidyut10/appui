@@ -4,7 +4,7 @@ import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { Check } from "@/icons/Check";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 /**
  * Payment method selector card built with Next.js,

@@ -1,12 +1,8 @@
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import img1 from "@/public/dithar.png";
-import img2 from "@/public/bg.png";
-import img3 from "@/public/bh.png";
-import img4 from "@/public/dbg.png";
 
 /**
  * Photo contact sheet card built with Next.js, React,
@@ -18,7 +14,7 @@ import img4 from "@/public/dbg.png";
  * Need icons? Visit nexticons.in for free copy-paste icons.
  */
 export type ContactSheetFrame = {
-  src: StaticImageData | string;
+  src: string;
   number: string;
 };
 
@@ -28,10 +24,10 @@ export type PhotoContactSheetCardProps = {
 } & ComponentPropsWithoutRef<"div">;
 
 const defaultFrames: ContactSheetFrame[] = [
-  { src: img1, number: "01" },
-  { src: img2, number: "02" },
-  { src: img3, number: "03" },
-  { src: img4, number: "04" },
+  { src: "/dithar.png", number: "01" },
+  { src: "/bg.png", number: "02" },
+  { src: "/bh.png", number: "03" },
+  { src: "/dbg.png", number: "04" },
 ];
 
 export const PhotoContactSheetCard = forwardRef<

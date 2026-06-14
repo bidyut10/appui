@@ -6,12 +6,10 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import coverImage from "@/public/bh.png";
 
 import { Play } from "@/icons/Play";
 import { Pause } from "@/icons/Pause";
@@ -40,7 +38,7 @@ export type PodcastCardProps = {
   currentTime?: string;
   progress?: number;
 
-  artwork?: StaticImageData | string;
+  artwork?: string;
   artworkAlt?: string;
 
   playIcon?: ReactNode;
@@ -65,7 +63,7 @@ export const PodcastCard = forwardRef<HTMLDivElement, PodcastCardProps>(
       currentTime = "16:42",
       progress = 35,
 
-      artwork = coverImage,
+      artwork = "/bh.png",
       artworkAlt = "Podcast cover",
 
       playIcon,

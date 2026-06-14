@@ -5,12 +5,10 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import profile_logo from "@/public/boy.png";
 
 import { Clock } from "@/icons/Clock";
 import { Ellipsis } from "@/icons/Ellipsis";
@@ -43,7 +41,7 @@ export type LinkedInPostCardProps = {
   comments?: number;
   reposts?: number;
 
-  avatar?: StaticImageData | string;
+  avatar?: string;
 
   avatarAlt?: string;
 
@@ -81,7 +79,7 @@ export const LinkedInPostCard = forwardRef<
       comments = 57,
       reposts = 23,
 
-      avatar = profile_logo,
+      avatar = "/boy.png",
 
       avatarAlt = "User avatar",
 
@@ -113,7 +111,7 @@ export const LinkedInPostCard = forwardRef<
         {/* Post header */}
         <div data-slot="linkedin-post-card-header" className="mb-3 flex gap-3">
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-neutral-800">
-            <Image src={avatar} alt={avatarAlt} className="w-8" sizes="32px" />
+            <Image src={avatar} alt={avatarAlt} width={32} height={32} className="w-8" sizes="32px" />
           </div>
 
           <div>

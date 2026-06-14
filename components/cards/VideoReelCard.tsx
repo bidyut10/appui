@@ -1,12 +1,10 @@
 "use client";
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import thumbImage from "@/public/bh.png";
 
 import { Play } from "@/icons/Play";
 import { Pause } from "@/icons/Pause";
@@ -21,7 +19,7 @@ export type VideoReelCardProps = {
   creator?: string;
   caption?: string;
   views?: string;
-  thumbnail?: StaticImageData | string;
+  thumbnail?: string;
   onPlayToggle?: (playing: boolean) => void;
 } & ComponentPropsWithoutRef<"div">;
 
@@ -32,7 +30,7 @@ export const VideoReelCard = forwardRef<HTMLDivElement, VideoReelCardProps>(
       creator = "@bidyut.dev",
       caption = "3 UI trends worth stealing in 2026",
       views = "48.2K",
-      thumbnail = thumbImage,
+      thumbnail = "/bh.png",
       onPlayToggle,
       ...props
     },

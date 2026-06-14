@@ -1,6 +1,6 @@
 import { forwardRef, useId, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 /**
  * Storage usage card built with React, TypeScript, and Tailwind CSS.

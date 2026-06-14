@@ -2,7 +2,7 @@
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { Pin } from "@/icons/Pin";
 import { Clock } from "@/icons/Clock";
@@ -91,7 +91,7 @@ export const KanbanBoard = forwardRef<HTMLDivElement, KanbanBoardProps>(
 
         <div
           data-slot="kanban-board-columns"
-          className="scroll-hover flex gap-2 overflow-x-auto pb-1"
+          className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden flex gap-2 overflow-x-auto pb-1"
         >
           {columns.map((col) => (
             <div

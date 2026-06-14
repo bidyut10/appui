@@ -3,11 +3,10 @@
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { Play } from "@/icons/Play";
 import { Pause } from "@/icons/Pause";
 
-import bgImage from "@/public/dbg.png";
 
 export type WellnessChatAudioWidgetProps = ComponentPropsWithoutRef<"div">;
 
@@ -60,7 +59,7 @@ export const WellnessChatAudioWidget = forwardRef<
       <div className="flex items-end gap-2">
         <div className="relative h-7 w-7 shrink-0 overflow-hidden rounded-full">
           <Image
-            src={bgImage}
+            src="/dbg.png"
             alt=""
             fill
             className="object-cover"
@@ -75,7 +74,7 @@ export const WellnessChatAudioWidget = forwardRef<
       <div className="flex items-center gap-2 pl-9">
         <div className="relative h-6 w-6 overflow-hidden rounded-full">
           <Image
-            src={bgImage}
+            src="/dbg.png"
             alt=""
             fill
             className="object-cover"

@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import Image from "next/image";
-import profileImage from "@/public/boy.png";
+import { cn } from "@/lib/cn";
 import { Github } from "@/icons/Github";
 import { Mail } from "@/icons/Mail";
 
@@ -19,11 +19,14 @@ export const TeamMemberCard = forwardRef<
 >(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
-    className={`group relative h-72 w-56 cursor-pointer overflow-hidden rounded-2xl ${className}`}
+    className={cn(
+      "group relative h-72 w-56 cursor-pointer overflow-hidden rounded-2xl",
+      className,
+    )}
     {...props}
   >
     <Image
-      src={profileImage}
+      src="/boy.png"
       alt="Team member"
       fill
       sizes="224px"

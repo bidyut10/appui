@@ -5,13 +5,10 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import bg_image from "@/public/bh.png";
-import profile_logo from "@/public/boy.png";
 
 import { Location } from "@/icons/Location";
 import { UserGroup } from "@/icons/UserGroup";
@@ -42,8 +39,8 @@ export type GithubProfileCardProps = {
   location?: string;
   website?: string;
 
-  avatar?: StaticImageData | string;
-  banner?: StaticImageData | string;
+  avatar?: string;
+  banner?: string;
 
   avatarAlt?: string;
   bannerAlt?: string;
@@ -84,8 +81,8 @@ export const GithubProfileCard = forwardRef<
       location = "West Bengal",
       website = "opensourceui.in",
 
-      avatar = profile_logo,
-      banner = bg_image,
+      avatar = "/boy.png",
+      banner = "/bh.png",
 
       avatarAlt = "GitHub profile avatar",
       bannerAlt = "GitHub profile banner",
@@ -117,17 +114,18 @@ export const GithubProfileCard = forwardRef<
         {...props}
       >
         {/* Banner */}
-        <div className="relative">
+        <div className="relative h-16">
           <Image
             src={banner}
             alt={bannerAlt}
-            className="h-16 w-full object-cover"
+            fill
+            className="object-cover"
             sizes="288px"
           />
 
           {/* Avatar */}
           <div className="absolute -bottom-8 left-5 flex h-16 w-16 items-center justify-center rounded-full border-4 border-white bg-neutral-800 shadow">
-            <Image src={avatar} alt={avatarAlt} className="w-7" sizes="28px" />
+            <Image src={avatar} alt={avatarAlt} width={28} height={28} className="w-7" sizes="28px" />
           </div>
         </div>
 
@@ -162,7 +160,7 @@ export const GithubProfileCard = forwardRef<
             <span className="flex items-center gap-1">
               <UserCheck size={12} />
               <b className="text-neutral-900">
-                {typeof following === "number"
+                {typeof followers === "number"
                   ? following.toLocaleString()
                   : following}
               </b>{" "}

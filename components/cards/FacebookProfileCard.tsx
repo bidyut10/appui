@@ -5,13 +5,10 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import bg_image from "@/public/dithar.png";
-import profile_logo from "@/public/boy.png";
 
 /**
  * Facebook-inspired profile card built with Next.js,
@@ -31,8 +28,8 @@ export type FacebookProfileCardProps = {
   friends?: string | number;
   followers?: string | number;
 
-  coverImage?: StaticImageData | string;
-  avatar?: StaticImageData | string;
+  coverImage?: string;
+  avatar?: string;
 
   coverImageAlt?: string;
   avatarAlt?: string;
@@ -64,8 +61,8 @@ export const FacebookProfileCard = forwardRef<
       friends = "1.2K",
       followers = 84,
 
-      coverImage = bg_image,
-      avatar = profile_logo,
+      coverImage = "/dithar.png",
+      avatar = "/boy.png",
 
       coverImageAlt = "Profile cover image",
       avatarAlt = "Profile avatar",
@@ -94,17 +91,18 @@ export const FacebookProfileCard = forwardRef<
         {...props}
       >
         {/* Cover image */}
-        <div data-slot="facebook-profile-card-cover" className="relative">
+        <div data-slot="facebook-profile-card-cover" className="relative h-24">
           <Image
             src={coverImage}
             alt={coverImageAlt}
-            className="h-24 w-full object-cover"
+            fill
+            className="object-cover"
             sizes="288px"
           />
 
           {/* Profile avatar */}
           <div className="absolute -bottom-10 left-1/2 flex h-20 w-20 -translate-x-1/2 items-center justify-center rounded-full border-4 border-white bg-neutral-800 shadow">
-            <Image src={avatar} alt={avatarAlt} className="w-8" sizes="32px" />
+            <Image src={avatar} alt={avatarAlt} width={32} height={32} className="w-8" sizes="32px" />
           </div>
         </div>
 

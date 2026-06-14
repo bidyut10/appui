@@ -9,7 +9,7 @@ import {
   type ComponentPropsWithoutRef,
 } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { Heart } from "@/icons/Heart";
 import { Chat } from "@/icons/Chat";
@@ -164,7 +164,7 @@ export const NotificationBell = forwardRef<
 
           <div
             data-slot="notification-bell-list"
-            className="scroll-hover max-h-52 overflow-y-auto"
+            className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-h-52 overflow-y-auto"
           >
             {notifications.map((n) => (
               <div

@@ -10,7 +10,7 @@ import {
 
 import { ChevronUp } from "@/icons/ChevronUp";
 import { ChevronDown } from "@/icons/ChevronDown";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 /**
  * Sales overview card built with React, TypeScript, and Tailwind CSS.

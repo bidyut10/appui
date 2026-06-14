@@ -6,13 +6,10 @@ import {
   useState,
   type ComponentPropsWithoutRef,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import profileImage from "@/public/boy.png";
-import postImage from "@/public/dbg.png";
 
 import { Heart } from "@/icons/Heart";
 import { Chat } from "@/icons/Chat";
@@ -34,8 +31,8 @@ export type TikTokPostCardProps = {
   likes?: string;
   comments?: string;
   shares?: string;
-  avatar?: StaticImageData | string;
-  videoThumbnail?: StaticImageData | string;
+  avatar?: string;
+  videoThumbnail?: string;
   onLike?: (liked: boolean) => void;
   onFollow?: (following: boolean) => void;
   onPlayToggle?: (playing: boolean) => void;
@@ -52,8 +49,8 @@ export const TikTokPostCard = forwardRef<HTMLDivElement, TikTokPostCardProps>(
       likes = "24.8K",
       comments = "312",
       shares = "891",
-      avatar = profileImage,
-      videoThumbnail = postImage,
+      avatar = "/boy.png",
+      videoThumbnail = "/dbg.png",
       onLike,
       onFollow,
       onPlayToggle,

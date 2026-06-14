@@ -6,12 +6,10 @@ import {
   useState,
   type ComponentPropsWithoutRef,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import profileImage from "@/public/boy.png";
 
 import { Star } from "@/icons/Star";
 import { QuoteRight } from "@/icons/QuoteRight";
@@ -23,7 +21,7 @@ export type TestimonialItem = {
   name: string;
   role: string;
   rating?: number;
-  avatar?: StaticImageData | string;
+  avatar?: string;
 };
 
 /**
@@ -38,7 +36,7 @@ export type TestimonialCardProps = {
   name?: string;
   role?: string;
   rating?: number;
-  avatar?: StaticImageData | string;
+  avatar?: string;
   avatarAlt?: string;
   quoteIcon?: React.ReactNode;
   autoPlayMs?: number;
@@ -52,7 +50,7 @@ const defaultTestimonials: TestimonialItem[] = [
     name: "Sarah Chen",
     role: "Lead Designer · Figma",
     rating: 5,
-    avatar: profileImage,
+    avatar: "/boy.png",
   },
   {
     quote:
@@ -60,7 +58,7 @@ const defaultTestimonials: TestimonialItem[] = [
     name: "Marcus Webb",
     role: "Founder · Launchpad",
     rating: 5,
-    avatar: profileImage,
+    avatar: "/boy.png",
   },
   {
     quote:
@@ -68,7 +66,7 @@ const defaultTestimonials: TestimonialItem[] = [
     name: "Priya Nair",
     role: "Engineer · Vercel",
     rating: 5,
-    avatar: profileImage,
+    avatar: "/boy.png",
   },
 ];
 
@@ -81,7 +79,7 @@ export const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
       name = defaultTestimonials[0].name,
       role = defaultTestimonials[0].role,
       rating = 5,
-      avatar = profileImage,
+      avatar = "/boy.png",
       avatarAlt = "Reviewer",
       quoteIcon,
       autoPlayMs = 6000,

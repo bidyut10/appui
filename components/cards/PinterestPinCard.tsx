@@ -1,12 +1,10 @@
 "use client";
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import postImage from "@/public/dbg.png";
 
 import { Pin } from "@/icons/Pin";
 import { Share } from "@/icons/Share";
@@ -21,7 +19,7 @@ export type PinterestPinCardProps = {
   title?: string;
   author?: string;
   saves?: string;
-  image?: StaticImageData | string;
+  image?: string;
   onSave?: (saved: boolean) => void;
 } & ComponentPropsWithoutRef<"div">;
 
@@ -35,7 +33,7 @@ export const PinterestPinCard = forwardRef<
       title = "Minimal dashboard UI inspiration",
       author = "Sarah Chen",
       saves = "4.2k saves",
-      image = postImage,
+      image = "/dbg.png",
       onSave,
       ...props
     },

@@ -1,6 +1,6 @@
 import { forwardRef, useMemo, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 /**
  * API latency card built with React, TypeScript, and Tailwind CSS.

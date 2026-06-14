@@ -1,13 +1,12 @@
 "use client";
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { X } from "@/icons/X";
 
-import profile from "@/public/boy.png";
 
 /**
  * Apple Notification Banner built with React, TypeScript, and Tailwind CSS.
@@ -23,7 +22,7 @@ export type AppleNotificationBannerProps = {
   sender?: string;
   message?: string;
   time?: string;
-  avatarSrc?: StaticImageData | string;
+  avatarSrc?: string;
   avatarAlt?: string;
   showTriggerLabel?: string;
   onDismiss?: () => void;
@@ -41,7 +40,7 @@ export const AppleNotificationBanner = forwardRef<
       sender = "Sarah",
       message = "Hey! Are we still on for the design review today?",
       time = "now",
-      avatarSrc = profile,
+      avatarSrc = "/boy.png",
       avatarAlt = "App",
       showTriggerLabel = "Show notification",
       onDismiss,

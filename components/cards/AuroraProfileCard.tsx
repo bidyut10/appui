@@ -1,15 +1,14 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 import {
   forwardRef,
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import profileImage from "@/public/boy.png";
 import { UserCheck } from "@/icons/UserCheck";
 
 /**
@@ -26,7 +25,7 @@ export type AuroraProfileCardProps = {
   following?: string;
   followersLabel?: string;
   followingLabel?: string;
-  avatarSrc?: StaticImageData | string;
+  avatarSrc?: string;
   avatarAlt?: string;
   tags?: string[];
   followLabel?: string;
@@ -51,7 +50,7 @@ export const AuroraProfileCard = forwardRef<
       following = "842",
       followersLabel = "followers",
       followingLabel = "following",
-      avatarSrc = profileImage,
+      avatarSrc = "/boy.png",
       avatarAlt = "Profile",
       tags = defaultTags,
       followLabel = "Follow",

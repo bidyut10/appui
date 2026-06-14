@@ -3,11 +3,10 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { Camera } from "@/icons/Camera";
 import { Location } from "@/icons/Location";
 
-import bgImage from "@/public/dbg.png";
 
 export type ImageExifCardProps = {
   title?: string;
@@ -15,7 +14,7 @@ export type ImageExifCardProps = {
   settings?: string;
   location?: string;
   date?: string;
-  image?: typeof bgImage;
+  image?: string;
 } & ComponentPropsWithoutRef<"div">;
 
 export const ImageExifCard = forwardRef<HTMLDivElement, ImageExifCardProps>(
@@ -27,7 +26,7 @@ export const ImageExifCard = forwardRef<HTMLDivElement, ImageExifCardProps>(
       settings = "f/2.8 · 1/500s · ISO 200",
       location = "Kolkata, IN",
       date = "Jun 6, 2026",
-      image = bgImage,
+      image = "/dbg.png",
       ...props
     },
     ref,

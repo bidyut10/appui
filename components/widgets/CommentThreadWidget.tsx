@@ -1,19 +1,17 @@
 "use client";
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import profileImage from "@/public/boy.png";
 
 import { Send } from "@/icons/Send";
 
 export type CommentItem = {
   id: string;
   author: string;
-  avatar?: StaticImageData | string;
+  avatar?: string;
   text: string;
   time: string;
   likes?: number;
@@ -37,7 +35,7 @@ const defaultComments: CommentItem[] = [
   {
     id: "1",
     author: "Sarah Chen",
-    avatar: profileImage,
+    avatar: "/boy.png",
     text: "Can we tighten the spacing on the mobile cards?",
     time: "2h ago",
     likes: 3,
@@ -45,7 +43,7 @@ const defaultComments: CommentItem[] = [
   {
     id: "2",
     author: "Marcus Webb",
-    avatar: profileImage,
+    avatar: "/boy.png",
     text: "Agreed — I'll push a fix in the next PR.",
     time: "1h ago",
     likes: 1,
@@ -76,7 +74,7 @@ export const CommentThreadWidget = forwardRef<
       const newComment: CommentItem = {
         id: String(Date.now()),
         author: "You",
-        avatar: profileImage,
+        avatar: "/boy.png",
         text: draft.trim(),
         time: "Just now",
         likes: 0,
@@ -114,13 +112,13 @@ export const CommentThreadWidget = forwardRef<
 
         <div
           data-slot="comment-thread-widget-list"
-          className="scroll-hover max-h-44 space-y-3 overflow-y-auto px-4 py-3"
+          className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-h-44 space-y-3 overflow-y-auto px-4 py-3"
         >
           {items.map((comment) => (
             <div key={comment.id} className="flex gap-2.5">
               <div className="h-7 w-7 shrink-0 overflow-hidden rounded-full bg-neutral-100">
                 <Image
-                  src={comment.avatar ?? profileImage}
+                  src={comment.avatar ?? "/boy.png"}
                   alt={comment.author}
                   width={28}
                   height={28}

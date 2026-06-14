@@ -1,10 +1,8 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import photo from "@/public/bh.png";
 
 /**
  * DuotoneImageCard
@@ -18,7 +16,7 @@ import photo from "@/public/bh.png";
  * - Replace <Image /> with <img /> if using React only.
  */
 export type DuotoneImageCardProps = {
-  image?: StaticImageData | string;
+  image?: string;
 
   badge?: string;
   title?: string;
@@ -34,7 +32,7 @@ export const DuotoneImageCard = forwardRef<
     {
       className,
 
-      image = photo,
+      image = "/bh.png",
 
       badge = "Duotone",
       title = "Visual",

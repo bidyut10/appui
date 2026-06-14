@@ -3,14 +3,13 @@
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 
-import bgImage from "@/public/bg.png";
 
 import { Mail } from "@/icons/Mail";
 import { ArrowRight } from "@/icons/ArrowRight";
 import { ArrowLeft } from "@/icons/ArrowLeft";
 import { Check } from "@/icons/Check";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 /**
  * Forgot password card built with Next.js, React,
@@ -71,7 +70,7 @@ export const AuthForgotPasswordCard = forwardRef<
       >
         {/* Background */}
         <Image
-          src={bgImage}
+          src="/bg.png"
           alt="Background"
           fill
           sizes="384px"

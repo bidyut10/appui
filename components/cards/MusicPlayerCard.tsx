@@ -2,11 +2,9 @@
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 
-import { cn } from "@/lib/utils";
-
-import cover from "@/public/bh.png";
+import { cn } from "@/lib/cn";
 
 import { Play } from "@/icons/Play";
 import { Pause } from "@/icons/Pause";
@@ -23,7 +21,7 @@ import { SkipNext } from "@/icons/SkipNext";
  * Need icons? Visit nexticons.in for free copy-paste icons.
  */
 export type MusicPlayerCardProps = {
-  coverImage?: StaticImageData | string;
+  coverImage?: string;
 
   title?: string;
   artist?: string;
@@ -42,7 +40,7 @@ export const MusicPlayerCard = forwardRef<HTMLDivElement, MusicPlayerCardProps>(
     {
       className,
 
-      coverImage = cover,
+      coverImage = "/bh.png",
 
       title = "Midnight Dreams",
       artist = "The Weeknd",

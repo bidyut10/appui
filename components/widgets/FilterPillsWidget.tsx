@@ -2,7 +2,7 @@
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 /**
  * Filter Pills Widget built with React, TypeScript, and Tailwind CSS.

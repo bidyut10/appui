@@ -9,7 +9,7 @@ import {
   type ComponentType,
 } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { Edit } from "@/icons/Edit";
 import { Copy } from "@/icons/Copy";

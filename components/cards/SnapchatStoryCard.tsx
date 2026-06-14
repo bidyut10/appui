@@ -1,13 +1,10 @@
 "use client";
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import storyImage from "@/public/dithar.png";
-import profileImage from "@/public/boy.png";
 
 import { Heart } from "@/icons/Heart";
 import { Send } from "@/icons/Send";
@@ -20,8 +17,8 @@ import { Send } from "@/icons/Send";
 export type SnapchatStoryCardProps = {
   username?: string;
   storyLabel?: string;
-  image?: StaticImageData | string;
-  avatar?: StaticImageData | string;
+  image?: string;
+  avatar?: string;
   onNext?: () => void;
 } & ComponentPropsWithoutRef<"div">;
 
@@ -34,8 +31,8 @@ export const SnapchatStoryCard = forwardRef<
       className,
       username = "bidyut.dev",
       storyLabel = "New components drop",
-      image = storyImage,
-      avatar = profileImage,
+      image = "/dithar.png",
+      avatar = "/boy.png",
       onNext,
       ...props
     },

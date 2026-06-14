@@ -5,12 +5,10 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import bgImage from "@/public/bg.png";
 
 import { Heart } from "@/icons/Heart";
 import { Share } from "@/icons/Share";
@@ -27,7 +25,7 @@ import { ArrowRight } from "@/icons/ArrowRight";
  * Keep visuals intact while allowing flexible content overrides.
  */
 export type GlassOverlayImageCardProps = {
-  image?: StaticImageData | string;
+  image?: string;
   imageAlt?: string;
 
   location?: string;
@@ -58,7 +56,7 @@ export const GlassOverlayImageCard = forwardRef<
     {
       className,
 
-      image = bgImage,
+      image = "/bg.png",
       imageAlt = "Scenic landscape",
 
       location = "Bishnupur, West Bengal",

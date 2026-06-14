@@ -1,12 +1,8 @@
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import product1 from "@/public/dithar.png";
-import product2 from "@/public/bh.png";
-import product3 from "@/public/bg.png";
-import product4 from "@/public/dbg.png";
 
 /**
  * Product catalog grid card built with Next.js, React,
@@ -20,7 +16,7 @@ import product4 from "@/public/dbg.png";
 export type CatalogProduct = {
   name: string;
   price: string;
-  image: StaticImageData | string;
+  image: string;
 };
 
 export type ProductCatalogCardProps = {
@@ -29,10 +25,10 @@ export type ProductCatalogCardProps = {
 } & ComponentPropsWithoutRef<"div">;
 
 const defaultProducts: CatalogProduct[] = [
-  { name: "Linen Blazer", price: "₹4,200", image: product1 },
-  { name: "Canvas Tote", price: "₹1,890", image: product2 },
-  { name: "Ceramic Mug", price: "₹890", image: product3 },
-  { name: "Desk Lamp", price: "₹3,400", image: product4 },
+  { name: "Linen Blazer", price: "₹4,200", image: "/dithar.png" },
+  { name: "Canvas Tote", price: "₹1,890", image: "/bh.png" },
+  { name: "Ceramic Mug", price: "₹890", image: "/bg.png" },
+  { name: "Desk Lamp", price: "₹3,400", image: "/dbg.png" },
 ];
 
 export const ProductCatalogCard = forwardRef<

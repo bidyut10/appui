@@ -1,13 +1,10 @@
 "use client";
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import img1 from "@/public/boy.png";
-import img2 from "@/public/dithar.png";
 
 import { X } from "@/icons/X";
 
@@ -21,7 +18,7 @@ import { X } from "@/icons/X";
  */
 export type MultiFileItem = {
   id: number;
-  src: StaticImageData | string;
+  src: string;
   name: string;
 };
 
@@ -35,12 +32,12 @@ export type MultiFileDropzoneProps = {
 const defaultFiles: MultiFileItem[] = [
   {
     id: 1,
-    src: img1,
+    src: "/boy.png",
     name: "avatar.png",
   },
   {
     id: 2,
-    src: img2,
+    src: "/dithar.png",
     name: "cover.jpg",
   },
 ];

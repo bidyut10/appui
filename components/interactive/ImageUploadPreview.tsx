@@ -6,12 +6,10 @@ import {
   useState,
   type ComponentPropsWithoutRef,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import previewImg from "@/public/dithar.png";
 
 import { X } from "@/icons/X";
 
@@ -25,7 +23,7 @@ import { X } from "@/icons/X";
  * React Users: Replace `next/image` with a standard `img` element.
  */
 export type ImageUploadPreviewProps = {
-  previewImage?: StaticImageData | string;
+  previewImage?: string;
   imageAlt?: string;
   fileName?: string;
   fileMeta?: string;
@@ -40,7 +38,7 @@ export const ImageUploadPreview = forwardRef<
   (
     {
       className,
-      previewImage = previewImg,
+      previewImage = "/dithar.png",
       imageAlt = "Preview",
       fileName = "profile-photo.jpg",
       fileMeta = "1.2 MB · 1920×1080",

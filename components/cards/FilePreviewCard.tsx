@@ -2,7 +2,7 @@
 
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { File } from "@/icons/File";
 import { MoveDown } from "@/icons/MoveDown";
 import { Trash } from "@/icons/Trash";

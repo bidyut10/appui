@@ -10,13 +10,10 @@ import {
   type KeyboardEvent,
   type PointerEvent as ReactPointerEvent,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import beforeImg from "@/public/dbg.png";
-import afterImg from "@/public/bh.png";
 
 /**
  * Before/after image comparison card with a draggable slider.
@@ -26,8 +23,8 @@ import afterImg from "@/public/bh.png";
 export type BeforeAfterImageCardProps = {
   title?: string;
   description?: string;
-  beforeImage?: StaticImageData | string;
-  afterImage?: StaticImageData | string;
+  beforeImage?: string;
+  afterImage?: string;
   beforeLabel?: string;
   afterLabel?: string;
   defaultPosition?: number;
@@ -43,8 +40,8 @@ export const BeforeAfterImageCard = forwardRef<
       className,
       title = "Photo Enhancement",
       description = "Drag slider to compare original vs edited",
-      beforeImage = beforeImg,
-      afterImage = afterImg,
+      beforeImage = "/dbg.png",
+      afterImage = "/bh.png",
       beforeLabel = "Before",
       afterLabel = "After",
       defaultPosition = 50,

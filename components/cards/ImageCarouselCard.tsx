@@ -6,14 +6,10 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import img1 from "@/public/dbg.png";
-import img2 from "@/public/bh.png";
-import img3 from "@/public/bg.png";
 
 import { ChevronLeft } from "@/icons/ChevronLeft";
 import { ChevronRight } from "@/icons/ChevronRight";
@@ -35,7 +31,7 @@ import { ChevronRight } from "@/icons/ChevronRight";
  * - Replace <Image /> with <img /> if using React only.
  */
 export type ImageCarouselCardProps = {
-  slides?: (StaticImageData | string)[];
+  slides?: (string)[];
 
   title?: string;
   description?: string;
@@ -46,7 +42,7 @@ export type ImageCarouselCardProps = {
   initialSlide?: number;
 } & ComponentPropsWithoutRef<"div">;
 
-const defaultSlides = [img1, img2, img3];
+const defaultSlides = ["/dbg.png", "/bh.png", "/bg.png"];
 
 export const ImageCarouselCard = forwardRef<
   HTMLDivElement,

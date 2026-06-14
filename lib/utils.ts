@@ -1,16 +1,8 @@
-import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+/** @deprecated App-level only — components should import from `@/lib/cn`. */
+export { cn } from "./cn";
 
-/*
-| Combines class names and resolves Tailwind CSS conflicts.
-| Example: cn("p-2", "p-4") // => "p-4"
-*/
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-
-/** Hide scrollbars until hover — use on overflow-auto / scroll containers. */
+/** Hide scrollbars until hover — app showcase utilities only. */
 export const scrollHover = "scroll-hover";
 
-/** Wrap a card so child `.scroll-hover` areas show scrollbars when the card is hovered. */
+/** Wrap a card so child scroll areas show scrollbars when hovered — app only. */
 export const scrollHoverGroup = "scroll-hover-group";

@@ -3,12 +3,11 @@
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { Pause } from "@/icons/Pause";
 import { Play } from "@/icons/Play";
 import { Ellipsis } from "@/icons/Ellipsis";
 
-import bgImage from "@/public/dbg.png";
 
 const ITEMS = [
   { time: "22:30", tag: "Kindness", title: "Yoga with Juliette" },
@@ -56,7 +55,7 @@ export const WellnessPlaylistWidget = forwardRef<
         >
           <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full">
             <Image
-              src={bgImage}
+              src="/dbg.png"
               alt=""
               fill
               className="object-cover"

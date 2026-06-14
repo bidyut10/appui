@@ -2,7 +2,7 @@
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { Bike } from "@/icons/Bike";
 import { Pin } from "@/icons/Pin";
 import { Clock } from "@/icons/Clock";

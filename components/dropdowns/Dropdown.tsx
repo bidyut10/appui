@@ -10,7 +10,7 @@ import {
   type ReactElement,
 } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 /**
  * Reusable dropdown menu built with React, TypeScript, and Tailwind CSS.

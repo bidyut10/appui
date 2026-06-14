@@ -5,12 +5,10 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import coverImage from "@/public/dithar.png";
 import { ArrowRight } from "@/icons/ArrowRight";
 
 /**
@@ -33,7 +31,7 @@ export type MagazineCoverCardProps = {
   author?: string;
   readTime?: string;
 
-  image?: StaticImageData | string;
+  image?: string;
   imageAlt?: string;
 
   arrowIcon?: ReactNode;
@@ -59,7 +57,7 @@ export const MagazineCoverCard = forwardRef<
       author = "Bidyut Kundu",
       readTime = "8 min read",
 
-      image = coverImage,
+      image = "/dithar.png",
       imageAlt = "Magazine cover",
 
       arrowIcon,

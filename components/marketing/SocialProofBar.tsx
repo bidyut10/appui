@@ -1,6 +1,6 @@
 import React, { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { Star } from "@/icons/Star";
 

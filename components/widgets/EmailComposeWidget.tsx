@@ -2,7 +2,7 @@
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { Send } from "@/icons/Send";
 import { X } from "@/icons/X";
@@ -112,7 +112,7 @@ export const EmailComposeWidget = forwardRef<
           aria-label="Email body"
           rows={5}
           data-slot="email-compose-widget-body"
-          className="scroll-hover w-full resize-none border-0 bg-white px-4 py-3 text-[13px] leading-relaxed text-neutral-800 outline-none placeholder:text-neutral-300"
+          className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden w-full resize-none border-0 bg-white px-4 py-3 text-[13px] leading-relaxed text-neutral-800 outline-none placeholder:text-neutral-300"
         />
 
         <div className="flex items-center justify-between border-t border-neutral-100 px-4 py-2.5">

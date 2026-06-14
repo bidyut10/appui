@@ -2,7 +2,7 @@
 
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { PlaneTakeoff } from "@/icons/PlaneTakeoff";
 
 export type FlightArrivalWidgetProps = {
@@ -20,7 +20,7 @@ export const FlightArrivalWidget = forwardRef<
       className,
       arrivalMinutes = 53,
       departure = { time: "14:30", code: "LHR", city: "London" },
-      arrival = { time: "16:30", code: "IST", city: "Istanbul" },
+      arrival = { time: "16:30", code: "IST", city: "India" },
       ...props
     },
     ref,

@@ -5,12 +5,10 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import profile_logo from "@/public/boy.png";
 
 import { Google } from "@/icons/Google";
 import { Search } from "@/icons/Search";
@@ -28,7 +26,7 @@ export type GoogleProfileCardProps = {
   name?: string;
   email?: string;
 
-  avatar?: StaticImageData | string;
+  avatar?: string;
   avatarAlt?: string;
 
   searchPlaceholder?: string;
@@ -55,7 +53,7 @@ export const GoogleProfileCard = forwardRef<
       name = "Bidyut Kundu",
       email = "bidyut.kundu.dev@gmail.com",
 
-      avatar = profile_logo,
+      avatar = "/boy.png",
       avatarAlt = "Profile avatar",
 
       searchPlaceholder = "Search Google...",
@@ -94,6 +92,8 @@ export const GoogleProfileCard = forwardRef<
             <Image
               src={avatar}
               alt={avatarAlt}
+              width={36}
+              height={36}
               className="w-9 rounded-full"
               sizes="36px"
             />

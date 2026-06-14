@@ -1,19 +1,17 @@
 "use client";
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import profileImage from "@/public/boy.png";
 
 import { Send } from "@/icons/Send";
 
 export type SlackMessage = {
   id: string;
   author: string;
-  avatar?: StaticImageData | string;
+  avatar?: string;
   text: string;
   time: string;
 };
@@ -35,14 +33,14 @@ const defaultMessages: SlackMessage[] = [
   {
     id: "1",
     author: "Sarah",
-    avatar: profileImage,
+    avatar: "/boy.png",
     text: "Shipped the new inbox widgets — ready for review",
     time: "10:42 AM",
   },
   {
     id: "2",
     author: "Marcus",
-    avatar: profileImage,
+    avatar: "/boy.png",
     text: "Nice! I'll add them to the showcase page today.",
     time: "10:45 AM",
   },
@@ -71,7 +69,7 @@ export const SlackChannelWidget = forwardRef<
       const msg: SlackMessage = {
         id: String(Date.now()),
         author: "You",
-        avatar: profileImage,
+        avatar: "/boy.png",
         text: draft.trim(),
         time: "Now",
       };
@@ -102,12 +100,12 @@ export const SlackChannelWidget = forwardRef<
 
         <div
           data-slot="slack-channel-widget-messages"
-          className="scroll-hover max-h-40 space-y-3 overflow-y-auto px-4 py-3"
+          className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-h-40 space-y-3 overflow-y-auto px-4 py-3"
         >
           {items.map((msg) => (
             <div key={msg.id} className="flex gap-2">
               <Image
-                src={msg.avatar ?? profileImage}
+                src={msg.avatar ?? "/boy.png"}
                 alt={msg.author}
                 width={28}
                 height={28}

@@ -1,13 +1,10 @@
 "use client";
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import profileImage from "@/public/boy.png";
-import postImageAsset from "@/public/dithar.png";
 
 import { Heart } from "@/icons/Heart";
 import { Chat } from "@/icons/Chat";
@@ -25,8 +22,8 @@ export type ThreadsPostCardProps = {
   time?: string;
   likes?: number;
   replies?: number;
-  avatar?: StaticImageData | string;
-  postImage?: StaticImageData | string;
+  avatar?: string;
+  postImage?: string;
   showImage?: boolean;
   onLike?: () => void;
 } & ComponentPropsWithoutRef<"div">;
@@ -40,8 +37,8 @@ export const ThreadsPostCard = forwardRef<HTMLDivElement, ThreadsPostCardProps>(
       time = "1h",
       likes = 892,
       replies = 47,
-      avatar = profileImage,
-      postImage = postImageAsset,
+      avatar = "/boy.png",
+      postImage = "/dithar.png",
       showImage = true,
       onLike,
       ...props

@@ -1,7 +1,7 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { ArrowRight } from "@/icons/ArrowRight";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 /**
  * Revenue stat card built with React, TypeScript, and Tailwind CSS.

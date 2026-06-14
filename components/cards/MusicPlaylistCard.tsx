@@ -2,11 +2,10 @@
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import cover from "@/public/dithar.png";
 
 import { Play } from "@/icons/Play";
 import { Pause } from "@/icons/Pause";
@@ -27,7 +26,7 @@ export type PlaylistTrack = {
 };
 
 export type MusicPlaylistCardProps = {
-  coverImage?: StaticImageData | string;
+  coverImage?: string;
 
   playlistType?: string;
   title?: string;
@@ -46,7 +45,7 @@ export const MusicPlaylistCard = forwardRef<
     {
       className,
 
-      coverImage = cover,
+      coverImage = "/dithar.png",
 
       playlistType = "Playlist",
       title = "Chill Vibes",

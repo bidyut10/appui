@@ -1,9 +1,8 @@
 import React, { forwardRef } from "react";
 import Image from "next/image";
-import coverImage from "@/public/dbg.png";
 import { Clock } from "@/icons/Clock";
 import { ArrowRight } from "@/icons/ArrowRight";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 /**
  * Blog post preview card built with Next.js, React,
@@ -29,7 +28,7 @@ export const BlogPostCard = forwardRef<
     {/* Cover */}
     <div className="relative h-40 overflow-hidden">
       <Image
-        src={coverImage}
+        src="/dbg.png"
         alt="Blog cover"
         fill
         sizes="288px"

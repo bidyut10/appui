@@ -1,15 +1,14 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 import {
   forwardRef,
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import profileImage from "@/public/boy.png";
 import { Settings } from "@/icons/Settings";
 import { User } from "@/icons/User";
 import { CreditCard } from "@/icons/CreditCard";
@@ -33,7 +32,7 @@ export type ProfileMenuItem = {
 export type ProfileMenuPreviewCardProps = {
   name?: string;
   email?: string;
-  avatarSrc?: StaticImageData | string;
+  avatarSrc?: string;
   items?: ProfileMenuItem[];
   onItemClick?: (label: string) => void;
 } & ComponentPropsWithoutRef<"div">;
@@ -53,7 +52,7 @@ export const ProfileMenuPreviewCard = forwardRef<
       className,
       name = "Bidyut Kundu",
       email = "bidyut@appui.dev",
-      avatarSrc = profileImage,
+      avatarSrc = "/boy.png",
       items = defaultItems,
       onItemClick,
       ...props

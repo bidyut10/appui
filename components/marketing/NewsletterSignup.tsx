@@ -2,7 +2,7 @@
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { Mail } from "@/icons/Mail";
 import { ArrowRight } from "@/icons/ArrowRight";

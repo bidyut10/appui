@@ -5,7 +5,7 @@ import {
 } from "react";
 
 import { UserGroup } from "@/icons/UserGroup";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 /**
  * User growth card built with React, TypeScript, and Tailwind CSS.

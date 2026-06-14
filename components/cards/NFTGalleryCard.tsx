@@ -1,12 +1,10 @@
 "use client";
 
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import artImage from "@/public/dithar.png";
 
 import { Heart } from "@/icons/Heart";
 
@@ -28,7 +26,7 @@ export type NFTGalleryCardProps = {
   creator?: string;
   bid?: string;
 
-  image?: StaticImageData | string;
+  image?: string;
 
   imageAlt?: string;
 
@@ -49,7 +47,7 @@ export const NFTGalleryCard = forwardRef<HTMLDivElement, NFTGalleryCardProps>(
       creator = "@bidyutk",
       bid = "2.4 ETH",
 
-      image = artImage,
+      image = "/dithar.png",
 
       imageAlt = "NFT artwork",
 

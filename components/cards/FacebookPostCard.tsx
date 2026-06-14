@@ -5,13 +5,10 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import profile_logo from "@/public/boy.png";
-import bg_image from "@/public/dithar.png";
 
 import { Clock } from "@/icons/Clock";
 import { Ellipsis } from "@/icons/Ellipsis";
@@ -38,8 +35,8 @@ export type FacebookPostCardProps = {
   comments?: number;
   shares?: number;
 
-  avatar?: StaticImageData | string;
-  postImage?: StaticImageData | string;
+  avatar?: string;
+  postImage?: string;
 
   avatarAlt?: string;
   imageAlt?: string;
@@ -71,8 +68,8 @@ export const FacebookPostCard = forwardRef<
       comments = 48,
       shares = 9,
 
-      avatar = profile_logo,
-      postImage = bg_image,
+      avatar = "/boy.png",
+      postImage = "/dithar.png",
 
       avatarAlt = "User avatar",
       imageAlt = "Facebook post image",
@@ -104,7 +101,7 @@ export const FacebookPostCard = forwardRef<
         {/* Post header */}
         <div data-slot="facebook-post-card-header" className="mb-3 flex gap-3">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-neutral-800">
-            <Image src={avatar} alt={avatarAlt} className="w-7" sizes="28px" />
+            <Image src={avatar} alt={avatarAlt} width={28} height={28} className="w-7" sizes="28px" />
           </div>
 
           <div>
@@ -134,13 +131,16 @@ export const FacebookPostCard = forwardRef<
         </p>
 
         {/* Post image */}
-        <Image
-          data-slot="facebook-post-card-image"
-          src={postImage}
-          alt={imageAlt}
-          className="mb-3 h-36 rounded-lg"
-          sizes="384px"
-        />
+        <div className="relative mb-3 h-36 w-full overflow-hidden rounded-lg">
+          <Image
+            data-slot="facebook-post-card-image"
+            src={postImage}
+            alt={imageAlt}
+            fill
+            className="object-cover"
+            sizes="384px"
+          />
+        </div>
 
         {/* Engagement summary */}
         <div

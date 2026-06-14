@@ -9,7 +9,7 @@ import {
   type KeyboardEvent,
 } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { Search } from "@/icons/Search";
 import { X } from "@/icons/X";

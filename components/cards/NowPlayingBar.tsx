@@ -2,11 +2,10 @@
 
 import { forwardRef, type ComponentPropsWithoutRef, useState } from "react";
 
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 
-import cover from "@/public/bh.png";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { Play } from "@/icons/Play";
 import { Pause } from "@/icons/Pause";
@@ -27,7 +26,7 @@ export type NowPlayingBarProps = {
   title?: string;
   artist?: string;
   progress?: number;
-  artwork?: StaticImageData | string;
+  artwork?: string;
   defaultPlaying?: boolean;
 } & ComponentPropsWithoutRef<"div">;
 
@@ -39,7 +38,7 @@ export const NowPlayingBar = forwardRef<HTMLDivElement, NowPlayingBarProps>(
       title = "Midnight Dreams",
       artist = "The Weeknd",
       progress = 60,
-      artwork = cover,
+      artwork = "/bh.png",
       defaultPlaying = true,
 
       ...props

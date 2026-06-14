@@ -1,10 +1,8 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import profileImage from "@/public/boy.png";
 
 /**
  * Dashboard welcome header built with Next.js, React, TypeScript, and Tailwind CSS.
@@ -22,7 +20,7 @@ export type DashboardWelcomeHeaderProps = {
   greeting?: string;
   userName?: string;
   welcomePrefix?: string;
-  avatar?: StaticImageData | string;
+  avatar?: string;
   avatarAlt?: string;
   stats?: DashboardWelcomeStat[];
 } & ComponentPropsWithoutRef<"div">;
@@ -43,7 +41,7 @@ export const DashboardWelcomeHeader = forwardRef<
       greeting = "Good morning",
       userName = "John",
       welcomePrefix = "Welcome back,",
-      avatar = profileImage,
+      avatar = "/boy.png",
       avatarAlt = "User",
       stats = defaultStats,
       ...props

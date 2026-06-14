@@ -1,9 +1,8 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import bgImage from "@/public/bg.png";
 import { TailwindCSS } from "@/icons/TailwindCSS";
 import { ReactJs } from "@/icons/ReactJs";
 import { NextJs } from "@/icons/NextJs";
@@ -34,7 +33,7 @@ export const BentoFeatureGrid = forwardRef<
   >
     <div className="group relative col-span-2 row-span-2 overflow-hidden rounded-2xl bg-neutral-900">
       <Image
-        src={bgImage}
+        src="/bg.png"
         alt="Feature preview"
         fill
         sizes="320px"

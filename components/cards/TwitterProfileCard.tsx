@@ -5,13 +5,10 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import bg_image from "@/public/dbg.png";
-import profile_logo from "@/public/boy.png";
 
 import { Location } from "@/icons/Location";
 import { Web } from "@/icons/Web";
@@ -36,8 +33,8 @@ export type TwitterProfileCardProps = {
   following?: string | number;
   followers?: string | number;
 
-  coverImage?: StaticImageData | string;
-  avatar?: StaticImageData | string;
+  coverImage?: string;
+  avatar?: string;
 
   coverImageAlt?: string;
   avatarAlt?: string;
@@ -71,8 +68,8 @@ export const TwitterProfileCard = forwardRef<
       following = 320,
       followers = "1.2K",
 
-      coverImage = bg_image,
-      avatar = profile_logo,
+      coverImage = "/dbg.png",
+      avatar = "/boy.png",
 
       coverImageAlt = "Profile cover image",
       avatarAlt = "Profile avatar",
@@ -101,17 +98,18 @@ export const TwitterProfileCard = forwardRef<
         {...props}
       >
         {/* Cover image */}
-        <div data-slot="twitter-profile-card-cover" className="relative">
+        <div data-slot="twitter-profile-card-cover" className="relative h-24">
           <Image
             src={coverImage}
             alt={coverImageAlt}
-            className="h-24 w-full object-cover"
+            fill
+            className="object-cover"
             sizes="288px"
           />
 
           {/* Profile avatar */}
           <div className="absolute -bottom-8 left-5 flex h-16 w-16 items-center justify-center rounded-full border-4 border-white bg-neutral-800">
-            <Image src={avatar} alt={avatarAlt} className="w-7" sizes="28px" />
+            <Image src={avatar} alt={avatarAlt} width={28} height={28} className="w-7" sizes="28px" />
           </div>
         </div>
 

@@ -3,14 +3,10 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import img1 from "@/public/dithar.png";
-import img2 from "@/public/bg.png";
-import img3 from "@/public/bh.png";
 
 import { Sun } from "@/icons/Sun";
 
@@ -28,7 +24,7 @@ export type GalleryGridCardProps = {
 
   count?: string | number;
 
-  images?: (StaticImageData | string)[];
+  images?: (string)[];
 
   overlayText?: string;
 
@@ -45,7 +41,7 @@ export const GalleryGridCard = forwardRef<HTMLDivElement, GalleryGridCardProps>(
 
       count = "24 photos",
 
-      images = [img1, img2, img3],
+      images = ["/dithar.png", "/bg.png", "/bh.png"],
 
       overlayText = "+21",
 

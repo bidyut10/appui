@@ -3,11 +3,10 @@
 import Image from "next/image";
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { Heart } from "@/icons/Heart";
 
-import bgImage from "@/public/dbg.png";
 
 /**
  * Dribbble-style shot card — designer portfolio preview with likes.
@@ -16,7 +15,7 @@ export type DribbbleShotCardProps = {
   title?: string;
   author?: string;
   likes?: number;
-  image?: typeof bgImage;
+  image?: string;
   onClick?: () => void;
 } & ComponentPropsWithoutRef<"div">;
 
@@ -30,7 +29,7 @@ export const DribbbleShotCard = forwardRef<
       title = "Dashboard UI Kit",
       author = "Alex Rivera",
       likes = 842,
-      image = bgImage,
+      image = "/dbg.png",
       onClick,
       ...props
     },

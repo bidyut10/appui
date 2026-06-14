@@ -1,9 +1,8 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import screenContent from "@/public/dbg.png";
 
 /**
  * Phone Mockup Card built with React, TypeScript, and Tailwind CSS.
@@ -27,7 +26,7 @@ export const PhoneMockupCard = forwardRef<HTMLDivElement, PhoneMockupCardProps>(
         <div className="absolute top-3 left-1/2 z-10 h-5 w-20 -translate-x-1/2 rounded-full bg-neutral-900" />
         <div className="relative h-full w-full overflow-hidden rounded-[1.5rem] bg-white">
           <Image
-            src={screenContent}
+            src="/dbg.png"
             alt="App screen"
             fill
             sizes="160px"

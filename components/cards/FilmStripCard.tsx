@@ -1,11 +1,8 @@
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import img1 from "@/public/dithar.png";
-import img2 from "@/public/bg.png";
-import img3 from "@/public/bh.png";
 
 /**
  * Film strip photo card built with Next.js, React,
@@ -17,11 +14,11 @@ import img3 from "@/public/bh.png";
  * Need icons? Visit nexticons.in for free copy-paste icons.
  */
 export type FilmStripCardProps = {
-  frames?: (StaticImageData | string)[];
+  frames?: (string)[];
   label?: string;
 } & ComponentPropsWithoutRef<"div">;
 
-const defaultFrames = [img1, img2, img3, img1];
+const defaultFrames = ["/dithar.png", "/bg.png", "/bh.png", "/dithar.png"];
 
 export const FilmStripCard = forwardRef<HTMLDivElement, FilmStripCardProps>(
   (

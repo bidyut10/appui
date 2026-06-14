@@ -8,7 +8,7 @@ import {
   type ReactNode,
 } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { UserGroup } from "@/icons/UserGroup";
 import { House } from "@/icons/House";
@@ -74,7 +74,7 @@ export const MenuBar = forwardRef<HTMLElement, MenuBarProps>(
           "flex h-11 items-center gap-0.5 px-[4.5px]",
           "bg-white dark:bg-neutral-900",
           "border border-neutral-200 dark:border-neutral-800",
-          "scroll-hover w-fit max-w-full overflow-x-auto rounded-xl",
+          "[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden w-fit max-w-full overflow-x-auto rounded-xl",
           "scrollbar-none",
           className,
         )}

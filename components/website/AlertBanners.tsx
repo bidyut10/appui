@@ -7,7 +7,7 @@ import {
   type ReactNode,
 } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { X } from "@/icons/X";
 import { Info } from "@/icons/Info";

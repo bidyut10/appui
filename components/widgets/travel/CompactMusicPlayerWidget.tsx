@@ -3,7 +3,7 @@
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { Music } from "@/icons/Music";
 import { Play } from "@/icons/Play";
 import { Pause } from "@/icons/Pause";
@@ -11,12 +11,11 @@ import { SkipPrevious } from "@/icons/SkipPrevious";
 import { SkipNext } from "@/icons/SkipNext";
 import { Repeat } from "@/icons/Repeat";
 
-import bgImage from "@/public/dbg.png";
 
 export type CompactMusicPlayerWidgetProps = {
   title?: string;
   artist?: string;
-  cover?: typeof bgImage;
+  cover?: string;
 } & ComponentPropsWithoutRef<"div">;
 
 export const CompactMusicPlayerWidget = forwardRef<
@@ -28,7 +27,7 @@ export const CompactMusicPlayerWidget = forwardRef<
       className,
       title = "Love On The Brain",
       artist = "Rihanna",
-      cover = bgImage,
+      cover = "/dbg.png",
       ...props
     },
     ref,

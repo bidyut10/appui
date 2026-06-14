@@ -1,12 +1,10 @@
 "use client";
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import profileImage from "@/public/boy.png";
 
 import { Star } from "@/icons/Star";
 import { Gmail } from "@/icons/Gmail";
@@ -19,12 +17,12 @@ export type GmailMessage = {
   time: string;
   unread?: boolean;
   starred?: boolean;
-  avatar?: StaticImageData | string;
+  avatar?: string;
 };
 
 export type GmailInboxWidgetProps = {
   accountLabel?: string;
-  accountAvatar?: StaticImageData | string;
+  accountAvatar?: string;
   unreadCount?: number;
   messages?: GmailMessage[];
   onStarToggle?: (id: string, starred: boolean) => void;
@@ -89,7 +87,7 @@ function SenderAvatar({
   avatar,
 }: {
   sender: string;
-  avatar?: StaticImageData | string;
+  avatar?: string;
 }) {
   if (avatar) {
     return (
@@ -128,7 +126,7 @@ export const GmailInboxWidget = forwardRef<
     {
       className,
       accountLabel = "bidyut.kundu@gmail.com",
-      accountAvatar = profileImage,
+      accountAvatar = "/boy.png",
       unreadCount = 2,
       messages = defaultMessages,
       onStarToggle,

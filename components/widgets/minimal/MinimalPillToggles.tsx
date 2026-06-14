@@ -7,7 +7,7 @@ import {
   type ReactNode,
 } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { Torch } from "@/icons/Torch";
 import { Bluetooth } from "@/icons/Bluetooth";
 import { Moon } from "@/icons/Moon";

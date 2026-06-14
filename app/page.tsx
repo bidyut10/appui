@@ -393,7 +393,7 @@ const rows: Row[] = [  [< RomanAnalogClockWidget/>, <VoiceAssistantWidget />, <W
   [<DailyBriefingCard />, <KpiSparklineGrid />, <SalesOverviewCard />],
   [<BurnRunwayCard />, <SpendingBreakdownWidget />, <BudgetDialCard />],
 
-  [<KanbanBoard />, <TaskSummaryCard />, <ApprovalQueueWidget />],
+  [null, <TaskSummaryCard />, <ApprovalQueueWidget />],
   [<TeamPresenceWidget />, <SlackChannelWidget />, <ChatWidget />],
   [<NotificationBell />, <NotificationToast />, <ActivityFeedCard />],
 

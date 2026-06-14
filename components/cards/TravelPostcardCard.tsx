@@ -1,10 +1,8 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import landscape from "@/public/bg.png";
 import { Location } from "@/icons/Location";
 import { MapPinned } from "@/icons/MapPinned";
 
@@ -24,7 +22,7 @@ import { MapPinned } from "@/icons/MapPinned";
  * - Replace with <img /> if using plain React
  */
 export type TravelPostcardCardProps = {
-  image?: StaticImageData | string;
+  image?: string;
 
   title?: string;
   message?: string;
@@ -46,7 +44,7 @@ export const TravelPostcardCard = forwardRef<
     {
       className,
 
-      image = landscape,
+      image = "/bg.png",
 
       title = "Greetings from Sundarbans!",
       message = "Postcard",

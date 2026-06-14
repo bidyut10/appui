@@ -2,7 +2,7 @@
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { Copy } from "@/icons/Copy";
 import { Check } from "@/icons/Check";
@@ -93,7 +93,7 @@ export const GitHubCodeBlockCard = forwardRef<
           </button>
         </div>
 
-        <pre className="scroll-hover max-h-44 overflow-auto bg-[#fafafa] p-3 font-mono text-[10px] leading-relaxed text-neutral-800">
+        <pre className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-h-44 overflow-auto bg-[#fafafa] p-3 font-mono text-[10px] leading-relaxed text-neutral-800">
           <code>{code}</code>
         </pre>
       </div>

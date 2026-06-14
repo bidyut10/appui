@@ -5,13 +5,10 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import bg_image from "@/public/bg.png";
-import profile_logo from "@/public/boy.png";
 
 /**
  * LinkedIn-inspired profile card built with Next.js,
@@ -33,8 +30,8 @@ export type LinkedInProfileCardProps = {
   posts?: string | number;
   experience?: string;
 
-  coverImage?: StaticImageData | string;
-  avatar?: StaticImageData | string;
+  coverImage?: string;
+  avatar?: string;
 
   coverImageAlt?: string;
   avatarAlt?: string;
@@ -67,8 +64,8 @@ export const LinkedInProfileCard = forwardRef<
       posts = 42,
       experience = "2.5yr",
 
-      coverImage = bg_image,
-      avatar = profile_logo,
+      coverImage = "/bg.png",
+      avatar = "/boy.png",
 
       coverImageAlt = "LinkedIn cover image",
       avatarAlt = "Profile avatar",
@@ -97,17 +94,18 @@ export const LinkedInProfileCard = forwardRef<
         {...props}
       >
         {/* Cover */}
-        <div className="relative">
+        <div className="relative h-20">
           <Image
             src={coverImage}
             alt={coverImageAlt}
-            className="h-20 w-full object-cover"
+            fill
+            className="object-cover"
             sizes="288px"
           />
 
           {/* Avatar */}
           <div className="absolute -bottom-8 left-4 flex h-16 w-16 items-center justify-center rounded-full border-4 border-white bg-neutral-800 shadow">
-            <Image src={avatar} alt={avatarAlt} className="w-7" sizes="28px" />
+            <Image src={avatar} alt={avatarAlt} width={28} height={28} className="w-7" sizes="28px" />
           </div>
         </div>
 

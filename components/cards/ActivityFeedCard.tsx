@@ -5,10 +5,9 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { ArrowRight } from "@/icons/ArrowRight";
 import { Chat } from "@/icons/Chat";
@@ -16,7 +15,6 @@ import { Heart } from "@/icons/Heart";
 import { Star } from "@/icons/Star";
 import { UserCheck } from "@/icons/UserCheck";
 
-import profileImage from "@/public/boy.png";
 
 /**
  * Activity feed card built with Next.js, React,
@@ -42,7 +40,7 @@ export type ActivityFeedCardProps = {
   activities?: ActivityFeedItem[];
 
   footerText?: string;
-  footerAvatar?: StaticImageData | string;
+  footerAvatar?: string;
   footerAvatarAlt?: string;
 
   footerIcon?: ReactNode;
@@ -98,7 +96,7 @@ export const ActivityFeedCard = forwardRef<
       activities = defaultActivities,
 
       footerText = "View all activity",
-      footerAvatar = profileImage,
+      footerAvatar = "/boy.png",
       footerAvatarAlt = "You",
 
       footerIcon,
@@ -198,11 +196,13 @@ export const ActivityFeedCard = forwardRef<
         onClick={onViewAllClick}
         className="flex w-full cursor-pointer items-center gap-2 border-t border-neutral-100 bg-neutral-50/50 px-4 py-2.5 text-left"
       >
-        <div className="h-6 w-6 overflow-hidden rounded-full shadow-sm ring-2 ring-white">
+        <div className="relative h-6 w-6 overflow-hidden rounded-full shadow-sm ring-2 ring-white">
           <Image
             src={footerAvatar}
             alt={footerAvatarAlt}
-            className="h-full w-full object-cover"
+            fill
+            sizes="24px"
+            className="object-cover"
           />
         </div>
 

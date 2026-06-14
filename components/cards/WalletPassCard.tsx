@@ -1,12 +1,10 @@
 "use client";
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import profileImage from "@/public/boy.png";
 
 /**
  * Apple Wallet-style pass that flips to reveal QR details on click.
@@ -20,7 +18,7 @@ export type WalletPassCardProps = {
   passType?: string;
   expiryDate?: string;
   memberId?: string;
-  avatar?: StaticImageData | string;
+  avatar?: string;
   avatarAlt?: string;
   onFlip?: (flipped: boolean) => void;
 } & ComponentPropsWithoutRef<"div">;
@@ -34,7 +32,7 @@ export const WalletPassCard = forwardRef<HTMLDivElement, WalletPassCardProps>(
       passType = "Member Pass",
       expiryDate = "Dec 2026",
       memberId = "MBR-2048",
-      avatar = profileImage,
+      avatar = "/boy.png",
       avatarAlt = "Member profile",
       onFlip,
       ...props
@@ -101,12 +99,13 @@ export const WalletPassCard = forwardRef<HTMLDivElement, WalletPassCardProps>(
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="h-12 w-12 overflow-hidden rounded-full border-2 border-white/30">
+                  <div className="relative h-12 w-12 overflow-hidden rounded-full border-2 border-white/30">
                     <Image
                       src={avatar}
                       alt={avatarAlt}
-                      className="h-full w-full object-cover"
+                      fill
                       sizes="48px"
+                      className="object-cover"
                     />
                   </div>
                   <div className="text-left">

@@ -6,7 +6,7 @@ import React, {
   type ComponentPropsWithoutRef,
 } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { ReactJs } from "@/icons/ReactJs";
 import { TailwindCSS } from "@/icons/TailwindCSS";

@@ -1,12 +1,10 @@
 "use client";
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import profileImage from "@/public/boy.png";
 
 import { Check } from "@/icons/Check";
 import { Chat } from "@/icons/Chat";
@@ -24,7 +22,7 @@ export type GitHubPullRequestCardProps = {
   branch?: string;
   additions?: number;
   deletions?: number;
-  avatar?: StaticImageData | string;
+  avatar?: string;
   onApprove?: () => void;
   onComment?: () => void;
 } & ComponentPropsWithoutRef<"div">;
@@ -42,7 +40,7 @@ export const GitHubPullRequestCard = forwardRef<
       branch = "feat/widgets → main",
       additions = 842,
       deletions = 12,
-      avatar = profileImage,
+      avatar = "/boy.png",
       onApprove,
       onComment,
       ...props

@@ -1,10 +1,8 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import portrait from "@/public/dithar.png";
 import { Heart } from "@/icons/Heart";
 
 /**
@@ -22,7 +20,7 @@ import { Heart } from "@/icons/Heart";
  * - Uses Next.js Image. Replace with <img /> if using plain React.
  */
 export type PortraitImageCardProps = {
-  image?: StaticImageData | string;
+  image?: string;
 
   title?: string;
   subtitle?: string;
@@ -39,7 +37,7 @@ export const PortraitImageCard = forwardRef<
     {
       className,
 
-      image = portrait,
+      image = "/dithar.png",
       title = "Golden Hour",
       subtitle = "Shot on Sony A7IV · 85mm f/1.4",
       category = "Portrait Series",

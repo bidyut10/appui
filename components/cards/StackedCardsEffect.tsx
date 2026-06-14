@@ -1,7 +1,6 @@
 import React, { forwardRef } from "react";
 import Image from "next/image";
-import profileImage from "@/public/boy.png";
-import bgImage from "@/public/bg.png";
+import { cn } from "@/lib/cn";
 
 /**
  * Stacked cards hover effect built with Next.js, React,
@@ -18,7 +17,7 @@ export const StackedCardsEffect = forwardRef<
 >(({ className = "", ...props }, ref) => (
   <div
     ref={ref}
-    className={`group relative h-64 w-56 font-sans ${className}`}
+    className={cn("group relative h-64 w-56 font-sans", className)}
     {...props}
   >
     <div className="absolute inset-x-4 top-8 bottom-0 rotate-[-6deg] rounded-2xl bg-neutral-200 transition-transform duration-500 group-hover:rotate-[-8deg]" />
@@ -27,7 +26,7 @@ export const StackedCardsEffect = forwardRef<
     <div className="absolute inset-0 overflow-hidden rounded-2xl border border-neutral-100 bg-white shadow-lg transition-transform duration-500 group-hover:-translate-y-1">
       <div className="relative h-28 overflow-hidden">
         <Image
-          src={bgImage}
+          src="/bg.png"
           alt="Card"
           fill
           sizes="288px"
@@ -36,11 +35,13 @@ export const StackedCardsEffect = forwardRef<
       </div>
       <div className="p-4">
         <div className="mb-2 flex items-center gap-2">
-          <div className="h-7 w-7 overflow-hidden rounded-full border border-neutral-100">
+          <div className="relative h-7 w-7 overflow-hidden rounded-full border border-neutral-100">
             <Image
-              src={profileImage}
+              src="/boy.png"
               alt="User"
-              className="h-full w-full object-cover"
+              fill
+              sizes="28px"
+              className="object-cover"
             />
           </div>
           <div>

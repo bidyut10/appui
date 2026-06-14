@@ -1,14 +1,10 @@
 "use client";
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import img1 from "@/public/dbg.png";
-import img2 from "@/public/bh.png";
-import img3 from "@/public/dithar.png";
 
 /**
  * Image grid hover card — masonry-style gallery with expand on hover.
@@ -17,7 +13,7 @@ import img3 from "@/public/dithar.png";
  */
 export type ImageGridHoverCardProps = {
   title?: string;
-  images?: (StaticImageData | string)[];
+  images?: (string)[];
   onImageClick?: (index: number) => void;
 } & ComponentPropsWithoutRef<"div">;
 
@@ -29,7 +25,7 @@ export const ImageGridHoverCard = forwardRef<
     {
       className,
       title = "Gallery picks",
-      images = [img1, img2, img3],
+      images = ["/dbg.png", "/bh.png", "/dithar.png"],
       onImageClick,
       ...props
     },

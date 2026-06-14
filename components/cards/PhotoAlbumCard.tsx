@@ -1,21 +1,16 @@
 "use client";
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import img1 from "@/public/dbg.png";
-import img2 from "@/public/bh.png";
-import img3 from "@/public/dithar.png";
-import img4 from "@/public/bg.png";
 
 export type AlbumPhoto = {
   id: string;
   place: string;
   date: string;
-  src: StaticImageData | string;
+  src: string;
 };
 
 /**
@@ -29,10 +24,10 @@ export type PhotoAlbumCardProps = {
 } & ComponentPropsWithoutRef<"div">;
 
 const defaultPhotos: AlbumPhoto[] = [
-  { id: "1", place: "Kyoto", date: "Mar 12", src: img1 },
-  { id: "2", place: "Osaka", date: "Apr 03", src: img2 },
-  { id: "3", place: "Hokkaido", date: "Jan 28", src: img3 },
-  { id: "4", place: "Tokyo", date: "Jun 14", src: img4 },
+  { id: "1", place: "Kyoto", date: "Mar 12", src: "/dbg.png" },
+  { id: "2", place: "Osaka", date: "Apr 03", src: "/bh.png" },
+  { id: "3", place: "Hokkaido", date: "Jan 28", src: "/dithar.png" },
+  { id: "4", place: "Tokyo", date: "Jun 14", src: "/bg.png" },
 ];
 
 export const PhotoAlbumCard = forwardRef<HTMLDivElement, PhotoAlbumCardProps>(

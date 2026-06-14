@@ -5,12 +5,10 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import productImage from "@/public/dbg.png";
 
 import { Star } from "@/icons/Star";
 import { Heart } from "@/icons/Heart";
@@ -33,7 +31,7 @@ import { Plus } from "@/icons/Plus";
  * - Replace <Image /> with <img /> if using React only.
  */
 export type ProductImageCardProps = {
-  image?: StaticImageData | string;
+  image?: string;
 
   badge?: string;
   collection?: string;
@@ -64,7 +62,7 @@ export const ProductImageCard = forwardRef<
     {
       className,
 
-      image = productImage,
+      image = "/dbg.png",
 
       badge = "New",
       collection = "Studio Collection",

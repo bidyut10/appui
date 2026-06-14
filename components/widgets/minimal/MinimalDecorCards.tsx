@@ -3,13 +3,12 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { QrCode } from "@/icons/QrCode";
 import { Bell } from "@/icons/Bell";
 import { Wifi } from "@/icons/Wifi";
 import { Share } from "@/icons/Share";
 
-import bgImage from "@/public/dbg.png";
 
 export type MinimalDotPatternCardProps = {
   pattern?: "flower" | "cloud";
@@ -56,13 +55,13 @@ export const MinimalDotPatternCard = forwardRef<
 MinimalDotPatternCard.displayName = "MinimalDotPatternCard";
 
 export type MinimalPhotoCardProps = {
-  image?: typeof bgImage;
+  image?: string;
 } & ComponentPropsWithoutRef<"div">;
 
 export const MinimalPhotoCard = forwardRef<
   HTMLDivElement,
   MinimalPhotoCardProps
->(({ className, image = bgImage, ...props }, ref) => (
+>(({ className, image = "/dbg.png", ...props }, ref) => (
   <div
     ref={ref}
     data-slot="minimal-photo-card"

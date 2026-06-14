@@ -1,11 +1,10 @@
 "use client";
 
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import profileImage from "@/public/boy.png";
 import { Dropdown, type DropdownItem } from "./Dropdown";
 import { User } from "@/icons/User";
 import { Settings } from "@/icons/Settings";
@@ -21,7 +20,7 @@ import { ChevronDown } from "@/icons/ChevronDown";
 export type UserMenuDropdownProps = {
   userName?: string;
   userEmail?: string;
-  avatarSrc?: StaticImageData | string;
+  avatarSrc?: string;
   avatarAlt?: string;
   items?: DropdownItem[];
 } & ComponentPropsWithoutRef<"div">;
@@ -60,7 +59,7 @@ export const UserMenuDropdown = forwardRef<
     {
       userName = "John Doe",
       userEmail = "john@example.com",
-      avatarSrc = profileImage,
+      avatarSrc = "/boy.png",
       avatarAlt = "User",
       items = defaultItems,
       className,
@@ -78,11 +77,13 @@ export const UserMenuDropdown = forwardRef<
           aria-label={`User menu for ${userName}`}
           className="group inline-flex h-12 cursor-pointer items-center gap-3 rounded-full border border-neutral-100 bg-white pr-4 pl-1.5 transition-all duration-300 hover:border-neutral-300 hover:shadow-sm active:scale-95"
         >
-          <div className="h-9 w-9 overflow-hidden rounded-full border-2 border-neutral-100">
+          <div className="relative h-9 w-9 overflow-hidden rounded-full border-2 border-neutral-100">
             <Image
               src={avatarSrc}
               alt={avatarAlt}
-              className="h-full w-full object-cover"
+              fill
+              sizes="36px"
+              className="object-cover"
             />
           </div>
           <div className="text-left">

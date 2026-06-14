@@ -2,7 +2,7 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { Check } from "@/icons/Check";
 import { Clock } from "@/icons/Clock";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 /**
  * Task summary card built with React, TypeScript, and Tailwind CSS.

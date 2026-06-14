@@ -3,12 +3,11 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { Locate } from "@/icons/Locate";
 import { Pin } from "@/icons/Pin";
 import { Battery } from "@/icons/Battery";
 
-import bgImage from "@/public/dbg.png";
 
 export type GpsTrackingMapWidgetProps = ComponentPropsWithoutRef<"div">;
 
@@ -56,7 +55,7 @@ export const GpsTrackingMapWidget = forwardRef<
     </div>
 
     <div className="absolute top-3 left-3 h-8 w-8 overflow-hidden rounded-full border-2 border-white shadow">
-      <Image src={bgImage} alt="" fill className="object-cover" sizes="32px" />
+      <Image src="/dbg.png" alt="" fill className="object-cover" sizes="32px" />
     </div>
     <div className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-white shadow">
       <Pin size={14} className="text-[#F9D6F0]" />

@@ -1,17 +1,16 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 import {
   forwardRef,
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 import { ArrowRight } from "@/icons/ArrowRight";
 
-import cover from "@/public/dithar.png";
 
 /**
  * Split feature card built with Next.js, React,
@@ -27,7 +26,7 @@ export type SplitFeatureCardProps = {
   title?: string;
   description?: string;
   cta?: string;
-  imageSrc?: StaticImageData | string;
+  imageSrc?: string;
   imageAlt?: string;
 
   ctaIcon?: ReactNode;
@@ -46,7 +45,7 @@ export const SplitFeatureCard = forwardRef<
       title = "Component library v2",
       description = "180+ production-ready blocks with refined typography, spacing, and interaction patterns.",
       cta = "Explore components",
-      imageSrc = cover,
+      imageSrc = "/dithar.png",
       imageAlt = "Feature preview",
 
       ctaIcon,

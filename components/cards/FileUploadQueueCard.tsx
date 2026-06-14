@@ -2,7 +2,7 @@
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 import { File } from "@/icons/File";
 import { Images } from "@/icons/Images";
 import { Check } from "@/icons/Check";

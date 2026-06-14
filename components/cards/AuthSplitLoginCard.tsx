@@ -3,9 +3,8 @@
 import Image from "next/image";
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import sideImage from "@/public/bh.png";
 
 import { Github } from "@/icons/Github";
 import { ArrowRight } from "@/icons/ArrowRight";
@@ -23,7 +22,7 @@ import { ArrowRight } from "@/icons/ArrowRight";
  * Need icons? Visit nexticons.in for free copy-paste icons.
  */
 export type AuthSplitLoginCardProps = {
-  imageSrc?: typeof sideImage;
+  imageSrc?: string;
 
   title?: string;
   description?: string;
@@ -43,7 +42,7 @@ export const AuthSplitLoginCard = forwardRef<
     {
       className,
 
-      imageSrc = sideImage,
+      imageSrc = "/bh.png",
 
       title = "Welcome back",
       description = "Sign in to your account",

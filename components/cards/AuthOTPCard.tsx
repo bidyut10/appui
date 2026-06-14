@@ -9,9 +9,8 @@ import {
 
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import bgImage from "@/public/dithar.png";
 
 import { ArrowRight } from "@/icons/ArrowRight";
 
@@ -28,7 +27,7 @@ import { ArrowRight } from "@/icons/ArrowRight";
  * Need icons? Visit nexticons.in for free copy-paste icons.
  */
 export type AuthOTPCardProps = {
-  imageSrc?: typeof bgImage;
+  imageSrc?: string;
 
   title?: string;
   description?: string;
@@ -46,7 +45,7 @@ export const AuthOTPCard = forwardRef<HTMLDivElement, AuthOTPCardProps>(
     {
       className,
 
-      imageSrc = bgImage,
+      imageSrc = "/dithar.png",
 
       title = "Verify your email",
 

@@ -1,15 +1,14 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 import {
   forwardRef,
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import bg from "@/public/bg.png";
 import { House } from "@/icons/House";
 import { Leaf } from "@/icons/Leaf";
 import { MapPinned } from "@/icons/MapPinned";
@@ -30,7 +29,7 @@ export type AppleMapsExploreTag = {
 };
 
 export type AppleMapsExploreProps = {
-  imageSrc?: StaticImageData | string;
+  imageSrc?: string;
   imageAlt?: string;
   badgeLabel?: string;
   guideLabel?: string;
@@ -53,7 +52,7 @@ export const AppleMapsExplore = forwardRef<
   (
     {
       className,
-      imageSrc = bg,
+      imageSrc = "/bg.png",
       imageAlt = "Map area",
       badgeLabel = "Explore",
       guideLabel = "Guide",

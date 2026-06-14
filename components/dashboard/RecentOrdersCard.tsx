@@ -2,7 +2,7 @@
 
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
 /**
  * Recent orders card built with React, TypeScript, and Tailwind CSS.
@@ -130,7 +130,7 @@ export const RecentOrdersCard = forwardRef<
       {/* Table */}
       <div
         data-slot="recent-orders-table-wrapper"
-        className="scroll-hover overflow-x-auto"
+        className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overflow-x-auto"
       >
         <table data-slot="recent-orders-table" className="w-full text-left">
           <thead data-slot="recent-orders-table-head">

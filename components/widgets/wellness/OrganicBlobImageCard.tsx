@@ -3,18 +3,17 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/cn";
 
-import bgImage from "@/public/dbg.png";
 
 export type OrganicBlobImageCardProps = {
-  image?: typeof bgImage;
+  image?: string;
 } & ComponentPropsWithoutRef<"div">;
 
 export const OrganicBlobImageCard = forwardRef<
   HTMLDivElement,
   OrganicBlobImageCardProps
->(({ className, image = bgImage, ...props }, ref) => (
+>(({ className, image = "/dbg.png", ...props }, ref) => (
   <div
     ref={ref}
     data-slot="organic-blob-image-card"
