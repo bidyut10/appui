@@ -56,7 +56,7 @@ export const ReadingProgressCard = forwardRef<
         </span>
       </div>
 
-      <h3 className="text-base font-bold leading-snug text-neutral-900">
+      <h3 className="text-base leading-snug font-bold text-neutral-900">
         {title}
       </h3>
       <p className="mt-2 text-[13px] leading-relaxed text-neutral-500">

@@ -82,9 +82,7 @@ export const BorderedAccordion = forwardRef<
             <div
               className={cn(
                 "overflow-hidden px-4 transition-all duration-300 ease-in-out",
-                isOpen
-                  ? "max-h-40 pb-3 opacity-100"
-                  : "max-h-0 pb-0 opacity-0",
+                isOpen ? "max-h-40 pb-3 opacity-100" : "max-h-0 pb-0 opacity-0",
               )}
             >
               <div className="text-sm text-neutral-600">{item.content}</div>

@@ -92,7 +92,7 @@ export const ConversionFunnelCard = forwardRef<
         )}
         {...props}
       >
-                <div data-slot="conversion-funnel-header">
+        <div data-slot="conversion-funnel-header">
           <h4
             data-slot="conversion-funnel-title"
             className="mb-1 text-sm font-semibold text-neutral-900"
@@ -155,7 +155,7 @@ export const ConversionFunnelCard = forwardRef<
           )}
         </div>
 
-                <p
+        <p
           data-slot="conversion-funnel-footer"
           className="mt-3 text-center text-[10px] text-neutral-400"
         >

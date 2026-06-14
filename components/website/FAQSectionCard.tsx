@@ -100,7 +100,6 @@ export const FAQSectionCard = forwardRef<HTMLDivElement, FAQSectionCardProps>(
         )}
         {...props}
       >
-        
         <div
           data-slot="faq-section-card-header"
           className="border-b border-neutral-100 px-5 py-4"
@@ -110,7 +109,6 @@ export const FAQSectionCard = forwardRef<HTMLDivElement, FAQSectionCardProps>(
           <p className="mt-0.5 text-[11px] text-neutral-400">{description}</p>
         </div>
 
-        
         <div
           data-slot="faq-section-card-list"
           className="divide-y divide-neutral-50"

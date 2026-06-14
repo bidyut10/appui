@@ -146,14 +146,20 @@ export const AuthOTPCard = forwardRef<HTMLDivElement, AuthOTPCardProps>(
         {...props}
       >
         {/* Background */}
-        <Image src={imageSrc} alt="Background" fill sizes="384px" className="object-cover" />
+        <Image
+          src={imageSrc}
+          alt="Background"
+          fill
+          sizes="384px"
+          className="object-cover"
+        />
 
         <div
           data-slot="auth-otp-card-overlay"
           className="absolute inset-0 bg-white/5"
         />
 
-                <div data-slot="auth-otp-card-content" className="relative p-7">
+        <div data-slot="auth-otp-card-content" className="relative p-7">
           {/* Icon */}
           <div
             data-slot="auth-otp-card-icon"
@@ -174,7 +180,7 @@ export const AuthOTPCard = forwardRef<HTMLDivElement, AuthOTPCardProps>(
             </svg>
           </div>
 
-                    <h3 className="mb-1 text-center text-lg font-semibold text-neutral-900">
+          <h3 className="mb-1 text-center text-lg font-semibold text-neutral-900">
             {title}
           </h3>
 
@@ -223,7 +229,7 @@ export const AuthOTPCard = forwardRef<HTMLDivElement, AuthOTPCardProps>(
             <ArrowRight size={14} />
           </button>
 
-                    <p className="mt-4 text-center text-xs text-neutral-500">
+          <p className="mt-4 text-center text-xs text-neutral-500">
             Didn&apos;t receive it?{" "}
             <button
               type="button"

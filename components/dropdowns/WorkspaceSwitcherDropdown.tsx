@@ -112,7 +112,7 @@ export const WorkspaceSwitcherDropdown = forwardRef<
           >
             <div
               className={cn(
-                "h-7 w-7 rounded-lg bg-linear-to-br flex items-center justify-center",
+                "flex h-7 w-7 items-center justify-center rounded-lg bg-linear-to-br",
                 current.color,
               )}
             >
@@ -155,7 +155,7 @@ export const WorkspaceSwitcherDropdown = forwardRef<
               >
                 <div
                   className={cn(
-                    "h-7 w-7 rounded-lg bg-linear-to-br flex shrink-0 items-center justify-center",
+                    "flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-linear-to-br",
                     ws.color,
                   )}
                 >
@@ -166,7 +166,9 @@ export const WorkspaceSwitcherDropdown = forwardRef<
                 <span className="flex-1 text-xs font-medium text-neutral-800">
                   {ws.name}
                 </span>
-                {selected === i && <Check size={14} className="text-teal-600" />}
+                {selected === i && (
+                  <Check size={14} className="text-teal-600" />
+                )}
               </button>
             ))}
             <div className="my-1 h-px bg-neutral-100" />

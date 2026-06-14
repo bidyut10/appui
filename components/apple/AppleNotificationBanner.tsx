@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import Image, { type StaticImageData } from "next/image";
 
 import { cn } from "@/lib/utils";

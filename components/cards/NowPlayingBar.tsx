@@ -62,7 +62,13 @@ export const NowPlayingBar = forwardRef<HTMLDivElement, NowPlayingBarProps>(
           data-slot="now-playing-bar-artwork"
           className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg"
         >
-          <Image src={artwork} alt={title} fill sizes="40px" className="object-cover" />
+          <Image
+            src={artwork}
+            alt={title}
+            fill
+            sizes="40px"
+            className="object-cover"
+          />
         </div>
 
         <div data-slot="now-playing-bar-info" className="min-w-0 flex-1">

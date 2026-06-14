@@ -123,7 +123,6 @@ export const FeatureTabsCard = forwardRef<HTMLDivElement, FeatureTabsCardProps>(
           ))}
         </div>
 
-        
         <div data-slot="feature-tabs-card-content" className="p-5">
           <div
             data-slot="feature-tabs-card-icon"

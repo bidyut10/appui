@@ -15,7 +15,10 @@ export type RidePickupWidgetProps = {
   image?: typeof bgImage;
 } & ComponentPropsWithoutRef<"div">;
 
-export const RidePickupWidget = forwardRef<HTMLDivElement, RidePickupWidgetProps>(
+export const RidePickupWidget = forwardRef<
+  HTMLDivElement,
+  RidePickupWidgetProps
+>(
   (
     {
       className,
@@ -37,14 +40,22 @@ export const RidePickupWidget = forwardRef<HTMLDivElement, RidePickupWidgetProps
       {...props}
     >
       <div className="flex items-center justify-between px-4 pt-4">
-        <span className="text-xs font-bold tracking-wide text-neutral-900">Uber</span>
+        <span className="text-xs font-bold tracking-wide text-neutral-900">
+          Uber
+        </span>
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-900 text-[10px] font-bold text-white">
           {eta}
         </span>
       </div>
 
       <div className="relative mx-auto my-2 h-20 w-32">
-        <Image src={image} alt={vehicle} fill className="object-contain" sizes="128px" />
+        <Image
+          src={image}
+          alt={vehicle}
+          fill
+          className="object-contain"
+          sizes="128px"
+        />
       </div>
 
       <div className="mt-auto rounded-b-3xl bg-neutral-50 px-4 py-3">

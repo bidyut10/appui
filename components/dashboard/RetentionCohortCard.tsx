@@ -65,7 +65,7 @@ export const RetentionCohortCard = forwardRef<
       )}
       {...props}
     >
-            <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
+      <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
 
       {/* Cohort grid */}
       <div className="space-y-1">

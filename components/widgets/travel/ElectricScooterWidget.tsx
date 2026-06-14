@@ -45,7 +45,13 @@ export const ElectricScooterWidget = forwardRef<
       {...props}
     >
       <div className="relative h-28 w-24 shrink-0 overflow-hidden rounded-2xl bg-neutral-50">
-        <Image src={image} alt={title} fill className="object-contain p-2" sizes="96px" />
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-contain p-2"
+          sizes="96px"
+        />
       </div>
 
       <div className="flex min-w-0 flex-1 flex-col justify-between py-1">

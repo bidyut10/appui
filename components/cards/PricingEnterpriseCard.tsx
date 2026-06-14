@@ -63,7 +63,7 @@ export const PricingEnterpriseCard = forwardRef<
       {...props}
     >
       <div data-slot="pricing-enterprise-card-content" className="p-6">
-                <span
+        <span
           data-slot="pricing-enterprise-card-plan"
           className="font-mono text-[10px] tracking-widest text-neutral-500 uppercase"
         >

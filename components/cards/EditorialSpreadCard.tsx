@@ -63,7 +63,9 @@ export const EditorialSpreadCard = forwardRef<
           <p className="mt-3 text-[13px] leading-relaxed text-neutral-600">
             {body}
           </p>
-          <p className="mt-4 font-sans text-[10px] text-neutral-400">{byline}</p>
+          <p className="mt-4 font-sans text-[10px] text-neutral-400">
+            {byline}
+          </p>
         </div>
         <div className="relative min-h-[140px] sm:col-span-2 sm:min-h-0">
           <Image

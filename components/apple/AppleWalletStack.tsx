@@ -47,59 +47,47 @@ const defaultPasses: AppleWalletPass[] = [
 export const AppleWalletStack = forwardRef<
   HTMLDivElement,
   AppleWalletStackProps
->(
-  (
-    {
-      className,
-      passes = defaultPasses,
-      onPassClick,
-      ...props
-    },
-    ref,
-  ) => (
-    <div
-      ref={ref}
-      data-slot="apple-wallet-stack"
-      className={cn("relative h-64 w-72 font-sans", className)}
-      {...props}
-    >
-      {passes.map((pass, index) => (
-        <div
-          key={pass.name}
-          data-slot="apple-wallet-stack-pass"
-          onClick={() => onPassClick?.(pass, index)}
-          className={cn(
-            "absolute inset-x-0 bg-linear-to-br cursor-pointer rounded-2xl p-4 text-white shadow-lg transition-transform hover:-translate-y-1",
-            pass.color,
-            onPassClick && "cursor-pointer",
-          )}
-          style={{ top: `${index * 28}px`, zIndex: passes.length - index }}
-        >
-          <p className="text-[10px] font-medium tracking-wider text-white/60 uppercase">
-            {pass.name}
-          </p>
-          <p className="mt-1 text-lg font-semibold tracking-tight">
-            {pass.title}
-          </p>
-          <p className="mt-1 text-[12px] text-white/60">{pass.detail}</p>
-          {index === 0 && (
-            <div className="absolute right-4 bottom-3 flex h-10 w-10 items-center justify-center rounded-lg bg-white/10">
-              <div className="grid h-6 w-6 grid-cols-3 gap-px">
-                {Array.from({ length: 9 }).map((_, j) => (
-                  <div
-                    key={j}
-                    className={cn(
-                      j % 2 === 0 ? "bg-white" : "bg-transparent",
-                    )}
-                  />
-                ))}
-              </div>
+>(({ className, passes = defaultPasses, onPassClick, ...props }, ref) => (
+  <div
+    ref={ref}
+    data-slot="apple-wallet-stack"
+    className={cn("relative h-64 w-72 font-sans", className)}
+    {...props}
+  >
+    {passes.map((pass, index) => (
+      <div
+        key={pass.name}
+        data-slot="apple-wallet-stack-pass"
+        onClick={() => onPassClick?.(pass, index)}
+        className={cn(
+          "absolute inset-x-0 cursor-pointer rounded-2xl bg-linear-to-br p-4 text-white shadow-lg transition-transform hover:-translate-y-1",
+          pass.color,
+          onPassClick && "cursor-pointer",
+        )}
+        style={{ top: `${index * 28}px`, zIndex: passes.length - index }}
+      >
+        <p className="text-[10px] font-medium tracking-wider text-white/60 uppercase">
+          {pass.name}
+        </p>
+        <p className="mt-1 text-lg font-semibold tracking-tight">
+          {pass.title}
+        </p>
+        <p className="mt-1 text-[12px] text-white/60">{pass.detail}</p>
+        {index === 0 && (
+          <div className="absolute right-4 bottom-3 flex h-10 w-10 items-center justify-center rounded-lg bg-white/10">
+            <div className="grid h-6 w-6 grid-cols-3 gap-px">
+              {Array.from({ length: 9 }).map((_, j) => (
+                <div
+                  key={j}
+                  className={cn(j % 2 === 0 ? "bg-white" : "bg-transparent")}
+                />
+              ))}
             </div>
-          )}
-        </div>
-      ))}
-    </div>
-  ),
-);
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+));
 
 AppleWalletStack.displayName = "AppleWalletStack";

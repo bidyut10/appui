@@ -66,7 +66,7 @@ export const AuthLoginCard = ({
       {...props}
     >
       <div data-slot="auth-login-card-content" className="p-6">
-                <div
+        <div
           data-slot="auth-login-card-header"
           className="mb-5 flex items-center gap-2"
         >
@@ -150,7 +150,7 @@ export const AuthLoginCard = ({
           <ArrowRight size={12} />
         </button>
 
-                <p className="mt-4 text-center text-[11px] text-neutral-400">
+        <p className="mt-4 text-center text-[11px] text-neutral-400">
           {mode === "login"
             ? "Don't have an account?"
             : "Already have an account?"}{" "}

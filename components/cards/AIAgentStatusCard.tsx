@@ -16,13 +16,12 @@ export type AIAgentStatusCardProps = {
   task?: string;
 } & ComponentPropsWithoutRef<"div">;
 
-export const AIAgentStatusCard = forwardRef<HTMLDivElement, AIAgentStatusCardProps>(
+export const AIAgentStatusCard = forwardRef<
+  HTMLDivElement,
+  AIAgentStatusCardProps
+>(
   (
-    {
-      className,
-      task = "Analyzing uploaded images for metadata…",
-      ...props
-    },
+    { className, task = "Analyzing uploaded images for metadata…", ...props },
     ref,
   ) => {
     const [model, setModel] = useState("pro");
@@ -47,11 +46,15 @@ export const AIAgentStatusCard = forwardRef<HTMLDivElement, AIAgentStatusCardPro
           </div>
           <div>
             <p className="text-sm font-bold text-neutral-900">AI Agent</p>
-            <p className="text-[10px] text-neutral-500">{done ? "Complete" : "Running"}</p>
+            <p className="text-[10px] text-neutral-500">
+              {done ? "Complete" : "Running"}
+            </p>
           </div>
         </div>
 
-        <p className="mb-3 text-[11px] leading-relaxed text-neutral-600">{task}</p>
+        <p className="mb-3 text-[11px] leading-relaxed text-neutral-600">
+          {task}
+        </p>
 
         <div className="mb-3 h-1.5 overflow-hidden rounded-full bg-neutral-100">
           <div

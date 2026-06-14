@@ -50,7 +50,8 @@ const MinimalCircularToggle = forwardRef<
         className={cn(
           "flex h-44 w-44 cursor-pointer flex-col items-center justify-between rounded-[1.75rem] p-4 font-sans shadow-lg transition-all active:scale-[0.98]",
           variant === "red" && "bg-[#eb0000] text-white",
-          variant === "white" && "border border-neutral-200 bg-white text-neutral-900",
+          variant === "white" &&
+            "border border-neutral-200 bg-white text-neutral-900",
           variant === "black" && "bg-black text-white",
           active && "ring-2 ring-neutral-900/10",
           !active && variant === "red" && "opacity-90",
@@ -71,7 +72,9 @@ const MinimalCircularToggle = forwardRef<
           {active ? "Active" : "Off"}
         </span>
 
-        <span className="flex h-12 w-12 items-center justify-center">{icon}</span>
+        <span className="flex h-12 w-12 items-center justify-center">
+          {icon}
+        </span>
 
         <div className="text-center">
           <span className="block text-[11px] font-semibold tracking-wide uppercase">

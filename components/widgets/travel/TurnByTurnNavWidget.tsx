@@ -45,7 +45,14 @@ export const TurnByTurnNavWidget = forwardRef<
         </div>
         <div className="relative flex h-14 w-14 items-center justify-center">
           <svg className="h-full w-full -rotate-90" viewBox="0 0 36 36">
-            <circle cx="18" cy="18" r="15" fill="none" stroke="#404040" strokeWidth="3" />
+            <circle
+              cx="18"
+              cy="18"
+              r="15"
+              fill="none"
+              stroke="#404040"
+              strokeWidth="3"
+            />
             <circle
               cx="18"
               cy="18"

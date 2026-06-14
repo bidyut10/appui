@@ -10,7 +10,7 @@ export const Box = ({ children }: React.PropsWithChildren) => {
         backgroundSize: "12px 12px",
       }}
     >
-      <div className="flex w-full min-w-0 max-w-full items-center justify-center *:max-w-full">
+      <div className="flex w-full max-w-full min-w-0 items-center justify-center *:max-w-full">
         {children}
       </div>
     </div>

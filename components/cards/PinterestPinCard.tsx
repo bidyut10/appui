@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
@@ -29,7 +25,10 @@ export type PinterestPinCardProps = {
   onSave?: (saved: boolean) => void;
 } & ComponentPropsWithoutRef<"div">;
 
-export const PinterestPinCard = forwardRef<HTMLDivElement, PinterestPinCardProps>(
+export const PinterestPinCard = forwardRef<
+  HTMLDivElement,
+  PinterestPinCardProps
+>(
   (
     {
       className,
@@ -71,7 +70,9 @@ export const PinterestPinCard = forwardRef<HTMLDivElement, PinterestPinCardProps
               }}
               className={cn(
                 "cursor-pointer rounded-full px-3 py-1.5 text-[11px] font-bold shadow-md transition-colors",
-                saved ? "bg-neutral-800 text-white" : "bg-red-600 text-white hover:bg-red-700",
+                saved
+                  ? "bg-neutral-800 text-white"
+                  : "bg-red-600 text-white hover:bg-red-700",
               )}
             >
               {saved ? "Saved" : "Save"}
@@ -80,7 +81,9 @@ export const PinterestPinCard = forwardRef<HTMLDivElement, PinterestPinCardProps
         </div>
 
         <div className="p-3">
-          <h3 className="line-clamp-2 text-[13px] font-semibold text-neutral-900">{title}</h3>
+          <h3 className="line-clamp-2 text-[13px] font-semibold text-neutral-900">
+            {title}
+          </h3>
           <div className="mt-2 flex items-center justify-between">
             <div className="flex items-center gap-1.5">
               <Pin size={12} className="text-red-500" />

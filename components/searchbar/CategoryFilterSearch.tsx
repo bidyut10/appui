@@ -71,8 +71,7 @@ export const CategoryFilterSearch = forwardRef<
 
     const filtered = useMemo(() => {
       return items.filter((item) => {
-        const matchesCategory =
-          active === "All" || item.category === active;
+        const matchesCategory = active === "All" || item.category === active;
         const matchesQuery =
           !value.trim() ||
           item.title.toLowerCase().includes(value.toLowerCase()) ||

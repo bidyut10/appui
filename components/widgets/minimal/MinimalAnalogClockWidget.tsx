@@ -47,7 +47,10 @@ export const MinimalAnalogClockWidget = forwardRef<
           seconds={seconds}
         />
       ) : (
-        <div className="h-full w-full rounded-full bg-neutral-100" aria-hidden />
+        <div
+          className="h-full w-full rounded-full bg-neutral-100"
+          aria-hidden
+        />
       )}
     </div>
   );

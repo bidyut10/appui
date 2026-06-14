@@ -61,7 +61,10 @@ const defaultOptions: ShareOption[] = [
   },
 ];
 
-export const ShareMenuDropdown = forwardRef<HTMLDivElement, ShareMenuDropdownProps>(
+export const ShareMenuDropdown = forwardRef<
+  HTMLDivElement,
+  ShareMenuDropdownProps
+>(
   (
     {
       triggerLabel = "Share",

@@ -92,7 +92,8 @@ export const AppleSpotlight = forwardRef<HTMLDivElement, AppleSpotlightProps>(
       } else if (event.key === "ArrowUp") {
         event.preventDefault();
         setActiveIndex(
-          (index) => (index - 1 + filteredResults.length) % filteredResults.length,
+          (index) =>
+            (index - 1 + filteredResults.length) % filteredResults.length,
         );
       } else if (event.key === "Enter") {
         event.preventDefault();

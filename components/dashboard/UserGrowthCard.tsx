@@ -69,7 +69,7 @@ export const UserGrowthCard = forwardRef<HTMLDivElement, UserGrowthCardProps>(
       )}
       {...props}
     >
-            <div
+      <div
         data-slot="user-growth-header"
         className="mb-4 flex items-center gap-3"
       >
@@ -101,43 +101,45 @@ export const UserGrowthCard = forwardRef<HTMLDivElement, UserGrowthCardProps>(
 
       {/* Metrics */}
       <div data-slot="user-growth-metrics" className="space-y-2">
-        {(metrics ?? []).map(({ label, value, percentage, color = "bg-blue-500" }) => {
-          const safePercentage = Math.max(0, Math.min(100, percentage));
-          const isNegative = value.startsWith("-");
+        {(metrics ?? []).map(
+          ({ label, value, percentage, color = "bg-blue-500" }) => {
+            const safePercentage = Math.max(0, Math.min(100, percentage));
+            const isNegative = value.startsWith("-");
 
-          return (
-            <div key={label} data-slot="user-growth-metric">
-              <div
-                data-slot="user-growth-metric-header"
-                className="mb-1 flex justify-between text-[11px]"
-              >
-                <span className="text-neutral-600">{label}</span>
-
-                <span
-                  className={cn(
-                    "font-medium",
-                    isNegative ? "text-red-500" : "text-emerald-600",
-                  )}
-                >
-                  {value}
-                </span>
-              </div>
-
-              <div
-                data-slot="user-growth-progress-track"
-                className="h-1.5 overflow-hidden rounded-full bg-neutral-100"
-              >
+            return (
+              <div key={label} data-slot="user-growth-metric">
                 <div
-                  data-slot="user-growth-progress-fill"
-                  className={cn("h-full rounded-full", color)}
-                  style={{
-                    width: `${safePercentage}%`,
-                  }}
-                />
+                  data-slot="user-growth-metric-header"
+                  className="mb-1 flex justify-between text-[11px]"
+                >
+                  <span className="text-neutral-600">{label}</span>
+
+                  <span
+                    className={cn(
+                      "font-medium",
+                      isNegative ? "text-red-500" : "text-emerald-600",
+                    )}
+                  >
+                    {value}
+                  </span>
+                </div>
+
+                <div
+                  data-slot="user-growth-progress-track"
+                  className="h-1.5 overflow-hidden rounded-full bg-neutral-100"
+                >
+                  <div
+                    data-slot="user-growth-progress-fill"
+                    className={cn("h-full rounded-full", color)}
+                    style={{
+                      width: `${safePercentage}%`,
+                    }}
+                  />
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          },
+        )}
       </div>
     </div>
   ),

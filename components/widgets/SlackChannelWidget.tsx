@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
@@ -98,13 +94,15 @@ export const SlackChannelWidget = forwardRef<
           <span className="text-base font-bold text-[#4A154B]">#</span>
           <div className="min-w-0 flex-1">
             <p className="text-sm font-bold text-neutral-900">{channelName}</p>
-            <p className="text-[10px] text-neutral-400">{memberCount} members</p>
+            <p className="text-[10px] text-neutral-400">
+              {memberCount} members
+            </p>
           </div>
         </div>
 
         <div
           data-slot="slack-channel-widget-messages"
-          className="max-h-40 space-y-3 scroll-hover overflow-y-auto px-4 py-3"
+          className="scroll-hover max-h-40 space-y-3 overflow-y-auto px-4 py-3"
         >
           {items.map((msg) => (
             <div key={msg.id} className="flex gap-2">

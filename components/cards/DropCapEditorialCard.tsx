@@ -36,7 +36,7 @@ export const DropCapEditorialCard = forwardRef<
     >
       <QuoteRight size={20} className="mb-3 text-neutral-300" />
       <p className="text-sm leading-relaxed text-neutral-700">
-        <span className="float-left mr-2 mt-0.5 flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-900 font-serif text-2xl font-light text-white">
+        <span className="float-left mt-0.5 mr-2 flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-900 font-serif text-2xl font-light text-white">
           {dropCap}
         </span>
         {body}

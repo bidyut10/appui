@@ -46,12 +46,7 @@ export const ActivityTimelineWidget = forwardRef<
   ActivityTimelineWidgetProps
 >(
   (
-    {
-      className,
-      title = "Recent activity",
-      events = defaultEvents,
-      ...props
-    },
+    { className, title = "Recent activity", events = defaultEvents, ...props },
     ref,
   ) => (
     <div
@@ -63,7 +58,7 @@ export const ActivityTimelineWidget = forwardRef<
       )}
       {...props}
     >
-            <p className="mb-4 text-[11px] font-semibold tracking-widest text-neutral-400 uppercase">
+      <p className="mb-4 text-[11px] font-semibold tracking-widest text-neutral-400 uppercase">
         {title}
       </p>
 

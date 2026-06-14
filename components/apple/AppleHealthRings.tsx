@@ -45,10 +45,7 @@ export const AppleHealthRings = forwardRef<
     <div
       ref={ref}
       data-slot="apple-health-rings"
-      className={cn(
-        "w-72 rounded-[1.5rem] bg-black p-5 font-sans",
-        className,
-      )}
+      className={cn("w-72 rounded-[1.5rem] bg-black p-5 font-sans", className)}
       {...props}
     >
       <p
@@ -96,10 +93,7 @@ export const AppleHealthRings = forwardRef<
           </svg>
         </div>
 
-        <div
-          data-slot="apple-health-rings-legend"
-          className="flex-1 space-y-3"
-        >
+        <div data-slot="apple-health-rings-legend" className="flex-1 space-y-3">
           {rings.map((ring) => (
             <div
               key={ring.label}

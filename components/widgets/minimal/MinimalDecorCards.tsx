@@ -42,7 +42,10 @@ export const MinimalDotPatternCard = forwardRef<
         return (
           <span
             key={i}
-            className={cn("h-1 w-1 rounded-full", show ? "bg-white" : "bg-transparent")}
+            className={cn(
+              "h-1 w-1 rounded-full",
+              show ? "bg-white" : "bg-transparent",
+            )}
           />
         );
       })}
@@ -56,21 +59,28 @@ export type MinimalPhotoCardProps = {
   image?: typeof bgImage;
 } & ComponentPropsWithoutRef<"div">;
 
-export const MinimalPhotoCard = forwardRef<HTMLDivElement, MinimalPhotoCardProps>(
-  ({ className, image = bgImage, ...props }, ref) => (
-    <div
-      ref={ref}
-      data-slot="minimal-photo-card"
-      className={cn(
-        "relative h-40 w-40 max-w-full overflow-hidden rounded-[1.75rem] bg-neutral-200 shadow-lg",
-        className,
-      )}
-      {...props}
-    >
-      <Image src={image} alt="" fill className="object-cover grayscale contrast-125" sizes="160px" />
-    </div>
-  ),
-);
+export const MinimalPhotoCard = forwardRef<
+  HTMLDivElement,
+  MinimalPhotoCardProps
+>(({ className, image = bgImage, ...props }, ref) => (
+  <div
+    ref={ref}
+    data-slot="minimal-photo-card"
+    className={cn(
+      "relative h-40 w-40 max-w-full overflow-hidden rounded-[1.75rem] bg-neutral-200 shadow-lg",
+      className,
+    )}
+    {...props}
+  >
+    <Image
+      src={image}
+      alt=""
+      fill
+      className="object-cover contrast-125 grayscale"
+      sizes="160px"
+    />
+  </div>
+));
 
 MinimalPhotoCard.displayName = "MinimalPhotoCard";
 
@@ -101,7 +111,9 @@ export const MinimalStatusDockWidget = forwardRef<
         aria-label={item.label}
         className={cn(
           "flex h-8 w-8 cursor-pointer items-center justify-center rounded-full transition-colors",
-          item.active ? "bg-[#eb0000] text-white" : "text-neutral-400 hover:text-white",
+          item.active
+            ? "bg-[#eb0000] text-white"
+            : "text-neutral-400 hover:text-white",
         )}
       >
         {item.icon}

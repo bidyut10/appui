@@ -117,7 +117,7 @@ export const MarkdownEditorWidget = forwardRef<
               }}
               aria-label="Markdown source"
               data-slot="markdown-editor-widget-source"
-              className="block w-full min-h-full resize-none overflow-hidden bg-white px-4 py-3 font-mono text-[12px] leading-relaxed text-neutral-800 outline-none [field-sizing:content] [scrollbar-width:none]"
+              className="block [field-sizing:content] min-h-full w-full resize-none [scrollbar-width:none] overflow-hidden bg-white px-4 py-3 font-mono text-[12px] leading-relaxed text-neutral-800 outline-none"
             />
           </ScrollHoverArea>
         )}

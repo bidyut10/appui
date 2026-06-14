@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
@@ -35,7 +31,10 @@ export type YouTubeVideoCardProps = {
   onSubscribe?: () => void;
 } & ComponentPropsWithoutRef<"div">;
 
-export const YouTubeVideoCard = forwardRef<HTMLDivElement, YouTubeVideoCardProps>(
+export const YouTubeVideoCard = forwardRef<
+  HTMLDivElement,
+  YouTubeVideoCardProps
+>(
   (
     {
       className,
@@ -109,10 +108,16 @@ export const YouTubeVideoCard = forwardRef<HTMLDivElement, YouTubeVideoCardProps
 
         <div className="flex gap-3 p-3">
           <div className="h-9 w-9 shrink-0 overflow-hidden rounded-full">
-            <Image src={avatar} alt={channel} width={36} height={36} className="object-cover" />
+            <Image
+              src={avatar}
+              alt={channel}
+              width={36}
+              height={36}
+              className="object-cover"
+            />
           </div>
           <div className="min-w-0 flex-1">
-            <h3 className="line-clamp-2 text-[13px] font-semibold leading-snug text-neutral-900">
+            <h3 className="line-clamp-2 text-[13px] leading-snug font-semibold text-neutral-900">
               {title}
             </h3>
             <p className="mt-1 text-[11px] text-neutral-500">

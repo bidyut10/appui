@@ -1,6 +1,10 @@
 "use client";
 
-import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import {
+  forwardRef,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
+} from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -86,10 +90,7 @@ export const AppleFindMyCard = forwardRef<HTMLDivElement, AppleFindMyCardProps>(
           </div>
         </div>
 
-        <div
-          data-slot="apple-find-my-card-actions"
-          className="flex gap-2"
-        >
+        <div data-slot="apple-find-my-card-actions" className="flex gap-2">
           <button
             type="button"
             onClick={onPlaySound}

@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -31,9 +27,27 @@ export type SpendingBreakdownWidgetProps = {
 } & ComponentPropsWithoutRef<"div">;
 
 const defaultCategories: SpendingCategory[] = [
-  { id: "1", label: "Software", amount: 842, budget: 1000, color: "bg-blue-500" },
-  { id: "2", label: "Marketing", amount: 1240, budget: 1500, color: "bg-violet-500" },
-  { id: "3", label: "Payroll", amount: 8200, budget: 8500, color: "bg-emerald-500" },
+  {
+    id: "1",
+    label: "Software",
+    amount: 842,
+    budget: 1000,
+    color: "bg-blue-500",
+  },
+  {
+    id: "2",
+    label: "Marketing",
+    amount: 1240,
+    budget: 1500,
+    color: "bg-violet-500",
+  },
+  {
+    id: "3",
+    label: "Payroll",
+    amount: 8200,
+    budget: 8500,
+    color: "bg-emerald-500",
+  },
   { id: "4", label: "Office", amount: 320, budget: 500, color: "bg-amber-500" },
 ];
 
@@ -86,7 +100,7 @@ export const SpendingBreakdownWidget = forwardRef<
           </div>
         </div>
 
-        <div className="mb-4 mt-3">
+        <div className="mt-3 mb-4">
           <div className="mb-1 flex justify-between text-[10px] text-neutral-400">
             <span>Budget used</span>
             <span>{percent}%</span>
@@ -95,7 +109,11 @@ export const SpendingBreakdownWidget = forwardRef<
             {categories.map((cat) => (
               <div
                 key={cat.id}
-                className={cn("h-full transition-opacity", cat.color, activeId && activeId !== cat.id && "opacity-30")}
+                className={cn(
+                  "h-full transition-opacity",
+                  cat.color,
+                  activeId && activeId !== cat.id && "opacity-30",
+                )}
                 style={{ width: `${(cat.amount / totalSpent) * 100}%` }}
               />
             ))}
@@ -118,10 +136,13 @@ export const SpendingBreakdownWidget = forwardRef<
                 data-slot="spending-breakdown-widget-category"
                 className={cn(
                   "flex w-full cursor-pointer items-center gap-3 rounded-xl px-2 py-2 text-left transition-colors hover:bg-neutral-50",
-                  activeId === cat.id && "bg-neutral-50 ring-1 ring-neutral-200",
+                  activeId === cat.id &&
+                    "bg-neutral-50 ring-1 ring-neutral-200",
                 )}
               >
-                <span className={cn("h-2.5 w-2.5 shrink-0 rounded-full", cat.color)} />
+                <span
+                  className={cn("h-2.5 w-2.5 shrink-0 rounded-full", cat.color)}
+                />
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center justify-between">
                     <span className="text-[12px] font-medium text-neutral-800">

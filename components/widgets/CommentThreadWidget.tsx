@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
@@ -111,12 +107,14 @@ export const CommentThreadWidget = forwardRef<
       >
         <div className="border-b border-neutral-100 px-4 py-2.5">
           <p className="text-sm font-semibold text-neutral-900">{title}</p>
-          <p className="text-[10px] text-neutral-400">{items.length} comments</p>
+          <p className="text-[10px] text-neutral-400">
+            {items.length} comments
+          </p>
         </div>
 
         <div
           data-slot="comment-thread-widget-list"
-          className="max-h-44 space-y-3 scroll-hover overflow-y-auto px-4 py-3"
+          className="scroll-hover max-h-44 space-y-3 overflow-y-auto px-4 py-3"
         >
           {items.map((comment) => (
             <div key={comment.id} className="flex gap-2.5">

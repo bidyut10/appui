@@ -68,8 +68,12 @@ export const VoiceTranscriptCard = forwardRef<
             {playing ? <Pause size={14} /> : <Play size={14} />}
           </button>
           <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-bold text-neutral-900">{title}</p>
-            <p className="text-[10px] text-neutral-400">{duration} · Voice memo</p>
+            <p className="truncate text-sm font-bold text-neutral-900">
+              {title}
+            </p>
+            <p className="text-[10px] text-neutral-400">
+              {duration} · Voice memo
+            </p>
           </div>
           <Sound size={16} className="text-neutral-400" />
         </div>

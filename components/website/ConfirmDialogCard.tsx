@@ -94,7 +94,6 @@ export const ConfirmDialogCard = forwardRef<
       onConfirm?.();
     };
 
-    
     if (!isOpen) {
       return (
         <button
@@ -108,7 +107,6 @@ export const ConfirmDialogCard = forwardRef<
       );
     }
 
-    
     return (
       <div
         ref={ref}
@@ -123,7 +121,6 @@ export const ConfirmDialogCard = forwardRef<
         )}
         {...props}
       >
-        
         <div
           data-slot="confirm-dialog-icon"
           className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-red-50"
@@ -131,7 +128,6 @@ export const ConfirmDialogCard = forwardRef<
           {icon ?? <Trash size={20} className="text-red-500" />}
         </div>
 
-        
         <h4
           id="confirm-dialog-title"
           data-slot="confirm-dialog-title"
@@ -148,7 +144,6 @@ export const ConfirmDialogCard = forwardRef<
           {description}
         </p>
 
-        
         <div data-slot="confirm-dialog-actions" className="flex gap-2">
           <button
             type="button"

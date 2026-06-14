@@ -40,7 +40,13 @@ export const BlobProfileCard = forwardRef<HTMLDivElement, BlobProfileCardProps>(
           borderRadius: "60% 40% 55% 45% / 55% 45% 55% 45%",
         }}
       >
-        <Image src={image} alt={name} fill className="object-cover" sizes="96px" />
+        <Image
+          src={image}
+          alt={name}
+          fill
+          className="object-cover"
+          sizes="96px"
+        />
       </div>
       <p className="flex items-center gap-1 text-sm font-bold text-neutral-900">
         {name}

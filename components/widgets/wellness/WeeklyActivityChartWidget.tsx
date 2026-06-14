@@ -5,7 +5,12 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { cn } from "@/lib/utils";
 
 const DAYS = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
-const COLORS = ["bg-[#F9D6F0]", "bg-[#D9F26D]", "bg-neutral-200", "bg-amber-200"];
+const COLORS = [
+  "bg-[#F9D6F0]",
+  "bg-[#D9F26D]",
+  "bg-neutral-200",
+  "bg-amber-200",
+];
 
 export type WeeklyActivityChartWidgetProps = ComponentPropsWithoutRef<"div">;
 
@@ -35,7 +40,10 @@ export const WeeklyActivityChartWidget = forwardRef<
             {Array.from({ length: 3 + (i % 3) }).map((_, j) => (
               <span
                 key={j}
-                className={cn("h-2 w-4 rounded-full", COLORS[j % COLORS.length])}
+                className={cn(
+                  "h-2 w-4 rounded-full",
+                  COLORS[j % COLORS.length],
+                )}
               />
             ))}
           </div>

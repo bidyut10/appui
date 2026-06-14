@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
@@ -74,7 +70,11 @@ export const WalletPassCard = forwardRef<HTMLDivElement, WalletPassCardProps>(
           aria-pressed={flipped}
           data-slot="wallet-pass-card-flip"
           className="relative h-[13.5rem] w-full cursor-pointer border-0 bg-transparent p-0 outline-none"
-          style={{ animation: flipped ? undefined : "wallet-flip-shadow 3s ease-in-out infinite" }}
+          style={{
+            animation: flipped
+              ? undefined
+              : "wallet-flip-shadow 3s ease-in-out infinite",
+          }}
         >
           <div
             className="relative h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.34,1.2,0.64,1)]"
@@ -113,7 +113,9 @@ export const WalletPassCard = forwardRef<HTMLDivElement, WalletPassCardProps>(
                     <p className="text-sm font-semibold text-white">
                       {memberName}
                     </p>
-                    <p className="text-[11px] text-white/60">{membershipType}</p>
+                    <p className="text-[11px] text-white/60">
+                      {membershipType}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -121,7 +123,10 @@ export const WalletPassCard = forwardRef<HTMLDivElement, WalletPassCardProps>(
               <div className="relative bg-white px-4 py-3">
                 <div className="absolute -top-1.5 right-0 left-0 flex justify-between px-2">
                   {Array.from({ length: 12 }).map((_, i) => (
-                    <div key={i} className="h-3 w-3 rounded-full bg-neutral-100" />
+                    <div
+                      key={i}
+                      className="h-3 w-3 rounded-full bg-neutral-100"
+                    />
                   ))}
                 </div>
                 <div className="flex items-center justify-between pt-1">

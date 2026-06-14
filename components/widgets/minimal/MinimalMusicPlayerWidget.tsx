@@ -35,7 +35,9 @@ export const MinimalMusicPlayerWidget = forwardRef<
 
       <div className="flex flex-col items-center gap-2">
         <Music size={28} className="text-neutral-400" />
-        <p className="text-center text-[10px] font-medium text-neutral-300">{track}</p>
+        <p className="text-center text-[10px] font-medium text-neutral-300">
+          {track}
+        </p>
       </div>
 
       <div>

@@ -56,7 +56,9 @@ export const FilePreviewCard = forwardRef<HTMLDivElement, FilePreviewCardProps>(
             <File size={16} className="text-red-500" />
           </div>
           <div className="min-w-0">
-            <p className="truncate text-sm font-bold text-neutral-900">{name}</p>
+            <p className="truncate text-sm font-bold text-neutral-900">
+              {name}
+            </p>
             <p className="text-[11px] text-neutral-500">
               {type} · {size}
             </p>

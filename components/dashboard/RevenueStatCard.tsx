@@ -46,7 +46,7 @@ export const RevenueStatCard = forwardRef<HTMLDivElement, RevenueStatCardProps>(
       )}
       {...props}
     >
-            <div
+      <div
         data-slot="revenue-stat-header"
         className="mb-3 flex items-center justify-between"
       >
@@ -68,7 +68,7 @@ export const RevenueStatCard = forwardRef<HTMLDivElement, RevenueStatCardProps>(
       {/* Revenue */}
       <p
         data-slot="revenue-stat-value"
-        className="text-[2rem] font-semibold leading-none tracking-tight text-neutral-900 tabular-nums"
+        className="text-[2rem] leading-none font-semibold tracking-tight text-neutral-900 tabular-nums"
       >
         {revenue}
       </p>
@@ -80,7 +80,7 @@ export const RevenueStatCard = forwardRef<HTMLDivElement, RevenueStatCardProps>(
         {comparisonText}
       </p>
 
-            <div
+      <div
         data-slot="revenue-stat-chart"
         className="mt-4 flex h-12 items-end gap-1"
       >
@@ -101,7 +101,7 @@ export const RevenueStatCard = forwardRef<HTMLDivElement, RevenueStatCardProps>(
         ))}
       </div>
 
-            <button
+      <button
         type="button"
         data-slot="revenue-stat-action"
         aria-label={actionLabel}

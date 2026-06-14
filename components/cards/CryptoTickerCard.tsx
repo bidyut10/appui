@@ -89,7 +89,10 @@ export const CryptoTickerCard = forwardRef<
         </span>
       </div>
 
-      <div data-slot="crypto-ticker-card-list" className="divide-y divide-white/5">
+      <div
+        data-slot="crypto-ticker-card-list"
+        className="divide-y divide-white/5"
+      >
         {assets.map((asset) => {
           const max = Math.max(...asset.sparkline);
           const min = Math.min(...asset.sparkline);

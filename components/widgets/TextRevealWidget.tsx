@@ -41,10 +41,7 @@ export const TextRevealWidget = forwardRef<
       if (!mounted) return;
       if (visibleCount >= words.length) return;
 
-      const timer = window.setTimeout(
-        () => setVisibleCount((c) => c + 1),
-        280,
-      );
+      const timer = window.setTimeout(() => setVisibleCount((c) => c + 1), 280);
       return () => window.clearTimeout(timer);
     }, [mounted, visibleCount, words.length]);
 

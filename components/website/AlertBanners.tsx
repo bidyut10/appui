@@ -127,7 +127,6 @@ export const AlertBanners = forwardRef<HTMLDivElement, AlertBannersProps>(
         className={cn("w-80 space-y-2 font-sans", className)}
         {...props}
       >
-        
         {alerts.map((alert, index) => {
           if (!visible[index]) return null;
 
@@ -142,7 +141,6 @@ export const AlertBanners = forwardRef<HTMLDivElement, AlertBannersProps>(
                 alert.bgClass ?? variant.bg,
               )}
             >
-              
               <span
                 data-slot="alert-banner-icon"
                 className="mt-0.5 shrink-0 text-sm"
@@ -150,7 +148,6 @@ export const AlertBanners = forwardRef<HTMLDivElement, AlertBannersProps>(
                 {alert.icon ?? variant.icon}
               </span>
 
-              
               <div data-slot="alert-banner-content" className="min-w-0 flex-1">
                 <p
                   data-slot="alert-banner-title"
@@ -173,7 +170,6 @@ export const AlertBanners = forwardRef<HTMLDivElement, AlertBannersProps>(
                 </p>
               </div>
 
-              
               <button
                 type="button"
                 data-slot="alert-banner-close"

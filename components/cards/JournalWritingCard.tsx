@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -77,7 +73,7 @@ export const JournalWritingCard = forwardRef<
             placeholder={placeholder}
             aria-label="Journal entry"
             data-slot="journal-writing-card-input"
-            className="relative z-10 h-[200px] w-full resize-none bg-transparent px-4 pt-3 pb-2 font-serif text-[14px] leading-7 text-neutral-800 outline-none placeholder:text-neutral-300 scroll-hover"
+            className="scroll-hover relative z-10 h-[200px] w-full resize-none bg-transparent px-4 pt-3 pb-2 font-serif text-[14px] leading-7 text-neutral-800 outline-none placeholder:text-neutral-300"
           />
           <div className="absolute top-0 left-6 h-full w-px bg-rose-200/80" />
         </div>

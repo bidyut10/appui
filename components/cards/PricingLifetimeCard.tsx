@@ -92,12 +92,15 @@ export const PricingLifetimeCard = forwardRef<
       </div>
 
       <div data-slot="pricing-lifetime-card-content" className="p-6">
-                <span className="font-mono text-[10px] tracking-widest text-neutral-400 uppercase">
+        <span className="font-mono text-[10px] tracking-widest text-neutral-400 uppercase">
           {planName}
         </span>
 
         {/* Pricing */}
-        <div data-slot="pricing-lifetime-card-price" className="mt-2 mb-1 flex items-end gap-1">
+        <div
+          data-slot="pricing-lifetime-card-price"
+          className="mt-2 mb-1 flex items-end gap-1"
+        >
           <span className="text-4xl font-light tracking-tight text-neutral-900">
             {price}
           </span>
@@ -116,7 +119,10 @@ export const PricingLifetimeCard = forwardRef<
         </p>
 
         {/* Features */}
-        <ul data-slot="pricing-lifetime-card-features" className="mb-5 space-y-2">
+        <ul
+          data-slot="pricing-lifetime-card-features"
+          className="mb-5 space-y-2"
+        >
           {features.map((feature) => (
             <li
               key={feature}
@@ -139,7 +145,7 @@ export const PricingLifetimeCard = forwardRef<
           {buttonText}
         </button>
 
-                <p
+        <p
           data-slot="pricing-lifetime-card-footer"
           className="mt-3 flex items-center justify-center gap-1 text-center text-[10px] text-neutral-400"
         >

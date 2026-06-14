@@ -45,12 +45,18 @@ export const FilmStripCard = forwardRef<HTMLDivElement, FilmStripCardProps>(
       <div className="relative rounded-sm bg-neutral-900 px-2 py-3 shadow-lg">
         <div className="absolute top-0 bottom-0 left-0 flex w-3 flex-col justify-evenly">
           {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="mx-auto h-2 w-1.5 rounded-sm bg-neutral-700" />
+            <div
+              key={i}
+              className="mx-auto h-2 w-1.5 rounded-sm bg-neutral-700"
+            />
           ))}
         </div>
         <div className="absolute top-0 right-0 bottom-0 flex w-3 flex-col justify-evenly">
           {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="mx-auto h-2 w-1.5 rounded-sm bg-neutral-700" />
+            <div
+              key={i}
+              className="mx-auto h-2 w-1.5 rounded-sm bg-neutral-700"
+            />
           ))}
         </div>
         <div className="mx-4 flex gap-1 overflow-hidden">

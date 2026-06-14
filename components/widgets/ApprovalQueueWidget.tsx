@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -74,7 +70,9 @@ export const ApprovalQueueWidget = forwardRef<
     ref,
   ) => {
     const [queue, setQueue] = useState(items);
-    const [resolved, setResolved] = useState<Record<string, "approved" | "rejected">>({});
+    const [resolved, setResolved] = useState<
+      Record<string, "approved" | "rejected">
+    >({});
 
     const handleApprove = (item: ApprovalItem) => {
       setResolved((prev) => ({ ...prev, [item.id]: "approved" }));
@@ -121,8 +119,10 @@ export const ApprovalQueueWidget = forwardRef<
                 data-slot="approval-queue-widget-item"
                 className={cn(
                   "rounded-xl border border-neutral-100 bg-neutral-50/50 p-3 transition-all duration-300",
-                  resolved[item.id] === "approved" && "border-emerald-200 bg-emerald-50/50",
-                  resolved[item.id] === "rejected" && "border-rose-200 bg-rose-50/50 opacity-60",
+                  resolved[item.id] === "approved" &&
+                    "border-emerald-200 bg-emerald-50/50",
+                  resolved[item.id] === "rejected" &&
+                    "border-rose-200 bg-rose-50/50 opacity-60",
                 )}
               >
                 <p className="text-[13px] font-semibold text-neutral-900">

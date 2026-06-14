@@ -27,11 +27,31 @@ export const GpsTrackingMapWidget = forwardRef<
   >
     <div className="absolute inset-0 opacity-40">
       <svg className="h-full w-full" viewBox="0 0 256 208">
-        <path d="M0 80 Q64 60 128 80 T256 80" fill="none" stroke="#ccc" strokeWidth="8" />
-        <path d="M0 120 Q80 100 160 130 T256 120" fill="none" stroke="#ddd" strokeWidth="6" />
+        <path
+          d="M0 80 Q64 60 128 80 T256 80"
+          fill="none"
+          stroke="#ccc"
+          strokeWidth="8"
+        />
+        <path
+          d="M0 120 Q80 100 160 130 T256 120"
+          fill="none"
+          stroke="#ddd"
+          strokeWidth="6"
+        />
         <path d="M40 0 L40 208" fill="none" stroke="#e5e5e5" strokeWidth="4" />
-        <path d="M120 0 L120 208" fill="none" stroke="#e5e5e5" strokeWidth="4" />
-        <path d="M200 0 L200 208" fill="none" stroke="#e5e5e5" strokeWidth="4" />
+        <path
+          d="M120 0 L120 208"
+          fill="none"
+          stroke="#e5e5e5"
+          strokeWidth="4"
+        />
+        <path
+          d="M200 0 L200 208"
+          fill="none"
+          stroke="#e5e5e5"
+          strokeWidth="4"
+        />
       </svg>
     </div>
 

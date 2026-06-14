@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -85,10 +81,7 @@ export const NotificationToast = forwardRef<
         >
           <Check size={16} className="text-emerald-600" />
         </div>
-        <div
-          data-slot="notification-toast-content"
-          className="min-w-0 flex-1"
-        >
+        <div data-slot="notification-toast-content" className="min-w-0 flex-1">
           <p className="mb-0.5 text-sm font-semibold text-neutral-900">
             {title}
           </p>

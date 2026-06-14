@@ -77,7 +77,7 @@ export const AIStreamingCard = forwardRef<HTMLDivElement, AIStreamingCardProps>(
         )}
         {...props}
       >
-                <div
+        <div
           data-slot="ai-streaming-card-header"
           className="flex items-center gap-2 border-b border-neutral-800 px-4 py-2.5"
         >
@@ -102,7 +102,7 @@ export const AIStreamingCard = forwardRef<HTMLDivElement, AIStreamingCardProps>(
           )}
         </div>
 
-                <div data-slot="ai-streaming-card-content" className="p-4">
+        <div data-slot="ai-streaming-card-content" className="p-4">
           <p className="text-xs leading-relaxed text-neutral-300">
             {text}
 

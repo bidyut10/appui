@@ -62,7 +62,12 @@ export const WorldClockTimelineWidget = forwardRef<
       >
         <div>
           <p className="text-xs font-semibold">{city}</p>
-          <p className={cn("text-[10px]", dark ? "text-neutral-400" : "text-neutral-500")}>
+          <p
+            className={cn(
+              "text-[10px]",
+              dark ? "text-neutral-400" : "text-neutral-500",
+            )}
+          >
             {timezone}
           </p>
         </div>
@@ -92,7 +97,9 @@ export const WorldClockTimelineWidget = forwardRef<
           <span
             className={cn(
               "rounded-full px-2 py-0.5 text-[10px] font-bold",
-              dark ? "bg-red-500/20 text-red-400" : "bg-emerald-100 text-emerald-700",
+              dark
+                ? "bg-red-500/20 text-red-400"
+                : "bg-emerald-100 text-emerald-700",
             )}
           >
             {offset}

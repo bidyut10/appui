@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
@@ -70,21 +66,37 @@ export const ThreadsPostCard = forwardRef<HTMLDivElement, ThreadsPostCardProps>(
         <div className="flex gap-3">
           <div className="flex flex-col items-center">
             <div className="h-10 w-10 overflow-hidden rounded-full ring-2 ring-neutral-100">
-              <Image src={avatar} alt={username} width={40} height={40} className="object-cover" />
+              <Image
+                src={avatar}
+                alt={username}
+                width={40}
+                height={40}
+                className="object-cover"
+              />
             </div>
             <div className="mt-1 w-px flex-1 bg-neutral-200" />
           </div>
 
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2">
-              <span className="text-[13px] font-semibold text-neutral-900">{username}</span>
+              <span className="text-[13px] font-semibold text-neutral-900">
+                {username}
+              </span>
               <span className="text-[11px] text-neutral-400">{time}</span>
             </div>
-            <p className="mt-1.5 text-[13px] leading-relaxed text-neutral-800">{content}</p>
+            <p className="mt-1.5 text-[13px] leading-relaxed text-neutral-800">
+              {content}
+            </p>
 
             {showImage && (
               <div className="relative mt-2.5 aspect-[16/10] overflow-hidden rounded-xl border border-neutral-100">
-                <Image src={postImage} alt="Thread attachment" fill sizes="288px" className="object-cover" />
+                <Image
+                  src={postImage}
+                  alt="Thread attachment"
+                  fill
+                  sizes="288px"
+                  className="object-cover"
+                />
               </div>
             )}
 
@@ -110,9 +122,14 @@ export const ThreadsPostCard = forwardRef<HTMLDivElement, ThreadsPostCardProps>(
                   onClick={onClick}
                   className="flex cursor-pointer items-center gap-1 text-neutral-500 transition-colors hover:text-neutral-900"
                 >
-                  <Icon size={16} className={active ? "fill-rose-500 text-rose-500" : ""} />
+                  <Icon
+                    size={16}
+                    className={active ? "fill-rose-500 text-rose-500" : ""}
+                  />
                   {count !== null && (
-                    <span className="text-[11px] font-medium tabular-nums">{count}</span>
+                    <span className="text-[11px] font-medium tabular-nums">
+                      {count}
+                    </span>
                   )}
                 </button>
               ))}

@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -75,7 +71,9 @@ export const RedditPostCard = forwardRef<HTMLDivElement, RedditPostCardProps>(
             onClick={() => vote("up")}
             className={cn(
               "cursor-pointer text-lg leading-none transition-colors",
-              voteDir === "up" ? "text-orange-500" : "text-neutral-400 hover:text-orange-500",
+              voteDir === "up"
+                ? "text-orange-500"
+                : "text-neutral-400 hover:text-orange-500",
             )}
           >
             ▲
@@ -96,7 +94,9 @@ export const RedditPostCard = forwardRef<HTMLDivElement, RedditPostCardProps>(
             onClick={() => vote("down")}
             className={cn(
               "cursor-pointer text-lg leading-none transition-colors",
-              voteDir === "down" ? "text-indigo-500" : "text-neutral-400 hover:text-indigo-500",
+              voteDir === "down"
+                ? "text-indigo-500"
+                : "text-neutral-400 hover:text-indigo-500",
             )}
           >
             ▼
@@ -111,8 +111,12 @@ export const RedditPostCard = forwardRef<HTMLDivElement, RedditPostCardProps>(
             <span>·</span>
             <span>{time}</span>
           </div>
-          <h3 className="text-[13px] font-semibold leading-snug text-neutral-900">{title}</h3>
-          <p className="mt-1 line-clamp-2 text-[11px] leading-relaxed text-neutral-600">{body}</p>
+          <h3 className="text-[13px] leading-snug font-semibold text-neutral-900">
+            {title}
+          </h3>
+          <p className="mt-1 line-clamp-2 text-[11px] leading-relaxed text-neutral-600">
+            {body}
+          </p>
           <div className="mt-2.5 flex items-center gap-3 text-[10px] font-semibold text-neutral-500">
             <span className="flex items-center gap-1">
               <Chat size={12} />

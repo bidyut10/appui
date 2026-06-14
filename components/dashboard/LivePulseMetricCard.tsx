@@ -48,7 +48,7 @@ export const LivePulseMetricCard = forwardRef<
     >
       <div className="absolute -top-8 -right-8 h-32 w-32 rounded-full bg-teal-500/20 blur-2xl" />
       <div className="relative">
-                <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
@@ -81,7 +81,7 @@ export const LivePulseMetricCard = forwardRef<
           ))}
         </div>
 
-                <div className="mt-2 flex justify-between text-[9px] text-neutral-500">
+        <div className="mt-2 flex justify-between text-[9px] text-neutral-500">
           <span>{startLabel}</span>
           <span>{endLabel}</span>
         </div>

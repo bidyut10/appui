@@ -37,7 +37,14 @@ export const CircularStatsWidget = forwardRef<
     >
       <div className="relative flex h-20 w-20 shrink-0 items-center justify-center">
         <svg className="h-full w-full -rotate-90" viewBox="0 0 36 36">
-          <circle cx="18" cy="18" r="15" fill="none" stroke="#f5f5f5" strokeWidth="3" />
+          <circle
+            cx="18"
+            cy="18"
+            r="15"
+            fill="none"
+            stroke="#f5f5f5"
+            strokeWidth="3"
+          />
           <circle
             cx="18"
             cy="18"
@@ -49,7 +56,9 @@ export const CircularStatsWidget = forwardRef<
             strokeLinecap="round"
           />
         </svg>
-        <span className="absolute text-xl font-bold text-neutral-900">{value}</span>
+        <span className="absolute text-xl font-bold text-neutral-900">
+          {value}
+        </span>
       </div>
 
       <div className="space-y-2">

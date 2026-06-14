@@ -54,7 +54,7 @@ export const TeamCapacityCard = forwardRef<
       )}
       {...props}
     >
-            <div className="mb-4 flex items-center justify-between">
+      <div className="mb-4 flex items-center justify-between">
         <p className="text-[11px] font-medium text-neutral-500">{title}</p>
         <span className="text-[12px] font-semibold text-neutral-700 tabular-nums">
           {avgLabel} {Math.max(0, Math.min(100, avgLoad))}%

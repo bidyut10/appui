@@ -55,7 +55,6 @@ export const Error404Card = forwardRef<HTMLDivElement, Error404CardProps>(
       className={cn("w-72 text-center font-sans", className)}
       {...props}
     >
-      
       <p
         data-slot="error-404-card-code"
         className="text-7xl leading-none font-extralight tracking-tighter text-neutral-200"
@@ -63,7 +62,6 @@ export const Error404Card = forwardRef<HTMLDivElement, Error404CardProps>(
         {code}
       </p>
 
-      
       <div data-slot="error-404-card-content">
         <h3
           data-slot="error-404-card-title"
@@ -80,7 +78,6 @@ export const Error404Card = forwardRef<HTMLDivElement, Error404CardProps>(
         </p>
       </div>
 
-      
       <div
         data-slot="error-404-card-actions"
         className="flex items-center justify-center gap-2"

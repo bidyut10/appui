@@ -135,7 +135,7 @@ export const ProductImageCard = forwardRef<
           </div>
         </div>
 
-                <div className="p-4">
+        <div className="p-4">
           <p className="mb-1 font-mono text-[10px] tracking-widest text-neutral-400 uppercase">
             {collection}
           </p>
@@ -161,7 +161,7 @@ export const ProductImageCard = forwardRef<
             </span>
           </div>
 
-                    <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between">
             <div>
               <span className="text-base font-semibold text-neutral-900">
                 {price}

@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -103,7 +99,10 @@ export const GitHubRepoCard = forwardRef<HTMLDivElement, GitHubRepoCardProps>(
                 : "border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100",
             )}
           >
-            <Star size={12} className={starred ? "fill-amber-500 text-amber-500" : ""} />
+            <Star
+              size={12}
+              className={starred ? "fill-amber-500 text-amber-500" : ""}
+            />
             {count.toLocaleString()}
           </button>
         </div>

@@ -89,14 +89,12 @@ export const ContactInfoCard = forwardRef<HTMLDivElement, ContactInfoCardProps>(
       )}
       {...props}
     >
-      
       <div data-slot="contact-info-card-header">
         <h4 className="mb-1 text-sm font-semibold text-neutral-900">{title}</h4>
 
         <p className="mb-4 text-[11px] text-neutral-500">{description}</p>
       </div>
 
-      
       <div data-slot="contact-info-card-list" className="space-y-3">
         {contacts.map((contact) => (
           <div
@@ -124,7 +122,6 @@ export const ContactInfoCard = forwardRef<HTMLDivElement, ContactInfoCardProps>(
         ))}
       </div>
 
-      
       <button
         type="button"
         data-slot="contact-info-card-action"

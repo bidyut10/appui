@@ -33,7 +33,9 @@ export const MentalHealthPollWidget = forwardRef<
         )}
         {...props}
       >
-        <p className="text-center text-xs font-bold text-neutral-900">{question}</p>
+        <p className="text-center text-xs font-bold text-neutral-900">
+          {question}
+        </p>
 
         <div className="flex gap-4">
           <button

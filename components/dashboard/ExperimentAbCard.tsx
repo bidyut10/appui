@@ -60,7 +60,7 @@ export const ExperimentAbCard = forwardRef<
       )}
       {...props}
     >
-            <div className="mb-4 flex items-start justify-between gap-2">
+      <div className="mb-4 flex items-start justify-between gap-2">
         <div>
           <p className="text-sm font-semibold text-neutral-900">{title}</p>
           <p className="mt-0.5 text-[11px] text-neutral-400">{status}</p>
@@ -73,7 +73,10 @@ export const ExperimentAbCard = forwardRef<
       {/* Variants */}
       <div className="space-y-3">
         {(variants ?? []).map((v) => {
-          const safeConversion = Math.max(0, Math.min(maxConversion, v.conversion));
+          const safeConversion = Math.max(
+            0,
+            Math.min(maxConversion, v.conversion),
+          );
           const barWidth =
             maxConversion > 0 ? (safeConversion / maxConversion) * 100 : 0;
 

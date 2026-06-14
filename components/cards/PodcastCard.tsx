@@ -124,7 +124,7 @@ export const PodcastCard = forwardRef<HTMLDivElement, PodcastCardProps>(
           </div>
         </div>
 
-                <div data-slot="podcast-card-content" className="p-4">
+        <div data-slot="podcast-card-content" className="p-4">
           <h3
             data-slot="podcast-card-title"
             className="mb-1 text-sm leading-snug font-semibold text-white"
@@ -155,11 +155,7 @@ export const PodcastCard = forwardRef<HTMLDivElement, PodcastCardProps>(
                 playing ? "bg-emerald-500" : "bg-white/10",
               )}
             >
-              {playing ? (
-                <Pause size={16} />
-              ) : (
-                (playIcon ?? <Play size={16} />)
-              )}
+              {playing ? <Pause size={16} /> : (playIcon ?? <Play size={16} />)}
             </button>
 
             <div className="flex-1">

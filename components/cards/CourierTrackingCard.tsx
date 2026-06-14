@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -73,9 +69,7 @@ export const CourierTrackingCard = forwardRef<
           completed: index <= currentActive + 1,
           active: index === currentActive + 1,
           time:
-            index === currentActive + 1 && !step.time
-              ? "Just now"
-              : step.time,
+            index === currentActive + 1 && !step.time ? "Just now" : step.time,
         }));
 
         onAdvance?.(currentActive + 1);
@@ -99,7 +93,9 @@ export const CourierTrackingCard = forwardRef<
         >
           <div className="min-w-0">
             <p className="text-[11px] font-semibold text-sky-600">{carrier}</p>
-            <p className="font-mono text-[10px] text-neutral-400">{trackingId}</p>
+            <p className="font-mono text-[10px] text-neutral-400">
+              {trackingId}
+            </p>
           </div>
           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-600">
             <MapPinned size={16} />

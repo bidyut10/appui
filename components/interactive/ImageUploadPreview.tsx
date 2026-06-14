@@ -171,7 +171,9 @@ export const ImageUploadPreview = forwardRef<
               </svg>
             </div>
 
-            <p className="text-xs font-medium text-neutral-600">{uploadLabel}</p>
+            <p className="text-xs font-medium text-neutral-600">
+              {uploadLabel}
+            </p>
 
             <p className="mt-0.5 text-[10px] text-neutral-400">{uploadHint}</p>
           </div>

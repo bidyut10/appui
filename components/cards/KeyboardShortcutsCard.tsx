@@ -66,10 +66,7 @@ export const KeyboardShortcutsCard = forwardRef<
         </div>
       </div>
 
-      <div
-        data-slot="keyboard-shortcuts-card-list"
-        className="space-y-2"
-      >
+      <div data-slot="keyboard-shortcuts-card-list" className="space-y-2">
         {shortcuts.map((shortcut) => (
           <div
             key={shortcut.label}

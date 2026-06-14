@@ -43,7 +43,10 @@ export const DailyHabitTimerWidget = forwardRef<
 
       <div className="flex justify-end">
         <div className="relative flex h-12 w-12 items-center justify-center">
-          <svg className="absolute h-full w-full -rotate-90" viewBox="0 0 36 36">
+          <svg
+            className="absolute h-full w-full -rotate-90"
+            viewBox="0 0 36 36"
+          >
             <circle
               cx="18"
               cy="18"

@@ -34,7 +34,12 @@ export type SearchBarWithResultsProps = {
 } & ComponentPropsWithoutRef<"div">;
 
 const defaultResults: SearchResultItem[] = [
-  { id: "1", name: "Bidyut Kundu", subtitle: "Frontend · Kolkata", accent: "BK" },
+  {
+    id: "1",
+    name: "Bidyut Kundu",
+    subtitle: "Frontend · Kolkata",
+    accent: "BK",
+  },
   { id: "2", name: "John Duo", subtitle: "Design · Berlin", accent: "JD" },
   { id: "3", name: "Sarah Chen", subtitle: "Product · SF", accent: "SC" },
   { id: "4", name: "Alex Rivera", subtitle: "Engineering · NYC", accent: "AR" },
@@ -192,7 +197,9 @@ export const SearchBarWithResults = forwardRef<
             className="mt-2 text-[11px] text-neutral-500"
           >
             Selected{" "}
-            <span className="font-medium text-neutral-800">{selected.name}</span>
+            <span className="font-medium text-neutral-800">
+              {selected.name}
+            </span>
           </p>
         )}
       </div>

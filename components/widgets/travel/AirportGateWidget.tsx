@@ -38,7 +38,9 @@ export const AirportGateWidget = forwardRef<
         <ArrowRight size={16} className="text-neutral-400" />
       </div>
 
-      <p className="text-5xl font-bold tracking-tight text-neutral-900">{gate}</p>
+      <p className="text-5xl font-bold tracking-tight text-neutral-900">
+        {gate}
+      </p>
 
       <div>
         <p className="text-sm font-bold text-neutral-900">{status}</p>

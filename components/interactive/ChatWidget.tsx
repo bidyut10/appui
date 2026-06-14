@@ -109,7 +109,7 @@ export const ChatWidget = forwardRef<HTMLDivElement, ChatWidgetProps>(
 
         <div
           data-slot="chat-widget-messages"
-          className="flex h-72 flex-1 flex-col gap-3 scroll-hover overflow-y-auto bg-linear-to-b from-neutral-50 to-white p-4"
+          className="scroll-hover flex h-72 flex-1 flex-col gap-3 overflow-y-auto bg-linear-to-b from-neutral-50 to-white p-4"
         >
           {messages.map((message, index) => (
             <div
@@ -133,10 +133,7 @@ export const ChatWidget = forwardRef<HTMLDivElement, ChatWidgetProps>(
             </div>
           ))}
 
-          <div
-            data-slot="chat-widget-typing"
-            className="flex justify-start"
-          >
+          <div data-slot="chat-widget-typing" className="flex justify-start">
             <div className="flex items-center gap-1 rounded-2xl rounded-bl-md border border-neutral-200 bg-white px-3 py-2">
               {[0, 1, 2].map((dot) => (
                 <span

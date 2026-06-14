@@ -47,10 +47,18 @@ export const CompactMusicPlayerWidget = forwardRef<
       >
         <div className="mb-3 flex items-center gap-3">
           <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl">
-            <Image src={cover} alt={title} fill className="object-cover" sizes="48px" />
+            <Image
+              src={cover}
+              alt={title}
+              fill
+              className="object-cover"
+              sizes="48px"
+            />
           </div>
           <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-bold text-neutral-900">{title}</p>
+            <p className="truncate text-sm font-bold text-neutral-900">
+              {title}
+            </p>
             <p className="truncate text-[11px] text-neutral-500">{artist}</p>
           </div>
           <span className="rounded-full bg-emerald-500 px-2 py-0.5 text-[9px] font-bold text-white">
@@ -67,10 +75,18 @@ export const CompactMusicPlayerWidget = forwardRef<
         </div>
 
         <div className="flex items-center justify-center gap-4 text-neutral-700">
-          <button type="button" aria-label="Repeat" className="cursor-pointer text-neutral-400 transition-colors hover:text-neutral-700">
+          <button
+            type="button"
+            aria-label="Repeat"
+            className="cursor-pointer text-neutral-400 transition-colors hover:text-neutral-700"
+          >
             <Repeat size={14} />
           </button>
-          <button type="button" aria-label="Previous track" className="cursor-pointer transition-colors hover:text-neutral-900">
+          <button
+            type="button"
+            aria-label="Previous track"
+            className="cursor-pointer transition-colors hover:text-neutral-900"
+          >
             <SkipPrevious size={18} />
           </button>
           <button
@@ -81,10 +97,18 @@ export const CompactMusicPlayerWidget = forwardRef<
           >
             {playing ? <Pause size={16} /> : <Play size={16} />}
           </button>
-          <button type="button" aria-label="Next track" className="cursor-pointer transition-colors hover:text-neutral-900">
+          <button
+            type="button"
+            aria-label="Next track"
+            className="cursor-pointer transition-colors hover:text-neutral-900"
+          >
             <SkipNext size={18} />
           </button>
-          <button type="button" aria-label="Repeat" className="cursor-pointer text-neutral-400 transition-colors hover:text-neutral-700">
+          <button
+            type="button"
+            aria-label="Repeat"
+            className="cursor-pointer text-neutral-400 transition-colors hover:text-neutral-700"
+          >
             <Repeat size={14} />
           </button>
         </div>

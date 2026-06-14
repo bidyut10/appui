@@ -29,12 +29,7 @@ export const GoalProgressCard = forwardRef<
   GoalProgressCardProps
 >(
   (
-    {
-      className,
-      quarter = "Q2 2026 OKRs",
-      goals = defaultGoals,
-      ...props
-    },
+    { className, quarter = "Q2 2026 OKRs", goals = defaultGoals, ...props },
     ref,
   ) => (
     <div
@@ -46,7 +41,7 @@ export const GoalProgressCard = forwardRef<
       )}
       {...props}
     >
-            <p className="mb-4 text-[11px] font-semibold tracking-widest text-neutral-400 uppercase">
+      <p className="mb-4 text-[11px] font-semibold tracking-widest text-neutral-400 uppercase">
         {quarter}
       </p>
 
@@ -87,7 +82,7 @@ export const GoalProgressCard = forwardRef<
                 </span>
               </div>
               <div className="min-w-0 flex-1">
-                <p className="text-[13px] font-semibold leading-snug text-neutral-900">
+                <p className="text-[13px] leading-snug font-semibold text-neutral-900">
                   {goal.title}
                 </p>
                 <p className="mt-0.5 text-[11px] text-neutral-400">

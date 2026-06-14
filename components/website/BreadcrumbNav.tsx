@@ -62,7 +62,6 @@ export const BreadcrumbNav = forwardRef<HTMLElement, BreadcrumbNavProps>(
         className={cn("flex items-center gap-1.5 font-sans", className)}
         {...props}
       >
-        
         <button
           type="button"
           onClick={onHomeClick}
@@ -73,7 +72,6 @@ export const BreadcrumbNav = forwardRef<HTMLElement, BreadcrumbNavProps>(
           {homeLabel}
         </button>
 
-        
         {items.map((item, index) => {
           const isLast = index === lastIndex;
 

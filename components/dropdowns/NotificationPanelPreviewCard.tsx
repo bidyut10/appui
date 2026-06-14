@@ -78,14 +78,11 @@ export const NotificationPanelPreviewCard = forwardRef<
             </span>
           )}
         </div>
-        <div className="max-h-56 divide-y divide-neutral-50 scroll-hover overflow-y-auto">
+        <div className="scroll-hover max-h-56 divide-y divide-neutral-50 overflow-y-auto">
           {items.map((item) => (
             <div
               key={item.title}
-              className={cn(
-                "px-4 py-3",
-                item.unread && "bg-teal-50/40",
-              )}
+              className={cn("px-4 py-3", item.unread && "bg-teal-50/40")}
             >
               <div className="flex items-start justify-between gap-2">
                 <p

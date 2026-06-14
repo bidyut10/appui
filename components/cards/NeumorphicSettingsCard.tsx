@@ -61,9 +61,7 @@ export const NeumorphicSettingsCard = forwardRef<
     ref,
   ) => {
     const [states, setStates] = useState(() =>
-      Object.fromEntries(
-        settings.map((s) => [s.id, s.defaultOn ?? false]),
-      ),
+      Object.fromEntries(settings.map((s) => [s.id, s.defaultOn ?? false])),
     );
 
     const handleToggle = (id: string) => {

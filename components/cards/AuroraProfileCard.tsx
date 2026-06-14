@@ -110,7 +110,9 @@ export const AuroraProfileCard = forwardRef<
                 <h3 className="truncate text-[15px] font-bold tracking-tight text-neutral-900">
                   {name}
                 </h3>
-                <p className="truncate text-[12px] text-neutral-400">{handle}</p>
+                <p className="truncate text-[12px] text-neutral-400">
+                  {handle}
+                </p>
               </div>
               <button
                 type="button"

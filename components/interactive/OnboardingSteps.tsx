@@ -151,7 +151,9 @@ export const OnboardingSteps = forwardRef<HTMLDivElement, OnboardingStepsProps>(
           <button
             type="button"
             aria-label={
-              current === steps.length - 1 ? "Get started" : "Continue to next step"
+              current === steps.length - 1
+                ? "Get started"
+                : "Continue to next step"
             }
             onClick={() => setCurrent(Math.min(current + 1, steps.length - 1))}
             disabled={current === steps.length - 1}

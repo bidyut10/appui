@@ -42,9 +42,17 @@ export const ImageExifCard = forwardRef<HTMLDivElement, ImageExifCardProps>(
       {...props}
     >
       <div className="relative h-36">
-        <Image src={image} alt={title} fill className="object-cover" sizes="256px" />
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover"
+          sizes="256px"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-        <p className="absolute bottom-3 left-3 text-sm font-bold text-white">{title}</p>
+        <p className="absolute bottom-3 left-3 text-sm font-bold text-white">
+          {title}
+        </p>
       </div>
 
       <div className="space-y-2 p-4">

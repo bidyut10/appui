@@ -86,7 +86,9 @@ export const AppleWidgetStack = forwardRef<
         </p>
         <div>
           <p className="text-3xl font-extralight text-white">{calendar.day}</p>
-          <p className="text-sm font-medium text-white/80">{calendar.weekday}</p>
+          <p className="text-sm font-medium text-white/80">
+            {calendar.weekday}
+          </p>
         </div>
         <p className="text-[10px] text-white/60">{calendar.event}</p>
       </div>

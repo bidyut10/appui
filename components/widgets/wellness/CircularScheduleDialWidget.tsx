@@ -33,8 +33,19 @@ type ScheduleDialFaceProps = {
 
 export function ScheduleDialFace({ className }: ScheduleDialFaceProps) {
   return (
-    <svg viewBox="0 0 100 100" className={cn("h-full w-full", className)} aria-hidden>
-      <circle cx="50" cy="50" r="44" fill="none" stroke="#f5f5f5" strokeWidth="1" />
+    <svg
+      viewBox="0 0 100 100"
+      className={cn("h-full w-full", className)}
+      aria-hidden
+    >
+      <circle
+        cx="50"
+        cy="50"
+        r="44"
+        fill="none"
+        stroke="#f5f5f5"
+        strokeWidth="1"
+      />
 
       {SCHEDULE_TICKS.map((tick, i) => (
         <line

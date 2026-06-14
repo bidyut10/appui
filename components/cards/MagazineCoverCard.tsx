@@ -100,7 +100,7 @@ export const MagazineCoverCard = forwardRef<
           </span>
         </div>
 
-                <div className="absolute right-0 bottom-0 left-0 p-5">
+        <div className="absolute right-0 bottom-0 left-0 p-5">
           <p className="mb-2 font-mono text-[10px] tracking-[0.25em] text-white/60 uppercase">
             {issue} · {category}
           </p>

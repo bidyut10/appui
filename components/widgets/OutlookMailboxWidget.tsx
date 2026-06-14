@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -159,7 +155,9 @@ export const OutlookMailboxWidget = forwardRef<
                 <p className="truncate text-[12px] font-medium text-neutral-700">
                   {msg.subject}
                 </p>
-                <p className="truncate text-[11px] text-neutral-400">{msg.preview}</p>
+                <p className="truncate text-[11px] text-neutral-400">
+                  {msg.preview}
+                </p>
               </div>
               {msg.hasAttachment && (
                 <File size={12} className="mt-1 shrink-0 text-neutral-400" />

@@ -137,7 +137,7 @@ export const ImageCarouselCard = forwardRef<
           </div>
         </div>
 
-                <div className="p-4">
+        <div className="p-4">
           <div className="flex items-start justify-between">
             <div>
               <h3 className="text-sm font-semibold text-neutral-900">

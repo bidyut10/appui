@@ -68,7 +68,6 @@ export const MetricCard = forwardRef<HTMLDivElement, MetricCardProps>(
     },
     ref,
   ) => {
-
     const normalizedChartData = useMemo(
       () => chartData.map((value) => Math.min(100, Math.max(0, value))),
       [chartData],
@@ -89,7 +88,7 @@ export const MetricCard = forwardRef<HTMLDivElement, MetricCardProps>(
         )}
         {...props}
       >
-                <div
+        <div
           data-slot="metric-card-header"
           className="mb-4 flex items-center justify-between"
         >
@@ -108,7 +107,7 @@ export const MetricCard = forwardRef<HTMLDivElement, MetricCardProps>(
           </span>
         </div>
 
-                <p
+        <p
           data-slot="metric-card-label"
           className="mb-1 text-[10px] font-medium tracking-wider text-neutral-400 uppercase"
         >
@@ -138,7 +137,7 @@ export const MetricCard = forwardRef<HTMLDivElement, MetricCardProps>(
           )}
         </div>
 
-                <div
+        <div
           data-slot="metric-card-chart"
           className="mb-3 flex h-10 items-end gap-1"
         >
@@ -159,7 +158,7 @@ export const MetricCard = forwardRef<HTMLDivElement, MetricCardProps>(
           ))}
         </div>
 
-                <div
+        <div
           data-slot="metric-card-footer"
           className="flex items-center justify-between text-[10px] text-neutral-400"
         >

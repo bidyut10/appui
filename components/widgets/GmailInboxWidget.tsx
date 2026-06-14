@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -111,14 +107,19 @@ export const GmailInboxWidget = forwardRef<
           </div>
           <div className="min-w-0 flex-1">
             <p className="text-sm font-semibold text-neutral-900">Gmail</p>
-            <p className="truncate text-[10px] text-neutral-400">{accountLabel}</p>
+            <p className="truncate text-[10px] text-neutral-400">
+              {accountLabel}
+            </p>
           </div>
           <span className="rounded-full bg-red-50 px-2 py-0.5 text-[10px] font-bold text-red-600">
             {unreadCount} new
           </span>
         </div>
 
-        <div data-slot="gmail-inbox-widget-list" className="divide-y divide-neutral-50">
+        <div
+          data-slot="gmail-inbox-widget-list"
+          className="divide-y divide-neutral-50"
+        >
           {items.map((msg) => (
             <div
               key={msg.id}
@@ -164,12 +165,16 @@ export const GmailInboxWidget = forwardRef<
                   <p
                     className={cn(
                       "truncate text-[12px]",
-                      msg.unread ? "font-medium text-neutral-800" : "text-neutral-600",
+                      msg.unread
+                        ? "font-medium text-neutral-800"
+                        : "text-neutral-600",
                     )}
                   >
                     {msg.subject}
                   </p>
-                  <p className="truncate text-[11px] text-neutral-400">{msg.preview}</p>
+                  <p className="truncate text-[11px] text-neutral-400">
+                    {msg.preview}
+                  </p>
                   {msg.label && (
                     <span className="mt-1 inline-block rounded bg-blue-50 px-1.5 py-0.5 text-[9px] font-medium text-blue-700">
                       {msg.label}

@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -57,8 +53,16 @@ export const ComparePeriodWidget = forwardRef<
         <div className="mt-3 grid grid-cols-2 gap-2">
           {(
             [
-              { id: "current" as const, label: currentLabel, value: currentValue },
-              { id: "previous" as const, label: previousLabel, value: previousValue },
+              {
+                id: "current" as const,
+                label: currentLabel,
+                value: currentValue,
+              },
+              {
+                id: "previous" as const,
+                label: previousLabel,
+                value: previousValue,
+              },
             ] as const
           ).map((period) => (
             <button

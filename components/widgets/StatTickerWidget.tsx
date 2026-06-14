@@ -69,7 +69,7 @@ function StatItem({
         {count}
         {stat.suffix}
       </p>
-      <p className="mt-0.5 text-[10px] font-medium text-neutral-500 uppercase tracking-wide">
+      <p className="mt-0.5 text-[10px] font-medium tracking-wide text-neutral-500 uppercase">
         {stat.label}
       </p>
     </div>
@@ -81,12 +81,7 @@ export const StatTickerWidget = forwardRef<
   StatTickerWidgetProps
 >(
   (
-    {
-      className,
-      title = "Platform stats",
-      stats = defaultStats,
-      ...props
-    },
+    { className, title = "Platform stats", stats = defaultStats, ...props },
     ref,
   ) => {
     const [mounted, setMounted] = useState(false);

@@ -23,16 +23,33 @@ export type MetricBentoWidgetProps = {
 
 const defaultCells: BentoCell[] = [
   { label: "Uptime", value: "99.9%", type: "ring", accent: "#14b8a6" },
-  { label: "Requests", value: "1.2M", type: "bars", data: [40, 65, 55, 80, 70] },
+  {
+    label: "Requests",
+    value: "1.2M",
+    type: "bars",
+    data: [40, 65, 55, 80, 70],
+  },
   { label: "Errors", value: "0.02%", type: "dots" },
-  { label: "Latency", value: "42ms", type: "spark", data: [30, 45, 38, 42, 35, 42] },
+  {
+    label: "Latency",
+    value: "42ms",
+    type: "spark",
+    data: [30, 45, 38, 42, 35, 42],
+  },
 ];
 
 function CellViz({ cell }: { cell: BentoCell }) {
   if (cell.type === "ring") {
     return (
       <svg viewBox="0 0 36 36" className="h-8 w-8 -rotate-90">
-        <circle cx="18" cy="18" r="14" fill="none" stroke="#f5f5f5" strokeWidth="3" />
+        <circle
+          cx="18"
+          cy="18"
+          r="14"
+          fill="none"
+          stroke="#f5f5f5"
+          strokeWidth="3"
+        />
         <circle
           cx="18"
           cy="18"

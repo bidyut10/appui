@@ -87,7 +87,7 @@ export const MusicPlayerCard = forwardRef<HTMLDivElement, MusicPlayerCardProps>(
           />
         </div>
 
-                <div
+        <div
           data-slot="music-player-card-content"
           className="relative -mt-6 p-4"
         >

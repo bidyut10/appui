@@ -29,7 +29,9 @@ function computeVerticalThumb(el: HTMLElement): ThumbMetrics {
   const thumbSize = Math.max(24, (clientHeight / scrollHeight) * clientHeight);
   const maxOffset = clientHeight - thumbSize;
   const offset =
-    maxOffset <= 0 ? 0 : (scrollTop / (scrollHeight - clientHeight)) * maxOffset;
+    maxOffset <= 0
+      ? 0
+      : (scrollTop / (scrollHeight - clientHeight)) * maxOffset;
 
   return { size: thumbSize, offset, active: true };
 }
@@ -55,10 +57,7 @@ export type ScrollHoverAreaProps = {
 } & ComponentPropsWithoutRef<"div">;
 
 export const ScrollHoverArea = forwardRef<HTMLDivElement, ScrollHoverAreaProps>(
-  (
-    { className, viewportClassName, children, axis = "y", ...props },
-    ref,
-  ) => {
+  ({ className, viewportClassName, children, axis = "y", ...props }, ref) => {
     const viewportRef = useRef<HTMLDivElement>(null);
     const [vertical, setVertical] = useState<ThumbMetrics>({
       size: 0,

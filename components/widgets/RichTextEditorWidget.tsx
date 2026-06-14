@@ -143,7 +143,7 @@ export const RichTextEditorWidget = forwardRef<
           aria-label="Rich text content"
           rows={7}
           data-slot="rich-text-editor-widget-input"
-          className="w-full resize-none bg-white px-4 py-3 text-[13px] leading-relaxed text-neutral-800 outline-none placeholder:text-neutral-300 scroll-hover"
+          className="scroll-hover w-full resize-none bg-white px-4 py-3 text-[13px] leading-relaxed text-neutral-800 outline-none placeholder:text-neutral-300"
         />
       </div>
     );

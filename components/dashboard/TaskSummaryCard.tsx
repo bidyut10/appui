@@ -1,7 +1,4 @@
-import {
-  forwardRef,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { Check } from "@/icons/Check";
 import { Clock } from "@/icons/Clock";
@@ -50,10 +47,7 @@ const defaultTasks: TaskItem[] = [
   },
 ];
 
-export const TaskSummaryCard = forwardRef<
-  HTMLDivElement,
-  TaskSummaryCardProps
->(
+export const TaskSummaryCard = forwardRef<HTMLDivElement, TaskSummaryCardProps>(
   (
     {
       className,
@@ -81,7 +75,7 @@ export const TaskSummaryCard = forwardRef<
         )}
         {...props}
       >
-                <div
+        <div
           data-slot="task-summary-header"
           className="border-b border-neutral-100 px-4 py-3"
         >
@@ -151,7 +145,7 @@ export const TaskSummaryCard = forwardRef<
           ))}
         </div>
 
-                <div
+        <div
           data-slot="task-summary-footer"
           className="border-t border-neutral-100 px-4 py-2.5"
         >

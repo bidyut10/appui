@@ -31,12 +31,7 @@ export const InvoicePipelineCard = forwardRef<
   InvoicePipelineCardProps
 >(
   (
-    {
-      className,
-      title = "Invoice pipeline",
-      stages = defaultStages,
-      ...props
-    },
+    { className, title = "Invoice pipeline", stages = defaultStages, ...props },
     ref,
   ) => (
     <div
@@ -48,7 +43,7 @@ export const InvoicePipelineCard = forwardRef<
       )}
       {...props}
     >
-            <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
+      <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
 
       {/* Stages */}
       <div className="flex gap-2">

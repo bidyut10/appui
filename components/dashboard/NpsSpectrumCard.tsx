@@ -18,15 +18,27 @@ export type NpsSpectrumCardProps = {
 } & ComponentPropsWithoutRef<"div">;
 
 const defaultSegments = [
-  { label: "Promoters", key: "promoters" as const, color: "text-emerald-600", dot: "bg-emerald-400" },
-  { label: "Passives", key: "passives" as const, color: "text-amber-600", dot: "bg-amber-300" },
-  { label: "Detractors", key: "detractors" as const, color: "text-rose-600", dot: "bg-rose-400" },
+  {
+    label: "Promoters",
+    key: "promoters" as const,
+    color: "text-emerald-600",
+    dot: "bg-emerald-400",
+  },
+  {
+    label: "Passives",
+    key: "passives" as const,
+    color: "text-amber-600",
+    dot: "bg-amber-300",
+  },
+  {
+    label: "Detractors",
+    key: "detractors" as const,
+    color: "text-rose-600",
+    dot: "bg-rose-400",
+  },
 ];
 
-export const NpsSpectrumCard = forwardRef<
-  HTMLDivElement,
-  NpsSpectrumCardProps
->(
+export const NpsSpectrumCard = forwardRef<HTMLDivElement, NpsSpectrumCardProps>(
   (
     {
       className,
@@ -61,7 +73,7 @@ export const NpsSpectrumCard = forwardRef<
         )}
         {...props}
       >
-                <div className="flex items-start justify-between">
+        <div className="flex items-start justify-between">
           <div>
             <p className="text-[11px] font-medium text-neutral-500">{title}</p>
             <p className="mt-1 text-[3rem] leading-none font-light tracking-tighter text-neutral-900 tabular-nums">
@@ -78,9 +90,15 @@ export const NpsSpectrumCard = forwardRef<
 
         {/* Spectrum bar */}
         <div className="mt-5 flex h-3 overflow-hidden rounded-full">
-          <div className="bg-emerald-400" style={{ width: `${safePromoters}%` }} />
+          <div
+            className="bg-emerald-400"
+            style={{ width: `${safePromoters}%` }}
+          />
           <div className="bg-amber-300" style={{ width: `${safePassives}%` }} />
-          <div className="bg-rose-400" style={{ width: `${safeDetractors}%` }} />
+          <div
+            className="bg-rose-400"
+            style={{ width: `${safeDetractors}%` }}
+          />
         </div>
 
         {/* Segments */}
@@ -89,9 +107,16 @@ export const NpsSpectrumCard = forwardRef<
             <div key={seg.label} className="text-center">
               <div className="flex items-center justify-center gap-1">
                 <span className={cn("h-1.5 w-1.5 rounded-full", seg.dot)} />
-                <span className="text-[10px] text-neutral-500">{seg.label}</span>
+                <span className="text-[10px] text-neutral-500">
+                  {seg.label}
+                </span>
               </div>
-              <p className={cn("mt-0.5 text-sm font-bold tabular-nums", seg.color)}>
+              <p
+                className={cn(
+                  "mt-0.5 text-sm font-bold tabular-nums",
+                  seg.color,
+                )}
+              >
                 {segmentValues[seg.key]}%
               </p>
             </div>

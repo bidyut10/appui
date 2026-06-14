@@ -131,7 +131,7 @@ export const GithubProfileCard = forwardRef<
           </div>
         </div>
 
-                <div className="flex flex-col px-5 pt-10 pb-5">
+        <div className="flex flex-col px-5 pt-10 pb-5">
           <h4 title={username} className="mt-2 font-bold text-neutral-900">
             {username}
           </h4>
@@ -183,7 +183,7 @@ export const GithubProfileCard = forwardRef<
             </span>
           </div>
 
-                    <div className="mt-3 flex gap-2">
+          <div className="mt-3 flex gap-2">
             {followButton ?? (
               <button
                 type="button"

@@ -67,12 +67,12 @@ export const SplitFeatureCard = forwardRef<
       {...props}
     >
       <div className="grid sm:grid-cols-2">
-                <div className="flex flex-col justify-center p-5 sm:p-6">
+        <div className="flex flex-col justify-center p-5 sm:p-6">
           <span className="w-fit rounded-full bg-teal-50 px-2.5 py-0.5 text-[10px] font-bold tracking-wide text-teal-700 uppercase">
             {eyebrow}
           </span>
 
-          <h3 className="mt-3 text-lg font-bold leading-snug tracking-tight text-neutral-900">
+          <h3 className="mt-3 text-lg leading-snug font-bold tracking-tight text-neutral-900">
             {title}
           </h3>
 

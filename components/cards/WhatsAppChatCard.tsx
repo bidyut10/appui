@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -48,7 +44,10 @@ const defaultMessages: WhatsAppMessage[] = [
   },
 ];
 
-export const WhatsAppChatCard = forwardRef<HTMLDivElement, WhatsAppChatCardProps>(
+export const WhatsAppChatCard = forwardRef<
+  HTMLDivElement,
+  WhatsAppChatCardProps
+>(
   (
     {
       className,
@@ -108,7 +107,9 @@ export const WhatsAppChatCard = forwardRef<HTMLDivElement, WhatsAppChatCardProps
                   : "rounded-bl-sm bg-white",
               )}
             >
-              <p className="text-[12px] leading-relaxed text-neutral-800">{msg.text}</p>
+              <p className="text-[12px] leading-relaxed text-neutral-800">
+                {msg.text}
+              </p>
               <div className="mt-0.5 flex items-center justify-end gap-1">
                 <span className="text-[9px] text-neutral-500">{msg.time}</span>
                 {msg.sent && <Check size={10} className="text-sky-500" />}

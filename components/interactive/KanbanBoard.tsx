@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -95,7 +91,7 @@ export const KanbanBoard = forwardRef<HTMLDivElement, KanbanBoardProps>(
 
         <div
           data-slot="kanban-board-columns"
-          className="flex gap-2 scroll-hover overflow-x-auto pb-1"
+          className="scroll-hover flex gap-2 overflow-x-auto pb-1"
         >
           {columns.map((col) => (
             <div
@@ -119,10 +115,7 @@ export const KanbanBoard = forwardRef<HTMLDivElement, KanbanBoardProps>(
                 </span>
               </div>
 
-              <div
-                data-slot="kanban-board-cards"
-                className="space-y-1.5"
-              >
+              <div data-slot="kanban-board-cards" className="space-y-1.5">
                 {col.cards.map((card) => (
                   <div
                     key={card.title}

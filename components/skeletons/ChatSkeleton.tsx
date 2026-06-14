@@ -22,7 +22,7 @@ export const ChatSkeleton = forwardRef<HTMLDivElement, ChatSkeletonProps>(
       )}
       {...props}
     >
-            <div
+      <div
         data-slot="chat-skeleton-header"
         className="flex items-center gap-2 border-b border-neutral-100 px-4 py-3"
       >

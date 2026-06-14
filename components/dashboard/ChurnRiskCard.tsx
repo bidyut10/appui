@@ -48,9 +48,9 @@ export const ChurnRiskCard = forwardRef<HTMLDivElement, ChurnRiskCardProps>(
       )}
       {...props}
     >
-            <div className="mb-4 flex items-center justify-between">
+      <div className="mb-4 flex items-center justify-between">
         <p className="text-sm font-semibold text-neutral-900">{title}</p>
-        <span className="rounded-lg bg-white px-2 py-1 text-[11px] font-bold text-rose-600 shadow-sm tabular-nums">
+        <span className="rounded-lg bg-white px-2 py-1 text-[11px] font-bold text-rose-600 tabular-nums shadow-sm">
           {atRiskCount.toLocaleString()} {accountsLabel}
         </span>
       </div>

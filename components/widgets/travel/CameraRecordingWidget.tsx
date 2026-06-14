@@ -1,6 +1,11 @@
 "use client";
 
-import { forwardRef, useEffect, useState, type ComponentPropsWithoutRef } from "react";
+import {
+  forwardRef,
+  useEffect,
+  useState,
+  type ComponentPropsWithoutRef,
+} from "react";
 
 import { cn } from "@/lib/utils";
 import { Camera } from "@/icons/Camera";
@@ -45,7 +50,9 @@ export const CameraRecordingWidget = forwardRef<
 
       <div>
         <p className="text-sm font-semibold text-neutral-900">{label}</p>
-        <p className="font-mono text-lg font-bold text-neutral-900">{fmt(elapsed)}</p>
+        <p className="font-mono text-lg font-bold text-neutral-900">
+          {fmt(elapsed)}
+        </p>
       </div>
 
       <div className="flex justify-end">

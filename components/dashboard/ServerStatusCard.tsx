@@ -74,7 +74,7 @@ export const ServerStatusCard = forwardRef<
       )}
       {...props}
     >
-            <div
+      <div
         data-slot="server-status-card-header"
         className="flex items-center justify-between border-b border-neutral-100 px-4 py-3"
       >

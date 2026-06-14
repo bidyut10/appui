@@ -89,7 +89,9 @@ export const DateRangeDropdown = forwardRef<
             className="inline-flex h-10 cursor-pointer items-center gap-2 rounded-xl border border-neutral-200 bg-white px-3 transition-all hover:border-neutral-300 hover:shadow-sm"
           >
             <Clock size={14} className="text-neutral-500" />
-            <span className="text-xs font-medium text-neutral-700">{preset}</span>
+            <span className="text-xs font-medium text-neutral-700">
+              {preset}
+            </span>
             <ChevronDown className="h-3 w-3 text-neutral-400" />
           </button>
 
@@ -162,7 +164,9 @@ export const DateRangeDropdown = forwardRef<
             </div>
 
             <div className="flex items-center justify-between border-t border-neutral-100 px-3 py-2.5">
-              <span className="text-[10px] text-neutral-400">{rangeSummary}</span>
+              <span className="text-[10px] text-neutral-400">
+                {rangeSummary}
+              </span>
               <button
                 type="button"
                 aria-label={applyLabel}

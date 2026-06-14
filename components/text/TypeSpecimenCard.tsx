@@ -24,7 +24,12 @@ export type TypeSpecimenCardProps = {
 const defaultItems: TypeScaleItem[] = [
   { label: "Display", sample: "Aa", size: "2.5rem", weight: "800" },
   { label: "Heading", sample: "Components", size: "1.25rem", weight: "700" },
-  { label: "Body", sample: "Readable at every size", size: "0.875rem", weight: "400" },
+  {
+    label: "Body",
+    sample: "Readable at every size",
+    size: "0.875rem",
+    weight: "400",
+  },
   { label: "Caption", sample: "LABEL · META", size: "0.625rem", weight: "600" },
 ];
 
@@ -33,12 +38,7 @@ export const TypeSpecimenCard = forwardRef<
   TypeSpecimenCardProps
 >(
   (
-    {
-      className,
-      family = "Inter / System UI",
-      items = defaultItems,
-      ...props
-    },
+    { className, family = "Inter / System UI", items = defaultItems, ...props },
     ref,
   ) => (
     <div

@@ -11,8 +11,14 @@ export type WiFiToggleWidgetProps = {
   defaultOn?: boolean;
 } & ComponentPropsWithoutRef<"div">;
 
-export const WiFiToggleWidget = forwardRef<HTMLDivElement, WiFiToggleWidgetProps>(
-  ({ className, networkName = "kawsar's_wifi", defaultOn = true, ...props }, ref) => {
+export const WiFiToggleWidget = forwardRef<
+  HTMLDivElement,
+  WiFiToggleWidgetProps
+>(
+  (
+    { className, networkName = "kawsar's_wifi", defaultOn = true, ...props },
+    ref,
+  ) => {
     const [on, setOn] = useState(defaultOn);
 
     return (

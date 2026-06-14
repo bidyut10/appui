@@ -16,9 +16,21 @@ type QueueFile = {
 };
 
 const INITIAL: QueueFile[] = [
-  { id: "1", name: "hero-final.png", size: "1.2 MB", type: "image", progress: 100 },
+  {
+    id: "1",
+    name: "hero-final.png",
+    size: "1.2 MB",
+    type: "image",
+    progress: 100,
+  },
   { id: "2", name: "brief-v3.pdf", size: "840 KB", type: "doc", progress: 68 },
-  { id: "3", name: "team-photo.jpg", size: "2.1 MB", type: "image", progress: 24 },
+  {
+    id: "3",
+    name: "team-photo.jpg",
+    size: "2.1 MB",
+    type: "image",
+    progress: 24,
+  },
 ];
 
 export type FileUploadQueueCardProps = ComponentPropsWithoutRef<"div">;
@@ -39,7 +51,9 @@ export const FileUploadQueueCard = forwardRef<
       )}
       {...props}
     >
-      <p className="mb-3 text-sm font-bold text-neutral-900">Uploading 3 files</p>
+      <p className="mb-3 text-sm font-bold text-neutral-900">
+        Uploading 3 files
+      </p>
       <div className="space-y-3">
         {files.map((file) => {
           const Icon = file.type === "image" ? Images : File;
@@ -54,7 +68,9 @@ export const FileUploadQueueCard = forwardRef<
                 {done ? (
                   <Check size={12} className="text-emerald-500" />
                 ) : (
-                  <span className="text-[10px] text-neutral-400">{file.progress}%</span>
+                  <span className="text-[10px] text-neutral-400">
+                    {file.progress}%
+                  </span>
                 )}
               </div>
               <div className="h-1 overflow-hidden rounded-full bg-neutral-100">

@@ -81,10 +81,7 @@ export const AppleGlassCard = forwardRef<HTMLDivElement, AppleGlassCardProps>(
             </p>
           </div>
         </div>
-        <div
-          data-slot="apple-glass-card-tags"
-          className="mt-3 flex gap-2"
-        >
+        <div data-slot="apple-glass-card-tags" className="mt-3 flex gap-2">
           {tags.map((tag) => (
             <span
               key={tag}

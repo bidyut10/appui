@@ -60,10 +60,7 @@ export const AppleStoreAppTile = forwardRef<
       )}
       {...props}
     >
-      <div
-        data-slot="apple-store-app-tile-header"
-        className="flex gap-3 p-4"
-      >
+      <div data-slot="apple-store-app-tile-header" className="flex gap-3 p-4">
         <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[1rem] bg-linear-to-br from-teal-500 to-cyan-600 shadow-md">
           <span className="text-2xl font-bold text-white">{appIcon}</span>
         </div>
@@ -105,7 +102,7 @@ export const AppleStoreAppTile = forwardRef<
 
       <div
         data-slot="apple-store-app-tile-tags"
-        className="flex gap-2 scroll-hover overflow-x-auto px-4 pb-3"
+        className="scroll-hover flex gap-2 overflow-x-auto px-4 pb-3"
       >
         {tags.map((tag) => (
           <span

@@ -42,7 +42,7 @@ export const PullQuoteCard = forwardRef<HTMLDivElement, PullQuoteCardProps>(
         </blockquote>
       </div>
       <div className="mt-5 flex items-center justify-between border-t border-neutral-100 pt-4">
-        <cite className="text-sm font-sans font-semibold text-neutral-900 not-italic">
+        <cite className="font-sans text-sm font-semibold text-neutral-900 not-italic">
           — {source}
         </cite>
         <span className="font-mono text-[10px] text-neutral-400">{page}</span>

@@ -17,10 +17,7 @@ export type MaintenanceCardProps = {
   estimatedTime?: string;
 } & ComponentPropsWithoutRef<"div">;
 
-export const MaintenanceCard = forwardRef<
-  HTMLDivElement,
-  MaintenanceCardProps
->(
+export const MaintenanceCard = forwardRef<HTMLDivElement, MaintenanceCardProps>(
   (
     {
       className,

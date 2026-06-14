@@ -34,10 +34,7 @@ export const StatEditorialCard = forwardRef<
     <div
       ref={ref}
       data-slot="stat-editorial-card"
-      className={cn(
-        "w-full max-w-sm bg-white px-6 py-8 font-sans",
-        className,
-      )}
+      className={cn("w-full max-w-sm bg-white px-6 py-8 font-sans", className)}
       {...props}
     >
       <div className="flex items-start gap-1">

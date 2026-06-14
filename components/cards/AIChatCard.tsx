@@ -73,7 +73,9 @@ export const AIChatCard = forwardRef<HTMLDivElement, AIChatCardProps>(
           </div>
           <div className="max-w-[95%] rounded-2xl rounded-bl-sm bg-neutral-50 px-3 py-2 text-[11px] leading-relaxed text-neutral-700">
             {reply}
-            {typing && <span className="ml-0.5 inline-block h-3 w-0.5 animate-pulse bg-neutral-400" />}
+            {typing && (
+              <span className="ml-0.5 inline-block h-3 w-0.5 animate-pulse bg-neutral-400" />
+            )}
           </div>
         </div>
 

@@ -26,7 +26,10 @@ type MinimalSquareToggleProps = {
   defaultOn?: boolean;
 } & ComponentPropsWithoutRef<"button">;
 
-const MinimalSquareToggle = forwardRef<HTMLButtonElement, MinimalSquareToggleProps>(
+const MinimalSquareToggle = forwardRef<
+  HTMLButtonElement,
+  MinimalSquareToggleProps
+>(
   (
     {
       className,
@@ -51,7 +54,7 @@ const MinimalSquareToggle = forwardRef<HTMLButtonElement, MinimalSquareTogglePro
         aria-pressed={on}
         data-slot="minimal-square-toggle"
         className={cn(
-          "flex h-44 w-44 cursor-pointer flex-col justify-between rounded-[1.75rem] p-4 font-sans text-left shadow-lg transition-all active:scale-[0.98]",
+          "flex h-44 w-44 cursor-pointer flex-col justify-between rounded-[1.75rem] p-4 text-left font-sans shadow-lg transition-all active:scale-[0.98]",
           dark
             ? "bg-black text-white"
             : "border border-neutral-200 bg-white text-neutral-900",
@@ -91,7 +94,12 @@ const MinimalSquareToggle = forwardRef<HTMLButtonElement, MinimalSquareTogglePro
         <div>
           <p className="text-sm font-semibold">{label}</p>
           {subtitle && (
-            <p className={cn("text-[10px]", dark ? "text-white/50" : "text-neutral-400")}>
+            <p
+              className={cn(
+                "text-[10px]",
+                dark ? "text-white/50" : "text-neutral-400",
+              )}
+            >
               {subtitle}
             </p>
           )}
@@ -127,7 +135,10 @@ MinimalTorchToggle.displayName = "MinimalTorchToggle";
 
 export const MinimalExtraDimToggle = forwardRef<
   HTMLButtonElement,
-  Omit<MinimalSquareToggleProps, "label" | "icon" | "detail" | "subtitle" | "variant">
+  Omit<
+    MinimalSquareToggleProps,
+    "label" | "icon" | "detail" | "subtitle" | "variant"
+  >
 >((props, ref) => (
   <MinimalSquareToggle
     ref={ref}
@@ -160,9 +171,7 @@ export const MinimalNearbyShareToggle = forwardRef<
     label="Nearby Share"
     subtitle="QuickDrop ready"
     icon={<Wifi size={18} />}
-    detail={
-      <p className="font-mono text-2xl font-bold tracking-wider">3</p>
-    }
+    detail={<p className="font-mono text-2xl font-bold tracking-wider">3</p>}
     {...props}
   />
 ));
@@ -170,7 +179,10 @@ MinimalNearbyShareToggle.displayName = "MinimalNearbyShareToggle";
 
 export const MinimalHotspotToggle = forwardRef<
   HTMLButtonElement,
-  Omit<MinimalSquareToggleProps, "label" | "icon" | "detail" | "subtitle" | "variant">
+  Omit<
+    MinimalSquareToggleProps,
+    "label" | "icon" | "detail" | "subtitle" | "variant"
+  >
 >((props, ref) => (
   <MinimalSquareToggle
     ref={ref}
@@ -183,7 +195,9 @@ export const MinimalHotspotToggle = forwardRef<
         {["MacBook Pro", "iPad Air"].map((device) => (
           <div key={device} className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-            <span className="truncate text-[10px] text-neutral-600">{device}</span>
+            <span className="truncate text-[10px] text-neutral-600">
+              {device}
+            </span>
           </div>
         ))}
       </div>
@@ -217,7 +231,10 @@ MinimalBluetoothToggle.displayName = "MinimalBluetoothToggle";
 
 export const MinimalMobileDataToggle = forwardRef<
   HTMLButtonElement,
-  Omit<MinimalSquareToggleProps, "label" | "icon" | "detail" | "subtitle" | "variant">
+  Omit<
+    MinimalSquareToggleProps,
+    "label" | "icon" | "detail" | "subtitle" | "variant"
+  >
 >((props, ref) => (
   <MinimalSquareToggle
     ref={ref}
@@ -266,7 +283,10 @@ MinimalDarkModeToggle.displayName = "MinimalDarkModeToggle";
 
 export const MinimalCalculatorToggle = forwardRef<
   HTMLButtonElement,
-  Omit<MinimalSquareToggleProps, "label" | "icon" | "detail" | "subtitle" | "variant">
+  Omit<
+    MinimalSquareToggleProps,
+    "label" | "icon" | "detail" | "subtitle" | "variant"
+  >
 >((props, ref) => (
   <MinimalSquareToggle
     ref={ref}
@@ -276,7 +296,9 @@ export const MinimalCalculatorToggle = forwardRef<
     icon={<Calculator size={18} />}
     detail={
       <div className="pt-1">
-        <p className="text-right font-mono text-xl font-light text-neutral-900">128+64</p>
+        <p className="text-right font-mono text-xl font-light text-neutral-900">
+          128+64
+        </p>
         <p className="text-right font-mono text-sm text-neutral-400">= 192</p>
       </div>
     }

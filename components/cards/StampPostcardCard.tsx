@@ -53,7 +53,9 @@ export const StampPostcardCard = forwardRef<
           />
           <div className="absolute top-2 right-2 flex h-14 w-11 rotate-3 flex-col items-center justify-center border-2 border-dashed border-rose-300 bg-rose-50">
             <span className="text-[8px] font-bold text-rose-600">INDIA</span>
-            <span className="text-sm font-black text-rose-700">{stampValue}</span>
+            <span className="text-sm font-black text-rose-700">
+              {stampValue}
+            </span>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-0 border-t border-neutral-200">

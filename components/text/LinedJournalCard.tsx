@@ -23,48 +23,38 @@ const defaultLines = [
 export const LinedJournalCard = forwardRef<
   HTMLDivElement,
   LinedJournalCardProps
->(
-  (
-    {
-      className,
-      date = "Jun 6",
-      lines = defaultLines,
-      ...props
-    },
-    ref,
-  ) => (
+>(({ className, date = "Jun 6", lines = defaultLines, ...props }, ref) => (
+  <div
+    ref={ref}
+    data-slot="lined-journal-card"
+    className={cn("w-full max-w-xs font-sans", className)}
+    {...props}
+  >
     <div
-      ref={ref}
-      data-slot="lined-journal-card"
-      className={cn("w-full max-w-xs font-sans", className)}
-      {...props}
+      className="relative rounded-sm border border-blue-200/60 bg-[#fafcff] px-5 py-4 shadow-md"
+      style={{
+        backgroundImage:
+          "repeating-linear-gradient(transparent, transparent 27px, #bfdbfe 27px, #bfdbfe 28px)",
+        backgroundPosition: "0 12px",
+      }}
     >
-      <div
-        className="relative rounded-sm border border-blue-200/60 bg-[#fafcff] px-5 py-4 shadow-md"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(transparent, transparent 27px, #bfdbfe 27px, #bfdbfe 28px)",
-          backgroundPosition: "0 12px",
-        }}
-      >
-        <div className="absolute top-0 bottom-0 left-10 w-px bg-rose-300/70" />
-        <p className="relative mb-6 font-mono text-[10px] text-blue-400/80">
-          {date}
-        </p>
-        <ul className="relative space-y-7 pl-6">
-          {lines.map((line) => (
-            <li
-              key={line}
-              className="text-[15px] leading-none text-neutral-700"
-              style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-            >
-              {line}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <div className="absolute top-0 bottom-0 left-10 w-px bg-rose-300/70" />
+      <p className="relative mb-6 font-mono text-[10px] text-blue-400/80">
+        {date}
+      </p>
+      <ul className="relative space-y-7 pl-6">
+        {lines.map((line) => (
+          <li
+            key={line}
+            className="text-[15px] leading-none text-neutral-700"
+            style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+          >
+            {line}
+          </li>
+        ))}
+      </ul>
     </div>
-  ),
-);
+  </div>
+));
 
 LinedJournalCard.displayName = "LinedJournalCard";

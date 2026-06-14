@@ -27,10 +27,7 @@ const defaultCountries: GeoVisitor[] = [
   { country: "Germany", countryCode: "DE", visitors: 980, pct: 8 },
 ];
 
-export const GeoVisitorsCard = forwardRef<
-  HTMLDivElement,
-  GeoVisitorsCardProps
->(
+export const GeoVisitorsCard = forwardRef<HTMLDivElement, GeoVisitorsCardProps>(
   (
     {
       className,
@@ -50,7 +47,7 @@ export const GeoVisitorsCard = forwardRef<
       )}
       {...props}
     >
-            <div className="mb-4 flex items-baseline justify-between">
+      <div className="mb-4 flex items-baseline justify-between">
         <p className="text-[11px] font-medium text-neutral-500">{title}</p>
         <p className="text-xl font-semibold text-neutral-900 tabular-nums">
           {total}

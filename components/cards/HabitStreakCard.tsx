@@ -41,10 +41,7 @@ const defaultWeekDays: HabitStreakDay[] = [
   { label: "S", completed: false },
 ];
 
-export const HabitStreakCard = forwardRef<
-  HTMLDivElement,
-  HabitStreakCardProps
->(
+export const HabitStreakCard = forwardRef<HTMLDivElement, HabitStreakCardProps>(
   (
     {
       className,

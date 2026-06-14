@@ -98,7 +98,10 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
                       )}
                     >
                       {cloneElement(
-                        item.icon as ReactElement<{ size?: number; strokeWidth?: number }>,
+                        item.icon as ReactElement<{
+                          size?: number;
+                          strokeWidth?: number;
+                        }>,
                         {
                           size: 16,
                           strokeWidth: 2,

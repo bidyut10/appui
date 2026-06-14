@@ -37,15 +37,49 @@ export type SpotlightSearchBarProps = {
   onSelect?: (item: SpotlightResult | string) => void;
 } & ComponentPropsWithoutRef<"div">;
 
-const defaultRecentSearches = ["Card components", "Dropdown menu", "Search bar"];
+const defaultRecentSearches = [
+  "Card components",
+  "Dropdown menu",
+  "Search bar",
+];
 
 const defaultItems: SpotlightResult[] = [
-  { id: "1", title: "VoiceWaveCard", category: "Cards", icon: <File size={14} /> },
-  { id: "2", title: "MusicPlayerCard", category: "Cards", icon: <File size={14} /> },
-  { id: "3", title: "SearchBar", category: "Search", icon: <Search className="h-3.5 w-3.5" /> },
-  { id: "4", title: "KanbanBoard", category: "Interactive", icon: <Mobile size={14} /> },
-  { id: "5", title: "AuroraProfileCard", category: "Cards", icon: <File size={14} /> },
-  { id: "6", title: "GlassNavbar", category: "Navigation", icon: <Mobile size={14} /> },
+  {
+    id: "1",
+    title: "VoiceWaveCard",
+    category: "Cards",
+    icon: <File size={14} />,
+  },
+  {
+    id: "2",
+    title: "MusicPlayerCard",
+    category: "Cards",
+    icon: <File size={14} />,
+  },
+  {
+    id: "3",
+    title: "SearchBar",
+    category: "Search",
+    icon: <Search className="h-3.5 w-3.5" />,
+  },
+  {
+    id: "4",
+    title: "KanbanBoard",
+    category: "Interactive",
+    icon: <Mobile size={14} />,
+  },
+  {
+    id: "5",
+    title: "AuroraProfileCard",
+    category: "Cards",
+    icon: <File size={14} />,
+  },
+  {
+    id: "6",
+    title: "GlassNavbar",
+    category: "Navigation",
+    icon: <Mobile size={14} />,
+  },
 ];
 
 export const SpotlightSearchBar = forwardRef<
@@ -95,7 +129,9 @@ export const SpotlightSearchBar = forwardRef<
     const pick = (selection: SpotlightResult | string) => {
       const label = typeof selection === "string" ? selection : selection.title;
       setValue(label);
-      setRecents((prev) => [label, ...prev.filter((r) => r !== label)].slice(0, 4));
+      setRecents((prev) =>
+        [label, ...prev.filter((r) => r !== label)].slice(0, 4),
+      );
       onSelect?.(selection);
       setFocused(false);
     };
@@ -126,7 +162,11 @@ export const SpotlightSearchBar = forwardRef<
               ? "border-teal-300 bg-white"
               : "border-neutral-200 bg-white shadow-sm",
           )}
-          style={focused ? { animation: "spotlight-glow 2.4s ease-in-out infinite" } : undefined}
+          style={
+            focused
+              ? { animation: "spotlight-glow 2.4s ease-in-out infinite" }
+              : undefined
+          }
         >
           <div className="absolute inset-0 bg-linear-to-r from-teal-50/80 via-white to-cyan-50/80" />
           <div className="relative flex items-center">
@@ -175,7 +215,9 @@ export const SpotlightSearchBar = forwardRef<
           <div
             data-slot="spotlight-search-bar-dropdown"
             className="absolute top-[calc(100%+8px)] z-50 w-full overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-xl"
-            style={{ animation: "spotlight-expand 0.25s cubic-bezier(0.34,1.2,0.64,1)" }}
+            style={{
+              animation: "spotlight-expand 0.25s cubic-bezier(0.34,1.2,0.64,1)",
+            }}
           >
             {showRecents && (
               <div className="p-2">
@@ -198,7 +240,7 @@ export const SpotlightSearchBar = forwardRef<
             )}
 
             {showResults && (
-              <div className="max-h-56 scroll-hover overflow-y-auto p-2">
+              <div className="scroll-hover max-h-56 overflow-y-auto p-2">
                 {filtered.length === 0 ? (
                   <p className="px-3 py-6 text-center text-sm text-neutral-400">
                     No matches for &ldquo;{value}&rdquo;

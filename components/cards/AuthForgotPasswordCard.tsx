@@ -70,14 +70,20 @@ export const AuthForgotPasswordCard = forwardRef<
         {...props}
       >
         {/* Background */}
-        <Image src={bgImage} alt="Background" fill sizes="384px" className="object-cover" />
+        <Image
+          src={bgImage}
+          alt="Background"
+          fill
+          sizes="384px"
+          className="object-cover"
+        />
 
         <div
           data-slot="auth-forgot-password-card-overlay"
           className="absolute inset-0 bg-black/50"
         />
 
-                <div
+        <div
           data-slot="auth-forgot-password-card-content"
           className="relative flex h-full flex-col p-6"
         >
@@ -91,7 +97,7 @@ export const AuthForgotPasswordCard = forwardRef<
                 <Mail size={22} className="text-neutral-50" />
               </div>
 
-                            <div
+              <div
                 data-slot="auth-forgot-password-card-header"
                 className="text-center"
               >
@@ -127,7 +133,7 @@ export const AuthForgotPasswordCard = forwardRef<
                 <ArrowRight size={14} />
               </button>
 
-                            <div
+              <div
                 data-slot="auth-forgot-password-card-footer"
                 className="mt-auto pt-4"
               >

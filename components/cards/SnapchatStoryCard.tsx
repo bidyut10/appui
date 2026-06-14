@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
@@ -72,12 +68,21 @@ export const SnapchatStoryCard = forwardRef<
           className="relative block h-72 w-full cursor-pointer"
           aria-label="Advance story"
         >
-          <Image src={image} alt="" fill sizes="224px" className="object-cover" />
+          <Image
+            src={image}
+            alt=""
+            fill
+            sizes="224px"
+            className="object-cover"
+          />
           <div className="absolute inset-0 bg-linear-to-b from-black/50 via-transparent to-black/40" />
 
           <div className="absolute top-3 right-3 left-3 flex gap-1">
             {[0, 1, 2].map((i) => (
-              <div key={i} className="h-0.5 flex-1 overflow-hidden rounded-full bg-white/30">
+              <div
+                key={i}
+                className="h-0.5 flex-1 overflow-hidden rounded-full bg-white/30"
+              >
                 <div
                   className="h-full bg-white transition-all duration-300"
                   style={{
@@ -90,12 +95,20 @@ export const SnapchatStoryCard = forwardRef<
 
           <div className="absolute top-8 left-3 flex items-center gap-2">
             <div className="rounded-full p-0.5 ring-2 ring-[#FFFC00]">
-              <Image src={avatar} alt={username} width={28} height={28} className="rounded-full" />
+              <Image
+                src={avatar}
+                alt={username}
+                width={28}
+                height={28}
+                className="rounded-full"
+              />
             </div>
-            <span className="text-[12px] font-semibold text-white">{username}</span>
+            <span className="text-[12px] font-semibold text-white">
+              {username}
+            </span>
           </div>
 
-          <p className="absolute bottom-12 left-3 right-3 text-sm font-medium text-white">
+          <p className="absolute right-3 bottom-12 left-3 text-sm font-medium text-white">
             {storyLabel}
           </p>
         </button>
@@ -107,9 +120,16 @@ export const SnapchatStoryCard = forwardRef<
             className="cursor-pointer p-2 text-neutral-500"
             aria-label="Like story"
           >
-            <Heart size={18} className={liked ? "fill-rose-500 text-rose-500" : ""} />
+            <Heart
+              size={18}
+              className={liked ? "fill-rose-500 text-rose-500" : ""}
+            />
           </button>
-          <button type="button" className="cursor-pointer p-2 text-neutral-500" aria-label="Share story">
+          <button
+            type="button"
+            className="cursor-pointer p-2 text-neutral-500"
+            aria-label="Share story"
+          >
             <Send size={18} />
           </button>
         </div>

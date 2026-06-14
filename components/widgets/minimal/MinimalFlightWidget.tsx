@@ -46,7 +46,9 @@ export const MinimalFlightWidget = forwardRef<
       </div>
 
       <p className="font-mono text-xl font-black tracking-wider">{route}</p>
-      <p className="mt-1 font-mono text-sm font-bold text-red-500">{countdown}</p>
+      <p className="mt-1 font-mono text-sm font-bold text-red-500">
+        {countdown}
+      </p>
 
       <div className="mt-4 flex justify-between border-t border-neutral-800 pt-3 text-xs">
         <div>

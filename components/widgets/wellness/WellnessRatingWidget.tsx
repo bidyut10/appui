@@ -42,7 +42,10 @@ export const WellnessRatingWidget = forwardRef<
           <div className="absolute inset-x-4 top-1/2 h-0.5 -translate-y-1/2 bg-neutral-200" />
           <div
             className="absolute top-1/2 left-4 h-0.5 -translate-y-1/2 bg-[#D9F26D]"
-            style={{ width: `${((rating - 1) / 4) * 100}%`, maxWidth: "calc(100% - 2rem)" }}
+            style={{
+              width: `${((rating - 1) / 4) * 100}%`,
+              maxWidth: "calc(100% - 2rem)",
+            }}
           />
           {[1, 2, 3, 4, 5].map((n) => (
             <button

@@ -42,14 +42,12 @@ function formatTime(timezone: string) {
   }).format(new Date());
 }
 
-export const WorldClockWidget = forwardRef<HTMLDivElement, WorldClockWidgetProps>(
+export const WorldClockWidget = forwardRef<
+  HTMLDivElement,
+  WorldClockWidgetProps
+>(
   (
-    {
-      className,
-      title = "World clock",
-      cities = defaultCities,
-      ...props
-    },
+    { className, title = "World clock", cities = defaultCities, ...props },
     ref,
   ) => {
     const [mounted, setMounted] = useState(false);

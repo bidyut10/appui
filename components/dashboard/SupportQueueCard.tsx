@@ -72,7 +72,7 @@ export const SupportQueueCard = forwardRef<
       )}
       {...props}
     >
-            <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
+      <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
         <p className="text-sm font-semibold text-neutral-900">{title}</p>
         <span className="rounded-full bg-rose-50 px-2 py-0.5 text-[11px] font-bold text-rose-700 tabular-nums">
           {openCount.toLocaleString()} {openLabel}

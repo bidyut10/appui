@@ -93,9 +93,7 @@ export const AppleWeatherPremium = forwardRef<
                 <p className="mt-0.5 text-sm font-semibold text-white">
                   {value}
                 </p>
-                {sub && (
-                  <p className="text-[9px] text-amber-300">{sub}</p>
-                )}
+                {sub && <p className="text-[9px] text-amber-300">{sub}</p>}
               </div>
             ))}
           </div>

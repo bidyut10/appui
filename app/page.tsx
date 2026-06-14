@@ -352,11 +352,19 @@ import { StorageVaultWidget } from "@/components/widgets/StorageVaultWidget";
 type Row = [React.ReactNode, React.ReactNode, React.ReactNode];
 
 const rows: Row[] = [
-  [<InstagramPostCard imagePriority />, <TikTokPostCard />, <YouTubeVideoCard />],
+  [
+    <InstagramPostCard imagePriority />,
+    <TikTokPostCard />,
+    <YouTubeVideoCard />,
+  ],
   [<ThreadsPostCard />, <RedditPostCard />, <PinterestPinCard />],
   [<TwitterPostCard />, <FacebookPostCard />, <LinkedInPostCard />],
 
-  [<TypewriterTextWidget />, <StatTickerWidget />, <TypographyShowcaseWidget />],
+  [
+    <TypewriterTextWidget />,
+    <StatTickerWidget />,
+    <TypographyShowcaseWidget />,
+  ],
   [<GitHubRepoCard />, <AIChatCard />, <GitHubPullRequestCard />],
   [<DiscordChatCard />, <VoiceAssistantWidget />, <WiFiToggleWidget />],
 
@@ -394,7 +402,11 @@ const rows: Row[] = [
   [<HomeDropdown />, <UserMenuDropdown />, <ContextMenuDropdown />],
 
   [<FlightArrivalWidget />, <MapLocationCard />, <GpsTrackingMapWidget />],
-  [<AirportGateWidget />, <CalendarWidgetCard />, <DailyActivityCalendarWidget />],
+  [
+    <AirportGateWidget />,
+    <CalendarWidgetCard />,
+    <DailyActivityCalendarWidget />,
+  ],
   [<AppleNotesWidget />, <NotepadCard />, <AppleWidgetStack />],
 
   [<GithubProfileCard />, <GithubContributionCard />, <TerminalLogCard />],
@@ -451,9 +463,21 @@ const rows: Row[] = [
   [<TabloidHeadlineCard />, <TypeSpecimenCard />, <VideoThumbnailCard />],
   [<MusicPlaylistCard />, <AvatarGroupCard />, <AuthSplitLoginCard />],
 
-  [<ProfileMenuPreviewCard />, <SortMenuPreviewCard />, <ActionMenuPreviewCard />],
-  [<NotificationPanelPreviewCard />, <WorkspaceSwitcherPreviewCard />, <ShareMenuDropdown />],
-  [<QuickActionsDropdown />, <FilterSortDropdown />, <WorkspaceSwitcherDropdown />],
+  [
+    <ProfileMenuPreviewCard />,
+    <SortMenuPreviewCard />,
+    <ActionMenuPreviewCard />,
+  ],
+  [
+    <NotificationPanelPreviewCard />,
+    <WorkspaceSwitcherPreviewCard />,
+    <ShareMenuDropdown />,
+  ],
+  [
+    <QuickActionsDropdown />,
+    <FilterSortDropdown />,
+    <WorkspaceSwitcherDropdown />,
+  ],
 
   [<LanguagePickerDropdown />, <ThemeColorDropdown />, <DateRangeDropdown />],
   [<OnboardingSteps />, <PricingEnterpriseCard />, <PricingLifetimeCard />],
@@ -473,31 +497,83 @@ const rows: Row[] = [
   [<EmailThreadWidget />, <WellnessChatAudioWidget />, <DribbbleShotCard />],
   [<GlowButtonBar />, <MinimalMusicPlayerWidget />, <MarqueeTextWidget />],
 
-  [<FitnessActivityWidget />, <MentalHealthPollWidget />, <MinimalFlightWidget />],
-  [<DailyHabitTimerWidget />, <TurnByTurnNavWidget />, <WeeklyActivityChartWidget />],
+  [
+    <FitnessActivityWidget />,
+    <MentalHealthPollWidget />,
+    <MinimalFlightWidget />,
+  ],
+  [
+    <DailyHabitTimerWidget />,
+    <TurnByTurnNavWidget />,
+    <WeeklyActivityChartWidget />,
+  ],
   [<BatteryUsageWidget />, <CameraRecordingWidget />, <RidePickupWidget />],
-  [<ChargingStatusWidget />, <ElectricScooterWidget />, <WorkoutDashboardWidget />],
+  [
+    <ChargingStatusWidget />,
+    <ElectricScooterWidget />,
+    <WorkoutDashboardWidget />,
+  ],
 
-  [<MinimalTimezoneWidget />, <MinimalCalendarDayWidget />, <MinimalAnalogClockWidget />],
-  [<MinimalRecordButton />, <MinimalAirplaneButton />, <MinimalEarbudsWidget />],
-  [<MinimalTorchToggle />, <MinimalBluetoothToggle />, <MinimalStatusDockWidget />],
-  [<MinimalDotPatternCard />, <MinimalCompassWidget />, <MinimalStopwatchWidget />],
+  [
+    <MinimalTimezoneWidget />,
+    <MinimalCalendarDayWidget />,
+    <MinimalAnalogClockWidget />,
+  ],
+  [
+    <MinimalRecordButton />,
+    <MinimalAirplaneButton />,
+    <MinimalEarbudsWidget />,
+  ],
+  [
+    <MinimalTorchToggle />,
+    <MinimalBluetoothToggle />,
+    <MinimalStatusDockWidget />,
+  ],
+  [
+    <MinimalDotPatternCard />,
+    <MinimalCompassWidget />,
+    <MinimalStopwatchWidget />,
+  ],
 
-  [<CircularScheduleDialWidget />, <WellnessRatingWidget />, <AnalogClockWidget />],
+  [
+    <CircularScheduleDialWidget />,
+    <WellnessRatingWidget />,
+    <AnalogClockWidget />,
+  ],
   [<SnapchatStoryCard />, <WorldClockWidget />, <ImageQuoteOverlayCard />],
 
   [<GitHubCodeBlockCard />, <GradientTextWidget />, <TextRevealWidget />],
   [<WhatsAppChatCard />, <EmailNewsletterCard />, <InboxSummaryCard />],
-  [<RichTextEditorWidget />, <MeetingScheduleWidget />, <IntegrationStatusWidget />],
+  [
+    <RichTextEditorWidget />,
+    <MeetingScheduleWidget />,
+    <IntegrationStatusWidget />,
+  ],
   [<DatePickerWidget />, <AppointmentPickerCard />, <FocusTimerCard />],
   [<MusicPlayerCard />, <PodcastCard />, <NFTGalleryCard />],
   [<GalleryGridCard />, <OrganicBlobImageCard />, <FeatureTabsCard />],
   [<FlightBoardingCard />, <AppleMapsCard />, <AppleWeatherPremium />],
   [<AppleHealthRings />, <AppleRemindersWidget />, <MiniFooter />],
-  [<MinimalMicButton />, <MinimalLocationButton />, <MinimalAutoRotateButton />],
-  [<MinimalScreenRecordButton />, <MinimalExtraDimToggle />, <MinimalNearbyShareToggle />],
-  [<MinimalHotspotToggle />, <MinimalMobileDataToggle />, <MinimalDarkModeToggle />],
-  [<MinimalCalculatorToggle />, <MinimalBatterySaverToggle />, <MaintenanceCard />],
+  [
+    <MinimalMicButton />,
+    <MinimalLocationButton />,
+    <MinimalAutoRotateButton />,
+  ],
+  [
+    <MinimalScreenRecordButton />,
+    <MinimalExtraDimToggle />,
+    <MinimalNearbyShareToggle />,
+  ],
+  [
+    <MinimalHotspotToggle />,
+    <MinimalMobileDataToggle />,
+    <MinimalDarkModeToggle />,
+  ],
+  [
+    <MinimalCalculatorToggle />,
+    <MinimalBatterySaverToggle />,
+    <MaintenanceCard />,
+  ],
 ];
 
 export default function Home() {

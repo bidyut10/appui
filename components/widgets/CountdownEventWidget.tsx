@@ -85,7 +85,9 @@ export const CountdownEventWidget = forwardRef<
         <p className="text-[10px] font-semibold tracking-widest text-teal-600 uppercase">
           Countdown
         </p>
-        <h3 className="mt-1 text-base font-bold text-neutral-900">{eventName}</h3>
+        <h3 className="mt-1 text-base font-bold text-neutral-900">
+          {eventName}
+        </h3>
         <p className="mt-0.5 text-[11px] text-neutral-400">{location}</p>
 
         <div className="mt-4 grid grid-cols-4 gap-2">

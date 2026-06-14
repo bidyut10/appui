@@ -123,7 +123,10 @@ export const VideoThumbnailCard = forwardRef<
           )}
         </button>
 
-        <div data-slot="video-thumbnail-card-content" className="flex gap-3 p-3">
+        <div
+          data-slot="video-thumbnail-card-content"
+          className="flex gap-3 p-3"
+        >
           <div
             data-slot="video-thumbnail-card-avatar"
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-red-500 to-red-600"
@@ -137,7 +140,9 @@ export const VideoThumbnailCard = forwardRef<
             <h3
               className={cn(
                 "text-sm leading-snug font-semibold transition-colors",
-                playing ? "text-red-600" : "text-neutral-900 group-hover:text-red-600",
+                playing
+                  ? "text-red-600"
+                  : "text-neutral-900 group-hover:text-red-600",
               )}
             >
               {title}

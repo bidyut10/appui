@@ -151,7 +151,10 @@ export const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
           key={index}
           style={{ animation: "testimonial-fade 0.32s ease-out" }}
         >
-          <div data-slot="testimonial-card-rating" className="mb-4 flex gap-0.5">
+          <div
+            data-slot="testimonial-card-rating"
+            className="mb-4 flex gap-0.5"
+          >
             {Array.from({ length: current.rating ?? 5 }).map((_, starIndex) => (
               <Star key={starIndex} size={12} className="text-amber-400" />
             ))}

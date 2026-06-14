@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
@@ -66,7 +63,9 @@ export const EmailNewsletterCard = forwardRef<
 
       <div className="p-4">
         <h3 className="text-base font-bold text-neutral-900">{headline}</h3>
-        <p className="mt-2 text-[12px] leading-relaxed text-neutral-600">{body}</p>
+        <p className="mt-2 text-[12px] leading-relaxed text-neutral-600">
+          {body}
+        </p>
         <button
           type="button"
           onClick={onCta}

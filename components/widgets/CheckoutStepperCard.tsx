@@ -1,4 +1,8 @@
-import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import {
+  forwardRef,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
+} from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -46,12 +50,7 @@ export const CheckoutStepperCard = forwardRef<
   CheckoutStepperCardProps
 >(
   (
-    {
-      className,
-      steps = defaultSteps,
-      orderTotal = "₹2,120",
-      ...props
-    },
+    { className, steps = defaultSteps, orderTotal = "₹2,120", ...props },
     ref,
   ) => (
     <div

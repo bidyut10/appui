@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
@@ -62,7 +58,13 @@ export const VideoReelCard = forwardRef<HTMLDivElement, VideoReelCardProps>(
         {...props}
       >
         <div className="relative aspect-[9/14] overflow-hidden bg-neutral-900">
-          <Image src={thumbnail} alt="" fill sizes="224px" className="object-cover" />
+          <Image
+            src={thumbnail}
+            alt=""
+            fill
+            sizes="224px"
+            className="object-cover"
+          />
           <div className="absolute inset-0 bg-black/25" />
 
           <button
@@ -87,12 +89,17 @@ export const VideoReelCard = forwardRef<HTMLDivElement, VideoReelCardProps>(
             aria-label="Like reel"
             className="absolute right-2 bottom-14 flex cursor-pointer flex-col items-center gap-0.5 text-white"
           >
-            <Heart size={20} className={liked ? "fill-rose-500 text-rose-500" : ""} />
+            <Heart
+              size={20}
+              className={liked ? "fill-rose-500 text-rose-500" : ""}
+            />
           </button>
 
           <div className="absolute right-0 bottom-0 left-0 bg-linear-to-t from-black/80 to-transparent p-3 pt-8">
             <p className="text-[11px] font-semibold text-white">{creator}</p>
-            <p className="mt-0.5 line-clamp-2 text-[10px] text-white/80">{caption}</p>
+            <p className="mt-0.5 line-clamp-2 text-[10px] text-white/80">
+              {caption}
+            </p>
             <p className="mt-1 text-[9px] text-white/60">{views} views</p>
           </div>
         </div>

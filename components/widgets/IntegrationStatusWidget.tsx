@@ -149,7 +149,9 @@ export const IntegrationStatusWidget = forwardRef<
                     {item.name}
                   </p>
                   <div className="mt-0.5 flex items-center gap-1.5">
-                    <span className={cn("h-1.5 w-1.5 rounded-full", style.dot)} />
+                    <span
+                      className={cn("h-1.5 w-1.5 rounded-full", style.dot)}
+                    />
                     <span className={cn("text-[10px] font-medium", style.text)}>
                       {style.label}
                     </span>

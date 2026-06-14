@@ -1,8 +1,4 @@
-import {
-  forwardRef,
-  useId,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useId, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -74,7 +70,7 @@ export const StorageUsageCard = forwardRef<
         )}
         {...props}
       >
-                <div className="mb-4 flex items-center justify-between">
+        <div className="mb-4 flex items-center justify-between">
           <h4 className="text-sm font-semibold text-neutral-900">{title}</h4>
 
           <span className="font-mono text-[10px] text-neutral-400">{plan}</span>
@@ -140,7 +136,7 @@ export const StorageUsageCard = forwardRef<
           ))}
         </div>
 
-                <p className="mt-3 text-center text-[10px] text-neutral-400">
+        <p className="mt-3 text-center text-[10px] text-neutral-400">
           {footerText}
         </p>
       </div>

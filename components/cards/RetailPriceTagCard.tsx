@@ -48,7 +48,7 @@ export const RetailPriceTagCard = forwardRef<
         <span className="absolute -top-2.5 right-2 rounded bg-rose-500 px-1.5 py-0.5 text-[8px] font-black text-white">
           {discount}
         </span>
-        <p className="text-[11px] font-bold leading-tight text-neutral-900">
+        <p className="text-[11px] leading-tight font-bold text-neutral-900">
           {productName}
         </p>
         <p className="mt-2 text-2xl font-black tracking-tight text-neutral-900">

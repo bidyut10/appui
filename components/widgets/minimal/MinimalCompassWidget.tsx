@@ -21,7 +21,9 @@ export const MinimalCompassWidget = forwardRef<
     )}
     {...props}
   >
-    <span className="absolute top-6 font-mono text-xs font-bold text-white">{heading}</span>
+    <span className="absolute top-6 font-mono text-xs font-bold text-white">
+      {heading}
+    </span>
     <div className="flex flex-col items-center gap-0.5">
       {Array.from({ length: 7 }).map((_, row) => (
         <div key={row} className="flex gap-0.5">

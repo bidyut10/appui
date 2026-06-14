@@ -29,28 +29,31 @@ export const RomanAnalogClockWidget = forwardRef<
   const minutes = now ? now.getMinutes() : 0;
   const seconds = now ? now.getSeconds() : 0;
 
-    return (
-      <div
-        ref={ref}
-        data-slot="roman-analog-clock-widget"
-        className={cn(
-          "flex h-44 w-44 items-center justify-center overflow-hidden rounded-3xl border border-neutral-200 bg-white p-5 font-sans shadow-lg",
-          className,
-        )}
-        {...props}
-      >
-        {now ? (
-          <AnalogClockFace
-            variant="roman"
-            hours={hours}
-            minutes={minutes}
-            seconds={seconds}
-          />
-        ) : (
-          <div className="h-full w-full rounded-full bg-neutral-100" aria-hidden />
-        )}
-      </div>
-    );
+  return (
+    <div
+      ref={ref}
+      data-slot="roman-analog-clock-widget"
+      className={cn(
+        "flex h-44 w-44 items-center justify-center overflow-hidden rounded-3xl border border-neutral-200 bg-white p-5 font-sans shadow-lg",
+        className,
+      )}
+      {...props}
+    >
+      {now ? (
+        <AnalogClockFace
+          variant="roman"
+          hours={hours}
+          minutes={minutes}
+          seconds={seconds}
+        />
+      ) : (
+        <div
+          className="h-full w-full rounded-full bg-neutral-100"
+          aria-hidden
+        />
+      )}
+    </div>
+  );
 });
 
 RomanAnalogClockWidget.displayName = "RomanAnalogClockWidget";

@@ -171,7 +171,8 @@ export const VoiceWaveCard = forwardRef<HTMLDivElement, VoiceWaveCardProps>(
           {bars.map((height, index) => {
             const isPlayed = index < playheadIndex;
             const isActive =
-              playing && (index === playheadIndex || index === playheadIndex - 1);
+              playing &&
+              (index === playheadIndex || index === playheadIndex - 1);
 
             return (
               <div

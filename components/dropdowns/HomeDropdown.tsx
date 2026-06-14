@@ -30,7 +30,15 @@ const defaultItems: DropdownItem[] = [
 ];
 
 export const HomeDropdown = forwardRef<HTMLDivElement, HomeDropdownProps>(
-  ({ triggerLabel = "Project Settings", items = defaultItems, className, ...props }, ref) => (
+  (
+    {
+      triggerLabel = "Project Settings",
+      items = defaultItems,
+      className,
+      ...props
+    },
+    ref,
+  ) => (
     <Dropdown
       ref={ref}
       className={cn(className)}

@@ -72,13 +72,19 @@ export const AuthSplitLoginCard = forwardRef<
         data-slot="auth-split-login-card-image"
         className="relative hidden w-32 shrink-0 sm:block"
       >
-        <Image src={imageSrc} alt="" fill sizes="128px" className="object-cover" />
+        <Image
+          src={imageSrc}
+          alt=""
+          fill
+          sizes="128px"
+          className="object-cover"
+        />
 
         <div className="absolute inset-0 bg-teal-900/40" />
       </div>
 
-            <div data-slot="auth-split-login-card-content" className="flex-1 p-5">
-                <div data-slot="auth-split-login-card-header">
+      <div data-slot="auth-split-login-card-content" className="flex-1 p-5">
+        <div data-slot="auth-split-login-card-header">
           <h3 className="mb-1 text-base font-semibold text-neutral-900">
             {title}
           </h3>

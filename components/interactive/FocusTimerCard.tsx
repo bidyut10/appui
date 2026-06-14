@@ -79,10 +79,7 @@ export const FocusTimerCard = forwardRef<HTMLDivElement, FocusTimerCardProps>(
         )}
         {...props}
       >
-        <div
-          data-slot="focus-timer-card-header"
-          className="mb-4 text-center"
-        >
+        <div data-slot="focus-timer-card-header" className="mb-4 text-center">
           <p className="text-[11px] font-semibold tracking-widest text-emerald-400 uppercase">
             {phase}
           </p>

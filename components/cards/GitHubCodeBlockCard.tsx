@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -75,7 +71,9 @@ export const GitHubCodeBlockCard = forwardRef<
       >
         <div className="flex items-center justify-between border-b border-neutral-100 bg-neutral-50 px-3 py-2">
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-medium text-neutral-700">{fileName}</span>
+            <span className="text-[11px] font-medium text-neutral-700">
+              {fileName}
+            </span>
             <span className="rounded bg-neutral-200/80 px-1.5 py-0.5 font-mono text-[9px] text-neutral-500">
               {language}
             </span>
@@ -86,12 +84,16 @@ export const GitHubCodeBlockCard = forwardRef<
             aria-label="Copy code"
             className="flex h-7 cursor-pointer items-center gap-1 rounded-md border border-neutral-200 bg-white px-2 text-[10px] font-medium text-neutral-600 transition-colors hover:bg-neutral-50"
           >
-            {copied ? <Check size={12} className="text-emerald-600" /> : <Copy size={12} />}
+            {copied ? (
+              <Check size={12} className="text-emerald-600" />
+            ) : (
+              <Copy size={12} />
+            )}
             {copied ? "Copied" : "Copy"}
           </button>
         </div>
 
-        <pre className="max-h-44 scroll-hover overflow-auto bg-[#fafafa] p-3 font-mono text-[10px] leading-relaxed text-neutral-800">
+        <pre className="scroll-hover max-h-44 overflow-auto bg-[#fafafa] p-3 font-mono text-[10px] leading-relaxed text-neutral-800">
           <code>{code}</code>
         </pre>
       </div>

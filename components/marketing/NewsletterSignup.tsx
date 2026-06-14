@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -101,10 +97,7 @@ export const NewsletterSignup = forwardRef<
               </p>
             </div>
           ) : (
-            <div
-              data-slot="newsletter-signup-form"
-              className="flex gap-2"
-            >
+            <div data-slot="newsletter-signup-form" className="flex gap-2">
               <input
                 type="email"
                 value={email}

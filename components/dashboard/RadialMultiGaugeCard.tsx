@@ -96,7 +96,7 @@ export const RadialMultiGaugeCard = forwardRef<
       )}
       {...props}
     >
-            <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
+      <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
 
       {/* Gauges */}
       <div className="flex justify-around">

@@ -63,10 +63,7 @@ export const EditorialQuoteCard = forwardRef<
         >
           {parts.map((part, index) =>
             part.toLowerCase() === accentWord.toLowerCase() ? (
-              <span
-                key={index}
-                className="bg-neutral-900 px-1 text-[#f6f2eb]"
-              >
+              <span key={index} className="bg-neutral-900 px-1 text-[#f6f2eb]">
                 {part}
               </span>
             ) : (

@@ -74,7 +74,7 @@ export const ApiLatencyCard = forwardRef<HTMLDivElement, ApiLatencyCardProps>(
         )}
         {...props}
       >
-                <p className="text-[11px] font-medium text-neutral-500">{title}</p>
+        <p className="text-[11px] font-medium text-neutral-500">{title}</p>
         <p className="mt-0.5 truncate font-mono text-[12px] text-neutral-700">
           {endpoint}
         </p>

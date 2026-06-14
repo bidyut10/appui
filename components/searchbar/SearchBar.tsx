@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -67,7 +63,7 @@ export const SearchBar = forwardRef<HTMLDivElement, SearchBarProps>(
             aria-label={placeholder}
             data-slot="search-bar-input"
             className={cn(
-              "h-10 w-full rounded-full border bg-neutral-50 pr-9 pl-9 text-sm text-neutral-900 outline-none transition-all duration-500 placeholder:text-neutral-400",
+              "h-10 w-full rounded-full border bg-neutral-50 pr-9 pl-9 text-sm text-neutral-900 transition-all duration-500 outline-none placeholder:text-neutral-400",
               focused
                 ? "border-teal-300 bg-white shadow-[0_0_0_4px_rgba(20,184,166,0.12),0_8px_24px_rgba(20,184,166,0.08)]"
                 : "border-neutral-200",

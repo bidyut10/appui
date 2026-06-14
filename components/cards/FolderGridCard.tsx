@@ -77,7 +77,9 @@ export const FolderGridCard = forwardRef<HTMLDivElement, FolderGridCardProps>(
                 <p className="mt-2 truncate text-xs font-semibold text-neutral-900">
                   {item.name}
                 </p>
-                <p className="text-[10px] text-neutral-400">{item.count} items</p>
+                <p className="text-[10px] text-neutral-400">
+                  {item.count} items
+                </p>
               </button>
             );
           })}

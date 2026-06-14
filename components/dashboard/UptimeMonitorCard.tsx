@@ -52,7 +52,7 @@ export const UptimeMonitorCard = forwardRef<
       )}
       {...props}
     >
-            <div className="mb-4 flex items-center justify-between">
+      <div className="mb-4 flex items-center justify-between">
         <p className="text-[11px] font-medium text-neutral-500">{title}</p>
         <span className="text-[10px] text-neutral-400">{period}</span>
       </div>

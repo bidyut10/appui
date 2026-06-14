@@ -48,7 +48,7 @@ export const RevenueBridgeCard = forwardRef<
       )}
       {...props}
     >
-            <p className="mb-5 text-[11px] font-medium text-neutral-500">{title}</p>
+      <p className="mb-5 text-[11px] font-medium text-neutral-500">{title}</p>
 
       {/* Bridge */}
       <div className="flex items-end justify-between gap-1">
@@ -60,10 +60,7 @@ export const RevenueBridgeCard = forwardRef<
           const isNeg = step.type === "subtract";
 
           return (
-            <div
-              key={step.label}
-              className="flex flex-1 flex-col items-center"
-            >
+            <div key={step.label} className="flex flex-1 flex-col items-center">
               {step.type === "add" || step.type === "subtract" ? (
                 <span
                   className={cn(

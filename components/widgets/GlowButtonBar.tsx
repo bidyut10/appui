@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -47,7 +43,9 @@ export const GlowButtonBar = forwardRef<HTMLDivElement, GlowButtonBarProps>(
         )}
         {...props}
       >
-        <p className="mb-3 text-sm font-bold text-neutral-900">Action buttons</p>
+        <p className="mb-3 text-sm font-bold text-neutral-900">
+          Action buttons
+        </p>
 
         <button
           type="button"

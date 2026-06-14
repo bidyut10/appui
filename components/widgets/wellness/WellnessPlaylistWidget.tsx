@@ -55,7 +55,13 @@ export const WellnessPlaylistWidget = forwardRef<
           )}
         >
           <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full">
-            <Image src={bgImage} alt="" fill className="object-cover" sizes="40px" />
+            <Image
+              src={bgImage}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="40px"
+            />
             {active === i && playing && (
               <span className="absolute inset-0 flex items-center justify-center bg-black/40">
                 <Pause size={12} className="text-white" />
@@ -71,7 +77,9 @@ export const WellnessPlaylistWidget = forwardRef<
             <p className="text-[10px] text-neutral-500">
               {item.time} · {item.tag}
             </p>
-            <p className="truncate text-xs font-semibold text-neutral-900">{item.title}</p>
+            <p className="truncate text-xs font-semibold text-neutral-900">
+              {item.title}
+            </p>
           </div>
           <Ellipsis size={14} className="shrink-0 text-neutral-400" />
         </button>

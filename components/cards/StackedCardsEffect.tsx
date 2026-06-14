@@ -26,7 +26,13 @@ export const StackedCardsEffect = forwardRef<
 
     <div className="absolute inset-0 overflow-hidden rounded-2xl border border-neutral-100 bg-white shadow-lg transition-transform duration-500 group-hover:-translate-y-1">
       <div className="relative h-28 overflow-hidden">
-        <Image src={bgImage} alt="Card" fill sizes="288px" className="object-cover" />
+        <Image
+          src={bgImage}
+          alt="Card"
+          fill
+          sizes="288px"
+          className="object-cover"
+        />
       </div>
       <div className="p-4">
         <div className="mb-2 flex items-center gap-2">

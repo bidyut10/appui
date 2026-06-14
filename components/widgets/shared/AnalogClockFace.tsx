@@ -119,7 +119,12 @@ export function AnalogClockFace({
           transform={`rotate(${secondDeg} 50 50)`}
         />
       )}
-      <circle cx="50" cy="50" r="2" fill={variant === "dot" ? "#000" : "#171717"} />
+      <circle
+        cx="50"
+        cy="50"
+        r="2"
+        fill={variant === "dot" ? "#000" : "#171717"}
+      />
     </svg>
   );
 }

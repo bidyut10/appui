@@ -119,7 +119,7 @@ export const TwitterProfileCard = forwardRef<
           data-slot="twitter-profile-card-content"
           className="px-5 pt-12 pb-5"
         >
-                    <div className="flex items-start justify-between">
+          <div className="flex items-start justify-between">
             <div>
               <p
                 title={name}

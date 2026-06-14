@@ -21,27 +21,34 @@ const TREE: TreeNode[] = [
     name: "src",
     type: "folder",
     children: [
-      { id: "app", name: "app", type: "folder", children: [
-        { id: "page", name: "page.tsx", type: "file" },
-        { id: "layout", name: "layout.tsx", type: "file" },
-      ]},
-      { id: "components", name: "components", type: "folder", children: [
-        { id: "cards", name: "cards", type: "folder", children: [
-          { id: "card", name: "ProfileCard.tsx", type: "file" },
-        ]},
-      ]},
+      {
+        id: "app",
+        name: "app",
+        type: "folder",
+        children: [
+          { id: "page", name: "page.tsx", type: "file" },
+          { id: "layout", name: "layout.tsx", type: "file" },
+        ],
+      },
+      {
+        id: "components",
+        name: "components",
+        type: "folder",
+        children: [
+          {
+            id: "cards",
+            name: "cards",
+            type: "folder",
+            children: [{ id: "card", name: "ProfileCard.tsx", type: "file" }],
+          },
+        ],
+      },
     ],
   },
   { id: "readme", name: "README.md", type: "file" },
 ];
 
-function TreeItem({
-  node,
-  depth = 0,
-}: {
-  node: TreeNode;
-  depth?: number;
-}) {
+function TreeItem({ node, depth = 0 }: { node: TreeNode; depth?: number }) {
   const [open, setOpen] = useState(depth < 1);
   const isFolder = node.type === "folder";
 
@@ -54,7 +61,11 @@ function TreeItem({
         style={{ paddingLeft: `${depth * 12 + 8}px` }}
       >
         {isFolder ? (
-          open ? <ChevronDown size={12} className="text-neutral-400" /> : <ChevronRight size={12} className="text-neutral-400" />
+          open ? (
+            <ChevronDown size={12} className="text-neutral-400" />
+          ) : (
+            <ChevronRight size={12} className="text-neutral-400" />
+          )
         ) : (
           <span className="w-3" />
         )}
@@ -63,11 +74,15 @@ function TreeItem({
         ) : (
           <File size={14} className="shrink-0 text-blue-500" />
         )}
-        <span className="truncate text-xs font-medium text-neutral-800">{node.name}</span>
+        <span className="truncate text-xs font-medium text-neutral-800">
+          {node.name}
+        </span>
       </button>
-      {isFolder && open && node.children?.map((child) => (
-        <TreeItem key={child.id} node={child} depth={depth + 1} />
-      ))}
+      {isFolder &&
+        open &&
+        node.children?.map((child) => (
+          <TreeItem key={child.id} node={child} depth={depth + 1} />
+        ))}
     </div>
   );
 }

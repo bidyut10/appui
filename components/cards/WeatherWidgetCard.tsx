@@ -74,8 +74,7 @@ export const WeatherWidgetCard = forwardRef<
     const [expanded, setExpanded] = useState(false);
     const [unit, setUnit] = useState<"C" | "F">(defaultUnit);
 
-    const displayTemp =
-      unit === "C" ? temperature : toFahrenheit(temperature);
+    const displayTemp = unit === "C" ? temperature : toFahrenheit(temperature);
 
     const formatTemp = (value: number) =>
       unit === "C" ? value : toFahrenheit(value);
@@ -139,7 +138,9 @@ export const WeatherWidgetCard = forwardRef<
               <Sun
                 size={56}
                 className="mb-2 fill-yellow-300 text-yellow-300 transition-transform duration-500"
-                style={{ transform: expanded ? "rotate(12deg) scale(1.05)" : undefined }}
+                style={{
+                  transform: expanded ? "rotate(12deg) scale(1.05)" : undefined,
+                }}
               />
             )}
 
@@ -165,7 +166,9 @@ export const WeatherWidgetCard = forwardRef<
                 <p className="text-[9px] tracking-wider text-white/50 uppercase">
                   {label}
                 </p>
-                <p className="mt-0.5 text-xs font-semibold text-white">{value}</p>
+                <p className="mt-0.5 text-xs font-semibold text-white">
+                  {value}
+                </p>
               </div>
             ))}
           </div>

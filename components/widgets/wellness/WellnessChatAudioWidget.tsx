@@ -33,7 +33,9 @@ export const WellnessChatAudioWidget = forwardRef<
             <button
               type="button"
               onClick={() => setPlaying(!playing)}
-              aria-label={playing ? "Pause voice message" : "Play voice message"}
+              aria-label={
+                playing ? "Pause voice message" : "Play voice message"
+              }
               className="flex cursor-pointer items-center justify-center rounded-full bg-neutral-900/10 p-1 transition-transform active:scale-95"
             >
               {playing ? <Pause size={12} /> : <Play size={12} />}
@@ -57,7 +59,13 @@ export const WellnessChatAudioWidget = forwardRef<
 
       <div className="flex items-end gap-2">
         <div className="relative h-7 w-7 shrink-0 overflow-hidden rounded-full">
-          <Image src={bgImage} alt="" fill className="object-cover" sizes="28px" />
+          <Image
+            src={bgImage}
+            alt=""
+            fill
+            className="object-cover"
+            sizes="28px"
+          />
         </div>
         <p className="rounded-2xl rounded-bl-sm bg-neutral-100 px-3 py-2 text-xs text-neutral-800">
           Hey Nataliya!
@@ -66,7 +74,13 @@ export const WellnessChatAudioWidget = forwardRef<
 
       <div className="flex items-center gap-2 pl-9">
         <div className="relative h-6 w-6 overflow-hidden rounded-full">
-          <Image src={bgImage} alt="" fill className="object-cover" sizes="24px" />
+          <Image
+            src={bgImage}
+            alt=""
+            fill
+            className="object-cover"
+            sizes="24px"
+          />
         </div>
         <p className="text-[11px] text-neutral-400">Jennifer is typing...</p>
       </div>

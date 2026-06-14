@@ -68,7 +68,6 @@ export const PaginationBar = forwardRef<HTMLDivElement, PaginationBarProps>(
         className={cn("flex items-center gap-1 font-sans", className)}
         {...props}
       >
-        
         <button
           type="button"
           aria-label="Previous page"
@@ -80,7 +79,6 @@ export const PaginationBar = forwardRef<HTMLDivElement, PaginationBarProps>(
           <ChevronLeft />
         </button>
 
-        
         {visiblePages.map((pageNumber) => (
           <button
             key={pageNumber}
@@ -99,7 +97,6 @@ export const PaginationBar = forwardRef<HTMLDivElement, PaginationBarProps>(
           </button>
         ))}
 
-        
         <span
           aria-hidden="true"
           data-slot="pagination-ellipsis"
@@ -108,7 +105,6 @@ export const PaginationBar = forwardRef<HTMLDivElement, PaginationBarProps>(
           …
         </span>
 
-        
         <button
           type="button"
           data-slot="pagination-last-page"
@@ -118,7 +114,6 @@ export const PaginationBar = forwardRef<HTMLDivElement, PaginationBarProps>(
           {totalPages}
         </button>
 
-        
         <button
           type="button"
           aria-label="Next page"

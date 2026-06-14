@@ -135,7 +135,7 @@ export const TikTokPostCard = forwardRef<HTMLDivElement, TikTokPostCardProps>(
                 />
               </div>
               {!following && (
-                <span className="absolute -bottom-0.5 left-1/2 flex h-3 w-3 -translate-x-1/2 items-center justify-center rounded-full bg-[#fe2c55] text-[7px] font-bold leading-none text-white">
+                <span className="absolute -bottom-0.5 left-1/2 flex h-3 w-3 -translate-x-1/2 items-center justify-center rounded-full bg-[#fe2c55] text-[7px] leading-none font-bold text-white">
                   +
                 </span>
               )}
@@ -156,7 +156,9 @@ export const TikTokPostCard = forwardRef<HTMLDivElement, TikTokPostCardProps>(
                   size={15}
                   className={cn(
                     "drop-shadow-md",
-                    active ? "fill-[#fe2c55] text-[#fe2c55]" : "fill-white text-white",
+                    active
+                      ? "fill-[#fe2c55] text-[#fe2c55]"
+                      : "fill-white text-white",
                   )}
                 />
                 <span className="text-[8px] font-medium text-white drop-shadow-sm">
@@ -180,7 +182,10 @@ export const TikTokPostCard = forwardRef<HTMLDivElement, TikTokPostCardProps>(
             >
               <Music
                 size={9}
-                className={cn("shrink-0 opacity-80", playing && "animate-pulse")}
+                className={cn(
+                  "shrink-0 opacity-80",
+                  playing && "animate-pulse",
+                )}
               />
               <span className="truncate text-[9px]">{sound}</span>
             </button>
@@ -215,7 +220,9 @@ export const TikTokPostCard = forwardRef<HTMLDivElement, TikTokPostCardProps>(
         {/* Footer — display name once, no duplicate handle */}
         <div className="flex items-center justify-between gap-2 border-t border-neutral-100 px-3 py-2.5">
           <div className="min-w-0">
-            <p className="truncate text-xs font-semibold text-neutral-900">{displayName}</p>
+            <p className="truncate text-xs font-semibold text-neutral-900">
+              {displayName}
+            </p>
             <p className="truncate text-[10px] text-neutral-400">
               {playing ? "Now playing" : "Tap to watch"}
             </p>

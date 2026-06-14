@@ -39,7 +39,9 @@ export const BudgetDialCard = forwardRef<HTMLDivElement, BudgetDialCardProps>(
     ref,
   ) => {
     const safeBudget = budget > 0 ? budget : 1;
-    const pct = Math.round(Math.max(0, Math.min(100, (spent / safeBudget) * 100)));
+    const pct = Math.round(
+      Math.max(0, Math.min(100, (spent / safeBudget) * 100)),
+    );
     const r = 52;
     const circumference = Math.PI * r;
     const offset = circumference - (pct / 100) * circumference;
@@ -55,7 +57,7 @@ export const BudgetDialCard = forwardRef<HTMLDivElement, BudgetDialCardProps>(
         )}
         {...props}
       >
-                <p className="text-[11px] font-medium text-neutral-500">{title}</p>
+        <p className="text-[11px] font-medium text-neutral-500">{title}</p>
         <p className="text-[10px] text-neutral-400">{category}</p>
 
         {/* Dial */}

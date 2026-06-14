@@ -1,8 +1,4 @@
-import {
-  forwardRef,
-  useMemo,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useMemo, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -63,7 +59,7 @@ export const AnalyticsMiniCard = forwardRef<
         )}
         {...props}
       >
-                <div
+        <div
           data-slot="analytics-mini-header"
           className="mb-3 flex items-center justify-between"
         >
@@ -91,7 +87,7 @@ export const AnalyticsMiniCard = forwardRef<
           {formattedValue}
         </p>
 
-                <div
+        <div
           data-slot="analytics-mini-chart"
           className="mt-3 flex h-8 items-end gap-px"
         >
@@ -111,7 +107,7 @@ export const AnalyticsMiniCard = forwardRef<
           ))}
         </div>
 
-                <div
+        <div
           data-slot="analytics-mini-footer"
           className="mt-2 flex justify-between"
         >

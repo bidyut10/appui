@@ -48,7 +48,7 @@ export const ChannelLollipopCard = forwardRef<
       )}
       {...props}
     >
-            <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
+      <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
 
       {/* Channels */}
       <div className="space-y-3">

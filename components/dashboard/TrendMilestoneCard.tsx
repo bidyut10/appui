@@ -80,7 +80,7 @@ export const TrendMilestoneCard = forwardRef<
         )}
         {...props}
       >
-                <div className="flex items-start justify-between">
+        <div className="flex items-start justify-between">
           <div>
             <p className="text-[11px] font-medium text-neutral-500">{title}</p>
             <p className="mt-0.5 text-2xl font-semibold text-neutral-900 tabular-nums">
@@ -92,7 +92,7 @@ export const TrendMilestoneCard = forwardRef<
           </span>
         </div>
 
-                <div className="relative mt-4">
+        <div className="relative mt-4">
           <svg viewBox="0 0 200 70" className="w-full" aria-hidden>
             <defs>
               <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">

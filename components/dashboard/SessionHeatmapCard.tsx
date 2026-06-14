@@ -69,10 +69,12 @@ export const SessionHeatmapCard = forwardRef<
       )}
       {...props}
     >
-            <div className="mb-4 flex items-start justify-between">
+      <div className="mb-4 flex items-start justify-between">
         <div>
           <p className="text-[11px] font-medium text-neutral-500">{title}</p>
-          <p className="mt-0.5 text-sm font-semibold text-neutral-900">{peak}</p>
+          <p className="mt-0.5 text-sm font-semibold text-neutral-900">
+            {peak}
+          </p>
         </div>
         <div className="flex items-center gap-1 text-[9px] text-neutral-400">
           <span>{lowLabel}</span>

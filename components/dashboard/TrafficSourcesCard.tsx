@@ -96,7 +96,7 @@ export const TrafficSourcesCard = forwardRef<
         )}
         {...props}
       >
-                <div data-slot="traffic-sources-header">
+        <div data-slot="traffic-sources-header">
           <h4
             data-slot="traffic-sources-title"
             className="mb-1 text-sm font-semibold text-neutral-900"
@@ -112,7 +112,7 @@ export const TrafficSourcesCard = forwardRef<
           </p>
         </div>
 
-                <div
+        <div
           data-slot="traffic-sources-chart"
           className="mb-4 flex items-center justify-center"
         >

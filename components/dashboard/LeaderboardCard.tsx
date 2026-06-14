@@ -79,7 +79,7 @@ export const LeaderboardCard = forwardRef<HTMLDivElement, LeaderboardCardProps>(
       )}
       {...props}
     >
-            <div
+      <div
         data-slot="leaderboard-card-header"
         className="border-b border-neutral-100 px-4 py-3"
       >

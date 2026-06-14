@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
@@ -105,7 +101,7 @@ export const DiscordChatCard = forwardRef<HTMLDivElement, DiscordChatCardProps>(
           </p>
         </div>
 
-        <div className="max-h-40 space-y-3 scroll-hover overflow-y-auto px-3 py-3">
+        <div className="scroll-hover max-h-40 space-y-3 overflow-y-auto px-3 py-3">
           {items.map((msg) => (
             <div key={msg.id} className="flex gap-2">
               <Image
@@ -116,11 +112,20 @@ export const DiscordChatCard = forwardRef<HTMLDivElement, DiscordChatCardProps>(
                 className="h-8 w-8 shrink-0 rounded-full"
               />
               <div>
-                <span className={cn("text-[12px] font-semibold", msg.roleColor ?? "text-neutral-800")}>
+                <span
+                  className={cn(
+                    "text-[12px] font-semibold",
+                    msg.roleColor ?? "text-neutral-800",
+                  )}
+                >
                   {msg.author}
                 </span>
-                <span className="ml-2 text-[10px] text-neutral-400">{msg.time}</span>
-                <p className="text-[12px] leading-relaxed text-neutral-700">{msg.content}</p>
+                <span className="ml-2 text-[10px] text-neutral-400">
+                  {msg.time}
+                </span>
+                <p className="text-[12px] leading-relaxed text-neutral-700">
+                  {msg.content}
+                </p>
               </div>
             </div>
           ))}

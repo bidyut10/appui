@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -124,10 +120,7 @@ export const CookieBanner = forwardRef<HTMLDivElement, CookieBannerProps>(
               </p>
             </div>
           ) : (
-            <div
-              data-slot="cookie-banner-actions"
-              className="flex gap-2"
-            >
+            <div data-slot="cookie-banner-actions" className="flex gap-2">
               <button
                 type="button"
                 aria-label={acceptAllLabel}

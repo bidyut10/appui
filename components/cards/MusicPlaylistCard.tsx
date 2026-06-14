@@ -97,7 +97,13 @@ export const MusicPlaylistCard = forwardRef<
             data-slot="music-playlist-card-cover"
             className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl shadow-sm"
           >
-            <Image src={coverImage} alt={title} fill sizes="64px" className="object-cover" />
+            <Image
+              src={coverImage}
+              alt={title}
+              fill
+              sizes="64px"
+              className="object-cover"
+            />
           </div>
 
           <div data-slot="music-playlist-card-info">

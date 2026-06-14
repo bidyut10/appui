@@ -68,7 +68,9 @@ const defaultActivities: ActivityFeedItem[] = [
   },
   {
     id: "follow",
-    icon: <UserCheck size={14} className="text-emerald-500 transition-colors" />,
+    icon: (
+      <UserCheck size={14} className="text-emerald-500 transition-colors" />
+    ),
     color: "text-emerald-500 bg-emerald-50",
     text: "Alex started following you",
     time: "1h",
@@ -117,7 +119,7 @@ export const ActivityFeedCard = forwardRef<
       )}
       {...props}
     >
-            <div
+      <div
         data-slot="activity-feed-card-header"
         className="flex items-center justify-between border-b border-neutral-100 px-4 py-3"
       >
@@ -131,16 +133,19 @@ export const ActivityFeedCard = forwardRef<
       </div>
 
       {/* Activity list */}
-      <div data-slot="activity-feed-card-list" className="divide-y divide-neutral-100">
+      <div
+        data-slot="activity-feed-card-list"
+        className="divide-y divide-neutral-100"
+      >
         {activities.length === 0 ? (
           <p className="px-4 py-6 text-center text-xs text-neutral-400">
             No recent activity
           </p>
         ) : (
           activities.map((item, index) => {
-            const colorParts = (item.color ?? "text-neutral-500 bg-neutral-50").split(
-              " ",
-            );
+            const colorParts = (
+              item.color ?? "text-neutral-500 bg-neutral-50"
+            ).split(" ");
             const iconClass = colorParts[0] ?? "text-neutral-500";
             const bgClass = colorParts[1] ?? "bg-neutral-50";
             const itemKey = item.id ?? item.text ?? String(index);
@@ -151,7 +156,9 @@ export const ActivityFeedCard = forwardRef<
                 type="button"
                 aria-label={item.text ?? "Activity item"}
                 onClick={
-                  onActivityClick ? () => onActivityClick(item, index) : undefined
+                  onActivityClick
+                    ? () => onActivityClick(item, index)
+                    : undefined
                 }
                 className="flex w-full cursor-pointer items-start gap-3 px-4 py-3 text-left transition-all duration-200 hover:bg-neutral-50"
               >
@@ -162,7 +169,10 @@ export const ActivityFeedCard = forwardRef<
                   )}
                 >
                   {item.icon ?? (
-                    <Heart size={14} className={cn(iconClass, "transition-colors")} />
+                    <Heart
+                      size={14}
+                      className={cn(iconClass, "transition-colors")}
+                    />
                   )}
                 </div>
 
@@ -181,7 +191,7 @@ export const ActivityFeedCard = forwardRef<
         )}
       </div>
 
-            <button
+      <button
         type="button"
         data-slot="activity-feed-card-footer"
         aria-label={footerText}

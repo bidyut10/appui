@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -67,7 +63,7 @@ export const CalendarWidgetCard = forwardRef<
         )}
         {...props}
       >
-                <div
+        <div
           data-slot="calendar-widget-header"
           className="mb-3 flex items-center justify-between"
         >

@@ -82,7 +82,6 @@ export const BillingHistoryCard = forwardRef<
       )}
       {...props}
     >
-      
       <div
         data-slot="billing-history-card-header"
         className="flex items-center justify-between border-b border-neutral-100 px-4 py-3"
@@ -94,7 +93,6 @@ export const BillingHistoryCard = forwardRef<
         </span>
       </div>
 
-      
       <div
         data-slot="billing-history-card-list"
         className="divide-y divide-neutral-50"
@@ -128,7 +126,6 @@ export const BillingHistoryCard = forwardRef<
         ))}
       </div>
 
-      
       <div
         data-slot="billing-history-card-footer"
         className="border-t border-neutral-100 px-4 py-2.5 text-center"

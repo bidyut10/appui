@@ -74,7 +74,7 @@ export const MenuBar = forwardRef<HTMLElement, MenuBarProps>(
           "flex h-11 items-center gap-0.5 px-[4.5px]",
           "bg-white dark:bg-neutral-900",
           "border border-neutral-200 dark:border-neutral-800",
-          "w-fit max-w-full scroll-hover overflow-x-auto rounded-xl",
+          "scroll-hover w-fit max-w-full overflow-x-auto rounded-xl",
           "scrollbar-none",
           className,
         )}

@@ -51,7 +51,7 @@ export const MrrBreakdownCard = forwardRef<
       )}
       {...props}
     >
-            <p className="text-[11px] font-medium tracking-wide text-neutral-500">
+      <p className="text-[11px] font-medium tracking-wide text-neutral-500">
         {title}
       </p>
       <div className="mt-1 flex items-baseline gap-2">

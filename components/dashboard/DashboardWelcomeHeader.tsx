@@ -59,7 +59,7 @@ export const DashboardWelcomeHeader = forwardRef<
       )}
       {...props}
     >
-            <div
+      <div
         data-slot="dashboard-welcome-header-profile"
         className="mb-4 flex items-center gap-3"
       >

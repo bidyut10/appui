@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -32,9 +28,18 @@ export type QuickNotesWidgetProps = {
 } & ComponentPropsWithoutRef<"div">;
 
 const defaultNotes: QuickNote[] = [
-  { id: "1", text: "Review PR #48 before standup", color: "border-l-amber-400" },
+  {
+    id: "1",
+    text: "Review PR #48 before standup",
+    color: "border-l-amber-400",
+  },
   { id: "2", text: "Update component README", color: "border-l-sky-400" },
-  { id: "3", text: "Record demo video for widgets", done: true, color: "border-l-emerald-400" },
+  {
+    id: "3",
+    text: "Record demo video for widgets",
+    done: true,
+    color: "border-l-emerald-400",
+  },
 ];
 
 export const QuickNotesWidget = forwardRef<
@@ -118,7 +123,7 @@ export const QuickNotesWidget = forwardRef<
               key={note.id}
               data-slot="quick-notes-widget-item"
               className={cn(
-                "flex items-start gap-2 rounded-xl border border-neutral-100 border-l-4 bg-neutral-50/50 px-3 py-2.5 transition-opacity",
+                "flex items-start gap-2 rounded-xl border border-l-4 border-neutral-100 bg-neutral-50/50 px-3 py-2.5 transition-opacity",
                 note.color,
                 note.done && "opacity-50",
               )}

@@ -73,7 +73,7 @@ export const PricingCard = forwardRef<HTMLDivElement, PricingCardProps>(
       />
 
       <div data-slot="pricing-card-content" className="p-6">
-                <div
+        <div
           data-slot="pricing-card-header"
           className="mb-4 flex items-center justify-between"
         >
@@ -127,7 +127,7 @@ export const PricingCard = forwardRef<HTMLDivElement, PricingCardProps>(
           {buttonText}
         </button>
 
-                <p
+        <p
           data-slot="pricing-card-footer"
           className="mt-3 text-center text-[10px] text-neutral-400"
         >

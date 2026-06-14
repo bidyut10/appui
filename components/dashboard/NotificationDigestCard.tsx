@@ -48,7 +48,7 @@ export const NotificationDigestCard = forwardRef<
       )}
       {...props}
     >
-            <div className="mb-4 flex items-center justify-between">
+      <div className="mb-4 flex items-center justify-between">
         <h4 className="text-sm font-semibold text-neutral-900">{title}</h4>
         <span className="rounded-md bg-neutral-100 px-2 py-0.5 text-[10px] font-medium text-neutral-500">
           {date}

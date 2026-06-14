@@ -57,7 +57,7 @@ export const DealPipelineCard = forwardRef<
       )}
       {...props}
     >
-            <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
+      <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
 
       {/* Stages */}
       <div className="grid grid-cols-4 gap-2">
@@ -68,7 +68,7 @@ export const DealPipelineCard = forwardRef<
             <div
               key={stage}
               className={cn(
-                "rounded-lg border border-neutral-100 border-t-[3px] bg-neutral-50/80 p-2",
+                "rounded-lg border border-t-[3px] border-neutral-100 bg-neutral-50/80 p-2",
                 stageColors[stage],
               )}
             >

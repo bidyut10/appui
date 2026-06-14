@@ -38,8 +38,12 @@ export const GlassStatWidget = forwardRef<HTMLDivElement, GlassStatWidgetProps>(
           <ArrowRight size={14} className="text-neutral-400" />
         </div>
         <div>
-          <p className="text-3xl font-bold tracking-tight text-neutral-900">{value}</p>
-          <p className="mt-1 text-xs font-semibold text-emerald-600">{change} this week</p>
+          <p className="text-3xl font-bold tracking-tight text-neutral-900">
+            {value}
+          </p>
+          <p className="mt-1 text-xs font-semibold text-emerald-600">
+            {change} this week
+          </p>
         </div>
       </div>
     </div>

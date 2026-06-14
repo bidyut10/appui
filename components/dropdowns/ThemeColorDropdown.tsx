@@ -122,7 +122,7 @@ export const ThemeColorDropdown = forwardRef<
           >
             <div
               className={cn(
-                "h-5 w-5 rounded-md border flex items-center justify-center",
+                "flex h-5 w-5 items-center justify-center rounded-md border",
                 current.bg,
                 current.border,
               )}
@@ -166,7 +166,7 @@ export const ThemeColorDropdown = forwardRef<
                 >
                   <div
                     className={cn(
-                      "h-8 w-8 rounded-lg border flex items-center justify-center",
+                      "flex h-8 w-8 items-center justify-center rounded-lg border",
                       theme.bg,
                       theme.border,
                     )}

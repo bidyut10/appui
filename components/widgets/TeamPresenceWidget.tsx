@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
@@ -39,11 +36,41 @@ const statusColors = {
 };
 
 const defaultMembers: TeamMember[] = [
-  { id: "1", name: "Sarah Chen", role: "Design", avatar: profileImage, status: "online" },
-  { id: "2", name: "Marcus Webb", role: "Engineering", avatar: profileImage, status: "online" },
-  { id: "3", name: "Priya Nair", role: "Product", avatar: profileImage, status: "away" },
-  { id: "4", name: "Alex Rivera", role: "QA", avatar: profileImage, status: "busy" },
-  { id: "5", name: "John Duo", role: "DevOps", avatar: profileImage, status: "offline" },
+  {
+    id: "1",
+    name: "Sarah Chen",
+    role: "Design",
+    avatar: profileImage,
+    status: "online",
+  },
+  {
+    id: "2",
+    name: "Marcus Webb",
+    role: "Engineering",
+    avatar: profileImage,
+    status: "online",
+  },
+  {
+    id: "3",
+    name: "Priya Nair",
+    role: "Product",
+    avatar: profileImage,
+    status: "away",
+  },
+  {
+    id: "4",
+    name: "Alex Rivera",
+    role: "QA",
+    avatar: profileImage,
+    status: "busy",
+  },
+  {
+    id: "5",
+    name: "John Duo",
+    role: "DevOps",
+    avatar: profileImage,
+    status: "offline",
+  },
 ];
 
 export const TeamPresenceWidget = forwardRef<
@@ -106,7 +133,7 @@ export const TeamPresenceWidget = forwardRef<
               <p className="truncate text-[13px] font-medium text-neutral-900">
                 {member.name}
               </p>
-              <p className="truncate text-[11px] capitalize text-neutral-400">
+              <p className="truncate text-[11px] text-neutral-400 capitalize">
                 {member.status} · {member.role}
               </p>
             </div>

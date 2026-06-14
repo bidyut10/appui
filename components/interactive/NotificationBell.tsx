@@ -164,7 +164,7 @@ export const NotificationBell = forwardRef<
 
           <div
             data-slot="notification-bell-list"
-            className="max-h-52 scroll-hover overflow-y-auto"
+            className="scroll-hover max-h-52 overflow-y-auto"
           >
             {notifications.map((n) => (
               <div

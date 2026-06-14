@@ -74,17 +74,11 @@ export const SalesOverviewCard = forwardRef<
       const denominator = Math.max(safeValues.length - 1, 1);
 
       const chartPoints = safeValues
-        .map(
-          (value, index) =>
-            `${(index / denominator) * 240},${100 - value}`,
-        )
+        .map((value, index) => `${(index / denominator) * 240},${100 - value}`)
         .join(" ");
 
       const path = `M0,${100 - safeValues[0]} ${safeValues
-        .map(
-          (value, index) =>
-            `L${(index / denominator) * 240},${100 - value}`,
-        )
+        .map((value, index) => `L${(index / denominator) * 240},${100 - value}`)
         .join(" ")} L240,100 L0,100 Z`;
 
       return { points: chartPoints, areaPath: path };
@@ -100,7 +94,7 @@ export const SalesOverviewCard = forwardRef<
         )}
         {...props}
       >
-                <div
+        <div
           data-slot="sales-overview-header"
           className="mb-4 flex items-center justify-between"
         >
@@ -167,7 +161,7 @@ export const SalesOverviewCard = forwardRef<
           </div>
         </div>
 
-                <div
+        <div
           data-slot="sales-overview-chart"
           className="relative flex h-32 items-end gap-2"
         >

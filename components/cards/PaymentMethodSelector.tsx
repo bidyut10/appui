@@ -91,7 +91,7 @@ export const PaymentMethodSelector = forwardRef<
         )}
         {...props}
       >
-                <div
+        <div
           data-slot="payment-method-selector-header"
           className="border-b border-neutral-100 px-4 py-3"
         >
@@ -131,7 +131,7 @@ export const PaymentMethodSelector = forwardRef<
                 )}
               </div>
 
-                            <div className="flex-1 text-left">
+              <div className="flex-1 text-left">
                 <p className="text-xs font-semibold text-neutral-900">
                   {method.label}
                 </p>
@@ -153,7 +153,7 @@ export const PaymentMethodSelector = forwardRef<
           ))}
         </div>
 
-                <div
+        <div
           data-slot="payment-method-selector-footer"
           className="flex items-center justify-between border-t border-neutral-100 px-4 py-3"
         >

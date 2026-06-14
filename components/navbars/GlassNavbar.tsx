@@ -67,10 +67,7 @@ export const GlassNavbar = forwardRef<HTMLElement, GlassNavbarProps>(
         )}
         {...props}
       >
-        <div
-          data-slot="glass-navbar-links"
-          className="flex items-center gap-1"
-        >
+        <div data-slot="glass-navbar-links" className="flex items-center gap-1">
           <div
             data-slot="glass-navbar-logo"
             className="mr-1 flex h-8 w-8 items-center justify-center rounded-xl bg-neutral-900"

@@ -14,31 +14,26 @@ export type DotMatrixStepWidgetProps = {
 export const DotMatrixStepWidget = forwardRef<
   HTMLDivElement,
   DotMatrixStepWidgetProps
->(
-  (
-    { className, steps = 5543, streak = 3, ...props },
-    ref,
-  ) => (
-    <div
-      ref={ref}
-      data-slot="dot-matrix-step-widget"
-      className={cn(
-        "flex h-44 w-44 flex-col justify-between rounded-[2rem] border border-neutral-200 bg-white p-4 font-sans shadow-lg",
-        className,
-      )}
-      {...props}
-    >
-      <p className="text-[9px] font-bold tracking-[0.2em] text-neutral-500 uppercase">
-        Total Steps
-      </p>
-      <p className={cn("text-3xl font-black text-neutral-900", dotFont)}>
-        {steps.toLocaleString()}
-      </p>
-      <p className="text-[9px] font-bold tracking-[0.15em] text-neutral-500 uppercase">
-        Streak {streak} Days
-      </p>
-    </div>
-  ),
-);
+>(({ className, steps = 5543, streak = 3, ...props }, ref) => (
+  <div
+    ref={ref}
+    data-slot="dot-matrix-step-widget"
+    className={cn(
+      "flex h-44 w-44 flex-col justify-between rounded-[2rem] border border-neutral-200 bg-white p-4 font-sans shadow-lg",
+      className,
+    )}
+    {...props}
+  >
+    <p className="text-[9px] font-bold tracking-[0.2em] text-neutral-500 uppercase">
+      Total Steps
+    </p>
+    <p className={cn("text-3xl font-black text-neutral-900", dotFont)}>
+      {steps.toLocaleString()}
+    </p>
+    <p className="text-[9px] font-bold tracking-[0.15em] text-neutral-500 uppercase">
+      Streak {streak} Days
+    </p>
+  </div>
+));
 
 DotMatrixStepWidget.displayName = "DotMatrixStepWidget";

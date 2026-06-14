@@ -65,7 +65,7 @@ export const GalleryGridCard = forwardRef<HTMLDivElement, GalleryGridCardProps>(
         )}
         {...props}
       >
-                <div className="flex items-center justify-between p-3 pb-2">
+        <div className="flex items-center justify-between p-3 pb-2">
           <div>
             <h3 className="text-sm font-semibold text-neutral-900">{title}</h3>
 

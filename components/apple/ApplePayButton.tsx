@@ -1,6 +1,10 @@
 "use client";
 
-import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import {
+  forwardRef,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
+} from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -52,10 +56,7 @@ export const ApplePayButton = forwardRef<HTMLDivElement, ApplePayButtonProps>(
       {...props}
     >
       <div className="rounded-[1.25rem] bg-[#f2f2f7] p-5">
-        <div
-          data-slot="apple-pay-button-summary"
-          className="mb-5 text-center"
-        >
+        <div data-slot="apple-pay-button-summary" className="mb-5 text-center">
           <p className="text-[13px] text-neutral-500">{totalLabel}</p>
           <p className="mt-0.5 text-3xl font-semibold tracking-tight text-neutral-900">
             {amount}

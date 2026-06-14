@@ -39,7 +39,9 @@ export const MinimalStopwatchWidget = forwardRef<
       {...props}
     >
       <span className="h-2 w-2 rounded-full bg-red-600" />
-      <span className="text-xl font-bold tracking-wider text-neutral-900">{fmt}</span>
+      <span className="text-xl font-bold tracking-wider text-neutral-900">
+        {fmt}
+      </span>
     </button>
   );
 });

@@ -44,7 +44,7 @@ export const TypographicPosterCard = forwardRef<
           {label} · {size} · {weight}
         </p>
 
-        <h2 className="whitespace-nowrap text-[2.125rem] leading-none font-black tracking-[-0.04em] text-neutral-900 lowercase">
+        <h2 className="text-[2.125rem] leading-none font-black tracking-[-0.04em] whitespace-nowrap text-neutral-900 lowercase">
           <span>{lead ? `${lead} ` : ""}</span>
           <span
             className="text-transparent"

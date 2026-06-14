@@ -105,7 +105,7 @@ export const RecentOrdersCard = forwardRef<
       )}
       {...props}
     >
-            <div
+      <div
         data-slot="recent-orders-header"
         className="flex items-center justify-between border-b border-neutral-100 px-4 py-3"
       >
@@ -128,7 +128,10 @@ export const RecentOrdersCard = forwardRef<
       </div>
 
       {/* Table */}
-      <div data-slot="recent-orders-table-wrapper" className="scroll-hover overflow-x-auto">
+      <div
+        data-slot="recent-orders-table-wrapper"
+        className="scroll-hover overflow-x-auto"
+      >
         <table data-slot="recent-orders-table" className="w-full text-left">
           <thead data-slot="recent-orders-table-head">
             <tr className="border-b border-neutral-50">

@@ -1,7 +1,6 @@
 export const siteConfig = {
   name: "opensourceui",
-  title:
-    "opensourceui — Free Open-Source UI Components for React & Next.js",
+  title: "opensourceui — Free Open-Source UI Components for React & Next.js",
   description:
     "opensourceui is a free, open-source library of 250+ production-ready UI components for React and Next.js. Built with TypeScript and Tailwind CSS v4. Explore live previews at opensourceui.in.",
   url: "https://opensourceui.in",

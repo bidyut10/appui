@@ -58,7 +58,10 @@ const defaultSections: MegaMenuSection[] = [
   },
 ];
 
-export const MegaMenuDropdown = forwardRef<HTMLDivElement, MegaMenuDropdownProps>(
+export const MegaMenuDropdown = forwardRef<
+  HTMLDivElement,
+  MegaMenuDropdownProps
+>(
   (
     {
       triggerLabel = "Browse",

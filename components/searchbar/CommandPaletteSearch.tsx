@@ -167,7 +167,7 @@ export const CommandPaletteSearch = forwardRef<
             <p className="px-3 py-1.5 font-mono text-[10px] tracking-widest text-neutral-500 uppercase">
               {suggestionsLabel}
               {query && (
-                <span className="ml-2 normal-case tracking-normal text-neutral-600">
+                <span className="ml-2 tracking-normal text-neutral-600 normal-case">
                   · {filtered.length} match{filtered.length === 1 ? "" : "es"}
                 </span>
               )}

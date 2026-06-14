@@ -177,10 +177,7 @@ export const AppleControlCenter = forwardRef<
             {sliders.map((slider, index) => (
               <div
                 key={index}
-                className={cn(
-                  "flex items-center gap-2",
-                  index === 0 && "mb-1",
-                )}
+                className={cn("flex items-center gap-2", index === 0 && "mb-1")}
               >
                 <span className="text-sm">{slider.icon}</span>
                 <div className="h-1 flex-1 rounded-full bg-white/20">

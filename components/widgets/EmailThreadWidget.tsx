@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -84,7 +80,9 @@ export const EmailThreadWidget = forwardRef<
         <div className="flex items-center gap-2 border-b border-neutral-100 px-4 py-3">
           <Mail size={16} className="text-neutral-600" />
           <p className="text-sm font-bold text-neutral-900">Mail threads</p>
-          <span className="ml-auto text-[10px] text-neutral-400">{account}</span>
+          <span className="ml-auto text-[10px] text-neutral-400">
+            {account}
+          </span>
         </div>
 
         <div className="divide-y divide-neutral-50">

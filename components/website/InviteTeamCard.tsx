@@ -105,7 +105,6 @@ export const InviteTeamCard = forwardRef<HTMLDivElement, InviteTeamCardProps>(
         )}
         {...props}
       >
-        
         <div
           data-slot="invite-team-card-header"
           className="mb-4 flex items-center gap-3"
@@ -123,7 +122,6 @@ export const InviteTeamCard = forwardRef<HTMLDivElement, InviteTeamCardProps>(
           </div>
         </div>
 
-        
         <div
           data-slot="invite-team-card-members"
           className="mb-4 flex -space-x-2"
@@ -144,7 +142,6 @@ export const InviteTeamCard = forwardRef<HTMLDivElement, InviteTeamCardProps>(
           )}
         </div>
 
-        
         {sent ? (
           <div
             data-slot="invite-team-card-success"
@@ -182,7 +179,6 @@ export const InviteTeamCard = forwardRef<HTMLDivElement, InviteTeamCardProps>(
           </div>
         )}
 
-        
         <div
           data-slot="invite-team-card-role-selector"
           className="relative mt-2"

@@ -58,7 +58,6 @@ export const MapLocationCard = forwardRef<HTMLDivElement, MapLocationCardProps>(
       )}
       {...props}
     >
-      
       <div
         data-slot="map-location-card-map"
         className="relative h-36 bg-neutral-50/50"
@@ -84,7 +83,6 @@ export const MapLocationCard = forwardRef<HTMLDivElement, MapLocationCardProps>(
         </div>
       </div>
 
-      
       <div data-slot="map-location-card-content" className="p-4">
         <h4
           data-slot="map-location-card-title"
@@ -101,7 +99,6 @@ export const MapLocationCard = forwardRef<HTMLDivElement, MapLocationCardProps>(
           {address}
         </p>
 
-        
         <div data-slot="map-location-card-actions" className="mt-3 flex gap-2">
           <button
             type="button"

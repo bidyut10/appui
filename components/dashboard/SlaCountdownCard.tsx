@@ -64,7 +64,7 @@ export const SlaCountdownCard = forwardRef<
       )}
       {...props}
     >
-            <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
+      <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
 
       {/* Items */}
       <div className="space-y-3">
@@ -88,7 +88,7 @@ export const SlaCountdownCard = forwardRef<
               )}
             >
               <div className="flex items-start justify-between gap-2">
-                <p className="text-[12px] font-semibold leading-snug text-neutral-800">
+                <p className="text-[12px] leading-snug font-semibold text-neutral-800">
                   {item.label}
                 </p>
                 {item.urgent && (

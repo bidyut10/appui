@@ -21,7 +21,10 @@ export type AnalogClockWidgetProps = {
   showSeconds?: boolean;
 } & ComponentPropsWithoutRef<"div">;
 
-export const AnalogClockWidget = forwardRef<HTMLDivElement, AnalogClockWidgetProps>(
+export const AnalogClockWidget = forwardRef<
+  HTMLDivElement,
+  AnalogClockWidgetProps
+>(
   (
     {
       className,

@@ -129,7 +129,9 @@ export const QuickActionsDropdown = forwardRef<
                     <Icon size={14} />
                   </div>
                   {label}
-                  <kbd className="font-mono text-[8px] opacity-40">{shortcut}</kbd>
+                  <kbd className="font-mono text-[8px] opacity-40">
+                    {shortcut}
+                  </kbd>
                 </button>
               ))}
             </div>

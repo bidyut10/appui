@@ -75,7 +75,13 @@ export const AppleMapsExplore = forwardRef<
       {...props}
     >
       <div data-slot="apple-maps-explore-hero" className="relative h-48">
-        <Image src={imageSrc} alt={imageAlt} fill sizes="288px" className="object-cover" />
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          fill
+          sizes="288px"
+          className="object-cover"
+        />
 
         <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-black/20" />
 

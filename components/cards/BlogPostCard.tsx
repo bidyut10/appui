@@ -45,7 +45,7 @@ export const BlogPostCard = forwardRef<
       </div>
     </div>
 
-        <div className="p-5">
+    <div className="p-5">
       <div className="mb-3 flex items-center gap-2">
         <div className="h-5 w-5 rounded-full bg-gradient-to-br from-teal-400 to-cyan-500 shadow-sm" />
 

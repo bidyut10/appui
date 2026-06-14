@@ -28,8 +28,18 @@ export type DatePickerWidgetProps = {
 
 const WEEKDAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 const MONTHS = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December",
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 
 function getDaysInMonth(month: number, year: number) {
@@ -40,7 +50,10 @@ function getFirstDayOfMonth(month: number, year: number) {
   return new Date(year, month, 1).getDay();
 }
 
-export const DatePickerWidget = forwardRef<HTMLDivElement, DatePickerWidgetProps>(
+export const DatePickerWidget = forwardRef<
+  HTMLDivElement,
+  DatePickerWidgetProps
+>(
   (
     {
       className,

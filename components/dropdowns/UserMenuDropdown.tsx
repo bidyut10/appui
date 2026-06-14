@@ -52,7 +52,10 @@ const defaultItems: DropdownItem[] = [
   },
 ];
 
-export const UserMenuDropdown = forwardRef<HTMLDivElement, UserMenuDropdownProps>(
+export const UserMenuDropdown = forwardRef<
+  HTMLDivElement,
+  UserMenuDropdownProps
+>(
   (
     {
       userName = "John Doe",

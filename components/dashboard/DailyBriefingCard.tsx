@@ -59,12 +59,12 @@ export const DailyBriefingCard = forwardRef<
       ref={ref}
       data-slot="daily-briefing-card"
       className={cn(
-        "w-full max-w-sm border-l-4 border-l-teal-500 bg-white py-5 pl-5 pr-5 font-sans",
+        "w-full max-w-sm border-l-4 border-l-teal-500 bg-white py-5 pr-5 pl-5 font-sans",
         className,
       )}
       {...props}
     >
-            <p className="font-serif text-[10px] tracking-[0.25em] text-neutral-400 uppercase">
+      <p className="font-serif text-[10px] tracking-[0.25em] text-neutral-400 uppercase">
         {date}
       </p>
       <h3 className="mt-1 font-serif text-xl font-medium text-neutral-900">
@@ -85,7 +85,7 @@ export const DailyBriefingCard = forwardRef<
                 </span>
               )}
             </div>
-            <p className="mt-1 text-[14px] font-semibold leading-snug text-neutral-900">
+            <p className="mt-1 text-[14px] leading-snug font-semibold text-neutral-900">
               {item.headline}
             </p>
             <p className="mt-0.5 text-[12px] leading-relaxed text-neutral-500">

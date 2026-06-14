@@ -96,7 +96,7 @@ export const FlightBoardingCard = forwardRef<
 
           {/* Main Content */}
           <div data-slot="flight-boarding-card-content" className="p-4">
-                        <div
+            <div
               data-slot="flight-boarding-card-header"
               className="flex items-center justify-between"
             >

@@ -151,7 +151,9 @@ export const BeforeAfterImageCard = forwardRef<
             onKeyDown={handleKeyDown}
             className={cn(
               "absolute top-1/2 z-10 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg transition-transform",
-              dragging ? "scale-110 ring-4 ring-white/40" : "group-hover:scale-105",
+              dragging
+                ? "scale-110 ring-4 ring-white/40"
+                : "group-hover:scale-105",
             )}
             style={{ left: `${position}%` }}
           >

@@ -69,7 +69,7 @@ export const TopProductsCard = forwardRef<HTMLDivElement, TopProductsCardProps>(
       )}
       {...props}
     >
-            <div
+      <div
         data-slot="top-products-header"
         className="flex items-center justify-between border-b border-neutral-100 px-4 py-3"
       >

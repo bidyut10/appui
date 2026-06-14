@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  forwardRef,
-  useState,
-  type ComponentPropsWithoutRef,
-} from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
@@ -69,10 +65,12 @@ export const GitHubPullRequestCard = forwardRef<
           <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-bold text-emerald-700">
             Open
           </span>
-          <span className="font-mono text-[10px] text-neutral-400">#{number}</span>
+          <span className="font-mono text-[10px] text-neutral-400">
+            #{number}
+          </span>
         </div>
 
-        <h3 className="text-[13px] font-semibold leading-snug text-neutral-900">
+        <h3 className="text-[13px] leading-snug font-semibold text-neutral-900">
           {title}
         </h3>
         <p className="mt-1 text-[11px] text-neutral-500">{branch}</p>
@@ -86,7 +84,8 @@ export const GitHubPullRequestCard = forwardRef<
             className="rounded-full"
           />
           <span className="text-[11px] text-neutral-600">
-            <span className="font-semibold text-neutral-800">{author}</span> opened this PR
+            <span className="font-semibold text-neutral-800">{author}</span>{" "}
+            opened this PR
           </span>
         </div>
 
