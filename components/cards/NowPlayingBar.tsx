@@ -13,15 +13,16 @@ import { Pause } from "@/icons/Pause";
 import { SkipNext } from "@/icons/SkipNext";
 import { SkipPrevious } from "@/icons/SkipPrevious";
 
-/*
-| Compact now playing music bar built with Next.js,
-| React, TypeScript, and Tailwind CSS.
-|
-| Replace the demo song information with your own data.
-| Supports custom artwork, title, artist, progress,
-| and initial playing state.
-*/
-
+/**
+ * Compact now playing music bar built with Next.js,
+ * React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo song information with your own data.
+ * Supports custom artwork, title, artist, progress,
+ * and initial playing state.
+ *
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type NowPlayingBarProps = {
   title?: string;
   artist?: string;

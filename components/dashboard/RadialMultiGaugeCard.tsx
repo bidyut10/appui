@@ -2,6 +2,11 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Radial multi gauge card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo infrastructure load metrics and status message with your own system data.
+ */
 export type GaugeMetric = {
   label: string;
   value: number;
@@ -11,6 +16,7 @@ export type GaugeMetric = {
 export type RadialMultiGaugeCardProps = {
   title?: string;
   metrics?: GaugeMetric[];
+  statusMessage?: string;
 } & ComponentPropsWithoutRef<"div">;
 
 const defaultMetrics: GaugeMetric[] = [
@@ -28,9 +34,10 @@ function ArcGauge({
   color: string;
   label: string;
 }) {
+  const safeValue = Math.max(0, Math.min(100, value));
   const r = 28;
   const circumference = Math.PI * r;
-  const offset = circumference - (value / 100) * circumference;
+  const offset = circumference - (safeValue / 100) * circumference;
 
   return (
     <div className="flex flex-col items-center">
@@ -58,7 +65,7 @@ function ArcGauge({
           className="fill-neutral-800 text-[11px] font-bold"
           style={{ fontSize: "11px", fontWeight: 700 }}
         >
-          {value}%
+          {safeValue}%
         </text>
       </svg>
       <span className="text-[10px] font-medium text-neutral-500">{label}</span>
@@ -75,6 +82,7 @@ export const RadialMultiGaugeCard = forwardRef<
       className,
       title = "Infrastructure load",
       metrics = defaultMetrics,
+      statusMessage = "All systems nominal",
       ...props
     },
     ref,
@@ -83,14 +91,16 @@ export const RadialMultiGaugeCard = forwardRef<
       ref={ref}
       data-slot="radial-multi-gauge-card"
       className={cn(
-        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-sm ring-1 ring-black/[0.03]",
+        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-lg ring-1 ring-black/[0.03]",
         className,
       )}
       {...props}
     >
-      <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
+            <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
+
+      {/* Gauges */}
       <div className="flex justify-around">
-        {metrics.map((m) => (
+        {(metrics ?? []).map((m) => (
           <ArcGauge
             key={m.label}
             value={m.value}
@@ -99,10 +109,12 @@ export const RadialMultiGaugeCard = forwardRef<
           />
         ))}
       </div>
+
+      {/* Status */}
       <div className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-emerald-50 py-2">
         <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
         <span className="text-[11px] font-medium text-emerald-700">
-          All systems nominal
+          {statusMessage}
         </span>
       </div>
     </div>

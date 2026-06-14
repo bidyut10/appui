@@ -34,7 +34,6 @@ import { ChevronRight } from "@/icons/ChevronRight";
  * - Uses Next.js Image for optimization.
  * - Replace <Image /> with <img /> if using React only.
  */
-
 export type ImageCarouselCardProps = {
   slides?: (StaticImageData | string)[];
 
@@ -138,8 +137,7 @@ export const ImageCarouselCard = forwardRef<
           </div>
         </div>
 
-        {/* Content */}
-        <div className="p-4">
+                <div className="p-4">
           <div className="flex items-start justify-between">
             <div>
               <h3 className="text-sm font-semibold text-neutral-900">

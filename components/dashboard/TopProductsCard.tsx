@@ -2,17 +2,11 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-/*
-| Top products card built with React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the demo products,
-| sales numbers, revenue values,
-| and trends with your own data.
-|
-| Visual design remains exactly the same.
-*/
-
+/**
+ * Top products card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo products, sales numbers, revenue values, and trends with your own data.
+ */
 export type TopProduct = {
   name: string;
   sales: number | string;
@@ -23,7 +17,7 @@ export type TopProduct = {
 export type TopProductsCardProps = {
   title?: string;
   period?: string;
-
+  salesLabel?: string;
   products?: TopProduct[];
 } & ComponentPropsWithoutRef<"div">;
 
@@ -58,12 +52,10 @@ export const TopProductsCard = forwardRef<HTMLDivElement, TopProductsCardProps>(
   (
     {
       className,
-
       title = "Top Products",
       period = "This month",
-
+      salesLabel = "sales",
       products = defaultProducts,
-
       ...props
     },
     ref,
@@ -77,8 +69,7 @@ export const TopProductsCard = forwardRef<HTMLDivElement, TopProductsCardProps>(
       )}
       {...props}
     >
-      {/* Header */}
-      <div
+            <div
         data-slot="top-products-header"
         className="flex items-center justify-between border-b border-neutral-100 px-4 py-3"
       >
@@ -97,10 +88,12 @@ export const TopProductsCard = forwardRef<HTMLDivElement, TopProductsCardProps>(
         </span>
       </div>
 
-      {/* Products List */}
+      {/* Products list */}
       <div data-slot="top-products-list" className="divide-y divide-neutral-50">
-        {products.map(({ name, sales, revenue, trend }, index) => {
+        {(products ?? []).map(({ name, sales, revenue, trend }, index) => {
           const isPositiveTrend = trend.trim().startsWith("+");
+          const formattedSales =
+            typeof sales === "number" ? sales.toLocaleString() : sales;
 
           return (
             <div
@@ -118,7 +111,9 @@ export const TopProductsCard = forwardRef<HTMLDivElement, TopProductsCardProps>(
               <div data-slot="top-products-details" className="min-w-0 flex-1">
                 <p className="text-xs font-medium text-neutral-800">{name}</p>
 
-                <p className="text-[10px] text-neutral-400">{sales} sales</p>
+                <p className="text-[10px] text-neutral-400">
+                  {formattedSales} {salesLabel}
+                </p>
               </div>
 
               <div data-slot="top-products-metrics" className="text-right">

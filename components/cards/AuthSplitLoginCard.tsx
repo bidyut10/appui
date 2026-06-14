@@ -10,17 +10,18 @@ import sideImage from "@/public/bh.png";
 import { Github } from "@/icons/Github";
 import { ArrowRight } from "@/icons/ArrowRight";
 
-/*
-| Split authentication card built with Next.js,
-| React, TypeScript, and Tailwind CSS.
-|
-| Replace the demo image, headings, placeholders,
-| and button labels with your own content.
-|
-| Perfect for login, signup, onboarding,
-| and authentication screens.
-*/
-
+/**
+ * Split authentication card built with Next.js,
+ * React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo image, headings, placeholders,
+ * and button labels with your own content.
+ *
+ * Perfect for login, signup, onboarding,
+ * and authentication screens.
+ *
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type AuthSplitLoginCardProps = {
   imageSrc?: typeof sideImage;
 
@@ -76,10 +77,8 @@ export const AuthSplitLoginCard = forwardRef<
         <div className="absolute inset-0 bg-teal-900/40" />
       </div>
 
-      {/* Content */}
-      <div data-slot="auth-split-login-card-content" className="flex-1 p-5">
-        {/* Header */}
-        <div data-slot="auth-split-login-card-header">
+            <div data-slot="auth-split-login-card-content" className="flex-1 p-5">
+                <div data-slot="auth-split-login-card-header">
           <h3 className="mb-1 text-base font-semibold text-neutral-900">
             {title}
           </h3>

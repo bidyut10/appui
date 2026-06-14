@@ -4,10 +4,13 @@ import { cn } from "@/lib/utils";
 
 import { QuoteRight } from "@/icons/QuoteRight";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
-
+/**
+ * Editorial magazine quote card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type EditorialQuoteCardProps = {
   quote?: string;
   author?: string;
@@ -15,10 +18,6 @@ export type EditorialQuoteCardProps = {
   issue?: string;
   accentWord?: string;
 } & ComponentPropsWithoutRef<"div">;
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const EditorialQuoteCard = forwardRef<
   HTMLDivElement,

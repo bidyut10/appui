@@ -6,18 +6,34 @@ import { cn } from "@/lib/utils";
 
 import { File } from "@/icons/File";
 
-/*
-| Cloud upload card built with Next.js, React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the demo storage information and upload
-| functionality with your own cloud storage system.
-*/
-
-export type CloudUploadCardProps = ComponentPropsWithoutRef<"div">;
+/**
+ * Cloud upload card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo storage information and upload
+ * functionality with your own cloud storage system.
+ */
+export type CloudUploadCardProps = {
+  title?: string;
+  descriptionLine1?: string;
+  descriptionLine2?: string;
+  buttonLabel?: string;
+  storageText?: string;
+} & ComponentPropsWithoutRef<"div">;
 
 export const CloudUploadCard = forwardRef<HTMLDivElement, CloudUploadCardProps>(
-  ({ className, ...props }, ref) => {
+  (
+    {
+      className,
+      title = "Upload to Cloud",
+      descriptionLine1 = "Drag files here or click to browse.",
+      descriptionLine2 = "Supports up to 50MB per file.",
+      buttonLabel = "Choose Files",
+      storageText = "2.4 GB of 5 GB used",
+      ...props
+    },
+    ref,
+  ) => {
     const [hovering, setHovering] = useState(false);
 
     return (
@@ -38,7 +54,6 @@ export const CloudUploadCard = forwardRef<HTMLDivElement, CloudUploadCardProps>(
               : "border-neutral-200 bg-linear-to-br from-neutral-50/30 to-teal-50/30",
           )}
         >
-          {/* Content */}
           <div
             data-slot="cloud-upload-card-content"
             className="p-6 text-center"
@@ -57,29 +72,28 @@ export const CloudUploadCard = forwardRef<HTMLDivElement, CloudUploadCardProps>(
               data-slot="cloud-upload-card-title"
               className="mb-1 text-sm font-semibold text-neutral-900"
             >
-              Upload to Cloud
+              {title}
             </h4>
 
             <p
               data-slot="cloud-upload-card-description"
               className="mb-4 text-[11px] leading-relaxed text-neutral-500"
             >
-              Drag files here or click to browse.
+              {descriptionLine1}
               <br />
-              Supports up to 50MB per file.
+              {descriptionLine2}
             </p>
 
             <button
               type="button"
-              aria-label="Choose files"
+              aria-label={buttonLabel}
               data-slot="cloud-upload-card-button"
               className="h-9 cursor-pointer rounded-lg bg-neutral-600 px-5 text-xs font-medium text-white shadow-sm shadow-neutral-200 transition-colors hover:bg-neutral-700"
             >
-              Choose Files
+              {buttonLabel}
             </button>
           </div>
 
-          {/* Storage Footer */}
           <div
             data-slot="cloud-upload-card-footer"
             className="flex items-center justify-between border-t border-neutral-100 bg-white/60 px-6 py-3"
@@ -88,7 +102,7 @@ export const CloudUploadCard = forwardRef<HTMLDivElement, CloudUploadCardProps>(
               data-slot="cloud-upload-card-storage-text"
               className="text-[10px] text-neutral-400"
             >
-              2.4 GB of 5 GB used
+              {storageText}
             </span>
 
             <div

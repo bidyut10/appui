@@ -1,11 +1,44 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+
+import {
+  forwardRef,
+  useEffect,
+  useRef,
+  useState,
+  type ComponentPropsWithoutRef,
+  type ComponentType,
+} from "react";
+
+import { cn } from "@/lib/utils";
+
 import { Share } from "@/icons/Share";
 import { Copy } from "@/icons/Copy";
 import { Mail } from "@/icons/Mail";
 import { Link2Icon } from "./ShareDropdownIcons";
 
-const shareOptions = [
+/**
+ * Share menu dropdown built with React, TypeScript, and Tailwind CSS.
+ *
+ * Customize the share channels, page URL, and copy action for your app.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
+export type ShareOption = {
+  label: string;
+  icon: ComponentType<{ size?: number; className?: string }>;
+  color: string;
+};
+
+export type ShareMenuDropdownProps = {
+  triggerLabel?: string;
+  menuTitle?: string;
+  shareUrl?: string;
+  copyLabel?: string;
+  options?: ShareOption[];
+  onShare?: (option: ShareOption) => void;
+  onCopy?: () => void;
+} & ComponentPropsWithoutRef<"div">;
+
+const defaultOptions: ShareOption[] = [
   {
     label: "Copy Link",
     icon: Copy,
@@ -28,56 +61,100 @@ const shareOptions = [
   },
 ];
 
-export const ShareMenuDropdown = () => {
-  const [open, setOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
+export const ShareMenuDropdown = forwardRef<HTMLDivElement, ShareMenuDropdownProps>(
+  (
+    {
+      triggerLabel = "Share",
+      menuTitle = "Share this page",
+      shareUrl = "appui.dev/components/cards",
+      copyLabel = "Copy",
+      options = defaultOptions,
+      onShare,
+      onCopy,
+      className,
+      ...props
+    },
+    ref,
+  ) => {
+    const [open, setOpen] = useState(false);
+    const innerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const close = (e: MouseEvent) => {
-      if (!containerRef.current?.contains(e.target as Node)) setOpen(false);
-    };
-    document.addEventListener("mousedown", close);
-    return () => document.removeEventListener("mousedown", close);
-  }, []);
+    useEffect(() => {
+      const close = (e: MouseEvent) => {
+        if (!innerRef.current?.contains(e.target as Node)) setOpen(false);
+      };
+      document.addEventListener("mousedown", close);
+      return () => document.removeEventListener("mousedown", close);
+    }, []);
 
-  return (
-    <div ref={containerRef} className="relative inline-block">
-      <button
-        onClick={() => setOpen(!open)}
-        className="group inline-flex h-11 cursor-pointer items-center gap-2 rounded-xl border border-neutral-200 bg-white px-5 text-sm font-medium transition-all duration-300 hover:border-neutral-300 hover:shadow-sm active:scale-95"
-      >
-        <Share size={15} className="text-neutral-500" />
-        <span className="text-neutral-800">Share</span>
-      </button>
-
+    return (
       <div
-        className={`absolute top-[calc(100%+8px)] left-1/2 z-[100] w-64 -translate-x-1/2 rounded-2xl border border-neutral-200/80 bg-white p-4 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.12)] backdrop-blur-xl transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] ${open ? "visible translate-y-0 scale-100 opacity-100" : "invisible -translate-y-2 scale-95 opacity-0"} `}
-        style={{ transformOrigin: "top" }}
+        ref={ref}
+        className={cn("relative inline-block", className)}
+        {...props}
       >
-        <p className="mb-3 font-mono text-[10px] tracking-widest text-neutral-400 uppercase">
-          Share this page
-        </p>
-        <div className="grid grid-cols-2 gap-2">
-          {shareOptions.map(({ label, icon: Icon, color }) => (
-            <button
-              key={label}
-              onClick={() => setOpen(false)}
-              className={`flex cursor-pointer flex-col items-center gap-2 rounded-xl p-3 text-xs font-medium transition-all duration-200 active:scale-95 ${color}`}
-            >
-              <Icon size={18} />
-              {label}
-            </button>
-          ))}
-        </div>
-        <div className="mt-3 flex items-center gap-2 rounded-xl border border-neutral-100 bg-neutral-50 px-3 py-2">
-          <span className="flex-1 truncate text-[11px] text-neutral-400">
-            appui.dev/components/cards
-          </span>
-          <button className="cursor-pointer font-mono text-[10px] font-medium text-neutral-600 transition-colors hover:text-neutral-900">
-            Copy
+        <div ref={innerRef}>
+          <button
+            type="button"
+            aria-label={triggerLabel}
+            aria-expanded={open}
+            onClick={() => setOpen(!open)}
+            className="group inline-flex h-11 cursor-pointer items-center gap-2 rounded-xl border border-neutral-200 bg-white px-5 text-sm font-medium transition-all duration-300 hover:border-neutral-300 hover:shadow-sm active:scale-95"
+          >
+            <Share size={15} className="text-neutral-500" />
+            <span className="text-neutral-800">{triggerLabel}</span>
           </button>
+
+          <div
+            className={cn(
+              "absolute top-[calc(100%+8px)] left-1/2 z-[100] w-64 -translate-x-1/2 rounded-2xl border border-neutral-200/80 bg-white p-4 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.12)] backdrop-blur-xl transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]",
+              open
+                ? "visible translate-y-0 scale-100 opacity-100"
+                : "invisible -translate-y-2 scale-95 opacity-0",
+            )}
+            style={{ transformOrigin: "top" }}
+          >
+            <p className="mb-3 font-mono text-[10px] tracking-widest text-neutral-400 uppercase">
+              {menuTitle}
+            </p>
+            <div className="grid grid-cols-2 gap-2">
+              {options.map((option) => (
+                <button
+                  key={option.label}
+                  type="button"
+                  aria-label={`Share via ${option.label}`}
+                  onClick={() => {
+                    setOpen(false);
+                    onShare?.(option);
+                  }}
+                  className={cn(
+                    "flex cursor-pointer flex-col items-center gap-2 rounded-xl p-3 text-xs font-medium transition-all duration-200 active:scale-95",
+                    option.color,
+                  )}
+                >
+                  <option.icon size={18} />
+                  {option.label}
+                </button>
+              ))}
+            </div>
+            <div className="mt-3 flex items-center gap-2 rounded-xl border border-neutral-100 bg-neutral-50 px-3 py-2">
+              <span className="flex-1 truncate text-[11px] text-neutral-400">
+                {shareUrl}
+              </span>
+              <button
+                type="button"
+                aria-label={copyLabel}
+                onClick={() => onCopy?.()}
+                className="cursor-pointer font-mono text-[10px] font-medium text-neutral-600 transition-colors hover:text-neutral-900"
+              >
+                {copyLabel}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  },
+);
+
+ShareMenuDropdown.displayName = "ShareMenuDropdown";

@@ -7,9 +7,12 @@ import { cn } from "@/lib/utils";
 import { Home } from "@/icons/Home";
 import { ArrowRight } from "@/icons/ArrowRight";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Error404Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type Error404CardProps = {
   code?: string;
@@ -24,10 +27,6 @@ export type Error404CardProps = {
   onPrimaryAction?: () => void;
   onSecondaryAction?: () => void;
 } & ComponentPropsWithoutRef<"div">;
-
-/* -------------------------------------------------------------------------- */
-/*                              Error 404 Card                                */
-/* -------------------------------------------------------------------------- */
 
 export const Error404Card = forwardRef<HTMLDivElement, Error404CardProps>(
   (
@@ -56,10 +55,7 @@ export const Error404Card = forwardRef<HTMLDivElement, Error404CardProps>(
       className={cn("w-72 text-center font-sans", className)}
       {...props}
     >
-      {/* ---------------------------------------------------------------------- */}
-      {/* Error Code                                                             */}
-      {/* ---------------------------------------------------------------------- */}
-
+      
       <p
         data-slot="error-404-card-code"
         className="text-7xl leading-none font-extralight tracking-tighter text-neutral-200"
@@ -67,10 +63,7 @@ export const Error404Card = forwardRef<HTMLDivElement, Error404CardProps>(
         {code}
       </p>
 
-      {/* ---------------------------------------------------------------------- */}
-      {/* Content                                                                */}
-      {/* ---------------------------------------------------------------------- */}
-
+      
       <div data-slot="error-404-card-content">
         <h3
           data-slot="error-404-card-title"
@@ -87,10 +80,7 @@ export const Error404Card = forwardRef<HTMLDivElement, Error404CardProps>(
         </p>
       </div>
 
-      {/* ---------------------------------------------------------------------- */}
-      {/* Actions                                                                */}
-      {/* ---------------------------------------------------------------------- */}
-
+      
       <div
         data-slot="error-404-card-actions"
         className="flex items-center justify-center gap-2"

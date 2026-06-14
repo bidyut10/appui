@@ -2,9 +2,14 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+import { Check } from "@/icons/Check";
+
+/**
+ * Apple Fitness Summary built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type AppleFitnessStat = {
   label: string;
@@ -27,10 +32,6 @@ export type AppleFitnessSummaryProps = {
   weekDays?: AppleFitnessDay[];
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultStats: AppleFitnessStat[] = [
   { label: "Calories", value: "186" },
   { label: "Avg HR", value: "142" },
@@ -46,10 +47,6 @@ const defaultWeekDays: AppleFitnessDay[] = [
   { label: "S", completed: false },
   { label: "S", completed: false },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const AppleFitnessSummary = forwardRef<
   HTMLDivElement,
@@ -126,7 +123,7 @@ export const AppleFitnessSummary = forwardRef<
                     : "bg-neutral-800 text-neutral-600",
               )}
             >
-              {day.completed ? "✓" : ""}
+              {day.completed ? <Check size={10} className="text-white" /> : ""}
             </div>
           </div>
         ))}

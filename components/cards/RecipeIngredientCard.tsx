@@ -6,10 +6,13 @@ import { Leaf } from "@/icons/Leaf";
 import { Soup } from "@/icons/Soup";
 import { Clock } from "@/icons/Clock";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
-
+/**
+ * Recipe ingredient list card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type RecipeIngredient = {
   name: string;
   amount: string;
@@ -24,10 +27,6 @@ export type RecipeIngredientCardProps = {
   chefNote?: string;
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultIngredients: RecipeIngredient[] = [
   { name: "Basmati rice", amount: "2 cups" },
   { name: "Mustard oil", amount: "3 tbsp" },
@@ -35,10 +34,6 @@ const defaultIngredients: RecipeIngredient[] = [
   { name: "Green chili", amount: "2 pcs" },
   { name: "Fresh coriander", amount: "handful" },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const RecipeIngredientCard = forwardRef<
   HTMLDivElement,

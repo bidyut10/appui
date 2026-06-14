@@ -2,9 +2,12 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Apple Health Rings built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type AppleHealthRing = {
   color: string;
@@ -19,19 +22,11 @@ export type AppleHealthRingsProps = {
   rings?: AppleHealthRing[];
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultRings: AppleHealthRing[] = [
   { color: "#FF2D55", pct: 75, label: "Move", value: "450/600 CAL" },
   { color: "#AEF359", pct: 60, label: "Exercise", value: "24/30 MIN" },
   { color: "#5AC8FA", pct: 90, label: "Stand", value: "11/12 HRS" },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const AppleHealthRings = forwardRef<
   HTMLDivElement,

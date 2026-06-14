@@ -4,6 +4,11 @@ import { forwardRef, useMemo, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * KPI sparkline grid built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo KPI labels, values, changes, and sparkline data with your own metrics.
+ */
 export type KpiItem = {
   label: string;
   value: string;
@@ -47,14 +52,25 @@ const defaultItems: KpiItem[] = [
   },
 ];
 
-function MiniSparkline({ data, positive }: { data: number[]; positive: boolean }) {
+function MiniSparkline({
+  data,
+  positive,
+}: {
+  data: number[];
+  positive: boolean;
+}) {
   const points = useMemo(() => {
-    const max = Math.max(...data);
-    const min = Math.min(...data);
+    const chartData = data ?? [];
+    if (chartData.length === 0) return "";
+
+    const max = Math.max(...chartData);
+    const min = Math.min(...chartData);
     const range = max - min || 1;
-    return data
+    const denominator = Math.max(chartData.length - 1, 1);
+
+    return chartData
       .map((v, i) => {
-        const x = (i / (data.length - 1)) * 48;
+        const x = (i / denominator) * 48;
         const y = 16 - ((v - min) / range) * 12;
         return `${x},${y}`;
       })
@@ -82,18 +98,21 @@ export const KpiSparklineGrid = forwardRef<
     ref={ref}
     data-slot="kpi-sparkline-grid"
     className={cn(
-      "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-4 font-sans shadow-sm ring-1 ring-black/[0.03]",
+      "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-4 font-sans shadow-lg ring-1 ring-black/[0.03]",
       className,
     )}
     {...props}
   >
+    {/* Grid */}
     <div className="grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-neutral-100">
-      {items.map((item) => (
+      {(items ?? []).map((item) => (
         <div
           key={item.label}
           className="bg-white p-3.5 first:rounded-tl-xl last:rounded-br-xl [&:nth-child(2)]:rounded-tr-xl [&:nth-child(3)]:rounded-bl-xl"
         >
-          <p className="text-[10px] font-medium text-neutral-400">{item.label}</p>
+          <p className="text-[10px] font-medium text-neutral-400">
+            {item.label}
+          </p>
           <p className="mt-0.5 text-lg font-semibold text-neutral-900 tabular-nums">
             {item.value}
           </p>

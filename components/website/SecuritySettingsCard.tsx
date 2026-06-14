@@ -6,9 +6,12 @@ import { cn } from "@/lib/utils";
 
 import { Check } from "@/icons/Check";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Security Settings Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type SecurityItem = {
   label: string;
@@ -33,10 +36,6 @@ export type SecuritySettingsCardProps = {
   items?: SecurityItem[];
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultItems: SecurityItem[] = [
   {
     label: "Password",
@@ -54,10 +53,6 @@ const defaultItems: SecurityItem[] = [
     actionLabel: "Manage",
   },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                           Security Settings Card                           */
-/* -------------------------------------------------------------------------- */
 
 export const SecuritySettingsCard = forwardRef<
   HTMLDivElement,
@@ -94,10 +89,7 @@ export const SecuritySettingsCard = forwardRef<
       )}
       {...props}
     >
-      {/* ---------------------------------------------------------------------- */}
-      {/* Header                                                                 */}
-      {/* ---------------------------------------------------------------------- */}
-
+      
       <div
         data-slot="security-settings-card-header"
         className="border-b border-neutral-100 px-4 py-3"
@@ -107,15 +99,9 @@ export const SecuritySettingsCard = forwardRef<
         <p className="mt-0.5 text-[11px] text-neutral-400">{description}</p>
       </div>
 
-      {/* ---------------------------------------------------------------------- */}
-      {/* Content                                                                */}
-      {/* ---------------------------------------------------------------------- */}
-
+      
       <div data-slot="security-settings-card-content" className="space-y-3 p-4">
-        {/* ------------------------------------------------------------------ */}
-        {/* 2FA Status                                                         */}
-        {/* ------------------------------------------------------------------ */}
-
+        
         <div
           data-slot="security-settings-card-status"
           className="flex items-center justify-between rounded-lg border border-emerald-100 bg-emerald-50 p-3"
@@ -143,10 +129,7 @@ export const SecuritySettingsCard = forwardRef<
           </button>
         </div>
 
-        {/* ------------------------------------------------------------------ */}
-        {/* Settings                                                           */}
-        {/* ------------------------------------------------------------------ */}
-
+        
         {items.map((item) => (
           <div
             key={item.label}

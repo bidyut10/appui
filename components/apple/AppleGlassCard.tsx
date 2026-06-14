@@ -2,9 +2,12 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Apple Glass Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type AppleGlassCardProps = {
   badge?: string;
@@ -14,15 +17,7 @@ export type AppleGlassCardProps = {
   tags?: string[];
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultTags = ["Design", "Blur", "Depth"];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const AppleGlassCard = forwardRef<HTMLDivElement, AppleGlassCardProps>(
   (

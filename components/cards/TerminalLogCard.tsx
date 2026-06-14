@@ -6,10 +6,13 @@ import { cn } from "@/lib/utils";
 
 import { Command } from "@/icons/Command";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
-
+/**
+ * Terminal log output card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type TerminalLogLine = {
   type: "cmd" | "out" | "ok" | "err";
   text: string;
@@ -21,10 +24,6 @@ export type TerminalLogCardProps = {
   lines?: TerminalLogLine[];
   status?: string;
 } & ComponentPropsWithoutRef<"div">;
-
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
 
 const defaultLines: TerminalLogLine[] = [
   { type: "cmd", text: "npx appui add metric-card" },
@@ -40,10 +39,6 @@ const lineColors: Record<TerminalLogLine["type"], string> = {
   ok: "text-sky-400",
   err: "text-rose-400",
 };
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const TerminalLogCard = forwardRef<HTMLDivElement, TerminalLogCardProps>(
   (

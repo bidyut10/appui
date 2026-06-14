@@ -4,9 +4,12 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Apple Wallet Stack built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type AppleWalletPass = {
   name: string;
@@ -19,10 +22,6 @@ export type AppleWalletStackProps = {
   passes?: AppleWalletPass[];
   onPassClick?: (pass: AppleWalletPass, index: number) => void;
 } & ComponentPropsWithoutRef<"div">;
-
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
 
 const defaultPasses: AppleWalletPass[] = [
   {
@@ -44,10 +43,6 @@ const defaultPasses: AppleWalletPass[] = [
     detail: "Valid until Dec 2026",
   },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const AppleWalletStack = forwardRef<
   HTMLDivElement,

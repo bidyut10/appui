@@ -8,9 +8,12 @@ import {
 
 import { cn } from "@/lib/utils";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Apple Reminders Widget built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type AppleReminderList = {
   name: string;
@@ -27,10 +30,6 @@ export type AppleRemindersWidgetProps = {
   onItemClick?: (listName: string, item: string) => void;
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultLists: AppleReminderList[] = [
   {
     name: "Today",
@@ -45,10 +44,6 @@ const defaultLists: AppleReminderList[] = [
   { name: "Work", count: 5, color: "bg-[#FF9500]", items: [] },
   { name: "Personal", count: 2, color: "bg-[#34C759]", items: [] },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const AppleRemindersWidget = forwardRef<
   HTMLDivElement,

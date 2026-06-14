@@ -2,17 +2,12 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-/*
-| Conversion funnel card built with React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the demo funnel stages,
-| counts, and conversion metrics
-| with your own analytics data.
-|
-| Visual design remains exactly the same.
-*/
-
+/**
+ * Conversion funnel card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo funnel stages, counts, and conversion metrics
+ * with your own analytics data.
+ */
 export type ConversionStage = {
   stage: string;
   count: string;
@@ -23,9 +18,8 @@ export type ConversionStage = {
 export type ConversionFunnelCardProps = {
   title?: string;
   description?: string;
-
   overallConversion?: string;
-
+  overallConversionLabel?: string;
   stages?: ConversionStage[];
 } & ComponentPropsWithoutRef<"div">;
 
@@ -63,19 +57,16 @@ export const ConversionFunnelCard = forwardRef<
   (
     {
       className,
-
       title = "Conversion Funnel",
       description = "Visitor → Customer journey",
-
       overallConversion = "1.98%",
-
+      overallConversionLabel = "Overall conversion:",
       stages = defaultStages,
-
       ...props
     },
     ref,
   ) => {
-    const safeStages = stages.map((stage) => ({
+    const safeStages = (stages ?? []).map((stage) => ({
       ...stage,
       percentage: Math.max(0, Math.min(100, stage.percentage)),
     }));
@@ -86,7 +77,6 @@ export const ConversionFunnelCard = forwardRef<
     const parseCount = (value: string) => Number(value.replace(/,/g, ""));
 
     const baseCount = firstStage ? parseCount(firstStage.count) : 1;
-
     const finalCount = lastStage ? parseCount(lastStage.count) : 0;
 
     const calculatedConversion =
@@ -102,8 +92,7 @@ export const ConversionFunnelCard = forwardRef<
         )}
         {...props}
       >
-        {/* Header */}
-        <div data-slot="conversion-funnel-header">
+                <div data-slot="conversion-funnel-header">
           <h4
             data-slot="conversion-funnel-title"
             className="mb-1 text-sm font-semibold text-neutral-900"
@@ -119,7 +108,7 @@ export const ConversionFunnelCard = forwardRef<
           </p>
         </div>
 
-        {/* Funnel Stages */}
+        {/* Funnel stages */}
         <div data-slot="conversion-funnel-stages" className="space-y-2">
           {safeStages.map(
             ({ stage, count, percentage, color = "bg-blue-500" }) => {
@@ -166,12 +155,11 @@ export const ConversionFunnelCard = forwardRef<
           )}
         </div>
 
-        {/* Footer */}
-        <p
+                <p
           data-slot="conversion-funnel-footer"
           className="mt-3 text-center text-[10px] text-neutral-400"
         >
-          Overall conversion:{" "}
+          {overallConversionLabel}{" "}
           <span className="font-semibold text-emerald-600">
             {overallConversion ?? `${calculatedConversion}%`}
           </span>

@@ -65,7 +65,7 @@ export const InstagramPostCard = forwardRef<
       username = "bidyut.dev",
       location = "West Bengal, India",
       likes = 1204,
-      caption = "New card UI drop 🃏 Minimal, clean, and open-source.",
+      caption = "New card UI drop. Minimal, clean, and open-source.",
       hashtags = "#uidesign #reactjs #webdev",
       timestamp = "2 hours ago",
 
@@ -95,7 +95,7 @@ export const InstagramPostCard = forwardRef<
         ref={ref}
         data-slot="instagram-post-card"
         className={cn(
-          "w-sm overflow-hidden rounded-xl border border-neutral-100 bg-white font-sans shadow-lg",
+          "w-xs overflow-hidden rounded-xl border border-neutral-100 bg-white font-sans shadow-lg",
           className,
         )}
         {...props}

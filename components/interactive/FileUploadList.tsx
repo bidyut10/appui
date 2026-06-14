@@ -8,37 +8,56 @@ import { File } from "@/icons/File";
 import { X } from "@/icons/X";
 import { Check } from "@/icons/Check";
 
-/*
-| File upload list card built with Next.js, React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the demo file data with your own upload
-| state and backend integration.
-*/
+/**
+ * File upload list card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo file data with your own upload
+ * state and backend integration.
+ */
+export type FileUploadListItem = {
+  name: string;
+  size: string;
+  status: "done" | "uploading";
+  progress?: number;
+};
 
-const initialFiles = [
+export type FileUploadListProps = {
+  initialFiles?: FileUploadListItem[];
+  title?: string;
+  addButtonLabel?: string;
+} & ComponentPropsWithoutRef<"div">;
+
+const defaultFiles: FileUploadListItem[] = [
   {
     name: "hero-banner.png",
     size: "2.4 MB",
-    status: "done" as const,
+    status: "done",
   },
   {
     name: "logo.svg",
     size: "48 KB",
-    status: "done" as const,
+    status: "done",
   },
   {
     name: "styles.css",
     size: "12 KB",
-    status: "uploading" as const,
+    status: "uploading",
     progress: 67,
   },
 ];
 
-export type FileUploadListProps = ComponentPropsWithoutRef<"div">;
-
 export const FileUploadList = forwardRef<HTMLDivElement, FileUploadListProps>(
-  ({ className, ...props }, ref) => {
+  (
+    {
+      className,
+      initialFiles = defaultFiles,
+      title = "Uploaded Files",
+      addButtonLabel = "+ Add more files",
+      ...props
+    },
+    ref,
+  ) => {
     const [files, setFiles] = useState(initialFiles);
 
     const handleRemoveFile = (fileName: string) => {
@@ -55,21 +74,17 @@ export const FileUploadList = forwardRef<HTMLDivElement, FileUploadListProps>(
         )}
         {...props}
       >
-        {/* Header */}
         <div
           data-slot="file-upload-list-header"
           className="flex items-center justify-between border-b border-neutral-100 px-4 py-3"
         >
-          <h4 className="text-sm font-semibold text-neutral-900">
-            Uploaded Files
-          </h4>
+          <h4 className="text-sm font-semibold text-neutral-900">{title}</h4>
 
           <span className="font-mono text-[10px] text-neutral-400">
             {files.length} files
           </span>
         </div>
 
-        {/* Files */}
         <div
           data-slot="file-upload-list-content"
           className="divide-y divide-neutral-50"
@@ -101,7 +116,7 @@ export const FileUploadList = forwardRef<HTMLDivElement, FileUploadListProps>(
 
                 <p className="text-[10px] text-neutral-400">{file.size}</p>
 
-                {file.status === "uploading" && "progress" in file && (
+                {file.status === "uploading" && file.progress !== undefined && (
                   <div
                     data-slot="file-upload-list-progress-track"
                     className="mt-1.5 h-1 overflow-hidden rounded-full bg-neutral-100"
@@ -130,7 +145,6 @@ export const FileUploadList = forwardRef<HTMLDivElement, FileUploadListProps>(
           ))}
         </div>
 
-        {/* Footer */}
         <div
           data-slot="file-upload-list-footer"
           className="border-t border-neutral-100 px-4 py-3"
@@ -141,7 +155,7 @@ export const FileUploadList = forwardRef<HTMLDivElement, FileUploadListProps>(
             data-slot="file-upload-list-add"
             className="h-8 w-full cursor-pointer rounded-lg border border-dashed border-neutral-300 text-[11px] font-medium text-neutral-500 transition-colors hover:border-neutral-300 hover:bg-neutral-50/50 hover:text-neutral-600"
           >
-            + Add more files
+            {addButtonLabel}
           </button>
         </div>
       </div>

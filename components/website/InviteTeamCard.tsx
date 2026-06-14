@@ -9,9 +9,12 @@ import { Mail } from "@/icons/Mail";
 import { ChevronUp } from "@/icons/ChevronUp";
 import { ChevronDown } from "@/icons/ChevronDown";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Invite Team Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type TeamMember = {
   initials: string;
@@ -43,10 +46,6 @@ export type InviteTeamCardProps = {
   onRoleChange?: (role: string) => void;
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultMembers: TeamMember[] = [
   { initials: "JD" },
   { initials: "SK" },
@@ -54,10 +53,6 @@ const defaultMembers: TeamMember[] = [
 ];
 
 const defaultRoles = ["Member", "Admin", "Viewer"];
-
-/* -------------------------------------------------------------------------- */
-/*                              Invite Team Card                              */
-/* -------------------------------------------------------------------------- */
 
 export const InviteTeamCard = forwardRef<HTMLDivElement, InviteTeamCardProps>(
   (
@@ -110,10 +105,7 @@ export const InviteTeamCard = forwardRef<HTMLDivElement, InviteTeamCardProps>(
         )}
         {...props}
       >
-        {/* ------------------------------------------------------------------ */}
-        {/* Header                                                             */}
-        {/* ------------------------------------------------------------------ */}
-
+        
         <div
           data-slot="invite-team-card-header"
           className="mb-4 flex items-center gap-3"
@@ -131,10 +123,7 @@ export const InviteTeamCard = forwardRef<HTMLDivElement, InviteTeamCardProps>(
           </div>
         </div>
 
-        {/* ------------------------------------------------------------------ */}
-        {/* Team Members                                                       */}
-        {/* ------------------------------------------------------------------ */}
-
+        
         <div
           data-slot="invite-team-card-members"
           className="mb-4 flex -space-x-2"
@@ -155,10 +144,7 @@ export const InviteTeamCard = forwardRef<HTMLDivElement, InviteTeamCardProps>(
           )}
         </div>
 
-        {/* ------------------------------------------------------------------ */}
-        {/* Invite Form                                                        */}
-        {/* ------------------------------------------------------------------ */}
-
+        
         {sent ? (
           <div
             data-slot="invite-team-card-success"
@@ -196,10 +182,7 @@ export const InviteTeamCard = forwardRef<HTMLDivElement, InviteTeamCardProps>(
           </div>
         )}
 
-        {/* ------------------------------------------------------------------ */}
-        {/* Role Selector                                                      */}
-        {/* ------------------------------------------------------------------ */}
-
+        
         <div
           data-slot="invite-team-card-role-selector"
           className="relative mt-2"
@@ -218,10 +201,12 @@ export const InviteTeamCard = forwardRef<HTMLDivElement, InviteTeamCardProps>(
           </button>
 
           {openRole && (
-            <div className="absolute top-full right-0 left-0 z-50 mt-1 overflow-hidden rounded-xl border border-neutral-700/80 bg-neutral-900 shadow-2xl">
+            <div className="absolute top-full right-0 left-0 z-50 mt-1 overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-xl">
               {roles.map((item) => (
                 <button
                   key={item}
+                  type="button"
+                  aria-label={`Select role ${item}`}
                   onClick={() => {
                     setRole(item);
                     setOpenRole(false);
@@ -230,8 +215,8 @@ export const InviteTeamCard = forwardRef<HTMLDivElement, InviteTeamCardProps>(
                   className={cn(
                     "w-full cursor-pointer px-3 py-2.5 text-left text-[11px] font-medium transition-colors",
                     role === item
-                      ? "bg-neutral-800 text-white"
-                      : "text-neutral-300 hover:bg-neutral-800",
+                      ? "bg-neutral-100 text-neutral-900"
+                      : "text-neutral-600 hover:bg-neutral-50",
                   )}
                 >
                   {item}

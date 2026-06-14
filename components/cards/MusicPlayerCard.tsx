@@ -13,14 +13,15 @@ import { Pause } from "@/icons/Pause";
 import { SkipPrevious } from "@/icons/SkipPrevious";
 import { SkipNext } from "@/icons/SkipNext";
 
-/*
-| Music player card built with Next.js, React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the album artwork, song information,
-| playback progress, and duration with your own data.
-*/
-
+/**
+ * Music player card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the album artwork, song information,
+ * playback progress, and duration with your own data.
+ *
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type MusicPlayerCardProps = {
   coverImage?: StaticImageData | string;
 
@@ -86,8 +87,7 @@ export const MusicPlayerCard = forwardRef<HTMLDivElement, MusicPlayerCardProps>(
           />
         </div>
 
-        {/* Content */}
-        <div
+                <div
           data-slot="music-player-card-content"
           className="relative -mt-6 p-4"
         >

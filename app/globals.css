@@ -13,29 +13,26 @@
   animation: marquee 20s linear infinite;
 }
 
-/* 1. Cross-browser support (Firefox) */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #a1a1aa transparent;
+/* Hide native scrollbars — clipped off-screen by ScrollHoverArea wrapper. */
+.scroll-hover {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none;
 }
 
-/* 2. WebKit (Chrome, Safari, Edge) scrollbar */
-::-webkit-scrollbar {
-  width: 8px;  /* Slightly wider than 5px for better usability */
-  height: 8px; /* Applies to horizontal scrollbars as well */
+.scroll-hover::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
+/* Single custom thumb — visible on hover only, no track, no arrows. */
+.scroll-hover-bar {
+  opacity: 0;
+  transition: opacity 0.15s ease;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: #a1a1aa; 
-  border-radius: 10px;
-  border: 2px solid transparent; 
-  background-clip: padding-box;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #71717a; 
+.scroll-hover-area:hover .scroll-hover-bar,
+.scroll-hover-group:hover .scroll-hover-area .scroll-hover-bar {
+  opacity: 1;
 }

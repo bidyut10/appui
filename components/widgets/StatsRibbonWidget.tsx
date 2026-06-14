@@ -2,6 +2,13 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Stats Ribbon Widget built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
+
 export type RibbonStat = {
   label: string;
   value: string;
@@ -28,7 +35,7 @@ export const StatsRibbonWidget = forwardRef<
     ref={ref}
     data-slot="stats-ribbon-widget"
     className={cn(
-      "flex w-full max-w-md overflow-hidden rounded-2xl border border-neutral-200 bg-white font-sans shadow-sm",
+      "flex w-full max-w-md overflow-hidden rounded-2xl border border-neutral-200 bg-white font-sans shadow-lg",
       className,
     )}
     {...props}

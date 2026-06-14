@@ -1,6 +1,13 @@
 import React, { forwardRef } from "react";
 import { cn } from "@/lib/utils";
 
+/**
+ * Avatar group stack card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 const avatars = [
   { initial: "JD", color: "from-teal-400 to-cyan-500" },
   { initial: "SK", color: "from-blue-400 to-cyan-500" },

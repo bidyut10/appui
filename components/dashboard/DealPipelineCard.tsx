@@ -2,6 +2,11 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Deal pipeline card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo pipeline stages and deal values with your own sales data.
+ */
 export type PipelineDeal = {
   name: string;
   value: string;
@@ -47,15 +52,18 @@ export const DealPipelineCard = forwardRef<
       ref={ref}
       data-slot="deal-pipeline-card"
       className={cn(
-        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-sm ring-1 ring-black/[0.03]",
+        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-lg ring-1 ring-black/[0.03]",
         className,
       )}
       {...props}
     >
-      <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
+            <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
+
+      {/* Stages */}
       <div className="grid grid-cols-4 gap-2">
-        {stages.map((stage) => {
-          const stageDeals = deals.filter((d) => d.stage === stage);
+        {(stages ?? []).map((stage) => {
+          const stageDeals = (deals ?? []).filter((d) => d.stage === stage);
+
           return (
             <div
               key={stage}

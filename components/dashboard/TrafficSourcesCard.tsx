@@ -1,23 +1,18 @@
 import {
   forwardRef,
   useId,
+  useMemo,
   type ComponentPropsWithoutRef,
-  type ReactNode,
 } from "react";
 
 import { cn } from "@/lib/utils";
 
-/*
-| Traffic sources card built with React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the demo traffic data,
-| visit count, and source breakdown
-| with your own analytics data.
-|
-| Visual design remains exactly the same.
-*/
-
+/**
+ * Traffic sources card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo traffic data, visit count, and source breakdown
+ * with your own analytics data.
+ */
 export type TrafficSource = {
   name: string;
   percentage: number;
@@ -28,9 +23,8 @@ export type TrafficSource = {
 export type TrafficSourcesCardProps = {
   title?: string;
   description?: string;
-
   totalVisits?: string;
-
+  visitsLabel?: string;
   sources?: TrafficSource[];
 } & ComponentPropsWithoutRef<"div">;
 
@@ -61,6 +55,8 @@ const defaultSources: TrafficSource[] = [
   },
 ];
 
+const defaultStrokeColors = ["#3b82f6", "#8b5cf6", "#d946ef", "#f59e0b"];
+
 export const TrafficSourcesCard = forwardRef<
   HTMLDivElement,
   TrafficSourcesCardProps
@@ -68,24 +64,25 @@ export const TrafficSourcesCard = forwardRef<
   (
     {
       className,
-
       title = "Traffic Sources",
       description = "Last 30 days · 24,580 visits",
-
       totalVisits = "24K",
-
+      visitsLabel = "visits",
       sources = defaultSources,
-
       ...props
     },
     ref,
   ) => {
     const chartId = useId();
 
-    const safeSources = sources.map((source) => ({
-      ...source,
-      percentage: Math.max(0, Math.min(100, source.percentage)),
-    }));
+    const safeSources = useMemo(
+      () =>
+        (sources ?? []).map((source) => ({
+          ...source,
+          percentage: Math.max(0, Math.min(100, source.percentage)),
+        })),
+      [sources],
+    );
 
     let accumulatedOffset = 0;
 
@@ -99,8 +96,7 @@ export const TrafficSourcesCard = forwardRef<
         )}
         {...props}
       >
-        {/* Header */}
-        <div data-slot="traffic-sources-header">
+                <div data-slot="traffic-sources-header">
           <h4
             data-slot="traffic-sources-title"
             className="mb-1 text-sm font-semibold text-neutral-900"
@@ -116,8 +112,7 @@ export const TrafficSourcesCard = forwardRef<
           </p>
         </div>
 
-        {/* Chart */}
-        <div
+                <div
           data-slot="traffic-sources-chart"
           className="mb-4 flex items-center justify-center"
         >
@@ -138,7 +133,7 @@ export const TrafficSourcesCard = forwardRef<
                     strokeWidth="3"
                     stroke={
                       source.strokeColor ??
-                      ["#3b82f6", "#8b5cf6", "#d946ef", "#f59e0b"][index % 4]
+                      defaultStrokeColors[index % defaultStrokeColors.length]
                     }
                     strokeDasharray={`${source.percentage} ${
                       100 - source.percentage
@@ -157,12 +152,12 @@ export const TrafficSourcesCard = forwardRef<
                 {totalVisits}
               </span>
 
-              <span className="text-[8px] text-neutral-400">visits</span>
+              <span className="text-[8px] text-neutral-400">{visitsLabel}</span>
             </div>
           </div>
         </div>
 
-        {/* Sources List */}
+        {/* Sources list */}
         <div data-slot="traffic-sources-list" className="space-y-2">
           {safeSources.map((source) => (
             <div

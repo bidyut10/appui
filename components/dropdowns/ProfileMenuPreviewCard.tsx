@@ -15,6 +15,15 @@ import { User } from "@/icons/User";
 import { CreditCard } from "@/icons/CreditCard";
 import { ChevronRight } from "@/icons/ChevronRight";
 
+/**
+ * Profile Menu Preview Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ *
+ * React Users: Replace `next/image` with a standard `img` element.
+ */
+
 export type ProfileMenuItem = {
   label: string;
   icon: ReactNode;

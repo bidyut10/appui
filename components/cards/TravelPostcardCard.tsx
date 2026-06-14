@@ -92,8 +92,7 @@ export const TravelPostcardCard = forwardRef<
           </div>
         </div>
 
-        {/* Content */}
-        <div className="relative p-4">
+                <div className="relative p-4">
           {/* decorative stamp */}
           <div className="absolute top-3 right-4 h-20 w-16 rotate-3 rounded-sm border-2 border-red-400/40 opacity-30" />
 

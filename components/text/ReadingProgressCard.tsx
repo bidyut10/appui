@@ -4,6 +4,13 @@ import { cn } from "@/lib/utils";
 
 import { Clock } from "@/icons/Clock";
 
+/**
+ * Reading Progress Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
+
 export type ReadingProgressCardProps = {
   category?: string;
   title?: string;
@@ -34,7 +41,7 @@ export const ReadingProgressCard = forwardRef<
       ref={ref}
       data-slot="reading-progress-card"
       className={cn(
-        "w-full max-w-sm rounded-2xl border border-neutral-200 bg-white p-5 font-sans shadow-sm",
+        "w-full max-w-sm rounded-2xl border border-neutral-200 bg-white p-5 font-sans shadow-lg",
         className,
       )}
       {...props}

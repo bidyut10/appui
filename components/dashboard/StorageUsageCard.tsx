@@ -1,28 +1,40 @@
-import * as React from "react";
+import {
+  forwardRef,
+  useId,
+  type ComponentPropsWithoutRef,
+} from "react";
+
 import { cn } from "@/lib/utils";
 
-interface StorageItem {
+/**
+ * Storage usage card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo storage plan, usage percentage, and breakdown items with your own data.
+ */
+export type StorageItem = {
   type: string;
   size: string;
   color: string;
-}
+};
 
-export interface StorageUsageCardProps extends React.ComponentPropsWithoutRef<"div"> {
+export type StorageUsageCardProps = {
   title?: string;
   plan?: string;
   usedPercentage?: number;
   usedStorage?: string;
   totalStorage?: string;
+  usedLabel?: string;
+  footerTemplate?: string;
   items?: StorageItem[];
-}
+} & ComponentPropsWithoutRef<"div">;
 
-const DEFAULT_ITEMS: StorageItem[] = [
+const defaultItems: StorageItem[] = [
   { type: "Images", size: "1.2 GB", color: "bg-teal-500" },
   { type: "Documents", size: "680 MB", color: "bg-blue-500" },
   { type: "Videos", size: "420 MB", color: "bg-cyan-500" },
 ];
 
-export const StorageUsageCard = React.forwardRef<
+export const StorageUsageCard = forwardRef<
   HTMLDivElement,
   StorageUsageCardProps
 >(
@@ -34,18 +46,23 @@ export const StorageUsageCard = React.forwardRef<
       usedPercentage = 48,
       usedStorage = "2.4 GB",
       totalStorage = "5 GB",
-      items = DEFAULT_ITEMS,
+      usedLabel = "used",
+      footerTemplate,
+      items = defaultItems,
       ...props
     },
     ref,
   ) => {
-    const circleId = React.useId();
+    const circleId = useId();
 
     const percentage = Math.min(100, Math.max(0, usedPercentage));
 
     const radius = 15.9;
     const circumference = 2 * Math.PI * radius;
     const dashOffset = circumference - (percentage / 100) * circumference;
+
+    const footerText =
+      footerTemplate ?? `${usedStorage} of ${totalStorage} used`;
 
     return (
       <div
@@ -57,14 +74,13 @@ export const StorageUsageCard = React.forwardRef<
         )}
         {...props}
       >
-        {/* Header */}
-        <div className="mb-4 flex items-center justify-between">
+                <div className="mb-4 flex items-center justify-between">
           <h4 className="text-sm font-semibold text-neutral-900">{title}</h4>
 
           <span className="font-mono text-[10px] text-neutral-400">{plan}</span>
         </div>
 
-        {/* Storage Ring */}
+        {/* Storage ring */}
         <div className="relative mx-auto mb-4 h-28 w-28">
           <svg
             viewBox="0 0 36 36"
@@ -107,13 +123,13 @@ export const StorageUsageCard = React.forwardRef<
               {percentage}%
             </span>
 
-            <span className="text-[9px] text-neutral-400">used</span>
+            <span className="text-[9px] text-neutral-400">{usedLabel}</span>
           </div>
         </div>
 
         {/* Breakdown */}
         <div className="space-y-2">
-          {items.map(({ type, size, color }) => (
+          {(items ?? []).map(({ type, size, color }) => (
             <div key={type} className="flex items-center gap-2 text-[11px]">
               <div className={cn("h-2 w-2 rounded-full", color)} />
 
@@ -124,9 +140,8 @@ export const StorageUsageCard = React.forwardRef<
           ))}
         </div>
 
-        {/* Footer */}
-        <p className="mt-3 text-center text-[10px] text-neutral-400">
-          {usedStorage} of {totalStorage} used
+                <p className="mt-3 text-center text-[10px] text-neutral-400">
+          {footerText}
         </p>
       </div>
     );

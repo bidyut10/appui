@@ -6,29 +6,32 @@ import { cn } from "@/lib/utils";
 
 import profileImage from "@/public/boy.png";
 
-/*
-| Dashboard welcome card built with Next.js, React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the demo user information, avatar,
-| greeting, and stats with your own data.
-|
-| React Users:
-| Replace `next/image` with a standard `img` element.
-*/
+/**
+ * Dashboard welcome header built with Next.js, React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo user information, avatar, greeting, and stats with your own data.
+ *
+ * React Users: Replace `next/image` with a standard `img` element.
+ */
+export type DashboardWelcomeStat = {
+  label: string;
+  value: string | number;
+};
 
 export type DashboardWelcomeHeaderProps = {
   greeting?: string;
   userName?: string;
-
+  welcomePrefix?: string;
   avatar?: StaticImageData | string;
   avatarAlt?: string;
-
-  stats?: {
-    label: string;
-    value: string;
-  }[];
+  stats?: DashboardWelcomeStat[];
 } & ComponentPropsWithoutRef<"div">;
+
+const defaultStats: DashboardWelcomeStat[] = [
+  { label: "Projects", value: 12 },
+  { label: "Tasks", value: 8 },
+  { label: "Messages", value: 3 },
+];
 
 export const DashboardWelcomeHeader = forwardRef<
   HTMLDivElement,
@@ -37,19 +40,12 @@ export const DashboardWelcomeHeader = forwardRef<
   (
     {
       className,
-
-      greeting = "Good morning 👋",
+      greeting = "Good morning",
       userName = "John",
-
+      welcomePrefix = "Welcome back,",
       avatar = profileImage,
       avatarAlt = "User",
-
-      stats = [
-        { label: "Projects", value: "12" },
-        { label: "Tasks", value: "8" },
-        { label: "Messages", value: "3" },
-      ],
-
+      stats = defaultStats,
       ...props
     },
     ref,
@@ -63,8 +59,7 @@ export const DashboardWelcomeHeader = forwardRef<
       )}
       {...props}
     >
-      {/* Header */}
-      <div
+            <div
         data-slot="dashboard-welcome-header-profile"
         className="mb-4 flex items-center gap-3"
       >
@@ -82,7 +77,7 @@ export const DashboardWelcomeHeader = forwardRef<
           <p className="text-[11px] text-neutral-400">{greeting}</p>
 
           <h3 className="text-base font-semibold text-neutral-900">
-            Welcome back, {userName}
+            {welcomePrefix} {userName}
           </h3>
         </div>
       </div>
@@ -92,13 +87,15 @@ export const DashboardWelcomeHeader = forwardRef<
         data-slot="dashboard-welcome-header-stats"
         className="grid grid-cols-3 gap-2"
       >
-        {stats.map(({ label, value }) => (
+        {(stats ?? []).map(({ label, value }) => (
           <div
             key={label}
             data-slot="dashboard-welcome-header-stat"
             className="rounded-xl bg-neutral-50 p-2.5 text-center"
           >
-            <p className="text-lg font-semibold text-neutral-900">{value}</p>
+            <p className="text-lg font-semibold text-neutral-900">
+              {typeof value === "number" ? value.toLocaleString() : value}
+            </p>
 
             <p className="text-[10px] text-neutral-400">{label}</p>
           </div>

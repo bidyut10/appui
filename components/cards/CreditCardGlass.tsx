@@ -2,13 +2,14 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-/*
-| Glassmorphism credit card built with React, TypeScript, and Tailwind CSS.
-|
-| Replace the demo content with your own card details.
-| Supports custom holder name, card number, expiry date, and card tier.
-*/
-
+/**
+ * Glassmorphism credit card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own card details.
+ * Supports custom holder name, card number, expiry date, and card tier.
+ *
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type CreditCardGlassProps = {
   holderName?: string;
   cardNumber?: string;

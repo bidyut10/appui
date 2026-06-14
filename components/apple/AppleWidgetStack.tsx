@@ -4,9 +4,12 @@ import { cn } from "@/lib/utils";
 
 import { Battery } from "@/icons/Battery";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Apple Widget Stack built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type AppleWidgetCalendar = {
   label?: string;
@@ -34,10 +37,6 @@ export type AppleWidgetStackProps = {
   screenTime?: AppleWidgetScreenTime;
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultCalendar: AppleWidgetCalendar = {
   label: "Calendar",
   day: "6",
@@ -57,10 +56,6 @@ const defaultScreenTime: AppleWidgetScreenTime = {
   change: "↓ 18% from last week",
   progress: 60,
 };
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const AppleWidgetStack = forwardRef<
   HTMLDivElement,

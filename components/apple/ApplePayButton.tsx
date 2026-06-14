@@ -1,32 +1,34 @@
 "use client";
 
-import { forwardRef, type ComponentPropsWithoutRef } from "react";
+import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+import { CreditCard } from "@/icons/CreditCard";
+import { Bank } from "@/icons/Bank";
+import { Mobile } from "@/icons/Mobile";
 
+/**
+ * Apple Pay Button built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type ApplePayButtonProps = {
   totalLabel?: string;
   amount?: string;
   description?: string;
   payLabel?: string;
-  paymentMethods?: string[];
+  paymentMethods?: ReactNode[];
   footerText?: string;
   onPay?: () => void;
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
-const defaultPaymentMethods = ["💳", "🏦", "📱"];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
+const defaultPaymentMethods: ReactNode[] = [
+  <CreditCard key="card" size={14} />,
+  <Bank key="bank" size={14} />,
+  <Mobile key="mobile" size={14} />,
+];
 
 export const ApplePayButton = forwardRef<HTMLDivElement, ApplePayButtonProps>(
   (
@@ -63,6 +65,7 @@ export const ApplePayButton = forwardRef<HTMLDivElement, ApplePayButtonProps>(
 
         <button
           type="button"
+          aria-label={`${payLabel} with Apple Pay`}
           data-slot="apple-pay-button-action"
           onClick={onPay}
           className="flex h-[50px] w-full cursor-pointer items-center justify-center gap-1.5 rounded-xl bg-black transition-colors hover:bg-neutral-900 active:scale-[0.98]"
@@ -79,9 +82,9 @@ export const ApplePayButton = forwardRef<HTMLDivElement, ApplePayButtonProps>(
           data-slot="apple-pay-button-methods"
           className="mt-4 flex items-center justify-center gap-3"
         >
-          {paymentMethods.map((icon) => (
+          {paymentMethods.map((icon, index) => (
             <div
-              key={icon}
+              key={index}
               className="flex h-7 w-10 items-center justify-center rounded-md border border-neutral-200 bg-white text-sm shadow-sm"
             >
               {icon}

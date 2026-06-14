@@ -2,12 +2,19 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Live pulse metric card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo session count, delta, and stream chart with your own live metrics.
+ */
 export type LivePulseMetricCardProps = {
   label?: string;
   value?: string;
   unit?: string;
   delta?: string;
   stream?: string[];
+  startLabel?: string;
+  endLabel?: string;
 } & ComponentPropsWithoutRef<"div">;
 
 const defaultStream = ["2,841", "2,843", "2,847", "2,852", "2,849", "2,854"];
@@ -24,6 +31,8 @@ export const LivePulseMetricCard = forwardRef<
       unit = "live",
       delta = "+127 in last hour",
       stream = defaultStream,
+      startLabel = "60s ago",
+      endLabel = "now",
       ...props
     },
     ref,
@@ -39,13 +48,15 @@ export const LivePulseMetricCard = forwardRef<
     >
       <div className="absolute -top-8 -right-8 h-32 w-32 rounded-full bg-teal-500/20 blur-2xl" />
       <div className="relative">
-        <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
           </span>
           <p className="text-[11px] font-medium text-neutral-400">{label}</p>
         </div>
+
+        {/* Value */}
         <div className="mt-2 flex items-baseline gap-2">
           <p className="text-[2.75rem] leading-none font-semibold tracking-tight tabular-nums">
             {value}
@@ -56,8 +67,9 @@ export const LivePulseMetricCard = forwardRef<
         </div>
         <p className="mt-1 text-[12px] text-emerald-400">{delta}</p>
 
+        {/* Stream chart */}
         <div className="mt-5 flex items-end gap-0.5">
-          {stream.map((point, i) => (
+          {(stream ?? []).map((point, i) => (
             <div
               key={`${point}-${i}`}
               className={cn(
@@ -68,9 +80,10 @@ export const LivePulseMetricCard = forwardRef<
             />
           ))}
         </div>
-        <div className="mt-2 flex justify-between text-[9px] text-neutral-500">
-          <span>60s ago</span>
-          <span>now</span>
+
+                <div className="mt-2 flex justify-between text-[9px] text-neutral-500">
+          <span>{startLabel}</span>
+          <span>{endLabel}</span>
         </div>
       </div>
     </div>

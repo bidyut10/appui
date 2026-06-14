@@ -204,6 +204,20 @@ import { NotificationPanelPreviewCard } from "@/components/dropdowns/Notificatio
 import { WorkspaceSwitcherPreviewCard } from "@/components/dropdowns/WorkspaceSwitcherPreviewCard";
 import { ActionMenuPreviewCard } from "@/components/dropdowns/ActionMenuPreviewCard";
 import { FilterPillsWidget } from "@/components/widgets/FilterPillsWidget";
+import { GmailInboxWidget } from "@/components/widgets/GmailInboxWidget";
+import { OutlookMailboxWidget } from "@/components/widgets/OutlookMailboxWidget";
+import { EmailComposeWidget } from "@/components/widgets/EmailComposeWidget";
+import { RichTextEditorWidget } from "@/components/widgets/RichTextEditorWidget";
+import { MarkdownEditorWidget } from "@/components/widgets/MarkdownEditorWidget";
+import { CommentThreadWidget } from "@/components/widgets/CommentThreadWidget";
+import { MeetingScheduleWidget } from "@/components/widgets/MeetingScheduleWidget";
+import { TeamPresenceWidget } from "@/components/widgets/TeamPresenceWidget";
+import { ApprovalQueueWidget } from "@/components/widgets/ApprovalQueueWidget";
+import { RecentFilesWidget } from "@/components/widgets/RecentFilesWidget";
+import { SlackChannelWidget } from "@/components/widgets/SlackChannelWidget";
+import { QuickNotesWidget } from "@/components/widgets/QuickNotesWidget";
+import { IntegrationStatusWidget } from "@/components/widgets/IntegrationStatusWidget";
+import { SpendingBreakdownWidget } from "@/components/widgets/SpendingBreakdownWidget";
 import { LiveActivityPillCard } from "@/components/widgets/LiveActivityPillCard";
 import { AppointmentPickerCard } from "@/components/widgets/AppointmentPickerCard";
 import { InboxSummaryCard } from "@/components/widgets/InboxSummaryCard";
@@ -222,135 +236,268 @@ import { RetailPriceTagCard } from "@/components/cards/RetailPriceTagCard";
 import { SplitFeatureCard } from "@/components/cards/SplitFeatureCard";
 import { ChapterOpenerCard } from "@/components/text/ChapterOpenerCard";
 import { StatEditorialCard } from "@/components/text/StatEditorialCard";
+import { TikTokPostCard } from "@/components/cards/TikTokPostCard";
+import { YouTubeVideoCard } from "@/components/cards/YouTubeVideoCard";
+import { PinterestPinCard } from "@/components/cards/PinterestPinCard";
+import { RedditPostCard } from "@/components/cards/RedditPostCard";
+import { ThreadsPostCard } from "@/components/cards/ThreadsPostCard";
+import { JournalWritingCard } from "@/components/cards/JournalWritingCard";
+import { AnalogClockWidget } from "@/components/widgets/AnalogClockWidget";
+import { DatePickerWidget } from "@/components/widgets/DatePickerWidget";
+import { CountdownEventWidget } from "@/components/widgets/CountdownEventWidget";
+import { WorldClockWidget } from "@/components/widgets/WorldClockWidget";
+import { TypewriterTextWidget } from "@/components/widgets/TypewriterTextWidget";
+import { GradientTextWidget } from "@/components/widgets/GradientTextWidget";
+import { TextRevealWidget } from "@/components/widgets/TextRevealWidget";
+import { GlowButtonBar } from "@/components/widgets/GlowButtonBar";
+import { EmailThreadWidget } from "@/components/widgets/EmailThreadWidget";
+import { StatTickerWidget } from "@/components/widgets/StatTickerWidget";
+import { MarqueeTextWidget } from "@/components/widgets/MarqueeTextWidget";
+import { GitHubRepoCard } from "@/components/cards/GitHubRepoCard";
+import { GitHubCodeBlockCard } from "@/components/cards/GitHubCodeBlockCard";
+import { GitHubPullRequestCard } from "@/components/cards/GitHubPullRequestCard";
+import { EmailNewsletterCard } from "@/components/cards/EmailNewsletterCard";
+import { DiscordChatCard } from "@/components/cards/DiscordChatCard";
+import { WhatsAppChatCard } from "@/components/cards/WhatsAppChatCard";
+import { SnapchatStoryCard } from "@/components/cards/SnapchatStoryCard";
+import { ImageGridHoverCard } from "@/components/cards/ImageGridHoverCard";
+import { ImageQuoteOverlayCard } from "@/components/cards/ImageQuoteOverlayCard";
+import { VideoReelCard } from "@/components/cards/VideoReelCard";
+import { DribbbleShotCard } from "@/components/cards/DribbbleShotCard";
 
-type Row = (React.ReactNode | null)[];
+import { WiFiToggleWidget } from "@/components/widgets/travel/WiFiToggleWidget";
+import { FlightArrivalWidget } from "@/components/widgets/travel/FlightArrivalWidget";
+import { FitnessActivityWidget } from "@/components/widgets/travel/FitnessActivityWidget";
+import { DailyHabitTimerWidget } from "@/components/widgets/travel/DailyHabitTimerWidget";
+import { AirportGateWidget } from "@/components/widgets/travel/AirportGateWidget";
+import { AudioRecorderWidget } from "@/components/widgets/travel/AudioRecorderWidget";
+import { TurnByTurnNavWidget } from "@/components/widgets/travel/TurnByTurnNavWidget";
+import { BatteryUsageWidget } from "@/components/widgets/travel/BatteryUsageWidget";
+import { CompactMusicPlayerWidget } from "@/components/widgets/travel/CompactMusicPlayerWidget";
+import { RomanAnalogClockWidget } from "@/components/widgets/travel/RomanAnalogClockWidget";
+import { CameraRecordingWidget } from "@/components/widgets/travel/CameraRecordingWidget";
+import { DailyActivityCalendarWidget } from "@/components/widgets/travel/DailyActivityCalendarWidget";
+import { WorldClockTimelineWidget } from "@/components/widgets/travel/WorldClockTimelineWidget";
+import { RidePickupWidget } from "@/components/widgets/travel/RidePickupWidget";
+import { ChargingStatusWidget } from "@/components/widgets/travel/ChargingStatusWidget";
+import { ElectricScooterWidget } from "@/components/widgets/travel/ElectricScooterWidget";
+
+import { DotMatrixStepWidget } from "@/components/widgets/minimal/DotMatrixStepWidget";
+import { MinimalWeatherWidget } from "@/components/widgets/minimal/MinimalWeatherWidget";
+import { MinimalFlightWidget } from "@/components/widgets/minimal/MinimalFlightWidget";
+import { MinimalTimezoneWidget } from "@/components/widgets/minimal/MinimalTimezoneWidget";
+import { MinimalCalendarDayWidget } from "@/components/widgets/minimal/MinimalCalendarDayWidget";
+import { MinimalAnalogClockWidget } from "@/components/widgets/minimal/MinimalAnalogClockWidget";
+import {
+  MinimalRecordButton,
+  MinimalMicButton,
+  MinimalLocationButton,
+  MinimalAirplaneButton,
+  MinimalAutoRotateButton,
+  MinimalScreenRecordButton,
+} from "@/components/widgets/minimal/MinimalCircularToggles";
+import {
+  MinimalTorchToggle,
+  MinimalExtraDimToggle,
+  MinimalNearbyShareToggle,
+  MinimalHotspotToggle,
+  MinimalBluetoothToggle,
+  MinimalMobileDataToggle,
+  MinimalDarkModeToggle,
+  MinimalCalculatorToggle,
+  MinimalBatterySaverToggle,
+} from "@/components/widgets/minimal/MinimalPillToggles";
+import { MinimalMusicPlayerWidget } from "@/components/widgets/minimal/MinimalMusicPlayerWidget";
+import { MinimalEarbudsWidget } from "@/components/widgets/minimal/MinimalEarbudsWidget";
+import { MinimalStopwatchWidget } from "@/components/widgets/minimal/MinimalStopwatchWidget";
+import { MinimalCompassWidget } from "@/components/widgets/minimal/MinimalCompassWidget";
+import {
+  MinimalDotPatternCard,
+  MinimalPhotoCard,
+  MinimalStatusDockWidget,
+} from "@/components/widgets/minimal/MinimalDecorCards";
+
+import { PeriodTrackerWidget } from "@/components/widgets/wellness/PeriodTrackerWidget";
+import { CircularScheduleDialWidget } from "@/components/widgets/wellness/CircularScheduleDialWidget";
+import { MentalHealthPollWidget } from "@/components/widgets/wellness/MentalHealthPollWidget";
+import { WellnessPlaylistWidget } from "@/components/widgets/wellness/WellnessPlaylistWidget";
+import { BlobProfileCard } from "@/components/widgets/wellness/BlobProfileCard";
+import { WeeklyActivityChartWidget } from "@/components/widgets/wellness/WeeklyActivityChartWidget";
+import { OrganicBlobImageCard } from "@/components/widgets/wellness/OrganicBlobImageCard";
+import { WellnessChatAudioWidget } from "@/components/widgets/wellness/WellnessChatAudioWidget";
+import { WellnessRatingWidget } from "@/components/widgets/wellness/WellnessRatingWidget";
+import { CircularStatsWidget } from "@/components/widgets/wellness/CircularStatsWidget";
+import { WorkoutDashboardWidget } from "@/components/widgets/wellness/WorkoutDashboardWidget";
+import { GpsTrackingMapWidget } from "@/components/widgets/wellness/GpsTrackingMapWidget";
+import { FocusBreathWidget } from "@/components/widgets/wellness/FocusBreathWidget";
+import { InsightPulseWidget } from "@/components/widgets/wellness/InsightPulseWidget";
+import { MinimalAgendaWidget } from "@/components/widgets/travel/MinimalAgendaWidget";
+import { GlassStatWidget } from "@/components/widgets/travel/GlassStatWidget";
+
+import { FolderGridCard } from "@/components/cards/FolderGridCard";
+import { FilePreviewCard } from "@/components/cards/FilePreviewCard";
+import { AIChatCard } from "@/components/cards/AIChatCard";
+import { AIPromptSuggestionsCard } from "@/components/cards/AIPromptSuggestionsCard";
+import { AIAgentStatusCard } from "@/components/cards/AIAgentStatusCard";
+import { VoiceTranscriptCard } from "@/components/cards/VoiceTranscriptCard";
+import { PhotoAlbumCard } from "@/components/cards/PhotoAlbumCard";
+import { ImageExifCard } from "@/components/cards/ImageExifCard";
+import { DropCapEditorialCard } from "@/components/cards/DropCapEditorialCard";
+import { FileUploadQueueCard } from "@/components/cards/FileUploadQueueCard";
+import { FileTreeWidget } from "@/components/widgets/FileTreeWidget";
+import { VoiceAssistantWidget } from "@/components/widgets/VoiceAssistantWidget";
+import { TypographyShowcaseWidget } from "@/components/widgets/TypographyShowcaseWidget";
+import { StorageVaultWidget } from "@/components/widgets/StorageVaultWidget";
+
+type Row = [React.ReactNode, React.ReactNode, React.ReactNode];
 
 const rows: Row[] = [
-  [
-    <InstagramPostCard imagePriority />,
-    <FacebookPostCard />,
-    <LinkedInPostCard />,
-  ],
-  [<TwitterPostCard />, <BusinessCard />, <GithubContributionCard />],
-  [<NotepadCard />, <FacebookProfileCard />, <GoogleProfileCard />],
-  [<TwitterProfileCard />, <LinkedInProfileCard />, <GithubProfileCard />],
+  [<InstagramPostCard imagePriority />, <TikTokPostCard />, <YouTubeVideoCard />],
+  [<ThreadsPostCard />, <RedditPostCard />, <PinterestPinCard />],
+  [<TwitterPostCard />, <FacebookPostCard />, <LinkedInPostCard />],
 
-  [<MagazineCoverCard />, <PolaroidImageCard />, <GlassOverlayImageCard />],
-  [<GalleryGridCard />, <BeforeAfterImageCard />, <PortraitImageCard />],
-  [<TravelPostcardCard />, <DuotoneImageCard />, <ImageCarouselCard />],
-  [<ProductImageCard />, <NFTGalleryCard />, <StackedCardsEffect />],
+  [<TypewriterTextWidget />, <StatTickerWidget />, <TypographyShowcaseWidget />],
+  [<GitHubRepoCard />, <AIChatCard />, <GitHubPullRequestCard />],
+  [<DiscordChatCard />, <VoiceAssistantWidget />, <WiFiToggleWidget />],
 
-  [<EventTicketCard />, <CreditCardGlass />, <WalletPassCard />],
-  [<PodcastCard />, <WeatherWidgetCard />, <FlightBoardingCard />],
+  [<GmailInboxWidget />, <RomanAnalogClockWidget />, <AuroraProfileCard />],
+  [<OutlookMailboxWidget />, <PeriodTrackerWidget />, <VoiceWaveCard />],
+  [<WorldClockTimelineWidget />, <CountdownEventWidget />, <BlobProfileCard />],
 
-  [<NotificationToast />, <AIStreamingCard />, <DashboardSidebarMini />],
-  [<CheckoutStepperCard />, <ChatWidget />, <ChatSkeleton />],
+  [<JournalWritingCard />, <DropCapEditorialCard />, <MarkdownEditorWidget />],
+  [<CommentThreadWidget />, <LinedJournalCard />, <QuickNotesWidget />],
+  [<ReadingProgressCard />, <ChapterOpenerCard />, <TypographicPosterCard />],
 
-  [<AuthLoginCard />, <AuthSplitLoginCard />, <AuthOTPCard />],
-  [<AuthForgotPasswordCard />, <PaymentMethodSelector />, <OnboardingSteps />],
+  [<WalletPassCard />, <CreditCardGlass />, <PaymentMethodSelector />],
+  [<PricingCard />, <TogglePricingCards />, <CheckoutStepperCard />],
+  [<AuthLoginCard />, <AuthOTPCard />, <NeumorphicSettingsCard />],
 
-  [<PricingCard />, <TogglePricingCards />, <PricingEnterpriseCard />],
-  [<PricingLifetimeCard />, <FeatureComparison />, <PricingSkeleton />],
+  [<BeforeAfterImageCard />, <PhotoAlbumCard />, <PolaroidImageCard />],
+  [<ImageExifCard />, <MinimalPhotoCard />, <VideoReelCard />],
+  [<MagazineCoverCard />, <GlassOverlayImageCard />, <PortraitImageCard />],
+  [<ImageCarouselCard />, <StackedCardsEffect />, <DuotoneImageCard />],
 
-  [<MusicPlayerCard />, <MusicPlaylistCard />, <VideoThumbnailCard />],
-  [<NowPlayingBar />, <AppStoreReviewCard />, <VoiceWaveCard />],
+  [<CompactMusicPlayerWidget />, <NowPlayingBar />, <WellnessPlaylistWidget />],
+  [<MinimalWeatherWidget />, <WeatherWidgetCard />, <FocusBreathWidget />],
+  [<HabitStreakCard />, <CircularStatsWidget />, <ProgressRingCard />],
 
-  [<FileUploadZone />, <FileUploadProgress />, <FileUploadList />],
-  [<ImageUploadPreview />, <CloudUploadCard />, <MultiFileDropzone />],
+  [<RevenueStatCard />, <AudioRecorderWidget />, <MetricCard />],
+  [<DailyBriefingCard />, <KpiSparklineGrid />, <SalesOverviewCard />],
+  [<BurnRunwayCard />, <SpendingBreakdownWidget />, <BudgetDialCard />],
 
-  [<TestimonialCard />, <MetricCard />, <AuroraProfileCard />],
-  [<AvatarGroupCard />, <BlogPostCard />, <TeamMemberCard />],
-  [<ActivityFeedCard />, <FeatureTabsCard />, <ProgressRingCard />],
+  [<KanbanBoard />, <TaskSummaryCard />, <ApprovalQueueWidget />],
+  [<TeamPresenceWidget />, <SlackChannelWidget />, <ChatWidget />],
+  [<NotificationBell />, <NotificationToast />, <ActivityFeedCard />],
 
-  [<DashboardWelcomeHeader />, <StatsRibbonWidget />, <DateRangePillsWidget />],
+  [<SearchBar />, <CommandPaletteSearch />, <AppleSpotlight />],
+  [<SpotlightSearchBar />, <CategoryFilterSearch />, <SearchBarWithResults />],
+  [<HomeDropdown />, <UserMenuDropdown />, <ContextMenuDropdown />],
 
-  [<DailyBriefingCard />, <ComparePeriodWidget />, <MetricBentoWidget />],
+  [<FlightArrivalWidget />, <MapLocationCard />, <GpsTrackingMapWidget />],
+  [<AirportGateWidget />, <CalendarWidgetCard />, <DailyActivityCalendarWidget />],
+  [<AppleNotesWidget />, <NotepadCard />, <AppleWidgetStack />],
 
-  [<QuickStatsRow />, <KpiSparklineGrid />, <MrrBreakdownCard />],
-  [<TrendMilestoneCard />, <RevenueBridgeCard />, <NpsSpectrumCard />],
+  [<GithubProfileCard />, <GithubContributionCard />, <TerminalLogCard />],
+  [<GoogleProfileCard />, <TwitterProfileCard />, <LinkedInProfileCard />],
+  [<FacebookProfileCard />, <TeamMemberCard />, <BusinessCard />],
 
-  [<RevenueStatCard />, <SalesOverviewCard />, <AnalyticsMiniCard />],
-  [<UserGrowthCard />, <ChannelLollipopCard />, <RetentionCohortCard />],
-  [<ApiLatencyCard />, <SessionHeatmapCard />, <GeoVisitorsCard />],
-  [<RadialMultiGaugeCard />, <BudgetDialCard />, <ExperimentAbCard />],
+  [<TestimonialCard />, <AppStoreReviewCard />, <BlogPostCard />],
+  [<EventTicketCard />, <CinemaTicketCard />, <CourierTrackingCard />],
+  [<TravelPostcardCard />, <StampPostcardCard />, <ThermalReceiptCard />],
 
-  [<BurnRunwayCard />, <GoalProgressCard />, <InvoicePipelineCard />],
-  [<SupportQueueCard />, <ChurnRiskCard />, <TeamCapacityCard />],
-  [<DealPipelineCard />, <SlaCountdownCard />, <TrafficSourcesCard />],
+  [<AIStreamingCard />, <AIPromptSuggestionsCard />, <AIAgentStatusCard />],
+  [<VoiceTranscriptCard />, <LivePulseMetricCard />, <SplitFeatureCard />],
+  [<CryptoTickerCard />, <LiveActivityPillCard />, <ExperimentAbCard />],
+  [<ConversionFunnelCard />, <RetentionCohortCard />, <ChurnRiskCard />],
 
-  [<TopProductsCard />, <RecentOrdersCard />, <LeaderboardCard />],
-  [<TaskSummaryCard />, <CalendarWidgetCard />, <StorageUsageCard />],
-  [<ServerStatusCard />, <UptimeMonitorCard />, <NotificationDigestCard />],
-
-  [<ActivityTimelineWidget />, <ConversionFunnelCard />, <FocusTimerCard />],
-  [<LiveActivityPillCard />, <CryptoTickerCard />, <InboxSummaryCard />],
-
-  [<BreadcrumbNav />, <PaginationBar />, <AlertBanners />],
-  [<ConfirmDialogCard />, <SettingsToggleCard />, <FAQSectionCard />],
-
-  [<ContactInfoCard />, <MapLocationCard />, <BillingHistoryCard />],
-  [<InviteTeamCard />, <SecuritySettingsCard />, <Error404Card />],
-  [<MaintenanceCard />, <EmptyState />, <CookieBanner />],
-
-  [<AppleGlassCard />, <FilterPillsWidget />, <AppointmentPickerCard />],
-
-  [<AppleMapsCard />, <AppleMapsDirections />, <AppleMapsExplore />],
-
-  [<RetailPriceTagCard />, <AppleWeatherPremium />, <AppleHealthRings />],
-  [<AppleRemindersWidget />, <AppleNotesWidget />, <AppleFitnessSummary />],
-  [<AppleWidgetStack />, <AppleWalletStack />, <AppleFindMyCard />],
-
-  [<AppleSettingsList />, <AppleControlCenter />, <AppleNotificationBanner />],
-  [<AppleSpotlight />, <ApplePayButton />, <CommandDockBar />],
+  [<FolderGridCard />, <FileTreeWidget />, <RecentFilesWidget />],
+  [<FilePreviewCard />, <FileUploadQueueCard />, <StorageVaultWidget />],
+  [<EmailComposeWidget />, <FileUploadZone />, <CloudUploadCard />],
+  [<MultiFileDropzone />, <ImageUploadPreview />, <FileUploadProgress />],
 
   [<PhoneMockupCard />, <BrowserMockupCard />, <LaptopMockupCard />],
+  [<AppleControlCenter />, <AppleGlassCard />, <ApplePayButton />],
+  [<AppleWalletStack />, <AppleFindMyCard />, <AppleStoreAppTile />],
 
-  [<CardSkeleton />, <ProfileSkeleton />, <DashboardSkeleton />],
-  [<ImageGridSkeleton />, <TableSkeleton />, <ChatSkeleton />],
+  [<GradientHero />, <GlassNavbar />, <BentoFeatureGrid />],
+  [<NewsletterSignup />, <CTAGradientBanner />, <SocialProofBar />],
+  [<Timeline />, <MinimalAgendaWidget />, <GlassStatWidget />],
 
-  [<BentoFeatureGrid />, <GradientHero />, <GlassNavbar />],
-  [<NewsletterSignup />, <LogoMarquee />, <SocialProofBar />],
-  [<Timeline />, <MiniFooter />, <CTAGradientBanner />],
+  [<DashboardWelcomeHeader />, <QuickStatsRow />, <StatsRibbonWidget />],
+  [<TrendMilestoneCard />, <NpsSpectrumCard />, <ScoreRingWidget />],
+  [<GeoVisitorsCard />, <SessionHeatmapCard />, <ApiLatencyCard />],
 
-  [<NotificationBell />, <KanbanBoard />, <NeumorphicSettingsCard />],
+  [<DealPipelineCard />, <InvoicePipelineCard />, <RecentOrdersCard />],
+  [<TopProductsCard />, <LeaderboardCard />, <SupportQueueCard />],
+  [<ServerStatusCard />, <UptimeMonitorCard />, <StorageUsageCard />],
 
-  [<HomeMenuBar />, <BorderedAccordion />, <MinimalAccordion />],
+  [<ConfirmDialogCard />, <Error404Card />, <MaintenanceCard />],
+  [<FAQSectionCard />, <InviteTeamCard />, <BillingHistoryCard />],
+  [<BreadcrumbNav />, <PaginationBar />, <AlertBanners />],
 
-  [<SearchBar />, <SearchBarWithResults />, <CommandPaletteSearch />],
-  [<SpotlightSearchBar />, <CategoryFilterSearch />, <ChapterOpenerCard />],
+  [<FilmStripCard />, <ImageGridHoverCard />, <PhotoContactSheetCard />],
+  [<ProductImageCard />, <ProductCatalogCard />, <RetailPriceTagCard />],
+  [<EditorialQuoteCard />, <PullQuoteCard />, <EditorialSpreadCard />],
 
-  [<HomeDropdown />, <UserMenuDropdown />, <ShareMenuDropdown />],
-  [
-    <QuickActionsDropdown />,
-    <FilterSortDropdown />,
-    <WorkspaceSwitcherDropdown />,
-  ],
+  [<CardSkeleton />, <ProfileSkeleton />, <ChatSkeleton />],
+  [<PricingSkeleton />, <ImageGridSkeleton />, <DashboardSkeleton />],
+  [<EmptyState />, <InsightPulseWidget />, <CookieBanner />],
+
+  [<CommandDockBar />, <BorderedAccordion />, <HomeMenuBar />],
+  [<MinimalAccordion />, <FilterPillsWidget />, <DateRangePillsWidget />],
+  [<ComparePeriodWidget />, <MetricBentoWidget />, <SplitCompareCard />],
+
+  [<KeyboardShortcutsCard />, <RecipeIngredientCard />, <StatEditorialCard />],
+  [<TabloidHeadlineCard />, <TypeSpecimenCard />, <VideoThumbnailCard />],
+  [<MusicPlaylistCard />, <AvatarGroupCard />, <AuthSplitLoginCard />],
+
+  [<ProfileMenuPreviewCard />, <SortMenuPreviewCard />, <ActionMenuPreviewCard />],
+  [<NotificationPanelPreviewCard />, <WorkspaceSwitcherPreviewCard />, <ShareMenuDropdown />],
+  [<QuickActionsDropdown />, <FilterSortDropdown />, <WorkspaceSwitcherDropdown />],
+
   [<LanguagePickerDropdown />, <ThemeColorDropdown />, <DateRangeDropdown />],
-  [<ContextMenuDropdown />, <StatEditorialCard />, <SplitFeatureCard />],
+  [<OnboardingSteps />, <PricingEnterpriseCard />, <PricingLifetimeCard />],
+  [<FeatureComparison />, <LogoMarquee />, <DotMatrixStepWidget />],
 
-  [<TerminalLogCard />, <KeyboardShortcutsCard />, <ThermalReceiptCard />],
+  [<AppleSettingsList />, <AppleNotificationBanner />, <AppleFitnessSummary />],
+  [<AppleMapsDirections />, <AppleMapsExplore />, <ContactInfoCard />],
+  [<SecuritySettingsCard />, <SettingsToggleCard />, <DashboardSidebarMini />],
 
-  [<EditorialQuoteCard />, <CinemaTicketCard />, <AppleStoreAppTile />],
+  [<ActivityTimelineWidget />, <GoalProgressCard />, <TeamCapacityCard />],
+  [<TrafficSourcesCard />, <ChannelLollipopCard />, <UserGrowthCard />],
+  [<MrrBreakdownCard />, <RevenueBridgeCard />, <RadialMultiGaugeCard />],
 
-  [<RecipeIngredientCard />, <CourierTrackingCard />, <HabitStreakCard />],
+  [<AnalyticsMiniCard />, <NotificationDigestCard />, <SlaCountdownCard />],
+  [<FileUploadList />, <AuthForgotPasswordCard />, <TableSkeleton />],
 
-  [<TypographicPosterCard />, <PullQuoteCard />, <TabloidHeadlineCard />],
-  [<ReadingProgressCard />, <LinedJournalCard />, <TypeSpecimenCard />],
+  [<EmailThreadWidget />, <WellnessChatAudioWidget />, <DribbbleShotCard />],
+  [<GlowButtonBar />, <MinimalMusicPlayerWidget />, <MarqueeTextWidget />],
 
-  [
-    <ProfileMenuPreviewCard />,
-    <SortMenuPreviewCard />,
-    <ActionMenuPreviewCard />,
-  ],
-  [
-    <NotificationPanelPreviewCard />,
-    <WorkspaceSwitcherPreviewCard />,
-    <FilterPillsWidget />,
-  ],
+  [<FitnessActivityWidget />, <MentalHealthPollWidget />, <MinimalFlightWidget />],
+  [<DailyHabitTimerWidget />, <TurnByTurnNavWidget />, <WeeklyActivityChartWidget />],
+  [<BatteryUsageWidget />, <CameraRecordingWidget />, <RidePickupWidget />],
+  [<ChargingStatusWidget />, <ElectricScooterWidget />, <WorkoutDashboardWidget />],
 
-  [<FilmStripCard />, <EditorialSpreadCard />, <PhotoContactSheetCard />],
-  [<ProductCatalogCard />, <StampPostcardCard />, <LivePulseMetricCard />],
-  [<ScoreRingWidget />, <SplitCompareCard />, null],
+  [<MinimalTimezoneWidget />, <MinimalCalendarDayWidget />, <MinimalAnalogClockWidget />],
+  [<MinimalRecordButton />, <MinimalAirplaneButton />, <MinimalEarbudsWidget />],
+  [<MinimalTorchToggle />, <MinimalBluetoothToggle />, <MinimalStatusDockWidget />],
+  [<MinimalDotPatternCard />, <MinimalCompassWidget />, <MinimalStopwatchWidget />],
+
+  [<CircularScheduleDialWidget />, <WellnessRatingWidget />, <AnalogClockWidget />],
+  [<SnapchatStoryCard />, <WorldClockWidget />, <ImageQuoteOverlayCard />],
+
+  [<GitHubCodeBlockCard />, <GradientTextWidget />, <TextRevealWidget />],
+  [<WhatsAppChatCard />, <EmailNewsletterCard />, <InboxSummaryCard />],
+  [<RichTextEditorWidget />, <MeetingScheduleWidget />, <IntegrationStatusWidget />],
+  [<DatePickerWidget />, <AppointmentPickerCard />, <FocusTimerCard />],
+  [<MusicPlayerCard />, <PodcastCard />, <NFTGalleryCard />],
+  [<GalleryGridCard />, <OrganicBlobImageCard />, <FeatureTabsCard />],
+  [<FlightBoardingCard />, <AppleMapsCard />, <AppleWeatherPremium />],
+  [<AppleHealthRings />, <AppleRemindersWidget />, <MiniFooter />],
+  [<MinimalMicButton />, <MinimalLocationButton />, <MinimalAutoRotateButton />],
+  [<MinimalScreenRecordButton />, <MinimalExtraDimToggle />, <MinimalNearbyShareToggle />],
+  [<MinimalHotspotToggle />, <MinimalMobileDataToggle />, <MinimalDarkModeToggle />],
+  [<MinimalCalculatorToggle />, <MinimalBatterySaverToggle />, <MaintenanceCard />],
 ];
 
 export default function Home() {
@@ -359,7 +506,7 @@ export default function Home() {
       <div className="mb-8 flex max-w-xl flex-col items-center px-2 text-center sm:mb-10">
         <h1 className="mt-20 mb-2 text-xl sm:text-2xl">Introduction</h1>
         <p className="max-w-xl text-sm leading-relaxed text-neutral-500">
-          I built these 250+ production-ready Next.js components for my own
+          I built these 338 production-ready Next.js components for my own
           projects. Everything is cleanly styled with Tailwind v4 and paired
           with SVGs from nexticons.in. You can explore all the live designs
           right now—the copy-and-paste code feature is shipping soon.
@@ -377,11 +524,11 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="w-full max-w-400 space-y-2">
+      <div className="w-full max-w-400 space-y-3">
         {rows.map((row, i) => (
           <div
             key={i}
-            className="flex w-full flex-col gap-2 min-[1194px]:flex-row min-[1194px]:gap-4"
+            className="flex w-full flex-col gap-3 min-[1194px]:flex-row min-[1194px]:gap-4"
           >
             {row.map((node, j) => (
               <Box key={j}>{node}</Box>

@@ -10,6 +10,13 @@ import { cn } from "@/lib/utils";
 
 import { Check } from "@/icons/Check";
 
+/**
+ * Workspace Switcher Preview Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
+
 export type WorkspaceOption = {
   id: string;
   name: string;

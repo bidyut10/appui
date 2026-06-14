@@ -155,8 +155,7 @@ export const FacebookProfileCard = forwardRef<
             </div>
           </div>
 
-          {/* Actions */}
-          <div
+                    <div
             data-slot="facebook-profile-card-actions"
             className="mt-4 flex w-full gap-2"
           >

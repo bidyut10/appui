@@ -7,6 +7,15 @@ import img1 from "@/public/dithar.png";
 import img2 from "@/public/bg.png";
 import img3 from "@/public/bh.png";
 
+/**
+ * Film strip photo card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ *
+ * React Users: Replace `next/image` with a standard `img` element.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type FilmStripCardProps = {
   frames?: (StaticImageData | string)[];
   label?: string;

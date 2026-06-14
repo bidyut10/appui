@@ -8,16 +8,17 @@ import { Github } from "@/icons/Github";
 import { Mail } from "@/icons/Mail";
 import { ArrowRight } from "@/icons/ArrowRight";
 
-/*
-| Authentication login/signup card built with Next.js,
-| React, TypeScript, and Tailwind CSS.
-|
-| Supports login and signup modes with customizable
-| branding, titles, placeholders, and button labels.
-|
-| Replace the demo content with your own authentication flow.
-*/
-
+/**
+ * Authentication login/signup card built with Next.js,
+ * React, TypeScript, and Tailwind CSS.
+ *
+ * Supports login and signup modes with customizable
+ * branding, titles, placeholders, and button labels.
+ *
+ * Replace the demo content with your own authentication flow.
+ *
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type AuthLoginCardProps = {
   appInitial?: string;
 
@@ -65,8 +66,7 @@ export const AuthLoginCard = ({
       {...props}
     >
       <div data-slot="auth-login-card-content" className="p-6">
-        {/* Header */}
-        <div
+                <div
           data-slot="auth-login-card-header"
           className="mb-5 flex items-center gap-2"
         >
@@ -150,8 +150,7 @@ export const AuthLoginCard = ({
           <ArrowRight size={12} />
         </button>
 
-        {/* Footer */}
-        <p className="mt-4 text-center text-[11px] text-neutral-400">
+                <p className="mt-4 text-center text-[11px] text-neutral-400">
           {mode === "login"
             ? "Don't have an account?"
             : "Already have an account?"}{" "}

@@ -1,7 +1,16 @@
-import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import {
+  forwardRef,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
+} from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Activity timeline widget built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo events and timestamps with your own activity data.
+ */
 export type ActivityEvent = {
   time: string;
   title: string;
@@ -49,17 +58,22 @@ export const ActivityTimelineWidget = forwardRef<
       ref={ref}
       data-slot="activity-timeline-widget"
       className={cn(
-        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-sm ring-1 ring-black/[0.03]",
+        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-lg ring-1 ring-black/[0.03]",
         className,
       )}
       {...props}
     >
-      <p className="mb-4 text-[11px] font-semibold tracking-widest text-neutral-400 uppercase">
+            <p className="mb-4 text-[11px] font-semibold tracking-widest text-neutral-400 uppercase">
         {title}
       </p>
+
+      {/* Timeline */}
       <div className="relative space-y-0">
-        {events.map((event, index) => (
-          <div key={`${event.time}-${event.title}`} className="relative flex gap-3 pb-5 last:pb-0">
+        {(events ?? []).map((event, index) => (
+          <div
+            key={`${event.time}-${event.title}`}
+            className="relative flex gap-3 pb-5 last:pb-0"
+          >
             {index < events.length - 1 && (
               <div className="absolute top-3 left-[5px] h-full w-px bg-neutral-200" />
             )}

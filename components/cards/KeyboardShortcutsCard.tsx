@@ -4,10 +4,13 @@ import { cn } from "@/lib/utils";
 
 import { Command } from "@/icons/Command";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
-
+/**
+ * Keyboard shortcuts reference card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type KeyboardShortcut = {
   keys: string[];
   label: string;
@@ -19,10 +22,6 @@ export type KeyboardShortcutsCardProps = {
   hint?: string;
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultShortcuts: KeyboardShortcut[] = [
   { keys: ["⌘", "K"], label: "Open command palette" },
   { keys: ["⌘", "S"], label: "Save changes" },
@@ -30,10 +29,6 @@ const defaultShortcuts: KeyboardShortcut[] = [
   { keys: ["⌘", "⇧", "P"], label: "Quick actions" },
   { keys: ["Esc"], label: "Close panel" },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const KeyboardShortcutsCard = forwardRef<
   HTMLDivElement,

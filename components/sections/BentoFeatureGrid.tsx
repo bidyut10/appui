@@ -1,18 +1,35 @@
-import React, { forwardRef } from "react";
+import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
+
+import { cn } from "@/lib/utils";
+
 import bgImage from "@/public/bg.png";
 import { TailwindCSS } from "@/icons/TailwindCSS";
 import { ReactJs } from "@/icons/ReactJs";
 import { NextJs } from "@/icons/NextJs";
 import { Typescript } from "@/icons/Typescript";
 
+/**
+ * Bento Feature Grid built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ *
+ * React Users: Replace `next/image` with a standard `img` element.
+ */
+export type BentoFeatureGridProps = ComponentPropsWithoutRef<"div">;
+
 export const BentoFeatureGrid = forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className = "", ...props }, ref) => (
+  BentoFeatureGridProps
+>(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={`grid w-80 grid-cols-2 grid-rows-3 gap-2 font-sans ${className}`}
+    data-slot="bento-feature-grid"
+    className={cn(
+      "grid w-80 grid-cols-2 grid-rows-3 gap-2 font-sans",
+      className,
+    )}
     {...props}
   >
     <div className="group relative col-span-2 row-span-2 overflow-hidden rounded-2xl bg-neutral-900">
@@ -67,4 +84,5 @@ export const BentoFeatureGrid = forwardRef<
     </div>
   </div>
 ));
+
 BentoFeatureGrid.displayName = "BentoFeatureGrid";

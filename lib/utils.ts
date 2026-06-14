@@ -8,3 +8,9 @@ import { twMerge } from "tailwind-merge";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+/** Hide scrollbars until hover — use on overflow-auto / scroll containers. */
+export const scrollHover = "scroll-hover";
+
+/** Wrap a card so child `.scroll-hover` areas show scrollbars when the card is hovered. */
+export const scrollHoverGroup = "scroll-hover-group";

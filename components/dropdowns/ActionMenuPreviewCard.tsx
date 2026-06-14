@@ -11,6 +11,13 @@ import { cn } from "@/lib/utils";
 import { ChevronDown } from "@/icons/ChevronDown";
 import { Check } from "@/icons/Check";
 
+/**
+ * Action Menu Preview Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
+
 export type ActionMenuItem = {
   id: string;
   label: string;

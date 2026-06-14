@@ -4,10 +4,13 @@ import { cn } from "@/lib/utils";
 
 import { QrCode } from "@/icons/QrCode";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
-
+/**
+ * Thermal receipt card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type ThermalReceiptItem = {
   name: string;
   price: string;
@@ -25,19 +28,11 @@ export type ThermalReceiptCardProps = {
   footer?: string;
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultItems: ThermalReceiptItem[] = [
   { name: "AppUI Pro (Monthly)", price: "₹999" },
   { name: "Component Pack", price: "₹499" },
   { name: "Priority Support", price: "₹299" },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const ThermalReceiptCard = forwardRef<
   HTMLDivElement,

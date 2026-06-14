@@ -7,9 +7,12 @@ import { cn } from "@/lib/utils";
 import { ChevronLeft } from "@/icons/ChevronLeft";
 import { ChevronRight } from "@/icons/ChevronRight";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Pagination Bar built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type PaginationBarProps = {
   defaultPage?: number;
@@ -22,10 +25,6 @@ export type PaginationBarProps = {
 
   onPageChange?: (page: number) => void;
 } & ComponentPropsWithoutRef<"div">;
-
-/* -------------------------------------------------------------------------- */
-/*                                 Component                                  */
-/* -------------------------------------------------------------------------- */
 
 export const PaginationBar = forwardRef<HTMLDivElement, PaginationBarProps>(
   (
@@ -69,10 +68,7 @@ export const PaginationBar = forwardRef<HTMLDivElement, PaginationBarProps>(
         className={cn("flex items-center gap-1 font-sans", className)}
         {...props}
       >
-        {/* ------------------------------------------------------------------ */}
-        {/*                             Previous                               */}
-        {/* ------------------------------------------------------------------ */}
-
+        
         <button
           type="button"
           aria-label="Previous page"
@@ -84,10 +80,7 @@ export const PaginationBar = forwardRef<HTMLDivElement, PaginationBarProps>(
           <ChevronLeft />
         </button>
 
-        {/* ------------------------------------------------------------------ */}
-        {/*                               Pages                                */}
-        {/* ------------------------------------------------------------------ */}
-
+        
         {visiblePages.map((pageNumber) => (
           <button
             key={pageNumber}
@@ -106,10 +99,7 @@ export const PaginationBar = forwardRef<HTMLDivElement, PaginationBarProps>(
           </button>
         ))}
 
-        {/* ------------------------------------------------------------------ */}
-        {/*                              Ellipsis                              */}
-        {/* ------------------------------------------------------------------ */}
-
+        
         <span
           aria-hidden="true"
           data-slot="pagination-ellipsis"
@@ -118,10 +108,7 @@ export const PaginationBar = forwardRef<HTMLDivElement, PaginationBarProps>(
           …
         </span>
 
-        {/* ------------------------------------------------------------------ */}
-        {/*                             Last Page                              */}
-        {/* ------------------------------------------------------------------ */}
-
+        
         <button
           type="button"
           data-slot="pagination-last-page"
@@ -131,10 +118,7 @@ export const PaginationBar = forwardRef<HTMLDivElement, PaginationBarProps>(
           {totalPages}
         </button>
 
-        {/* ------------------------------------------------------------------ */}
-        {/*                               Next                                 */}
-        {/* ------------------------------------------------------------------ */}
-
+        
         <button
           type="button"
           aria-label="Next page"

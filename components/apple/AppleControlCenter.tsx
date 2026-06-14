@@ -4,55 +4,105 @@ import {
   forwardRef,
   useState,
   type ComponentPropsWithoutRef,
+  type ReactNode,
 } from "react";
 
 import { cn } from "@/lib/utils";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+import { PlaneTakeoff } from "@/icons/PlaneTakeoff";
+import { Wifi } from "@/icons/Wifi";
+import { Bluetooth } from "@/icons/Bluetooth";
+import { Mobile } from "@/icons/Mobile";
+import { Torch } from "@/icons/Torch";
+import { Camera } from "@/icons/Camera";
+import { Calculator } from "@/icons/Calculator";
+import { Music } from "@/icons/Music";
+import { Sun } from "@/icons/Sun";
+import { Sound } from "@/icons/Sound";
 
+/**
+ * Apple Control Center built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type AppleControlItem = {
-  icon: string;
+  icon: ReactNode;
   label: string;
   active?: boolean;
   color: string;
 };
 
 export type AppleControlSlider = {
-  icon: string;
+  icon: ReactNode;
   value: number;
 };
 
 export type AppleControlCenterProps = {
   controls?: AppleControlItem[];
   sliders?: AppleControlSlider[];
-  onControlToggle?: (control: AppleControlItem, index: number, active: boolean) => void;
+  onControlToggle?: (
+    control: AppleControlItem,
+    index: number,
+    active: boolean,
+  ) => void;
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultControls: AppleControlItem[] = [
-  { icon: "✈️", label: "Airplane", active: false, color: "bg-orange-500" },
-  { icon: "📶", label: "Wi-Fi", active: true, color: "bg-[#007AFF]" },
-  { icon: "🔵", label: "Bluetooth", active: true, color: "bg-[#007AFF]" },
-  { icon: "📱", label: "Cellular", active: true, color: "bg-[#007AFF]" },
-  { icon: "🔦", label: "Flashlight", active: false, color: "bg-neutral-600" },
-  { icon: "📷", label: "Camera", active: false, color: "bg-neutral-600" },
-  { icon: "🧮", label: "Calculator", active: false, color: "bg-neutral-600" },
-  { icon: "🎵", label: "Music", active: false, color: "bg-neutral-600" },
+  {
+    icon: <PlaneTakeoff size={20} />,
+    label: "Airplane",
+    active: false,
+    color: "bg-orange-500",
+  },
+  {
+    icon: <Wifi size={20} />,
+    label: "Wi-Fi",
+    active: true,
+    color: "bg-[#007AFF]",
+  },
+  {
+    icon: <Bluetooth size={20} />,
+    label: "Bluetooth",
+    active: true,
+    color: "bg-[#007AFF]",
+  },
+  {
+    icon: <Mobile size={20} />,
+    label: "Cellular",
+    active: true,
+    color: "bg-[#007AFF]",
+  },
+  {
+    icon: <Torch size={20} />,
+    label: "Flashlight",
+    active: false,
+    color: "bg-neutral-600",
+  },
+  {
+    icon: <Camera size={20} />,
+    label: "Camera",
+    active: false,
+    color: "bg-neutral-600",
+  },
+  {
+    icon: <Calculator size={20} />,
+    label: "Calculator",
+    active: false,
+    color: "bg-neutral-600",
+  },
+  {
+    icon: <Music size={20} />,
+    label: "Music",
+    active: false,
+    color: "bg-neutral-600",
+  },
 ];
 
 const defaultSliders: AppleControlSlider[] = [
-  { icon: "🔆", value: 70 },
-  { icon: "🔊", value: 45 },
+  { icon: <Sun size={14} />, value: 70 },
+  { icon: <Sound size={14} />, value: 45 },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const AppleControlCenter = forwardRef<
   HTMLDivElement,
@@ -99,6 +149,7 @@ export const AppleControlCenter = forwardRef<
             <button
               key={control.label}
               type="button"
+              aria-label={`Toggle ${control.label}`}
               data-slot="apple-control-center-item"
               onClick={() => handleToggle(index)}
               className="flex cursor-pointer flex-col items-center gap-1.5 transition-all active:scale-95"
@@ -125,7 +176,7 @@ export const AppleControlCenter = forwardRef<
           <div className="flex-1">
             {sliders.map((slider, index) => (
               <div
-                key={slider.icon}
+                key={index}
                 className={cn(
                   "flex items-center gap-2",
                   index === 0 && "mb-1",

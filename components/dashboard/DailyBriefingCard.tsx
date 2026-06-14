@@ -2,6 +2,11 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Daily briefing card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo briefing date, greeting, and headline items with your own updates.
+ */
 export type BriefingItem = {
   time: string;
   headline: string;
@@ -59,14 +64,16 @@ export const DailyBriefingCard = forwardRef<
       )}
       {...props}
     >
-      <p className="font-serif text-[10px] tracking-[0.25em] text-neutral-400 uppercase">
+            <p className="font-serif text-[10px] tracking-[0.25em] text-neutral-400 uppercase">
         {date}
       </p>
       <h3 className="mt-1 font-serif text-xl font-medium text-neutral-900">
         {greeting}
       </h3>
+
+      {/* Items */}
       <div className="mt-5 space-y-4">
-        {items.map((item) => (
+        {(items ?? []).map((item) => (
           <div key={item.headline} className="group">
             <div className="flex items-baseline gap-2">
               <span className="font-mono text-[10px] text-neutral-400 tabular-nums">

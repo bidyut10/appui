@@ -67,7 +67,7 @@ export const TwitterPostCard = forwardRef<HTMLDivElement, TwitterPostCardProps>(
       handle = "@johndoe",
       timestamp = "2h",
 
-      content = "Building the future of UI with minimalist design and performance-first components. Obsessed with the little details. ✦",
+      content = "Building the future of UI with minimalist design and performance-first components. Obsessed with the little details.",
       hashtags = "#WebDev #Design",
 
       comments = 12,

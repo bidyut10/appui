@@ -8,10 +8,17 @@ import {
 
 import { cn } from "@/lib/utils";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+import { Check } from "@/icons/Check";
+import { Camera } from "@/icons/Camera";
+import { Edit } from "@/icons/Edit";
+import { Share } from "@/icons/Share";
 
+/**
+ * Apple Notes Widget built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type AppleNotesWidgetProps = {
   timestamp?: string;
   title?: string;
@@ -20,10 +27,6 @@ export type AppleNotesWidgetProps = {
   onActionClick?: (index: number) => void;
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultItems = [
   "Finalize component library v2",
   "Review Apple-style glass cards",
@@ -31,11 +34,12 @@ const defaultItems = [
   "Get feedback from team",
 ];
 
-const defaultActions = ["☑️", "📷", "✏️", "↗️"];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
+const defaultActions: ReactNode[] = [
+  <Check key="check" size={14} />,
+  <Camera key="camera" size={14} />,
+  <Edit key="edit" size={14} />,
+  <Share key="share" size={14} />,
+];
 
 export const AppleNotesWidget = forwardRef<
   HTMLDivElement,
@@ -91,8 +95,9 @@ export const AppleNotesWidget = forwardRef<
         >
           {actions.map((icon, index) => (
             <button
-              key={`${icon}-${index}`}
+              key={index}
               type="button"
+              aria-label={`Note action ${index + 1}`}
               onClick={() => onActionClick?.(index)}
               className="cursor-pointer text-sm opacity-60 transition-opacity hover:opacity-100"
             >

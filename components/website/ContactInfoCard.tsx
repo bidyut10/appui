@@ -13,9 +13,12 @@ import { Phone } from "@/icons/Phone";
 import { Location } from "@/icons/Location";
 import { Clock } from "@/icons/Clock";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Contact Info Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type ContactItem = {
   label: string;
@@ -34,10 +37,6 @@ export type ContactInfoCardProps = {
 
   onActionClick?: () => void;
 } & ComponentPropsWithoutRef<"div">;
-
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
 
 const defaultContacts: ContactItem[] = [
   {
@@ -61,10 +60,6 @@ const defaultContacts: ContactItem[] = [
     icon: <Clock size={15} className="text-neutral-600" />,
   },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                              Contact Info Card                             */
-/* -------------------------------------------------------------------------- */
 
 export const ContactInfoCard = forwardRef<HTMLDivElement, ContactInfoCardProps>(
   (
@@ -94,20 +89,14 @@ export const ContactInfoCard = forwardRef<HTMLDivElement, ContactInfoCardProps>(
       )}
       {...props}
     >
-      {/* ---------------------------------------------------------------------- */}
-      {/* Header                                                                 */}
-      {/* ---------------------------------------------------------------------- */}
-
+      
       <div data-slot="contact-info-card-header">
         <h4 className="mb-1 text-sm font-semibold text-neutral-900">{title}</h4>
 
         <p className="mb-4 text-[11px] text-neutral-500">{description}</p>
       </div>
 
-      {/* ---------------------------------------------------------------------- */}
-      {/* Contact List                                                           */}
-      {/* ---------------------------------------------------------------------- */}
-
+      
       <div data-slot="contact-info-card-list" className="space-y-3">
         {contacts.map((contact) => (
           <div
@@ -135,10 +124,7 @@ export const ContactInfoCard = forwardRef<HTMLDivElement, ContactInfoCardProps>(
         ))}
       </div>
 
-      {/* ---------------------------------------------------------------------- */}
-      {/* Footer                                                                 */}
-      {/* ---------------------------------------------------------------------- */}
-
+      
       <button
         type="button"
         data-slot="contact-info-card-action"

@@ -5,6 +5,15 @@ import { Clock } from "@/icons/Clock";
 import { ArrowRight } from "@/icons/ArrowRight";
 import { cn } from "@/lib/utils";
 
+/**
+ * Blog post preview card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ *
+ * React Users: Replace `next/image` with a standard `img` element.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export const BlogPostCard = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
@@ -12,7 +21,7 @@ export const BlogPostCard = forwardRef<
   <div
     ref={ref}
     className={cn(
-      "group w-72 cursor-pointer overflow-hidden rounded-2xl border border-neutral-200/70 bg-white font-sans shadow-xl ring-1 ring-black/[0.03] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl",
+      "group w-72 cursor-pointer overflow-hidden rounded-2xl border border-neutral-200/70 bg-white font-sans shadow-lg ring-1 ring-black/[0.03] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl",
       className,
     )}
     {...props}
@@ -36,8 +45,7 @@ export const BlogPostCard = forwardRef<
       </div>
     </div>
 
-    {/* Content */}
-    <div className="p-5">
+        <div className="p-5">
       <div className="mb-3 flex items-center gap-2">
         <div className="h-5 w-5 rounded-full bg-gradient-to-br from-teal-400 to-cyan-500 shadow-sm" />
 

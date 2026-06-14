@@ -7,9 +7,12 @@ import { cn } from "@/lib/utils";
 import { Location } from "@/icons/Location";
 import { Phone } from "@/icons/Phone";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Map Location Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type MapLocationCardProps = {
   title?: string;
@@ -24,10 +27,6 @@ export type MapLocationCardProps = {
 
   onCallClick?: () => void;
 } & ComponentPropsWithoutRef<"div">;
-
-/* -------------------------------------------------------------------------- */
-/*                              Map Location Card                             */
-/* -------------------------------------------------------------------------- */
 
 export const MapLocationCard = forwardRef<HTMLDivElement, MapLocationCardProps>(
   (
@@ -59,10 +58,7 @@ export const MapLocationCard = forwardRef<HTMLDivElement, MapLocationCardProps>(
       )}
       {...props}
     >
-      {/* ---------------------------------------------------------------------- */}
-      {/* Map Preview                                                            */}
-      {/* ---------------------------------------------------------------------- */}
-
+      
       <div
         data-slot="map-location-card-map"
         className="relative h-36 bg-neutral-50/50"
@@ -88,10 +84,7 @@ export const MapLocationCard = forwardRef<HTMLDivElement, MapLocationCardProps>(
         </div>
       </div>
 
-      {/* ---------------------------------------------------------------------- */}
-      {/* Content                                                                */}
-      {/* ---------------------------------------------------------------------- */}
-
+      
       <div data-slot="map-location-card-content" className="p-4">
         <h4
           data-slot="map-location-card-title"
@@ -108,10 +101,7 @@ export const MapLocationCard = forwardRef<HTMLDivElement, MapLocationCardProps>(
           {address}
         </p>
 
-        {/* ------------------------------------------------------------------ */}
-        {/* Actions                                                            */}
-        {/* ------------------------------------------------------------------ */}
-
+        
         <div data-slot="map-location-card-actions" className="mt-3 flex gap-2">
           <button
             type="button"

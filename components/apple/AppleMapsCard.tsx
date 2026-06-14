@@ -17,9 +17,12 @@ import { Play } from "@/icons/Play";
 import { Plus } from "@/icons/Plus";
 import { Train } from "@/icons/Train";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Apple Maps Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type AppleMapsRouteMode = "drive" | "bike" | "transit";
 
@@ -42,10 +45,6 @@ export type AppleMapsCardProps = {
   onNavigate?: () => void;
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultRouteData: AppleMapsRouteData = {
   drive: { time: "12 min", distance: "4.2 km" },
   bike: { time: "18 min", distance: "4.0 km" },
@@ -62,10 +61,6 @@ const modes: { id: AppleMapsRouteMode; label: string; icon: ReactNode }[] = [
   { id: "bike", label: "Bike", icon: <Bike size={15} /> },
   { id: "transit", label: "Transit", icon: <Train size={15} /> },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const AppleMapsCard = forwardRef<HTMLDivElement, AppleMapsCardProps>(
   (

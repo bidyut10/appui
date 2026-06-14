@@ -1,12 +1,26 @@
-import React, { forwardRef } from "react";
+import { forwardRef, type ComponentPropsWithoutRef } from "react";
+
+import { cn } from "@/lib/utils";
+
+/**
+ * Dashboard Skeleton built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
+export type DashboardSkeletonProps = ComponentPropsWithoutRef<"div">;
 
 export const DashboardSkeleton = forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className = "", ...props }, ref) => (
+  DashboardSkeletonProps
+>(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={`w-72 rounded-2xl border border-neutral-100 bg-white p-4 font-sans ${className}`}
+    data-slot="dashboard-skeleton"
+    className={cn(
+      "w-72 rounded-2xl border border-neutral-100 bg-white p-4 font-sans",
+      className,
+    )}
     {...props}
   >
     <div className="mb-4 flex items-center justify-between">
@@ -32,4 +46,5 @@ export const DashboardSkeleton = forwardRef<
     </div>
   </div>
 ));
+
 DashboardSkeleton.displayName = "DashboardSkeleton";

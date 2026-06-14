@@ -6,9 +6,12 @@ import { cn } from "@/lib/utils";
 
 import { Star } from "@/icons/Star";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Apple Store App Tile built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type AppleStoreAppTileProps = {
   appIcon?: string;
@@ -24,15 +27,7 @@ export type AppleStoreAppTileProps = {
   onTagClick?: (tag: string) => void;
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultTags = ["Cards", "Maps", "AI", "Auth"];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const AppleStoreAppTile = forwardRef<
   HTMLDivElement,
@@ -110,7 +105,7 @@ export const AppleStoreAppTile = forwardRef<
 
       <div
         data-slot="apple-store-app-tile-tags"
-        className="flex gap-2 overflow-x-auto px-4 pb-3"
+        className="flex gap-2 scroll-hover overflow-x-auto px-4 pb-3"
       >
         {tags.map((tag) => (
           <span

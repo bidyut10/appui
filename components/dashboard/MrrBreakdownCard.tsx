@@ -2,6 +2,11 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * MRR breakdown card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo MRR total, change label, and segment breakdown with your own revenue data.
+ */
 export type MrrSegment = {
   label: string;
   amount: string;
@@ -41,12 +46,12 @@ export const MrrBreakdownCard = forwardRef<
       ref={ref}
       data-slot="mrr-breakdown-card"
       className={cn(
-        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-sm ring-1 ring-black/[0.03]",
+        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-lg ring-1 ring-black/[0.03]",
         className,
       )}
       {...props}
     >
-      <p className="text-[11px] font-medium tracking-wide text-neutral-500">
+            <p className="text-[11px] font-medium tracking-wide text-neutral-500">
         {title}
       </p>
       <div className="mt-1 flex items-baseline gap-2">
@@ -58,18 +63,23 @@ export const MrrBreakdownCard = forwardRef<
         </span>
       </div>
 
+      {/* Bar */}
       <div className="mt-5 flex h-2.5 overflow-hidden rounded-full bg-neutral-100">
-        {segments.map((seg) => (
+        {(segments ?? []).map((seg) => (
           <div
             key={seg.label}
-            className={cn("h-full first:rounded-l-full last:rounded-r-full", seg.color)}
-            style={{ width: `${seg.pct}%` }}
+            className={cn(
+              "h-full first:rounded-l-full last:rounded-r-full",
+              seg.color,
+            )}
+            style={{ width: `${Math.max(0, Math.min(100, seg.pct))}%` }}
           />
         ))}
       </div>
 
+      {/* Segments */}
       <div className="mt-4 space-y-2.5">
-        {segments.map((seg) => (
+        {(segments ?? []).map((seg) => (
           <div key={seg.label} className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className={cn("h-2 w-2 rounded-full", seg.color)} />
@@ -80,7 +90,7 @@ export const MrrBreakdownCard = forwardRef<
                 {seg.amount}
               </span>
               <span className="ml-2 text-[11px] text-neutral-400 tabular-nums">
-                {seg.pct}%
+                {Math.max(0, Math.min(100, seg.pct))}%
               </span>
             </div>
           </div>

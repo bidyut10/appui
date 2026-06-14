@@ -27,6 +27,13 @@ const defaultPlatforms: Platform[] = [
   { name: "Dev.to", rating: 5 },
 ];
 
+/**
+ * Social Proof Bar built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
+
 export type SocialProofBarProps = {
   stats?: Stat[];
   platforms?: Platform[];

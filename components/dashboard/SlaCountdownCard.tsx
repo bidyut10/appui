@@ -2,6 +2,11 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * SLA countdown card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo SLA items, deadlines, and urgency labels with your own service-level data.
+ */
 export type SlaItem = {
   label: string;
   deadline: string;
@@ -12,12 +17,27 @@ export type SlaItem = {
 export type SlaCountdownCardProps = {
   title?: string;
   items?: SlaItem[];
+  urgentLabel?: string;
+  hoursSuffix?: string;
 } & ComponentPropsWithoutRef<"div">;
 
 const defaultItems: SlaItem[] = [
-  { label: "Enterprise ticket #4421", deadline: "Today 6 PM", hoursLeft: 4, urgent: true },
-  { label: "Onboarding call — Acme", deadline: "Mon 10 AM", hoursLeft: 28 },
-  { label: "Contract renewal review", deadline: "Wed 2 PM", hoursLeft: 72 },
+  {
+    label: "Enterprise ticket #4421",
+    deadline: "Today 6 PM",
+    hoursLeft: 4,
+    urgent: true,
+  },
+  {
+    label: "Onboarding call — Acme",
+    deadline: "Mon 10 AM",
+    hoursLeft: 28,
+  },
+  {
+    label: "Contract renewal review",
+    deadline: "Wed 2 PM",
+    hoursLeft: 72,
+  },
 ];
 
 export const SlaCountdownCard = forwardRef<
@@ -29,6 +49,8 @@ export const SlaCountdownCard = forwardRef<
       className,
       title = "SLA countdown",
       items = defaultItems,
+      urgentLabel = "Urgent",
+      hoursSuffix = "h",
       ...props
     },
     ref,
@@ -37,15 +59,24 @@ export const SlaCountdownCard = forwardRef<
       ref={ref}
       data-slot="sla-countdown-card"
       className={cn(
-        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-sm ring-1 ring-black/[0.03]",
+        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-lg ring-1 ring-black/[0.03]",
         className,
       )}
       {...props}
     >
-      <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
+            <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
+
+      {/* Items */}
       <div className="space-y-3">
-        {items.map((item) => {
-          const urgency = item.hoursLeft <= 6 ? 95 : item.hoursLeft <= 24 ? 60 : 30;
+        {(items ?? []).map((item) => {
+          const urgency = Math.max(
+            0,
+            Math.min(
+              100,
+              item.hoursLeft <= 6 ? 95 : item.hoursLeft <= 24 ? 60 : 30,
+            ),
+          );
+
           return (
             <div
               key={item.label}
@@ -62,11 +93,13 @@ export const SlaCountdownCard = forwardRef<
                 </p>
                 {item.urgent && (
                   <span className="shrink-0 rounded bg-rose-500 px-1.5 py-0.5 text-[8px] font-bold text-white uppercase">
-                    Urgent
+                    {urgentLabel}
                   </span>
                 )}
               </div>
-              <p className="mt-1 text-[10px] text-neutral-400">{item.deadline}</p>
+              <p className="mt-1 text-[10px] text-neutral-400">
+                {item.deadline}
+              </p>
               <div className="mt-2 flex items-center gap-2">
                 <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-neutral-200">
                   <div
@@ -83,7 +116,8 @@ export const SlaCountdownCard = forwardRef<
                     item.urgent ? "text-rose-600" : "text-neutral-600",
                   )}
                 >
-                  {item.hoursLeft}h
+                  {item.hoursLeft.toLocaleString()}
+                  {hoursSuffix}
                 </span>
               </div>
             </div>

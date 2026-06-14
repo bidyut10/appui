@@ -5,6 +5,15 @@ import { cn } from "@/lib/utils";
 
 import coverImage from "@/public/dbg.png";
 
+/**
+ * Editorial magazine spread card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ *
+ * React Users: Replace `next/image` with a standard `img` element.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type EditorialSpreadCardProps = {
   headline?: string;
   dek?: string;
@@ -35,7 +44,7 @@ export const EditorialSpreadCard = forwardRef<
       ref={ref}
       data-slot="editorial-spread-card"
       className={cn(
-        "w-full max-w-sm overflow-hidden border border-neutral-200 bg-white font-serif shadow-sm",
+        "w-full max-w-sm overflow-hidden border border-neutral-200 bg-white font-serif shadow-lg",
         className,
       )}
       {...props}

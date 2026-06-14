@@ -15,17 +15,18 @@ import bgImage from "@/public/dithar.png";
 
 import { ArrowRight } from "@/icons/ArrowRight";
 
-/*
-| OTP verification card built with Next.js,
-| React, TypeScript, and Tailwind CSS.
-|
-| Supports custom email address, titles,
-| descriptions, button labels, and background image.
-|
-| Replace the demo content with your own
-| authentication flow.
-*/
-
+/**
+ * OTP verification card built with Next.js,
+ * React, TypeScript, and Tailwind CSS.
+ *
+ * Supports custom email address, titles,
+ * descriptions, button labels, and background image.
+ *
+ * Replace the demo content with your own
+ * authentication flow.
+ *
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type AuthOTPCardProps = {
   imageSrc?: typeof bgImage;
 
@@ -152,8 +153,7 @@ export const AuthOTPCard = forwardRef<HTMLDivElement, AuthOTPCardProps>(
           className="absolute inset-0 bg-white/5"
         />
 
-        {/* Content */}
-        <div data-slot="auth-otp-card-content" className="relative p-7">
+                <div data-slot="auth-otp-card-content" className="relative p-7">
           {/* Icon */}
           <div
             data-slot="auth-otp-card-icon"
@@ -174,8 +174,7 @@ export const AuthOTPCard = forwardRef<HTMLDivElement, AuthOTPCardProps>(
             </svg>
           </div>
 
-          {/* Header */}
-          <h3 className="mb-1 text-center text-lg font-semibold text-neutral-900">
+                    <h3 className="mb-1 text-center text-lg font-semibold text-neutral-900">
             {title}
           </h3>
 
@@ -224,8 +223,7 @@ export const AuthOTPCard = forwardRef<HTMLDivElement, AuthOTPCardProps>(
             <ArrowRight size={14} />
           </button>
 
-          {/* Footer */}
-          <p className="mt-4 text-center text-xs text-neutral-500">
+                    <p className="mt-4 text-center text-xs text-neutral-500">
             Didn&apos;t receive it?{" "}
             <button
               type="button"

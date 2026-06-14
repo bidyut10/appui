@@ -2,6 +2,7 @@
 
 import {
   forwardRef,
+  useState,
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from "react";
@@ -13,18 +14,20 @@ import { cn } from "@/lib/utils";
 import coverImage from "@/public/bh.png";
 
 import { Play } from "@/icons/Play";
+import { Pause } from "@/icons/Pause";
 
-/*
-| Podcast episode card built with Next.js, React, TypeScript,
-| and Tailwind CSS.
-|
-| Replace the demo episode details, artwork, and playback
-| information with your own content.
-|
-| React Users:
-| Replace `next/image` with a standard `img` element.
-*/
-
+/**
+ * Podcast episode card built with Next.js, React, TypeScript,
+ * and Tailwind CSS.
+ *
+ * Replace the demo episode details, artwork, and playback
+ * information with your own content.
+ *
+ * React Users:
+ * Replace `next/image` with a standard `img` element.
+ *
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type PodcastCardProps = {
   episodeNumber?: string;
 
@@ -74,7 +77,13 @@ export const PodcastCard = forwardRef<HTMLDivElement, PodcastCardProps>(
     },
     ref,
   ) => {
+    const [playing, setPlaying] = useState(false);
     const safeProgress = Math.min(100, Math.max(0, progress));
+
+    const togglePlay = () => {
+      setPlaying((prev) => !prev);
+      onPlay?.();
+    };
 
     return (
       <div
@@ -115,8 +124,7 @@ export const PodcastCard = forwardRef<HTMLDivElement, PodcastCardProps>(
           </div>
         </div>
 
-        {/* Content */}
-        <div data-slot="podcast-card-content" className="p-4">
+                <div data-slot="podcast-card-content" className="p-4">
           <h3
             data-slot="podcast-card-title"
             className="mb-1 text-sm leading-snug font-semibold text-white"
@@ -137,12 +145,21 @@ export const PodcastCard = forwardRef<HTMLDivElement, PodcastCardProps>(
           >
             <button
               type="button"
-              aria-label={playLabel ?? `Play ${title}`}
-              onClick={onPlay}
+              aria-label={
+                playLabel ?? (playing ? `Pause ${title}` : `Play ${title}`)
+              }
+              onClick={togglePlay}
               data-slot="podcast-card-play-button"
-              className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition-transform hover:scale-105 active:scale-95"
+              className={cn(
+                "flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full text-white transition-transform hover:scale-105 active:scale-95",
+                playing ? "bg-emerald-500" : "bg-white/10",
+              )}
             >
-              {playIcon ?? <Play size={16} />}
+              {playing ? (
+                <Pause size={16} />
+              ) : (
+                (playIcon ?? <Play size={16} />)
+              )}
             </button>
 
             <div className="flex-1">

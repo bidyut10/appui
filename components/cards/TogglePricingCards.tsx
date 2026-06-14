@@ -6,14 +6,15 @@ import { cn } from "@/lib/utils";
 
 import { Check } from "@/icons/Check";
 
-/*
-| Toggle pricing cards built with Next.js, React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the plans, pricing, and discount values
-| with your own data.
-*/
-
+/**
+ * Toggle pricing cards built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the plans, pricing, and discount values
+ * with your own data.
+ *
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type PricingPlan = {
   name: string;
   price: number;

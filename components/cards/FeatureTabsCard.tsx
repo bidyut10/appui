@@ -12,6 +12,13 @@ import { ReactJs } from "@/icons/ReactJs";
 import { TailwindCSS } from "@/icons/TailwindCSS";
 import { Typescript } from "@/icons/Typescript";
 
+/**
+ * Feature tabs showcase card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 type TabItem = {
   id: string;
   label: string;
@@ -74,7 +81,7 @@ export const FeatureTabsCard = forwardRef<HTMLDivElement, FeatureTabsCardProps>(
         ref={ref}
         data-slot="feature-tabs-card"
         className={cn(
-          "group w-72 overflow-hidden rounded-2xl border border-neutral-200/70 bg-white font-sans shadow-xl ring-1 ring-black/[0.03] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl",
+          "group w-72 overflow-hidden rounded-2xl border border-neutral-200/70 bg-white font-sans shadow-lg ring-1 ring-black/[0.03] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl",
           className,
         )}
         {...props}
@@ -116,8 +123,7 @@ export const FeatureTabsCard = forwardRef<HTMLDivElement, FeatureTabsCardProps>(
           ))}
         </div>
 
-        {/* Content */}
-
+        
         <div data-slot="feature-tabs-card-content" className="p-5">
           <div
             data-slot="feature-tabs-card-icon"

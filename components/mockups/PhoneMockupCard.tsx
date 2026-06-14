@@ -1,14 +1,28 @@
-import React, { forwardRef } from "react";
+import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
+
+import { cn } from "@/lib/utils";
+
 import screenContent from "@/public/dbg.png";
+
+/**
+ * Phone Mockup Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ *
+ * React Users: Replace `next/image` with a standard `img` element.
+ */
+export type PhoneMockupCardProps = ComponentPropsWithoutRef<"div">;
 
 export const PhoneMockupCard = forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className = "", ...props }, ref) => (
+  PhoneMockupCardProps
+>(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={`flex flex-col items-center font-sans ${className}`}
+    data-slot="phone-mockup-card"
+    className={cn("flex flex-col items-center font-sans", className)}
     {...props}
   >
     <div className="relative h-[320px] w-44 rounded-[2rem] bg-neutral-900 p-2 shadow-2xl shadow-neutral-900/30">
@@ -34,4 +48,5 @@ export const PhoneMockupCard = forwardRef<
     </p>
   </div>
 ));
+
 PhoneMockupCard.displayName = "PhoneMockupCard";

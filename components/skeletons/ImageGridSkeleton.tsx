@@ -1,12 +1,26 @@
-import React, { forwardRef } from "react";
+import { forwardRef, type ComponentPropsWithoutRef } from "react";
+
+import { cn } from "@/lib/utils";
+
+/**
+ * Image Grid Skeleton built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
+export type ImageGridSkeletonProps = ComponentPropsWithoutRef<"div">;
 
 export const ImageGridSkeleton = forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className = "", ...props }, ref) => (
+  ImageGridSkeletonProps
+>(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={`w-72 rounded-2xl border border-neutral-100 bg-white p-3 font-sans ${className}`}
+    data-slot="image-grid-skeleton"
+    className={cn(
+      "w-72 rounded-2xl border border-neutral-100 bg-white p-3 font-sans",
+      className,
+    )}
     {...props}
   >
     <div className="mb-3 flex items-center justify-between px-1">
@@ -20,4 +34,5 @@ export const ImageGridSkeleton = forwardRef<
     </div>
   </div>
 ));
+
 ImageGridSkeleton.displayName = "ImageGridSkeleton";

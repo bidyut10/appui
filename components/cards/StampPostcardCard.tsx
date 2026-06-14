@@ -5,6 +5,15 @@ import { cn } from "@/lib/utils";
 
 import landscape from "@/public/bg.png";
 
+/**
+ * Stamp postcard card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ *
+ * React Users: Replace `next/image` with a standard `img` element.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type StampPostcardCardProps = {
   message?: string;
   location?: string;

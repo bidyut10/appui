@@ -4,17 +4,11 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-/*
-| Recent orders card built with React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the demo orders,
-| customer details, amounts,
-| and statuses with your own data.
-|
-| Visual design remains exactly the same.
-*/
-
+/**
+ * Recent orders card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo orders, customer details, amounts, and statuses with your own data.
+ */
 export type OrderStatus =
   | "Completed"
   | "Processing"
@@ -33,9 +27,8 @@ export type RecentOrder = {
 export type RecentOrdersCardProps = {
   title?: string;
   viewAllLabel?: string;
-
+  tableHeaders?: string[];
   orders?: RecentOrder[];
-
   onViewAll?: () => void;
 } & ComponentPropsWithoutRef<"div">;
 
@@ -70,20 +63,18 @@ const defaultOrders: RecentOrder[] = [
   },
 ];
 
+const defaultTableHeaders = ["Order", "Customer", "Amount", "Status"];
+
 const getStatusColor = (status: string) => {
   switch (status.toLowerCase()) {
     case "completed":
       return "bg-emerald-50 text-emerald-700";
-
     case "processing":
       return "bg-amber-50 text-amber-700";
-
     case "pending":
       return "bg-neutral-100 text-neutral-600";
-
     case "cancelled":
       return "bg-red-50 text-red-600";
-
     default:
       return "bg-neutral-100 text-neutral-600";
   }
@@ -96,14 +87,11 @@ export const RecentOrdersCard = forwardRef<
   (
     {
       className,
-
       title = "Recent Orders",
       viewAllLabel = "View all",
-
+      tableHeaders = defaultTableHeaders,
       orders = defaultOrders,
-
       onViewAll,
-
       ...props
     },
     ref,
@@ -117,8 +105,7 @@ export const RecentOrdersCard = forwardRef<
       )}
       {...props}
     >
-      {/* Header */}
-      <div
+            <div
         data-slot="recent-orders-header"
         className="flex items-center justify-between border-b border-neutral-100 px-4 py-3"
       >
@@ -132,6 +119,7 @@ export const RecentOrdersCard = forwardRef<
         <button
           type="button"
           data-slot="recent-orders-view-all"
+          aria-label={viewAllLabel}
           onClick={onViewAll}
           className="cursor-pointer text-[10px] font-medium text-teal-600 hover:underline"
         >
@@ -140,11 +128,11 @@ export const RecentOrdersCard = forwardRef<
       </div>
 
       {/* Table */}
-      <div data-slot="recent-orders-table-wrapper" className="overflow-x-auto">
+      <div data-slot="recent-orders-table-wrapper" className="scroll-hover overflow-x-auto">
         <table data-slot="recent-orders-table" className="w-full text-left">
           <thead data-slot="recent-orders-table-head">
             <tr className="border-b border-neutral-50">
-              {["Order", "Customer", "Amount", "Status"].map((header) => (
+              {tableHeaders.map((header) => (
                 <th
                   key={header}
                   className="px-4 py-2 font-mono text-[10px] font-normal tracking-wider text-neutral-400 uppercase"
@@ -156,7 +144,7 @@ export const RecentOrdersCard = forwardRef<
           </thead>
 
           <tbody data-slot="recent-orders-table-body">
-            {orders.map((order) => (
+            {(orders ?? []).map((order) => (
               <tr
                 key={order.id}
                 data-slot="recent-orders-row"

@@ -13,9 +13,12 @@ import { MoveDown } from "@/icons/MoveDown";
 import { MoveLeft } from "@/icons/MoveLeft";
 import { MoveUp } from "@/icons/MoveUp";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Apple Maps Directions built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type AppleMapsDirectionStep = {
   icon: ReactNode;
@@ -32,10 +35,6 @@ export type AppleMapsDirectionsProps = {
   steps?: AppleMapsDirectionStep[];
   onStepClick?: (step: AppleMapsDirectionStep, index: number) => void;
 } & ComponentPropsWithoutRef<"div">;
-
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
 
 const defaultSteps: AppleMapsDirectionStep[] = [
   {
@@ -56,10 +55,6 @@ const defaultSteps: AppleMapsDirectionStep[] = [
   },
   { icon: <Locate />, instruction: "Arrive at Howrah Bridge" },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const AppleMapsDirections = forwardRef<
   HTMLDivElement,

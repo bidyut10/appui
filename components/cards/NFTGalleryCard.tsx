@@ -10,20 +10,19 @@ import artImage from "@/public/dithar.png";
 
 import { Heart } from "@/icons/Heart";
 
-/*
-| NFT-inspired gallery card built with Next.js, React, TypeScript,
-| and Tailwind CSS.
-|
-| Replace the demo artwork, creator details, and metadata with your
-| own content.
-|
-| Need icons? Visit nexticons.in to browse and copy free icons
-| without adding another dependency to your project.
-|
-| React Users:
-| Replace `next/image` with a standard `img` element.
-*/
-
+/**
+ * NFT-inspired gallery card built with Next.js, React, TypeScript,
+ * and Tailwind CSS.
+ *
+ * Replace the demo artwork, creator details, and metadata with your
+ * own content.
+ *
+ * Need icons? Visit nexticons.in to browse and copy free icons
+ * without adding another dependency to your project.
+ *
+ * React Users:
+ * Replace `next/image` with a standard `img` element.
+ */
 export type NFTGalleryCardProps = {
   title?: string;
   creator?: string;

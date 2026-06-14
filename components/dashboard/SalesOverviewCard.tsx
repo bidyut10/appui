@@ -3,6 +3,7 @@
 import {
   forwardRef,
   useId,
+  useMemo,
   useState,
   type ComponentPropsWithoutRef,
 } from "react";
@@ -11,35 +12,27 @@ import { ChevronUp } from "@/icons/ChevronUp";
 import { ChevronDown } from "@/icons/ChevronDown";
 import { cn } from "@/lib/utils";
 
-/*
-| Sales overview card built with React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the demo sales metrics,
-| months, chart values, and years
-| with your own analytics data.
-|
-| Visual design remains exactly the same.
-*/
-
+/**
+ * Sales overview card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo sales metrics, months, chart values, and years with your own analytics data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type SalesOverviewCardProps = {
   title?: string;
   description?: string;
-
   months?: string[];
   values?: number[];
-
   years?: string[];
   defaultYear?: string;
-
   totalSales?: string;
+  totalSalesLabel?: string;
   averageOrder?: string;
+  averageOrderLabel?: string;
 } & ComponentPropsWithoutRef<"div">;
 
 const defaultMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
-
 const defaultValues = [40, 55, 45, 70, 60, 85];
-
 const defaultYears = ["2026", "2025", "2024", "2023", "2022"];
 
 export const SalesOverviewCard = forwardRef<
@@ -49,19 +42,16 @@ export const SalesOverviewCard = forwardRef<
   (
     {
       className,
-
       title = "Sales Overview",
       description = "Monthly performance",
-
       months = defaultMonths,
       values = defaultValues,
-
       years = defaultYears,
       defaultYear = "2026",
-
       totalSales = "$142,580",
+      totalSalesLabel = "Total Sales",
       averageOrder = "$89",
-
+      averageOrderLabel = "Avg. Order",
       ...props
     },
     ref,
@@ -71,21 +61,34 @@ export const SalesOverviewCard = forwardRef<
 
     const gradientId = useId();
 
-    const safeValues = values.map((value) => Math.max(0, Math.min(100, value)));
+    const safeValues = useMemo(
+      () => (values ?? []).map((value) => Math.max(0, Math.min(100, value))),
+      [values],
+    );
 
-    const points = safeValues
-      .map(
-        (value, index) =>
-          `${(index / (safeValues.length - 1)) * 240},${100 - value}`,
-      )
-      .join(" ");
+    const { points, areaPath } = useMemo(() => {
+      if (safeValues.length === 0) {
+        return { points: "", areaPath: "M0,100 L240,100 L0,100 Z" };
+      }
 
-    const areaPath = `M0,${100 - safeValues[0]} ${safeValues
-      .map(
-        (value, index) =>
-          `L${(index / (safeValues.length - 1)) * 240},${100 - value}`,
-      )
-      .join(" ")} L240,100 L0,100 Z`;
+      const denominator = Math.max(safeValues.length - 1, 1);
+
+      const chartPoints = safeValues
+        .map(
+          (value, index) =>
+            `${(index / denominator) * 240},${100 - value}`,
+        )
+        .join(" ");
+
+      const path = `M0,${100 - safeValues[0]} ${safeValues
+        .map(
+          (value, index) =>
+            `L${(index / denominator) * 240},${100 - value}`,
+        )
+        .join(" ")} L240,100 L0,100 Z`;
+
+      return { points: chartPoints, areaPath: path };
+    }, [safeValues]);
 
     return (
       <div
@@ -97,8 +100,7 @@ export const SalesOverviewCard = forwardRef<
         )}
         {...props}
       >
-        {/* Header */}
-        <div
+                <div
           data-slot="sales-overview-header"
           className="mb-4 flex items-center justify-between"
         >
@@ -118,10 +120,12 @@ export const SalesOverviewCard = forwardRef<
             </p>
           </div>
 
-          {/* Year Selector */}
+          {/* Year selector */}
           <div data-slot="sales-overview-year-selector" className="relative">
             <button
               type="button"
+              aria-label={`Select year, currently ${year}`}
+              aria-expanded={open}
               onClick={() => setOpen((prev) => !prev)}
               className="flex cursor-pointer items-center gap-1.5 rounded-lg border border-neutral-200 bg-neutral-50 px-2.5 py-1 text-[10px] font-medium text-neutral-600 transition-colors hover:bg-neutral-100"
             >
@@ -137,12 +141,13 @@ export const SalesOverviewCard = forwardRef<
             {open && (
               <div
                 data-slot="sales-overview-year-menu"
-                className="absolute top-full right-0 z-50 mt-2 w-24 overflow-hidden rounded-xl border border-neutral-700/80 bg-neutral-900 shadow-2xl"
+                className="absolute top-full right-0 z-50 mt-2 w-24 overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-xl"
               >
-                {years.map((item) => (
+                {(years ?? []).map((item) => (
                   <button
                     key={item}
                     type="button"
+                    aria-label={`Select year ${item}`}
                     onClick={() => {
                       setYear(item);
                       setOpen(false);
@@ -150,8 +155,8 @@ export const SalesOverviewCard = forwardRef<
                     className={cn(
                       "w-full cursor-pointer px-3 py-2.5 text-left text-[10px] font-medium transition-colors",
                       year === item
-                        ? "bg-neutral-800 text-white"
-                        : "text-neutral-300 hover:bg-neutral-800",
+                        ? "bg-neutral-100 text-neutral-900"
+                        : "text-neutral-600 hover:bg-neutral-50",
                     )}
                   >
                     {item}
@@ -162,8 +167,7 @@ export const SalesOverviewCard = forwardRef<
           </div>
         </div>
 
-        {/* Chart */}
-        <div
+                <div
           data-slot="sales-overview-chart"
           className="relative flex h-32 items-end gap-2"
         >
@@ -195,20 +199,20 @@ export const SalesOverviewCard = forwardRef<
           data-slot="sales-overview-months"
           className="mt-2 flex justify-between"
         >
-          {months.map((month) => (
+          {(months ?? []).map((month) => (
             <span key={month} className="font-mono text-[9px] text-neutral-400">
               {month}
             </span>
           ))}
         </div>
 
-        {/* Footer Stats */}
+        {/* Footer stats */}
         <div
           data-slot="sales-overview-footer"
           className="mt-4 flex items-center justify-between border-t border-neutral-100 pt-3"
         >
           <div>
-            <p className="text-[10px] text-neutral-400">Total Sales</p>
+            <p className="text-[10px] text-neutral-400">{totalSalesLabel}</p>
 
             <p className="text-sm font-semibold text-neutral-900">
               {totalSales}
@@ -216,7 +220,7 @@ export const SalesOverviewCard = forwardRef<
           </div>
 
           <div className="text-right">
-            <p className="text-[10px] text-neutral-400">Avg. Order</p>
+            <p className="text-[10px] text-neutral-400">{averageOrderLabel}</p>
 
             <p className="text-sm font-semibold text-neutral-900">
               {averageOrder}

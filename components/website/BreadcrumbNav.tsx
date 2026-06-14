@@ -11,9 +11,12 @@ import { cn } from "@/lib/utils";
 import { Home } from "@/icons/Home";
 import { ChevronDown } from "@/icons/ChevronDown";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Breadcrumb Nav built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type BreadcrumbItem = {
   label: string;
@@ -27,10 +30,6 @@ export type BreadcrumbNavProps = {
   homeIcon?: ReactNode;
   onHomeClick?: () => void;
 } & ComponentPropsWithoutRef<"nav">;
-
-/* -------------------------------------------------------------------------- */
-/*                                 Component                                  */
-/* -------------------------------------------------------------------------- */
 
 export const BreadcrumbNav = forwardRef<HTMLElement, BreadcrumbNavProps>(
   (
@@ -63,10 +62,7 @@ export const BreadcrumbNav = forwardRef<HTMLElement, BreadcrumbNavProps>(
         className={cn("flex items-center gap-1.5 font-sans", className)}
         {...props}
       >
-        {/* ---------------------------------------------------------------------- */}
-        {/*                                Home Item                               */}
-        {/* ---------------------------------------------------------------------- */}
-
+        
         <button
           type="button"
           onClick={onHomeClick}
@@ -77,10 +73,7 @@ export const BreadcrumbNav = forwardRef<HTMLElement, BreadcrumbNavProps>(
           {homeLabel}
         </button>
 
-        {/* ---------------------------------------------------------------------- */}
-        {/*                               Breadcrumbs                              */}
-        {/* ---------------------------------------------------------------------- */}
-
+        
         {items.map((item, index) => {
           const isLast = index === lastIndex;
 

@@ -6,10 +6,13 @@ import { cn } from "@/lib/utils";
 
 import { ArrowRight } from "@/icons/ArrowRight";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
-
+/**
+ * Cryptocurrency ticker card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type CryptoAsset = {
   symbol: string;
   name: string;
@@ -24,10 +27,6 @@ export type CryptoTickerCardProps = {
   assets?: CryptoAsset[];
   updatedAt?: string;
 } & ComponentPropsWithoutRef<"div">;
-
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
 
 const defaultAssets: CryptoAsset[] = [
   {
@@ -56,10 +55,6 @@ const defaultAssets: CryptoAsset[] = [
   },
 ];
 
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
-
 export const CryptoTickerCard = forwardRef<
   HTMLDivElement,
   CryptoTickerCardProps
@@ -78,7 +73,7 @@ export const CryptoTickerCard = forwardRef<
       ref={ref}
       data-slot="crypto-ticker-card"
       className={cn(
-        "w-full max-w-xs overflow-hidden rounded-2xl bg-[#0a0a0b] font-sans shadow-xl",
+        "w-full max-w-xs overflow-hidden rounded-2xl bg-[#0a0a0b] font-sans shadow-lg",
         className,
       )}
       {...props}

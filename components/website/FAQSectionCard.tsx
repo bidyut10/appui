@@ -6,9 +6,12 @@ import { cn } from "@/lib/utils";
 
 import { ChevronDown } from "@/icons/ChevronDown";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * FAQ Section Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type FAQItem = {
   question: string;
@@ -28,10 +31,6 @@ export type FAQSectionCardProps = {
 
   onOpenChange?: (index: number) => void;
 } & ComponentPropsWithoutRef<"div">;
-
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
 
 const defaultFAQs: FAQItem[] = [
   {
@@ -55,10 +54,6 @@ const defaultFAQs: FAQItem[] = [
       "Every component accepts className props and uses Tailwind CSS for easy customization.",
   },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                              FAQ Section Card                              */
-/* -------------------------------------------------------------------------- */
 
 export const FAQSectionCard = forwardRef<HTMLDivElement, FAQSectionCardProps>(
   (
@@ -105,10 +100,7 @@ export const FAQSectionCard = forwardRef<HTMLDivElement, FAQSectionCardProps>(
         )}
         {...props}
       >
-        {/* ---------------------------------------------------------------------- */}
-        {/* Header                                                                 */}
-        {/* ---------------------------------------------------------------------- */}
-
+        
         <div
           data-slot="faq-section-card-header"
           className="border-b border-neutral-100 px-5 py-4"
@@ -118,10 +110,7 @@ export const FAQSectionCard = forwardRef<HTMLDivElement, FAQSectionCardProps>(
           <p className="mt-0.5 text-[11px] text-neutral-400">{description}</p>
         </div>
 
-        {/* ---------------------------------------------------------------------- */}
-        {/* FAQ Items                                                              */}
-        {/* ---------------------------------------------------------------------- */}
-
+        
         <div
           data-slot="faq-section-card-list"
           className="divide-y divide-neutral-50"

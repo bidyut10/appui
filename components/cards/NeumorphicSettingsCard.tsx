@@ -14,10 +14,13 @@ import { Settings } from "@/icons/Settings";
 import { Sound } from "@/icons/Sound";
 import { Wifi } from "@/icons/Wifi";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
-
+/**
+ * Neumorphic settings panel card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type NeumorphicSetting = {
   id: string;
   label: string;
@@ -31,10 +34,6 @@ export type NeumorphicSettingsCardProps = {
   onToggle?: (id: string, active: boolean) => void;
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultSettings: NeumorphicSetting[] = [
   { id: "wifi", label: "Wi-Fi", icon: <Wifi size={14} />, defaultOn: true },
   { id: "sound", label: "Sound", icon: <Sound size={14} />, defaultOn: true },
@@ -46,10 +45,6 @@ const defaultSettings: NeumorphicSetting[] = [
     defaultOn: false,
   },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const NeumorphicSettingsCard = forwardRef<
   HTMLDivElement,

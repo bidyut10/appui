@@ -8,6 +8,15 @@ import product2 from "@/public/bh.png";
 import product3 from "@/public/bg.png";
 import product4 from "@/public/dbg.png";
 
+/**
+ * Product catalog grid card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ *
+ * React Users: Replace `next/image` with a standard `img` element.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type CatalogProduct = {
   name: string;
   price: string;

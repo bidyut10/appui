@@ -2,6 +2,13 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Metric Bento Widget built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
+
 export type BentoCell = {
   label: string;
   value: string;
@@ -102,7 +109,7 @@ export const MetricBentoWidget = forwardRef<
     ref={ref}
     data-slot="metric-bento-widget"
     className={cn(
-      "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-3 font-sans shadow-sm ring-1 ring-black/[0.03]",
+      "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-3 font-sans shadow-lg ring-1 ring-black/[0.03]",
       className,
     )}
     {...props}

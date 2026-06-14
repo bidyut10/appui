@@ -4,9 +4,12 @@ import { cn } from "@/lib/utils";
 
 import { Location } from "@/icons/Location";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Apple Weather Premium built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type AppleWeatherStat = {
   label: string;
@@ -22,20 +25,12 @@ export type AppleWeatherPremiumProps = {
   stats?: AppleWeatherStat[];
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultStats: AppleWeatherStat[] = [
   { label: "UV", value: "6", sub: "High" },
   { label: "Humidity", value: "68%" },
   { label: "Wind", value: "12", sub: "km/h" },
   { label: "Rain", value: "10%" },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const AppleWeatherPremium = forwardRef<
   HTMLDivElement,

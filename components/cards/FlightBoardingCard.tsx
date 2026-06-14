@@ -4,15 +4,16 @@ import { cn } from "@/lib/utils";
 
 import { PlaneTakeoff } from "@/icons/PlaneTakeoff";
 
-/*
-| Flight boarding pass card built with Next.js, React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the demo flight information with your own data.
-| Supports custom airports, passenger details, flight status,
-| boarding time, seat number, gate, terminal, and duration.
-*/
-
+/**
+ * Flight boarding pass card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo flight information with your own data.
+ * Supports custom airports, passenger details, flight status,
+ * boarding time, seat number, gate, terminal, and duration.
+ *
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type FlightBoardingCardProps = {
   flightNumber?: string;
   status?: string;
@@ -95,8 +96,7 @@ export const FlightBoardingCard = forwardRef<
 
           {/* Main Content */}
           <div data-slot="flight-boarding-card-content" className="p-4">
-            {/* Header */}
-            <div
+                        <div
               data-slot="flight-boarding-card-header"
               className="flex items-center justify-between"
             >

@@ -2,16 +2,11 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-/*
-| Quick stats row built with React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the demo analytics metrics
-| with your own dashboard data.
-|
-| Design remains exactly the same.
-*/
-
+/**
+ * Quick stats row built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo analytics metrics with your own dashboard data.
+ */
 export type QuickStat = {
   label: string;
   value: string;
@@ -58,7 +53,7 @@ export const QuickStatsRow = forwardRef<HTMLDivElement, QuickStatsRowProps>(
       className={cn("grid w-72 grid-cols-2 gap-2 font-sans", className)}
       {...props}
     >
-      {stats.map(({ label, value, change, up = true }) => (
+      {(stats ?? []).map(({ label, value, change, up = true }) => (
         <div
           key={label}
           data-slot="quick-stat-card"

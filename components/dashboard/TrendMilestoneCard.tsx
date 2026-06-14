@@ -1,9 +1,19 @@
 "use client";
 
-import { forwardRef, useId, type ComponentPropsWithoutRef } from "react";
+import {
+  forwardRef,
+  useId,
+  useMemo,
+  type ComponentPropsWithoutRef,
+} from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Trend milestone card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo ARR growth values, chart data, and milestones with your own metrics.
+ */
 export type Milestone = {
   label: string;
   date: string;
@@ -41,28 +51,36 @@ export const TrendMilestoneCard = forwardRef<
     ref,
   ) => {
     const gradientId = useId();
-    const max = Math.max(...data);
-    const min = Math.min(...data);
-    const range = max - min || 1;
-    const points = data
-      .map((v, i) => {
-        const x = (i / (data.length - 1)) * 200;
-        const y = 60 - ((v - min) / range) * 48;
-        return `${x},${y}`;
-      })
-      .join(" ");
+
+    const points = useMemo(() => {
+      const chartData = data ?? [];
+      if (chartData.length === 0) return "";
+
+      const max = Math.max(...chartData);
+      const min = Math.min(...chartData);
+      const range = max - min || 1;
+      const denominator = Math.max(chartData.length - 1, 1);
+
+      return chartData
+        .map((v, i) => {
+          const x = (i / denominator) * 200;
+          const y = 60 - ((v - min) / range) * 48;
+          return `${x},${y}`;
+        })
+        .join(" ");
+    }, [data]);
 
     return (
       <div
         ref={ref}
         data-slot="trend-milestone-card"
         className={cn(
-          "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-sm ring-1 ring-black/[0.03]",
+          "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-lg ring-1 ring-black/[0.03]",
           className,
         )}
         {...props}
       >
-        <div className="flex items-start justify-between">
+                <div className="flex items-start justify-between">
           <div>
             <p className="text-[11px] font-medium text-neutral-500">{title}</p>
             <p className="mt-0.5 text-2xl font-semibold text-neutral-900 tabular-nums">
@@ -74,7 +92,7 @@ export const TrendMilestoneCard = forwardRef<
           </span>
         </div>
 
-        <div className="relative mt-4">
+                <div className="relative mt-4">
           <svg viewBox="0 0 200 70" className="w-full" aria-hidden>
             <defs>
               <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
@@ -94,7 +112,7 @@ export const TrendMilestoneCard = forwardRef<
               strokeLinecap="round"
               strokeLinejoin="round"
             />
-            {milestones.map((m) => (
+            {(milestones ?? []).map((m) => (
               <g key={m.label}>
                 <line
                   x1={m.x}
@@ -110,7 +128,7 @@ export const TrendMilestoneCard = forwardRef<
             ))}
           </svg>
           <div className="mt-1 flex justify-between px-1">
-            {milestones.map((m) => (
+            {(milestones ?? []).map((m) => (
               <div
                 key={m.label}
                 className="text-center"

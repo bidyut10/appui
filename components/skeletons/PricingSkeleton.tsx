@@ -1,12 +1,26 @@
-import React, { forwardRef } from "react";
+import { forwardRef, type ComponentPropsWithoutRef } from "react";
+
+import { cn } from "@/lib/utils";
+
+/**
+ * Pricing Skeleton built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
+export type PricingSkeletonProps = ComponentPropsWithoutRef<"div">;
 
 export const PricingSkeleton = forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className = "", ...props }, ref) => (
+  PricingSkeletonProps
+>(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={`w-64 rounded-2xl border border-neutral-100 bg-white p-5 font-sans shadow-lg ${className}`}
+    data-slot="pricing-skeleton"
+    className={cn(
+      "w-64 rounded-2xl border border-neutral-100 bg-white p-5 font-sans shadow-lg",
+      className,
+    )}
     {...props}
   >
     <div className="mb-3 h-2.5 w-16 animate-pulse rounded bg-neutral-200" />
@@ -22,4 +36,5 @@ export const PricingSkeleton = forwardRef<
     <div className="h-10 animate-pulse rounded-lg bg-neutral-200" />
   </div>
 ));
+
 PricingSkeleton.displayName = "PricingSkeleton";

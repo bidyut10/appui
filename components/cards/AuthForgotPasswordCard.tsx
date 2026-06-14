@@ -12,18 +12,19 @@ import { Check } from "@/icons/Check";
 
 import { cn } from "@/lib/utils";
 
-/*
-| Forgot password card built with Next.js, React,
-| TypeScript and Tailwind CSS.
-|
-| Replace the text, email placeholder, and actions
-| with your own authentication flow.
-|
-| Includes two states:
-| - Request reset link
-| - Success confirmation
-*/
-
+/**
+ * Forgot password card built with Next.js, React,
+ * TypeScript and Tailwind CSS.
+ *
+ * Replace the text, email placeholder, and actions
+ * with your own authentication flow.
+ *
+ * Includes two states:
+ * - Request reset link
+ * - Success confirmation
+ *
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type AuthForgotPasswordCardProps = ComponentPropsWithoutRef<"div"> & {
   title?: string;
   description?: string;
@@ -76,8 +77,7 @@ export const AuthForgotPasswordCard = forwardRef<
           className="absolute inset-0 bg-black/50"
         />
 
-        {/* Content */}
-        <div
+                <div
           data-slot="auth-forgot-password-card-content"
           className="relative flex h-full flex-col p-6"
         >
@@ -91,8 +91,7 @@ export const AuthForgotPasswordCard = forwardRef<
                 <Mail size={22} className="text-neutral-50" />
               </div>
 
-              {/* Header */}
-              <div
+                            <div
                 data-slot="auth-forgot-password-card-header"
                 className="text-center"
               >
@@ -128,8 +127,7 @@ export const AuthForgotPasswordCard = forwardRef<
                 <ArrowRight size={14} />
               </button>
 
-              {/* Footer */}
-              <div
+                            <div
                 data-slot="auth-forgot-password-card-footer"
                 className="mt-auto pt-4"
               >

@@ -11,16 +11,14 @@ import img2 from "@/public/dithar.png";
 
 import { X } from "@/icons/X";
 
-/*
-| Multi-file upload preview card built with Next.js, React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the demo files with your own uploaded images.
-|
-| React Users:
-| Replace `next/image` with a standard `img` element.
-*/
-
+/**
+ * Multi-file upload preview card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo files with your own uploaded images.
+ *
+ * React Users: Replace `next/image` with a standard `img` element.
+ */
 export type MultiFileItem = {
   id: number;
   src: StaticImageData | string;
@@ -81,10 +79,6 @@ export const MultiFileDropzone = forwardRef<
           className="overflow-hidden rounded-2xl border-2 border-dashed border-neutral-200 bg-white shadow-lg transition-colors hover:border-neutral-300"
         >
           <div className="p-3">
-            {/* -------------------------------------------------------------------------- */}
-            {/*                               Thumbnail Grid                               */}
-            {/* -------------------------------------------------------------------------- */}
-
             <div
               data-slot="multi-file-dropzone-grid"
               className="mb-3 grid grid-cols-3 gap-2"
@@ -117,6 +111,7 @@ export const MultiFileDropzone = forwardRef<
               {files.length < maxFiles && (
                 <button
                   type="button"
+                  aria-label="Add file"
                   data-slot="multi-file-dropzone-add-button"
                   onClick={onAdd}
                   className="group flex aspect-square cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-neutral-200 text-neutral-400 transition-all duration-200 hover:border-neutral-300 hover:bg-neutral-50 hover:text-neutral-500"
@@ -130,10 +125,6 @@ export const MultiFileDropzone = forwardRef<
               )}
             </div>
           </div>
-
-          {/* -------------------------------------------------------------------------- */}
-          {/*                                   Footer                                   */}
-          {/* -------------------------------------------------------------------------- */}
 
           <div
             data-slot="multi-file-dropzone-footer"

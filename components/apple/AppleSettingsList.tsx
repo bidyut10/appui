@@ -9,10 +9,20 @@ import {
 
 import { cn } from "@/lib/utils";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+import { PlaneTakeoff } from "@/icons/PlaneTakeoff";
+import { Wifi } from "@/icons/Wifi";
+import { Bluetooth } from "@/icons/Bluetooth";
+import { Bell } from "@/icons/Bell";
+import { Sound } from "@/icons/Sound";
+import { Moon } from "@/icons/Moon";
+import { ChevronRight } from "@/icons/ChevronRight";
 
+/**
+ * Apple Settings List built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type AppleSettingsItem = {
   label: string;
   icon?: ReactNode;
@@ -32,30 +42,38 @@ export type AppleSettingsListProps = {
   sections?: AppleSettingsSection[];
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultSections: AppleSettingsSection[] = [
   {
     items: [
-      { label: "Airplane Mode", icon: "✈️", toggle: true },
-      { label: "Wi-Fi", icon: "📶", value: "Home Network" },
-      { label: "Bluetooth", icon: "🔵", value: "On" },
+      {
+        label: "Airplane Mode",
+        icon: <PlaneTakeoff size={16} />,
+        toggle: true,
+      },
+      {
+        label: "Wi-Fi",
+        icon: <Wifi size={16} />,
+        value: "Home Network",
+      },
+      {
+        label: "Bluetooth",
+        icon: <Bluetooth size={16} />,
+        value: "On",
+      },
     ],
   },
   {
     items: [
-      { label: "Notifications", icon: "🔔" },
-      { label: "Sounds & Haptics", icon: "🔊" },
-      { label: "Focus", icon: "🌙", value: "Do Not Disturb" },
+      { label: "Notifications", icon: <Bell size={16} /> },
+      { label: "Sounds & Haptics", icon: <Sound size={16} /> },
+      {
+        label: "Focus",
+        icon: <Moon size={16} />,
+        value: "Do Not Disturb",
+      },
     ],
   },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const AppleSettingsList = forwardRef<
   HTMLDivElement,
@@ -107,6 +125,7 @@ export const AppleSettingsList = forwardRef<
                 <div key={item.label} data-slot="apple-settings-list-item">
                   <button
                     type="button"
+                    aria-label={item.label}
                     onClick={() => item.onPress?.()}
                     className="flex w-full cursor-pointer items-center gap-3 px-4 py-3 transition-colors hover:bg-neutral-50"
                   >
@@ -125,6 +144,7 @@ export const AppleSettingsList = forwardRef<
                       <div
                         role="switch"
                         aria-checked={toggles[key]}
+                        aria-label={`Toggle ${item.label}`}
                         onClick={(e) => {
                           e.stopPropagation();
                           const next = !toggles[key];
@@ -146,7 +166,7 @@ export const AppleSettingsList = forwardRef<
                         />
                       </div>
                     ) : (
-                      <span className="text-lg text-neutral-300">›</span>
+                      <ChevronRight size={18} className="text-neutral-300" />
                     )}
                   </button>
                   {ii < section.items.length - 1 && (

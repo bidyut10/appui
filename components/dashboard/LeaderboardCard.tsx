@@ -1,7 +1,27 @@
-import React, { forwardRef, type ComponentPropsWithoutRef } from "react";
+import { forwardRef, type ComponentPropsWithoutRef } from "react";
+
 import { cn } from "@/lib/utils";
 
-const DEFAULT_LEADERS = [
+/**
+ * Leaderboard card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo contributors, scores, and rankings with your own team data.
+ */
+export type Leader = {
+  name: string;
+  score: number;
+  rank: number;
+  initial: string;
+  color: string;
+};
+
+export type LeaderboardCardProps = {
+  title?: string;
+  description?: string;
+  leaders?: Leader[];
+} & ComponentPropsWithoutRef<"div">;
+
+const defaultLeaders: Leader[] = [
   {
     name: "Sarah Chen",
     score: 2840,
@@ -37,21 +57,7 @@ const DEFAULT_LEADERS = [
     initial: "JD",
     color: "from-blue-400 to-cyan-500",
   },
-] as const;
-
-type Leader = {
-  name: string;
-  score: number;
-  rank: number;
-  initial: string;
-  color: string;
-};
-
-export interface LeaderboardCardProps extends ComponentPropsWithoutRef<"div"> {
-  title?: string;
-  description?: string;
-  leaders?: Leader[];
-}
+];
 
 export const LeaderboardCard = forwardRef<HTMLDivElement, LeaderboardCardProps>(
   (
@@ -59,81 +65,76 @@ export const LeaderboardCard = forwardRef<HTMLDivElement, LeaderboardCardProps>(
       className,
       title = "Leaderboard",
       description = "Top contributors this week",
-      leaders = [...DEFAULT_LEADERS],
+      leaders = defaultLeaders,
       ...props
     },
     ref,
-  ) => {
-    return (
-      <div
-        ref={ref}
-        data-slot="leaderboard-card"
-        className={cn(
-          "w-80 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
-          className,
-        )}
-        {...props}
-      >
-        {/* Header */}
-        <div
-          data-slot="leaderboard-card-header"
-          className="border-b border-neutral-100 px-4 py-3"
-        >
-          <h4 className="text-sm font-semibold text-neutral-900">{title}</h4>
-
-          <p className="mt-0.5 text-[10px] text-neutral-400">{description}</p>
-        </div>
-
-        {/* Leader List */}
-        <div
-          data-slot="leaderboard-card-list"
-          className="divide-y divide-neutral-50"
-        >
-          {leaders.map((leader) => (
+  ) => (
+    <div
+      ref={ref}
+      data-slot="leaderboard-card"
+      className={cn(
+        "w-80 overflow-hidden rounded-2xl border border-neutral-100 bg-white font-sans shadow-lg",
+        className,
+      )}
+      {...props}
+    >
             <div
-              key={`${leader.rank}-${leader.name}`}
-              data-slot="leaderboard-card-item"
-              className="flex items-center gap-3 px-4 py-2.5"
+        data-slot="leaderboard-card-header"
+        className="border-b border-neutral-100 px-4 py-3"
+      >
+        <h4 className="text-sm font-semibold text-neutral-900">{title}</h4>
+
+        <p className="mt-0.5 text-[10px] text-neutral-400">{description}</p>
+      </div>
+
+      {/* Leader list */}
+      <div
+        data-slot="leaderboard-card-list"
+        className="divide-y divide-neutral-50"
+      >
+        {(leaders ?? []).map((leader) => (
+          <div
+            key={`${leader.rank}-${leader.name}`}
+            data-slot="leaderboard-card-item"
+            className="flex items-center gap-3 px-4 py-2.5"
+          >
+            {/* Rank */}
+            <span
+              className={cn(
+                "w-4 text-[11px] font-bold",
+                leader.rank <= 3 ? "text-amber-500" : "text-neutral-400",
+              )}
             >
-              {/* Rank */}
-              <span
-                className={cn(
-                  "w-4 text-[11px] font-bold",
-                  leader.rank <= 3 ? "text-amber-500" : "text-neutral-400",
-                )}
-              >
-                {leader.rank <= 3
-                  ? ["🥇", "🥈", "🥉"][leader.rank - 1]
-                  : leader.rank}
-              </span>
+              {leader.rank}
+            </span>
 
-              {/* Avatar */}
-              <div
-                className={cn(
-                  "flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-linear-to-br",
-                  leader.color,
-                )}
-              >
-                <span className="text-[8px] font-bold text-white">
-                  {leader.initial}
-                </span>
-              </div>
-
-              {/* Name */}
-              <span className="flex-1 truncate text-xs font-medium text-neutral-800">
-                {leader.name}
-              </span>
-
-              {/* Score */}
-              <span className="font-mono text-[11px] text-neutral-500">
-                {leader.score.toLocaleString()}
+            {/* Avatar */}
+            <div
+              className={cn(
+                "flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-linear-to-br",
+                leader.color,
+              )}
+            >
+              <span className="text-[8px] font-bold text-white">
+                {leader.initial}
               </span>
             </div>
-          ))}
-        </div>
+
+            {/* Name */}
+            <span className="flex-1 truncate text-xs font-medium text-neutral-800">
+              {leader.name}
+            </span>
+
+            {/* Score */}
+            <span className="font-mono text-[11px] text-neutral-500">
+              {leader.score.toLocaleString()}
+            </span>
+          </div>
+        ))}
       </div>
-    );
-  },
+    </div>
+  ),
 );
 
 LeaderboardCard.displayName = "LeaderboardCard";

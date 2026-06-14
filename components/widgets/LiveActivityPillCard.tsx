@@ -4,6 +4,13 @@ import { cn } from "@/lib/utils";
 
 import { Bike } from "@/icons/Bike";
 
+/**
+ * Live Activity Pill Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
+
 export type LiveActivityPillCardProps = {
   icon?: ReactNode;
   title?: string;

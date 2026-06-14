@@ -9,19 +9,18 @@ import coverImage from "@/public/dbg.png";
 import { Location } from "@/icons/Location";
 import { Clock } from "@/icons/Clock";
 
-/*
-| Event ticket card built with Next.js, React, TypeScript,
-| and Tailwind CSS.
-|
-| Replace the demo event details and cover image with your own content.
-|
-| Need icons? Visit nexticons.in to browse and copy free icons
-| without adding another dependency to your project.
-|
-| React Users:
-| Replace `next/image` with a standard `img` element.
-*/
-
+/**
+ * Event ticket card built with Next.js, React, TypeScript,
+ * and Tailwind CSS.
+ *
+ * Replace the demo event details and cover image with your own content.
+ *
+ * Need icons? Visit nexticons.in to browse and copy free icons
+ * without adding another dependency to your project.
+ *
+ * React Users:
+ * Replace `next/image` with a standard `img` element.
+ */
 export type EventTicketCardProps = {
   title?: string;
   date?: string;

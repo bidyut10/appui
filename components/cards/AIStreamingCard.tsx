@@ -9,15 +9,16 @@ import {
 
 import { cn } from "@/lib/utils";
 
-/*
-| AI streaming card built with Next.js, React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the demo response and code snippet with
-| your own AI output. Perfect for chatbots, AI
-| assistants, code generators, and streaming UIs.
-*/
-
+/**
+ * AI streaming card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo response and code snippet with
+ * your own AI output. Perfect for chatbots, AI
+ * assistants, code generators, and streaming UIs.
+ *
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type AIStreamingCardProps = {
   response?: string;
   codeSnippet?: string;
@@ -76,8 +77,7 @@ export const AIStreamingCard = forwardRef<HTMLDivElement, AIStreamingCardProps>(
         )}
         {...props}
       >
-        {/* Header */}
-        <div
+                <div
           data-slot="ai-streaming-card-header"
           className="flex items-center gap-2 border-b border-neutral-800 px-4 py-2.5"
         >
@@ -102,8 +102,7 @@ export const AIStreamingCard = forwardRef<HTMLDivElement, AIStreamingCardProps>(
           )}
         </div>
 
-        {/* Content */}
-        <div data-slot="ai-streaming-card-content" className="p-4">
+                <div data-slot="ai-streaming-card-content" className="p-4">
           <p className="text-xs leading-relaxed text-neutral-300">
             {text}
 

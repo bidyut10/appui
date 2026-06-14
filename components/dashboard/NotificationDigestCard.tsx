@@ -2,6 +2,11 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Notification digest card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo digest categories, counts, and highlights with your own data.
+ */
 export type DigestItem = {
   category: string;
   count: number;
@@ -38,25 +43,27 @@ export const NotificationDigestCard = forwardRef<
       ref={ref}
       data-slot="notification-digest-card"
       className={cn(
-        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-sm ring-1 ring-black/[0.03]",
+        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-lg ring-1 ring-black/[0.03]",
         className,
       )}
       {...props}
     >
-      <div className="mb-4 flex items-center justify-between">
+            <div className="mb-4 flex items-center justify-between">
         <h4 className="text-sm font-semibold text-neutral-900">{title}</h4>
         <span className="rounded-md bg-neutral-100 px-2 py-0.5 text-[10px] font-medium text-neutral-500">
           {date}
         </span>
       </div>
+
+      {/* Items */}
       <div className="space-y-2">
-        {items.map((item) => (
+        {(items ?? []).map((item) => (
           <div
             key={item.category}
             className="flex items-start gap-3 rounded-xl border border-neutral-100 p-3 transition-colors hover:border-neutral-200"
           >
             <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-teal-50 text-[12px] font-bold text-teal-700 tabular-nums">
-              {item.count}
+              {item.count.toLocaleString()}
             </span>
             <div className="min-w-0">
               <p className="text-[12px] font-semibold text-neutral-800">

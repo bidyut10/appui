@@ -13,9 +13,12 @@ import { Folder } from "@/icons/Folder";
 import { File } from "@/icons/File";
 import { Settings } from "@/icons/Settings";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Command Dock Bar built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type CommandDockItem = {
   id: string;
@@ -30,20 +33,12 @@ export type CommandDockBarProps = {
   onItemClick?: (id: string) => void;
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultItems: CommandDockItem[] = [
   { id: "search", label: "Search", icon: <Search size={18} /> },
   { id: "files", label: "Files", icon: <Folder size={18} />, badge: "12" },
   { id: "docs", label: "Docs", icon: <File size={18} /> },
   { id: "settings", label: "Settings", icon: <Settings size={18} /> },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const CommandDockBar = forwardRef<HTMLDivElement, CommandDockBarProps>(
   (

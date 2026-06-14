@@ -1,26 +1,22 @@
-import { forwardRef, type ComponentPropsWithoutRef } from "react";
+import {
+  forwardRef,
+  useMemo,
+  type ComponentPropsWithoutRef,
+} from "react";
 
 import { cn } from "@/lib/utils";
 
-/*
-| Analytics mini card built with React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the demo visitor count,
-| chart values, and labels with
-| your own analytics data.
-|
-| Visual design remains exactly the same.
-*/
-
+/**
+ * Analytics mini card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo visitor count, chart values, and labels with your own analytics data.
+ */
 export type AnalyticsMiniCardProps = {
   title?: string;
   value?: string | number;
   statusLabel?: string;
-
   startLabel?: string;
   endLabel?: string;
-
   chartData?: number[];
 } & ComponentPropsWithoutRef<"div">;
 
@@ -36,23 +32,26 @@ export const AnalyticsMiniCard = forwardRef<
   (
     {
       className,
-
       title = "Live Visitors",
-      value = "847",
+      value = 847,
       statusLabel = "Live",
-
       startLabel = "12am",
       endLabel = "Now",
-
       chartData = defaultChartData,
-
       ...props
     },
     ref,
   ) => {
-    const safeChartData = chartData.map((value) =>
-      Math.max(0, Math.min(100, value)),
+    const safeChartData = useMemo(
+      () =>
+        (chartData ?? []).map((barHeight) =>
+          Math.max(0, Math.min(100, barHeight)),
+        ),
+      [chartData],
     );
+
+    const formattedValue =
+      typeof value === "number" ? value.toLocaleString() : value;
 
     return (
       <div
@@ -64,8 +63,7 @@ export const AnalyticsMiniCard = forwardRef<
         )}
         {...props}
       >
-        {/* Header */}
-        <div
+                <div
           data-slot="analytics-mini-header"
           className="mb-3 flex items-center justify-between"
         >
@@ -90,11 +88,10 @@ export const AnalyticsMiniCard = forwardRef<
           data-slot="analytics-mini-value"
           className="text-3xl font-light tracking-tight text-white"
         >
-          {value}
+          {formattedValue}
         </p>
 
-        {/* Chart */}
-        <div
+                <div
           data-slot="analytics-mini-chart"
           className="mt-3 flex h-8 items-end gap-px"
         >
@@ -114,8 +111,7 @@ export const AnalyticsMiniCard = forwardRef<
           ))}
         </div>
 
-        {/* Footer */}
-        <div
+                <div
           data-slot="analytics-mini-footer"
           className="mt-2 flex justify-between"
         >

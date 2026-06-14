@@ -2,6 +2,13 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Score Ring Widget built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
+
 export type ScoreRingWidgetProps = {
   score?: number;
   maxScore?: number;
@@ -33,7 +40,7 @@ export const ScoreRingWidget = forwardRef<HTMLDivElement, ScoreRingWidgetProps>(
         ref={ref}
         data-slot="score-ring-widget"
         className={cn(
-          "flex w-full max-w-[200px] flex-col items-center rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-sm ring-1 ring-black/[0.03]",
+          "flex w-full max-w-[200px] flex-col items-center rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-lg ring-1 ring-black/[0.03]",
           className,
         )}
         {...props}

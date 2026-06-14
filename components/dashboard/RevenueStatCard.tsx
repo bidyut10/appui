@@ -3,23 +3,21 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { ArrowRight } from "@/icons/ArrowRight";
 import { cn } from "@/lib/utils";
 
-/*
-| Revenue stat card built with React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the demo revenue values,
-| growth percentage, and chart data
-| with your own analytics data.
-|
-| Design remains exactly the same.
-*/
-
+/**
+ * Revenue stat card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo revenue values, growth percentage, and chart data
+ * with your own analytics data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type RevenueStatCardProps = {
   title?: string;
   revenue?: string;
   comparisonText?: string;
   growth?: string;
   chartData?: number[];
+  actionLabel?: string;
+  onActionClick?: () => void;
 } & ComponentPropsWithoutRef<"div">;
 
 const defaultChartData = [35, 50, 40, 65, 55, 80, 70, 90, 75, 95, 85, 100];
@@ -33,6 +31,8 @@ export const RevenueStatCard = forwardRef<HTMLDivElement, RevenueStatCardProps>(
       comparisonText = "vs $71,320 last month",
       growth = "+18.2%",
       chartData = defaultChartData,
+      actionLabel = "View report",
+      onActionClick,
       ...props
     },
     ref,
@@ -41,13 +41,12 @@ export const RevenueStatCard = forwardRef<HTMLDivElement, RevenueStatCardProps>(
       ref={ref}
       data-slot="revenue-stat-card"
       className={cn(
-        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-sm ring-1 ring-black/[0.03]",
+        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-lg ring-1 ring-black/[0.03]",
         className,
       )}
       {...props}
     >
-      {/* Header */}
-      <div
+            <div
         data-slot="revenue-stat-header"
         className="mb-3 flex items-center justify-between"
       >
@@ -81,12 +80,11 @@ export const RevenueStatCard = forwardRef<HTMLDivElement, RevenueStatCardProps>(
         {comparisonText}
       </p>
 
-      {/* Chart */}
-      <div
+            <div
         data-slot="revenue-stat-chart"
         className="mt-4 flex h-12 items-end gap-1"
       >
-        {chartData.map((height, index) => (
+        {(chartData ?? []).map((height, index) => (
           <div
             key={`${index}-${height}`}
             data-slot="revenue-stat-bar"
@@ -103,13 +101,14 @@ export const RevenueStatCard = forwardRef<HTMLDivElement, RevenueStatCardProps>(
         ))}
       </div>
 
-      {/* Footer */}
-      <button
+            <button
         type="button"
         data-slot="revenue-stat-action"
+        aria-label={actionLabel}
+        onClick={onActionClick}
         className="mt-3 flex cursor-pointer items-center gap-1 text-[11px] font-medium text-neutral-500 transition-colors hover:text-neutral-900"
       >
-        View report
+        {actionLabel}
         <ArrowRight size={10} />
       </button>
     </div>

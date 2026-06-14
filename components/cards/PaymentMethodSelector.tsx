@@ -6,17 +6,18 @@ import { Check } from "@/icons/Check";
 
 import { cn } from "@/lib/utils";
 
-/*
-| Payment method selector card built with Next.js,
-| React, TypeScript and Tailwind CSS.
-|
-| Replace the demo payment methods with your own
-| checkout providers.
-|
-| Supports custom methods, amount and default
-| selected payment method.
-*/
-
+/**
+ * Payment method selector card built with Next.js,
+ * React, TypeScript and Tailwind CSS.
+ *
+ * Replace the demo payment methods with your own
+ * checkout providers.
+ *
+ * Supports custom methods, amount and default
+ * selected payment method.
+ *
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type PaymentMethod = {
   id: string;
   label: string;
@@ -90,8 +91,7 @@ export const PaymentMethodSelector = forwardRef<
         )}
         {...props}
       >
-        {/* Header */}
-        <div
+                <div
           data-slot="payment-method-selector-header"
           className="border-b border-neutral-100 px-4 py-3"
         >
@@ -131,8 +131,7 @@ export const PaymentMethodSelector = forwardRef<
                 )}
               </div>
 
-              {/* Content */}
-              <div className="flex-1 text-left">
+                            <div className="flex-1 text-left">
                 <p className="text-xs font-semibold text-neutral-900">
                   {method.label}
                 </p>
@@ -154,8 +153,7 @@ export const PaymentMethodSelector = forwardRef<
           ))}
         </div>
 
-        {/* Footer */}
-        <div
+                <div
           data-slot="payment-method-selector-footer"
           className="flex items-center justify-between border-t border-neutral-100 px-4 py-3"
         >

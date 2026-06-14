@@ -1,6 +1,10 @@
 "use client";
 
-import { forwardRef, type ComponentPropsWithoutRef, useState } from "react";
+import {
+  forwardRef,
+  useState,
+  type ComponentPropsWithoutRef,
+} from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -10,17 +14,12 @@ import { Settings } from "@/icons/Settings";
 import { UserGroup } from "@/icons/UserGroup";
 import { Web } from "@/icons/Web";
 
-/*
-| Dashboard sidebar card built with React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the demo navigation links,
-| branding, and user information with
-| your own application data.
-|
-| Design remains exactly the same.
-*/
-
+/**
+ * Dashboard sidebar mini built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo navigation links, branding, and user information with your own application data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type DashboardSidebarLink = {
   label: string;
   badge?: string | null;
@@ -30,13 +29,11 @@ export type DashboardSidebarLink = {
 export type DashboardSidebarMiniProps = {
   brandName?: string;
   brandInitial?: string;
-
   userName?: string;
   userPlan?: string;
-
   defaultActive?: string;
-
   links?: DashboardSidebarLink[];
+  onLinkClick?: (label: string) => void;
 } & ComponentPropsWithoutRef<"div">;
 
 const defaultLinks: DashboardSidebarLink[] = [
@@ -74,17 +71,13 @@ export const DashboardSidebarMini = forwardRef<
   (
     {
       className,
-
       brandName = "AppUI",
       brandInitial = "A",
-
       userName = "John Doe",
       userPlan = "Pro plan",
-
       defaultActive = "Dashboard",
-
       links = defaultLinks,
-
+      onLinkClick,
       ...props
     },
     ref,
@@ -117,11 +110,16 @@ export const DashboardSidebarMini = forwardRef<
 
         {/* Navigation */}
         <nav data-slot="dashboard-sidebar-mini-nav" className="space-y-0.5">
-          {links.map(({ icon: Icon, label, badge }) => (
+          {(links ?? []).map(({ icon: Icon, label, badge }) => (
             <button
               key={label}
               type="button"
-              onClick={() => setActive(label)}
+              aria-label={`Navigate to ${label}`}
+              aria-current={active === label ? "page" : undefined}
+              onClick={() => {
+                setActive(label);
+                onLinkClick?.(label);
+              }}
               data-slot="dashboard-sidebar-mini-link"
               data-active={active === label}
               className={cn(

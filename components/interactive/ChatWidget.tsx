@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
-
+import type { StaticImageData } from "next/image";
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
@@ -10,15 +10,16 @@ import profileImage from "@/public/boy.png";
 
 import { Send } from "@/icons/Send";
 
-/*
-| Modern chat widget card built with Next.js, React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the demo messages, avatar and title
-| with your own support agent, AI assistant, SaaS chat,
-| customer support, or community chat experience.
-*/
-
+/**
+ * Modern chat widget card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo messages, avatar and title
+ * with your own support agent, AI assistant, SaaS chat,
+ * customer support, or community chat experience.
+ *
+ * React Users: Replace `next/image` with a standard `img` element.
+ */
 export type ChatMessage = {
   from: "user" | "bot";
   text: string;
@@ -28,7 +29,8 @@ export type ChatWidgetProps = {
   title?: string;
   subtitle?: string;
 
-  avatar?: string;
+  avatar?: StaticImageData | string;
+  avatarAlt?: string;
   messages?: ChatMessage[];
 
   placeholder?: string;
@@ -41,6 +43,9 @@ export const ChatWidget = forwardRef<HTMLDivElement, ChatWidgetProps>(
 
       title = "Support Assistant",
       subtitle = "Typically replies instantly",
+
+      avatar = profileImage,
+      avatarAlt,
 
       messages = [
         {
@@ -75,7 +80,6 @@ export const ChatWidget = forwardRef<HTMLDivElement, ChatWidgetProps>(
         )}
         {...props}
       >
-        {/* Header */}
         <div
           data-slot="chat-widget-header"
           className="relative overflow-hidden border-b border-neutral-100 bg-neutral-950 px-4 py-4"
@@ -86,8 +90,8 @@ export const ChatWidget = forwardRef<HTMLDivElement, ChatWidgetProps>(
             <div className="relative">
               <div className="h-10 w-10 overflow-hidden rounded-full ring-2 ring-white/10">
                 <Image
-                  src={profileImage}
-                  alt={title}
+                  src={avatar}
+                  alt={avatarAlt ?? title}
                   className="h-full w-full object-cover"
                 />
               </div>
@@ -103,14 +107,14 @@ export const ChatWidget = forwardRef<HTMLDivElement, ChatWidgetProps>(
           </div>
         </div>
 
-        {/* Messages */}
         <div
           data-slot="chat-widget-messages"
-          className="flex h-72 flex-1 flex-col gap-3 overflow-y-auto bg-linear-to-b from-neutral-50 to-white p-4"
+          className="flex h-72 flex-1 flex-col gap-3 scroll-hover overflow-y-auto bg-linear-to-b from-neutral-50 to-white p-4"
         >
           {messages.map((message, index) => (
             <div
               key={index}
+              data-slot="chat-widget-message"
               className={cn(
                 "flex",
                 message.from === "user" ? "justify-end" : "justify-start",
@@ -129,8 +133,10 @@ export const ChatWidget = forwardRef<HTMLDivElement, ChatWidgetProps>(
             </div>
           ))}
 
-          {/* Typing */}
-          <div className="flex justify-start">
+          <div
+            data-slot="chat-widget-typing"
+            className="flex justify-start"
+          >
             <div className="flex items-center gap-1 rounded-2xl rounded-bl-md border border-neutral-200 bg-white px-3 py-2">
               {[0, 1, 2].map((dot) => (
                 <span
@@ -145,7 +151,6 @@ export const ChatWidget = forwardRef<HTMLDivElement, ChatWidgetProps>(
           </div>
         </div>
 
-        {/* Input */}
         <div
           data-slot="chat-widget-input"
           className="border-t border-neutral-100 bg-white p-3"
@@ -156,11 +161,13 @@ export const ChatWidget = forwardRef<HTMLDivElement, ChatWidgetProps>(
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder={placeholder}
+              aria-label="Message input"
               className="h-10 flex-1 bg-transparent px-3 text-sm text-neutral-700 outline-none placeholder:text-neutral-400"
             />
 
             <button
               type="button"
+              aria-label="Send message"
               className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-xl bg-neutral-800 text-white transition-all hover:scale-105 hover:bg-black active:scale-95"
             >
               <Send size={15} />

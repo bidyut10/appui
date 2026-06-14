@@ -9,11 +9,18 @@ import Image, { type StaticImageData } from "next/image";
 
 import { cn } from "@/lib/utils";
 
+import { X } from "@/icons/X";
+
 import profile from "@/public/boy.png";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Apple Notification Banner built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ *
+ * React Users: Replace `next/image` with a standard `img` element.
+ */
 
 export type AppleNotificationBannerProps = {
   title?: string;
@@ -26,10 +33,6 @@ export type AppleNotificationBannerProps = {
   onDismiss?: () => void;
   onShow?: () => void;
 } & ComponentPropsWithoutRef<"div">;
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const AppleNotificationBanner = forwardRef<
   HTMLDivElement,
@@ -121,7 +124,7 @@ export const AppleNotificationBanner = forwardRef<
             className="mt-0.5 shrink-0 cursor-pointer text-xs text-neutral-400"
             aria-label="Dismiss notification"
           >
-            ✕
+            <X size={12} />
           </button>
         </div>
       </div>

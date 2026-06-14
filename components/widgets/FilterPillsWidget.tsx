@@ -8,6 +8,13 @@ import {
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Filter Pills Widget built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
+
 export type FilterPill = {
   id: string;
   label: string;
@@ -55,7 +62,7 @@ export const FilterPillsWidget = forwardRef<
         ref={ref}
         data-slot="filter-pills-widget"
         className={cn(
-          "w-full max-w-sm rounded-2xl border border-neutral-200 bg-white p-4 font-sans shadow-sm",
+          "w-full max-w-sm rounded-2xl border border-neutral-200 bg-white p-4 font-sans shadow-lg",
           className,
         )}
         {...props}
@@ -70,7 +77,7 @@ export const FilterPillsWidget = forwardRef<
               className={cn(
                 "cursor-pointer rounded-full px-3.5 py-1.5 text-[12px] font-medium transition-all active:scale-95",
                 active === pill.id
-                  ? "bg-neutral-900 text-white shadow-sm"
+                  ? "bg-neutral-900 text-white shadow-lg"
                   : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200",
               )}
             >

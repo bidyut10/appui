@@ -8,24 +8,23 @@ import {
   type ComponentPropsWithoutRef,
 } from "react";
 
+import { cn } from "@/lib/utils";
+
 import { Check } from "@/icons/Check";
 import { User } from "@/icons/User";
 import { Settings } from "@/icons/Settings";
 import { Star } from "@/icons/Star";
 
-import { cn } from "@/lib/utils";
-
-/*
-| Onboarding steps card built with Next.js,
-| React, TypeScript and Tailwind CSS.
-|
-| Replace the demo onboarding flow with your
-| own setup process.
-|
-| Supports custom steps, descriptions and
-| initial active step.
-*/
-
+/**
+ * Onboarding steps card built with Next.js,
+ * React, TypeScript and Tailwind CSS.
+ *
+ * Replace the demo onboarding flow with your
+ * own setup process.
+ *
+ * Supports custom steps, descriptions and
+ * initial active step.
+ */
 export type OnboardingStep = {
   label: string;
   icon: ComponentType<{ size?: number }>;
@@ -34,10 +33,10 @@ export type OnboardingStep = {
   description: string;
 };
 
-export type OnboardingStepsProps = ComponentPropsWithoutRef<"div"> & {
+export type OnboardingStepsProps = {
   steps?: OnboardingStep[];
   defaultStep?: number;
-};
+} & ComponentPropsWithoutRef<"div">;
 
 const defaultSteps: OnboardingStep[] = [
   {
@@ -73,7 +72,6 @@ export const OnboardingSteps = forwardRef<HTMLDivElement, OnboardingStepsProps>(
         className={cn("w-72 font-sans", className)}
         {...props}
       >
-        {/* Progress */}
         <div
           data-slot="onboarding-steps-progress"
           className="mb-6 flex items-center justify-between"
@@ -86,6 +84,7 @@ export const OnboardingSteps = forwardRef<HTMLDivElement, OnboardingStepsProps>(
               <Fragment key={step.label}>
                 <button
                   type="button"
+                  aria-label={`Go to ${step.label} step`}
                   onClick={() => setCurrent(index)}
                   className="group flex cursor-pointer flex-col items-center gap-1.5"
                 >
@@ -133,7 +132,6 @@ export const OnboardingSteps = forwardRef<HTMLDivElement, OnboardingStepsProps>(
           })}
         </div>
 
-        {/* Content */}
         <div
           data-slot="onboarding-steps-card"
           className="rounded-xl border border-neutral-100 bg-white p-5 shadow-lg"
@@ -152,6 +150,9 @@ export const OnboardingSteps = forwardRef<HTMLDivElement, OnboardingStepsProps>(
 
           <button
             type="button"
+            aria-label={
+              current === steps.length - 1 ? "Get started" : "Continue to next step"
+            }
             onClick={() => setCurrent(Math.min(current + 1, steps.length - 1))}
             disabled={current === steps.length - 1}
             className="h-9 w-full cursor-pointer rounded-lg bg-neutral-900 text-xs font-medium text-white transition-colors hover:bg-neutral-950 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"

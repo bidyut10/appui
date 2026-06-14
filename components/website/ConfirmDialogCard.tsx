@@ -11,9 +11,12 @@ import { cn } from "@/lib/utils";
 
 import { Trash } from "@/icons/Trash";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Confirm Dialog Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type ConfirmDialogCardProps = {
   open?: boolean;
@@ -36,10 +39,6 @@ export type ConfirmDialogCardProps = {
 
   onOpenChange?: (open: boolean) => void;
 } & ComponentPropsWithoutRef<"div">;
-
-/* -------------------------------------------------------------------------- */
-/*                                 Component                                  */
-/* -------------------------------------------------------------------------- */
 
 export const ConfirmDialogCard = forwardRef<
   HTMLDivElement,
@@ -95,10 +94,7 @@ export const ConfirmDialogCard = forwardRef<
       onConfirm?.();
     };
 
-    /* ---------------------------------------------------------------------- */
-    /*                            Closed State                                */
-    /* ---------------------------------------------------------------------- */
-
+    
     if (!isOpen) {
       return (
         <button
@@ -112,10 +108,7 @@ export const ConfirmDialogCard = forwardRef<
       );
     }
 
-    /* ---------------------------------------------------------------------- */
-    /*                            Dialog Card                                 */
-    /* ---------------------------------------------------------------------- */
-
+    
     return (
       <div
         ref={ref}
@@ -130,10 +123,7 @@ export const ConfirmDialogCard = forwardRef<
         )}
         {...props}
       >
-        {/* ------------------------------------------------------------------ */}
-        {/* Icon                                                               */}
-        {/* ------------------------------------------------------------------ */}
-
+        
         <div
           data-slot="confirm-dialog-icon"
           className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-red-50"
@@ -141,10 +131,7 @@ export const ConfirmDialogCard = forwardRef<
           {icon ?? <Trash size={20} className="text-red-500" />}
         </div>
 
-        {/* ------------------------------------------------------------------ */}
-        {/* Content                                                            */}
-        {/* ------------------------------------------------------------------ */}
-
+        
         <h4
           id="confirm-dialog-title"
           data-slot="confirm-dialog-title"
@@ -161,10 +148,7 @@ export const ConfirmDialogCard = forwardRef<
           {description}
         </p>
 
-        {/* ------------------------------------------------------------------ */}
-        {/* Actions                                                            */}
-        {/* ------------------------------------------------------------------ */}
-
+        
         <div data-slot="confirm-dialog-actions" className="flex gap-2">
           <button
             type="button"

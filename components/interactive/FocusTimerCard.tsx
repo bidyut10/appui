@@ -12,10 +12,13 @@ import { cn } from "@/lib/utils";
 import { Pause } from "@/icons/Pause";
 import { Play } from "@/icons/Play";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
-
+/**
+ * Focus timer card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo timer settings and callbacks
+ * with your own focus session logic.
+ */
 export type FocusTimerCardProps = {
   title?: string;
   defaultMinutes?: number;
@@ -23,10 +26,6 @@ export type FocusTimerCardProps = {
   onComplete?: () => void;
   onToggle?: (running: boolean) => void;
 } & ComponentPropsWithoutRef<"div">;
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const FocusTimerCard = forwardRef<HTMLDivElement, FocusTimerCardProps>(
   (

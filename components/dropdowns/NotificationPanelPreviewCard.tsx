@@ -4,6 +4,13 @@ import { cn } from "@/lib/utils";
 
 import { Bell } from "@/icons/Bell";
 
+/**
+ * Notification Panel Preview Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
+
 export type NotificationPreviewItem = {
   title: string;
   body: string;
@@ -71,7 +78,7 @@ export const NotificationPanelPreviewCard = forwardRef<
             </span>
           )}
         </div>
-        <div className="max-h-56 divide-y divide-neutral-50 overflow-y-auto">
+        <div className="max-h-56 divide-y divide-neutral-50 scroll-hover overflow-y-auto">
           {items.map((item) => (
             <div
               key={item.title}

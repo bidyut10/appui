@@ -70,8 +70,7 @@ export const DuotoneImageCard = forwardRef<
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-linear-to-t from-slate-950/90 via-slate-900/30 to-transparent" />
 
-        {/* Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
           <span className="mb-3 font-mono text-[10px] tracking-[0.3em] text-blue-300 uppercase">
             {badge}
           </span>

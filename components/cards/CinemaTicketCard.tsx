@@ -5,10 +5,13 @@ import { cn } from "@/lib/utils";
 import { Clock } from "@/icons/Clock";
 import { Location } from "@/icons/Location";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
-
+/**
+ * Cinema ticket card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type CinemaTicketCardProps = {
   filmTitle?: string;
   cinema?: string;
@@ -18,10 +21,6 @@ export type CinemaTicketCardProps = {
   date?: string;
   ticketId?: string;
 } & ComponentPropsWithoutRef<"div">;
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const CinemaTicketCard = forwardRef<
   HTMLDivElement,

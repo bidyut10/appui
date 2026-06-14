@@ -2,6 +2,11 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Revenue bridge card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo MRR bridge steps and values with your own revenue movement data.
+ */
 export type BridgeStep = {
   label: string;
   value: number;
@@ -38,14 +43,16 @@ export const RevenueBridgeCard = forwardRef<
       ref={ref}
       data-slot="revenue-bridge-card"
       className={cn(
-        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-sm ring-1 ring-black/[0.03]",
+        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-lg ring-1 ring-black/[0.03]",
         className,
       )}
       {...props}
     >
-      <p className="mb-5 text-[11px] font-medium text-neutral-500">{title}</p>
+            <p className="mb-5 text-[11px] font-medium text-neutral-500">{title}</p>
+
+      {/* Bridge */}
       <div className="flex items-end justify-between gap-1">
-        {steps.map((step, i) => {
+        {(steps ?? []).map((step) => {
           const height =
             step.type === "end" || step.type === "start"
               ? step.value
@@ -65,11 +72,11 @@ export const RevenueBridgeCard = forwardRef<
                   )}
                 >
                   {isNeg ? "" : "+"}
-                  {step.value}
+                  {step.value.toLocaleString()}
                 </span>
               ) : (
                 <span className="mb-1 text-[10px] font-bold text-neutral-700 tabular-nums">
-                  {step.value}%
+                  {step.value.toLocaleString()}%
                 </span>
               )}
               <div
@@ -82,7 +89,7 @@ export const RevenueBridgeCard = forwardRef<
                   (step.type === "add" || step.type === "subtract") &&
                     "border-x border-dashed border-neutral-200",
                 )}
-                style={{ height: `${height}px` }}
+                style={{ height: `${Math.max(0, height)}px` }}
               />
               <p
                 className={cn(
@@ -92,9 +99,6 @@ export const RevenueBridgeCard = forwardRef<
               >
                 {step.label}
               </p>
-              {i < steps.length - 1 && step.type !== "end" && (
-                <span className="absolute hidden" />
-              )}
             </div>
           );
         })}

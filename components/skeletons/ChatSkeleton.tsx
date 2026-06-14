@@ -2,14 +2,12 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-/*
-| Chat skeleton loader built with Next.js, React,
-| TypeScript, and Tailwind CSS.
-|
-| Perfect for chat interfaces, AI assistants,
-| support widgets, and messaging applications
-| while content is loading.
-*/
+/**
+ * Chat Skeleton built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type ChatSkeletonProps = ComponentPropsWithoutRef<"div">;
 
@@ -24,8 +22,7 @@ export const ChatSkeleton = forwardRef<HTMLDivElement, ChatSkeletonProps>(
       )}
       {...props}
     >
-      {/* Header */}
-      <div
+            <div
         data-slot="chat-skeleton-header"
         className="flex items-center gap-2 border-b border-neutral-100 px-4 py-3"
       >

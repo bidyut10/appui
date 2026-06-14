@@ -2,20 +2,29 @@
 
 import {
   forwardRef,
+  useEffect,
+  useRef,
   useState,
   type ComponentPropsWithoutRef,
+  type KeyboardEvent,
+  type ReactNode,
 } from "react";
 
 import { cn } from "@/lib/utils";
 
 import { Search } from "@/icons/Search";
+import { Mobile } from "@/icons/Mobile";
+import { File } from "@/icons/File";
+import { MapPinned } from "@/icons/MapPinned";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
-
+/**
+ * Apple Spotlight built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type AppleSpotlightResult = {
-  icon: string;
+  icon: ReactNode;
   title: string;
   sub: string;
 };
@@ -28,19 +37,19 @@ export type AppleSpotlightProps = {
   onResultClick?: (result: AppleSpotlightResult, index: number) => void;
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultResults: AppleSpotlightResult[] = [
-  { icon: "📱", title: "Settings", sub: "System Preferences" },
-  { icon: "📝", title: "Notes", sub: "Application" },
-  { icon: "🗺️", title: "Maps", sub: "Find locations" },
+  {
+    icon: <Mobile size={18} />,
+    title: "Settings",
+    sub: "System Preferences",
+  },
+  { icon: <File size={18} />, title: "Notes", sub: "Application" },
+  {
+    icon: <MapPinned size={18} />,
+    title: "Maps",
+    sub: "Find locations",
+  },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const AppleSpotlight = forwardRef<HTMLDivElement, AppleSpotlightProps>(
   (
@@ -57,6 +66,8 @@ export const AppleSpotlight = forwardRef<HTMLDivElement, AppleSpotlightProps>(
   ) => {
     const [query, setQuery] = useState("");
     const [focused, setFocused] = useState(false);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const handleQueryChange = (value: string) => {
       setQuery(value);
@@ -67,6 +78,28 @@ export const AppleSpotlight = forwardRef<HTMLDivElement, AppleSpotlightProps>(
       (result) =>
         !query || result.title.toLowerCase().includes(query.toLowerCase()),
     );
+
+    useEffect(() => {
+      setActiveIndex(0);
+    }, [query]);
+
+    const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+      if (filteredResults.length === 0) return;
+
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        setActiveIndex((index) => (index + 1) % filteredResults.length);
+      } else if (event.key === "ArrowUp") {
+        event.preventDefault();
+        setActiveIndex(
+          (index) => (index - 1 + filteredResults.length) % filteredResults.length,
+        );
+      } else if (event.key === "Enter") {
+        event.preventDefault();
+        const result = filteredResults[activeIndex];
+        onResultClick?.(result, activeIndex);
+      }
+    };
 
     return (
       <div
@@ -88,11 +121,14 @@ export const AppleSpotlight = forwardRef<HTMLDivElement, AppleSpotlightProps>(
           >
             <Search size={16} className="shrink-0 text-neutral-400" />
             <input
+              ref={inputRef}
               value={query}
               onChange={(e) => handleQueryChange(e.target.value)}
               onFocus={() => setFocused(true)}
               onBlur={() => setTimeout(() => setFocused(false), 200)}
+              onKeyDown={handleKeyDown}
               placeholder={placeholder}
+              aria-label="Spotlight search"
               className="flex-1 bg-transparent text-[15px] text-neutral-900 outline-none placeholder:text-neutral-400"
             />
             <kbd className="rounded bg-neutral-100 px-1.5 py-0.5 font-mono text-[10px] text-neutral-400">
@@ -103,13 +139,17 @@ export const AppleSpotlight = forwardRef<HTMLDivElement, AppleSpotlightProps>(
           {(focused || query) && (
             <div data-slot="apple-spotlight-results" className="py-2">
               {filteredResults.map((result, index) => (
-                <div
+                <button
                   key={result.title}
+                  type="button"
+                  aria-label={`Open ${result.title}`}
                   data-slot="apple-spotlight-result"
                   onClick={() => onResultClick?.(result, index)}
                   className={cn(
-                    "flex cursor-pointer items-center gap-3 px-4 py-2.5",
-                    index === 0 ? "bg-[#007AFF]/10" : "hover:bg-neutral-50",
+                    "flex w-full cursor-pointer items-center gap-3 px-4 py-2.5 text-left transition-colors",
+                    index === activeIndex
+                      ? "bg-[#007AFF]/10"
+                      : "hover:bg-neutral-50",
                   )}
                 >
                   <span className="text-lg">{result.icon}</span>
@@ -117,7 +157,7 @@ export const AppleSpotlight = forwardRef<HTMLDivElement, AppleSpotlightProps>(
                     <p
                       className={cn(
                         "text-[13px]",
-                        index === 0
+                        index === activeIndex
                           ? "font-semibold text-[#007AFF]"
                           : "text-neutral-800",
                       )}
@@ -126,7 +166,7 @@ export const AppleSpotlight = forwardRef<HTMLDivElement, AppleSpotlightProps>(
                     </p>
                     <p className="text-[11px] text-neutral-400">{result.sub}</p>
                   </div>
-                </div>
+                </button>
               ))}
             </div>
           )}

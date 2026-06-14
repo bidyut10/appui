@@ -2,6 +2,13 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Tabloid Headline Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
+
 export type TabloidHeadlineCardProps = {
   kicker?: string;
   headline?: string;
@@ -28,7 +35,7 @@ export const TabloidHeadlineCard = forwardRef<
       ref={ref}
       data-slot="tabloid-headline-card"
       className={cn(
-        "w-full max-w-sm overflow-hidden border border-neutral-200 bg-white font-sans shadow-sm",
+        "w-full max-w-sm overflow-hidden border border-neutral-200 bg-white font-sans shadow-lg",
         className,
       )}
       {...props}

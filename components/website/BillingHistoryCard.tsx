@@ -4,9 +4,12 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Billing History Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type BillingInvoice = {
   id: string;
@@ -26,10 +29,6 @@ export type BillingHistoryCardProps = {
 
   onDownloadAll?: () => void;
 } & ComponentPropsWithoutRef<"div">;
-
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
 
 const defaultInvoices: BillingInvoice[] = [
   {
@@ -51,10 +50,6 @@ const defaultInvoices: BillingInvoice[] = [
     status: "Paid",
   },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                           Billing History Card                             */
-/* -------------------------------------------------------------------------- */
 
 export const BillingHistoryCard = forwardRef<
   HTMLDivElement,
@@ -87,10 +82,7 @@ export const BillingHistoryCard = forwardRef<
       )}
       {...props}
     >
-      {/* ---------------------------------------------------------------------- */}
-      {/* Header                                                                 */}
-      {/* ---------------------------------------------------------------------- */}
-
+      
       <div
         data-slot="billing-history-card-header"
         className="flex items-center justify-between border-b border-neutral-100 px-4 py-3"
@@ -102,10 +94,7 @@ export const BillingHistoryCard = forwardRef<
         </span>
       </div>
 
-      {/* ---------------------------------------------------------------------- */}
-      {/* Invoice List                                                           */}
-      {/* ---------------------------------------------------------------------- */}
-
+      
       <div
         data-slot="billing-history-card-list"
         className="divide-y divide-neutral-50"
@@ -139,10 +128,7 @@ export const BillingHistoryCard = forwardRef<
         ))}
       </div>
 
-      {/* ---------------------------------------------------------------------- */}
-      {/* Footer                                                                 */}
-      {/* ---------------------------------------------------------------------- */}
-
+      
       <div
         data-slot="billing-history-card-footer"
         className="border-t border-neutral-100 px-4 py-2.5 text-center"

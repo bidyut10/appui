@@ -2,37 +2,21 @@
 
 import {
   forwardRef,
+  useEffect,
   useId,
   useMemo,
+  useState,
   type ComponentPropsWithoutRef,
 } from "react";
 
 import { cn } from "@/lib/utils";
 
-/*
-| Progress ring card built with Next.js, React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the demo progress values, stages,
-| and labels with your own project data.
-|
-| Features:
-| - forwardRef support
-| - ComponentPropsWithoutRef support
-| - cn() utility support
-| - useId() for unique gradients
-| - useMemo() optimizations
-| - Safe value clamping (0-100)
-| - Fully customizable content
-| - Accessibility improvements
-| - Production-ready API
-| - UI remains exactly the same
-*/
-
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
-
+/**
+ * Progress ring card with animated fill and clickable stage breakdown.
+ *
+ * Replace the demo progress values with your own project data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type ProgressStage = {
   label: string;
   value: number;
@@ -41,29 +25,18 @@ export type ProgressStage = {
 
 export type ProgressRingCardProps = {
   title?: string;
-
   progress?: number;
-
   progressLabel?: string;
-
   showPercentage?: boolean;
-
   ringStartColor?: string;
   ringEndColor?: string;
-
   stages?: ProgressStage[];
+  animateOnMount?: boolean;
+  onStageClick?: (stage: ProgressStage, index: number) => void;
 } & ComponentPropsWithoutRef<"div">;
-
-/* -------------------------------------------------------------------------- */
-/*                                  Constants                                 */
-/* -------------------------------------------------------------------------- */
 
 const RADIUS = 40;
 const STROKE_WIDTH = 6;
-
-/* -------------------------------------------------------------------------- */
-/*                                 Component                                  */
-/* -------------------------------------------------------------------------- */
 
 export const ProgressRingCard = forwardRef<
   HTMLDivElement,
@@ -72,49 +45,28 @@ export const ProgressRingCard = forwardRef<
   (
     {
       className,
-
       title = "Project Progress",
-
       progress = 73,
-
       progressLabel = "Complete",
-
       showPercentage = true,
-
-      ringStartColor = "#8b5cf6",
-      ringEndColor = "#d946ef",
-
+      ringStartColor = "#14b8a6",
+      ringEndColor = "#06b6d4",
       stages = [
-        {
-          label: "Design",
-          value: 100,
-          color: "bg-emerald-500",
-        },
-        {
-          label: "Development",
-          value: 73,
-          color: "bg-teal-500",
-        },
-        {
-          label: "Testing",
-          value: 30,
-          color: "bg-neutral-200",
-        },
+        { label: "Design", value: 100, color: "bg-emerald-500" },
+        { label: "Development", value: 73, color: "bg-teal-500" },
+        { label: "Testing", value: 30, color: "bg-neutral-200" },
       ],
-
+      animateOnMount = true,
+      onStageClick,
       ...props
     },
     ref,
   ) => {
-    /* ---------------------------------------------------------------------- */
-    /*                               Unique IDs                               */
-    /* ---------------------------------------------------------------------- */
-
     const gradientId = useId();
-
-    /* ---------------------------------------------------------------------- */
-    /*                            Normalized Values                           */
-    /* ---------------------------------------------------------------------- */
+    const [displayProgress, setDisplayProgress] = useState(
+      animateOnMount ? 0 : progress,
+    );
+    const [activeStage, setActiveStage] = useState<number | null>(null);
 
     const normalizedProgress = useMemo(
       () => Math.min(100, Math.max(0, progress)),
@@ -130,16 +82,38 @@ export const ProgressRingCard = forwardRef<
       [stages],
     );
 
-    /* ---------------------------------------------------------------------- */
-    /*                              SVG Helpers                               */
-    /* ---------------------------------------------------------------------- */
-
     const circumference = useMemo(() => 2 * Math.PI * RADIUS, []);
 
     const offset = useMemo(
-      () => circumference - (normalizedProgress / 100) * circumference,
-      [circumference, normalizedProgress],
+      () => circumference - (displayProgress / 100) * circumference,
+      [circumference, displayProgress],
     );
+
+    useEffect(() => {
+      if (!animateOnMount) {
+        setDisplayProgress(normalizedProgress);
+        return;
+      }
+
+      const start = performance.now();
+      const duration = 900;
+
+      const frame = (time: number) => {
+        const t = Math.min(1, (time - start) / duration);
+        const eased = 1 - (1 - t) ** 3;
+        setDisplayProgress(Math.round(normalizedProgress * eased));
+        if (t < 1) requestAnimationFrame(frame);
+      };
+
+      const raf = requestAnimationFrame(frame);
+      return () => cancelAnimationFrame(raf);
+    }, [animateOnMount, normalizedProgress]);
+
+    const handleStageClick = (stage: ProgressStage, index: number) => {
+      setActiveStage(index);
+      setDisplayProgress(stage.value);
+      onStageClick?.(stage, index);
+    };
 
     return (
       <div
@@ -151,10 +125,6 @@ export const ProgressRingCard = forwardRef<
         )}
         {...props}
       >
-        {/* -------------------------------------------------------------------------- */}
-        {/*                                   Header                                   */}
-        {/* -------------------------------------------------------------------------- */}
-
         <p
           data-slot="progress-ring-card-title"
           className="mb-4 font-mono text-[10px] tracking-widest text-neutral-400 uppercase"
@@ -162,24 +132,17 @@ export const ProgressRingCard = forwardRef<
           {title}
         </p>
 
-        {/* -------------------------------------------------------------------------- */}
-        {/*                                Progress Ring                               */}
-        {/* -------------------------------------------------------------------------- */}
-
         <div
           data-slot="progress-ring-card-ring"
           className="relative mx-auto mb-4 h-28 w-28"
         >
           <svg
             role="img"
-            aria-label={`${normalizedProgress}% ${progressLabel}`}
+            aria-label={`${displayProgress}% ${progressLabel}`}
             viewBox="0 0 100 100"
             className="h-full w-full -rotate-90"
           >
-            {/* Track */}
-
             <circle
-              data-slot="progress-ring-card-track"
               cx="50"
               cy="50"
               r={RADIUS}
@@ -187,11 +150,7 @@ export const ProgressRingCard = forwardRef<
               stroke="#f5f5f5"
               strokeWidth={STROKE_WIDTH}
             />
-
-            {/* Progress */}
-
             <circle
-              data-slot="progress-ring-card-indicator"
               cx="50"
               cy="50"
               r={RADIUS}
@@ -201,11 +160,8 @@ export const ProgressRingCard = forwardRef<
               strokeLinecap="round"
               strokeDasharray={circumference}
               strokeDashoffset={offset}
-              className="transition-all duration-1000"
+              className="transition-[stroke-dashoffset] duration-700 ease-out"
             />
-
-            {/* Gradient */}
-
             <defs>
               <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stopColor={ringStartColor} />
@@ -214,71 +170,46 @@ export const ProgressRingCard = forwardRef<
             </defs>
           </svg>
 
-          {/* Center Content */}
-
-          <div
-            data-slot="progress-ring-card-center"
-            className="absolute inset-0 flex flex-col items-center justify-center"
-          >
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
             {showPercentage && (
-              <span
-                data-slot="progress-ring-card-percentage"
-                className="text-2xl font-light text-neutral-900"
-              >
-                {normalizedProgress}%
+              <span className="text-2xl font-light text-neutral-900">
+                {displayProgress}%
               </span>
             )}
-
-            <span
-              data-slot="progress-ring-card-label"
-              className="font-mono text-[9px] text-neutral-400"
-            >
+            <span className="font-mono text-[9px] text-neutral-400">
               {progressLabel}
             </span>
           </div>
         </div>
 
-        {/* -------------------------------------------------------------------------- */}
-        {/*                                  Breakdown                                 */}
-        {/* -------------------------------------------------------------------------- */}
-
         <div data-slot="progress-ring-card-breakdown" className="space-y-2">
-          {normalizedStages.map((stage) => (
-            <div
+          {normalizedStages.map((stage, index) => (
+            <button
               key={stage.label}
+              type="button"
+              onClick={() => handleStageClick(stage, index)}
               data-slot="progress-ring-card-stage"
-              className="flex items-center gap-2"
+              className={cn(
+                "flex w-full cursor-pointer items-center gap-2 rounded-lg px-1 py-0.5 text-left transition-colors hover:bg-neutral-50",
+                activeStage === index && "bg-teal-50",
+              )}
             >
-              <span
-                data-slot="progress-ring-card-stage-label"
-                className="w-16 text-[10px] text-neutral-500"
-              >
+              <span className="w-16 text-[10px] text-neutral-500">
                 {stage.label}
               </span>
-
-              <div
-                data-slot="progress-ring-card-stage-track"
-                className="h-1.5 flex-1 overflow-hidden rounded-full bg-neutral-100"
-              >
+              <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-neutral-100">
                 <div
-                  data-slot="progress-ring-card-stage-bar"
                   className={cn(
-                    "h-full rounded-full",
+                    "h-full rounded-full transition-all duration-500",
                     stage.color ?? "bg-teal-500",
                   )}
-                  style={{
-                    width: `${stage.value}%`,
-                  }}
+                  style={{ width: `${stage.value}%` }}
                 />
               </div>
-
-              <span
-                data-slot="progress-ring-card-stage-value"
-                className="w-6 text-right font-mono text-[10px] text-neutral-400"
-              >
+              <span className="w-6 text-right font-mono text-[10px] text-neutral-400">
                 {stage.value}%
               </span>
-            </div>
+            </button>
           ))}
         </div>
       </div>

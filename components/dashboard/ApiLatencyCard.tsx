@@ -2,6 +2,11 @@ import { forwardRef, useMemo, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * API latency card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo endpoint, latency metrics, and sparkline data with your own API monitoring data.
+ */
 export type LatencyMetric = {
   label: string;
   value: string;
@@ -42,12 +47,17 @@ export const ApiLatencyCard = forwardRef<HTMLDivElement, ApiLatencyCardProps>(
     ref,
   ) => {
     const points = useMemo(() => {
-      const max = Math.max(...sparkline);
-      const min = Math.min(...sparkline);
+      const chartData = sparkline ?? [];
+      if (chartData.length === 0) return "";
+
+      const max = Math.max(...chartData);
+      const min = Math.min(...chartData);
       const range = max - min || 1;
-      return sparkline
+      const denominator = Math.max(chartData.length - 1, 1);
+
+      return chartData
         .map((v, i) => {
-          const x = (i / (sparkline.length - 1)) * 100;
+          const x = (i / denominator) * 100;
           const y = 100 - ((v - min) / range) * 80 - 10;
           return `${x},${y}`;
         })
@@ -59,16 +69,17 @@ export const ApiLatencyCard = forwardRef<HTMLDivElement, ApiLatencyCardProps>(
         ref={ref}
         data-slot="api-latency-card"
         className={cn(
-          "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-sm ring-1 ring-black/[0.03]",
+          "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-lg ring-1 ring-black/[0.03]",
           className,
         )}
         {...props}
       >
-        <p className="text-[11px] font-medium text-neutral-500">{title}</p>
+                <p className="text-[11px] font-medium text-neutral-500">{title}</p>
         <p className="mt-0.5 truncate font-mono text-[12px] text-neutral-700">
           {endpoint}
         </p>
 
+        {/* Sparkline */}
         <svg
           viewBox="0 0 100 40"
           className="mt-4 h-10 w-full"
@@ -86,8 +97,9 @@ export const ApiLatencyCard = forwardRef<HTMLDivElement, ApiLatencyCardProps>(
           />
         </svg>
 
+        {/* Metrics */}
         <div className="mt-4 grid grid-cols-3 gap-2">
-          {metrics.map((m) => (
+          {(metrics ?? []).map((m) => (
             <div
               key={m.label}
               className="rounded-xl border border-neutral-100 bg-neutral-50/80 px-3 py-2.5 text-center"

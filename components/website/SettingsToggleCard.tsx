@@ -4,6 +4,13 @@ import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Settings Toggle Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
+
 export type SettingItem = {
   label: string;
   desc: string;
@@ -67,10 +74,7 @@ export const SettingsToggleCard = forwardRef<
         )}
         {...props}
       >
-        {/* -------------------------------------------------------------------------- */}
-        {/*                                   Header                                   */}
-        {/* -------------------------------------------------------------------------- */}
-
+        
         <div
           data-slot="settings-toggle-card-header"
           className="border-b border-neutral-100 px-4 py-3"
@@ -80,10 +84,7 @@ export const SettingsToggleCard = forwardRef<
           <p className="mt-0.5 text-[11px] text-neutral-400">{description}</p>
         </div>
 
-        {/* -------------------------------------------------------------------------- */}
-        {/*                                  Settings                                  */}
-        {/* -------------------------------------------------------------------------- */}
-
+        
         <div
           data-slot="settings-toggle-card-list"
           className="divide-y divide-neutral-50"

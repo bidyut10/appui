@@ -13,17 +13,16 @@ import { cn } from "@/lib/utils";
 import { File } from "@/icons/File";
 import { Check } from "@/icons/Check";
 
-/*
-| File upload zone built with React, TypeScript,
-| and Tailwind CSS.
-|
-| Supports drag & drop uploads, click to browse,
-| upload success state, and accepted file badges.
-|
-| Replace the demo file name and accepted file
-| formats with your own content.
-*/
-
+/**
+ * File upload zone built with React, TypeScript,
+ * and Tailwind CSS.
+ *
+ * Supports drag and drop uploads, click to browse,
+ * upload success state, and accepted file badges.
+ *
+ * Replace the demo file name and accepted file
+ * formats with your own content.
+ */
 export type FileUploadZoneProps = {
   successFileName?: string;
   acceptedTypes?: string[];

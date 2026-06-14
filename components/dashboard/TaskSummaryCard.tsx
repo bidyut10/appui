@@ -1,13 +1,31 @@
-import React, { forwardRef } from "react";
+import {
+  forwardRef,
+  type ComponentPropsWithoutRef,
+} from "react";
+
 import { Check } from "@/icons/Check";
 import { Clock } from "@/icons/Clock";
 import { cn } from "@/lib/utils";
 
+/**
+ * Task summary card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo tasks, completion counts, and priority labels with your own task data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type TaskItem = {
   title: string;
   done: boolean;
   priority: "low" | "medium" | "high";
 };
+
+export type TaskSummaryCardProps = {
+  title?: string;
+  tasks?: TaskItem[];
+  doneLabel?: string;
+  addTaskLabel?: string;
+  onAddTask?: () => void;
+} & ComponentPropsWithoutRef<"div">;
 
 const defaultTasks: TaskItem[] = [
   {
@@ -32,16 +50,26 @@ const defaultTasks: TaskItem[] = [
   },
 ];
 
-export interface TaskSummaryCardProps extends React.ComponentPropsWithoutRef<"div"> {
-  title?: string;
-  tasks?: TaskItem[];
-}
-
-export const TaskSummaryCard = forwardRef<HTMLDivElement, TaskSummaryCardProps>(
-  ({ className, title = "Tasks", tasks = defaultTasks, ...props }, ref) => {
-    const completedCount = tasks.filter((task) => task.done).length;
+export const TaskSummaryCard = forwardRef<
+  HTMLDivElement,
+  TaskSummaryCardProps
+>(
+  (
+    {
+      className,
+      title = "Tasks",
+      tasks = defaultTasks,
+      doneLabel = "done",
+      addTaskLabel = "Add task",
+      onAddTask,
+      ...props
+    },
+    ref,
+  ) => {
+    const safeTasks = tasks ?? [];
+    const completedCount = safeTasks.filter((task) => task.done).length;
     const progress =
-      tasks.length > 0 ? (completedCount / tasks.length) * 100 : 0;
+      safeTasks.length > 0 ? (completedCount / safeTasks.length) * 100 : 0;
 
     return (
       <div
@@ -53,8 +81,7 @@ export const TaskSummaryCard = forwardRef<HTMLDivElement, TaskSummaryCardProps>(
         )}
         {...props}
       >
-        {/* Header */}
-        <div
+                <div
           data-slot="task-summary-header"
           className="border-b border-neutral-100 px-4 py-3"
         >
@@ -62,7 +89,8 @@ export const TaskSummaryCard = forwardRef<HTMLDivElement, TaskSummaryCardProps>(
             <h4 className="text-sm font-semibold text-neutral-900">{title}</h4>
 
             <span className="font-mono text-[10px] text-neutral-400">
-              {completedCount}/{tasks.length} done
+              {completedCount.toLocaleString()}/
+              {safeTasks.length.toLocaleString()} {doneLabel}
             </span>
           </div>
 
@@ -81,7 +109,7 @@ export const TaskSummaryCard = forwardRef<HTMLDivElement, TaskSummaryCardProps>(
           data-slot="task-summary-list"
           className="divide-y divide-neutral-50"
         >
-          {tasks.map((task) => (
+          {safeTasks.map((task) => (
             <div
               key={task.title}
               data-slot="task-summary-item"
@@ -123,18 +151,19 @@ export const TaskSummaryCard = forwardRef<HTMLDivElement, TaskSummaryCardProps>(
           ))}
         </div>
 
-        {/* Footer */}
-        <div
+                <div
           data-slot="task-summary-footer"
           className="border-t border-neutral-100 px-4 py-2.5"
         >
           <button
             type="button"
             data-slot="task-summary-add-button"
+            aria-label={addTaskLabel}
+            onClick={onAddTask}
             className="flex h-8 w-full cursor-pointer items-center justify-center gap-1 rounded-lg border border-neutral-200 text-[11px] font-medium text-neutral-600 transition-colors hover:bg-neutral-50"
           >
             <Clock size={11} />
-            Add task
+            {addTaskLabel}
           </button>
         </div>
       </div>

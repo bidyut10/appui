@@ -12,10 +12,13 @@ import { cn } from "@/lib/utils";
 import { ArrowRight } from "@/icons/ArrowRight";
 import { UserGroup } from "@/icons/UserGroup";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
-
+/**
+ * Metric dashboard card with sparkline chart built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type MetricCardProps = {
   label?: string;
 
@@ -36,10 +39,6 @@ export type MetricCardProps = {
   actionLabel?: string;
   onActionClick?: () => void;
 } & ComponentPropsWithoutRef<"div">;
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const MetricCard = forwardRef<HTMLDivElement, MetricCardProps>(
   (
@@ -69,9 +68,6 @@ export const MetricCard = forwardRef<HTMLDivElement, MetricCardProps>(
     },
     ref,
   ) => {
-    /* ------------------------------------------------------------------------ */
-    /*                              Chart Helpers                               */
-    /* ------------------------------------------------------------------------ */
 
     const normalizedChartData = useMemo(
       () => chartData.map((value) => Math.min(100, Math.max(0, value))),
@@ -93,11 +89,7 @@ export const MetricCard = forwardRef<HTMLDivElement, MetricCardProps>(
         )}
         {...props}
       >
-        {/* -------------------------------------------------------------------------- */}
-        {/*                                   Header                                   */}
-        {/* -------------------------------------------------------------------------- */}
-
-        <div
+                <div
           data-slot="metric-card-header"
           className="mb-4 flex items-center justify-between"
         >
@@ -116,11 +108,7 @@ export const MetricCard = forwardRef<HTMLDivElement, MetricCardProps>(
           </span>
         </div>
 
-        {/* -------------------------------------------------------------------------- */}
-        {/*                                   Metric                                   */}
-        {/* -------------------------------------------------------------------------- */}
-
-        <p
+                <p
           data-slot="metric-card-label"
           className="mb-1 text-[10px] font-medium tracking-wider text-neutral-400 uppercase"
         >
@@ -150,11 +138,7 @@ export const MetricCard = forwardRef<HTMLDivElement, MetricCardProps>(
           )}
         </div>
 
-        {/* -------------------------------------------------------------------------- */}
-        {/*                                    Chart                                   */}
-        {/* -------------------------------------------------------------------------- */}
-
-        <div
+                <div
           data-slot="metric-card-chart"
           className="mb-3 flex h-10 items-end gap-1"
         >
@@ -175,11 +159,7 @@ export const MetricCard = forwardRef<HTMLDivElement, MetricCardProps>(
           ))}
         </div>
 
-        {/* -------------------------------------------------------------------------- */}
-        {/*                                   Footer                                   */}
-        {/* -------------------------------------------------------------------------- */}
-
-        <div
+                <div
           data-slot="metric-card-footer"
           className="flex items-center justify-between text-[10px] text-neutral-400"
         >

@@ -4,6 +4,15 @@ import profileImage from "@/public/boy.png";
 import { Github } from "@/icons/Github";
 import { Mail } from "@/icons/Mail";
 
+/**
+ * Team member profile card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ *
+ * React Users: Replace `next/image` with a standard `img` element.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export const TeamMemberCard = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>

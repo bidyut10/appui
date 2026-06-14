@@ -14,9 +14,12 @@ import { Info } from "@/icons/Info";
 import { Check } from "@/icons/Check";
 import { Alert } from "@/icons/Alert";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Alert Banners built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type AlertBannerItem = {
   id?: string;
@@ -38,10 +41,6 @@ export type AlertBannersProps = {
 
   onDismiss?: (alert: AlertBannerItem, index: number) => void;
 } & ComponentPropsWithoutRef<"div">;
-
-/* -------------------------------------------------------------------------- */
-/*                              Default Alert Data                            */
-/* -------------------------------------------------------------------------- */
 
 const defaultAlerts: AlertBannerItem[] = [
   {
@@ -65,10 +64,6 @@ const defaultAlerts: AlertBannerItem[] = [
     message: "Unable to reach the server. Try again.",
   },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                              Alert Variants                                */
-/* -------------------------------------------------------------------------- */
 
 const alertStyles = {
   info: {
@@ -95,10 +90,6 @@ const alertStyles = {
     icon: <X className="text-red-800" />,
   },
 } as const;
-
-/* -------------------------------------------------------------------------- */
-/*                              Alert Banners                                 */
-/* -------------------------------------------------------------------------- */
 
 export const AlertBanners = forwardRef<HTMLDivElement, AlertBannersProps>(
   (
@@ -136,10 +127,7 @@ export const AlertBanners = forwardRef<HTMLDivElement, AlertBannersProps>(
         className={cn("w-80 space-y-2 font-sans", className)}
         {...props}
       >
-        {/* ---------------------------------------------------------------------- */}
-        {/*                                 Alerts                                 */}
-        {/* ---------------------------------------------------------------------- */}
-
+        
         {alerts.map((alert, index) => {
           if (!visible[index]) return null;
 
@@ -154,10 +142,7 @@ export const AlertBanners = forwardRef<HTMLDivElement, AlertBannersProps>(
                 alert.bgClass ?? variant.bg,
               )}
             >
-              {/* -------------------------------------------------------------- */}
-              {/* Icon                                                           */}
-              {/* -------------------------------------------------------------- */}
-
+              
               <span
                 data-slot="alert-banner-icon"
                 className="mt-0.5 shrink-0 text-sm"
@@ -165,10 +150,7 @@ export const AlertBanners = forwardRef<HTMLDivElement, AlertBannersProps>(
                 {alert.icon ?? variant.icon}
               </span>
 
-              {/* -------------------------------------------------------------- */}
-              {/* Content                                                        */}
-              {/* -------------------------------------------------------------- */}
-
+              
               <div data-slot="alert-banner-content" className="min-w-0 flex-1">
                 <p
                   data-slot="alert-banner-title"
@@ -191,10 +173,7 @@ export const AlertBanners = forwardRef<HTMLDivElement, AlertBannersProps>(
                 </p>
               </div>
 
-              {/* -------------------------------------------------------------- */}
-              {/* Close Button                                                   */}
-              {/* -------------------------------------------------------------- */}
-
+              
               <button
                 type="button"
                 data-slot="alert-banner-close"

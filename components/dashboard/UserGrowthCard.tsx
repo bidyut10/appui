@@ -1,19 +1,18 @@
-import { forwardRef, type ComponentPropsWithoutRef } from "react";
+import {
+  forwardRef,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
+} from "react";
 
 import { UserGroup } from "@/icons/UserGroup";
 import { cn } from "@/lib/utils";
 
-/*
-| User growth card built with React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the demo user metrics
-| and growth statistics with your
-| own analytics data.
-|
-| Visual design remains exactly the same.
-*/
-
+/**
+ * User growth card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo user metrics and growth statistics with your own analytics data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type UserGrowthMetric = {
   label: string;
   value: string;
@@ -24,7 +23,7 @@ export type UserGrowthMetric = {
 export type UserGrowthCardProps = {
   title?: string;
   totalUsers?: string | number;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   metrics?: UserGrowthMetric[];
 } & ComponentPropsWithoutRef<"div">;
 
@@ -53,14 +52,10 @@ export const UserGrowthCard = forwardRef<HTMLDivElement, UserGrowthCardProps>(
   (
     {
       className,
-
       title = "Active Users",
-      totalUsers = "12,847",
-
+      totalUsers = 12847,
       icon,
-
       metrics = defaultMetrics,
-
       ...props
     },
     ref,
@@ -74,8 +69,7 @@ export const UserGrowthCard = forwardRef<HTMLDivElement, UserGrowthCardProps>(
       )}
       {...props}
     >
-      {/* Header */}
-      <div
+            <div
         data-slot="user-growth-header"
         className="mb-4 flex items-center gap-3"
       >
@@ -98,16 +92,17 @@ export const UserGrowthCard = forwardRef<HTMLDivElement, UserGrowthCardProps>(
             data-slot="user-growth-total"
             className="text-xl font-semibold text-neutral-900"
           >
-            {totalUsers}
+            {typeof totalUsers === "number"
+              ? totalUsers.toLocaleString()
+              : totalUsers}
           </p>
         </div>
       </div>
 
       {/* Metrics */}
       <div data-slot="user-growth-metrics" className="space-y-2">
-        {metrics.map(({ label, value, percentage, color = "bg-blue-500" }) => {
+        {(metrics ?? []).map(({ label, value, percentage, color = "bg-blue-500" }) => {
           const safePercentage = Math.max(0, Math.min(100, percentage));
-
           const isNegative = value.startsWith("-");
 
           return (

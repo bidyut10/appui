@@ -6,6 +6,13 @@ import { Check } from "@/icons/Check";
 import { CreditCard } from "@/icons/CreditCard";
 import { Location } from "@/icons/Location";
 
+/**
+ * Checkout Stepper Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
+
 export type CheckoutStep = {
   id: string;
   label: string;
@@ -51,7 +58,7 @@ export const CheckoutStepperCard = forwardRef<
       ref={ref}
       data-slot="checkout-stepper-card"
       className={cn(
-        "w-full max-w-sm rounded-2xl border border-neutral-200 bg-white p-5 font-sans shadow-sm",
+        "w-full max-w-sm rounded-2xl border border-neutral-200 bg-white p-5 font-sans shadow-lg",
         className,
       )}
       {...props}

@@ -7,9 +7,12 @@ import { cn } from "@/lib/utils";
 import { Key } from "@/icons/Key";
 import { MapPinned } from "@/icons/MapPinned";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Apple Find My Card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 
 export type AppleFindMyCardProps = {
   title?: string;
@@ -21,10 +24,6 @@ export type AppleFindMyCardProps = {
   onPlaySound?: () => void;
   onDirections?: () => void;
 } & ComponentPropsWithoutRef<"div">;
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const AppleFindMyCard = forwardRef<HTMLDivElement, AppleFindMyCardProps>(
   (

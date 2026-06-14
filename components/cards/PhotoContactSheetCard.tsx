@@ -8,6 +8,15 @@ import img2 from "@/public/bg.png";
 import img3 from "@/public/bh.png";
 import img4 from "@/public/dbg.png";
 
+/**
+ * Photo contact sheet card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ *
+ * React Users: Replace `next/image` with a standard `img` element.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type ContactSheetFrame = {
   src: StaticImageData | string;
   number: string;

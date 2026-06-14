@@ -10,17 +10,18 @@ import { cn } from "@/lib/utils";
 
 import { Star } from "@/icons/Star";
 
-/*
-| App Store review card built with React, TypeScript,
-| and Tailwind CSS.
-|
-| Replace the demo app information, ratings, reviews,
-| and call-to-action with your own content.
-|
-| Perfect for showcasing app ratings, testimonials,
-| product feedback, or marketplace listings.
-*/
-
+/**
+ * App Store review card built with React, TypeScript,
+ * and Tailwind CSS.
+ *
+ * Replace the demo app information, ratings, reviews,
+ * and call-to-action with your own content.
+ *
+ * Perfect for showcasing app ratings, testimonials,
+ * product feedback, or marketplace listings.
+ *
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 type Review = {
   name: string;
   stars: number;

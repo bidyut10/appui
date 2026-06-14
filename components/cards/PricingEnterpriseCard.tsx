@@ -4,14 +4,15 @@ import { cn } from "@/lib/utils";
 
 import { Check } from "@/icons/Check";
 
-/*
-| Enterprise pricing card built with Next.js, React,
-| TypeScript, and Tailwind CSS.
-|
-| Replace the plan name, pricing label, description,
-| features, and CTA text with your own content.
-*/
-
+/**
+ * Enterprise pricing card built with Next.js, React,
+ * TypeScript, and Tailwind CSS.
+ *
+ * Replace the plan name, pricing label, description,
+ * features, and CTA text with your own content.
+ *
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
 export type PricingEnterpriseCardProps = {
   planName?: string;
 
@@ -62,8 +63,7 @@ export const PricingEnterpriseCard = forwardRef<
       {...props}
     >
       <div data-slot="pricing-enterprise-card-content" className="p-6">
-        {/* Header */}
-        <span
+                <span
           data-slot="pricing-enterprise-card-plan"
           className="font-mono text-[10px] tracking-widest text-neutral-500 uppercase"
         >

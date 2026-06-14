@@ -15,9 +15,14 @@ import { Leaf } from "@/icons/Leaf";
 import { MapPinned } from "@/icons/MapPinned";
 import { Soup } from "@/icons/Soup";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/**
+ * Apple Maps Explore built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ *
+ * React Users: Replace `next/image` with a standard `img` element.
+ */
 
 export type AppleMapsExploreTag = {
   icon: ReactNode;
@@ -35,19 +40,11 @@ export type AppleMapsExploreProps = {
   onTagClick?: (tag: AppleMapsExploreTag) => void;
 } & ComponentPropsWithoutRef<"div">;
 
-/* -------------------------------------------------------------------------- */
-/*                              Default Content                               */
-/* -------------------------------------------------------------------------- */
-
 const defaultTags: AppleMapsExploreTag[] = [
   { icon: <Leaf size={11} />, label: "Parks" },
   { icon: <Soup size={11} />, label: "Food" },
   { icon: <House size={11} />, label: "Stay" },
 ];
-
-/* -------------------------------------------------------------------------- */
-/*                                Component                                   */
-/* -------------------------------------------------------------------------- */
 
 export const AppleMapsExplore = forwardRef<
   HTMLDivElement,

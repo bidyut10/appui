@@ -135,8 +135,7 @@ export const LinkedInProfileCard = forwardRef<
             {bio}
           </p>
 
-          {/* Actions */}
-          <div className="mt-3 flex gap-2">
+                    <div className="mt-3 flex gap-2">
             {connectButton ?? (
               <button
                 type="button"

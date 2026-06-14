@@ -2,6 +2,11 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Invoice pipeline card built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo invoice stages, counts, and amounts with your own billing data.
+ */
 export type PipelineStage = {
   label: string;
   count: number;
@@ -38,14 +43,16 @@ export const InvoicePipelineCard = forwardRef<
       ref={ref}
       data-slot="invoice-pipeline-card"
       className={cn(
-        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-sm ring-1 ring-black/[0.03]",
+        "w-full max-w-sm rounded-[1.25rem] border border-neutral-200/80 bg-white p-5 font-sans shadow-lg ring-1 ring-black/[0.03]",
         className,
       )}
       {...props}
     >
-      <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
+            <p className="mb-4 text-[11px] font-medium text-neutral-500">{title}</p>
+
+      {/* Stages */}
       <div className="flex gap-2">
-        {stages.map((stage, index) => (
+        {(stages ?? []).map((stage, index) => (
           <div key={stage.label} className="flex flex-1 flex-col items-center">
             <div
               className={cn(
@@ -55,7 +62,7 @@ export const InvoicePipelineCard = forwardRef<
               style={{ height: `${48 + index * 16}px` }}
             >
               <span className="text-lg font-bold text-white tabular-nums">
-                {stage.count}
+                {stage.count.toLocaleString()}
               </span>
             </div>
             <div className="w-full rounded-b-lg border border-t-0 border-neutral-200 bg-neutral-50 px-1 py-2 text-center">

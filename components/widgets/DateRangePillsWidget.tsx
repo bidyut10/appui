@@ -8,6 +8,13 @@ import {
 
 import { cn } from "@/lib/utils";
 
+/**
+ * Date Range Pills Widget built with React, TypeScript, and Tailwind CSS.
+ *
+ * Replace the demo content with your own data.
+ * Need icons? Visit nexticons.in for free copy-paste icons.
+ */
+
 export type DateRangeOption = {
   id: string;
   label: string;
@@ -48,7 +55,7 @@ export const DateRangePillsWidget = forwardRef<
         ref={ref}
         data-slot="date-range-pills-widget"
         className={cn(
-          "inline-flex rounded-xl border border-neutral-200 bg-neutral-50 p-1 font-sans shadow-sm",
+          "inline-flex rounded-xl border border-neutral-200 bg-neutral-50 p-1 font-sans shadow-lg",
           className,
         )}
         {...props}
