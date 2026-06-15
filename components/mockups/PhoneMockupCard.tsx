@@ -3,7 +3,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 /**
  * Phone Mockup Card built with React, TypeScript, and Tailwind CSS.
  *

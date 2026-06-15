@@ -67,7 +67,7 @@ export const JournalWritingCard = forwardRef<
       >
         <div className="flex items-start justify-between gap-3 border-b border-neutral-100 bg-amber-400 px-4 py-3">
           <div className="min-w-0">
-            <p className="text-sm font-semibold leading-tight text-neutral-900">
+            <p className="text-sm leading-tight font-semibold text-neutral-900">
               {title}
             </p>
             <p className="mt-0.5 text-[10px] leading-none text-neutral-700">
@@ -94,7 +94,7 @@ export const JournalWritingCard = forwardRef<
             placeholder={placeholder}
             aria-label="Journal entry"
             data-slot="journal-writing-card-input"
-            className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden relative z-10 h-[200px] w-full resize-none bg-transparent px-4 pt-3 pb-2 font-serif text-[14px] leading-7 text-neutral-800 outline-none placeholder:text-neutral-300"
+            className="relative z-10 h-[200px] w-full resize-none [scrollbar-width:none] bg-transparent px-4 pt-3 pb-2 font-serif text-[14px] leading-7 text-neutral-800 outline-none [-ms-overflow-style:none] placeholder:text-neutral-300 [&::-webkit-scrollbar]:hidden"
           />
           <div className="absolute top-0 left-3 h-full w-px bg-rose-200/80" />
         </div>

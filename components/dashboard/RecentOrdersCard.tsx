@@ -130,7 +130,7 @@ export const RecentOrdersCard = forwardRef<
       {/* Table */}
       <div
         data-slot="recent-orders-table-wrapper"
-        className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overflow-x-auto"
+        className="[scrollbar-width:none] overflow-x-auto [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
       >
         <table data-slot="recent-orders-table" className="w-full text-left">
           <thead data-slot="recent-orders-table-head">

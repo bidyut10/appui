@@ -29,10 +29,7 @@ export const PullQuoteCard = forwardRef<HTMLDivElement, PullQuoteCardProps>(
     <div
       ref={ref}
       data-slot="pull-quote-card"
-      className={cn(
-        "w-sm bg-white px-5 py-6 font-serif sm:px-6",
-        className,
-      )}
+      className={cn("w-sm bg-white px-5 py-6 font-serif sm:px-6", className)}
       {...props}
     >
       <div className="flex gap-4">

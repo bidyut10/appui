@@ -54,10 +54,7 @@ export const CommandDockBar = forwardRef<HTMLDivElement, CommandDockBarProps>(
     <div
       ref={ref}
       data-slot="command-dock-bar"
-      className={cn(
-        "flex w-sm justify-center px-2 font-sans",
-        className,
-      )}
+      className={cn("flex w-sm justify-center px-2 font-sans", className)}
       {...props}
     >
       <div

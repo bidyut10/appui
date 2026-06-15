@@ -9,7 +9,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 /**
  * Facebook-inspired profile card built with Next.js,
  * React, TypeScript, and Tailwind CSS.
@@ -102,7 +101,14 @@ export const FacebookProfileCard = forwardRef<
 
           {/* Profile avatar */}
           <div className="absolute -bottom-10 left-1/2 flex h-20 w-20 -translate-x-1/2 items-center justify-center rounded-full border-4 border-white bg-neutral-800 shadow">
-            <Image src={avatar} alt={avatarAlt} width={32} height={32} className="w-8" sizes="32px" />
+            <Image
+              src={avatar}
+              alt={avatarAlt}
+              width={32}
+              height={32}
+              className="w-8"
+              sizes="32px"
+            />
           </div>
         </div>
 

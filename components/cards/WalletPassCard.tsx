@@ -5,7 +5,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 /**
  * Apple Wallet-style pass that flips to reveal QR details on click.
  *

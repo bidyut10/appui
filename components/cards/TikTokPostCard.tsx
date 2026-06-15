@@ -10,7 +10,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 import { Heart } from "@/icons/Heart";
 import { Chat } from "@/icons/Chat";
 import { Share } from "@/icons/Share";

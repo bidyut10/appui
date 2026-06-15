@@ -7,7 +7,6 @@ import { cn } from "@/lib/cn";
 import { Play } from "@/icons/Play";
 import { Pause } from "@/icons/Pause";
 
-
 export type WellnessChatAudioWidgetProps = ComponentPropsWithoutRef<"div">;
 
 export const WellnessChatAudioWidget = forwardRef<

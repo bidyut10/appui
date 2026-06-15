@@ -78,7 +78,7 @@ export const NotificationPanelPreviewCard = forwardRef<
             </span>
           )}
         </div>
-        <div className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-h-56 divide-y divide-neutral-50 overflow-y-auto">
+        <div className="max-h-56 [scrollbar-width:none] divide-y divide-neutral-50 overflow-y-auto [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {items.map((item) => (
             <div
               key={item.title}

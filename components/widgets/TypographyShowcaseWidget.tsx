@@ -1,4 +1,8 @@
-import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import {
+  forwardRef,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
+} from "react";
 
 import { cn } from "@/lib/cn";
 
@@ -46,10 +50,7 @@ export const TypographyShowcaseWidget = forwardRef<
       >
         Morning brief
       </SpecimenRow>
-      <SpecimenRow
-        size="18"
-        className="text-lg font-semibold text-neutral-800"
-      >
+      <SpecimenRow size="18" className="text-lg font-semibold text-neutral-800">
         Sunday · Partly cloudy
       </SpecimenRow>
     </div>

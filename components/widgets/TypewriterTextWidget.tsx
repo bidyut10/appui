@@ -79,10 +79,7 @@ export const TypewriterTextWidget = forwardRef<
       <div
         ref={ref}
         data-slot="typewriter-text-widget"
-        className={cn(
-          "w-xs bg-white p-5 font-sans",
-          className,
-        )}
+        className={cn("w-xs bg-white p-5 font-sans", className)}
         {...props}
       >
         <p className="mb-2 font-mono text-[10px] tracking-widest text-neutral-400 uppercase">

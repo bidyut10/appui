@@ -8,7 +8,6 @@ import { Pause } from "@/icons/Pause";
 import { Play } from "@/icons/Play";
 import { Ellipsis } from "@/icons/Ellipsis";
 
-
 const ITEMS = [
   { time: "22:30", tag: "Kindness", title: "Yoga with Juliette" },
   { time: "20:15", tag: "Focus", title: "It's My Life" },

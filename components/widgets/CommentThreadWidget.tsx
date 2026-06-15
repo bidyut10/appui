@@ -5,7 +5,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 import { Send } from "@/icons/Send";
 
 export type CommentItem = {
@@ -112,7 +111,7 @@ export const CommentThreadWidget = forwardRef<
 
         <div
           data-slot="comment-thread-widget-list"
-          className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-h-44 space-y-3 overflow-y-auto px-4 py-3"
+          className="max-h-44 [scrollbar-width:none] space-y-3 overflow-y-auto px-4 py-3 [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
           {items.map((comment) => (
             <div key={comment.id} className="flex gap-2.5">

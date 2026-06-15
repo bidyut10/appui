@@ -9,7 +9,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 import { Bookmark } from "@/icons/Bookmark";
 import { Chat } from "@/icons/Chat";
 import { Ellipsis } from "@/icons/Ellipsis";
@@ -105,7 +104,14 @@ export const TwitterPostCard = forwardRef<HTMLDivElement, TwitterPostCardProps>(
       >
         <div data-slot="twitter-post-card-header" className="flex gap-3">
           <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-800">
-            <Image src={avatar} alt={avatarAlt} width={32} height={32} className="w-8" sizes="32px" />
+            <Image
+              src={avatar}
+              alt={avatarAlt}
+              width={32}
+              height={32}
+              className="w-8"
+              sizes="32px"
+            />
           </div>
 
           <div className="min-w-0 flex-1">

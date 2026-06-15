@@ -82,10 +82,7 @@ const ROW_SLOT_HEIGHT = "4.625rem";
 function getSenderColors(sender: string) {
   if (BRAND_AVATARS[sender]) return BRAND_AVATARS[sender];
 
-  const hash = [...sender].reduce(
-    (sum, char) => sum + char.charCodeAt(0),
-    0,
-  );
+  const hash = [...sender].reduce((sum, char) => sum + char.charCodeAt(0), 0);
   return AVATAR_PALETTE[hash % AVATAR_PALETTE.length];
 }
 
@@ -245,7 +242,7 @@ export const OutlookMailboxWidget = forwardRef<
                       {msg.subject}
                     </span>
                   </p>
-                  <span className="shrink-0 text-[10px] leading-4 tabular-nums text-neutral-400">
+                  <span className="shrink-0 text-[10px] leading-4 text-neutral-400 tabular-nums">
                     {msg.time}
                   </span>
                 </div>
@@ -255,9 +252,7 @@ export const OutlookMailboxWidget = forwardRef<
                     {msg.preview}
                   </p>
                   <div className="flex shrink-0 items-center gap-1">
-                    {msg.pinned && (
-                      <Pin size={11} className="text-[#0078D4]" />
-                    )}
+                    {msg.pinned && <Pin size={11} className="text-[#0078D4]" />}
                     {msg.hasAttachment && (
                       <File size={11} className="text-neutral-300" />
                     )}

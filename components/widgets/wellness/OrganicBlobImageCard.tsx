@@ -5,7 +5,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 export type OrganicBlobImageCardProps = {
   image?: string;
 } & ComponentPropsWithoutRef<"div">;

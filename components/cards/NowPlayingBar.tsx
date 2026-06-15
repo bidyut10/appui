@@ -4,7 +4,6 @@ import { forwardRef, type ComponentPropsWithoutRef, useState } from "react";
 
 import Image from "next/image";
 
-
 import { cn } from "@/lib/cn";
 
 import { Play } from "@/icons/Play";

@@ -93,7 +93,7 @@ export const GitHubCodeBlockCard = forwardRef<
           </button>
         </div>
 
-        <pre className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-h-44 overflow-auto bg-[#fafafa] p-3 font-mono text-[10px] leading-relaxed text-neutral-800">
+        <pre className="max-h-44 [scrollbar-width:none] overflow-auto bg-[#fafafa] p-3 font-mono text-[10px] leading-relaxed text-neutral-800 [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           <code>{code}</code>
         </pre>
       </div>

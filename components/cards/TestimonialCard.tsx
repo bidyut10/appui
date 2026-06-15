@@ -10,7 +10,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 import { Star } from "@/icons/Star";
 import { QuoteRight } from "@/icons/QuoteRight";
 import { ChevronLeft } from "@/icons/ChevronLeft";

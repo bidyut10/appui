@@ -3,7 +3,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 import { Location } from "@/icons/Location";
 import { Clock } from "@/icons/Clock";
 

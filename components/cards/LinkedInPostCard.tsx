@@ -9,7 +9,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 import { Clock } from "@/icons/Clock";
 import { Ellipsis } from "@/icons/Ellipsis";
 import { Like } from "@/icons/Like";
@@ -111,7 +110,14 @@ export const LinkedInPostCard = forwardRef<
         {/* Post header */}
         <div data-slot="linkedin-post-card-header" className="mb-3 flex gap-3">
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-neutral-800">
-            <Image src={avatar} alt={avatarAlt} width={32} height={32} className="w-8" sizes="32px" />
+            <Image
+              src={avatar}
+              alt={avatarAlt}
+              width={32}
+              height={32}
+              className="w-8"
+              sizes="32px"
+            />
           </div>
 
           <div>

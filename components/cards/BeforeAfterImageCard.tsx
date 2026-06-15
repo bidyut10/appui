@@ -14,7 +14,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 /**
  * Before/after image comparison card with a draggable slider.
  *

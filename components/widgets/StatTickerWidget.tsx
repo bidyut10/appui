@@ -92,10 +92,7 @@ export const StatTickerWidget = forwardRef<
       <div
         ref={ref}
         data-slot="stat-ticker-widget"
-        className={cn(
-          "w-xs bg-white p-4 font-sans",
-          className,
-        )}
+        className={cn("w-xs bg-white p-4 font-sans", className)}
         {...props}
       >
         <p className="mb-3 text-sm font-bold text-neutral-900">{title}</p>

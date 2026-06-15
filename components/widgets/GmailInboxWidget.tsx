@@ -5,7 +5,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 import { Star } from "@/icons/Star";
 import { Gmail } from "@/icons/Gmail";
 
@@ -75,20 +74,11 @@ const AVATAR_PALETTE = [
 function getSenderColors(sender: string) {
   if (BRAND_AVATARS[sender]) return BRAND_AVATARS[sender];
 
-  const hash = [...sender].reduce(
-    (sum, char) => sum + char.charCodeAt(0),
-    0,
-  );
+  const hash = [...sender].reduce((sum, char) => sum + char.charCodeAt(0), 0);
   return AVATAR_PALETTE[hash % AVATAR_PALETTE.length];
 }
 
-function SenderAvatar({
-  sender,
-  avatar,
-}: {
-  sender: string;
-  avatar?: string;
-}) {
+function SenderAvatar({ sender, avatar }: { sender: string; avatar?: string }) {
   if (avatar) {
     return (
       <div className="mt-0.5 h-8 w-8 shrink-0 overflow-hidden rounded-full bg-neutral-100">
@@ -173,7 +163,7 @@ export const GmailInboxWidget = forwardRef<
               <Gmail size={14} className="shrink-0 text-[#EA4335]" />
               <p className="text-sm font-semibold text-neutral-900">Inbox</p>
               {unreadCount > 0 && (
-                <span className="rounded-full bg-neutral-100 px-1.5 py-px text-[10px] font-medium tabular-nums text-neutral-500">
+                <span className="rounded-full bg-neutral-100 px-1.5 py-px text-[10px] font-medium text-neutral-500 tabular-nums">
                   {unreadCount}
                 </span>
               )}
@@ -227,7 +217,7 @@ export const GmailInboxWidget = forwardRef<
               </button>
 
               <div className="flex w-10 shrink-0 flex-col items-end gap-1.5 pt-0.5">
-                <span className="text-[10px] leading-none tabular-nums text-neutral-400">
+                <span className="text-[10px] leading-none text-neutral-400 tabular-nums">
                   {msg.time}
                 </span>
                 <button

@@ -9,7 +9,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 import { Google } from "@/icons/Google";
 import { Search } from "@/icons/Search";
 

@@ -5,7 +5,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 import { Send } from "@/icons/Send";
 
 /**
@@ -109,7 +108,7 @@ export const ChatWidget = forwardRef<HTMLDivElement, ChatWidgetProps>(
 
         <div
           data-slot="chat-widget-messages"
-          className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden flex h-72 flex-1 flex-col gap-3 overflow-y-auto bg-linear-to-b from-neutral-50 to-white p-4"
+          className="flex h-72 flex-1 [scrollbar-width:none] flex-col gap-3 overflow-y-auto bg-linear-to-b from-neutral-50 to-white p-4 [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
           {messages.map((message, index) => (
             <div

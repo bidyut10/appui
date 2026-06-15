@@ -3,7 +3,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 /**
  * Dashboard welcome header built with Next.js, React, TypeScript, and Tailwind CSS.
  *

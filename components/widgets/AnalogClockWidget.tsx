@@ -136,7 +136,6 @@ function AnalogClockFace({
   );
 }
 
-
 /**
  * Premium analog clock widget with live time and white face.
  *

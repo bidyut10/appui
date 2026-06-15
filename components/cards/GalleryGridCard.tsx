@@ -7,7 +7,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 import { Sun } from "@/icons/Sun";
 
 /**
@@ -24,7 +23,7 @@ export type GalleryGridCardProps = {
 
   count?: string | number;
 
-  images?: (string)[];
+  images?: string[];
 
   overlayText?: string;
 

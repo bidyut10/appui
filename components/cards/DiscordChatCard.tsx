@@ -5,7 +5,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 import { Send } from "@/icons/Send";
 import { Discord } from "@/icons/Discord";
 
@@ -100,7 +99,7 @@ export const DiscordChatCard = forwardRef<HTMLDivElement, DiscordChatCardProps>(
           </p>
         </div>
 
-        <div className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-h-40 space-y-3 overflow-y-auto px-3 py-3">
+        <div className="max-h-40 [scrollbar-width:none] space-y-3 overflow-y-auto px-3 py-3 [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {items.map((msg) => (
             <div key={msg.id} className="flex items-start gap-2.5">
               <div className="h-7 w-7 shrink-0 overflow-hidden rounded-full bg-neutral-100">

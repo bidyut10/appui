@@ -5,7 +5,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 /**
  * Full-bleed image card with quote overlay — editorial white typography.
  *

@@ -78,7 +78,7 @@ export const AuroraProfileCard = forwardRef<
         className="pointer-events-none absolute top-0 right-8 h-20 w-24 rounded-full bg-sky-100/40 blur-2xl"
       />
 
-      <div className="relative px-5 pb-5 pt-5">
+      <div className="relative px-5 pt-5 pb-5">
         <div className="flex items-start justify-between gap-4">
           <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full ring-1 ring-neutral-200/80">
             <Image

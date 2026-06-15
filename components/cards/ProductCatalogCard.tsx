@@ -3,7 +3,6 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
 
-
 /**
  * Product catalog grid card built with Next.js, React,
  * TypeScript, and Tailwind CSS.

@@ -240,7 +240,7 @@ export const SpotlightSearchBar = forwardRef<
             )}
 
             {showResults && (
-              <div className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-h-56 overflow-y-auto p-2">
+              <div className="max-h-56 [scrollbar-width:none] overflow-y-auto p-2 [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                 {filtered.length === 0 ? (
                   <p className="px-3 py-6 text-center text-sm text-neutral-400">
                     No matches for &ldquo;{value}&rdquo;

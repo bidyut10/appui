@@ -91,7 +91,7 @@ export const KanbanBoard = forwardRef<HTMLDivElement, KanbanBoardProps>(
 
         <div
           data-slot="kanban-board-columns"
-          className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden flex gap-2 overflow-x-auto pb-1"
+          className="flex [scrollbar-width:none] gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
           {columns.map((col) => (
             <div

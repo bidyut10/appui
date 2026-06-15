@@ -7,7 +7,6 @@ import { cn } from "@/lib/cn";
 import { Camera } from "@/icons/Camera";
 import { Location } from "@/icons/Location";
 
-
 export type ImageExifCardProps = {
   title?: string;
   camera?: string;

@@ -9,7 +9,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 import { Location } from "@/icons/Location";
 import { UserGroup } from "@/icons/UserGroup";
 import { UserCheck } from "@/icons/UserCheck";
@@ -125,7 +124,14 @@ export const GithubProfileCard = forwardRef<
 
           {/* Avatar */}
           <div className="absolute -bottom-8 left-5 flex h-16 w-16 items-center justify-center rounded-full border-4 border-white bg-neutral-800 shadow">
-            <Image src={avatar} alt={avatarAlt} width={28} height={28} className="w-7" sizes="28px" />
+            <Image
+              src={avatar}
+              alt={avatarAlt}
+              width={28}
+              height={28}
+              className="w-7"
+              sizes="28px"
+            />
           </div>
         </div>
 

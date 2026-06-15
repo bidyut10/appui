@@ -3,7 +3,6 @@
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 
-
 import { Mail } from "@/icons/Mail";
 import { ArrowRight } from "@/icons/ArrowRight";
 import { ArrowLeft } from "@/icons/ArrowLeft";

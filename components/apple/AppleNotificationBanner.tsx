@@ -7,7 +7,6 @@ import { cn } from "@/lib/cn";
 
 import { X } from "@/icons/X";
 
-
 /**
  * Apple Notification Banner built with React, TypeScript, and Tailwind CSS.
  *

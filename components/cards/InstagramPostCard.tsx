@@ -15,7 +15,6 @@ import { Chat } from "@/icons/Chat";
 import { Bookmark } from "@/icons/Bookmark";
 import { Send } from "@/icons/Send";
 
-
 /**
  * Instagram-inspired post card built with Next.js, React,
  * TypeScript, and Tailwind CSS.

@@ -5,7 +5,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 import { Play } from "@/icons/Play";
 import { Pause } from "@/icons/Pause";
 import { Heart } from "@/icons/Heart";

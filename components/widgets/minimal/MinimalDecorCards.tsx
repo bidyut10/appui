@@ -9,7 +9,6 @@ import { Bell } from "@/icons/Bell";
 import { Wifi } from "@/icons/Wifi";
 import { Share } from "@/icons/Share";
 
-
 export type MinimalDotPatternCardProps = {
   pattern?: "flower" | "cloud";
 } & ComponentPropsWithoutRef<"div">;

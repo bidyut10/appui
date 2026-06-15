@@ -11,7 +11,6 @@ import { SkipPrevious } from "@/icons/SkipPrevious";
 import { SkipNext } from "@/icons/SkipNext";
 import { Repeat } from "@/icons/Repeat";
 
-
 export type CompactMusicPlayerWidgetProps = {
   title?: string;
   artist?: string;

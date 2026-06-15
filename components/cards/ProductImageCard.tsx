@@ -9,7 +9,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 import { Star } from "@/icons/Star";
 import { Heart } from "@/icons/Heart";
 import { Plus } from "@/icons/Plus";

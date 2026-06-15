@@ -7,7 +7,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 /**
  * Polaroid-style image card built with Next.js,
  * React, TypeScript, and Tailwind CSS.

@@ -5,7 +5,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 import { Check } from "@/icons/Check";
 import { Chat } from "@/icons/Chat";
 

@@ -7,7 +7,6 @@ import { cn } from "@/lib/cn";
 import { Leaf } from "@/icons/Leaf";
 import { Bike } from "@/icons/Bike";
 
-
 export type ElectricScooterWidgetProps = {
   title?: string;
   date?: string;

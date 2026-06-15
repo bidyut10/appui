@@ -15,7 +15,6 @@ import { Heart } from "@/icons/Heart";
 import { Star } from "@/icons/Star";
 import { UserCheck } from "@/icons/UserCheck";
 
-
 /**
  * Activity feed card built with Next.js, React,
  * TypeScript, and Tailwind CSS.

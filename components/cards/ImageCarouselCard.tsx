@@ -10,7 +10,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 import { ChevronLeft } from "@/icons/ChevronLeft";
 import { ChevronRight } from "@/icons/ChevronRight";
 
@@ -31,7 +30,7 @@ import { ChevronRight } from "@/icons/ChevronRight";
  * - Replace <Image /> with <img /> if using React only.
  */
 export type ImageCarouselCardProps = {
-  slides?: (string)[];
+  slides?: string[];
 
   title?: string;
   description?: string;

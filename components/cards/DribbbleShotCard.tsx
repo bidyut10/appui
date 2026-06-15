@@ -7,7 +7,6 @@ import { cn } from "@/lib/cn";
 
 import { Heart } from "@/icons/Heart";
 
-
 /**
  * Dribbble-style shot card — designer portfolio preview with likes.
  */

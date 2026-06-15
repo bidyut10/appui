@@ -5,7 +5,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 import { Pin } from "@/icons/Pin";
 import { Share } from "@/icons/Share";
 import { Ellipsis } from "@/icons/Ellipsis";

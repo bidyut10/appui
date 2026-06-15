@@ -5,7 +5,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 /**
  * Image grid hover card — masonry-style gallery with expand on hover.
  *
@@ -13,7 +12,7 @@ import { cn } from "@/lib/cn";
  */
 export type ImageGridHoverCardProps = {
   title?: string;
-  images?: (string)[];
+  images?: string[];
   onImageClick?: (index: number) => void;
 } & ComponentPropsWithoutRef<"div">;
 

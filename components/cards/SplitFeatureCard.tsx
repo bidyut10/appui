@@ -11,7 +11,6 @@ import { cn } from "@/lib/cn";
 
 import { ArrowRight } from "@/icons/ArrowRight";
 
-
 /**
  * Split feature card built with Next.js, React,
  * TypeScript, and Tailwind CSS.

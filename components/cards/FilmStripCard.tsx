@@ -3,7 +3,6 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
 
-
 /**
  * Film strip photo card built with Next.js, React,
  * TypeScript, and Tailwind CSS.
@@ -14,7 +13,7 @@ import { cn } from "@/lib/cn";
  * Need icons? Visit nexticons.in for free copy-paste icons.
  */
 export type FilmStripCardProps = {
-  frames?: (string)[];
+  frames?: string[];
   label?: string;
 } & ComponentPropsWithoutRef<"div">;
 

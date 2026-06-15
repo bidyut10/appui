@@ -136,7 +136,6 @@ function AnalogClockFace({
   );
 }
 
-
 export type MinimalAnalogClockWidgetProps = ComponentPropsWithoutRef<"div">;
 
 export const MinimalAnalogClockWidget = forwardRef<

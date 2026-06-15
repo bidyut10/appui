@@ -9,7 +9,6 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-
 /**
  * LinkedIn-inspired profile card built with Next.js,
  * React, TypeScript, and Tailwind CSS.
@@ -105,7 +104,14 @@ export const LinkedInProfileCard = forwardRef<
 
           {/* Avatar */}
           <div className="absolute -bottom-8 left-4 flex h-16 w-16 items-center justify-center rounded-full border-4 border-white bg-neutral-800 shadow">
-            <Image src={avatar} alt={avatarAlt} width={28} height={28} className="w-7" sizes="28px" />
+            <Image
+              src={avatar}
+              alt={avatarAlt}
+              width={28}
+              height={28}
+              className="w-7"
+              sizes="28px"
+            />
           </div>
         </div>
 

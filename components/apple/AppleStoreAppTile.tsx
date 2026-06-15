@@ -102,7 +102,7 @@ export const AppleStoreAppTile = forwardRef<
 
       <div
         data-slot="apple-store-app-tile-tags"
-        className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden flex gap-2 overflow-x-auto px-4 pb-3"
+        className="flex [scrollbar-width:none] gap-2 overflow-x-auto px-4 pb-3 [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
       >
         {tags.map((tag) => (
           <span

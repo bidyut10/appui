@@ -8,7 +8,6 @@ import { Locate } from "@/icons/Locate";
 import { Pin } from "@/icons/Pin";
 import { Battery } from "@/icons/Battery";
 
-
 export type GpsTrackingMapWidgetProps = ComponentPropsWithoutRef<"div">;
 
 export const GpsTrackingMapWidget = forwardRef<

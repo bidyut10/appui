@@ -112,7 +112,7 @@ export const EmailComposeWidget = forwardRef<
           aria-label="Email body"
           rows={5}
           data-slot="email-compose-widget-body"
-          className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden w-full resize-none border-0 bg-white px-4 py-3 text-[13px] leading-relaxed text-neutral-800 outline-none placeholder:text-neutral-300"
+          className="w-full resize-none [scrollbar-width:none] border-0 bg-white px-4 py-3 text-[13px] leading-relaxed text-neutral-800 outline-none [-ms-overflow-style:none] placeholder:text-neutral-300 [&::-webkit-scrollbar]:hidden"
         />
 
         <div className="flex items-center justify-between border-t border-neutral-100 px-4 py-2.5">

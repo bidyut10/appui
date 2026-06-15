@@ -6,7 +6,6 @@ import Image from "next/image";
 import { cn } from "@/lib/cn";
 import { Car } from "@/icons/Car";
 
-
 export type RidePickupWidgetProps = {
   eta?: string;
   message?: string;

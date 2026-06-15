@@ -164,7 +164,7 @@ export const NotificationBell = forwardRef<
 
           <div
             data-slot="notification-bell-list"
-            className="[scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-h-52 overflow-y-auto"
+            className="max-h-52 [scrollbar-width:none] overflow-y-auto [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
           >
             {notifications.map((n) => (
               <div
