@@ -2,17 +2,15 @@
 
 Live site: [opensourceui.in](https://opensourceui.in)
 
-This is a collection of UI components I built for my own React and Next.js projects. I got tired of pulling half-finished cards from random CodePen tabs or fighting with libraries that hide everything behind ten layers of abstraction. So I started building the pieces I actually needed — social cards, dashboards, auth forms, upload zones, Apple-style widgets, that sort of thing — and kept going until there were 250+ of them.
-
-Everything runs on the site as a live preview. You can scroll through the full library on the homepage. Copy-and-paste code for each component is on the way; right now the focus is getting the designs right and keeping the code readable.
+Components I built for my own apps—Next.js, Tailwind v4, icons from [nexticons.in](https://nexticons.in). Everything on the homepage runs live. Copy-paste source is on the way.
 
 ## Why I built this
 
-Most UI kits either look the same (white card, gray border, blue button, done) or need you to learn their whole system before you can use one button. I wanted something closer to how I actually work: find a component that looks good, drop the file into my project, tweak the props, move on.
+Most UI kits either look the same or need you to learn a whole system before you can use one button. I wanted something closer to how I actually work: find a component that looks good, drop the file into my project, tweak the props, move on.
 
-These components are meant to be copied, not installed as a package. No provider wrappers, no theme config files you have to decipher. Each file is self-contained. If you need a pricing card or a session heatmap widget, you grab that one file and wire it up yourself.
+These components are meant to be copied, not installed as a package. No provider wrappers, no theme config to decode. Each file is self-contained.
 
-I also needed icons that did not require another npm dependency, so I wrote my own SVG components and paired them with [nexticons.in](https://nexticons.in) where it made sense.
+Icons are plain SVG React components in `icons/`—no extra npm package. I also use [nexticons.in](https://nexticons.in) alongside them.
 
 ## Tech stack
 
@@ -20,86 +18,93 @@ I also needed icons that did not require another npm dependency, so I wrote my o
 - **React 19**
 - **TypeScript**
 - **Tailwind CSS v4**
-- **clsx** + **tailwind-merge** for class name handling
+- **clsx** + **tailwind-merge** (`cn()` helper)
 
 No shadcn, no MUI, no Radix underneath. Just React, Tailwind, and SVG.
 
 ## Design principles
 
-A few rules I stuck to while building:
+**Copy-paste first.** Each component lives in its own file with sensible defaults. Paste it into a Next.js app, fix import paths, and it should render.
 
-**Copy-paste first.** Every component lives in its own file. Props have sensible defaults so the component renders something useful with zero configuration. You should be able to paste it into a fresh Next.js app and see it work.
+**Light theme, clean surfaces.** White or near-white backgrounds, neutral borders, restrained accents. No purple-gradient-everything.
 
-**Light theme, clean surfaces.** Most components use a white or near-white background, neutral borders, and restrained accent colors (teal, sky, amber, emerald). I avoided the purple-gradient-on-everything look that most AI-generated UIs fall into.
+**Consistent API.** Interactive components use `forwardRef`. Props extend native HTML types. Classes merge through `cn()`. Client components use `"use client"` only when needed.
 
-**Consistent component API.** Interactive components use `forwardRef`. Props extend the native HTML element type (`ComponentPropsWithoutRef<"div">` and similar). Classes merge through a shared `cn()` helper. Exported prop types are named and public. Components that need client-side state or event handlers get `"use client"`; everything else stays as a server component.
+**Real demo content.** Cards ship with names, numbers, and labels that look like real UI—not empty gray boxes.
 
-**Real content, not lorem ipsum boxes.** Cards ship with realistic demo data — names, numbers, chart values, ticket queues. It is easier to judge a design when the content looks like something you would actually ship.
+**Icons as components.** Hand-written SVGs in `icons/`. Files use kebab-case (`arrow-right.tsx`). Exports stay PascalCase (`ArrowRight`).
 
-**Icons as components.** The `icons/` folder has 84 hand-written SVG React components. They accept `size`, `color`, and `className` like any normal icon library, but there is no extra package to install.
-
-**Organized by what things are, not by atomic design jargon.** Dashboard cards go in `dashboard/`. Dropdowns go in `dropdowns/`. You should not need a map to find a file.
+**Organized by purpose.** Clocks in `clocks/`, dropdowns in `dropdowns/`, travel widgets in `travel/`. Easy to find what you need.
 
 ## Folder structure
 
 ```
 app/
-  layout.tsx        Site layout, fonts, SEO metadata
-  page.tsx          Homepage — renders every component in a preview grid
-  Box.tsx           Preview wrapper for the showcase layout
-  globals.css       Tailwind import and a few global utilities
-  robots.ts         Robots.txt generation
-  sitemap.ts        Sitemap generation
-  manifest.ts       Web app manifest
+  layout.tsx              Site layout, fonts, SEO metadata
+  page.tsx                Homepage — showcase grid
+  Box.tsx                 Preview wrapper for the grid
+  globals.css             Tailwind v4 import
+  showcase/
+    component-rows-1.tsx  Device & widget rows
+    component-rows-2.tsx  Social & card rows
+  robots.ts               Robots.txt
+  sitemap.ts              Sitemap
+  manifest.ts             Web app manifest
 
 components/
-  accordions/       Accordion variants
-  apple/            Apple-inspired widgets (maps, wallet, control center, etc.)
-  banners/          Cookie banners, alert strips
-  cards/            General-purpose cards (social, pricing, auth, media, etc.)
-  dashboard/        Analytics, KPIs, charts, ops widgets
-  dropdowns/        Menus, pickers, context menus
-  interactive/      Upload zones, kanban, chat, timers
-  marketing/        Hero sections, newsletters, CTAs
-  menubar/          Menu bar components
-  mockups/          Phone, browser, laptop device frames
-  navbars/          Navigation bars
-  searchbar/        Search inputs and command palettes
-  sections/         Page sections (timeline, bento grid, empty states)
-  skeletons/        Loading skeleton placeholders
-  text/             Typography-focused cards and editorial layouts
-  toasts/           Toast notifications
-  website/          Utility UI (breadcrumbs, pagination, settings, 404)
-  widgets/          Small standalone widgets (filters, steppers, pills)
+  activity/               Focus, DND widgets
+  audio/                  Recorders, earbuds, voice assistant
+  battery/                Battery face widget
+  bluetooth/              Bluetooth toggle widget
+  calender/               iOS calendar, activity calendar
+  cards/                  Social, polaroid, notepad, receipt cards
+  clocks/                 Analog & iOS digital clocks
+  compass/                Compass widget
+  dropdowns/              User menu, context menu
+  github/                 Contribution graph card
+  map-location/           iOS map location widget
+  mockups/                Phone, laptop, browser frames
+  notifications/          Apple-style notification banner
+  profile/                Blob profile card
+  stopwatch/              Stopwatch widget
+  torch/                  Flashlight face widget
+  travel/                 Flight, ride, scooter, agenda widgets
+  wifi/                   Wi-Fi toggle widget
 
-icons/              84 SVG icon components (ArrowRight, Bell, User, etc.)
+icons/
+  actions/                Arrows, chevrons, chat
+  activity/               Check, bookmark, edit, etc.
+  brands/                 Apple, GitHub, Tailwind, etc.
+  elements/               Bell, user, battery, etc.
+  keys/                   Play, pause, settings, etc.
 
 lib/
-  utils.ts          cn() — clsx + tailwind-merge
-  site.ts           Site name, URL, and SEO constants
+  cn.ts                   cn() — clsx + tailwind-merge
+  utils.ts                Re-exports cn (legacy import path)
+  site.ts                 Site name, URL, SEO constants
 
-public/             Static files (favicon, images used in demos)
+types/
+  types.tsx               Shared TypeScript types
+
+public/                   Static assets (images, favicon)
 ```
 
 ## Icons
 
-All icons are plain React components that return inline SVG. They live in the `icons/` directory at the project root, not inside `components/`.
-
-Basic usage:
+Icons are React components that return inline SVG. Files use **kebab-case**; imports use the folder path:
 
 ```tsx
-import { ArrowRight } from "@/icons/ArrowRight";
-import { Bell } from "@/icons/Bell";
+import { ArrowRight } from "@/icons/actions/arrow-right";
+import { Bell } from "@/icons/elements/bell";
+import { Pause } from "@/icons/keys/pause";
 
 <ArrowRight size={16} />
 <Bell size={20} color="#171717" className="opacity-60" />
 ```
 
-For a wider set of icons, check out [nexticons.in](https://nexticons.in) — that is what I use alongside these local ones.
+More icons at [nexticons.in](https://nexticons.in).
 
 ## Getting started
-
-Clone the repo and run it locally:
 
 ```bash
 git clone https://github.com/bidyut10/appui.git
@@ -108,27 +113,37 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser. The homepage is one long scrollable grid of every component.
+Open [http://localhost:3000](http://localhost:3000). The homepage renders every showcased component in a scrollable grid.
 
-Other commands:
+### Commands
 
 ```bash
+npm run dev      # local dev server
 npm run build    # production build
-npm run start    # run the production build
+npm run start    # run production build
 npm run lint     # eslint
 ```
 
-You need Node.js 18 or later.
+Format files and sort Tailwind classes (uses `prettier-plugin-tailwindcss`):
+
+```bash
+npx prettier --write .
+npx prettier --check .   # dry run
+```
+
+Node.js 18 or later.
 
 ## Using a component in your project
 
-There is no `npm install opensourceui` step. Pick the file you want from `components/`, copy it into your project, and fix the import paths. Most components only need:
+There is no `npm install` step. Copy the file you want from `components/` into your project and update imports. Most components need:
 
-- `@/lib/utils` (the `cn` function — copy `lib/utils.ts` too)
-- Whatever icons the component imports from `@/icons/`
+- `@/lib/cn` — copy `lib/cn.ts` (and install `clsx` + `tailwind-merge`)
+- Icons from `@/icons/...` — copy the icon files the component imports
 - `next/image` if the component uses images
 
-If the file starts with `"use client"`, keep that directive. If it does not, it can render as a server component.
+Keep `"use client"` if the file has it. Components without it can render as server components.
+
+To add a component to the homepage showcase, import it in `app/showcase/component-rows-1.tsx` or `component-rows-2.tsx` and give it a stable `key` prop.
 
 ## Project links
 
@@ -138,6 +153,6 @@ If the file starts with `"use client"`, keep that directive. If it does not, it 
 
 ## License
 
-Open source. Use these in personal or commercial projects. Attribution is appreciated but not required.
+Open source. Use in personal or commercial projects. Attribution is appreciated but not required.
 
-If something looks off or a component breaks in your setup, open an issue on GitHub. I am still actively adding components and tightening up the ones already there.
+If something breaks in your setup, open an issue on GitHub.

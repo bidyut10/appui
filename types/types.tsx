@@ -7,3 +7,5 @@ export type IconProps = {
 export type RelatedIcon = { name: string; slug: string; category: string };
 
 export type Props = { params: Promise<{ slug: string }> };
+
+export type Row = readonly React.ReactNode[];
