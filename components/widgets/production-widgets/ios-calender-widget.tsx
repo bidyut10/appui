@@ -12,20 +12,23 @@ import { cn } from "@/lib/cn";
 const IOS_RED = "#FF3B30";
 const IOS_LABEL = "#8E8E93";
 
-export type StackStripDigitalClockWidgetProps = ComponentPropsWithoutRef<"div">;
+export type IosCalenderWidgetProps = Readonly<
+  ComponentPropsWithoutRef<"div">
+>;
 
-/** iOS Calendar systemSmall widget. */
-export const StackStripDigitalClockWidget = forwardRef<
+/** iOS-style calendar tile: weekday on top, day + month at the bottom. */
+export const IosCalenderWidget = forwardRef<
   HTMLDivElement,
-  StackStripDigitalClockWidgetProps
+  IosCalenderWidgetProps
 >(({ className, ...props }, ref) => {
+  // Start as null so the first paint matches SSR; date only changes once per minute.
   const [now, setNow] = useState<Date | null>(null);
 
   useEffect(() => {
     const update = () => setNow(new Date());
     update();
-    const timer = window.setInterval(update, 60_000);
-    return () => window.clearInterval(timer);
+    const timer = globalThis.setInterval(update, 60_000);
+    return () => globalThis.clearInterval(timer);
   }, []);
 
   const weekday = now
@@ -41,23 +44,24 @@ export const StackStripDigitalClockWidget = forwardRef<
       ref={ref}
       data-slot="stack-strip-digital-clock-widget"
       className={cn(
-        "flex h-44 w-44 flex-col overflow-hidden rounded-[22px] bg-white px-4 pt-4 pb-3.5 font-sans shadow-[0_2px_14px_rgba(0,0,0,0.07)]",
+        "flex h-44 w-44 flex-col overflow-hidden rounded-[22px] border border-neutral-100 bg-white px-4 pt-4 pb-3.5 font-sans shadow-lg shadow-black/5 select-none",
         className,
       )}
-      style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", sans-serif' }}
       {...props}
     >
       {now ? (
         <>
+          {/* Red weekday label — matches iOS Calendar widget accent. */}
           <p
-            className="text-[13px] font-semibold leading-none tracking-[-0.02em]"
+            className="text-[13px] leading-none font-semibold tracking-[-0.02em]"
             style={{ color: IOS_RED }}
           >
             {weekday}
           </p>
 
           <div className="mt-auto flex items-baseline gap-1.5">
-            <p className="text-[62px] leading-none font-extralight tracking-[-0.05em] text-black tabular-nums">
+            {/* Large day number with the month name beside it. */}
+            <p className="text-7xl leading-none font-medium tracking-tighter text-black tabular-nums">
               {day}
             </p>
             <p
@@ -69,6 +73,7 @@ export const StackStripDigitalClockWidget = forwardRef<
           </div>
         </>
       ) : (
+        // Placeholder blocks mirror the final layout while the date loads.
         <div className="flex h-full flex-col pt-0.5">
           <div className="h-3 w-9 rounded bg-neutral-100" aria-hidden />
           <div className="mt-auto flex items-baseline gap-1.5">
@@ -81,4 +86,4 @@ export const StackStripDigitalClockWidget = forwardRef<
   );
 });
 
-StackStripDigitalClockWidget.displayName = "StackStripDigitalClockWidget";
+IosCalenderWidget.displayName = "IosCalenderWidget";

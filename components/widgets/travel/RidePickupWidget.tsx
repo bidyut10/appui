@@ -13,17 +13,14 @@ export type RidePickupWidgetProps = {
   image?: string;
 } & ComponentPropsWithoutRef<"div">;
 
-export const RidePickupWidget = forwardRef<
-  HTMLDivElement,
-  RidePickupWidgetProps
->(
+export const RidePickupWidget = forwardRef<HTMLDivElement, RidePickupWidgetProps>(
   (
     {
       className,
       eta = "2 min",
       message = "Meet at the pickup point",
       vehicle = "Mercedes-Benz S00121",
-      image = "/dbg.png",
+      image = "/car.png",
       ...props
     },
     ref,
@@ -41,7 +38,7 @@ export const RidePickupWidget = forwardRef<
         <span className="text-xs font-bold tracking-wide text-neutral-900">
           Uber
         </span>
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-neutral-900 text-[10px] font-bold text-white">
+        <span className="text-[10px] font-bold text-green-500">
           {eta}
         </span>
       </div>

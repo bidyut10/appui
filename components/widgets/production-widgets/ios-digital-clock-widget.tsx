@@ -9,13 +9,14 @@ import {
 
 import { cn } from "@/lib/cn";
 
-type PointOnPath = {
+type PointOnPath = Readonly<{
   x: number;
   y: number;
   tx: number;
   ty: number;
-};
+}>;
 
+// Walks a rounded rectangle path (0–1) and returns a point plus its inward normal.
 function pointOnRoundedRect(
   t: number,
   left: number,
@@ -100,12 +101,13 @@ function pointOnRoundedRect(
   };
 }
 
-/** 60 inward tick marks along a rounded-square track, flush to the card edge. */
-const BORDER_TICKS = Array.from({ length: 60 }, (_, i) => {
-  const { x, y, tx, ty } = pointOnRoundedRect(i / 60, 2, 2, 96, 96, 18);
+// 60 tick marks spaced evenly around the squircle border.
+const BORDER_TICKS = Array.from({ length: 60 }, (_, tick) => {
+  const { x, y, tx, ty } = pointOnRoundedRect(tick / 60, 2, 2, 96, 96, 18);
   const len = 4.2;
   const f = (n: number) => n.toFixed(2);
   return {
+    tick,
     x1: f(x),
     y1: f(y),
     x2: f(x - ty * len),
@@ -113,18 +115,19 @@ const BORDER_TICKS = Array.from({ length: 60 }, (_, i) => {
   };
 });
 
-type SquircleDigitalFaceProps = {
+type SquircleDigitalFaceProps = Readonly<{
   hours: string;
   minutes: string;
-};
+}>;
 
 function SquircleDigitalFace({ hours, minutes }: SquircleDigitalFaceProps) {
   return (
     <div className="relative h-full w-full">
+      {/* Tick ring sits behind the centered HH:MM readout. */}
       <svg viewBox="0 0 100 100" className="h-full w-full" aria-hidden>
-        {BORDER_TICKS.map((tick, i) => (
+        {BORDER_TICKS.map((tick) => (
           <line
-            key={i}
+            key={tick.tick}
             x1={tick.x1}
             y1={tick.y1}
             x2={tick.x2}
@@ -145,12 +148,15 @@ function SquircleDigitalFace({ hours, minutes }: SquircleDigitalFaceProps) {
   );
 }
 
-export type SplitBlockDigitalClockWidgetProps = ComponentPropsWithoutRef<"div">;
+export type IosDigitalClockWidgetProps = Readonly<
+  ComponentPropsWithoutRef<"div">
+>;
 
-export const SplitBlockDigitalClockWidget = forwardRef<
+export const IosDigitalClockWidget = forwardRef<
   HTMLDivElement,
-  SplitBlockDigitalClockWidgetProps
+  IosDigitalClockWidgetProps
 >(({ className, ...props }, ref) => {
+  // Start as null so the first paint matches SSR; then refresh every second on the client.
   const [now, setNow] = useState<Date | null>(null);
 
   useEffect(() => {
@@ -176,10 +182,11 @@ export const SplitBlockDigitalClockWidget = forwardRef<
       {now ? (
         <SquircleDigitalFace hours={hours} minutes={minutes} />
       ) : (
+        // Gray bar matches the size of the HH:MM text while time loads.
         <div className="h-9 w-28 rounded-lg bg-neutral-100" aria-hidden />
       )}
     </div>
   );
 });
 
-SplitBlockDigitalClockWidget.displayName = "SplitBlockDigitalClockWidget";
+IosDigitalClockWidget.displayName = "IosDigitalClockWidget";

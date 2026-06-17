@@ -16,12 +16,18 @@ import { Pause } from "@/icons/Pause";
 const ACCENT = "#FF453A";
 const MASCOT = "#6CA8FF";
 
+// Formats elapsed milliseconds as MM:SS for the dial readout
 function formatTime(ms: number) {
   const s = Math.floor(ms / 1000);
   return `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`;
 }
 
-function RecordMascot({ recording }: { recording: boolean }) {
+type RecordMascotProps = Readonly<{
+  recording: boolean;
+}>;
+
+// Blue mascot at the bottom — mouth opens into an O while recording
+function RecordMascot({ recording }: RecordMascotProps) {
   return (
     <g aria-hidden>
       <circle cx="88" cy="142" r="58" fill={MASCOT} />
@@ -44,28 +50,33 @@ function RecordMascot({ recording }: { recording: boolean }) {
   );
 }
 
-export type MinimalRecordButtonProps = ComponentPropsWithoutRef<"button">;
+export type RecorderFaceWidgetProps = Readonly<
+  ComponentPropsWithoutRef<"button">
+>;
 
-/** Recorder widget — black dial, mascot, play/pause top-right, live timer. */
-export const MinimalRecordButton = forwardRef<
+// Recorder widget — black dial, mascot face, play/pause icon, live timer
+export const RecorderFaceWidget = forwardRef<
   HTMLButtonElement,
-  MinimalRecordButtonProps
+  RecorderFaceWidgetProps
 >(({ className, onClick, ...props }, ref) => {
   const [recording, setRecording] = useState(false);
   const [elapsed, setElapsed] = useState(0);
+  // startRef = when the current run began; baseRef = ms already counted before pause
   const startRef = useRef(0);
   const baseRef = useRef(0);
 
+  // requestAnimationFrame loop keeps the timer smooth while recording
   useEffect(() => {
-    if (!recording) return;
-    startRef.current = performance.now();
-    let frame = 0;
-    const tick = () => {
-      setElapsed(baseRef.current + performance.now() - startRef.current);
-      frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
+    if (recording) {
+      startRef.current = performance.now();
+      let frame = 0;
+      const tick = () => {
+        setElapsed(baseRef.current + performance.now() - startRef.current);
+        frame = globalThis.requestAnimationFrame(tick);
+      };
+      frame = globalThis.requestAnimationFrame(tick);
+      return () => globalThis.cancelAnimationFrame(frame);
+    }
   }, [recording]);
 
   const toggle = (e: MouseEvent<HTMLButtonElement>) => {
@@ -90,16 +101,16 @@ export const MinimalRecordButton = forwardRef<
       aria-label={recording ? "Pause recording" : "Start recording"}
       data-slot="minimal-record-button"
       className={cn(
-        "relative h-44 w-44 max-w-full cursor-pointer overflow-hidden rounded-[1.75rem] bg-black font-sans shadow-lg",
+        "relative h-44 w-44 max-w-full cursor-pointer overflow-hidden rounded-[1.75rem] bg-black font-sans shadow-lg shadow-black/5 select-none",
         className,
       )}
-      style={{
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", sans-serif',
-      }}
       {...props}
     >
-      <svg viewBox="0 0 176 176" className="absolute inset-0 h-full w-full" aria-hidden>
+      <svg
+        viewBox="0 0 176 176"
+        className="absolute inset-0 h-full w-full"
+        aria-hidden
+      >
         <rect width="176" height="176" fill="#000" />
         <RecordMascot recording={recording} />
         <circle
@@ -123,7 +134,7 @@ export const MinimalRecordButton = forwardRef<
 
       <p
         className={cn(
-          "relative z-10 flex h-full items-center justify-center pb-10 text-[26px] font-extralight tracking-[-0.04em] tabular-nums leading-none",
+          "relative z-10 flex h-full items-center justify-center pb-10 text-[26px] leading-none font-extralight tracking-[-0.04em] tabular-nums",
           recording ? "text-white" : "text-white/40",
         )}
       >
@@ -133,4 +144,4 @@ export const MinimalRecordButton = forwardRef<
   );
 });
 
-MinimalRecordButton.displayName = "MinimalRecordButton";
+RecorderFaceWidget.displayName = "RecorderFaceWidget";

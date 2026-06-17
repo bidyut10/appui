@@ -6,6 +6,7 @@ import {
   useEffect,
   useRef,
   useState,
+  useSyncExternalStore,
   type ComponentPropsWithoutRef,
 } from "react";
 
@@ -16,7 +17,14 @@ const CY = 84;
 const R = 56;
 const TICK_COUNT = 60;
 
-/** Stable SVG coords — avoids SSR/client float precision hydration mismatches. */
+const CARDINAL_LABELS = [
+  { text: "N", deg: 0 },
+  { text: "E", deg: 90 },
+  { text: "S", deg: 180 },
+  { text: "W", deg: 270 },
+] as const;
+
+// Rounds SVG numbers so server and client render identical coordinates
 function svgCoord(value: number) {
   return Number(value.toFixed(2));
 }
@@ -25,10 +33,12 @@ type DeviceOrientationWithCompass = DeviceOrientationEvent & {
   webkitCompassHeading?: number;
 };
 
+// Keeps heading within 0–359°
 function normalizeHeading(degrees: number) {
   return ((degrees % 360) + 360) % 360;
 }
 
+// Reads compass heading from iOS webkit or standard deviceorientation APIs
 function readHeading(event: DeviceOrientationEvent): number | null {
   const e = event as DeviceOrientationWithCompass;
 
@@ -47,15 +57,24 @@ function readHeading(event: DeviceOrientationEvent): number | null {
   return null;
 }
 
+// iOS Safari requires an explicit permission prompt before orientation events fire
 function needsOrientationPermission() {
   return (
-    typeof window !== "undefined" &&
-    typeof DeviceOrientationEvent !== "undefined" &&
-    "requestPermission" in DeviceOrientationEvent
+    globalThis.DeviceOrientationEvent !== undefined &&
+    "requestPermission" in globalThis.DeviceOrientationEvent
   );
 }
 
-/** Violet peeking mascot — inspired by compass buddy, distinct shape & expression. */
+// Client-only snapshot — false on the server to avoid hydration mismatches
+function useRequiresOrientationPrompt() {
+  return useSyncExternalStore(
+    () => () => {},
+    () => needsOrientationPermission(),
+    () => false,
+  );
+}
+
+// Violet mascot peeking from the bottom of the dial
 function PeekingMascot() {
   return (
     <g aria-hidden>
@@ -75,18 +94,12 @@ function PeekingMascot() {
   );
 }
 
+// Tick ring and N/E/S/W labels — rotated as a group to match device heading
 function CompassFace() {
-  const labels = [
-    { text: "N", deg: 0 },
-    { text: "E", deg: 90 },
-    { text: "S", deg: 180 },
-    { text: "W", deg: 270 },
-  ];
-
   return (
     <g aria-hidden>
-      {Array.from({ length: TICK_COUNT }, (_, i) => {
-        const deg = i * (360 / TICK_COUNT);
+      {Array.from({ length: TICK_COUNT }, (_, tick) => {
+        const deg = tick * (360 / TICK_COUNT);
         const rad = ((deg - 90) * Math.PI) / 180;
         const major = deg % 90 === 0;
         const inner = R - (major ? 8 : 5);
@@ -106,7 +119,7 @@ function CompassFace() {
         );
       })}
 
-      {labels.map(({ text, deg }) => {
+      {CARDINAL_LABELS.map(({ text, deg }) => {
         const rad = ((deg - 90) * Math.PI) / 180;
         const lr = R + 10;
         return (
@@ -129,18 +142,22 @@ function CompassFace() {
   );
 }
 
-export type MinimalCompassWidgetProps = {
-  /** Fallback heading in degrees when sensors are unavailable. */
-  heading?: number;
-} & ComponentPropsWithoutRef<"div">;
+// heading — fallback degrees when device sensors are unavailable
+export type CompassWidgetProps = Readonly<
+  {
+    heading?: number;
+  } & ComponentPropsWithoutRef<"div">
+>;
 
-export const MinimalCompassWidget = forwardRef<
+export const CompassWidget = forwardRef<
   HTMLDivElement,
-  MinimalCompassWidgetProps
+  CompassWidgetProps
 >(({ className, heading: fallbackHeading = 0, ...props }, ref) => {
+  const requiresPrompt = useRequiresOrientationPrompt();
   const [heading, setHeading] = useState(normalizeHeading(fallbackHeading));
   const [active, setActive] = useState(false);
-  const [needsPermission, setNeedsPermission] = useState(false);
+  // True once the user grants iOS permission or when no prompt is required
+  const [promptDismissed, setPromptDismissed] = useState(false);
   const [permissionDenied, setPermissionDenied] = useState(false);
   const listeningRef = useRef(false);
 
@@ -154,20 +171,21 @@ export const MinimalCompassWidget = forwardRef<
 
   const startListening = useCallback(() => {
     if (listeningRef.current) return;
-    window.addEventListener("deviceorientationabsolute", onOrientation, true);
-    window.addEventListener("deviceorientation", onOrientation, true);
+    globalThis.addEventListener("deviceorientationabsolute", onOrientation, true);
+    globalThis.addEventListener("deviceorientation", onOrientation, true);
     listeningRef.current = true;
   }, [onOrientation]);
 
   const stopListening = useCallback(() => {
-    if (!listeningRef.current) return;
-    window.removeEventListener("deviceorientationabsolute", onOrientation, true);
-    window.removeEventListener("deviceorientation", onOrientation, true);
-    listeningRef.current = false;
+    if (listeningRef.current) {
+      globalThis.removeEventListener("deviceorientationabsolute", onOrientation, true);
+      globalThis.removeEventListener("deviceorientation", onOrientation, true);
+      listeningRef.current = false;
+    }
   }, [onOrientation]);
 
   const enableCompass = useCallback(async () => {
-    if (needsOrientationPermission()) {
+    if (requiresPrompt) {
       try {
         const requestPermission = (
           DeviceOrientationEvent as typeof DeviceOrientationEvent & {
@@ -178,53 +196,42 @@ export const MinimalCompassWidget = forwardRef<
         if (!requestPermission) return;
 
         const result = await requestPermission();
-        if (result !== "granted") {
-          setPermissionDenied(true);
+        if (result === "granted") {
+          setPromptDismissed(true);
+          setPermissionDenied(false);
           return;
         }
+
+        setPermissionDenied(true);
+        return;
       } catch {
         setPermissionDenied(true);
         return;
       }
     }
 
-    setNeedsPermission(false);
+    setPromptDismissed(true);
     setPermissionDenied(false);
-    startListening();
-  }, [startListening]);
+  }, [requiresPrompt]);
 
+  // Subscribe to orientation events once permission is not blocking
   useEffect(() => {
-    if (needsOrientationPermission()) {
-      setNeedsPermission(true);
+    if (requiresPrompt && !promptDismissed) {
       return stopListening;
     }
 
     startListening();
     return stopListening;
-  }, [startListening, stopListening]);
+  }, [requiresPrompt, promptDismissed, startListening, stopListening]);
 
-  const showTapHint = needsPermission && !permissionDenied;
+  const showTapHint = requiresPrompt && !promptDismissed && !permissionDenied;
 
   return (
     <div
       ref={ref}
       data-slot="minimal-compass-widget"
-      role={showTapHint ? "button" : undefined}
-      tabIndex={showTapHint ? 0 : undefined}
-      onClick={showTapHint ? enableCompass : undefined}
-      onKeyDown={
-        showTapHint
-          ? (e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                void enableCompass();
-              }
-            }
-          : undefined
-      }
       className={cn(
-        "relative h-44 w-44 max-w-full overflow-hidden rounded-[1.75rem] bg-black font-sans shadow-lg",
-        showTapHint && "cursor-pointer",
+        "relative h-44 w-44 max-w-full overflow-hidden rounded-[1.75rem] bg-black font-sans shadow-lg shadow-black/5 select-none",
         className,
       )}
       {...props}
@@ -249,9 +256,16 @@ export const MinimalCompassWidget = forwardRef<
       )}
 
       {showTapHint && (
-        <div className="absolute inset-0 flex items-end justify-center bg-black/50 pb-3">
-          <p className="text-[10px] font-medium text-white/70">Tap to enable</p>
-        </div>
+        <button
+          type="button"
+          aria-label="Enable compass"
+          onClick={() => void enableCompass()}
+          className="absolute inset-0 flex cursor-pointer items-end justify-center border-0 bg-black/50 p-0 pb-3 font-sans"
+        >
+          <span className="text-[10px] font-medium text-white/70">
+            Tap to enable
+          </span>
+        </button>
       )}
 
       {permissionDenied && (
@@ -263,4 +277,4 @@ export const MinimalCompassWidget = forwardRef<
   );
 });
 
-MinimalCompassWidget.displayName = "MinimalCompassWidget";
+CompassWidget.displayName = "CompassWidget";

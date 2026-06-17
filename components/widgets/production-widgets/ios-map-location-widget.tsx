@@ -4,7 +4,12 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
 
-function MapBackground({ className }: { className?: string }) {
+type MapBackgroundProps = Readonly<{
+  className?: string;
+}>;
+
+// Simplified map tiles — water, parks, and roads
+function MapBackground({ className }: MapBackgroundProps) {
   return (
     <svg
       viewBox="0 0 176 176"
@@ -59,24 +64,16 @@ function MapBackground({ className }: { className?: string }) {
         strokeLinecap="round"
         opacity="0.95"
       />
-
-      <path
-        d="M0 72 L176 72"
-        stroke="#EBEBEB"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M88 0 L88 176"
-        stroke="#EBEBEB"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
     </svg>
   );
 }
 
-function MapPinMarker({ city }: { city: string }) {
+type MapPinMarkerProps = Readonly<{
+  city: string;
+}>;
+
+// Centered iOS-blue pin with the city name below it
+function MapPinMarker({ city }: MapPinMarkerProps) {
   return (
     <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
       <div className="flex flex-col items-center">
@@ -101,21 +98,24 @@ function MapPinMarker({ city }: { city: string }) {
   );
 }
 
-export type PulseColonDigitalClockWidgetProps = {
-  city?: string;
-} & ComponentPropsWithoutRef<"div">;
+// city — label shown under the map pin (defaults to "Kolkata")
+export type IosMapLocationWidgetProps = Readonly<
+  {
+    city?: string;
+  } & ComponentPropsWithoutRef<"div">
+>;
 
-/** iOS Maps-style location widget — light map with centered teardrop pin. */
-export const PulseColonDigitalClockWidget = forwardRef<
+// iOS Maps-style location card — light map background with a centered teardrop pin
+export const IosMapLocationWidget = forwardRef<
   HTMLDivElement,
-  PulseColonDigitalClockWidgetProps
+  IosMapLocationWidgetProps
 >(({ className, city = "Kolkata", ...props }, ref) => {
   return (
     <div
       ref={ref}
       data-slot="pulse-colon-digital-clock-widget"
       className={cn(
-        "relative h-44 w-44 max-w-full overflow-hidden rounded-3xl border border-neutral-100/80 bg-white font-sans shadow-lg",
+        "relative h-44 w-44 max-w-full overflow-hidden rounded-3xl border border-neutral-100 bg-white font-sans shadow-lg shadow-black/5 select-none",
         className,
       )}
       style={{
@@ -130,4 +130,4 @@ export const PulseColonDigitalClockWidget = forwardRef<
   );
 });
 
-PulseColonDigitalClockWidget.displayName = "PulseColonDigitalClockWidget";
+IosMapLocationWidget.displayName = "IosMapLocationWidget";

@@ -13,6 +13,7 @@ import { Play } from "@/icons/Play";
 import { Pause } from "@/icons/Pause";
 import { Repeat } from "@/icons/Repeat";
 
+// Splits elapsed milliseconds into MM:SS and centiseconds for the display
 function formatStopwatch(ms: number) {
   const mins = Math.floor(ms / 60_000);
   const secs = Math.floor((ms % 60_000) / 1000);
@@ -23,7 +24,12 @@ function formatStopwatch(ms: number) {
   };
 }
 
-function StopSquare({ size = 8 }: { size?: number }) {
+type StopSquareProps = Readonly<{
+  size?: number;
+}>;
+
+// Small square icon used on the stop button
+function StopSquare({ size = 8 }: StopSquareProps) {
   return (
     <svg
       width={size}
@@ -37,17 +43,21 @@ function StopSquare({ size = 8 }: { size?: number }) {
   );
 }
 
-export type MinimalStopwatchWidgetProps = ComponentPropsWithoutRef<"div">;
+export type StopwatchWidgetProps = Readonly<
+  ComponentPropsWithoutRef<"div">
+>;
 
-export const MinimalStopwatchWidget = forwardRef<
+export const StopwatchWidget = forwardRef<
   HTMLDivElement,
-  MinimalStopwatchWidgetProps
+  StopwatchWidgetProps
 >(({ className, ...props }, ref) => {
   const [elapsed, setElapsed] = useState(0);
   const [running, setRunning] = useState(false);
+  // startRef = timestamp when the current run began; baseRef = ms already counted before pause
   const startRef = useRef<number | null>(null);
   const baseRef = useRef(0);
 
+  // requestAnimationFrame loop keeps the centisecond readout smooth while running
   useEffect(() => {
     if (!running) return;
 
@@ -75,6 +85,7 @@ export const MinimalStopwatchWidget = forwardRef<
     setRunning(false);
   };
 
+  // Reset clears elapsed time and stops the timer
   const clearTimer = () => {
     baseRef.current = 0;
     startRef.current = null;
@@ -86,18 +97,15 @@ export const MinimalStopwatchWidget = forwardRef<
   const canReset = elapsed > 0 && !running;
   const canStop = running;
 
+  // Green status dot (top-right), MM:SS.centis readout, reset · play/pause · stop controls
   return (
     <div
       ref={ref}
       data-slot="minimal-stopwatch-widget"
       className={cn(
-        "relative flex h-44 w-44 max-w-full flex-col items-center justify-between overflow-hidden rounded-3xl border border-neutral-100/80 bg-white px-4 py-5 font-sans shadow-lg",
+        "relative flex h-44 w-44 max-w-full flex-col items-center justify-between overflow-hidden rounded-3xl border border-neutral-100 bg-white px-4 py-5 font-sans shadow-lg shadow-black/5 select-none",
         className,
       )}
-      style={{
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", sans-serif',
-      }}
       {...props}
     >
       <span
@@ -111,7 +119,7 @@ export const MinimalStopwatchWidget = forwardRef<
       />
 
       <div className="flex flex-1 flex-col items-center justify-center">
-        <p className="flex items-baseline tabular-nums leading-none">
+        <p className="flex items-baseline leading-none tabular-nums">
           <span className="text-[32px] font-extralight tracking-[-0.04em] text-neutral-900">
             {main}
           </span>
@@ -134,16 +142,7 @@ export const MinimalStopwatchWidget = forwardRef<
           <Repeat size={11} color="currentColor" />
         </button>
 
-        {!running ? (
-          <button
-            type="button"
-            aria-label="Start stopwatch"
-            onClick={handlePlay}
-            className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-[#34C759] text-white shadow-[0_2px_8px_rgba(52,199,89,0.28)] transition-transform active:scale-95"
-          >
-            <Play size={14} color="#FFFFFF" />
-          </button>
-        ) : (
+        {running ? (
           <button
             type="button"
             aria-label="Pause stopwatch"
@@ -151,6 +150,15 @@ export const MinimalStopwatchWidget = forwardRef<
             className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-[#FF9500] text-white shadow-[0_2px_8px_rgba(255,149,0,0.28)] transition-transform active:scale-95"
           >
             <Pause size={14} color="#FFFFFF" />
+          </button>
+        ) : (
+          <button
+            type="button"
+            aria-label="Start stopwatch"
+            onClick={handlePlay}
+            className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-[#34C759] text-white shadow-[0_2px_8px_rgba(52,199,89,0.28)] transition-transform active:scale-95"
+          >
+            <Play size={14} color="#FFFFFF" />
           </button>
         )}
 
@@ -173,4 +181,4 @@ export const MinimalStopwatchWidget = forwardRef<
   );
 });
 
-MinimalStopwatchWidget.displayName = "MinimalStopwatchWidget";
+StopwatchWidget.displayName = "StopwatchWidget";

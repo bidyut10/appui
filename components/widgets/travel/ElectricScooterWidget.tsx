@@ -28,7 +28,7 @@ export const ElectricScooterWidget = forwardRef<
       distance = "3.2km",
       avgSpeed = "18.4km/h",
       duration = "22 min",
-      image = "/dbg.png",
+      image = "/scooter.png",
       ...props
     },
     ref,

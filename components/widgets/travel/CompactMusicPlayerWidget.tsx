@@ -59,7 +59,7 @@ export const CompactMusicPlayerWidget = forwardRef<
             </p>
             <p className="truncate text-[11px] text-neutral-500">{artist}</p>
           </div>
-          <span className="rounded-full bg-emerald-500 px-2 py-0.5 text-[9px] font-bold text-white">
+          <span className="text-[9px] font-bold text-emerald-500">
             <Music size={10} className="inline" />
           </span>
         </div>

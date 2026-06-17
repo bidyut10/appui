@@ -27,7 +27,7 @@ export const BlobProfileCard = forwardRef<HTMLDivElement, BlobProfileCardProps>(
       ref={ref}
       data-slot="blob-profile-card"
       className={cn(
-        "flex h-52 w-44 flex-col items-center justify-center rounded-3xl border border-neutral-100 bg-white p-4 font-sans shadow-lg",
+        "flex h-44 w-44 flex-col items-center justify-center rounded-3xl border border-neutral-100 bg-white p-4 font-sans shadow-lg",
         className,
       )}
       {...props}

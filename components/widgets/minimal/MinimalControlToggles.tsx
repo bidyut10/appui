@@ -126,7 +126,7 @@ export const MinimalAirplaneButton = forwardRef<HTMLButtonElement, PresetProps>(
   (props, ref) => (
     <ControlToggle
       ref={ref}
-      label="Aeroplane mode"
+      label="Airplane mode"
       icon={<Plane size={22} className="rotate-90" />}
       variant="white"
       status="No connections"
