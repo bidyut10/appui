@@ -1,11 +1,10 @@
 import { isValidElement } from "react";
 
 import { Box } from "./Box";
-import { showcaseRows01Devices } from "./showcase/component-rows-1";
-import { showcaseRows02Social } from "./showcase/component-rows-2";
+import { showcaseRows } from "@/lib/showcase/catalog";
 import type { Row } from "@/types/types";
 
-const rows: Row[] = [...showcaseRows01Devices, ...showcaseRows02Social];
+const rows: Row[] = showcaseRows;
 
 function getShowcaseRowKey(row: Row): string {
   return row
@@ -24,11 +23,12 @@ function getShowcaseSlotKey(node: React.ReactNode): React.Key | undefined {
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen w-full min-w-0 flex-col items-center overflow-x-hidden px-3 pb-10 sm:px-4">
+    <div className="flex min-h-screen w-full min-w-0 flex-col items-center overflow-x-hidden px-3 pb-10 selection:bg-neutral-800 selection:text-white sm:px-4">
       <div className="mb-8 flex max-w-xl flex-col items-center px-2 text-center sm:mb-10">
         <h1 className="mt-20 mb-2 text-xl sm:text-2xl">Introduction</h1>
-        <p className="max-w-xl text-sm leading-relaxed text-neutral-500">
-          Components I built for my own apps—Next.js, Tailwind v4, icons from{" "}
+        <p className="max-w-160 text-sm leading-relaxed text-neutral-500">
+          I made these for apps I&apos;m building and put them up here. Next.js,
+          Tailwind v4, icons from{" "}
           <a
             href="https://nexticons.in"
             target="_blank"
@@ -37,7 +37,7 @@ export default function Home() {
           >
             nexticons.in
           </a>
-          {". Everything below runs live. Copy-paste source is on the way."}
+          {". Click the arrow on a box to copy the code — I'm still adding more."}
         </p>
         <p className="mt-2 max-w-xl text-sm text-neutral-500">
           Made by{" "}
@@ -58,17 +58,30 @@ export default function Home() {
             key={getShowcaseRowKey(row)}
             className="flex w-full min-w-0 flex-col gap-3 min-[1194px]:flex-row min-[1194px]:gap-4"
           >
-            {row.map((node) =>
-              node == null ? (
-                <div
-                  key="showcase-spacer"
-                  className="hidden min-h-120 min-w-0 flex-1 min-[1194px]:block"
-                  aria-hidden
-                />
-              ) : (
-                <Box key={getShowcaseSlotKey(node)}>{node}</Box>
-              ),
-            )}
+            {row.map((node) => {
+              if (node == null) {
+                return (
+                  <div
+                    key="showcase-spacer"
+                    className="hidden min-h-120 min-w-0 flex-1 min-[1194px]:block"
+                    aria-hidden
+                  />
+                );
+              }
+
+              const slug = getShowcaseSlotKey(node);
+
+              return (
+                <Box
+                  key={slug}
+                  detailHref={
+                    slug == null ? undefined : `/components/${String(slug)}`
+                  }
+                >
+                  {node}
+                </Box>
+              );
+            })}
           </div>
         ))}
       </div>
