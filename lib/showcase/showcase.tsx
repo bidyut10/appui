@@ -18,6 +18,8 @@ import { BluetoothFaceWidget } from "@/components/bluetooth/bluetooth-face-widge
 import { DailyActivityCalendarWidget } from "@/components/calender/daily-activity-calendar-widget";
 import { IosCalenderWidget } from "@/components/calender/ios-calender-widget";
 import { CinemaTicketCard } from "@/components/text/cinema-ticket-card";
+import { DailyMotivationCard } from "@/components/text/daily-motivation-card";
+import { DenimProductEditorialCard } from "@/components/text/denim-product-editorial-card";
 import { CreditCardGlass } from "@/components/users/credit-card-glass";
 import { DiscordChatCard } from "@/components/discord/discord-chat-card";
 import { DropCapEditorialCard } from "@/components/text/drop-cap-editorial-card";
@@ -25,7 +27,6 @@ import { EditorialQuoteCard } from "@/components/text/editorial-quote-card";
 import { EventTicketCard } from "@/components/event/event-ticket-card";
 import { FacebookPostCard } from "@/components/facebook/facebook-post-card";
 import { FilmStripCard } from "@/components/gallery/film-strip-card";
-import { FlightBoardingCard } from "@/components/travel/flight-boarding-card";
 import { GalleryGridCard } from "@/components/gallery/gallery-grid-card";
 import { GitHubRepoCard } from "@/components/github/github-repo-card";
 import { GlassOverlayImageCard } from "@/components/gallery/glass-overlay-image-card";
@@ -34,6 +35,7 @@ import { JournalWritingCard } from "@/components/text/journal-writing-card";
 import { KeyboardShortcutsCard } from "@/components/text/keyboard-shortcuts-card";
 import { LinkedInPostCard } from "@/components/linkedin/linked-in-post-card";
 import { LinkedInProfileCard } from "@/components/linkedin/linked-in-profile-card";
+import { MuseumPlacardCard } from "@/components/gallery/museum-placard-card";
 import { MagazineCoverCard } from "@/components/text/magazine-cover-card";
 import { MusicPlayerCard } from "@/components/audio/music-player-card";
 import { MusicPlaylistCard } from "@/components/audio/music-playlist-card";
@@ -45,10 +47,12 @@ import { PolaroidImageCard } from "@/components/gallery/polaroid-image-card";
 import { ProgressRingCard } from "@/components/others/progress-ring-card";
 import { RetailPriceTagCard } from "@/components/pricing/retail-price-tag-card";
 import { StackedCardsEffect } from "@/components/others/stacked-cards-effect";
+import { SlowLivingPolaroidCard } from "@/components/gallery/slow-living-polaroid-card";
 import { StampPostcardCard } from "@/components/gallery/stamp-postcard-card";
 import { TeamMemberCard } from "@/components/users/team-member-card";
 import { TerminalLogCard } from "@/components/others/terminal-log-card";
 import { TestimonialCard } from "@/components/users/testimonial-card";
+import { FlightBoardingCard } from "@/components/travel/flight-boarding-card";
 import { ThermalReceiptCard } from "@/components/others/thermal-receipt-card";
 import { ThreadsPostCard } from "@/components/facebook/threads-post-card";
 import { TogglePricingCards } from "@/components/pricing/toggle-pricing-cards";
@@ -567,6 +571,19 @@ export const showcaseRows = [
       "GitHubRepoCard",
     ),
     c(
+      "museum-placard",
+      <MuseumPlacardCard />,
+      "components/gallery/museum-placard-card.tsx",
+      "MuseumPlacardCard",
+      {
+        title: "Museum Placard",
+        description:
+          "Gallery exhibition label that flips to reveal curator notes and acquisition details.",
+        usage:
+          '<MuseumPlacardCard artist="Name" title="Artwork title" year="2024" />',
+      },
+    ),
+    c(
       "linked-in-post",
       <LinkedInPostCard />,
       "components/linkedin/linked-in-post-card.tsx",
@@ -646,6 +663,26 @@ export const showcaseRows = [
       <TravelPostcardCard />,
       "components/travel/travel-postcard-card.tsx",
       "TravelPostcardCard",
+    ),
+  ],
+  [
+    c(
+      "slow-living-polaroid",
+      <SlowLivingPolaroidCard />,
+      "components/gallery/slow-living-polaroid-card.tsx",
+      "SlowLivingPolaroidCard",
+    ),
+    c(
+      "denim-product-editorial",
+      <DenimProductEditorialCard />,
+      "components/text/denim-product-editorial-card.tsx",
+      "DenimProductEditorialCard",
+    ),
+    c(
+      "daily-motivation",
+      <DailyMotivationCard />,
+      "components/text/daily-motivation-card.tsx",
+      "DailyMotivationCard",
     ),
   ],
 ];
