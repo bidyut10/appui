@@ -30,7 +30,7 @@ export const BrowserMockupCard = forwardRef<
     </div>
     <div className="relative h-80 overflow-hidden rounded-b-xl border-x border-b border-neutral-200 bg-white">
       <Image
-        src="/wallpaper-3.png"
+        src="/wallpaper-4.png"
         alt="Website"
         fill
         sizes="320px"

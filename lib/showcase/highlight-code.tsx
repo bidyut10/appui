@@ -203,8 +203,19 @@ function tokenizeLine(line: string): Token[] {
   return tokens;
 }
 
-function lineKey(line: string, lineNumber: number): string {
-  return `${lineNumber}:${line.length}:${line.trimStart().slice(0, 24)}`;
+type CodeLineEntry = Readonly<{
+  line: string;
+  lineNumber: number;
+  key: string;
+}>;
+
+function parseCodeLines(code: string): CodeLineEntry[] {
+  let offset = 0;
+  return code.split("\n").map((line, index) => {
+    const key = `${offset}:${line.length}:${line.trimStart().slice(0, 24)}`;
+    offset += line.length + 1;
+    return { line, lineNumber: index + 1, key };
+  });
 }
 
 function tokenKey(lineNumber: number, token: Token, offset: number): string {
@@ -251,7 +262,7 @@ function GutterLine({ lineNumber, minWidthCh }: GutterLineProps) {
 }
 
 export function HighlightedCode({ code }: Readonly<{ code: string }>) {
-  const lines = code.split("\n");
+  const lines = parseCodeLines(code);
   const gutterWidth = String(lines.length).length;
 
   return (
@@ -260,17 +271,17 @@ export function HighlightedCode({ code }: Readonly<{ code: string }>) {
         aria-hidden
         className="sticky left-0 hidden shrink-0 border-r border-neutral-700/60 bg-neutral-900 py-3 pr-2 pl-1.5 text-right text-neutral-600 tabular-nums select-none sm:block sm:py-4 sm:pr-3 sm:pl-2"
       >
-        {lines.map((line, index) => (
+        {lines.map(({ lineNumber, key }) => (
           <GutterLine
-            key={lineKey(line, index + 1)}
-            lineNumber={index + 1}
+            key={key}
+            lineNumber={lineNumber}
             minWidthCh={gutterWidth}
           />
         ))}
       </div>
       <code className="block min-w-0 py-3 pr-3 pl-3 sm:py-4 sm:pr-4 sm:pl-4">
-        {lines.map((line, index) => (
-          <CodeLine key={lineKey(line, index + 1)} line={line} lineNumber={index + 1} />
+        {lines.map(({ line, lineNumber, key }) => (
+          <CodeLine key={key} line={line} lineNumber={lineNumber} />
         ))}
       </code>
     </div>

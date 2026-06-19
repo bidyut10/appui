@@ -193,7 +193,7 @@ export const AnalogClockWidget = forwardRef<
         )}
       </div>
 
-      <p className="font-mono text-sm font-light text-neutral-900 tabular-nums">
+      <p className="font-mono text-[9px] font-light text-neutral-900 tabular-nums">
         {digital}
       </p>
     </div>

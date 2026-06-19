@@ -11,6 +11,8 @@ import {
 } from "react";
 
 import { cn } from "@/lib/cn";
+import { ChevronDown } from "@/icons/actions/chevron-down";
+import { ChevronUp } from "@/icons/actions/chevron-up";
 
 // Tailwind-only scroll area — self-contained, no global CSS.
 const HIDE_SCROLLBAR =
@@ -426,6 +428,110 @@ function formatTooltip(date: Date, count: number, username: string) {
   return `${count} contribution${count === 1 ? "" : "s"} on ${label} — ${username}`;
 }
 
+type YearDropdownProps = Readonly<{
+  years: readonly number[];
+  value: number;
+  onChange: (year: number) => void;
+}>;
+
+function YearDropdown({ years, value, onChange }: YearDropdownProps) {
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  const close = useCallback(() => setOpen(false), []);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handlePointerDown = (event: MouseEvent) => {
+      if (!rootRef.current?.contains(event.target as Node)) close();
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") close();
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [close, open]);
+
+  const handleSelect = (year: number) => {
+    onChange(year);
+    close();
+  };
+
+  return (
+    <div
+      ref={rootRef}
+      data-slot="github-contribution-card-year-selector"
+      className="relative z-20 min-w-17 shrink-0"
+    >
+      <select
+        aria-label="Contribution years"
+        value={value}
+        onChange={(event) => onChange(Number(event.target.value))}
+        className="sr-only"
+        tabIndex={-1}
+      >
+        {years.map((year) => (
+          <option key={year} value={year}>
+            {year}
+          </option>
+        ))}
+      </select>
+
+      <button
+        type="button"
+        aria-haspopup="true"
+        aria-expanded={open}
+        aria-label={`Contribution year, ${value}`}
+        onClick={() => setOpen((current) => !current)}
+        className={cn(
+          "flex w-full items-center justify-between gap-2 border border-neutral-200 bg-white px-2 py-1 text-[11px] font-medium text-neutral-700 transition-colors hover:bg-neutral-50",
+          open
+            ? "relative z-10 rounded-t-md rounded-b-none border-b-transparent bg-neutral-50"
+            : "rounded-md",
+        )}
+      >
+        <span className="tabular-nums">{value}</span>
+        <span className="text-neutral-400" aria-hidden>
+          {open ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+        </span>
+      </button>
+
+      {open ? (
+        <div className="absolute top-[calc(100%-1px)] right-0 left-0 z-10 overflow-hidden rounded-b-md border border-neutral-200 border-t-0 bg-white shadow-sm">
+          <ul className="max-h-32 overflow-y-auto py-0.5 scrollbar-thin">
+            {years.map((year) => {
+              const selected = year === value;
+              return (
+                <li key={year}>
+                  <button
+                    type="button"
+                    onClick={() => handleSelect(year)}
+                    className={cn(
+                      "flex w-full px-2 py-1 text-left text-[11px] tabular-nums transition-colors",
+                      selected
+                        ? "bg-neutral-100 font-medium text-neutral-900"
+                        : "text-neutral-600 hover:bg-neutral-50",
+                    )}
+                  >
+                    {year}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 export const GithubContributionCard = forwardRef<
   HTMLDivElement,
   GithubContributionCardProps
@@ -433,7 +539,7 @@ export const GithubContributionCard = forwardRef<
   (
     {
       className,
-      year = new Date().getFullYear(),
+      year: yearProp,
       years: yearsProp,
       username = "bidyut10",
       contributions: contributionsInput,
@@ -442,11 +548,10 @@ export const GithubContributionCard = forwardRef<
     },
     ref,
   ) => {
-    const [selectedYear, setSelectedYear] = useState(year);
-
-    useEffect(() => {
-      setSelectedYear(year);
-    }, [year]);
+    const [internalYear, setInternalYear] = useState(
+      () => yearProp ?? new Date().getFullYear(),
+    );
+    const selectedYear = yearProp ?? internalYear;
 
     const allContributions = useMemo(
       () => normalizeContributions(contributionsInput),
@@ -477,7 +582,7 @@ export const GithubContributionCard = forwardRef<
     const graphWidth = WEEKS * COL - GAP;
 
     const handleYearSelect = (nextYear: number) => {
-      setSelectedYear(nextYear);
+      if (yearProp === undefined) setInternalYear(nextYear);
       onYearChange?.(nextYear);
     };
 
@@ -493,7 +598,7 @@ export const GithubContributionCard = forwardRef<
       >
         <div
           data-slot="github-contribution-card-header"
-          className="mb-3 flex items-center justify-between gap-2"
+          className="relative z-10 mb-3 flex items-center justify-between gap-2"
         >
           <p className="text-sm text-neutral-700">
             <span className="font-semibold text-neutral-900">
@@ -502,23 +607,11 @@ export const GithubContributionCard = forwardRef<
             contributions in {selectedYear}
           </p>
 
-          <div
-            data-slot="github-contribution-card-year-selector"
-            className="relative shrink-0"
-          >
-            <select
-              aria-label="Contribution years"
-              value={selectedYear}
-              onChange={(event) => handleYearSelect(Number(event.target.value))}
-              className="cursor-pointer appearance-none rounded-md border border-neutral-200 bg-neutral-50 py-0.5 pr-6 pl-2 text-[11px] font-medium text-neutral-600 transition-colors hover:bg-neutral-100"
-            >
-              {availableYears.map((y) => (
-                <option key={y} value={y}>
-                  {y}
-                </option>
-              ))}
-            </select>
-          </div>
+          <YearDropdown
+            years={availableYears}
+            value={selectedYear}
+            onChange={handleYearSelect}
+          />
         </div>
 
         <LocalScrollHoverArea axis="x" className="w-full">
@@ -555,41 +648,36 @@ export const GithubContributionCard = forwardRef<
               </div>
 
               <div className="flex" style={{ gap: GAP }}>
-                {grid.map((week, wi) => {
-                  const weekAnchor = week.find((cell) => cell.date)?.date;
+                {grid.map((week) => {
+                  const weekStart = week[0].date!;
                   return (
                     <div
-                      key={
-                        weekAnchor
-                          ? toDateKey(
-                              weekAnchor.getFullYear(),
-                              weekAnchor.getMonth(),
-                              weekAnchor.getDate(),
-                            )
-                          : `week-${wi}`
-                      }
+                      key={toDateKey(
+                        weekStart.getFullYear(),
+                        weekStart.getMonth(),
+                        weekStart.getDate(),
+                      )}
                       className="flex flex-col"
                       style={{ gap: GAP }}
                       data-slot="github-contribution-card-week"
                     >
-                      {week.map((cell, di) => {
-                        const tooltip =
-                          cell.date &&
-                          formatTooltip(cell.date, cell.count, username);
+                      {week.map((cell) => {
+                        const cellDate = cell.date!;
+                        const tooltip = formatTooltip(
+                          cellDate,
+                          cell.count,
+                          username,
+                        );
 
                         return (
                           // Data-URI SVG cells — native img+alt for a11y; not a Next.js LCP image.
                           // eslint-disable-next-line @next/next/no-img-element
                           <img
-                            key={
-                              cell.date
-                                ? toDateKey(
-                                    cell.date.getFullYear(),
-                                    cell.date.getMonth(),
-                                    cell.date.getDate(),
-                                  )
-                                : `pad-${wi}-${di}`
-                            }
+                            key={toDateKey(
+                              cellDate.getFullYear(),
+                              cellDate.getMonth(),
+                              cellDate.getDate(),
+                            )}
                             alt={tooltip || ""}
                             aria-hidden={!tooltip}
                             title={tooltip || undefined}

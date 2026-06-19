@@ -1,24 +1,8 @@
-import { isValidElement } from "react";
-
 import { Box } from "./Box";
-import { showcaseRows } from "@/lib/showcase/catalog";
-import type { Row } from "@/types/types";
+import { showcaseRows } from "@/lib/showcase/showcase";
 
-const rows: Row[] = showcaseRows;
-
-function getShowcaseRowKey(row: Row): string {
-  return row
-    .map((node) => {
-      if (node == null) return "spacer";
-      if (isValidElement(node) && node.key != null) return String(node.key);
-      return "item";
-    })
-    .join("-");
-}
-
-function getShowcaseSlotKey(node: React.ReactNode): React.Key | undefined {
-  if (!isValidElement(node)) return undefined;
-  return node.key ?? undefined;
+function rowKey(row: (typeof showcaseRows)[number]): string {
+  return row.map((item) => item.slug).join("-");
 }
 
 export default function Home() {
@@ -53,35 +37,19 @@ export default function Home() {
       </div>
 
       <div className="w-full max-w-400 min-w-0 space-y-3">
-        {rows.map((row) => (
+        {showcaseRows.map((row) => (
           <div
-            key={getShowcaseRowKey(row)}
+            key={rowKey(row)}
             className="flex w-full min-w-0 flex-col gap-3 min-[1194px]:flex-row min-[1194px]:gap-4"
           >
-            {row.map((node) => {
-              if (node == null) {
-                return (
-                  <div
-                    key="showcase-spacer"
-                    className="hidden min-h-120 min-w-0 flex-1 min-[1194px]:block"
-                    aria-hidden
-                  />
-                );
-              }
-
-              const slug = getShowcaseSlotKey(node);
-
-              return (
-                <Box
-                  key={slug}
-                  detailHref={
-                    slug == null ? undefined : `/components/${String(slug)}`
-                  }
-                >
-                  {node}
-                </Box>
-              );
-            })}
+            {row.map((item) => (
+              <Box
+                key={item.slug}
+                detailHref={`/components/${item.slug}`}
+              >
+                {item.preview}
+              </Box>
+            ))}
           </div>
         ))}
       </div>

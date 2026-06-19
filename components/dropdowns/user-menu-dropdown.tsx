@@ -186,8 +186,8 @@ export const UserMenuDropdown = forwardRef<
             className={cn(
               "group inline-flex h-12 cursor-pointer items-center gap-3 rounded-full border bg-white pr-4 pl-1.5 transition-all duration-300",
               open
-                ? "border-neutral-200 shadow-md ring-2 ring-neutral-100/80"
-                : "border-neutral-100 hover:border-neutral-200 hover:shadow-sm",
+                ? "border-neutral-200"
+                : "border-neutral-100",
             )}
           >
             <div className="relative size-9 overflow-hidden rounded-full border-2 border-neutral-100">
@@ -237,9 +237,9 @@ export const UserMenuDropdown = forwardRef<
               />
 
               <div className="relative">
-                {items.map((item, index) => (
+                {items.map((item) => (
                   <UserMenuItemRow
-                    key={item.id ?? item.label ?? `item-${index}`}
+                    key={item.id ?? item.label ?? "menu-separator"}
                     item={item}
                     onSelect={handleItemSelect}
                   />

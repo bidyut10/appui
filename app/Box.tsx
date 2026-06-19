@@ -25,10 +25,10 @@ export const Box = ({ children, detailHref }: BoxProps) => {
       {detailHref ? (
         <Link
           href={detailHref}
-          className="absolute top-3 right-3 z-20 flex h-8 w-8 items-center justify-center border border-neutral-200 bg-white text-neutral-500 transition-colors hover:bg-neutral-50 hover:text-neutral-900"
+          className="absolute top-3 right-3 z-20 flex h-8 w-8 items-center justify-center border border-neutral-200 bg-white text-neutral-500 transition-colors hover:text-neutral-900"
           aria-label="View component details"
         >
-          <ArrowRight size={16} />
+          <ArrowRight size={16} className="-rotate-45" />
         </Link>
       ) : null}
 

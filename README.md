@@ -41,12 +41,10 @@ No shadcn, no MUI, no Radix underneath. Just React, Tailwind, and SVG.
 ```
 app/
   layout.tsx              Site layout, fonts, SEO metadata
-  page.tsx                Homepage — showcase grid
+  page.tsx                Homepage
   Box.tsx                 Preview wrapper for the grid
   globals.css             Tailwind v4 import
-  showcase/
-    component-rows-1.tsx  Device & widget rows
-    component-rows-2.tsx  Social & card rows
+  components/[slug]/      Detail + copy-code pages
   robots.ts               Robots.txt
   sitemap.ts              Sitemap
   manifest.ts             Web app manifest
@@ -82,6 +80,11 @@ lib/
   cn.ts                   cn() — clsx + tailwind-merge
   utils.ts                Re-exports cn (legacy import path)
   site.ts                 Site name, URL, SEO constants
+  showcase/
+    showcase.tsx          ← edit this: imports + showcaseRows
+    server.ts             copy-code file reader (don't edit)
+    index.ts              re-exports (don't edit)
+    highlight-code.tsx    syntax highlighting
 
 types/
   types.tsx               Shared TypeScript types
@@ -143,7 +146,31 @@ There is no `npm install` step. Copy the file you want from `components/` into y
 
 Keep `"use client"` if the file has it. Components without it can render as server components.
 
-To add a component to the homepage showcase, import it in `app/showcase/component-rows-1.tsx` or `component-rows-2.tsx` and give it a stable `key` prop.
+To add a component, edit **`lib/showcase/showcase.tsx`**:
+
+```tsx
+import { MyNewCard } from "@/components/cards/my-new-card";
+
+export const showcaseRows = [
+  // triple row
+  [
+    c("my-new-card", <MyNewCard />, "components/cards/my-new-card.tsx", "MyNewCard"),
+    c("instagram-post", <InstagramPostCard />, "components/cards/instagram-post-card.tsx", "InstagramPostCard"),
+    c("threads-post", <ThreadsPostCard />, "components/cards/threads-post-card.tsx", "ThreadsPostCard"),
+  ],
+  // double row
+  [
+    c("instagram-post", <InstagramPostCard />, "components/cards/instagram-post-card.tsx", "InstagramPostCard"),
+    c("threads-post", <ThreadsPostCard />, "components/cards/threads-post-card.tsx", "ThreadsPostCard"),
+  ],
+  // single row
+  [
+    c("github-contribution", <GithubContributionCard />, "components/github/github-contribution.tsx", "GithubContributionCard"),
+  ],
+];
+```
+
+Each inner array = one row (1, 2, or 3 items). Import at the top, add `c(...)` to a row. Nothing else to update.
 
 ## Project links
 

@@ -7,8 +7,8 @@ import { ArrowLeft } from "@/icons/actions/arrow-left";
 import {
   getAllShowcaseSlugs,
   getShowcaseEntry,
-} from "@/lib/showcase/catalog";
-import { readShowcaseSource } from "@/lib/showcase/source";
+  readShowcaseSource,
+} from "@/lib/showcase";
 import type { Props } from "@/types/types";
 
 export async function generateStaticParams() {
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-export default async function ComponentDetailPage({ params }: Props) {
+export default async function ComponentDetailPage({ params }: Readonly<Props>) {
   const { slug } = await params;
   const entry = getShowcaseEntry(slug);
   if (!entry) notFound();
@@ -34,10 +34,10 @@ export default async function ComponentDetailPage({ params }: Props) {
   const { cnSource, componentSource } = await readShowcaseSource(entry.file);
 
   return (
-    <div className="mx-auto min-h-screen w-full max-w-3xl min-w-0 px-3 py-8 sm:px-4 sm:py-10 selection:bg-neutral-800 selection:text-white">
+    <div className="mx-auto min-h-screen w-full max-w-3xl min-w-0 px-3 py-8 selection:bg-neutral-800 selection:text-white sm:px-4 sm:py-10">
       <Link
         href="/"
-        className="mb-6 inline-flex items-center gap-0.5 text-xs text-neutral-500 transition-colors hover:text-neutral-900 font-semibold select-none"
+        className="mb-6 inline-flex items-center gap-0.5 text-xs font-semibold text-neutral-500 transition-colors select-none hover:text-neutral-900"
       >
         <ArrowLeft size={13} />
         GO BACK

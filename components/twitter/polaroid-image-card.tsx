@@ -26,7 +26,7 @@ export const PolaroidImageCard = forwardRef<
   (
     {
       className,
-      image = "/wallpaper-3.png",
+      image = "/wallpaper-7.png",
       imageAlt = "Polaroid photo",
       caption = "Golden hour, Kolkata ☀",
       date = "June, 2026",

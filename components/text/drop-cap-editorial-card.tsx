@@ -1,0 +1,52 @@
+"use client";
+
+import { forwardRef, type ComponentPropsWithoutRef } from "react";
+
+import { cn } from "@/lib/cn";
+import { QuoteRight } from "@/icons/keys/quote-right";
+
+export type DropCapEditorialCardProps = Readonly<{
+  dropCap?: string;
+  body?: string;
+  author?: string;
+} & ComponentPropsWithoutRef<"div">>;
+
+// Production-ready Drop Cap Editorial component — styled with Tailwind CSS.
+export const DropCapEditorialCard = forwardRef<
+  HTMLDivElement,
+  DropCapEditorialCardProps
+>(
+  (
+    {
+      className,
+      dropCap = "D",
+      body = "Design systems thrive when typography, spacing, and imagery share one visual language. Every card should feel intentional.",
+      author = "Editorial team",
+      ...props
+    },
+    ref,
+  ) => (
+    <div
+      ref={ref}
+      data-slot="drop-cap-editorial-card"
+      className={cn(
+        "w-64 border border-neutral-100 bg-white p-5 font-sans",
+        className,
+      )}
+      {...props}
+    >
+      <QuoteRight size={20} className="mb-3 text-neutral-300" />
+      <p className="text-sm leading-relaxed text-neutral-700">
+        <span className="float-left mt-0.5 mr-2 flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-900 font-serif text-2xl font-light text-white">
+          {dropCap}
+        </span>
+        {body}
+      </p>
+      <p className="mt-4 text-[11px] font-semibold tracking-wide text-neutral-400 uppercase">
+        {author}
+      </p>
+    </div>
+  ),
+);
+
+DropCapEditorialCard.displayName = "DropCapEditorialCard";
