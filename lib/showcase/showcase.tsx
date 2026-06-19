@@ -328,7 +328,7 @@ export const showcaseRows = [
     c(
       "polaroid-image",
       <PolaroidImageCard />,
-      "components/cards/polaroid-image-card.tsx",
+      "components/gallery/polaroid-image-card.tsx",
       "PolaroidImageCard",
       {
         usage:
@@ -338,7 +338,7 @@ export const showcaseRows = [
     c(
       "notepad",
       <NotepadCard />,
-      "components/cards/notepad-card.tsx",
+      "components/text/notepad-card.tsx",
       "NotepadCard",
       {
         usage:
@@ -348,7 +348,7 @@ export const showcaseRows = [
     c(
       "thermal-receipt",
       <ThermalReceiptCard />,
-      "components/cards/thermal-receipt-card.tsx",
+      "components/others/thermal-receipt-card.tsx",
       "ThermalReceiptCard",
     ),
   ],
@@ -356,7 +356,7 @@ export const showcaseRows = [
     c(
       "instagram-post",
       <InstagramPostCard />,
-      "components/cards/instagram-post-card.tsx",
+      "components/instagram/instagram-post-card.tsx",
       "InstagramPostCard",
       {
         usage:
@@ -366,7 +366,7 @@ export const showcaseRows = [
     c(
       "threads-post",
       <ThreadsPostCard />,
-      "components/cards/threads-post-card.tsx",
+      "components/facebook/threads-post-card.tsx",
       "ThreadsPostCard",
       {
         usage:
@@ -378,19 +378,19 @@ export const showcaseRows = [
     c(
       "now-playing-bar",
       <NowPlayingBar />,
-      "components/cards/now-playing-bar.tsx",
+      "components/audio/now-playing-bar.tsx",
       "NowPlayingBar",
     ),
     c(
       "twitter-post",
       <TwitterPostCard />,
-      "components/cards/twitter-post-card.tsx",
+      "components/twitter/twitter-post-card.tsx",
       "TwitterPostCard",
     ),
     c(
       "film-strip",
       <FilmStripCard />,
-      "components/cards/film-strip-card.tsx",
+      "components/gallery/film-strip-card.tsx",
       "FilmStripCard",
     ),
   ],
@@ -441,19 +441,19 @@ export const showcaseRows = [
     c(
       "cinema-ticket",
       <CinemaTicketCard />,
-      "components/cards/cinema-ticket-card.tsx",
+      "components/text/cinema-ticket-card.tsx",
       "CinemaTicketCard",
     ),
     c(
       "wallet-pass",
       <WalletPassCard />,
-      "components/cards/wallet-pass-card.tsx",
+      "components/wallet/wallet-pass-card.tsx",
       "WalletPassCard",
     ),
     c(
       "credit-card-glass",
       <CreditCardGlass />,
-      "components/cards/credit-card-glass.tsx",
+      "components/users/credit-card-glass.tsx",
       "CreditCardGlass",
     ),
   ],
@@ -461,20 +461,20 @@ export const showcaseRows = [
     c(
       "drop-cap-editorial",
       <DropCapEditorialCard />,
-      "components/cards/drop-cap-editorial-card.tsx",
+      "components/text/drop-cap-editorial-card.tsx",
       "DropCapEditorialCard",
     ),
 
     c(
       "editorial-quote",
       <EditorialQuoteCard />,
-      "components/cards/editorial-quote-card.tsx",
+      "components/text/editorial-quote-card.tsx",
       "EditorialQuoteCard",
     ),
     c(
       "discord-chat",
       <DiscordChatCard />,
-      "components/cards/discord-chat-card.tsx",
+      "components/discord/discord-chat-card.tsx",
       "DiscordChatCard",
     ),
   ],
@@ -482,19 +482,19 @@ export const showcaseRows = [
     c(
       "linked-in-profile",
       <LinkedInProfileCard />,
-      "components/cards/linked-in-profile-card.tsx",
+      "components/linkedin/linked-in-profile-card.tsx",
       "LinkedInProfileCard",
     ),
     c(
       "facebook-post",
       <FacebookPostCard />,
-      "components/cards/facebook-post-card.tsx",
+      "components/facebook/facebook-post-card.tsx",
       "FacebookPostCard",
     ),
     c(
       "twitter-profile",
       <TwitterProfileCard />,
-      "components/cards/twitter-profile-card.tsx",
+      "components/twitter/twitter-profile-card.tsx",
       "TwitterProfileCard",
     ),
   ],
@@ -503,19 +503,19 @@ export const showcaseRows = [
     c(
       "event-ticket",
       <EventTicketCard />,
-      "components/cards/event-ticket-card.tsx",
+      "components/event/event-ticket-card.tsx",
       "EventTicketCard",
     ),
     c(
       "flight-boarding",
       <FlightBoardingCard />,
-      "components/cards/flight-boarding-card.tsx",
+      "components/travel/flight-boarding-card.tsx",
       "FlightBoardingCard",
     ),
     c(
       "gallery-grid",
       <GalleryGridCard />,
-      "components/cards/gallery-grid-card.tsx",
+      "components/gallery/gallery-grid-card.tsx",
       "GalleryGridCard",
     ),
   ],
@@ -523,19 +523,19 @@ export const showcaseRows = [
     c(
       "glass-overlay-image",
       <GlassOverlayImageCard />,
-      "components/cards/glass-overlay-image-card.tsx",
+      "components/gallery/glass-overlay-image-card.tsx",
       "GlassOverlayImageCard",
     ),
     c(
       "photo-album",
       <PhotoAlbumCard />,
-      "components/cards/photo-album-card.tsx",
+      "components/gallery/photo-album-card.tsx",
       "PhotoAlbumCard",
     ),
     c(
       "magazine-cover",
       <MagazineCoverCard />,
-      "components/cards/magazine-cover-card.tsx",
+      "components/text/magazine-cover-card.tsx",
       "MagazineCoverCard",
     ),
   ],
@@ -543,19 +543,19 @@ export const showcaseRows = [
     c(
       "journal-writing",
       <JournalWritingCard />,
-      "components/cards/journal-writing-card.tsx",
+      "components/text/journal-writing-card.tsx",
       "JournalWritingCard",
     ),
     c(
       "terminal-log",
       <TerminalLogCard />,
-      "components/cards/terminal-log-card.tsx",
+      "components/others/terminal-log-card.tsx",
       "TerminalLogCard",
     ),
     c(
       "keyboard-shortcuts",
       <KeyboardShortcutsCard />,
-      "components/cards/keyboard-shortcuts-card.tsx",
+      "components/text/keyboard-shortcuts-card.tsx",
       "KeyboardShortcutsCard",
     ),
   ],
@@ -563,13 +563,13 @@ export const showcaseRows = [
     c(
       "github-repo",
       <GitHubRepoCard />,
-      "components/cards/github-repo-card.tsx",
+      "components/github/github-repo-card.tsx",
       "GitHubRepoCard",
     ),
     c(
       "linked-in-post",
       <LinkedInPostCard />,
-      "components/cards/linked-in-post-card.tsx",
+      "components/linkedin/linked-in-post-card.tsx",
       "LinkedInPostCard",
     ),
   ],
@@ -577,19 +577,19 @@ export const showcaseRows = [
     c(
       "music-player",
       <MusicPlayerCard />,
-      "components/cards/music-player-card.tsx",
+      "components/audio/music-player-card.tsx",
       "MusicPlayerCard",
     ),
     c(
       "photo-contact-sheet",
       <PhotoContactSheetCard />,
-      "components/cards/photo-contact-sheet-card.tsx",
+      "components/gallery/photo-contact-sheet-card.tsx",
       "PhotoContactSheetCard",
     ),
     c(
       "music-playlist",
       <MusicPlaylistCard />,
-      "components/cards/music-playlist-card.tsx",
+      "components/audio/music-playlist-card.tsx",
       "MusicPlaylistCard",
     ),
   ],
@@ -597,19 +597,19 @@ export const showcaseRows = [
     c(
       "stacked-cards-effect",
       <StackedCardsEffect />,
-      "components/cards/stacked-cards-effect.tsx",
+      "components/others/stacked-cards-effect.tsx",
       "StackedCardsEffect",
     ),
     c(
       "retail-price-tag",
       <RetailPriceTagCard />,
-      "components/cards/retail-price-tag-card.tsx",
+      "components/pricing/retail-price-tag-card.tsx",
       "RetailPriceTagCard",
     ),
     c(
       "stamp-postcard",
       <StampPostcardCard />,
-      "components/cards/stamp-postcard-card.tsx",
+      "components/gallery/stamp-postcard-card.tsx",
       "StampPostcardCard",
     ),
   ],
@@ -617,20 +617,20 @@ export const showcaseRows = [
     c(
       "progress-ring",
       <ProgressRingCard />,
-      "components/cards/progress-ring-card.tsx",
+      "components/others/progress-ring-card.tsx",
       "ProgressRingCard",
     ),
     c(
       "team-member",
       <TeamMemberCard />,
-      "components/cards/team-member-card.tsx",
+      "components/users/team-member-card.tsx",
       "TeamMemberCard",
     ),
 
     c(
       "testimonial",
       <TestimonialCard />,
-      "components/cards/testimonial-card.tsx",
+      "components/users/testimonial-card.tsx",
       "TestimonialCard",
     ),
   ],
@@ -638,13 +638,13 @@ export const showcaseRows = [
     c(
       "toggle-pricing-cards",
       <TogglePricingCards />,
-      "components/cards/toggle-pricing-cards.tsx",
+      "components/pricing/toggle-pricing-cards.tsx",
       "TogglePricingCards",
     ),
     c(
       "travel-postcard",
       <TravelPostcardCard />,
-      "components/cards/travel-postcard-card.tsx",
+      "components/travel/travel-postcard-card.tsx",
       "TravelPostcardCard",
     ),
   ],
