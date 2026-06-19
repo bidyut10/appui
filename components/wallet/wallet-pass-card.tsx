@@ -5,16 +5,18 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-export type WalletPassCardProps = Readonly<{
-  memberName?: string;
-  membershipType?: string;
-  passType?: string;
-  expiryDate?: string;
-  memberId?: string;
-  avatar?: string;
-  avatarAlt?: string;
-  onFlip?: (flipped: boolean) => void;
-} & ComponentPropsWithoutRef<"div">>;
+export type WalletPassCardProps = Readonly<
+  {
+    memberName?: string;
+    membershipType?: string;
+    passType?: string;
+    expiryDate?: string;
+    memberId?: string;
+    avatar?: string;
+    avatarAlt?: string;
+    onFlip?: (flipped: boolean) => void;
+  } & ComponentPropsWithoutRef<"div">
+>;
 
 const PASS_PERFORATIONS = [
   "pass-perf-1",

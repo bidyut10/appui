@@ -77,13 +77,9 @@ export const EventTicketCard = forwardRef<HTMLDivElement, EventTicketCardProps>(
         >
           <div className="absolute top-3 bottom-3 left-0 w-px border-l border-dashed border-neutral-200" />
 
-          <div
-            className="absolute -top-2 -left-2 h-4 w-4 rounded-full bg-white"
-          />
+          <div className="absolute -top-2 -left-2 h-4 w-4 rounded-full bg-white" />
 
-          <div
-            className="absolute -bottom-2 -left-2 h-4 w-4 rounded-full bg-white"
-          />
+          <div className="absolute -bottom-2 -left-2 h-4 w-4 rounded-full bg-white" />
 
           <span className="font-mono text-[10px] tracking-widest text-teal-600 uppercase">
             Live Event

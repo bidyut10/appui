@@ -87,7 +87,9 @@ function matchPrefix(pattern: RegExp, text: string): string | null {
   return match?.[0] ?? null;
 }
 
-function readStringToken(rest: string): Readonly<{ value: string; length: number }> {
+function readStringToken(
+  rest: string,
+): Readonly<{ value: string; length: number }> {
   const quote = rest[0];
   let end = 1;
 
@@ -106,7 +108,9 @@ function readStringToken(rest: string): Readonly<{ value: string; length: number
   return { value: rest.slice(0, end), length: end };
 }
 
-function readJsxToken(rest: string): Readonly<{ value: string; length: number }> {
+function readJsxToken(
+  rest: string,
+): Readonly<{ value: string; length: number }> {
   let end = rest.startsWith("</") ? 2 : 1;
 
   while (end < rest.length && /[\w.-]/.test(rest[end] ?? "")) {
@@ -137,7 +141,10 @@ function nextToken(
   const whitespace = matchPrefix(/^\s+/, rest);
 
   if (whitespace) {
-    return { token: { type: "plain", value: whitespace }, length: whitespace.length };
+    return {
+      token: { type: "plain", value: whitespace },
+      length: whitespace.length,
+    };
   }
 
   if (rest.startsWith("//")) {
@@ -244,9 +251,7 @@ type CodeLineProps = Readonly<{
 
 function CodeLine({ line, lineNumber }: CodeLineProps) {
   return (
-    <div className="whitespace-pre">
-      {renderLineContent(line, lineNumber)}
-    </div>
+    <div className="whitespace-pre">{renderLineContent(line, lineNumber)}</div>
   );
 }
 
@@ -256,9 +261,7 @@ type GutterLineProps = Readonly<{
 }>;
 
 function GutterLine({ lineNumber, minWidthCh }: GutterLineProps) {
-  return (
-    <div style={{ minWidth: `${minWidthCh}ch` }}>{lineNumber}</div>
-  );
+  return <div style={{ minWidth: `${minWidthCh}ch` }}>{lineNumber}</div>;
 }
 
 export function HighlightedCode({ code }: Readonly<{ code: string }>) {
@@ -266,7 +269,7 @@ export function HighlightedCode({ code }: Readonly<{ code: string }>) {
   const gutterWidth = String(lines.length).length;
 
   return (
-    <div className="flex min-w-0 select-none font-mono text-xs leading-[1.65] tracking-tight sm:min-w-max sm:text-[13px] sm:leading-[1.7]">
+    <div className="flex min-w-0 font-mono text-xs leading-[1.65] tracking-tight select-none sm:min-w-max sm:text-[13px] sm:leading-[1.7]">
       <div
         aria-hidden
         className="sticky left-0 hidden shrink-0 border-r border-neutral-700/60 bg-neutral-900 py-3 pr-2 pl-1.5 text-right text-neutral-600 tabular-nums select-none sm:block sm:py-4 sm:pr-3 sm:pl-2"

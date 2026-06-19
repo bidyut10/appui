@@ -11,16 +11,18 @@ import { Pause } from "@/icons/keys/pause";
 import { SkipPrevious } from "@/icons/keys/skip-previous";
 import { SkipNext } from "@/icons/keys/skip-next";
 
-export type MusicPlayerCardProps = Readonly<{
-  coverImage?: string;
-  title?: string;
-  artist?: string;
-  album?: string;
-  currentTime?: string;
-  duration?: string;
-  progress?: number;
-  defaultPlaying?: boolean;
-} & ComponentPropsWithoutRef<"div">>;
+export type MusicPlayerCardProps = Readonly<
+  {
+    coverImage?: string;
+    title?: string;
+    artist?: string;
+    album?: string;
+    currentTime?: string;
+    duration?: string;
+    progress?: number;
+    defaultPlaying?: boolean;
+  } & ComponentPropsWithoutRef<"div">
+>;
 
 // Production-ready Music Player component — styled with Tailwind CSS.
 export const MusicPlayerCard = forwardRef<HTMLDivElement, MusicPlayerCardProps>(

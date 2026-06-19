@@ -17,17 +17,19 @@ export type ProgressStage = {
   color?: string;
 };
 
-export type ProgressRingCardProps = Readonly<{
-  title?: string;
-  progress?: number;
-  progressLabel?: string;
-  showPercentage?: boolean;
-  ringStartColor?: string;
-  ringEndColor?: string;
-  stages?: ProgressStage[];
-  animateOnMount?: boolean;
-  onStageClick?: (stage: ProgressStage, index: number) => void;
-} & ComponentPropsWithoutRef<"div">>;
+export type ProgressRingCardProps = Readonly<
+  {
+    title?: string;
+    progress?: number;
+    progressLabel?: string;
+    showPercentage?: boolean;
+    ringStartColor?: string;
+    ringEndColor?: string;
+    stages?: ProgressStage[];
+    animateOnMount?: boolean;
+    onStageClick?: (stage: ProgressStage, index: number) => void;
+  } & ComponentPropsWithoutRef<"div">
+>;
 
 const RADIUS = 40;
 const STROKE_WIDTH = 6;

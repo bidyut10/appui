@@ -8,10 +8,12 @@ export type ContactSheetFrame = {
   number: string;
 };
 
-export type PhotoContactSheetCardProps = Readonly<{
-  rollLabel?: string;
-  frames?: ContactSheetFrame[];
-} & ComponentPropsWithoutRef<"div">>;
+export type PhotoContactSheetCardProps = Readonly<
+  {
+    rollLabel?: string;
+    frames?: ContactSheetFrame[];
+  } & ComponentPropsWithoutRef<"div">
+>;
 
 const defaultFrames: ContactSheetFrame[] = [
   { src: "/wallpaper-3.png", number: "01" },
@@ -37,10 +39,7 @@ export const PhotoContactSheetCard = forwardRef<
     <div
       ref={ref}
       data-slot="photo-contact-sheet-card"
-      className={cn(
-        "w-xs bg-neutral-100 p-3 font-mono",
-        className,
-      )}
+      className={cn("w-xs bg-neutral-100 p-3 font-mono", className)}
       {...props}
     >
       <p className="mb-2 text-[9px] tracking-wider text-neutral-500 uppercase">

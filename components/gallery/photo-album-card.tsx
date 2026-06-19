@@ -12,10 +12,12 @@ export type AlbumPhoto = {
   src: string;
 };
 
-export type PhotoAlbumCardProps = Readonly<{
-  photos?: AlbumPhoto[];
-  onSlideChange?: (index: number, photo: AlbumPhoto) => void;
-} & ComponentPropsWithoutRef<"div">>;
+export type PhotoAlbumCardProps = Readonly<
+  {
+    photos?: AlbumPhoto[];
+    onSlideChange?: (index: number, photo: AlbumPhoto) => void;
+  } & ComponentPropsWithoutRef<"div">
+>;
 
 const defaultPhotos: AlbumPhoto[] = [
   { id: "1", place: "Kyoto", date: "Mar 12", src: "/wallpaper-7.png" },

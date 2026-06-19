@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
+  --font-mono:
+    var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
     Consolas, monospace;
 }
 

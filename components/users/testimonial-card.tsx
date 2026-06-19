@@ -23,20 +23,28 @@ export type TestimonialItem = {
   avatar?: string;
 };
 
-export type TestimonialCardProps = Readonly<{
-  testimonials?: TestimonialItem[];
-  quote?: string;
-  name?: string;
-  role?: string;
-  rating?: number;
-  avatar?: string;
-  avatarAlt?: string;
-  quoteIcon?: React.ReactNode;
-  autoPlayMs?: number;
-  onChange?: (index: number) => void;
-} & ComponentPropsWithoutRef<"div">>;
+export type TestimonialCardProps = Readonly<
+  {
+    testimonials?: TestimonialItem[];
+    quote?: string;
+    name?: string;
+    role?: string;
+    rating?: number;
+    avatar?: string;
+    avatarAlt?: string;
+    quoteIcon?: React.ReactNode;
+    autoPlayMs?: number;
+    onChange?: (index: number) => void;
+  } & ComponentPropsWithoutRef<"div">
+>;
 
-const RATING_STARS = ["star-1", "star-2", "star-3", "star-4", "star-5"] as const;
+const RATING_STARS = [
+  "star-1",
+  "star-2",
+  "star-3",
+  "star-4",
+  "star-5",
+] as const;
 
 const defaultTestimonials: TestimonialItem[] = [
   {

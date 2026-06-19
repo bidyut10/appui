@@ -23,16 +23,18 @@ export type PricingPlan = {
   features: string[];
 };
 
-export type TogglePricingCardsProps = Readonly<{
-  defaultYearly?: boolean;
+export type TogglePricingCardsProps = Readonly<
+  {
+    defaultYearly?: boolean;
 
-  monthlyLabel?: string;
-  yearlyLabel?: string;
+    monthlyLabel?: string;
+    yearlyLabel?: string;
 
-  discountLabel?: string;
+    discountLabel?: string;
 
-  plans?: PricingPlan[];
-} & ComponentPropsWithoutRef<"div">>;
+    plans?: PricingPlan[];
+  } & ComponentPropsWithoutRef<"div">
+>;
 
 // Production-ready Toggle Pricing Cards component — styled with Tailwind CSS.
 export const TogglePricingCards = forwardRef<

@@ -16,29 +16,31 @@ import { Chat } from "@/icons/actions/chat";
 import { Repeat } from "@/icons/keys/repeat";
 import { Send } from "@/icons/keys/send";
 
-export type LinkedInPostCardProps = Readonly<{
-  username?: string;
-  headline?: string;
-  timestamp?: string;
-  content?: string;
-  hashtags?: string;
-  websiteName?: string;
-  websiteDescription?: string;
-  reactions?: number;
-  comments?: number;
-  reposts?: number;
-  avatar?: string;
-  avatarAlt?: string;
-  menuIcon?: ReactNode;
-  likeIcon?: ReactNode;
-  commentIcon?: ReactNode;
-  repostIcon?: ReactNode;
-  sendIcon?: ReactNode;
-  onLike?: () => void;
-  onComment?: () => void;
-  onRepost?: () => void;
-  onSend?: () => void;
-} & ComponentPropsWithoutRef<"div">>;
+export type LinkedInPostCardProps = Readonly<
+  {
+    username?: string;
+    headline?: string;
+    timestamp?: string;
+    content?: string;
+    hashtags?: string;
+    websiteName?: string;
+    websiteDescription?: string;
+    reactions?: number;
+    comments?: number;
+    reposts?: number;
+    avatar?: string;
+    avatarAlt?: string;
+    menuIcon?: ReactNode;
+    likeIcon?: ReactNode;
+    commentIcon?: ReactNode;
+    repostIcon?: ReactNode;
+    sendIcon?: ReactNode;
+    onLike?: () => void;
+    onComment?: () => void;
+    onRepost?: () => void;
+    onSend?: () => void;
+  } & ComponentPropsWithoutRef<"div">
+>;
 
 // Production-ready Linked In Post component — styled with Tailwind CSS.
 export const LinkedInPostCard = forwardRef<

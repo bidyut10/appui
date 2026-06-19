@@ -3,10 +3,12 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
 
-export type FilmStripCardProps = Readonly<{
-  frames?: string[];
-  label?: string;
-} & ComponentPropsWithoutRef<"div">>;
+export type FilmStripCardProps = Readonly<
+  {
+    frames?: string[];
+    label?: string;
+  } & ComponentPropsWithoutRef<"div">
+>;
 
 const defaultFrames = [
   "/wallpaper-3.png",

@@ -504,8 +504,8 @@ function YearDropdown({ years, value, onChange }: YearDropdownProps) {
       </button>
 
       {open ? (
-        <div className="absolute top-[calc(100%-1px)] right-0 left-0 z-10 overflow-hidden rounded-b-md border border-neutral-200 border-t-0 bg-white shadow-sm">
-          <ul className="max-h-32 overflow-y-auto py-0.5 scrollbar-thin">
+        <div className="absolute top-[calc(100%-1px)] right-0 left-0 z-10 overflow-hidden rounded-b-md border border-t-0 border-neutral-200 bg-white shadow-sm">
+          <ul className="max-h-32 scrollbar-thin overflow-y-auto py-0.5">
             {years.map((year) => {
               const selected = year === value;
               return (

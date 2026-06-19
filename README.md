@@ -154,18 +154,48 @@ import { MyNewCard } from "@/components/cards/my-new-card";
 export const showcaseRows = [
   // triple row
   [
-    c("my-new-card", <MyNewCard />, "components/cards/my-new-card.tsx", "MyNewCard"),
-    c("instagram-post", <InstagramPostCard />, "components/cards/instagram-post-card.tsx", "InstagramPostCard"),
-    c("threads-post", <ThreadsPostCard />, "components/cards/threads-post-card.tsx", "ThreadsPostCard"),
+    c(
+      "my-new-card",
+      <MyNewCard />,
+      "components/cards/my-new-card.tsx",
+      "MyNewCard",
+    ),
+    c(
+      "instagram-post",
+      <InstagramPostCard />,
+      "components/cards/instagram-post-card.tsx",
+      "InstagramPostCard",
+    ),
+    c(
+      "threads-post",
+      <ThreadsPostCard />,
+      "components/cards/threads-post-card.tsx",
+      "ThreadsPostCard",
+    ),
   ],
   // double row
   [
-    c("instagram-post", <InstagramPostCard />, "components/cards/instagram-post-card.tsx", "InstagramPostCard"),
-    c("threads-post", <ThreadsPostCard />, "components/cards/threads-post-card.tsx", "ThreadsPostCard"),
+    c(
+      "instagram-post",
+      <InstagramPostCard />,
+      "components/cards/instagram-post-card.tsx",
+      "InstagramPostCard",
+    ),
+    c(
+      "threads-post",
+      <ThreadsPostCard />,
+      "components/cards/threads-post-card.tsx",
+      "ThreadsPostCard",
+    ),
   ],
   // single row
   [
-    c("github-contribution", <GithubContributionCard />, "components/github/github-contribution.tsx", "GithubContributionCard"),
+    c(
+      "github-contribution",
+      <GithubContributionCard />,
+      "components/github/github-contribution.tsx",
+      "GithubContributionCard",
+    ),
   ],
 ];
 ```

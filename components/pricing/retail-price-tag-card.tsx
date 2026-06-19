@@ -2,13 +2,15 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
 
-export type RetailPriceTagCardProps = Readonly<{
-  productName?: string;
-  price?: string;
-  originalPrice?: string;
-  sku?: string;
-  discount?: string;
-} & ComponentPropsWithoutRef<"div">>;
+export type RetailPriceTagCardProps = Readonly<
+  {
+    productName?: string;
+    price?: string;
+    originalPrice?: string;
+    sku?: string;
+    discount?: string;
+  } & ComponentPropsWithoutRef<"div">
+>;
 
 const BARCODE_SLOTS = [
   "barcode-01",

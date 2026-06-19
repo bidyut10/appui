@@ -17,12 +17,14 @@ export type DiscordMessage = {
   roleColor?: string;
 };
 
-export type DiscordChatCardProps = Readonly<{
-  channel?: string;
-  server?: string;
-  messages?: DiscordMessage[];
-  onSend?: (text: string) => void;
-} & ComponentPropsWithoutRef<"div">>;
+export type DiscordChatCardProps = Readonly<
+  {
+    channel?: string;
+    server?: string;
+    messages?: DiscordMessage[];
+    onSend?: (text: string) => void;
+  } & ComponentPropsWithoutRef<"div">
+>;
 
 const defaultMessages: DiscordMessage[] = [
   {

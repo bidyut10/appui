@@ -7,16 +7,18 @@ import { cn } from "@/lib/cn";
 import { Github } from "@/icons/brands/github";
 import { Star } from "@/icons/elements/star";
 
-export type GitHubRepoCardProps = Readonly<{
-  owner?: string;
-  name?: string;
-  description?: string;
-  language?: string;
-  languageColor?: string;
-  stars?: number;
-  forks?: number;
-  onStar?: (starred: boolean) => void;
-} & ComponentPropsWithoutRef<"div">>;
+export type GitHubRepoCardProps = Readonly<
+  {
+    owner?: string;
+    name?: string;
+    description?: string;
+    language?: string;
+    languageColor?: string;
+    stars?: number;
+    forks?: number;
+    onStar?: (starred: boolean) => void;
+  } & ComponentPropsWithoutRef<"div">
+>;
 
 // Production-ready Git Hub Repo component — styled with Tailwind CSS.
 export const GitHubRepoCard = forwardRef<HTMLDivElement, GitHubRepoCardProps>(

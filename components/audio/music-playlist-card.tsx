@@ -15,14 +15,16 @@ export type PlaylistTrack = {
   duration: string;
 };
 
-export type MusicPlaylistCardProps = Readonly<{
-  coverImage?: string;
-  playlistType?: string;
-  title?: string;
-  songCount?: string;
-  totalDuration?: string;
-  tracks?: PlaylistTrack[];
-} & ComponentPropsWithoutRef<"div">>;
+export type MusicPlaylistCardProps = Readonly<
+  {
+    coverImage?: string;
+    playlistType?: string;
+    title?: string;
+    songCount?: string;
+    totalDuration?: string;
+    tracks?: PlaylistTrack[];
+  } & ComponentPropsWithoutRef<"div">
+>;
 
 // Production-ready Music Playlist component — styled with Tailwind CSS.
 export const MusicPlaylistCard = forwardRef<

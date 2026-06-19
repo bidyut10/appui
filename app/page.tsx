@@ -21,7 +21,9 @@ export default function Home() {
           >
             nexticons.in
           </a>
-          {". Click the arrow on a box to copy the code — I'm still adding more."}
+          {
+            ". Click the arrow on a box to copy the code — I'm still adding more."
+          }
         </p>
         <p className="mt-2 max-w-xl text-sm text-neutral-500">
           Made by{" "}
@@ -43,10 +45,7 @@ export default function Home() {
             className="flex w-full min-w-0 flex-col gap-3 min-[1194px]:flex-row min-[1194px]:gap-4"
           >
             {row.map((item) => (
-              <Box
-                key={item.slug}
-                detailHref={`/components/${item.slug}`}
-              >
+              <Box key={item.slug} detailHref={`/components/${item.slug}`}>
                 {item.preview}
               </Box>
             ))}

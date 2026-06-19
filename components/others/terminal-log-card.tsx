@@ -11,12 +11,14 @@ export type TerminalLogLine = {
   text: string;
 };
 
-export type TerminalLogCardProps = Readonly<{
-  title?: string;
-  prompt?: string;
-  lines?: TerminalLogLine[];
-  status?: string;
-} & ComponentPropsWithoutRef<"div">>;
+export type TerminalLogCardProps = Readonly<
+  {
+    title?: string;
+    prompt?: string;
+    lines?: TerminalLogLine[];
+    status?: string;
+  } & ComponentPropsWithoutRef<"div">
+>;
 
 const defaultLines: TerminalLogLine[] = [
   { type: "cmd", text: "npx appui add metric-card" },

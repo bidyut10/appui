@@ -185,9 +185,7 @@ export const UserMenuDropdown = forwardRef<
             }}
             className={cn(
               "group inline-flex h-12 cursor-pointer items-center gap-3 rounded-full border bg-white pr-4 pl-1.5 transition-all duration-300",
-              open
-                ? "border-neutral-200"
-                : "border-neutral-100",
+              open ? "border-neutral-200" : "border-neutral-100",
             )}
           >
             <div className="relative size-9 overflow-hidden rounded-full border-2 border-neutral-100">

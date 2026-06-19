@@ -11,13 +11,15 @@ import { cn } from "@/lib/cn";
 
 import { Signature } from "@/icons/activity/signature";
 
-export type JournalWritingCardProps = Readonly<{
-  title?: string;
-  date?: string;
-  placeholder?: string;
-  defaultText?: string;
-  onChange?: (text: string) => void;
-} & ComponentPropsWithoutRef<"div">>;
+export type JournalWritingCardProps = Readonly<
+  {
+    title?: string;
+    date?: string;
+    placeholder?: string;
+    defaultText?: string;
+    onChange?: (text: string) => void;
+  } & ComponentPropsWithoutRef<"div">
+>;
 
 // Production-ready Journal Writing component — styled with Tailwind CSS.
 export const JournalWritingCard = forwardRef<

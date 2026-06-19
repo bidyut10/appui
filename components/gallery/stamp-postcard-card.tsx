@@ -3,15 +3,20 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
 
-export type StampPostcardCardProps = Readonly<{
-  message?: string;
-  location?: string;
-  stampValue?: string;
-  imageSrc?: string;
-} & ComponentPropsWithoutRef<"div">>;
+export type StampPostcardCardProps = Readonly<
+  {
+    message?: string;
+    location?: string;
+    stampValue?: string;
+    imageSrc?: string;
+  } & ComponentPropsWithoutRef<"div">
+>;
 
 // Production-ready Stamp Postcard component — styled with Tailwind CSS.
-export const StampPostcardCard = forwardRef<HTMLDivElement, StampPostcardCardProps>(
+export const StampPostcardCard = forwardRef<
+  HTMLDivElement,
+  StampPostcardCardProps
+>(
   (
     {
       className,

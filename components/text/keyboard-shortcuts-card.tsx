@@ -9,11 +9,13 @@ export type KeyboardShortcut = {
   label: string;
 };
 
-export type KeyboardShortcutsCardProps = Readonly<{
-  title?: string;
-  shortcuts?: KeyboardShortcut[];
-  hint?: string;
-} & ComponentPropsWithoutRef<"div">>;
+export type KeyboardShortcutsCardProps = Readonly<
+  {
+    title?: string;
+    shortcuts?: KeyboardShortcut[];
+    hint?: string;
+  } & ComponentPropsWithoutRef<"div">
+>;
 
 const defaultShortcuts: KeyboardShortcut[] = [
   { keys: ["⌘", "K"], label: "Open command palette" },

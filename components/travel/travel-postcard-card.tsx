@@ -6,16 +6,18 @@ import { cn } from "@/lib/cn";
 import { Location } from "@/icons/activity/location";
 import { MapPinned } from "@/icons/activity/map-pinned";
 
-export type TravelPostcardCardProps = Readonly<{
-  image?: string;
-  title?: string;
-  message?: string;
-  location?: string;
-  country?: string;
-  date?: string;
-  author?: string;
-  icon?: React.ReactNode;
-} & ComponentPropsWithoutRef<"div">>;
+export type TravelPostcardCardProps = Readonly<
+  {
+    image?: string;
+    title?: string;
+    message?: string;
+    location?: string;
+    country?: string;
+    date?: string;
+    author?: string;
+    icon?: React.ReactNode;
+  } & ComponentPropsWithoutRef<"div">
+>;
 
 // Production-ready Travel Postcard component — styled with Tailwind CSS.
 export const TravelPostcardCard = forwardRef<

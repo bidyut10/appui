@@ -65,7 +65,7 @@ export function CopyCodeBlock({
 
       <div className="relative z-0 bg-neutral-900">
         <pre
-          className={`scrollbar-none select-none overflow-auto ${compact ? "max-h-36 sm:max-h-44" : "max-h-64 sm:max-h-112"}`}
+          className={`scrollbar-none overflow-auto select-none ${compact ? "max-h-36 sm:max-h-44" : "max-h-64 sm:max-h-112"}`}
         >
           <HighlightedCode code={code} />
         </pre>
@@ -124,8 +124,8 @@ export function SetupGuide({
       id: "cn",
       content: (
         <p>
-          Copy <InlineCode>lib/cn.ts</InlineCode> below. Skip if you already have{" "}
-          <InlineCode>cn()</InlineCode>.
+          Copy <InlineCode>lib/cn.ts</InlineCode> below. Skip if you already
+          have <InlineCode>cn()</InlineCode>.
         </p>
       ),
     },

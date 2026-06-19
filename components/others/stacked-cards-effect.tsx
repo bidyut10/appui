@@ -36,7 +36,9 @@ export const StackedCardsEffect = forwardRef<
             />
           </div>
           <div>
-            <p className="text-xs font-semibold text-neutral-900">Bidyut Kundu</p>
+            <p className="text-xs font-semibold text-neutral-900">
+              Bidyut Kundu
+            </p>
             <p className="text-[10px] text-neutral-400">3 new cards</p>
           </div>
         </div>

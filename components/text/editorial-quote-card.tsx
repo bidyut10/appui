@@ -4,13 +4,15 @@ import { cn } from "@/lib/cn";
 
 import { QuoteRight } from "@/icons/keys/quote-right";
 
-export type EditorialQuoteCardProps = Readonly<{
-  quote?: string;
-  author?: string;
-  role?: string;
-  issue?: string;
-  accentWord?: string;
-} & ComponentPropsWithoutRef<"div">>;
+export type EditorialQuoteCardProps = Readonly<
+  {
+    quote?: string;
+    author?: string;
+    role?: string;
+    issue?: string;
+    accentWord?: string;
+  } & ComponentPropsWithoutRef<"div">
+>;
 
 // Production-ready Editorial Quote component — styled with Tailwind CSS.
 export const EditorialQuoteCard = forwardRef<

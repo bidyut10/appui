@@ -5,11 +5,13 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { cn } from "@/lib/cn";
 import { QuoteRight } from "@/icons/keys/quote-right";
 
-export type DropCapEditorialCardProps = Readonly<{
-  dropCap?: string;
-  body?: string;
-  author?: string;
-} & ComponentPropsWithoutRef<"div">>;
+export type DropCapEditorialCardProps = Readonly<
+  {
+    dropCap?: string;
+    body?: string;
+    author?: string;
+  } & ComponentPropsWithoutRef<"div">
+>;
 
 // Production-ready Drop Cap Editorial component — styled with Tailwind CSS.
 export const DropCapEditorialCard = forwardRef<
