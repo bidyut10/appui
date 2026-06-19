@@ -4,13 +4,6 @@ import { cn } from "@/lib/cn";
 
 import { QrCode } from "@/icons/elements/qr-code";
 
-/**
- * Thermal receipt card built with Next.js, React,
- * TypeScript, and Tailwind CSS.
- *
- * Replace the demo content with your own data.
- * Need icons? Visit nexticons.in for free copy-paste icons.
- */
 export type ThermalReceiptItem = Readonly<{
   name: string;
   price: string;
@@ -60,7 +53,7 @@ export const ThermalReceiptCard = forwardRef<
     <div
       ref={ref}
       data-slot="thermal-receipt-card"
-      className={cn("w-[220px] font-mono sm:max-w-[200px]", className)}
+      className={cn("w-55 font-mono sm:max-w-50", className)}
       {...props}
     >
       <div className="relative bg-[#faf8f2] px-4 py-5 text-neutral-800 shadow-md">
