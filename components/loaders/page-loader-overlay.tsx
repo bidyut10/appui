@@ -1,5 +1,6 @@
 import { Loader } from "@/icons/elements/Loader";
 
+/** Full-screen loader used during route transitions and dashboard fetches. */
 export function PageLoaderOverlay() {
   return (
     <div

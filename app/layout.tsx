@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
 
+import { AnalyticsTracker } from "@/components/analytics/tracker";
 import { NavigationLoader } from "@/app/navigation-loader";
 import { ScrollToTopButton } from "@/app/scroll-to-top-button";
 import { siteConfig } from "@/lib/site";
@@ -129,6 +130,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <AnalyticsTracker />
         <NavigationLoader />
         <ScrollToTopButton />
       </body>

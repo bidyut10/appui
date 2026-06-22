@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
-import { PageLoaderOverlay } from "@/app/page-loader-overlay";
+import { PageLoaderOverlay } from "@/components/loaders/page-loader-overlay";
 
 const SHOW_AFTER_MS = 300;
 
