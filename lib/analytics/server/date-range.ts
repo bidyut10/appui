@@ -1,5 +1,6 @@
 /**
  * Parses optional ?from=YYYY-MM-DD&to=YYYY-MM-DD query params for the dashboard.
+ *
  * When both are omitted, callers treat the range as "all time".
  */
 
@@ -52,6 +53,7 @@ export function parseDateRange(searchParams: URLSearchParams): DateRange | null 
   return { from: rangeFrom, to: rangeTo };
 }
 
+// Shown at the top of the dashboard when a date filter is active. 
 export function formatPeriodLabel(range: DateRange | null): string {
   if (!range) return "All time";
 
@@ -70,7 +72,7 @@ export function formatPeriodLabel(range: DateRange | null): string {
   return `${formatter.format(range.from)} – ${formatter.format(range.to)}`;
 }
 
-/** MongoDB match object for a Date field within the selected range. */
+// MongoDB $match fragment for a Date field within the selected range.
 export function timestampMatch(
   field: string,
   range: DateRange | null,

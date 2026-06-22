@@ -4,6 +4,6 @@ import { DashboardLoginForm } from "@/app/dashboard/_components/dashboard-login-
 
 export function DashboardLoginGate() {
   return (
-    <DashboardLoginForm onSuccess={() => window.location.reload()} />
+    <DashboardLoginForm onSuccess={() => globalThis.location.reload()} />
   );
 }

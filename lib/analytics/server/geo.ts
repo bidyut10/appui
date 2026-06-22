@@ -1,4 +1,9 @@
-/** Resolves visitor location from Vercel geo headers with readable labels. */
+/**
+ * Visitor location from Vercel — country / region / city only, no IP storage.
+ *
+ * On Vercel we try @vercel/functions geolocation first, then raw headers.
+ * Locally everything shows as LOCAL so the dashboard still makes sense in dev.
+ */
 import { geolocation } from "@vercel/functions";
 
 import { LOCAL_GEO } from "@/lib/analytics/constants";
@@ -65,6 +70,7 @@ export function geoFromRequest(request: Request): GeoLocation {
 
 const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
 
+// Human label for a country code in dashboard tables.
 export function formatCountry(code: string): string {
   if (code === "LOCAL") return "Local development";
   if (code === "Unknown") return "Unknown";
@@ -76,6 +82,7 @@ export function formatCountry(code: string): string {
   }
 }
 
+// Human label for a region row (often a state/province code).
 export function formatRegion(country: string, region: string): string {
   if (country === "LOCAL") return "Local development";
   if (region === "—" || region === "Unknown") {

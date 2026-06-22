@@ -8,7 +8,7 @@ type DashboardShellProps = Readonly<{
   children: ReactNode;
 }>;
 
-/** Shared layout shell — mirrors the main site nav and width. */
+// Shared layout shell — mirrors the main site nav and width.
 export function DashboardShell({ children }: DashboardShellProps) {
   return (
     <div className="flex min-h-screen w-full flex-col items-center px-3 pb-12 selection:bg-neutral-800 selection:text-white sm:px-4">

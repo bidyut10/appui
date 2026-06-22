@@ -1,16 +1,21 @@
+/** 
+ * TypeScript shapes shared between the tracker, API routes, and dashboard.
+ */
+
 export type AnalyticsEventType =
   | "pageview"
   | "component_click"
   | "heartbeat"
   | "leave";
 
+// Country / region / city attached to each stored event. No IPs saved.
 export type GeoLocation = {
   country: string;
   region: string;
   city: string;
 };
 
-/** Payload sent from the browser tracker to POST /api/analytics/track */
+// Body the browser posts to POST /api/analytics/track
 export type TrackPayload = {
   type: AnalyticsEventType;
   sessionId: string;
@@ -20,7 +25,7 @@ export type TrackPayload = {
   durationSec?: number;
 };
 
-/** Response shape for GET /api/analytics/dashboard */
+// JSON returned by GET /api/analytics/dashboard
 export type DashboardStats = {
   liveUsers: number;
   pageViews: number;

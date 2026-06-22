@@ -45,12 +45,16 @@ app/
   Box.tsx                 Preview wrapper for the grid
   globals.css             Tailwind v4 import
   components/[slug]/      Detail + copy-code pages
+  dashboard/              Password-protected analytics UI (/dashboard)
+  api/analytics/          track, auth, dashboard API routes
   robots.ts               Robots.txt
   sitemap.ts              Sitemap
   manifest.ts             Web app manifest
 
 components/
   activity/               Focus, DND widgets
+  analytics/
+    tracker.tsx           Invisible pageview / heartbeat tracker
   audio/                  Recorders, earbuds, voice assistant
   battery/                Battery face widget
   bluetooth/              Bluetooth toggle widget
@@ -60,6 +64,8 @@ components/
   compass/                Compass widget
   dropdowns/              User menu, context menu
   github/                 Contribution graph card
+  loaders/
+    page-loader-overlay.tsx  Full-screen loader (dashboard + nav)
   map-location/           iOS map location widget
   mockups/                Phone, laptop, browser frames
   notifications/          Apple-style notification banner
@@ -80,6 +86,7 @@ lib/
   cn.ts                   cn() — clsx + tailwind-merge
   utils.ts                Re-exports cn (legacy import path)
   site.ts                 Site name, URL, SEO constants
+  analytics/              Self-hosted MongoDB analytics (see below)
   showcase/
     showcase.tsx          ← edit this: imports + showcaseRows
     server.ts             copy-code file reader (don't edit)
@@ -201,6 +208,40 @@ export const showcaseRows = [
 ```
 
 Each inner array = one row (1, 2, or 3 items). Import at the top, add `c(...)` to a row. Nothing else to update.
+
+## Analytics
+
+Privacy-first, self-hosted analytics — no third-party scripts. Events are stored in your own MongoDB Atlas database and viewed at `/dashboard` (password-protected, not indexed).
+
+### Setup
+
+Add to `.env.local` (see `.env.example`):
+
+```env
+MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/dbname
+ANALYTICS_DASHBOARD_SECRET=choose-a-long-random-password
+```
+
+Deploy with those env vars on Vercel. In Atlas, allow `0.0.0.0/0` under Network Access so serverless functions can connect.
+
+### What is tracked
+
+- Page views on public routes (debounced)
+- Component card clicks from the homepage grid
+- Sparse heartbeats while a tab is visible (~every 3 minutes)
+- Session duration when the user leaves the tab
+
+Anonymous `visitorId` and per-tab `sessionId` only. Country / region / city from Vercel geo — **no IP addresses stored**. `/dashboard` and `/api/*` are excluded.
+
+### Dashboard
+
+Open `/dashboard` and sign in with `ANALYTICS_DASHBOARD_SECRET`. Filter by All time, Today, 7d, 30d, or a custom date range. "Live users" always reflects the last 5 minutes.
+
+### Code layout
+
+Logic lives in `lib/analytics/` (`client/` for browser helpers, `server/` for API + MongoDB). The invisible tracker is `components/analytics/tracker.tsx`, mounted in the root layout.
+
+Full details: [`lib/analytics/README.md`](lib/analytics/README.md).
 
 ## Project links
 

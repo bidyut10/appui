@@ -9,14 +9,16 @@ import {
   formatPeriodLabel,
   timestampMatch,
   type DateRange,
-} from "@/lib/analytics/date-range";
-import { getAnalyticsDb } from "@/lib/analytics/db";
+} from "@/lib/analytics/server/date-range";
+import { getAnalyticsDb } from "@/lib/analytics/server/connection/db";
 import type { DashboardStats } from "@/lib/analytics/types";
 import { getAllShowcaseSlugs } from "@/lib/showcase";
 
 /**
- * Builds dashboard aggregates. When range is null, stats cover all stored data.
- * Live users are always real-time (last 5 minutes), regardless of the filter.
+ * Builds all dashboard aggregates in parallel.
+ *
+ * When range is null, stats cover all stored data. "Live users" always uses
+ * the last 5 minutes regardless of the date filter — that's intentional.
  */
 export async function getDashboardStats(
   range: DateRange | null,

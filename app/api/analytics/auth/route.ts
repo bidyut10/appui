@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 
-import { authCookieOptions, verifyDashboardPassword } from "@/lib/analytics/auth";
-import { isAnalyticsConfigured } from "@/lib/analytics/db";
+import {
+  authCookieOptions,
+  isAnalyticsConfigured,
+  verifyDashboardPassword,
+} from "@/lib/analytics/server";
 
 export async function POST(request: Request) {
   if (!isAnalyticsConfigured()) {

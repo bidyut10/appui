@@ -1,10 +1,16 @@
 /**
- * Analytics module — server utilities and shared types.
- * Client tracker lives in @/components/analytics/tracker.
+ * Analytics module entry — shared types and convenient server re-exports.
+ *
+ * Browser code should import from @/lib/analytics/client instead.
+ * React UI for tracking lives in @/components/analytics/tracker.
  */
 
 export type { DashboardStats, GeoLocation, TrackPayload } from "./types";
-export type { DateRange } from "./date-range";
-export { parseDateRange, formatPeriodLabel } from "./date-range";
-export { isAnalyticsConfigured, getAnalyticsDb } from "./db";
-export { formatCountry, formatRegion } from "./geo";
+export type { DateRange } from "./server/date-range";
+export { parseDateRange, formatPeriodLabel } from "./server/date-range";
+export {
+  formatCountry,
+  formatRegion,
+  getAnalyticsDb,
+  isAnalyticsConfigured,
+} from "./server";

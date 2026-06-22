@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type SubmitEvent } from "react";
 
 import { CrosshairFrame } from "@/app/crosshair-frame";
 
@@ -13,7 +13,7 @@ export function DashboardLoginForm({ onSuccess }: DashboardLoginFormProps) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function onSubmit(event: React.FormEvent) {
+  async function onSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
     setLoading(true);
     setError("");

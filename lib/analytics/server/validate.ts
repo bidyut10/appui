@@ -1,4 +1,9 @@
-/** Validates incoming track payloads before they touch the database. */
+/**
+ * Validates incoming track payloads before they touch the database.
+ *
+ * We reject malformed IDs, paths outside the public site, and oversized batches
+ * so the track endpoint can't be abused as a generic write sink.
+ */
 import type { TrackPayload } from "@/lib/analytics/types";
 import { MAX_BATCH_EVENTS } from "@/lib/analytics/constants";
 
@@ -56,6 +61,7 @@ export function parseTrackPayload(body: unknown): TrackPayload | null {
   return payload;
 }
 
+// Accepts a single event or { events: [...] } from sendBeacon batches.
 export function parseTrackPayloads(body: unknown): TrackPayload[] {
   if (!body || typeof body !== "object") return [];
 

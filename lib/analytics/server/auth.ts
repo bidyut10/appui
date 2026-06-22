@@ -1,4 +1,10 @@
-import { createHash, timingSafeEqual } from "crypto";
+/**
+ * Password gate for /dashboard.
+ *
+ * The cookie stores a SHA-256 hash of ANALYTICS_DASHBOARD_SECRET — not the raw
+ * password — so a leaked cookie value still doesn't reveal the secret.
+ */
+import { createHash, timingSafeEqual } from "node:crypto";
 
 import { AUTH_COOKIE } from "@/lib/analytics/constants";
 

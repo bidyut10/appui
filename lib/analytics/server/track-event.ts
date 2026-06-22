@@ -1,11 +1,16 @@
-/** Persists analytics events and keeps session documents up to date. */
+/**
+ * Writes analytics events to MongoDB and keeps session documents in sync.
+ *
+ * Sessions are upserted on every event so "live users" can query lastActiveAt.
+ * Heartbeats are throttled server-side so tabs polling every 3 min don't spam writes.
+ */
 import {
   COMPONENT_CLICKS,
   HEARTBEAT_SERVER_SKIP_MS,
   PAGE_VIEWS,
   SESSIONS,
 } from "@/lib/analytics/constants";
-import { getAnalyticsDb } from "@/lib/analytics/db";
+import { getAnalyticsDb } from "@/lib/analytics/server/connection/db";
 import type { GeoLocation, TrackPayload } from "@/lib/analytics/types";
 
 async function touchSession(

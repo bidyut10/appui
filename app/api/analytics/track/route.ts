@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 
-import { geoFromRequest } from "@/lib/analytics/geo";
-import { trackEvents } from "@/lib/analytics/track-event";
-import { parseTrackPayloads } from "@/lib/analytics/validate";
-import { getAnalyticsDb } from "@/lib/analytics/db";
+import {
+  geoFromRequest,
+  getAnalyticsDb,
+  parseTrackPayloads,
+  trackEvents,
+} from "@/lib/analytics/server";
 
 export async function POST(request: Request) {
   let body: unknown;

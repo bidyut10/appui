@@ -12,7 +12,7 @@ import {
   StatPanel,
 } from "@/app/dashboard/_components/dashboard-panels";
 import { PageLoaderOverlay } from "@/components/loaders/page-loader-overlay";
-import { formatCountry, formatRegion } from "@/lib/analytics/geo";
+import { formatCountry, formatRegion } from "@/lib/analytics/server/geo";
 import type { DashboardStats } from "@/lib/analytics/types";
 
 function formatDuration(seconds: number): string {
@@ -31,6 +31,11 @@ function formatUpdatedAt(date: Date): string {
   });
 }
 
+async function signOut(): Promise<void> {
+  await fetch("/api/analytics/auth", { method: "DELETE" });
+  globalThis.location.reload();
+}
+
 export function DashboardView() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [error, setError] = useState("");
@@ -44,17 +49,14 @@ export function DashboardView() {
   const [query, setQuery] = useState("");
   const hasDataRef = useRef(false);
 
-  const loadStats = useCallback(async (manual = false, nextQuery = query) => {
-    if (hasDataRef.current || manual) setRefreshing(true);
-    else setLoading(true);
-
+  const loadStats = useCallback(async (nextQuery: string) => {
     try {
       const response = await fetch(`/api/analytics/dashboard${nextQuery}`, {
         cache: "no-store",
       });
 
       if (response.status === 401) {
-        window.location.reload();
+        globalThis.location.reload();
         return;
       }
 
@@ -77,26 +79,28 @@ export function DashboardView() {
       setLoading(false);
       setRefreshing(false);
     }
-  }, [query]);
+  }, []);
 
   useEffect(() => {
-    void loadStats(false, query);
+    void loadStats(query);
   }, [query, loadStats]);
+
+  function refreshStats() {
+    setRefreshing(true);
+    void loadStats(query);
+  }
 
   function applyPreset(nextPreset: string) {
     setPreset(nextPreset);
     const nextQuery = buildQueryFromPreset(nextPreset, from, to);
+    if (hasDataRef.current) setRefreshing(true);
     setQuery(nextQuery);
   }
 
   function applyCustomRange() {
     setPreset("custom");
+    if (hasDataRef.current) setRefreshing(true);
     setQuery(buildQueryFromPreset("custom", from, to));
-  }
-
-  async function signOut() {
-    await fetch("/api/analytics/auth", { method: "DELETE" });
-    window.location.reload();
   }
 
   if (loading && !stats) {
@@ -138,7 +142,7 @@ export function DashboardView() {
             <div className="flex flex-wrap items-center gap-2">
               <button
                 type="button"
-                onClick={() => void loadStats(true)}
+                onClick={refreshStats}
                 disabled={refreshing}
                 className="border border-neutral-200 bg-white px-4 py-2 font-mono text-xs text-neutral-700 transition-colors hover:border-neutral-300 hover:text-neutral-900 disabled:opacity-60"
               >

@@ -4,9 +4,8 @@ import { cookies } from "next/headers";
 import { DashboardLoginGate } from "@/app/dashboard/_components/dashboard-login-gate";
 import { DashboardShell } from "@/app/dashboard/_components/dashboard-shell";
 import { DashboardView } from "@/app/dashboard/_components/dashboard-view";
-import { isValidAuthToken } from "@/lib/analytics/auth";
 import { AUTH_COOKIE } from "@/lib/analytics/constants";
-import { isAnalyticsConfigured } from "@/lib/analytics/db";
+import { isAnalyticsConfigured, isValidAuthToken } from "@/lib/analytics/server";
 
 export const metadata: Metadata = {
   title: "Analytics Dashboard",

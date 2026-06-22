@@ -1,9 +1,14 @@
 import { NextResponse } from "next/server";
 
-import { isValidAuthToken, readAuthCookie } from "@/lib/analytics/auth";
-import { getMongoConnectionHint, getAnalyticsDb, isAnalyticsConfigured } from "@/lib/analytics/db";
-import { parseDateRange } from "@/lib/analytics/date-range";
-import { getDashboardStats } from "@/lib/analytics/get-stats";
+import {
+  getAnalyticsDb,
+  getDashboardStats,
+  getMongoConnectionHint,
+  isAnalyticsConfigured,
+  isValidAuthToken,
+  parseDateRange,
+  readAuthCookie,
+} from "@/lib/analytics/server";
 
 export async function GET(request: Request) {
   if (!isAnalyticsConfigured()) {

@@ -1,14 +1,13 @@
 "use client";
 
 /**
- * Browser-side analytics helpers.
- * Events are sent with sendBeacon when possible so navigation is not blocked.
+ * Browser-side tracking helpers.
+ *
+ * We keep IDs anonymous (visitorId in localStorage, sessionId per tab) and
+ * prefer sendBeacon so navigation never waits on analytics.
  */
 
-const VISITOR_KEY = "oui_vid";
-const SESSION_KEY = "oui_sid";
-
-const HEARTBEAT_MS = 3 * 60 * 1000;
+const VISITOR_KEY = "oui_vid";const SESSION_KEY = "oui_sid";
 const PAGEVIEW_DEBOUNCE_MS = 800;
 
 function randomId(): string {
@@ -18,7 +17,7 @@ function randomId(): string {
   return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 11)}`;
 }
 
-/** Persistent anonymous id — counts unique visitors across return visits. */
+// Same person returning later — used for unique visitor counts.
 export function getVisitorId(): string {
   let id = localStorage.getItem(VISITOR_KEY);
   if (!id) {
@@ -28,7 +27,7 @@ export function getVisitorId(): string {
   return id;
 }
 
-/** Per-tab session id — resets when the tab is closed. */
+// One browsing session per tab — resets when the tab closes.
 export function getSessionId(): string {
   let id = sessionStorage.getItem(SESSION_KEY);
   if (!id) {
@@ -119,5 +118,3 @@ export function trackLeave(path: string, durationSec: number): void {
     durationSec,
   });
 }
-
-export const analyticsHeartbeatMs = HEARTBEAT_MS;
