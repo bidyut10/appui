@@ -1,50 +1,125 @@
 import React from "react";
 
-const CROSSHAIR_LINE = {
-  light: "bg-neutral-300",
-  dark: "bg-neutral-600",
+const CROSSHAIR_BORDER = {
+  light: "border-neutral-300",
+  dark: "border-neutral-600",
 } as const;
 
-type CrosshairTone = keyof typeof CROSSHAIR_LINE;
+type CrosshairTone = keyof typeof CROSSHAIR_BORDER;
+
+const ARM = "h-3 w-3";
+
+function Corner({
+  className,
+  borderClassName,
+  verticalSide,
+  horizontalSide,
+}: Readonly<{
+  className: string;
+  borderClassName: string;
+  verticalSide: "border-l" | "border-r";
+  horizontalSide: "border-t" | "border-b";
+}>) {
+  return (
+    <>
+      <span
+        className={`absolute block ${ARM} w-0 ${verticalSide} ${borderClassName} ${className}`}
+      />
+      <span
+        className={`absolute block h-0 ${ARM} ${horizontalSide} ${borderClassName} ${className}`}
+      />
+    </>
+  );
+}
+
+function EdgeCross({
+  className,
+  borderClassName,
+  orientation,
+}: Readonly<{
+  className: string;
+  borderClassName: string;
+  orientation: "left" | "right" | "top" | "bottom";
+}>) {
+  if (orientation === "left" || orientation === "right") {
+    const verticalSide = orientation === "left" ? "border-l" : "border-r";
+
+    return (
+      <>
+        <span
+          className={`absolute block ${ARM} w-0 -mt-1.5 ${verticalSide} ${borderClassName} ${className}`}
+        />
+        <span
+          className={`absolute block h-0 ${ARM} -mt-px border-t ${borderClassName} ${className}`}
+        />
+      </>
+    );
+  }
+
+  const horizontalSide = orientation === "top" ? "border-t" : "border-b";
+
+  return (
+    <>
+      <span
+        className={`absolute block ${ARM} w-0 -ml-px border-l ${borderClassName} ${className}`}
+      />
+      <span
+        className={`absolute block h-0 ${ARM} -ml-1.5 ${horizontalSide} ${borderClassName} ${className}`}
+      />
+    </>
+  );
+}
 
 export function CrosshairOverlay({
   tone = "light",
 }: Readonly<{ tone?: CrosshairTone }>) {
-  const line = CROSSHAIR_LINE[tone];
+  const border = CROSSHAIR_BORDER[tone];
 
   return (
     <div className="pointer-events-none absolute inset-0 z-10" aria-hidden>
-      <span className={`absolute top-0 left-0 h-3 w-px ${line}`} />
-      <span className={`absolute top-0 left-0 h-px w-3 ${line}`} />
-      <span className={`absolute top-0 right-0 h-3 w-px ${line}`} />
-      <span className={`absolute top-0 right-0 h-px w-3 ${line}`} />
-      <span className={`absolute bottom-0 left-0 h-3 w-px ${line}`} />
-      <span className={`absolute bottom-0 left-0 h-px w-3 ${line}`} />
-      <span className={`absolute right-0 bottom-0 h-3 w-px ${line}`} />
-      <span className={`absolute right-0 bottom-0 h-px w-3 ${line}`} />
-      <span
-        className={`absolute top-1/2 left-0 h-3 w-px -translate-y-1/2 ${line}`}
+      <Corner
+        className="top-0 left-0"
+        borderClassName={border}
+        verticalSide="border-l"
+        horizontalSide="border-t"
       />
-      <span
-        className={`absolute top-1/2 left-0 h-px w-3 -translate-y-1/2 ${line}`}
+      <Corner
+        className="top-0 right-0"
+        borderClassName={border}
+        verticalSide="border-r"
+        horizontalSide="border-t"
       />
-      <span
-        className={`absolute top-1/2 right-0 h-3 w-px -translate-y-1/2 ${line}`}
+      <Corner
+        className="bottom-0 left-0"
+        borderClassName={border}
+        verticalSide="border-l"
+        horizontalSide="border-b"
       />
-      <span
-        className={`absolute top-1/2 right-0 h-px w-3 -translate-y-1/2 ${line}`}
+      <Corner
+        className="right-0 bottom-0"
+        borderClassName={border}
+        verticalSide="border-r"
+        horizontalSide="border-b"
       />
-      <span
-        className={`absolute top-0 left-1/2 h-3 w-px -translate-x-1/2 ${line}`}
+      <EdgeCross
+        className="top-1/2 left-0"
+        borderClassName={border}
+        orientation="left"
       />
-      <span
-        className={`absolute top-0 left-1/2 h-px w-3 -translate-x-1/2 ${line}`}
+      <EdgeCross
+        className="top-1/2 right-0"
+        borderClassName={border}
+        orientation="right"
       />
-      <span
-        className={`absolute bottom-0 left-1/2 h-3 w-px -translate-x-1/2 ${line}`}
+      <EdgeCross
+        className="top-0 left-1/2"
+        borderClassName={border}
+        orientation="top"
       />
-      <span
-        className={`absolute bottom-0 left-1/2 h-px w-3 -translate-x-1/2 ${line}`}
+      <EdgeCross
+        className="bottom-0 left-1/2"
+        borderClassName={border}
+        orientation="bottom"
       />
     </div>
   );

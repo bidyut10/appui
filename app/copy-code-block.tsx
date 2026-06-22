@@ -16,7 +16,6 @@ type CopyCodeBlockProps = Readonly<{
 export function CopyCodeBlock({
   code,
   filename,
-  hint,
   compact = false,
 }: CopyCodeBlockProps) {
   const [copied, setCopied] = useState(false);
@@ -46,12 +45,6 @@ export function CopyCodeBlock({
           {copied ? <Check size={14} className="text-green-400"/> : <Copy size={14} />}
         </button>
       </div>
-
-      {hint ? (
-        <p className="relative z-0 border-b border-neutral-800 px-3 py-1.5 font-mono text-[11px] text-neutral-500 sm:hidden">
-          {hint}
-        </p>
-      ) : null}
 
       <div className="relative z-0 bg-neutral-900">
         <pre

@@ -1,7 +1,7 @@
-import Link from "next/link";
 import React from "react";
 
 import { CrosshairOverlay } from "@/app/crosshair-frame";
+import { SaveScrollLink } from "@/app/save-scroll-link";
 import { ArrowRight } from "@/icons/actions/arrow-right";
 
 const BOX_PATTERN: React.CSSProperties = {
@@ -23,13 +23,13 @@ export const Box = ({ children, detailHref }: BoxProps) => {
       style={BOX_PATTERN}
     >
       {detailHref ? (
-        <Link
+        <SaveScrollLink
           href={detailHref}
           className="absolute top-3 right-3 z-20 flex h-8 w-8 items-center justify-center border border-neutral-200 bg-white text-neutral-500 transition-colors hover:text-neutral-900"
           aria-label="View component details"
         >
           <ArrowRight size={16} className="-rotate-45" />
-        </Link>
+        </SaveScrollLink>
       ) : null}
 
       <CrosshairOverlay tone="light" />

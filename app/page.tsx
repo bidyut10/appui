@@ -1,6 +1,7 @@
 import Image from "next/image";
 import AnnotatedParagraph from "./Annotatedparagraph";
 import { Box } from "./Box";
+import { ShowcaseScrollRestoration } from "./showcase-scroll-restoration";
 import { showcaseRows } from "@/lib/showcase/showcase";
 import oui from "@/public/opensourceui-logo.png"
 function rowKey(row: (typeof showcaseRows)[number]): string {
@@ -10,7 +11,8 @@ function rowKey(row: (typeof showcaseRows)[number]): string {
 export default function Home() {
   return (
     <div className="flex min-h-screen w-full min-w-0 flex-col items-center overflow-x-hidden px-3 pb-10 selection:bg-neutral-800 selection:text-white sm:px-4">
-      <nav className="w-full max-w-xl border-b border-neutral-100 px-4 py-4 md:px-0">
+      <ShowcaseScrollRestoration />
+      <nav className="w-full max-w-xl border-b border-neutral-100 px-4 py-4 md:px-0 select-none">
         <div className="flex w-full items-center justify-between">
           <Image src={oui} alt="opensource-ui-logo" width={20} />
 

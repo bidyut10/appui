@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
 
+import { NavigationLoader } from "@/app/navigation-loader";
+import { ScrollToTopButton } from "@/app/scroll-to-top-button";
 import { siteConfig } from "@/lib/site";
 
 const geistSans = Geist({
@@ -127,6 +129,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <NavigationLoader />
+        <ScrollToTopButton />
       </body>
     </html>
   );

@@ -39,6 +39,7 @@ export default async function ComponentDetailPage({ params }: Readonly<Props>) {
       <div className="mb-12 flex items-center justify-start gap-1 py-4 font-mono border-b border-neutral-100">
         <Link
           href="/"
+          scroll={false}
           className="inline-flex items-center gap-1 text-xs text-neutral-500 transition-colors select-none hover:text-neutral-900"
         >
           <House size={11} />
