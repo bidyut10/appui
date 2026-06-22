@@ -4,6 +4,8 @@
   --font-mono:
     var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
     Consolas, monospace;
+    --font-serif: var(--font-newsreader);
+     --font-sans: var(--font-geist-sans);
 }
 
 @layer utilities {

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 
-import { CrosshairFrame } from "@/app/crosshair-frame";
 import { Check } from "@/icons/activity/check";
 import { Copy } from "@/icons/activity/copy";
 import { HighlightedCode } from "@/lib/showcase/highlight-code";
@@ -33,27 +32,18 @@ export function CopyCodeBlock({
   }
 
   return (
-    <CrosshairFrame
-      tone="dark"
-      borderClassName="border-neutral-700"
-      className="bg-neutral-950"
-    >
-      <div className="relative z-0 flex items-center gap-2 border-b border-neutral-800 bg-neutral-950 py-2 pr-2 pl-3 sm:py-2.5 sm:pr-3 sm:pl-4">
+    <div className="bg-neutral-900">
+      <div className="relative z-0 flex items-center gap-2 border-b border-neutral-800 bg-neutral-900 py-2 pr-2 pl-3 sm:py-2.5 sm:pr-3 sm:pl-4">
         <p className="min-w-0 flex-1 truncate font-mono text-[11px] text-neutral-400 sm:text-xs">
           {filename}
         </p>
-        {hint ? (
-          <p className="hidden truncate font-mono text-[11px] text-neutral-600 sm:block sm:max-w-[45%] sm:text-xs">
-            {hint}
-          </p>
-        ) : null}
         <button
           type="button"
           onClick={handleCopy}
           aria-label={copied ? "Copied" : "Copy code"}
-          className="inline-flex size-8 shrink-0 items-center justify-center border border-neutral-700 bg-neutral-900 text-neutral-300 transition-colors hover:border-neutral-600 hover:bg-neutral-800 hover:text-white"
+          className="inline-flex size-8 shrink-0 items-center justify-center text-neutral-300 transition-colors hover:text-white cursor-pointer"
         >
-          {copied ? <Check size={14} /> : <Copy size={14} />}
+          {copied ? <Check size={14} className="text-green-400"/> : <Copy size={14} />}
         </button>
       </div>
 
@@ -70,7 +60,7 @@ export function CopyCodeBlock({
           <HighlightedCode code={code} />
         </pre>
       </div>
-    </CrosshairFrame>
+    </div>
   );
 }
 
@@ -114,7 +104,7 @@ export function SetupGuide({
     {
       id: "install",
       content: (
-        <div className="space-y-1.5">
+        <div className="space-y-1.5 font-serif text-lg">
           <p>Run in your terminal:</p>
           <CodeLine>npm install clsx tailwind-merge</CodeLine>
         </div>
@@ -123,7 +113,7 @@ export function SetupGuide({
     {
       id: "cn",
       content: (
-        <p>
+        <p className="font-serif text-lg">
           Copy <InlineCode>lib/cn.ts</InlineCode> below. Skip if you already
           have <InlineCode>cn()</InlineCode>.
         </p>
@@ -132,14 +122,14 @@ export function SetupGuide({
     {
       id: "component",
       content: (
-        <p>
+        <p className="font-serif text-lg">
           Copy <InlineCode>{componentFile}</InlineCode>. Replace{" "}
           <InlineCode>@/icons/...</InlineCode> with your icons (
           <a
             href="https://nexticons.in"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-neutral-700 underline decoration-neutral-300 underline-offset-2 hover:text-neutral-900"
+            className="cursor-pointer text-neutral-700 underline decoration-neutral-300 underline-offset-2 hover:text-neutral-900"
           >
             nexticons.in
           </a>
@@ -161,7 +151,9 @@ export function SetupGuide({
   return (
     <section className="border border-neutral-100">
       <div className="border-b border-neutral-100 px-4 py-3 sm:px-5">
-        <h2 className="text-sm font-medium text-neutral-900">How to use</h2>
+        <h2 className="font-serif text-lg font-medium text-neutral-900">
+          How to use
+        </h2>
       </div>
       <ol>
         {steps.map((step, index) => (

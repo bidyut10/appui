@@ -3,13 +3,14 @@ import { notFound } from "next/navigation";
 
 import { Box } from "@/app/Box";
 import { CopyCodeBlock, SetupGuide } from "@/app/copy-code-block";
-import { ArrowLeft } from "@/icons/actions/arrow-left";
 import {
   getAllShowcaseSlugs,
   getShowcaseEntry,
   readShowcaseSource,
 } from "@/lib/showcase";
 import type { Props } from "@/types/types";
+import { House } from "@/icons/elements/house";
+import { ChevronRight } from "@/icons/actions/chevron-right";
 
 export async function generateStaticParams() {
   return getAllShowcaseSlugs().map((slug) => ({ slug }));
@@ -34,23 +35,29 @@ export default async function ComponentDetailPage({ params }: Readonly<Props>) {
   const { cnSource, componentSource } = await readShowcaseSource(entry.file);
 
   return (
-    <div className="mx-auto min-h-screen w-full max-w-3xl min-w-0 px-3 py-8 selection:bg-neutral-800 selection:text-white sm:px-4 sm:py-10">
-      <Link
-        href="/"
-        className="mb-6 inline-flex items-center gap-0.5 text-xs font-semibold text-neutral-500 transition-colors select-none hover:text-neutral-900"
-      >
-        <ArrowLeft size={13} />
-        GO BACK
-      </Link>
-
-      <header className="mb-5 sm:mb-6">
-        <p className="mb-1 font-mono text-[11px] tracking-wide text-neutral-400 uppercase">
+    <div className="mx-auto min-h-screen w-full max-w-3xl min-w-0 px-3 pb-10 selection:bg-neutral-800 selection:text-white sm:px-4">
+      <div className="mb-12 flex items-center justify-start gap-1 py-4 font-mono border-b border-neutral-100">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1 text-xs text-neutral-500 transition-colors select-none hover:text-neutral-900"
+        >
+          <House size={11} />
+          Home
+        </Link>
+        <div className="inline-flex items-center gap-0.5 text-xs text-neutral-500 transition-colors select-none">
+          <ChevronRight size={15} />
+          Components
+        </div>
+        <div className="inline-flex items-center gap-0.5 text-xs text-neutral-500 transition-colors select-none">
+          <ChevronRight size={15} />
           {entry.category}
-        </p>
-        <h1 className="text-xl font-medium text-neutral-900 sm:text-2xl">
+        </div>
+      </div>
+      <header className="mb-5 font-serif sm:mb-6">
+        <h1 className="text-xl font-medium text-neutral-900">
           {entry.title}
         </h1>
-        <p className="mt-2 text-sm leading-relaxed text-neutral-500">
+        <p className="mt-2 text-lg leading-relaxed text-neutral-500">
           {entry.description}
         </p>
       </header>

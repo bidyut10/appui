@@ -1,24 +1,24 @@
 import { IconProps } from "@/types/types";
 
-export const Heart = ({
+export const Sparkle = ({
   size = 14,
+  color = "currentColor",
   className,
   ...props
 }: IconProps) => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
     width={size}
     height={size}
+    viewBox="0 0 24 24"
     fill="none"
     className={className}
+    aria-hidden="true"
     {...props}
   >
     <path
-      d="M12 20.2c-3.6-2.6-8-6-8.6-10.2C2.9 6.7 5 4.4 7.7 4.6c1.8.1 3.1 1.4 4.3 3
-           1.1-1.7 2.4-3 4.2-3.1 2.7-.2 4.9 2 4.4 5.4-.6 4.1-5 7.6-8.6 10.3Z"
-      stroke="currentColor"
-      strokeWidth={1.7}
+      d="M12 2.5 L13.6 9.6 L21 12 L13.6 14.4 L12 21.5 L10.4 14.4 L3 12 L10.4 9.6 Z"
+      stroke={color}
+      strokeWidth={1.6}
       strokeLinecap="round"
       strokeLinejoin="round"
       filter="url(#hd-rough-soft)"
