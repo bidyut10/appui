@@ -1,8 +1,15 @@
 # opensourceui
 
+[![Live site](https://img.shields.io/badge/live-opensourceui.in-000000?style=flat-square)](https://opensourceui.in)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](./LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org)
+[![Deploy with Vercel](https://img.shields.io/badge/deploy-Vercel-000000?style=flat-square&logo=vercel)](https://vercel.com/new/clone?repository-url=https://github.com/bidyut10/appui)
+
 Live site: [opensourceui.in](https://opensourceui.in)
 
-Components I built for my own apps—Next.js, Tailwind v4, icons from [nexticons.in](https://nexticons.in). Everything on the homepage runs live. Copy-paste source is on the way.
+Copy-paste UI components for React and Next.js — Next.js 16, Tailwind v4, icons from [nexticons.in](https://nexticons.in). Every component on the homepage runs live.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/bidyut10/appui)
 
 ## Why I built this
 
@@ -243,6 +250,28 @@ Logic lives in `lib/analytics/` (`client/` for browser helpers, `server/` for AP
 
 Full details: [`lib/analytics/README.md`](lib/analytics/README.md).
 
+Analytics is optional — the public site works without any env vars.
+
+## Deploy on Vercel
+
+This project is built for [Vercel](https://vercel.com). Connect the GitHub repo and deploy:
+
+1. Fork or clone [github.com/bidyut10/appui](https://github.com/bidyut10/appui)
+2. Import the project in [Vercel](https://vercel.com/new)
+3. Add env vars from `.env.example` only if you want the analytics dashboard
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/bidyut10/appui)
+
+## Contributing
+
+Contributions are welcome. See [CONTRIBUTING.md](./CONTRIBUTING.md) for setup, adding components, and PR guidelines.
+
+This project follows the [Contributor Covenant Code of Conduct](./CODE_OF_CONDUCT.md).
+
+## Security
+
+To report a vulnerability, see [SECURITY.md](./SECURITY.md). Do not open public issues for security problems.
+
 ## Project links
 
 - Website: [opensourceui.in](https://opensourceui.in)
@@ -251,6 +280,6 @@ Full details: [`lib/analytics/README.md`](lib/analytics/README.md).
 
 ## License
 
-Open source. Use in personal or commercial projects. Attribution is appreciated but not required.
+[MIT](./LICENSE) — free for personal and commercial use. Attribution is appreciated but not required.
 
-If something breaks in your setup, open an issue on GitHub.
+If something breaks in your setup, open an issue on [GitHub](https://github.com/bidyut10/appui/issues).

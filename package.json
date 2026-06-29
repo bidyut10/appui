@@ -1,7 +1,16 @@
 {
   "name": "appui",
   "version": "0.1.0",
-  "private": true,
+  "description": "Free open-source UI components for React and Next.js — live at opensourceui.in",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bidyut10/appui.git"
+  },
+  "homepage": "https://opensourceui.in",
+  "bugs": {
+    "url": "https://github.com/bidyut10/appui/issues"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
