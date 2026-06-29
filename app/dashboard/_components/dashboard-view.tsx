@@ -36,6 +36,29 @@ async function signOut(): Promise<void> {
   globalThis.location.reload();
 }
 
+async function fetchDashboardStats(
+  nextQuery: string,
+): Promise<DashboardStats> {
+  const response = await fetch(`/api/analytics/dashboard${nextQuery}`, {
+    cache: "no-store",
+  });
+
+  if (response.status === 401) {
+    globalThis.location.reload();
+    throw new Error("Unauthorized");
+  }
+
+  if (!response.ok) {
+    const data = (await response.json().catch(() => null)) as {
+      hint?: string;
+      error?: string;
+    } | null;
+    throw new Error(data?.hint ?? data?.error ?? "Could not load analytics.");
+  }
+
+  return (await response.json()) as DashboardStats;
+}
+
 export function DashboardView() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [error, setError] = useState("");
@@ -51,30 +74,16 @@ export function DashboardView() {
 
   const loadStats = useCallback(async (nextQuery: string) => {
     try {
-      const response = await fetch(`/api/analytics/dashboard${nextQuery}`, {
-        cache: "no-store",
-      });
-
-      if (response.status === 401) {
-        globalThis.location.reload();
-        return;
-      }
-
-      if (!response.ok) {
-        const data = (await response.json().catch(() => null)) as {
-          hint?: string;
-          error?: string;
-        } | null;
-        setError(data?.hint ?? data?.error ?? "Could not load analytics.");
-        return;
-      }
-
-      setStats((await response.json()) as DashboardStats);
+      const data = await fetchDashboardStats(nextQuery);
+      setStats(data);
       hasDataRef.current = true;
       setUpdatedAt(new Date());
       setError("");
-    } catch {
-      setError("Could not load analytics.");
+    } catch (err) {
+      if (err instanceof Error && err.message === "Unauthorized") return;
+      setError(
+        err instanceof Error ? err.message : "Could not load analytics.",
+      );
     } finally {
       setLoading(false);
       setRefreshing(false);
@@ -82,8 +91,34 @@ export function DashboardView() {
   }, []);
 
   useEffect(() => {
-    void loadStats(query);
-  }, [query, loadStats]);
+    let cancelled = false;
+
+    void (async () => {
+      try {
+        const data = await fetchDashboardStats(query);
+        if (cancelled) return;
+        setStats(data);
+        hasDataRef.current = true;
+        setUpdatedAt(new Date());
+        setError("");
+      } catch (err) {
+        if (cancelled) return;
+        if (err instanceof Error && err.message === "Unauthorized") return;
+        setError(
+          err instanceof Error ? err.message : "Could not load analytics.",
+        );
+      } finally {
+        if (!cancelled) {
+          setLoading(false);
+          setRefreshing(false);
+        }
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [query]);
 
   function refreshStats() {
     setRefreshing(true);

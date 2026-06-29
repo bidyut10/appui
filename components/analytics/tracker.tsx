@@ -23,7 +23,7 @@ function shouldTrack(pathname: string): boolean {
  */
 export function AnalyticsTracker() {
   const pathname = usePathname();
-  const enteredAtRef = useRef(Date.now());
+  const enteredAtRef = useRef(0);
   const lastPathRef = useRef(pathname);
 
   useEffect(() => {

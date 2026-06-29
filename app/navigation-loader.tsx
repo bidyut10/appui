@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import { PageLoaderOverlay } from "@/components/loaders/page-loader-overlay";
@@ -17,14 +17,14 @@ export function NavigationLoader() {
   const pendingRef = useRef(false);
   const showTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const clearShowTimer = () => {
+  const clearShowTimer = useCallback(() => {
     if (showTimerRef.current) {
       clearTimeout(showTimerRef.current);
       showTimerRef.current = null;
     }
-  };
+  }, []);
 
-  const startNavigation = () => {
+  const startNavigation = useCallback(() => {
     pendingRef.current = true;
     clearShowTimer();
 
@@ -33,9 +33,9 @@ export function NavigationLoader() {
         setVisible(true);
       }
     }, SHOW_AFTER_MS);
-  };
+  }, [clearShowTimer]);
 
-  const finishNavigation = () => {
+  const finishNavigation = useCallback(() => {
     pendingRef.current = false;
     clearShowTimer();
 
@@ -44,11 +44,11 @@ export function NavigationLoader() {
         setVisible(false);
       });
     });
-  };
+  }, [clearShowTimer]);
 
   useEffect(() => {
     finishNavigation();
-  }, [pathname]);
+  }, [pathname, finishNavigation]);
 
   useEffect(() => {
     const onClick = (event: MouseEvent) => {
@@ -86,7 +86,7 @@ export function NavigationLoader() {
       window.removeEventListener("popstate", onPopState);
       clearShowTimer();
     };
-  }, []);
+  }, [clearShowTimer, startNavigation]);
 
   if (!visible) return null;
 

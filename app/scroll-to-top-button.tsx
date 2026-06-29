@@ -13,10 +13,7 @@ export function ScrollToTopButton() {
   const isHome = pathname === "/";
 
   useEffect(() => {
-    if (!isHome) {
-      setVisible(false);
-      return;
-    }
+    if (!isHome) return;
 
     const onScroll = () => {
       setVisible(window.scrollY > SCROLL_THRESHOLD);
