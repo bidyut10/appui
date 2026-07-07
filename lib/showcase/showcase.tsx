@@ -392,7 +392,8 @@ export const showcaseRows = [
       "LaptopMockupCard",
       {
         description:
-          "MacBook Pro frame wrapping your screenshot — lid, hinge, and base labeled for realism. The standard way to show a dashboard in marketing.",
+          "MacBook Pro frame wrapping your screenshot — black lid and bezel with a gray outer frame and base. Pass variant=\"titanium\" for a titanium outer frame and base.",
+        usage: '<LaptopMockupCard variant="titanium" />',
       },
     ),
     c(
@@ -402,7 +403,9 @@ export const showcaseRows = [
       "PhoneMockupCard",
       {
         description:
-          "iPhone 15 Pro frame with Dynamic Island and a full-screen preview slot. Drop in any mobile UI and it instantly looks like a product shot.",
+          "iPhone 15 Pro frame with Dynamic Island and a full-screen preview slot. Pass variant for purple, orange, white, titanium, or cherry finishes. Use visibleRatio to crop from the top, and showDynamicIsland to toggle the island and camera.",
+        usage:
+          '<PhoneMockupCard variant="titanium" visibleRatio={2 / 3} showDynamicIsland={false} />',
       },
     ),
   ],
@@ -414,7 +417,9 @@ export const showcaseRows = [
       "BrowserMockupCard",
       {
         description:
-          "Desktop browser chrome with traffic lights and a URL bar framing your website screenshot. For landing pages, docs, or portfolio previews.",
+          "Desktop browser chrome with traffic lights and a URL bar framing your website screenshot. Pass theme for light, dark, or transparent chrome.",
+        usage:
+          '<BrowserMockupCard theme="dark" url="yoursite.com/dashboard" />',
       },
     ),
   ],

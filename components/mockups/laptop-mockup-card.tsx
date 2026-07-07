@@ -1,39 +1,73 @@
-import { forwardRef, type ComponentPropsWithoutRef } from "react";
-import Image from "next/image";
+import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
 
 import { cn } from "@/lib/cn";
 
-export type LaptopMockupCardProps = Readonly<ComponentPropsWithoutRef<"div">>;
+const laptopFrameVariants = {
+  gray: {
+    border: "border-neutral-300",
+    base: "bg-linear-to-b from-neutral-300 to-neutral-400",
+    notch: "bg-neutral-500",
+  },
+  titanium: {
+    border: "border-[#7a7671]",
+    base: "bg-linear-to-b from-[#8a8580] to-[#6a6560]",
+    notch: "bg-[#5c5854]",
+  },
+} as const;
 
-// Production-ready Laptop Mockup component — styled with Tailwind CSS.
-export const LaptopMockupCard = forwardRef<
-  HTMLDivElement,
-  LaptopMockupCardProps
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    data-slot="laptop-mockup-card"
-    className={cn("flex flex-col items-center font-sans", className)}
-    {...props}
-  >
-    <div className="w-72 rounded-t-xl bg-neutral-800 p-2 pb-0 shadow-xl">
-      <div className="relative h-44 overflow-hidden rounded-t-lg bg-neutral-900">
-        <Image
-          src="/wallpaper-2.png"
-          alt="Dashboard"
-          fill
-          sizes="288px"
-          className="object-cover object-top"
-        />
+type LaptopFrameVariant = keyof typeof laptopFrameVariants;
+
+type LaptopMockupCardProps = Readonly<
+  ComponentPropsWithoutRef<"div"> & {
+    variant?: LaptopFrameVariant;
+    children?: ReactNode;
+  }
+>;
+
+export const LaptopMockupCard = forwardRef<HTMLDivElement, LaptopMockupCardProps>(
+  ({ className, children, variant = "gray", ...props }, ref) => {
+    const frame = laptopFrameVariants[variant];
+
+    return (
+      <div
+        ref={ref}
+        data-slot="laptop-mockup-card"
+        data-variant={variant}
+        className={cn("flex flex-col items-center font-sans", className)}
+        {...props}
+      >
+        <div
+          className={cn(
+            "w-[280px] overflow-hidden rounded-t-xl border-2 border-b-0 shadow-xl md:w-[384px]",
+            frame.border,
+          )}
+        >
+          <div className="bg-neutral-800 p-1.5 pb-0">
+            <div className="relative h-[184px] overflow-hidden rounded-t-[4px] bg-neutral-900 md:h-[252px]">
+              <div className="relative size-full overflow-hidden rounded-t-[4px]">
+                {children}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          className={cn(
+            "relative h-2.5 w-[315px] rounded-b-xl md:h-3 md:w-[432px]",
+            frame.base,
+          )}
+        >
+          <div
+            className={cn(
+              "absolute top-0 left-1/2 h-1 w-14 -translate-x-1/2 rounded-b-md md:w-16",
+              frame.notch,
+            )}
+            aria-hidden="true"
+          />
+        </div>
       </div>
-    </div>
-    <div className="relative h-3 w-80 rounded-b-xl bg-linear-to-b from-neutral-300 to-neutral-400">
-      <div className="absolute top-0 left-1/2 h-1 w-16 -translate-x-1/2 rounded-b-md bg-neutral-500" />
-    </div>
-    <p className="mt-2 font-mono text-[10px] tracking-wider text-neutral-400 uppercase">
-      MacBook Pro
-    </p>
-  </div>
-));
+    );
+  },
+);
 
 LaptopMockupCard.displayName = "LaptopMockupCard";

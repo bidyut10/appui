@@ -1,57 +1,301 @@
 import Image from "next/image";
-import AnnotatedParagraph from "./Annotatedparagraph";
-import { Box } from "./Box";
+import { Badge } from "./_components/Badge";
+import { Heading } from "./_components/Heading";
+import { Paragraph } from "./_components/Paragraph";
+import { BOX_PATTERN } from "./_components/Pattern";
+import { LinkedBlock } from "./_components/LinkedBlock";
+import { PhoneColumn } from "./_components/PhoneColumn";
+import { CtaButtons } from "./_components/CtaButtons";
+import { SiteFooter } from "./_components/SiteFooter";
+import { AnnotatedText } from "@/components/underlines/AnnotatedText";
+import { DndFaceWidget } from "@/components/activity/dnd-face-widget";
+import { TorchFaceWidget } from "@/components/torch/torch-face-widget";
+import { LaptopMockupCard } from "@/components/mockups/laptop-mockup-card";
+import { BrowserMockupCard } from "@/components/mockups/browser-mockup-card";
+import { AnalogClockWidget } from "@/components/clocks/analog-clock-widget";
+import { JournalWritingCard } from "@/components/text/journal-writing-card";
+import { BluetoothFaceWidget } from "@/components/bluetooth/bluetooth-face-widget";
+import { TechStack, TECH_STACK_ITEMS } from "./_components/TechStack";
+import { InstallOptions } from "./_components/InstallOptions";
+import { OpenSourcePanel } from "./_components/OpenSourcePanel";
 import { ShowcaseScrollRestoration } from "./showcase-scroll-restoration";
-import { showcaseRows } from "@/lib/showcase/showcase";
-import oui from "@/public/opensourceui-logo.png"
-function rowKey(row: (typeof showcaseRows)[number]): string {
-  return row.map((item) => item.slug).join("-");
-}
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen w-full min-w-0 flex-col items-center overflow-x-hidden px-3 pb-10 selection:bg-neutral-800 selection:text-white sm:px-4">
+    <div className="flex min-h-screen w-full min-w-0 flex-col items-center gap-6 overflow-x-hidden px-3 pb-10 selection:bg-neutral-800 selection:text-white md:px-4">
       <ShowcaseScrollRestoration />
-      <nav className="w-full max-w-xl border-b border-neutral-100 px-4 py-4 md:px-0 select-none">
-        <div className="flex w-full items-center justify-between">
-          <Image src={oui} alt="opensource-ui-logo" width={20} />
 
-          <div className="flex items-center gap-4 font-serif">
-            <a
-              href="https://x.com/BidyutKundu12"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-xs leading-8 font-normal text-neutral-600 underline decoration-neutral-600 underline-offset-4 transition-colors duration-300 hover:text-neutral-900 hover:decoration-neutral-900 md:leading-9"
-            >
-              Twitter/X
-            </a>{" "}
-            <a
-              href="https://github.com/bidyut10/appui"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-xs leading-8 font-normal text-neutral-600 underline decoration-neutral-600 underline-offset-4 transition-colors duration-300 hover:text-neutral-900 hover:decoration-neutral-900 md:leading-9"
-            >
-              Github
-            </a>
-          </div>
-        </div>
-      </nav>
-      <AnnotatedParagraph />
-
-      <div className="w-full max-w-400 min-w-0 space-y-3">
-        {showcaseRows.map((row) => (
-          <div
-            key={rowKey(row)}
-            className="flex w-full min-w-0 flex-col gap-3 min-[1194px]:flex-row min-[1194px]:gap-4"
-          >
-            {row.map((item) => (
-              <Box key={item.slug} detailHref={`/components/${item.slug}`}>
-                {item.preview}
-              </Box>
-            ))}
-          </div>
-        ))}
+      <div className="max-w-xl px-4 md:px-0 mt-4 mb-10">
+        <Image
+          src="/osui-logo.png"
+          alt="Logo"
+          width={0}
+          height={0}
+          sizes="512px"
+          className="w-30 h-auto"
+        />
+        <Heading className="mt-36">
+          Build Better{" "}
+          <span className="relative inline-block">
+            <AnnotatedText variant="underline" color="text-cyan-200">
+              Interfaces
+            </AnnotatedText>
+            <Badge className="-right-1 -top-5 rotate-6 text-green-500">
+              Free
+            </Badge>
+          </span>
+        </Heading>
+        <Paragraph>
+          Building for the web has never been easier. Creating something
+          memorable still takes care.{" "}
+          <AnnotatedText variant="highlight" color="text-yellow-100">
+            OpenSource UI
+          </AnnotatedText>{" "}
+          is a collection of thoughtfully crafted, production-ready components
+          designed to help you build interfaces that feel polished, intentional,
+          and worth sharing.
+        </Paragraph>
+        <CtaButtons />
       </div>
+
+      <div className="relative max-w-xl px-4 md:px-0 mt-36">
+        <Badge className="-left-1 -top-7 -rotate-3 text-neutral-500">
+          why us?
+        </Badge>
+        <Heading>
+          Obsessively Detailed. Effortlessly{" "}
+          <AnnotatedText variant="doubleUnderline">Beautiful.</AnnotatedText>
+        </Heading>
+        <Paragraph>
+          Designed with precision, from the frame curves to the smallest
+          hardware details, so your apps and websites look as polished as the
+          products they deserve.
+        </Paragraph>
+      </div>
+
+      <section className="-mr-3 w-[calc(100%+0.75rem)] overflow-visible pt-6 pb-14 md:-mr-4 md:w-[calc(100%+1rem)]">
+        <div className="flex w-full items-stretch pl-4 gap-10 md:pl-[max(0px,calc((100%-36rem)/2))]">
+          <PhoneColumn variant="purple" src="/wallpaper-15.png" />
+          <PhoneColumn variant="orange" src="/wallpaper-2.png" />
+          <PhoneColumn
+            variant="titanium"
+            src="/iphone-wallpaper.png"
+            link="view more colors"
+          />
+        </div>
+      </section>
+
+      <div className="max-w-xl px-4 md:px-0 my-10">
+        <Heading>
+          Premium{" "}
+          <AnnotatedText variant="arrow" color="text-rose-300">
+            Finishes,
+          </AnnotatedText>
+          Endless Possibilities.
+        </Heading>
+        <Paragraph>
+          Choose from beautifully crafted color variants like Titanium, Space Gray, and more. Every finish is meticulously designed with realistic materials, accurate hardware details, and pixel-perfect precision to make every presentation feel premium.
+        </Paragraph>
+      </div>
+
+      <LinkedBlock className="relative mx-auto pb-14 w-xl" link="view more variants">
+        <LaptopMockupCard>
+          <Image
+            src="/wallpaper-4.png"
+            alt="App screen"
+            fill
+            sizes="100%"
+            className="object-cover"
+          />
+        </LaptopMockupCard>
+      </LinkedBlock>
+
+      <div className="max-w-xl px-4 md:px-0 my-10">
+        <Heading>
+          Designed to Blend In.{" "}
+          <AnnotatedText variant="wavy">Built to Stand Out.</AnnotatedText>
+        </Heading>
+        <Paragraph>
+          Wrap your UI in light, dark, or transparent browser chrome. Pick a
+          theme, drop in your screenshot, and present web work that feels
+          finished before you ship.
+        </Paragraph>
+      </div>
+
+      <LinkedBlock
+        className="relative mx-auto pb-14 max-w-xl"
+        link="view more themes"
+      >
+        <BrowserMockupCard theme="transparent">
+          <Image
+            src="/dith-homee.png"
+            alt="App screen"
+            fill
+            sizes="100%"
+            className="object-cover"
+          />
+        </BrowserMockupCard>
+      </LinkedBlock>
+
+      <LinkedBlock
+        className="max-w-xl px-4 md:px-0 my-10 relative mx-auto pb-14"
+        link="view more annotations"
+      >
+        <Paragraph tone="dark">
+          Draw attention where it matters most with clean, customizable{" "}
+          <AnnotatedText variant="circle"> annotations</AnnotatedText>. Add{" "}
+          <AnnotatedText variant="underline">
+            arrows, labels, and callouts
+          </AnnotatedText>{" "}
+          to explain features, document interfaces, and create presentations
+          that communicate with{" "}
+          <AnnotatedText variant="highlight">
+            clarity and confidence.
+          </AnnotatedText>
+        </Paragraph>
+      </LinkedBlock>
+
+      <LinkedBlock
+        className="max-w-xl px-4 md:px-0 my-10 relative mx-auto pb-14"
+        link="view more variants"
+      >
+        <Heading>
+          <AnnotatedText variant="line" color="text-orange-300">
+            Designed to Keep
+          </AnnotatedText>{" "}
+          Time in Style.
+        </Heading>
+        <Paragraph>
+          Explore carefully designed clock variants that balance functionality,
+          elegance, and customization for any project.
+        </Paragraph>
+        <div className="flex justify-between items-center mt-16 gap-10">
+          <AnalogClockWidget variant="roman" />
+          <AnalogClockWidget variant="minimal" />
+          <AnalogClockWidget variant="numeric" />
+        </div>
+      </LinkedBlock>
+
+      <LinkedBlock
+        className="max-w-xl px-4 md:px-0 my-10 relative mx-auto pb-14"
+        link="view more widgets"
+      >
+        <Heading>
+          Interactive Components{" "}
+          <AnnotatedText variant="wavy" color="text-rose-300">
+            {" "}
+            That Feel Alive.
+          </AnnotatedText>
+        </Heading>
+        <Paragraph>
+          Polished widgets inspired by modern design systems, built with smooth
+          interactions and thoughtful details that users notice.
+        </Paragraph>
+        <div className="flex justify-between items-center mt-16 gap-10">
+          <BluetoothFaceWidget />
+          <TorchFaceWidget />
+          <DndFaceWidget />
+        </div>
+      </LinkedBlock>
+
+      <LinkedBlock
+        className="max-w-xl px-4 md:px-0 my-10 relative mx-auto pb-14"
+        link="view more notebooks"
+      >
+        <Heading>
+          Writing That Feels{" "}
+          <AnnotatedText variant="underline" color="text-green-300">
+            {" "}
+            Natural.
+          </AnnotatedText>
+        </Heading>
+        <Paragraph>
+          Designed to feel like a real writing space, complete with a notebook
+          layout, live word count, save indicators, and an experience that
+          encourages focused writing.
+        </Paragraph>
+        <div
+          className="flex justify-center w-full items-center mt-16 p-10 border border-neutral-100 rounded-2xl"
+          style={BOX_PATTERN}
+        >
+          <JournalWritingCard />
+        </div>
+      </LinkedBlock>
+
+      <div className="relative max-w-xl px-4 md:px-0 mt-36">
+        <Badge className="-left-1 -top-7 -rotate-3 text-neutral-500">
+          under the hood
+        </Badge>
+        <Heading>
+          How They&apos;re{" "}
+          <AnnotatedText variant="underline" color="text-cyan-200">
+            Crafted.
+          </AnnotatedText>
+        </Heading>
+        <Paragraph>
+          Built on the stack you already trust —{" "}
+          <AnnotatedText variant="highlight" color="text-yellow-100">
+            React
+          </AnnotatedText>{" "}
+          and{" "}
+          <AnnotatedText variant="underline" color="text-cyan-200">
+            Next.js
+          </AnnotatedText>{" "}
+          for components that fit your app,{" "}
+          <AnnotatedText variant="wavy" color="text-rose-300">
+            TypeScript
+          </AnnotatedText>{" "}
+          for props you can rely on,{" "}
+          <AnnotatedText variant="underline" color="text-green-300">
+            Tailwind CSS v4
+          </AnnotatedText>{" "}
+          for styling that stays in your codebase, and{" "}
+          <AnnotatedText variant="circle" color="text-orange-300">
+            Lucide
+          </AnnotatedText>{" "}
+          for icons. Every file is production-ready, readable, and yours to own.
+        </Paragraph>
+        <div className="mt-16">
+          <TechStack items={TECH_STACK_ITEMS} />
+        </div>
+      </div>
+
+      <div className="max-w-xl px-4 md:px-0 my-10">
+        <Heading>
+          A Developer Experience{" "}
+          <AnnotatedText variant="highlight" color="text-yellow-100">
+            You&apos;ll Love.
+          </AnnotatedText>
+        </Heading>
+        <Paragraph>
+          Search for a component, open it, and everything is right there —
+          preview up top, details and code below. No digging, no extra steps.{" "}
+          <AnnotatedText variant="underline" color="text-green-300">
+            Copy and paste
+          </AnnotatedText>{" "}
+          into your project when you&apos;re ready. No install, no lock-in.
+        </Paragraph>
+        <InstallOptions />
+      </div>
+
+      <div className="relative max-w-xl px-4 md:px-0 mt-36">
+        <Badge className="-left-1 -top-7 -rotate-3 text-green-500">
+          built with
+        </Badge>
+        <Heading>
+          Resources &{" "}
+          <AnnotatedText variant="wavy" color="text-rose-300">
+            Sponsors.
+          </AnnotatedText>
+        </Heading>
+        <Paragraph>
+          Tools, people, and services that power Opensource UI — plus a spot
+          for sponsors who want to support the project.
+        </Paragraph>
+        <OpenSourcePanel />
+      </div>
+
+      <SiteFooter />
     </div>
   );
 }
