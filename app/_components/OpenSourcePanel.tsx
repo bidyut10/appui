@@ -12,6 +12,7 @@ import { NextJs } from "@/icons/brands/next-js";
 type ResourceItem = {
   name: string;
   description: string;
+  shortDescription?: string;
   href: string;
   domain?: string;
   Icon?: ComponentType<{ size?: number; className?: string }>;
@@ -164,14 +165,23 @@ function ListRow({
   placeholder?: boolean;
 }) {
   const domain = item.domain ?? getDomain(item.href);
+  const mobileDescription = item.shortDescription ?? item.description;
+
+  const nameClass = placeholder
+    ? "font-semibold text-neutral-400 group-hover:text-neutral-600"
+    : "font-semibold text-neutral-900 group-hover:text-neutral-700";
+
+  const descriptionClass = placeholder
+    ? "text-neutral-400 group-hover:text-neutral-500"
+    : "text-neutral-500";
 
   return (
-    <li>
+    <li className="min-w-0">
       <a
         href={item.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center gap-2.5 py-0.5"
+        className="group flex min-w-0 items-center gap-2.5 py-0.5 max-[499px]:gap-2"
       >
         {placeholder ? (
           <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded border border-dashed border-neutral-300">
@@ -180,33 +190,34 @@ function ListRow({
         ) : (
           <ListIcon item={item} />
         )}
-        <div className="flex min-w-0 flex-1 items-center gap-3">
-          <p className="min-w-0 flex-1 truncate font-sans text-sm leading-snug">
+        <div className="flex min-w-0 flex-1 items-center gap-3 max-[499px]:gap-2">
+          <p className="hidden min-w-0 flex-1 truncate font-sans text-sm leading-snug min-[500px]:block">
+            <span className={nameClass}>{item.name}</span>
+            <span className="text-neutral-300"> / </span>
+            <span className={descriptionClass}>{item.description}</span>
+          </p>
+
+          <div className="flex min-w-0 flex-1 items-baseline overflow-hidden min-[500px]:hidden">
             <span
-              className={
-                placeholder
-                  ? "font-semibold text-neutral-400 group-hover:text-neutral-600"
-                  : "font-semibold text-neutral-900 group-hover:text-neutral-700"
-              }
+              className={`shrink-0 font-sans text-xs leading-snug ${nameClass}`}
             >
               {item.name}
             </span>
-            <span className="text-neutral-300"> / </span>
-            <span
-              className={
-                placeholder
-                  ? "text-neutral-400 group-hover:text-neutral-500"
-                  : "text-neutral-500"
-              }
-            >
-              {item.description}
+            <span className="shrink-0 px-1 font-sans text-xs text-neutral-300">
+              /
             </span>
-          </p>
+            <span
+              className={`min-w-0 truncate font-sans text-xs leading-snug ${descriptionClass}`}
+            >
+              {mobileDescription}
+            </span>
+          </div>
+
           <span
             className={
               placeholder
-                ? "shrink-0 font-mono text-sm text-neutral-300 group-hover:text-neutral-400"
-                : "shrink-0 font-mono text-sm text-neutral-400 group-hover:text-neutral-500"
+                ? "shrink-0 font-mono text-sm text-neutral-300 group-hover:text-neutral-400 max-[499px]:text-[11px]"
+                : "shrink-0 font-mono text-sm text-neutral-400 group-hover:text-neutral-500 max-[499px]:text-[11px]"
             }
           >
             {domain}
@@ -220,13 +231,14 @@ function ListRow({
 const sponsorPlaceholder: ResourceItem = {
   name: "Your brand",
   description: "Be the first sponsor — get in touch",
+  shortDescription: "Get in touch",
   href: mailtoLinks.sponsor,
   domain: "yoursite.com",
 };
 
 export function OpenSourcePanel() {
   return (
-    <div className="mt-10 space-y-8">
+    <div className="mt-10 min-w-0 space-y-8 max-[499px]:overflow-hidden">
       <section>
         <h3 className="font-sans text-sm font-semibold text-neutral-900">
           Sponsors

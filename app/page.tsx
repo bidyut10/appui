@@ -73,8 +73,8 @@ export default function Home() {
         </Paragraph>
       </div>
 
-      <section className="-mr-3 w-[calc(100%+0.75rem)] overflow-visible pt-6 pb-14 md:-mr-4 md:w-[calc(100%+1rem)]">
-        <div className="flex w-full items-stretch pl-4 gap-10 md:pl-[max(0px,calc((100%-36rem)/2))]">
+      <section className="-mx-3 w-[calc(100%+1.5rem)] overflow-visible pt-6 pb-14 min-[550px]:mx-0 min-[550px]:w-full min-[1300px]:-mr-3 min-[1300px]:ml-0 min-[1300px]:w-[calc(100%+0.75rem)] md:min-[1300px]:-mr-4 md:min-[1300px]:w-[calc(100%+1rem)]">
+        <div className="mx-auto flex w-full max-w-xl flex-col items-stretch gap-10 min-[1300px]:mx-0 min-[1300px]:max-w-none min-[1300px]:flex-row min-[1300px]:items-stretch min-[1300px]:gap-10 min-[1300px]:pl-[max(0px,calc((100%-36rem)/2))]">
           <PhoneColumn variant="purple" src="/wallpaper-15.png" />
           <PhoneColumn variant="orange" src="/wallpaper-2.png" />
           <PhoneColumn
@@ -98,7 +98,7 @@ export default function Home() {
         </Paragraph>
       </div>
 
-      <LinkedBlock className="relative mx-auto pb-14 w-xl" link="view more variants">
+      <LinkedBlock className="relative mx-auto pb-14 w-full md:w-xl" link="view more variants">
         <LaptopMockupCard>
           <Image
             src="/wallpaper-4.png"
@@ -123,7 +123,7 @@ export default function Home() {
       </div>
 
       <LinkedBlock
-        className="relative mx-auto pb-14 max-w-xl"
+        className="relative mx-auto w-full max-w-xl px-4 pb-14 md:px-0"
         link="view more themes"
       >
         <BrowserMockupCard theme="transparent">
@@ -169,7 +169,7 @@ export default function Home() {
           Explore carefully designed clock variants that balance functionality,
           elegance, and customization for any project.
         </Paragraph>
-        <div className="flex justify-between items-center mt-16 gap-10">
+        <div className="flex flex-col md:flex-row justify-between items-center mt-16 gap-10">
           <AnalogClockWidget variant="roman" />
           <AnalogClockWidget variant="minimal" />
           <AnalogClockWidget variant="numeric" />
@@ -191,7 +191,7 @@ export default function Home() {
           Polished widgets inspired by modern design systems, built with smooth
           interactions and thoughtful details that users notice.
         </Paragraph>
-        <div className="flex justify-between items-center mt-16 gap-10">
+        <div className="flex flex-col md:flex-row justify-between items-center mt-16 gap-10">
           <BluetoothFaceWidget />
           <TorchFaceWidget />
           <DndFaceWidget />
@@ -279,7 +279,7 @@ export default function Home() {
       </div>
 
       <div className="relative max-w-xl px-4 md:px-0 mt-36">
-        <Badge className="-left-1 -top-7 -rotate-3 text-green-500">
+        <Badge className="-left-1 -top-7 -rotate-3 text-green-500 max-[499px]:left-4">
           built with
         </Badge>
         <Heading>

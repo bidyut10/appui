@@ -48,7 +48,7 @@ export const BrowserMockupCard = forwardRef<
       data-slot="browser-mockup-card"
       data-theme={theme}
       className={cn(
-        "w-[280px] overflow-hidden rounded-xl border font-sans md:w-xl",
+        "w-full min-w-0 max-w-full overflow-hidden rounded-xl border font-sans",
         styles.shell,
         className,
       )}

@@ -6,4 +6,5 @@ export const BOX_PATTERN: CSSProperties = {
   backgroundSize: "12px 12px",
 };
 
-export const PHONE_PANEL = "flex flex-1 items-end justify-center rounded-2xl overflow-hidden border border-neutral-100 py-10 md:py-14";
+export const PHONE_PANEL =
+  "flex w-full min-[1300px]:flex-1 items-end justify-center rounded-2xl overflow-hidden border border-neutral-100 py-10 md:py-14";

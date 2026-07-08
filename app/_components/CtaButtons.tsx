@@ -6,10 +6,10 @@ import { mailtoLinks } from "@/lib/site";
 
 export function CtaButtons() {
   return (
-    <div className="mt-6 flex gap-4">
+    <div className="mt-6 flex flex-col md:flex-row gap-4">
       <a
         href="/components"
-        className="group flex cursor-pointer items-center justify-center gap-2 rounded-md border border-neutral-900 bg-neutral-800 px-4 py-2 text-base font-light text-white shadow-xl shadow-neutral-400/50"
+        className="group flex cursor-pointer items-center justify-center gap-2 rounded-md border border-neutral-900 bg-neutral-800 px-4 py-2 text-base font-light text-white shadow-xl shadow-neutral-300/50"
       >
         Browse Components
         <span className="relative inline-flex size-3.5 shrink-0 items-center justify-center">
