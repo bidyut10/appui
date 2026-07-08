@@ -9,4 +9,6 @@ export {
   type ShowcaseCategoryGroup,
 } from "./showcase";
 
+export { searchShowcaseEntries } from "./search-showcase";
+
 export { readShowcaseSource } from "./server";

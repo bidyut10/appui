@@ -1,5 +1,3 @@
-import { Suspense } from "react";
-
 import {
   getAllShowcaseSlugs,
   getShowcaseByCategory,
@@ -7,7 +5,7 @@ import {
 
 import { ComponentsBrowseAll } from "./_components/components-browse-all";
 import { ComponentsCatalog } from "./_components/components-catalog";
-import { ComponentsCategoryNav } from "./_components/components-category-nav";
+import { ComponentsSearchResults } from "./_components/components-search-results";
 import { DocsToc } from "./_components/docs-toc";
 
 export const metadata = {
@@ -17,17 +15,20 @@ export const metadata = {
 };
 
 type ComponentsPageProps = Readonly<{
-  searchParams: Promise<{ category?: string }>;
+  searchParams: Promise<{ category?: string; q?: string }>;
 }>;
 
 export default async function ComponentsPage({
   searchParams,
 }: ComponentsPageProps) {
-  const { category: categoryParam } = await searchParams;
+  const { category: categoryParam, q: queryParam } = await searchParams;
   const categories = getShowcaseByCategory();
   const totalCount = getAllShowcaseSlugs().length;
+  const searchQuery = queryParam?.trim() ?? "";
+  const isSearching = searchQuery.length > 0;
 
   const hasCategory =
+    !isSearching &&
     !!categoryParam &&
     categories.some((group) => group.category === categoryParam);
 
@@ -37,20 +38,14 @@ export default async function ComponentsPage({
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <Suspense fallback={null}>
-        <ComponentsCategoryNav
-          categories={categories}
-          activeCategory={hasCategory ? categoryParam! : ""}
-          isBrowseAll={!hasCategory}
-        />
-      </Suspense>
-
       <div className="flex min-h-0 flex-1">
         <main
           data-docs-scroll
           className="scrollbar-hover min-h-0 min-w-0 flex-1 overflow-y-auto"
         >
-          {hasCategory && activeGroup ? (
+          {isSearching ? (
+            <ComponentsSearchResults query={searchQuery} />
+          ) : hasCategory && activeGroup ? (
             <ComponentsCatalog
               categories={categories}
               category={categoryParam!}
@@ -65,31 +60,44 @@ export default async function ComponentsPage({
 
         <DocsToc
           items={
-            hasCategory && activeGroup
+            isSearching
               ? [
                   {
                     id: "overview",
-                    label: "Overview",
-                    description: "Category intro & usage",
+                    label: "Search",
+                    description: `Results for “${searchQuery}”`,
                   },
                   {
                     id: "components",
                     label: "Components",
-                    description: `${activeGroup.items.length} in this category`,
+                    description: "Filtered matches",
                   },
                 ]
-              : [
-                  {
-                    id: "overview",
-                    label: "Overview",
-                    description: "Open source library intro",
-                  },
-                  {
-                    id: "components",
-                    label: "Components",
-                    description: `${totalCount} available to open`,
-                  },
-                ]
+              : hasCategory && activeGroup
+                ? [
+                    {
+                      id: "overview",
+                      label: "Overview",
+                      description: "Category intro & usage",
+                    },
+                    {
+                      id: "components",
+                      label: "Components",
+                      description: `${activeGroup.items.length} in this category`,
+                    },
+                  ]
+                : [
+                    {
+                      id: "overview",
+                      label: "Overview",
+                      description: "Open source library intro",
+                    },
+                    {
+                      id: "components",
+                      label: "Components",
+                      description: `${totalCount} available to open`,
+                    },
+                  ]
           }
         />
       </div>

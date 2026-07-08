@@ -1,19 +1,25 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { Menu } from "lucide-react";
+import { Suspense } from "react";
 
-import { ChevronRight } from "@/icons/actions/chevron-right";
-import { MoveRight } from "@/icons/keys/move-right";
-import { mailtoLinks, siteConfig } from "@/lib/site";
+import { siteConfig } from "@/lib/site";
+
+import { useDocsShell } from "./docs-shell-context";
+import { DocsSearch } from "./docs-search";
 
 const metaLinkClass =
   "font-sans text-sm text-neutral-400 transition-colors hover:text-neutral-700";
 
 export function DocsHeader() {
   const { author } = siteConfig;
+  const shell = useDocsShell();
 
   return (
     <header className="shrink-0 border-b border-neutral-200 bg-white">
-      <div className="flex h-14 items-center gap-4 px-4 md:px-6">
+      <div className="flex h-14 items-center gap-2 px-3 md:gap-4 md:px-6">
         <Link href="/" className="inline-flex shrink-0 items-center">
           <Image
             src="/osui-logo.png"
@@ -21,31 +27,34 @@ export function DocsHeader() {
             width={0}
             height={0}
             sizes="96px"
-            className="h-auto w-16 md:w-24"
+            className="h-auto w-14 md:w-24"
           />
         </Link>
 
-        <div className="hidden min-w-0 flex-1 justify-center lg:flex">
-          <label className="relative block w-full max-w-sm">
-            <span className="sr-only">Search components</span>
-            <input
-              type="search"
-              disabled
-              placeholder="Search components…"
-              className="w-full rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-1.5 font-sans text-sm text-neutral-400 outline-none"
-            />
-            <kbd className="pointer-events-none absolute top-1/2 right-2.5 -translate-y-1/2 rounded border border-neutral-200 bg-white px-1.5 py-0.5 font-mono text-[10px] text-neutral-400">
-              ⌘ + K
-            </kbd>
-          </label>
+        <div className="flex min-w-0 flex-1 items-center gap-2 md:justify-center">
+          <div className="min-w-0 flex-1 md:flex md:max-w-sm md:flex-1 md:justify-center">
+            <Suspense fallback={null}>
+              <DocsSearch />
+            </Suspense>
+          </div>
+
+          <button
+            type="button"
+            onClick={shell?.toggleSidebar}
+            aria-label={shell?.isSidebarOpen ? "Close menu" : "Open menu"}
+            aria-expanded={shell?.isSidebarOpen ?? false}
+            className="inline-flex size-8 shrink-0 items-center justify-center rounded-lg border border-neutral-100 bg-white text-neutral-600 transition-colors hover:border-neutral-300 hover:text-neutral-900 md:hidden"
+          >
+            <Menu size={15} aria-hidden />
+          </button>
         </div>
 
-        <div className="ml-auto flex items-center gap-4 md:gap-5">
+        <div className="hidden shrink-0 items-center gap-4 md:flex md:gap-5">
           <a
             href="https://github.com/bidyut10/appui"
             target="_blank"
             rel="noopener noreferrer"
-            className={`${metaLinkClass} hidden md:inline`}
+            className={metaLinkClass}
           >
             GitHub
           </a>
@@ -53,7 +62,7 @@ export function DocsHeader() {
             href={author.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`${metaLinkClass} hidden md:inline`}
+            className={metaLinkClass}
           >
             Twitter/X
           </a>
