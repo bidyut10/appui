@@ -31,7 +31,7 @@ export function CopyCodeBlock({
   }
 
   return (
-    <div className="bg-neutral-900">
+    <div className="overflow-hidden rounded-xl bg-neutral-900">
       <div className="relative z-0 flex items-center gap-2 border-b border-neutral-800 bg-neutral-900 py-2 pr-2 pl-3 sm:py-2.5 sm:pr-3 sm:pl-4">
         <p className="min-w-0 flex-1 truncate font-mono text-[11px] text-neutral-400 sm:text-xs">
           {filename}
@@ -63,7 +63,7 @@ const guideCodeClass =
 function InlineCode({ children }: Readonly<{ children: string }>) {
   return (
     <code
-      className={`mx-px inline-block max-w-full border border-neutral-100 bg-neutral-50 px-1.5 py-0.5 ${guideCodeClass}`}
+      className={`mx-px inline-block text-rose-800 font-mono text-[0.75rem] max-w-full border border-neutral-100 bg-neutral-50 px-1.5 py-0.5 ${guideCodeClass}`}
     >
       {children}
     </code>
@@ -73,7 +73,7 @@ function InlineCode({ children }: Readonly<{ children: string }>) {
 function CodeLine({ children }: Readonly<{ children: string }>) {
   return (
     <code
-      className={`block w-full border border-neutral-100 bg-neutral-50 px-2.5 py-2 break-all ${guideCodeClass}`}
+      className={`block w-full text-rose-800 font-mono text-[0.75rem] border border-neutral-100 bg-neutral-50 px-2.5 py-2 break-all ${guideCodeClass}`}
     >
       {children}
     </code>
@@ -97,16 +97,16 @@ export function SetupGuide({
     {
       id: "install",
       content: (
-        <div className="space-y-1.5 font-serif text-lg">
+        <div className="space-y-1.5 text-neutral-600 text-base">
           <p>Run in your terminal:</p>
-          <CodeLine>npm install clsx tailwind-merge</CodeLine>
+          <CodeLine >npm install clsx tailwind-merge</CodeLine>
         </div>
       ),
     },
     {
       id: "cn",
       content: (
-        <p className="font-serif text-lg">
+        <p className="text-neutral-600 text-base">
           Copy <InlineCode>lib/cn.ts</InlineCode> below. Skip if you already
           have <InlineCode>cn()</InlineCode>.
         </p>
@@ -115,7 +115,7 @@ export function SetupGuide({
     {
       id: "component",
       content: (
-        <p className="font-serif text-lg">
+        <p className="text-neutral-600 text-base">
           Copy <InlineCode>{componentFile}</InlineCode>. Replace{" "}
           <InlineCode>@/icons/...</InlineCode> with your icons (
           <a
@@ -142,9 +142,9 @@ export function SetupGuide({
   ];
 
   return (
-    <section className="border border-neutral-100">
+    <section className="border rounded-xl border-neutral-100">
       <div className="border-b border-neutral-100 px-4 py-3 sm:px-5">
-        <h2 className="font-serif text-lg font-medium text-neutral-900">
+        <h2 className="text-base font-medium text-neutral-900">
           How to use
         </h2>
       </div>

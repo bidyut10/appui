@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
+import { BOX_PATTERN } from "./Pattern";
 
 const cardVars =
   "[--left-w:7.5rem] [--connector-w:2.75rem] [--card-inner:15rem] [--pad-x:1.25rem] [--right-w:5rem] max-[549px]:[--left-w:5.75rem] max-[549px]:[--connector-w:1.75rem] max-[549px]:[--card-inner:10rem] max-[549px]:[--pad-x:0.75rem] max-[549px]:[--right-w:3.75rem]";
@@ -109,12 +110,12 @@ function DesignCard() {
       <div className="relative z-10 flex flex-col gap-2.5 py-4 max-[549px]:gap-2 max-[549px]:py-3">
         <div className="flex items-center">
           <div className="shrink-0" style={colWidth("var(--left-w)")}>
-            <LeftCallout index={1} label="Card Image" />
+            <LeftCallout index={1} label="Preview" />
           </div>
           <div className="shrink-0" style={colWidth("var(--connector-w)")} />
           <CardBody>
             <Highlight className="p-2 max-[549px]:p-1.5">
-              <div className="h-32 rounded-md bg-[#e5e7eb] max-[549px]:h-24" />
+              <div className="h-32 rounded-md border border-neutral-100 max-[549px]:h-24" style={BOX_PATTERN} />
             </Highlight>
           </CardBody>
           <div className="shrink-0" style={colWidth("var(--right-w)")} />
@@ -122,13 +123,13 @@ function DesignCard() {
 
         <div className="flex items-center">
           <div className="shrink-0" style={colWidth("var(--left-w)")}>
-            <LeftCallout index={2} label="Card Headline" />
+            <LeftCallout index={2} label="Component Name" />
           </div>
           <div className="shrink-0" style={colWidth("var(--connector-w)")} />
           <CardBody>
             <Highlight className="px-3 py-2.5 max-[549px]:px-2 max-[549px]:py-1.5">
-              <p className="font-serif text-sm text-neutral-400 max-[549px]:text-[11px]">
-                Component Name
+              <p className="font-serif text-sm text-neutral-300 max-[549px]:text-[11px]">
+                Annotation Text
               </p>
             </Highlight>
           </CardBody>
@@ -137,14 +138,15 @@ function DesignCard() {
 
         <div className="flex items-center">
           <div className="shrink-0" style={colWidth("var(--left-w)")}>
-            <LeftCallout index={3} label="Card Description" />
+            <LeftCallout index={3} label="Code" />
           </div>
           <div className="shrink-0" style={colWidth("var(--connector-w)")} />
           <CardBody>
             <Highlight className="px-3 py-2.5 max-[549px]:px-2 max-[549px]:py-1.5">
-              <p className="font-sans text-xs text-neutral-500 max-[549px]:text-[10px]">
-                Component Preview Code
-              </p>
+              <pre className="max-h-10 overflow-hidden font-mono text-[9px] leading-[1.35] text-neutral-200 max-[549px]:max-h-8 max-[549px]:text-[8px]">
+                <code>{`export function Card() {
+  return <div />;`}</code>
+              </pre>
             </Highlight>
           </CardBody>
           <div className="shrink-0" style={colWidth("var(--right-w)")} />
@@ -156,7 +158,7 @@ function DesignCard() {
           <CardBody showLeftLine={false} showRightLine>
             <div className="flex justify-end">
               <Highlight className="px-3.5 py-2 max-[549px]:px-2.5 max-[549px]:py-1.5">
-                <div className="cursor-disabled pointer-events-none rounded bg-neutral-800 px-5 py-1.5 text-center font-sans text-xs text-white max-[549px]:px-4 max-[549px]:py-1.5 max-[549px]:text-[10px]">
+                <div className="cursor-disabled pointer-events-none rounded bg-neutral-100 px-5 py-1.5 text-center font-sans text-xs text-neutral-200 max-[549px]:px-4 max-[549px]:py-1.5 max-[549px]:text-[10px]">
                   Copy Code
                 </div>
               </Highlight>

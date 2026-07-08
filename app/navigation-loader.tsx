@@ -8,7 +8,9 @@ import { PageLoaderOverlay } from "@/components/loaders/page-loader-overlay";
 const SHOW_AFTER_MS = 300;
 
 function isShowcaseRoute(path: string): boolean {
-  return path === "/" || path.startsWith("/components/");
+  return (
+    path === "/" || path === "/components" || path.startsWith("/components/")
+  );
 }
 
 export function NavigationLoader() {

@@ -19,6 +19,37 @@
   .scrollbar-none::-webkit-scrollbar {
     display: none;
   }
+
+  .scrollbar-hover {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+
+  .scrollbar-hover:hover {
+    scrollbar-color: #d4d4d4 transparent;
+  }
+
+  .scrollbar-hover::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .scrollbar-hover::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-hover::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 0;
+    transition: background-color 0.2s ease;
+  }
+
+  .scrollbar-hover:hover::-webkit-scrollbar-thumb {
+    background-color: #d2d2d2;
+  }
+
+  .scrollbar-hover:hover::-webkit-scrollbar-thumb:hover {
+    background-color: #dfdfdf;
+  }
 }
 
 @keyframes wave-hand {

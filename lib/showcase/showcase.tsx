@@ -1009,3 +1009,26 @@ export function getShowcaseEntry(slug: string): ShowcaseEntry | undefined {
 export function getAllShowcaseSlugs(): string[] {
   return Object.keys(catalog);
 }
+
+export type ShowcaseCategoryGroup = Readonly<{
+  category: string;
+  items: ShowcaseEntry[];
+}>;
+
+export function getShowcaseByCategory(): ShowcaseCategoryGroup[] {
+  const groups = new Map<string, ShowcaseEntry[]>();
+
+  for (const slug of getAllShowcaseSlugs()) {
+    const entry = catalog[slug];
+    const items = groups.get(entry.category) ?? [];
+    items.push(entry);
+    groups.set(entry.category, items);
+  }
+
+  return Array.from(groups.entries())
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([category, items]) => ({
+      category,
+      items: [...items].sort((a, b) => a.title.localeCompare(b.title)),
+    }));
+}

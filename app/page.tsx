@@ -169,7 +169,7 @@ export default function Home() {
           Explore carefully designed clock variants that balance functionality,
           elegance, and customization for any project.
         </Paragraph>
-        <div className="flex flex-col md:flex-row justify-between items-center mt-16 gap-10">
+        <div className="flex flex-col md:flex-row justify-between items-center mt-16 gap-6">
           <AnalogClockWidget variant="roman" />
           <AnalogClockWidget variant="minimal" />
           <AnalogClockWidget variant="numeric" />
@@ -191,7 +191,7 @@ export default function Home() {
           Polished widgets inspired by modern design systems, built with smooth
           interactions and thoughtful details that users notice.
         </Paragraph>
-        <div className="flex flex-col md:flex-row justify-between items-center mt-16 gap-10">
+        <div className="flex flex-col md:flex-row justify-between items-center mt-16 gap-6">
           <BluetoothFaceWidget />
           <TorchFaceWidget />
           <DndFaceWidget />
