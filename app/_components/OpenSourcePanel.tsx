@@ -8,6 +8,7 @@ import { Vercel } from "@/icons/brands/Vercel";
 import { Unplash } from "@/icons/brands/Unplash";
 import { Anthropic } from "@/icons/brands/Anthropic";
 import { NextJs } from "@/icons/brands/next-js";
+import { Canva } from "@/icons/brands/Canva";
 
 type ResourceItem = {
   name: string;
@@ -15,6 +16,7 @@ type ResourceItem = {
   shortDescription?: string;
   href: string;
   domain?: string;
+  color?: string;
   Icon?: ComponentType<{ size?: number; className?: string }>;
   imageSrc?: string;
   letter?: string;
@@ -34,6 +36,13 @@ const resources: ResourceItem[] = [
     Icon: Vercel,
   },
   {
+    name: "Canva",
+    description: "For designing",
+    href: "https://canva.com",
+    Icon: Canva,
+    color: "text-[#00C4CC]",
+  },
+  {
     name: "Manu sir",
     description: "For inspiration",
     href: "https://www.manuarora.in",
@@ -49,7 +58,7 @@ const resources: ResourceItem[] = [
     name: "Chánh Đại",
     description: "For inspiration",
     href: "https://chanhdai.com",
-    imageSrc: "/evilrabbit.png",
+    imageSrc: "/chanhdai-icon.svg",
   },
   {
     name: "Akash sir",
@@ -62,6 +71,7 @@ const resources: ResourceItem[] = [
     description: "For styling",
     href: "https://tailwindcss.com",
     Icon: TailwindCSS,
+    color: "text-sky-400",
   },
   {
     name: "shadcn/ui",
@@ -80,6 +90,7 @@ const resources: ResourceItem[] = [
     description: "For making images better",
     href: "https://ditherit.com",
     letter: "D",
+    color: "text-rose-400",
   },
   {
     name: "Cursor",
@@ -110,6 +121,7 @@ const resources: ResourceItem[] = [
     description: "For type safety",
     href: "https://www.typescriptlang.org",
     Icon: Typescript,
+    color: "text-blue-500",
   },
   {
     name: "Next.js",
@@ -134,7 +146,9 @@ function getDomain(href: string) {
 }
 
 function ListIcon({ item }: { item: ResourceItem }) {
-  const { Icon, imageSrc, letter } = item;
+  const { Icon, imageSrc, letter, color } = item;
+  const iconColor = color ?? "text-neutral-800";
+  const letterColor = color ?? "text-neutral-600";
 
   return (
     <div className="flex h-5 w-5 shrink-0 items-center justify-center overflow-hidden">
@@ -147,9 +161,11 @@ function ListIcon({ item }: { item: ResourceItem }) {
           className="h-5 w-5 object-contain rounded"
         />
       ) : Icon ? (
-        <Icon size={16} className="text-neutral-800" />
+        <Icon size={16} className={iconColor} />
       ) : (
-        <span className="font-sans text-[16px] font-semibold text-neutral-600">
+        <span
+          className={`font-sans text-[16px] font-semibold ${letterColor}`}
+        >
           {letter}
         </span>
       )}

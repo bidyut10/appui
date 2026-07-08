@@ -22,7 +22,7 @@ export function SiteFooter() {
           className="h-auto w-28"
         />
 
-        <p className="mt-6 flex items-center gap-2 font-serif text-2xl text-neutral-900">
+        <p className="mt-6 flex items-center gap-2 font-serif text-3xl text-neutral-900">
           Ready when you are.
           <Image
             src="/waving-hand.png"
