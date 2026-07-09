@@ -39,7 +39,7 @@ export const GlassOverlayImageCard = forwardRef<
   (
     {
       className,
-      image = "/dith-homee.png",
+      image = "/wallpaper-15.png",
       imageAlt = "Scenic landscape",
       location = "Bishnupur, West Bengal",
       title = "Where the river meets the mangrove forest",

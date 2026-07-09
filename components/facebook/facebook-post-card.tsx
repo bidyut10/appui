@@ -49,7 +49,7 @@ export const FacebookPostCard = forwardRef<
       comments = 48,
       shares = 9,
       avatar = "/profile-picture.png",
-      postImage = "/dith-homee.png",
+      postImage = "/wallpaper-3.png",
       avatarAlt = "User avatar",
       imageAlt = "Facebook post image",
       menuIcon,
@@ -132,11 +132,11 @@ export const FacebookPostCard = forwardRef<
         >
           <span className="flex items-center gap-1">
             <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-blue-500 text-white">
-              {likeIcon ?? <ThumbsUp size={9} />}
+              {likeIcon ?? <ThumbsUp size={9} fill="white"/>}
             </span>
 
             <span className="-ml-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-rose-500 text-white">
-              {heartIcon ?? <Heart size={9} />}
+              {heartIcon ?? <Heart size={9} fill="white"/>}
             </span>
 
             {reactions.toLocaleString()}

@@ -32,7 +32,7 @@ export const ThreadsPostCard = forwardRef<HTMLDivElement, ThreadsPostCardProps>(
       likes = 892,
       replies = 47,
       avatar = "/profile-picture.png",
-      postImage = "/dith-homee.png",
+      postImage = "/wallpaper-3.png",
       showImage = true,
       onLike,
       ...props
@@ -139,8 +139,9 @@ export const ThreadsPostCard = forwardRef<HTMLDivElement, ThreadsPostCardProps>(
                     className="flex cursor-pointer items-center gap-1 text-neutral-500 transition-colors hover:text-neutral-900"
                   >
                     <Icon
-                      size={16}
+                      size={14}
                       className={active ? "fill-rose-500 text-rose-500" : ""}
+                      fill={active ? "rose-500" : "white"}
                     />
                     {count !== null && (
                       <span className="text-[11px] font-medium tabular-nums">

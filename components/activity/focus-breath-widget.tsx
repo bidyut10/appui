@@ -9,7 +9,6 @@ import {
 
 import { cn } from "@/lib/cn";
 
-// label — title shown below the breathing circle (defaults to "Breathe")
 export type FocusBreathWidgetProps = Readonly<
   {
     // Title shown below the breathing circle.

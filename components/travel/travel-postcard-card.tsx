@@ -26,7 +26,7 @@ export const TravelPostcardCard = forwardRef<
   (
     {
       className,
-      image = "/dith-homee.png",
+      image = "/wallpaper-3.png",
       title = "Greetings from Sundarbans!",
       message = "Postcard",
       location = "West Bengal, India",

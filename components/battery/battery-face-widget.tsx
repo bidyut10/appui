@@ -3,7 +3,7 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
-import { Battery } from "lucide-react";
+import { BatteryMedium } from "lucide-react";
 
 const MASCOT_GOOD = "#A3E635";
 const MASCOT_LOW = "#FB923C";
@@ -105,7 +105,7 @@ export type BatteryFaceWidgetProps = Readonly<
 export const BatteryFaceWidget = forwardRef<
   HTMLDivElement,
   BatteryFaceWidgetProps
->(({ className, percent = 57, hoursLeft = "~5h left", ...props }, ref) => {
+>(({ className, percent = 97, hoursLeft = "~5h left", ...props }, ref) => {
   const clampedPercent = Math.min(100, Math.max(0, percent));
   const isLow = clampedPercent <= 20;
 
@@ -130,7 +130,7 @@ export const BatteryFaceWidget = forwardRef<
       </svg>
 
       <span className="absolute top-3.5 right-3.5 z-10" aria-hidden>
-        <Battery size={14} color={isLow ? MASCOT_LOW : MASCOT_GOOD} />
+        <BatteryMedium size={18} color={isLow ? MASCOT_LOW : MASCOT_GOOD} />
       </span>
 
       <div className="absolute inset-x-0 top-[30%] z-10 text-center">

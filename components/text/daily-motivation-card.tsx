@@ -25,7 +25,7 @@ export const DailyMotivationCard = forwardRef<
   (
     {
       className,
-      image = "/dith-homee.png",
+      image = "/iphone-wallpaper.png",
       imageAlt = "Woman holding flowers",
       lineOne = "Your daily",
       lineTwo = "motivation",

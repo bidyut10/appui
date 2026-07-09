@@ -26,7 +26,7 @@ export const NowPlayingBar = forwardRef<HTMLDivElement, NowPlayingBarProps>(
       title = "Midnight Dreams",
       artist = "The Weekend",
       progress = 60,
-      artwork = "/dith-homee.png",
+      artwork = "/wallpaper-3.png",
       defaultPlaying = true,
       ...props
     },
@@ -72,7 +72,7 @@ export const NowPlayingBar = forwardRef<HTMLDivElement, NowPlayingBarProps>(
             aria-label="Previous track"
             className="cursor-pointer text-sm text-neutral-500 transition-colors hover:text-white"
           >
-            <SkipForward />
+           <SkipBack size={14}/>
           </button>
 
           <button
@@ -81,7 +81,7 @@ export const NowPlayingBar = forwardRef<HTMLDivElement, NowPlayingBarProps>(
             onClick={() => setPlaying(!playing)}
             className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-white text-xs text-neutral-900 transition-transform hover:scale-105"
           >
-            {playing ? <Pause /> : <Play />}
+            {playing ? <Pause size={14} fill="black"/> : <Play size={14} fill="black"/>}
           </button>
 
           <button
@@ -89,7 +89,7 @@ export const NowPlayingBar = forwardRef<HTMLDivElement, NowPlayingBarProps>(
             aria-label="Next track"
             className="cursor-pointer text-sm text-neutral-500 transition-colors hover:text-white"
           >
-            <SkipBack />
+            <SkipForward size={14}/> 
           </button>
         </div>
 

@@ -31,7 +31,7 @@ export const EventTicketCard = forwardRef<HTMLDivElement, EventTicketCardProps>(
       location = "Kolkata, India",
       ticketId = "#DS2026-0042",
       ticketType = "VIP Pass",
-      coverImageSrc = "/dith-homee.png",
+      coverImageSrc = "/wallpaper-3.png",
       coverImageAlt = "Event cover image",
       ...props
     },
@@ -42,7 +42,7 @@ export const EventTicketCard = forwardRef<HTMLDivElement, EventTicketCardProps>(
         ref={ref}
         data-slot="event-ticket-card"
         className={cn(
-          "group flex w-72 overflow-hidden rounded-2xl bg-neutral-50 font-sans",
+          "group flex w-96 overflow-hidden rounded-2xl bg-neutral-50 font-sans",
           className,
         )}
         {...props}

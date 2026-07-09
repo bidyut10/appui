@@ -16,10 +16,10 @@ export type PhotoContactSheetCardProps = Readonly<
 >;
 
 const defaultFrames: ContactSheetFrame[] = [
-  { src: "/dith-homee.png", number: "01" },
-  { src: "/dith-homee.png", number: "03" },
-  { src: "/dith-homee.png", number: "04" },
-  { src: "/dith-homee.png", number: "02" },
+  { src: "/wallpaper-15.png", number: "01" },
+  { src: "/wallpaper-3.png", number: "03" },
+  { src: "/wallpaper-11.png", number: "04" },
+  { src: "/wallpaper-2.png", number: "02" },
 ];
 
 // Production-ready Photo Contact Sheet component — styled with Tailwind CSS.

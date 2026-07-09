@@ -11,10 +11,10 @@ export type FilmStripCardProps = Readonly<
 >;
 
 const defaultFrames = [
-  "/dith-homee.png",  
-  "/dith-homee.png",
-  "/dith-homee.png",
-  "/dith-homee.png",
+  "/wallpaper-2.png",  
+  "/wallpaper-3.png",
+  "/wallpaper-11.png",
+  "/wallpaper-15.png",
 ];
 
 const LEFT_SPROCKET_HOLES = [

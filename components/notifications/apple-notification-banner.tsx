@@ -39,7 +39,7 @@ export const AppleNotificationBanner = forwardRef<
       sender = "Sarah",
       message = "Hey! Are we still on for the design review today?",
       time = "now",
-      avatarSrc = "/profile-picture.png",
+      avatarSrc = "/woman.png",
       avatarAlt = "App",
       showTriggerLabel = "Show notification",
       onDismiss,

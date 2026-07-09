@@ -30,7 +30,7 @@ const defaultMessages: DiscordMessage[] = [
   {
     id: "1",
     author: "Sarah",
-    avatar: "/profile-picture.png",
+    avatar: "/woman.png",
     content: "The new GitHub repo card looks clean — shipping tonight?",
     time: "10:41 AM",
     roleColor: "text-violet-400",

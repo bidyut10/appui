@@ -71,7 +71,7 @@ export const TwitterPostCard = forwardRef<HTMLDivElement, TwitterPostCardProps>(
         ref={ref}
         data-slot="twitter-post-card"
         className={cn(
-          "max-w-md rounded-2xl border border-neutral-100 bg-white p-5 font-sans shadow-lg",
+          "max-w-96 rounded-2xl border border-neutral-100 bg-white p-5 font-sans shadow-lg",
           className,
         )}
         {...props}

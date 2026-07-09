@@ -33,7 +33,7 @@ export const MusicPlaylistCard = forwardRef<
   (
     {
       className,
-      coverImage = "/dith-homee.png",
+      coverImage = "/wallpaper-3.png",
       playlistType = "Playlist",
       title = "Chill Vibes",
       songCount = "24 songs",
@@ -137,7 +137,7 @@ export const MusicPlaylistCard = forwardRef<
                     isPlaying ? "block" : "hidden group-hover:block",
                   )}
                 >
-                  {isPlaying ? <Pause size={12} /> : <Play size={12} />}
+                  {isPlaying ? <Pause size={12} fill="green"/> : <Play size={12} fill="green"/>}
                 </span>
 
                 <div className="min-w-0 flex-1">
