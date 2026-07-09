@@ -5,6 +5,7 @@ import "./globals.css";
 import { AnalyticsTracker } from "@/components/system/analytics";
 import { NavigationLoader } from "@/app/_shared/navigation/navigation-loader";
 import { ScrollToTopButton } from "@/app/_shared/scroll/scroll-to-top-button";
+import { VercelToolbarBlocker } from "@/components/system/vercel-toolbar-blocker";
 import { siteConfig } from "@/lib/site";
 
 const geistSans = Geist({
@@ -134,6 +135,7 @@ export default function RootLayout({
         <AnalyticsTracker />
         <NavigationLoader />
         <ScrollToTopButton />
+        <VercelToolbarBlocker />
       </body>
     </html>
   );
