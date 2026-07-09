@@ -4,7 +4,7 @@ import { TailwindCSS } from "@/icons/brands/tailwind-css";
 import { Typescript } from "@/icons/brands/typescript";
 import { mailtoLinks } from "@/lib/site";
 import { ShadcnUI } from "@/icons/brands/shadcn-ui";
-import { Vercel } from "@/icons/brands/Vercel";
+import { Vercel } from "@/icons/brands/vercel";
 import { Unplash } from "@/icons/brands/unplash";
 import { Anthropic } from "@/icons/brands/anthropic";
 import { NextJs } from "@/icons/brands/next-js";

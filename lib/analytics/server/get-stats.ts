@@ -12,7 +12,7 @@ import {
 } from "@/lib/analytics/server/date-range";
 import { getAnalyticsDb } from "@/lib/analytics/server/connection/db";
 import type { DashboardStats } from "@/lib/analytics/types";
-import { getAllShowcaseSlugs } from "@/lib/showcase";
+import { getAllShowcaseSlugs } from "@/lib/showcase/showcase";
 
 /**
  * Builds all dashboard aggregates in parallel.

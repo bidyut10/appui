@@ -24,22 +24,13 @@ function getSearchShortcutLabel() {
   return isApple ? "Command K" : "Control K";
 }
 
-export function DocsSearch() {
+function DocsSearchInput({ query }: Readonly<{ query: string }>) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const inputRef = useRef<HTMLInputElement>(null);
-  const query = searchParams.get("q") ?? "";
   const [value, setValue] = useState(query);
-  const [shortcutLabel, setShortcutLabel] = useState("Control K");
-
-  useEffect(() => {
-    setValue(query);
-  }, [query]);
-
-  useEffect(() => {
-    setShortcutLabel(getSearchShortcutLabel());
-  }, []);
+  const [shortcutLabel] = useState(getSearchShortcutLabel);
 
   useEffect(() => {
     const timer = globalThis.setTimeout(() => {
@@ -107,4 +98,11 @@ export function DocsSearch() {
       </kbd>
     </label>
   );
+}
+
+export function DocsSearch() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get("q") ?? "";
+
+  return <DocsSearchInput key={query} query={query} />;
 }

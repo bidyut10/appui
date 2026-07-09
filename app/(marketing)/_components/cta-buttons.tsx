@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { ChevronRight, MoveRight } from "lucide-react";
 import { mailtoLinks } from "@/lib/site";
@@ -6,7 +7,7 @@ import { mailtoLinks } from "@/lib/site";
 export function CtaButtons() {
   return (
     <div className="mt-6 flex flex-col md:flex-row gap-4">
-      <a
+      <Link
         href="/components"
         className="group flex cursor-pointer items-center justify-center gap-2 rounded-md border border-neutral-900 bg-neutral-800 px-4 py-2 text-base font-light text-white shadow-xl shadow-neutral-300/50"
       >
@@ -23,7 +24,7 @@ export function CtaButtons() {
             className="absolute scale-95 -translate-x-0.5 opacity-0 transition-[opacity,transform] duration-500 ease-smooth group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
           />
         </span>
-      </a>
+      </Link>
       <a
         href={mailtoLinks.work}
         className="group flex cursor-pointer items-center justify-center gap-2 rounded-md border border-neutral-800 bg-white px-4 py-2 text-base text-neutral-800"

@@ -112,7 +112,7 @@ export function DocsToc({
     if (!hash || !sectionIds.includes(hash)) return;
 
     lockedIdRef.current = hash;
-    setActiveId(hash);
+    requestAnimationFrame(() => setActiveId(hash));
     scrollToSection(hash);
     globalThis.history.replaceState(
       null,
