@@ -5,7 +5,10 @@ import { DashboardLoginGate } from "./_components/dashboard-login-gate";
 import { DashboardShell } from "./_components/dashboard-shell";
 import { DashboardView } from "./_components/dashboard-view";
 import { AUTH_COOKIE } from "@/lib/analytics/constants";
-import { isAnalyticsConfigured, isValidAuthToken } from "@/lib/analytics/server";
+import {
+  isAnalyticsConfigured,
+  isValidAuthToken,
+} from "@/lib/analytics/server";
 
 export const metadata: Metadata = {
   title: "Analytics Dashboard",

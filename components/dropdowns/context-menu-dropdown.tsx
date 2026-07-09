@@ -11,7 +11,7 @@ import {
 
 import { cn } from "@/lib/cn";
 
-import { Edit , Copy, Pin, Folder, Trash } from "lucide-react";
+import { Edit, Copy, Pin, Folder, Trash } from "lucide-react";
 
 type IconComponent = ComponentType<
   Readonly<{ size?: number; className?: string }>
@@ -160,7 +160,7 @@ export const ContextMenuDropdown = forwardRef<
             className="flex flex-col items-center justify-center select-none"
           >
             <div className="mb-2 flex h-24 w-24 cursor-pointer items-center justify-center rounded-3xl bg-cyan-200">
-              <Folder size={48} className="text-white" fill="white"/>
+              <Folder size={48} className="text-white" fill="white" />
             </div>
             <p className="text-[10px] font-medium text-neutral-700">
               {cardTitle}

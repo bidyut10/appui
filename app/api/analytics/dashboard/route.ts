@@ -12,7 +12,10 @@ import {
 
 export async function GET(request: Request) {
   if (!isAnalyticsConfigured()) {
-    return NextResponse.json({ error: "Analytics not configured" }, { status: 503 });
+    return NextResponse.json(
+      { error: "Analytics not configured" },
+      { status: 503 },
+    );
   }
 
   const token = readAuthCookie(request.headers.get("cookie"));
@@ -25,7 +28,10 @@ export async function GET(request: Request) {
 
   if (searchParams.has("from") || searchParams.has("to")) {
     if (!range) {
-      return NextResponse.json({ error: "Invalid date range" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Invalid date range" },
+        { status: 400 },
+      );
     }
   }
 
@@ -48,6 +54,9 @@ export async function GET(request: Request) {
 
     return NextResponse.json(stats);
   } catch {
-    return NextResponse.json({ error: "Failed to load stats" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to load stats" },
+      { status: 500 },
+    );
   }
 }

@@ -63,7 +63,10 @@ function DocsSearchInput({ query }: Readonly<{ query: string }>) {
         inputRef.current?.select();
       }
 
-      if (event.key === "Escape" && document.activeElement === inputRef.current) {
+      if (
+        event.key === "Escape" &&
+        document.activeElement === inputRef.current
+      ) {
         setValue("");
         inputRef.current?.blur();
       }
@@ -87,7 +90,7 @@ function DocsSearchInput({ query }: Readonly<{ query: string }>) {
         value={value}
         onChange={(event) => setValue(event.target.value)}
         placeholder="Search components…"
-        className="w-full rounded-lg border border-neutral-100 bg-neutral-50/50 py-1.5 pr-3 pl-8 font-sans text-sm text-neutral-800 outline-none transition-colors placeholder:text-neutral-400 focus:border-rose-200 focus:bg-white md:pr-14"
+        className="w-full rounded-lg border border-neutral-100 bg-neutral-50/50 py-1.5 pr-3 pl-8 font-sans text-sm text-neutral-800 transition-colors outline-none placeholder:text-neutral-400 focus:border-rose-200 focus:bg-white md:pr-14"
       />
       <kbd
         aria-label={shortcutLabel}

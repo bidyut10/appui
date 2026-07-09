@@ -12,9 +12,7 @@ import {
 
 /** Paths we never send analytics for. */
 function shouldTrack(pathname: string): boolean {
-  return (
-    !pathname.startsWith("/dashboard") && !pathname.startsWith("/api/")
-  );
+  return !pathname.startsWith("/dashboard") && !pathname.startsWith("/api/");
 }
 
 /**

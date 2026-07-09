@@ -55,10 +55,9 @@ async function shouldSkipHeartbeat(sessionId: string): Promise<boolean> {
   const db = await getAnalyticsDb();
   if (!db) return true;
 
-  const session = await db.collection(SESSIONS).findOne(
-    { sessionId },
-    { projection: { lastActiveAt: 1 } },
-  );
+  const session = await db
+    .collection(SESSIONS)
+    .findOne({ sessionId }, { projection: { lastActiveAt: 1 } });
 
   if (!session?.lastActiveAt) return false;
 

@@ -18,7 +18,9 @@ export function DocsShellProvider({
   children: React.ReactNode;
 }>) {
   return (
-    <DocsShellContext.Provider value={value}>{children}</DocsShellContext.Provider>
+    <DocsShellContext.Provider value={value}>
+      {children}
+    </DocsShellContext.Provider>
   );
 }
 

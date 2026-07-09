@@ -9,15 +9,12 @@ function getPostHogKey() {
 }
 
 function getPostHogHost() {
-  return (
-    process.env.NEXT_PUBLIC_POSTHOG_HOST?.trim() || "/ingest"
-  );
+  return process.env.NEXT_PUBLIC_POSTHOG_HOST?.trim() || "/ingest";
 }
 
 function getPostHogUiHost() {
   return (
-    process.env.NEXT_PUBLIC_POSTHOG_UI_HOST?.trim() ||
-    "https://us.posthog.com"
+    process.env.NEXT_PUBLIC_POSTHOG_UI_HOST?.trim() || "https://us.posthog.com"
   );
 }
 

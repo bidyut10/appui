@@ -9,7 +9,14 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-import { Clock, Ellipsis, ThumbsUp, MessageCircle, Repeat, Share2 } from "lucide-react";
+import {
+  Clock,
+  Ellipsis,
+  ThumbsUp,
+  MessageCircle,
+  Repeat,
+  Share2,
+} from "lucide-react";
 
 export type LinkedInPostCardProps = Readonly<
   {

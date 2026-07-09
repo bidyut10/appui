@@ -19,13 +19,13 @@ export function ComponentsBrowseAll({
     .sort((a, b) => a.title.localeCompare(b.title));
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-8 md:px-8 md:py-10 mt-10 md:mt-0">
+    <div className="mx-auto mt-10 w-full max-w-3xl px-4 py-8 md:mt-0 md:px-8 md:py-10">
       <div id="overview" className="min-w-0 scroll-mt-8">
         <p className="font-mono text-[10px] tracking-[0.14em] text-neutral-400 uppercase">
           Components / Docs
         </p>
 
-        <h1 className="mt-3 font-serif text-2xl text-neutral-900 ">
+        <h1 className="mt-3 font-serif text-2xl text-neutral-900">
           All{" "}
           <AnnotatedText variant="line" color="text-cyan-200">
             Available components
@@ -48,7 +48,7 @@ export function ComponentsBrowseAll({
         </p>
       </div>
 
-      <section id="components" className="mt-16 md:mt-10 min-w-0 scroll-mt-8">
+      <section id="components" className="mt-16 min-w-0 scroll-mt-8 md:mt-10">
         <ul className="mt-6 flex flex-col gap-2">
           {allComponents.map((item, index) => (
             <ComponentListRow key={item.slug} item={item} index={index} />

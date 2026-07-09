@@ -32,14 +32,14 @@ No shadcn, no MUI, no Radix underneath. Just React, Tailwind, and SVG.
 
 ## Site routes
 
-| Route | Purpose |
-|-------|---------|
-| `/` | Marketing homepage with live component demos |
-| `/components` | Browse all components (A–Z index) |
-| `/components?category=Audio` | Category catalog with preview cards |
-| `/components?category=Audio&q=music` | Search results (also via header search) |
-| `/components/[slug]` | Component detail — preview, setup, copy code |
-| `/dashboard` | Password-protected analytics (optional) |
+| Route                                | Purpose                                      |
+| ------------------------------------ | -------------------------------------------- |
+| `/`                                  | Marketing homepage with live component demos |
+| `/components`                        | Browse all components (A–Z index)            |
+| `/components?category=Audio`         | Category catalog with preview cards          |
+| `/components?category=Audio&q=music` | Search results (also via header search)      |
+| `/components/[slug]`                 | Component detail — preview, setup, copy code |
+| `/dashboard`                         | Password-protected analytics (optional)      |
 
 The docs section uses a three-column layout on large screens: sidebar navigation, main content, and on-page table of contents.
 

@@ -81,12 +81,12 @@ export default async function ComponentDetailPage({ params }: Readonly<Props>) {
                 <ChevronLeft
                   size={12}
                   strokeWidth={3}
-                  className="transition-[opacity,transform] duration-500 ease-smooth group-hover:-translate-x-0.5 group-hover:scale-95 group-hover:opacity-0"
+                  className="ease-smooth transition-[opacity,transform] duration-500 group-hover:-translate-x-0.5 group-hover:scale-95 group-hover:opacity-0"
                 />
                 <MoveLeft
                   size={12}
                   strokeWidth={2.5}
-                  className="absolute scale-95 translate-x-0.5 opacity-0 transition-[opacity,transform] duration-500 ease-smooth group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
+                  className="ease-smooth absolute translate-x-0.5 scale-95 opacity-0 transition-[opacity,transform] duration-500 group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
                 />
               </span>
               Back to {entry.category}
@@ -97,7 +97,7 @@ export default async function ComponentDetailPage({ params }: Readonly<Props>) {
             </p>
 
             <header className="mt-3">
-              <h1 className="font-serif text-3xl text-neutral-900 ">
+              <h1 className="font-serif text-3xl text-neutral-900">
                 {entry.title}
               </h1>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-neutral-500">
@@ -117,10 +117,7 @@ export default async function ComponentDetailPage({ params }: Readonly<Props>) {
             </div>
           </section>
 
-          <section
-            id="setup"
-            className="mt-10 space-y-5 scroll-mt-8 md:mt-12"
-          >
+          <section id="setup" className="mt-10 scroll-mt-8 space-y-5 md:mt-12">
             <div>
               <h2 className="font-serif text-xl text-neutral-900">
                 <AnnotatedText variant="doubleUnderline">Setup</AnnotatedText>
@@ -164,12 +161,12 @@ export default async function ComponentDetailPage({ params }: Readonly<Props>) {
                     <ChevronLeft
                       size={12}
                       strokeWidth={3}
-                      className="transition-[opacity,transform] duration-500 ease-smooth group-hover:-translate-x-0.5 group-hover:scale-95 group-hover:opacity-0"
+                      className="ease-smooth transition-[opacity,transform] duration-500 group-hover:-translate-x-0.5 group-hover:scale-95 group-hover:opacity-0"
                     />
                     <MoveLeft
                       size={12}
                       strokeWidth={2.5}
-                      className="absolute scale-95 translate-x-0.5 opacity-0 transition-[opacity,transform] duration-500 ease-smooth group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
+                      className="ease-smooth absolute translate-x-0.5 scale-95 opacity-0 transition-[opacity,transform] duration-500 group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
                     />
                   </span>
                   Previous
@@ -188,12 +185,12 @@ export default async function ComponentDetailPage({ params }: Readonly<Props>) {
                     <ChevronRight
                       size={12}
                       strokeWidth={3}
-                      className="transition-[opacity,transform] duration-500 ease-smooth group-hover:translate-x-0.5 group-hover:scale-95 group-hover:opacity-0"
+                      className="ease-smooth transition-[opacity,transform] duration-500 group-hover:translate-x-0.5 group-hover:scale-95 group-hover:opacity-0"
                     />
                     <MoveRight
                       size={12}
                       strokeWidth={2.5}
-                      className="absolute scale-95 -translate-x-0.5 opacity-0 transition-[opacity,transform] duration-500 ease-smooth group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
+                      className="ease-smooth absolute -translate-x-0.5 scale-95 opacity-0 transition-[opacity,transform] duration-500 group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
                     />
                   </span>
                 </SaveScrollLink>

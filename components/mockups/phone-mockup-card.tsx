@@ -1,4 +1,8 @@
-import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import {
+  forwardRef,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
+} from "react";
 
 import { cn } from "@/lib/cn";
 
@@ -53,20 +57,23 @@ function PhoneSideButtons({
       <div
         className={cn(
           buttonClass(frame.button),
-          "-left-[2px] top-[15.5%] h-[3.2%]",
+          "top-[15.5%] -left-[2px] h-[3.2%]",
         )}
         aria-hidden="true"
       />
       {/* Volume up */}
       <div
-        className={cn(buttonClass(frame.button), "-left-[2px] top-[21%] h-[7.2%]")}
+        className={cn(
+          buttonClass(frame.button),
+          "top-[21%] -left-[2px] h-[7.2%]",
+        )}
         aria-hidden="true"
       />
       {/* Volume down */}
       <div
         className={cn(
           buttonClass(frame.button),
-          "-left-[2px] top-[30.5%] h-[7.2%]",
+          "top-[30.5%] -left-[2px] h-[7.2%]",
         )}
         aria-hidden="true"
       />
@@ -74,7 +81,7 @@ function PhoneSideButtons({
       <div
         className={cn(
           buttonClass(frame.button),
-          "-right-[2px] top-[23%] h-[11.5%] rounded-l-none rounded-r-sm",
+          "top-[23%] -right-[2px] h-[11.5%] rounded-l-none rounded-r-sm",
         )}
         aria-hidden="true"
       />
@@ -177,7 +184,7 @@ export const PhoneMockupCard = forwardRef<HTMLDivElement, PhoneMockupCardProps>(
         {...props}
       >
         {/* Frame + screen — clipped from top */}
-        <div className="absolute inset-0 left-[2px] right-[2px] overflow-hidden">
+        <div className="absolute inset-0 right-[2px] left-[2px] overflow-hidden">
           <div
             className={cn(phoneFrameClassName, "w-full shrink-0")}
             style={{ height: `${100 / ratio}%` }}

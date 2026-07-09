@@ -25,7 +25,7 @@ export function ComponentsCategoryNav({
 
   return (
     <div className="border-b border-neutral-200 bg-white px-4 py-3 md:hidden">
-      <div className="scrollbar-none flex items-center gap-2 overflow-x-auto">
+      <div className="flex scrollbar-none items-center gap-2 overflow-x-auto">
         <SaveScrollLink
           href="/components"
           className={cn(

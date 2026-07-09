@@ -9,7 +9,7 @@ export function Paragraph({
 }) {
   return (
     <p
-      className={`text-start text-base tracking-tight mt-6 ${tone === "muted" ? "text-neutral-700" : "text-neutral-900"}`}
+      className={`mt-6 text-start text-base tracking-tight ${tone === "muted" ? "text-neutral-700" : "text-neutral-900"}`}
     >
       {children}
     </p>

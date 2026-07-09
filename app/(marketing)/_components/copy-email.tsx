@@ -21,7 +21,7 @@ export function CopyEmailLink() {
     <button
       type="button"
       onClick={handleCopy}
-      className="transition-colors hover:text-neutral-600 cursor-pointer"
+      className="cursor-pointer transition-colors hover:text-neutral-600"
     >
       {copied ? "Copied" : "Copy email"}
     </button>

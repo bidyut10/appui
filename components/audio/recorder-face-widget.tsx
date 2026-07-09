@@ -12,7 +12,7 @@ import {
 import { cn } from "@/lib/cn";
 import { Pause, Play } from "lucide-react";
 
-const ACCENT = "#FF453A"; 
+const ACCENT = "#FF453A";
 const MASCOT = "#6CA8FF";
 
 // Formats elapsed milliseconds as MM:SS for the dial readout
@@ -125,9 +125,9 @@ export const RecorderFaceWidget = forwardRef<
 
       <span className="absolute top-3.5 right-3.5 z-10" aria-hidden>
         {recording ? (
-          <Pause size={14} color={ACCENT} fill={ACCENT}/>
+          <Pause size={14} color={ACCENT} fill={ACCENT} />
         ) : (
-          <Play size={14} color="white" fill="white"/>
+          <Play size={14} color="white" fill="white" />
         )}
       </span>
 

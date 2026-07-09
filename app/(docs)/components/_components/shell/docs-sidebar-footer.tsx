@@ -1,5 +1,5 @@
 import Image from "next/image";
-  
+
 import { ChevronRight, MoveRight } from "lucide-react";
 import { mailtoLinks, siteConfig } from "@/lib/site";
 
@@ -41,7 +41,7 @@ export function DocsSidebarFooter() {
           href={mailtoLinks.work}
           className="group inline-flex w-full items-center justify-center gap-1.5 rounded-md border border-neutral-200 bg-white px-2 py-1.5 font-sans text-xs whitespace-nowrap text-neutral-800 transition-colors hover:border-neutral-300 hover:bg-neutral-50"
         >
-          <span className="inline-flex shrink-0 origin-[70%_90%] transition-transform duration-500 ease-smooth group-hover:-rotate-12">
+          <span className="ease-smooth inline-flex shrink-0 origin-[70%_90%] transition-transform duration-500 group-hover:-rotate-12">
             <Image
               src="/freelancer.png"
               alt=""
@@ -56,12 +56,12 @@ export function DocsSidebarFooter() {
             <ChevronRight
               size={12}
               strokeWidth={3}
-              className="transition-[opacity,transform] duration-500 ease-smooth group-hover:translate-x-0.5 group-hover:scale-95 group-hover:opacity-0"
+              className="ease-smooth transition-[opacity,transform] duration-500 group-hover:translate-x-0.5 group-hover:scale-95 group-hover:opacity-0"
             />
             <MoveRight
               size={12}
               strokeWidth={2.5}
-              className="absolute scale-95 -translate-x-0.5 opacity-0 transition-[opacity,transform] duration-500 ease-smooth group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
+              className="ease-smooth absolute -translate-x-0.5 scale-95 opacity-0 transition-[opacity,transform] duration-500 group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
             />
           </span>
         </a>

@@ -34,7 +34,9 @@ function parseDay(value: string, endOfDay = false): Date | null {
   return date;
 }
 
-export function parseDateRange(searchParams: URLSearchParams): DateRange | null {
+export function parseDateRange(
+  searchParams: URLSearchParams,
+): DateRange | null {
   const fromRaw = searchParams.get("from")?.trim();
   const toRaw = searchParams.get("to")?.trim();
 
@@ -53,13 +55,17 @@ export function parseDateRange(searchParams: URLSearchParams): DateRange | null 
   return { from: rangeFrom, to: rangeTo };
 }
 
-// Shown at the top of the dashboard when a date filter is active. 
+// Shown at the top of the dashboard when a date filter is active.
 export function formatPeriodLabel(range: DateRange | null): string {
   if (!range) return "All time";
 
   const sameDay =
     range.from.toDateString() ===
-    new Date(range.to.getFullYear(), range.to.getMonth(), range.to.getDate()).toDateString();
+    new Date(
+      range.to.getFullYear(),
+      range.to.getMonth(),
+      range.to.getDate(),
+    ).toDateString();
 
   const formatter = new Intl.DateTimeFormat(undefined, {
     month: "short",

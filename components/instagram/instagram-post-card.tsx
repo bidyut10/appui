@@ -9,7 +9,13 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-import { Ellipsis, ThumbsUp, MessageCircle, Bookmark, Share2 } from "lucide-react";
+import {
+  Ellipsis,
+  ThumbsUp,
+  MessageCircle,
+  Bookmark,
+  Share2,
+} from "lucide-react";
 
 export type InstagramPostCardProps = Readonly<
   {

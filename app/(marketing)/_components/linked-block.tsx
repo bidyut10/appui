@@ -13,7 +13,7 @@ export function LinkedBlock({
   children: ReactNode;
 }) {
   return (
-    <div className={className}> 
+    <div className={className}>
       {children}
       <ViewLink href={href}>{link}</ViewLink>
     </div>

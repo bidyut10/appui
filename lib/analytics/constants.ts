@@ -1,7 +1,7 @@
 /**
  * Shared numbers and collection names used across client + server.
  * Tweak intervals here if you want fewer DB writes or a wider "live user" window.
-*/
+ */
 
 // How far back we count someone as "live" on the dashboard.
 export const ACTIVE_WINDOW_MS = 5 * 60 * 1000;

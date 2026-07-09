@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 const TOOLBAR_SELECTORS = [
   'button[aria-label="Vercel Toolbar"]',
-  '[data-vercel-toolbar]',
+  "[data-vercel-toolbar]",
   'iframe[src*="vercel.live"]',
   'script[src*="vercel.live"]',
   '[id*="vercel-toolbar" i]',

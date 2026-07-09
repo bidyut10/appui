@@ -40,9 +40,13 @@ export function CopyCodeBlock({
           type="button"
           onClick={handleCopy}
           aria-label={copied ? "Copied" : "Copy code"}
-          className="inline-flex size-8 shrink-0 items-center justify-center text-neutral-300 transition-colors hover:text-white cursor-pointer"
+          className="inline-flex size-8 shrink-0 cursor-pointer items-center justify-center text-neutral-300 transition-colors hover:text-white"
         >
-          {copied ? <Check size={14} className="text-green-400"/> : <Copy size={14} />}
+          {copied ? (
+            <Check size={14} className="text-green-400" />
+          ) : (
+            <Copy size={14} />
+          )}
         </button>
       </div>
 
@@ -63,7 +67,7 @@ const guideCodeClass =
 function InlineCode({ children }: Readonly<{ children: string }>) {
   return (
     <code
-      className={`mx-px inline-block text-rose-800 font-mono text-[0.75rem] max-w-full border border-neutral-100 bg-neutral-50 px-1.5 py-0.5 ${guideCodeClass}`}
+      className={`mx-px inline-block max-w-full border border-neutral-100 bg-neutral-50 px-1.5 py-0.5 font-mono text-[0.75rem] text-rose-800 ${guideCodeClass}`}
     >
       {children}
     </code>
@@ -73,7 +77,7 @@ function InlineCode({ children }: Readonly<{ children: string }>) {
 function CodeLine({ children }: Readonly<{ children: string }>) {
   return (
     <code
-      className={`block w-full text-rose-800 font-mono text-[0.75rem] border border-neutral-100 bg-neutral-50 px-2.5 py-2 break-all ${guideCodeClass}`}
+      className={`block w-full border border-neutral-100 bg-neutral-50 px-2.5 py-2 font-mono text-[0.75rem] break-all text-rose-800 ${guideCodeClass}`}
     >
       {children}
     </code>
@@ -97,16 +101,16 @@ export function SetupGuide({
     {
       id: "install",
       content: (
-        <div className="space-y-1.5 text-neutral-600 text-base">
+        <div className="space-y-1.5 text-base text-neutral-600">
           <p>Run in your terminal:</p>
-          <CodeLine >npm install clsx tailwind-merge</CodeLine>
+          <CodeLine>npm install clsx tailwind-merge</CodeLine>
         </div>
       ),
     },
     {
       id: "cn",
       content: (
-        <p className="text-neutral-600 text-base">
+        <p className="text-base text-neutral-600">
           Copy <InlineCode>lib/cn.ts</InlineCode> below. Skip if you already
           have <InlineCode>cn()</InlineCode>.
         </p>
@@ -115,7 +119,7 @@ export function SetupGuide({
     {
       id: "component",
       content: (
-        <p className="text-neutral-600 text-base">
+        <p className="text-base text-neutral-600">
           Copy <InlineCode>{componentFile}</InlineCode>. Replace{" "}
           <InlineCode>@/icons/...</InlineCode> with your icons (
           <a
@@ -142,11 +146,9 @@ export function SetupGuide({
   ];
 
   return (
-    <section className="border rounded-xl border-neutral-100">
+    <section className="rounded-xl border border-neutral-100">
       <div className="border-b border-neutral-100 px-4 py-3 sm:px-5">
-        <h2 className="text-base font-medium text-neutral-900">
-          How to use
-        </h2>
+        <h2 className="text-base font-medium text-neutral-900">How to use</h2>
       </div>
       <ol>
         {steps.map((step, index) => (

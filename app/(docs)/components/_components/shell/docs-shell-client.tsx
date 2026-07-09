@@ -19,7 +19,10 @@ function DocsSidebarFallback() {
   );
 }
 
-export function DocsShellClient({ categories, children }: DocsShellClientProps) {
+export function DocsShellClient({
+  categories,
+  children,
+}: DocsShellClientProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {

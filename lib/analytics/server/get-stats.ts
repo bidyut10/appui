@@ -80,7 +80,9 @@ export async function getDashboardStats(
     db
       .collection(PAGE_VIEWS)
       .aggregate<{ path: string; views: number }>([
-        ...(Object.keys(pageViewMatch).length ? [{ $match: pageViewMatch }] : []),
+        ...(Object.keys(pageViewMatch).length
+          ? [{ $match: pageViewMatch }]
+          : []),
         { $group: { _id: "$path", views: { $sum: 1 } } },
         { $sort: { views: -1 } },
         { $limit: TOP_LIST_LIMIT },
@@ -91,7 +93,9 @@ export async function getDashboardStats(
     db
       .collection(PAGE_VIEWS)
       .aggregate<{ country: string; visitors: number }>([
-        ...(Object.keys(pageViewMatch).length ? [{ $match: pageViewMatch }] : []),
+        ...(Object.keys(pageViewMatch).length
+          ? [{ $match: pageViewMatch }]
+          : []),
         { $group: { _id: { country: "$country", visitorId: "$visitorId" } } },
         { $group: { _id: "$_id.country", visitors: { $sum: 1 } } },
         { $sort: { visitors: -1 } },
@@ -103,7 +107,9 @@ export async function getDashboardStats(
     db
       .collection(PAGE_VIEWS)
       .aggregate<{ country: string; region: string; visitors: number }>([
-        ...(Object.keys(pageViewMatch).length ? [{ $match: pageViewMatch }] : []),
+        ...(Object.keys(pageViewMatch).length
+          ? [{ $match: pageViewMatch }]
+          : []),
         {
           $group: {
             _id: {

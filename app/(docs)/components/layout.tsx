@@ -10,6 +10,8 @@ export default function ComponentsLayout({
   const categories = getShowcaseByCategory();
 
   return (
-    <ComponentsDocsShell categories={categories}>{children}</ComponentsDocsShell>
+    <ComponentsDocsShell categories={categories}>
+      {children}
+    </ComponentsDocsShell>
   );
 }

@@ -25,14 +25,14 @@ export default function Home() {
     <div className="flex min-h-screen w-full min-w-0 flex-col items-center gap-6 overflow-x-hidden px-3 pb-10 selection:bg-neutral-800 selection:text-white md:px-4">
       <ShowcaseScrollRestoration />
 
-      <div className="max-w-xl px-4 md:px-0 mt-4 mb-10">
+      <div className="mt-4 mb-10 max-w-xl px-4 md:px-0">
         <Image
           src="/osui-logo.png"
           alt="Logo"
           width={0}
           height={0}
           sizes="512px"
-          className="w-30 h-auto"
+          className="h-auto w-30"
         />
         <Heading className="mt-36">
           Build Better{" "}
@@ -40,7 +40,7 @@ export default function Home() {
             <AnnotatedText variant="underline" color="text-cyan-200">
               Interfaces
             </AnnotatedText>
-            <Badge className="-right-1 -top-5 rotate-6 text-green-500">
+            <Badge className="-top-5 -right-1 rotate-6 text-green-500">
               Free
             </Badge>
           </span>
@@ -58,8 +58,8 @@ export default function Home() {
         <CtaButtons />
       </div>
 
-      <div className="relative max-w-xl px-4 md:px-0 mt-36">
-        <Badge className="-left-1 -top-7 -rotate-3 text-neutral-500">
+      <div className="relative mt-36 max-w-xl px-4 md:px-0">
+        <Badge className="-top-7 -left-1 -rotate-3 text-neutral-500">
           why us?
         </Badge>
         <Heading>
@@ -85,7 +85,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="max-w-xl px-4 md:px-0 my-10">
+      <div className="my-10 max-w-xl px-4 md:px-0">
         <Heading>
           Premium{" "}
           <AnnotatedText variant="arrow" color="text-rose-300">
@@ -94,11 +94,17 @@ export default function Home() {
           Endless Possibilities.
         </Heading>
         <Paragraph>
-          Choose from beautifully crafted color variants like Titanium, Space Gray, and more. Every finish is meticulously designed with realistic materials, accurate hardware details, and pixel-perfect precision to make every presentation feel premium.
+          Choose from beautifully crafted color variants like Titanium, Space
+          Gray, and more. Every finish is meticulously designed with realistic
+          materials, accurate hardware details, and pixel-perfect precision to
+          make every presentation feel premium.
         </Paragraph>
       </div>
 
-      <LinkedBlock className="relative mx-auto pb-14 w-full md:w-xl" link="view more variants">
+      <LinkedBlock
+        className="relative mx-auto w-full pb-14 md:w-xl"
+        link="view more variants"
+      >
         <LaptopMockupCard>
           <Image
             src="/wallpaper-3.png"
@@ -110,7 +116,7 @@ export default function Home() {
         </LaptopMockupCard>
       </LinkedBlock>
 
-      <div className="max-w-xl px-4 md:px-0 my-10">
+      <div className="my-10 max-w-xl px-4 md:px-0">
         <Heading>
           Designed to Blend In.{" "}
           <AnnotatedText variant="wavy">Built to Stand Out.</AnnotatedText>
@@ -138,7 +144,7 @@ export default function Home() {
       </LinkedBlock>
 
       <LinkedBlock
-        className="max-w-xl px-4 md:px-0 my-10 relative mx-auto pb-14"
+        className="relative mx-auto my-10 max-w-xl px-4 pb-14 md:px-0"
         link="view more annotations"
       >
         <Paragraph tone="dark">
@@ -156,7 +162,7 @@ export default function Home() {
       </LinkedBlock>
 
       <LinkedBlock
-        className="max-w-xl px-4 md:px-0 my-10 relative mx-auto pb-14"
+        className="relative mx-auto my-10 max-w-xl px-4 pb-14 md:px-0"
         link="view more variants"
       >
         <Heading>
@@ -169,7 +175,7 @@ export default function Home() {
           Explore carefully designed clock variants that balance functionality,
           elegance, and customization for any project.
         </Paragraph>
-        <div className="flex flex-col md:flex-row justify-between items-center mt-16 gap-6">
+        <div className="mt-16 flex flex-col items-center justify-between gap-6 md:flex-row">
           <AnalogClockWidget variant="roman" />
           <AnalogClockWidget variant="minimal" />
           <AnalogClockWidget variant="numeric" />
@@ -177,7 +183,7 @@ export default function Home() {
       </LinkedBlock>
 
       <LinkedBlock
-        className="max-w-xl px-4 md:px-0 my-10 relative mx-auto pb-14"
+        className="relative mx-auto my-10 max-w-xl px-4 pb-14 md:px-0"
         link="view more widgets"
       >
         <Heading>
@@ -191,7 +197,7 @@ export default function Home() {
           Polished widgets inspired by modern design systems, built with smooth
           interactions and thoughtful details that users notice.
         </Paragraph>
-        <div className="flex flex-col md:flex-row justify-between items-center mt-16 gap-6">
+        <div className="mt-16 flex flex-col items-center justify-between gap-6 md:flex-row">
           <BluetoothFaceWidget />
           <TorchFaceWidget />
           <DndFaceWidget />
@@ -199,7 +205,7 @@ export default function Home() {
       </LinkedBlock>
 
       <LinkedBlock
-        className="max-w-xl px-4 md:px-0 my-10 relative mx-auto pb-14"
+        className="relative mx-auto my-10 max-w-xl px-4 pb-14 md:px-0"
         link="view more notebooks"
       >
         <Heading>
@@ -215,15 +221,15 @@ export default function Home() {
           encourages focused writing.
         </Paragraph>
         <div
-          className="flex justify-center w-full items-center mt-16 p-10 border border-neutral-100 rounded-2xl"
+          className="mt-16 flex w-full items-center justify-center rounded-2xl border border-neutral-100 p-10"
           style={BOX_PATTERN}
         >
           <JournalWritingCard />
         </div>
       </LinkedBlock>
 
-      <div className="relative max-w-xl px-4 md:px-0 mt-36">
-        <Badge className="-left-1 -top-7 -rotate-3 text-neutral-500">
+      <div className="relative mt-36 max-w-xl px-4 md:px-0">
+        <Badge className="-top-7 -left-1 -rotate-3 text-neutral-500">
           under the hood
         </Badge>
         <Heading>
@@ -260,7 +266,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="max-w-xl px-4 md:px-0 my-10">
+      <div className="my-10 max-w-xl px-4 md:px-0">
         <Heading>
           A Developer Experience{" "}
           <AnnotatedText variant="highlight" color="text-yellow-100">
@@ -278,8 +284,8 @@ export default function Home() {
         <InstallOptions />
       </div>
 
-      <div className="relative max-w-xl px-4 md:px-0 mt-36">
-        <Badge className="-left-1 -top-7 -rotate-3 text-green-500 max-[499px]:left-4">
+      <div className="relative mt-36 max-w-xl px-4 md:px-0">
+        <Badge className="-top-7 -left-1 -rotate-3 text-green-500 max-[499px]:left-4">
           built with
         </Badge>
         <Heading>
@@ -289,8 +295,8 @@ export default function Home() {
           </AnnotatedText>
         </Heading>
         <Paragraph>
-          Tools, people, and services that power Opensource UI — plus a spot
-          for sponsors who want to support the project.
+          Tools, people, and services that power Opensource UI — plus a spot for
+          sponsors who want to support the project.
         </Paragraph>
         <OpenSourcePanel />
       </div>

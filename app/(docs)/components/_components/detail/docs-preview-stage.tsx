@@ -7,7 +7,10 @@ type DocsPreviewStageProps = Readonly<{
   className?: string;
 }>;
 
-export function DocsPreviewStage({ children, className }: DocsPreviewStageProps) {
+export function DocsPreviewStage({
+  children,
+  className,
+}: DocsPreviewStageProps) {
   return (
     <div
       className={[

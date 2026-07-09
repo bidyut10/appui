@@ -114,7 +114,7 @@ const resources: ResourceItem[] = [
     name: "Hostinger",
     description: "For managing the domain",
     href: "https://www.hostinger.com",
-    imageSrc:  "/hostinger.png",
+    imageSrc: "/hostinger.png",
   },
   {
     name: "TypeScript",
@@ -158,14 +158,12 @@ function ListIcon({ item }: { item: ResourceItem }) {
           alt=""
           width={20}
           height={20}
-          className="h-5 w-5 object-contain rounded"
+          className="h-5 w-5 rounded object-contain"
         />
       ) : Icon ? (
         <Icon size={16} className={iconColor} />
       ) : (
-        <span
-          className={`font-sans text-[16px] font-semibold ${letterColor}`}
-        >
+        <span className={`font-sans text-[16px] font-semibold ${letterColor}`}>
           {letter}
         </span>
       )}

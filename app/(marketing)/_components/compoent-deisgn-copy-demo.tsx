@@ -33,10 +33,10 @@ function RightLine() {
 function LeftCallout({ index, label }: { index: number; label: string }) {
   return (
     <div className="flex w-full items-center justify-end">
-      <span className="whitespace-nowrap text-[11px] text-neutral-800 max-[549px]:text-[9px]">
+      <span className="text-[11px] whitespace-nowrap text-neutral-800 max-[549px]:text-[9px]">
         {label}
       </span>
-      <span className="mx-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-rose-500 text-[9px] font-medium leading-none text-white max-[549px]:h-3.5 max-[549px]:w-3.5 max-[549px]:text-[8px]">
+      <span className="mx-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-rose-500 text-[9px] leading-none font-medium text-white max-[549px]:h-3.5 max-[549px]:w-3.5 max-[549px]:text-[8px]">
         {index}
       </span>
     </div>
@@ -46,10 +46,10 @@ function LeftCallout({ index, label }: { index: number; label: string }) {
 function RightCallout({ index, label }: { index: number; label: string }) {
   return (
     <div className="flex items-center">
-      <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-rose-500 text-[9px] font-medium leading-none text-white max-[549px]:h-3.5 max-[549px]:w-3.5 max-[549px]:text-[8px]">
+      <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-rose-500 text-[9px] leading-none font-medium text-white max-[549px]:h-3.5 max-[549px]:w-3.5 max-[549px]:text-[8px]">
         {index}
       </span>
-      <span className="ml-1 whitespace-nowrap text-[11px] text-neutral-800 max-[549px]:text-[9px]">
+      <span className="ml-1 text-[11px] whitespace-nowrap text-neutral-800 max-[549px]:text-[9px]">
         {label}
       </span>
     </div>
@@ -99,9 +99,7 @@ function CardBody({
 
 function DesignCard() {
   return (
-    <div
-      className={`relative mx-auto w-fit max-w-full py-1 ${cardVars}`}
-    >
+    <div className={`relative mx-auto w-fit max-w-full py-1 ${cardVars}`}>
       <div
         className="pointer-events-none absolute top-0 bottom-0 z-0 rounded-2xl bg-white shadow-[0_6px_24px_rgba(0,0,0,0.05)] max-[549px]:rounded-xl max-[549px]:shadow-[0_4px_16px_rgba(0,0,0,0.05)]"
         style={{ left: whiteLeft, width: cardTotal }}
@@ -115,7 +113,10 @@ function DesignCard() {
           <div className="shrink-0" style={colWidth("var(--connector-w)")} />
           <CardBody>
             <Highlight className="p-2 max-[549px]:p-1.5">
-              <div className="h-32 rounded-md border border-neutral-100 max-[549px]:h-24" style={BOX_PATTERN} />
+              <div
+                className="h-32 rounded-md border border-neutral-100 max-[549px]:h-24"
+                style={BOX_PATTERN}
+              />
             </Highlight>
           </CardBody>
           <div className="shrink-0" style={colWidth("var(--right-w)")} />

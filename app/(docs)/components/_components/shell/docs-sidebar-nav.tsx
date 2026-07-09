@@ -17,7 +17,10 @@ type DocsSidebarNavProps = Readonly<{
   onNavigate?: () => void;
 }>;
 
-export function DocsSidebarNav({ categories, onNavigate }: DocsSidebarNavProps) {
+export function DocsSidebarNav({
+  categories,
+  onNavigate,
+}: DocsSidebarNavProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -44,7 +47,7 @@ export function DocsSidebarNav({ categories, onNavigate }: DocsSidebarNavProps) 
       aria-label="Component documentation"
       className="scrollbar-hover min-h-0 flex-1 overflow-y-auto px-5 py-5"
     >
-      <p className="mb-2 mt-4 font-mono text-[10px] tracking-[0.12em] text-neutral-400 uppercase">
+      <p className="mt-4 mb-2 font-mono text-[10px] tracking-[0.12em] text-neutral-400 uppercase">
         Getting started
       </p>
       <ul className="mb-6 space-y-1">
@@ -54,7 +57,12 @@ export function DocsSidebarNav({ categories, onNavigate }: DocsSidebarNavProps) 
             onClick={onNavigate}
             className="flex items-center gap-2 py-1 font-sans text-sm text-neutral-500 transition-colors hover:text-neutral-900"
           >
-            <Home size={12} strokeWidth={3} className="shrink-0 text-neutral-400" aria-hidden />
+            <Home
+              size={12}
+              strokeWidth={3}
+              className="shrink-0 text-neutral-400"
+              aria-hidden
+            />
             Home
           </Link>
         </li>
@@ -92,9 +100,7 @@ export function DocsSidebarNav({ categories, onNavigate }: DocsSidebarNavProps) 
               onClick={onNavigate}
               className={cn(
                 "flex items-center justify-between gap-3 py-1 font-sans text-sm transition-colors",
-                !isBrowseAll &&
-                  group.category === activeCategory &&
-                  !activeSlug
+                !isBrowseAll && group.category === activeCategory && !activeSlug
                   ? "font-medium text-neutral-900"
                   : "text-neutral-500 hover:text-neutral-900",
               )}

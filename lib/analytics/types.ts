@@ -1,4 +1,4 @@
-/** 
+/**
  * TypeScript shapes shared between the tracker, API routes, and dashboard.
  */
 

@@ -19,7 +19,11 @@ export {
 export { formatCountry, formatRegion, geoFromRequest } from "./geo";
 export { getDashboardStats } from "./get-stats";
 export { trackEvent, trackEvents } from "./track-event";
-export { parseTrackPayload, parseTrackPayloads, sanitizePath } from "./validate";
+export {
+  parseTrackPayload,
+  parseTrackPayloads,
+  sanitizePath,
+} from "./validate";
 export {
   getAnalyticsDb,
   getMongoConnectionHint,

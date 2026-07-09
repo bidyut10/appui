@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-import { Play, Pause, SkipForward, SkipBack  } from "lucide-react";
+import { Play, Pause, SkipForward, SkipBack } from "lucide-react";
 
 export type MusicPlayerCardProps = Readonly<
   {
@@ -113,7 +113,7 @@ export const MusicPlayerCard = forwardRef<HTMLDivElement, MusicPlayerCardProps>(
               aria-label="Previous track"
               className="cursor-pointer text-lg text-neutral-500 transition-colors hover:text-white"
             >
-              <SkipBack size={14}/>
+              <SkipBack size={14} />
             </button>
 
             <button
@@ -122,7 +122,11 @@ export const MusicPlayerCard = forwardRef<HTMLDivElement, MusicPlayerCardProps>(
               onClick={() => setPlaying((prev) => !prev)}
               className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-white transition-transform hover:scale-105"
             >
-              {playing ? <Pause size={14} fill="black"/> : <Play size={14} fill="black"/>}
+              {playing ? (
+                <Pause size={14} fill="black" />
+              ) : (
+                <Play size={14} fill="black" />
+              )}
             </button>
 
             <button
@@ -130,7 +134,7 @@ export const MusicPlayerCard = forwardRef<HTMLDivElement, MusicPlayerCardProps>(
               aria-label="Next track"
               className="cursor-pointer text-lg text-neutral-500 transition-colors hover:text-white"
             >
-              <SkipForward size={14}/>
+              <SkipForward size={14} />
             </button>
           </div>
         </div>

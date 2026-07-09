@@ -8,7 +8,14 @@ import {
 import Image from "next/image";
 
 import { cn } from "@/lib/cn";
-import { Bookmark, MessageCircle, Ellipsis, Heart, Repeat, Share } from "lucide-react";
+import {
+  Bookmark,
+  MessageCircle,
+  Ellipsis,
+  Heart,
+  Repeat,
+  Share,
+} from "lucide-react";
 
 export type TwitterPostCardProps = Readonly<
   {

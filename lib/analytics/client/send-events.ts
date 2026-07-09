@@ -61,9 +61,7 @@ let lastPageViewAt = 0;
 function postEvents(events: TrackBody[]): void {
   if (events.length === 0) return;
 
-  const payload = JSON.stringify(
-    events.length === 1 ? events[0] : { events },
-  );
+  const payload = JSON.stringify(events.length === 1 ? events[0] : { events });
 
   if (navigator.sendBeacon) {
     const blob = new Blob([payload], { type: "application/json" });
@@ -89,7 +87,10 @@ function isSelfHostedAnalyticsEnabled(): boolean {
 
 export function trackPageView(path: string): void {
   const now = Date.now();
-  if (path === lastPageViewPath && now - lastPageViewAt < PAGEVIEW_DEBOUNCE_MS) {
+  if (
+    path === lastPageViewPath &&
+    now - lastPageViewAt < PAGEVIEW_DEBOUNCE_MS
+  ) {
     return;
   }
 

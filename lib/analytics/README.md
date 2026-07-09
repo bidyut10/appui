@@ -9,16 +9,16 @@ Use either, both, or neither.
 
 ## Which one do you need?
 
-| | Self-hosted `/dashboard` | PostHog |
-|---|---|---|
-| Page views | Yes | Yes |
-| Component clicks | Yes | Yes |
-| Live users | Yes | Yes |
-| Country / region | Yes | Yes |
-| Session replay | No | Yes |
-| Funnels / retention | No | Yes |
-| Data ownership | Your MongoDB | PostHog cloud |
-| Extra cost | MongoDB free tier | PostHog free tier |
+|                     | Self-hosted `/dashboard` | PostHog           |
+| ------------------- | ------------------------ | ----------------- |
+| Page views          | Yes                      | Yes               |
+| Component clicks    | Yes                      | Yes               |
+| Live users          | Yes                      | Yes               |
+| Country / region    | Yes                      | Yes               |
+| Session replay      | No                       | Yes               |
+| Funnels / retention | No                       | Yes               |
+| Data ownership      | Your MongoDB             | PostHog cloud     |
+| Extra cost          | MongoDB free tier        | PostHog free tier |
 
 **If you use PostHog, you do not need the MongoDB dashboard** unless you want your own private copy of the data. To run PostHog only, set:
 
@@ -33,20 +33,20 @@ Then remove `MONGODB_URI` and `ANALYTICS_DASHBOARD_SECRET` from Vercel.
 
 ### MongoDB dashboard
 
-| Event | When | Stored in |
-|-------|------|-----------|
-| `pageview` | Route change on public pages | `analytics_page_views` |
+| Event             | When                                                            | Stored in                    |
+| ----------------- | --------------------------------------------------------------- | ---------------------------- |
+| `pageview`        | Route change on public pages                                    | `analytics_page_views`       |
 | `component_click` | Click on a component link in docs (sidebar, browse list, cards) | `analytics_component_clicks` |
-| `heartbeat` | Every ~3 min while tab is visible | updates `analytics_sessions` |
-| `leave` | Tab hidden or closed | session `durationSec` |
+| `heartbeat`       | Every ~3 min while tab is visible                               | updates `analytics_sessions` |
+| `leave`           | Tab hidden or closed                                            | session `durationSec`        |
 
 ### PostHog (when `NEXT_PUBLIC_POSTHOG_KEY` is set)
 
-| Event | PostHog name |
-|-------|--------------|
-| Page view | `$pageview` |
-| Component click | `component_click` |
-| Tab leave | `$pageleave` (automatic) |
+| Event           | PostHog name             |
+| --------------- | ------------------------ |
+| Page view       | `$pageview`              |
+| Component click | `component_click`        |
+| Tab leave       | `$pageleave` (automatic) |
 
 We store anonymous `visitorId` (localStorage) and `sessionId` (sessionStorage). Country / region / city come from Vercel geo headers — **no IP addresses are saved**.
 
@@ -120,14 +120,14 @@ lib/analytics/
 
 Related files outside `lib/analytics/`:
 
-| Path | Purpose |
-|------|---------|
+| Path                                      | Purpose                                  |
+| ----------------------------------------- | ---------------------------------------- |
 | `components/system/analytics/tracker.tsx` | Invisible tracker mounted in root layout |
-| `lib/docs/save-scroll-link.tsx` | Docs links that record component clicks |
-| `app/api/analytics/track/route.ts` | POST endpoint for browser events |
-| `app/api/analytics/auth/route.ts` | Dashboard login / logout |
-| `app/api/analytics/dashboard/route.ts` | GET aggregated stats |
-| `app/(dashboard)/dashboard/` | Password-protected dashboard UI |
+| `lib/docs/save-scroll-link.tsx`           | Docs links that record component clicks  |
+| `app/api/analytics/track/route.ts`        | POST endpoint for browser events         |
+| `app/api/analytics/auth/route.ts`         | Dashboard login / logout                 |
+| `app/api/analytics/dashboard/route.ts`    | GET aggregated stats                     |
+| `app/(dashboard)/dashboard/`              | Password-protected dashboard UI          |
 
 ## Import paths
 

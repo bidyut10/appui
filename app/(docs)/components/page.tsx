@@ -1,7 +1,4 @@
-import {
-  getAllShowcaseSlugs,
-  getShowcaseByCategory,
-} from "@/lib/showcase";
+import { getAllShowcaseSlugs, getShowcaseByCategory } from "@/lib/showcase";
 
 import {
   ComponentsBrowseAll,

@@ -392,7 +392,7 @@ export const showcaseRows = [
       "LaptopMockupCard",
       {
         description:
-          "MacBook Pro frame wrapping your screenshot — black lid and bezel with a gray outer frame and base. Pass variant=\"titanium\" for a titanium outer frame and base.",
+          'MacBook Pro frame wrapping your screenshot — black lid and bezel with a gray outer frame and base. Pass variant="titanium" for a titanium outer frame and base.',
         usage: '<LaptopMockupCard variant="titanium" />',
       },
     ),

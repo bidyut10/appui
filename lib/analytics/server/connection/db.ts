@@ -56,7 +56,9 @@ async function connectClient(): Promise<MongoClient> {
         resolvedUri === rawUri && rawUri.startsWith("mongodb+srv://")
           ? "SRV"
           : "resolved";
-      console.info(`[analytics] MongoDB connected (${via}) — ${maskUri(rawUri)}`);
+      console.info(
+        `[analytics] MongoDB connected (${via}) — ${maskUri(rawUri)}`,
+      );
     }
 
     return client;

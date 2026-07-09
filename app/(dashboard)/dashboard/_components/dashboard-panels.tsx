@@ -144,9 +144,7 @@ type RankRowProps = Readonly<{
 export function RankRow({ label, value, href, rank, maxValue }: RankRowProps) {
   const numericValue = typeof value === "number" ? value : Number(value);
   const width =
-    maxValue > 0
-      ? Math.max(8, Math.round((numericValue / maxValue) * 100))
-      : 0;
+    maxValue > 0 ? Math.max(8, Math.round((numericValue / maxValue) * 100)) : 0;
 
   const content = (
     <>
@@ -191,7 +189,5 @@ export function RankRow({ label, value, href, rank, maxValue }: RankRowProps) {
     );
   }
 
-  return (
-    <li className="flex items-center gap-2 rounded-lg px-2">{content}</li>
-  );
+  return <li className="flex items-center gap-2 rounded-lg px-2">{content}</li>;
 }

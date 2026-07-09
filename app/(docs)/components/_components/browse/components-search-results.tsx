@@ -7,7 +7,9 @@ type ComponentsSearchResultsProps = Readonly<{
   query: string;
 }>;
 
-export function ComponentsSearchResults({ query }: ComponentsSearchResultsProps) {
+export function ComponentsSearchResults({
+  query,
+}: ComponentsSearchResultsProps) {
   const results = searchShowcaseEntries(query);
 
   return (

@@ -4,9 +4,10 @@
   --font-mono:
     var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco,
     Consolas, monospace;
-    --font-serif: var(--font-serif-display), ui-serif, Georgia, Cambria,
-    "Times New Roman", Times, serif;
-     --font-sans: var(--font-geist-sans);
+  --font-serif:
+    var(--font-serif-display), ui-serif, Georgia, Cambria, "Times New Roman",
+    Times, serif;
+  --font-sans: var(--font-geist-sans);
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 }
 

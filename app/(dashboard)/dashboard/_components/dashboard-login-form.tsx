@@ -90,7 +90,7 @@ export function DashboardLoginForm({ onSuccess }: DashboardLoginFormProps) {
               type="password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              className="mt-2 w-full rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-2.5 font-sans text-sm text-neutral-900 outline-none transition-colors focus:border-neutral-300 focus:bg-white"
+              className="mt-2 w-full rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-2.5 font-sans text-sm text-neutral-900 transition-colors outline-none focus:border-neutral-300 focus:bg-white"
               autoComplete="current-password"
               required
             />

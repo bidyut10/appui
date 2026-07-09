@@ -35,7 +35,7 @@ export function ComponentPreviewCard({
           <h3 className="min-w-0 flex-1 truncate font-sans text-[15px] leading-snug">
             <SaveScrollLink
               href={`/components/${slug}`}
-              className="outline-none transition-colors hover:text-neutral-700"
+              className="transition-colors outline-none hover:text-neutral-700"
             >
               <span className="font-semibold text-neutral-900">{title}</span>
               <span className="text-neutral-300"> / </span>
@@ -52,7 +52,7 @@ export function ComponentPreviewCard({
           </SaveScrollLink>
         </div>
 
-        <p className="mt-2 line-clamp-2 text-sm max-w-xl leading-relaxed text-neutral-500">
+        <p className="mt-2 line-clamp-2 max-w-xl text-sm leading-relaxed text-neutral-500">
           {description}
         </p>
 

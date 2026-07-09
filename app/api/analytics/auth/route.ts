@@ -8,7 +8,10 @@ import {
 
 export async function POST(request: Request) {
   if (!isAnalyticsConfigured()) {
-    return NextResponse.json({ error: "Analytics not configured" }, { status: 503 });
+    return NextResponse.json(
+      { error: "Analytics not configured" },
+      { status: 503 },
+    );
   }
 
   let password = "";

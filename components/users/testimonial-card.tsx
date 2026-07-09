@@ -154,7 +154,12 @@ export const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
             className="mb-4 flex gap-0.5"
           >
             {RATING_STARS.slice(0, current.rating ?? 5).map((starId) => (
-              <Star key={starId} size={12} className="text-yellow-400" fill="#FFD700"/>
+              <Star
+                key={starId}
+                size={12}
+                className="text-yellow-400"
+                fill="#FFD700"
+              />
             ))}
           </div>
 

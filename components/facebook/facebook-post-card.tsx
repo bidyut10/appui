@@ -9,7 +9,14 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-import { Clock, Ellipsis, ThumbsUp, Heart, MessageCircle, Share2 } from "lucide-react";
+import {
+  Clock,
+  Ellipsis,
+  ThumbsUp,
+  Heart,
+  MessageCircle,
+  Share2,
+} from "lucide-react";
 
 export type FacebookPostCardProps = Readonly<
   {
@@ -132,11 +139,11 @@ export const FacebookPostCard = forwardRef<
         >
           <span className="flex items-center gap-1">
             <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-blue-500 text-white">
-              {likeIcon ?? <ThumbsUp size={9} fill="white"/>}
+              {likeIcon ?? <ThumbsUp size={9} fill="white" />}
             </span>
 
             <span className="-ml-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-rose-500 text-white">
-              {heartIcon ?? <Heart size={9} fill="white"/>}
+              {heartIcon ?? <Heart size={9} fill="white" />}
             </span>
 
             {reactions.toLocaleString()}

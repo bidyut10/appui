@@ -68,16 +68,16 @@ c(
 
 See the [README](./README.md#folder-structure) for the full layout. Key paths:
 
-| Path | Purpose |
-|------|---------|
-| `components/` | Copy-paste UI widgets (organized by category) |
-| `components/system/` | App infrastructure (loaders, analytics tracker) |
-| `icons/` | SVG icon components |
-| `lib/showcase/showcase.tsx` | Component registry + homepage grid |
-| `lib/docs/` | Docs shared code (`SaveScrollLink`, `CopyCodeBlock`) |
-| `app/(docs)/components/` | Docs routes — browse, search, detail pages |
-| `app/(marketing)/` | Homepage |
-| `app/(dashboard)/dashboard/` | Analytics dashboard UI |
+| Path                         | Purpose                                              |
+| ---------------------------- | ---------------------------------------------------- |
+| `components/`                | Copy-paste UI widgets (organized by category)        |
+| `components/system/`         | App infrastructure (loaders, analytics tracker)      |
+| `icons/`                     | SVG icon components                                  |
+| `lib/showcase/showcase.tsx`  | Component registry + homepage grid                   |
+| `lib/docs/`                  | Docs shared code (`SaveScrollLink`, `CopyCodeBlock`) |
+| `app/(docs)/components/`     | Docs routes — browse, search, detail pages           |
+| `app/(marketing)/`           | Homepage                                             |
+| `app/(dashboard)/dashboard/` | Analytics dashboard UI                               |
 
 ## Questions
 

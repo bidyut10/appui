@@ -24,7 +24,7 @@ export function ComponentsCatalog({
           Components / Docs
         </p>
 
-        <h1 className="mt-3 font-serif text-3xl text-neutral-900 ">
+        <h1 className="mt-3 font-serif text-3xl text-neutral-900">
           {activeGroup.category}
         </h1>
 
@@ -50,16 +50,16 @@ export function ComponentsCatalog({
           setup and source.
         </p>
         <div className="grid grid-cols-1 gap-6">
-        {activeGroup.items.map((item) => (
-          <ComponentPreviewCard
-            key={item.slug}
-            slug={item.slug}
-            title={item.title}
-            category={activeGroup.category}
-            description={item.description}
-            preview={item.preview}
-          />
-        ))}
+          {activeGroup.items.map((item) => (
+            <ComponentPreviewCard
+              key={item.slug}
+              slug={item.slug}
+              title={item.title}
+              category={activeGroup.category}
+              description={item.description}
+              preview={item.preview}
+            />
+          ))}
         </div>
       </div>
     </div>

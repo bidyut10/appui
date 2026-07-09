@@ -14,7 +14,11 @@ function slugFromHref(href: SaveScrollLinkProps["href"]): string | null {
   return match?.[1] ?? null;
 }
 
-export function SaveScrollLink({ href, onClick, ...props }: SaveScrollLinkProps) {
+export function SaveScrollLink({
+  href,
+  onClick,
+  ...props
+}: SaveScrollLinkProps) {
   return (
     <Link
       {...props}

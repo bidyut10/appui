@@ -104,7 +104,11 @@ export const DndFaceWidget = forwardRef<HTMLButtonElement, DndFaceWidgetProps>(
         </svg>
 
         <span className="absolute top-3.5 right-3.5 z-10" aria-hidden>
-          <Moon size={14} color={on ? ACCENT : "#FFFFFF66"} fill={on ? ACCENT : "#FFFFFF66"}/>
+          <Moon
+            size={14}
+            color={on ? ACCENT : "#FFFFFF66"}
+            fill={on ? ACCENT : "#FFFFFF66"}
+          />
         </span>
 
         <div className="absolute inset-x-0 top-[32%] z-10 px-3 text-center">

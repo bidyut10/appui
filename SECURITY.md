@@ -4,9 +4,9 @@
 
 Security fixes are applied to the latest version on the `main` branch.
 
-| Version | Supported |
-| ------- | --------- |
-| latest on `main` | yes |
+| Version          | Supported |
+| ---------------- | --------- |
+| latest on `main` | yes       |
 
 ## Reporting a vulnerability
 

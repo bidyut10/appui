@@ -37,7 +37,7 @@ export function PhoneColumn({
   if (!link) return panel;
 
   return (
-    <div className="relative flex w-full min-[1300px]:flex-1 items-stretch">
+    <div className="relative flex w-full items-stretch min-[1300px]:flex-1">
       {panel}
       <ViewLink>{link}</ViewLink>
     </div>

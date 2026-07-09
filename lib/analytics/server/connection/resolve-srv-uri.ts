@@ -43,7 +43,8 @@ function resolveTxtRecords(host: string, resolver: Resolver) {
 function extractSrvHost(uri: string): string {
   const withoutScheme = uri.slice(SRV_PREFIX.length);
   const hostStart = withoutScheme.lastIndexOf("@") + 1;
-  const hostPart = hostStart > 0 ? withoutScheme.slice(hostStart) : withoutScheme;
+  const hostPart =
+    hostStart > 0 ? withoutScheme.slice(hostStart) : withoutScheme;
   const end = hostPart.search(/[/?]/);
   return end === -1 ? hostPart : hostPart.slice(0, end);
 }
@@ -59,8 +60,7 @@ function parseSrvUri(uri: string): {
   const slashIndex = withoutScheme.indexOf("/");
   const authority =
     slashIndex === -1 ? withoutScheme : withoutScheme.slice(0, slashIndex);
-  const pathAndQuery =
-    slashIndex === -1 ? "" : withoutScheme.slice(slashIndex);
+  const pathAndQuery = slashIndex === -1 ? "" : withoutScheme.slice(slashIndex);
 
   const atIndex = authority.lastIndexOf("@");
   const credentials = atIndex >= 0 ? authority.slice(0, atIndex) : "";

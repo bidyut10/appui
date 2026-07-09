@@ -8,15 +8,8 @@ import { PageLoaderOverlay } from "@/components/system/loaders";
 import { formatCountry, formatRegion } from "@/lib/analytics/server/geo";
 import type { DashboardStats } from "@/lib/analytics/types";
 
-import {
-  DateRangeFilter,
-  buildQueryFromPreset,
-} from "./date-range-filter";
-import {
-  RankPanel,
-  RankRow,
-  StatPanel,
-} from "./dashboard-panels";
+import { DateRangeFilter, buildQueryFromPreset } from "./date-range-filter";
+import { RankPanel, RankRow, StatPanel } from "./dashboard-panels";
 
 function formatDuration(seconds: number): string {
   if (seconds < 60) return `${seconds}s`;
@@ -43,9 +36,7 @@ async function signOut(): Promise<void> {
   globalThis.location.reload();
 }
 
-async function fetchDashboardStats(
-  nextQuery: string,
-): Promise<DashboardStats> {
+async function fetchDashboardStats(nextQuery: string): Promise<DashboardStats> {
   const response = await fetch(`/api/analytics/dashboard${nextQuery}`, {
     cache: "no-store",
   });

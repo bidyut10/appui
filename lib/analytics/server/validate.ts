@@ -52,7 +52,11 @@ export function parseTrackPayload(body: unknown): TrackPayload | null {
 
   if (type === "leave") {
     const durationSec = Number(data.durationSec);
-    if (!Number.isFinite(durationSec) || durationSec < 0 || durationSec > 86400) {
+    if (
+      !Number.isFinite(durationSec) ||
+      durationSec < 0 ||
+      durationSec > 86400
+    ) {
       return null;
     }
     payload.durationSec = Math.round(durationSec);

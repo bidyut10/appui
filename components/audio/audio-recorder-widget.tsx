@@ -73,7 +73,11 @@ export const AudioRecorderWidget = forwardRef<
             recording ? "bg-red-500" : "bg-neutral-700",
           )}
         >
-          {recording ? <Pause size={14} fill="white"/> : <Play size={14} fill="white"/>}
+          {recording ? (
+            <Pause size={14} fill="white" />
+          ) : (
+            <Play size={14} fill="white" />
+          )}
         </button>
       </div>
     </div>

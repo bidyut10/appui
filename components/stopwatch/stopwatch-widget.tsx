@@ -140,7 +140,7 @@ export const StopwatchWidget = forwardRef<HTMLDivElement, StopwatchWidgetProps>(
               onClick={handlePause}
               className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-[#FF9500] text-white shadow-[0_2px_8px_rgba(255,149,0,0.28)] transition-transform active:scale-95"
             >
-              <Pause size={14} color="#FFFFFF" fill="#FFFFFF"/>
+              <Pause size={14} color="#FFFFFF" fill="#FFFFFF" />
             </button>
           ) : (
             <button
@@ -149,7 +149,7 @@ export const StopwatchWidget = forwardRef<HTMLDivElement, StopwatchWidgetProps>(
               onClick={handlePlay}
               className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-[#34C759] text-white shadow-[0_2px_8px_rgba(52,199,89,0.28)] transition-transform active:scale-95"
             >
-              <Play size={14} color="#FFFFFF" fill="#FFFFFF"/>
+              <Play size={14} color="#FFFFFF" fill="#FFFFFF" />
             </button>
           )}
 
