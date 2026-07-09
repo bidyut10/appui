@@ -24,7 +24,7 @@ export const BlobProfileCard = forwardRef<HTMLDivElement, BlobProfileCardProps>(
       className,
       name = "Bidyut Kundu",
       handle = "@bidyut.dev",
-      image = "/wallpaper-3.png",
+      image = "/dith-homee.png",
       ...props
     },
     ref,

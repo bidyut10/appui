@@ -32,7 +32,7 @@ export const ThreadsPostCard = forwardRef<HTMLDivElement, ThreadsPostCardProps>(
       likes = 892,
       replies = 47,
       avatar = "/profile-picture.png",
-      postImage = "/wallpaper-4.png",
+      postImage = "/dith-homee.png",
       showImage = true,
       onLike,
       ...props

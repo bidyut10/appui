@@ -20,10 +20,10 @@ export type PhotoAlbumCardProps = Readonly<
 >;
 
 const defaultPhotos: AlbumPhoto[] = [
-  { id: "1", place: "Kyoto", date: "Mar 12", src: "/wallpaper-7.png" },
-  { id: "2", place: "Osaka", date: "Apr 03", src: "/wallpaper-5.png" },
-  { id: "3", place: "Hokkaido", date: "Jan 28", src: "/wallpaper-6.png" },
-  { id: "4", place: "Tokyo", date: "Jun 14", src: "/wallpaper-10.png" },
+  { id: "1", place: "Kyoto", date: "Mar 12", src: "/dith-homee.png" },
+  { id: "2", place: "Osaka", date: "Apr 03", src: "/dith-homee.png" },
+  { id: "3", place: "Hokkaido", date: "Jan 28", src: "/dith-homee.png" },
+  { id: "4", place: "Tokyo", date: "Jun 14", src: "/dith-homee.png" },
 ];
 
 // Production-ready Photo Album component — styled with Tailwind CSS.

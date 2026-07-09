@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import oui from "@/public/opensourceui-logo.png";
+import oui from "@/public/website/osui-logo.png";
 
 type DashboardShellProps = Readonly<{
   children: ReactNode;

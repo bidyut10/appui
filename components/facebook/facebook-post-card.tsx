@@ -49,7 +49,7 @@ export const FacebookPostCard = forwardRef<
       comments = 48,
       shares = 9,
       avatar = "/profile-picture.png",
-      postImage = "/wallpaper-11.png",
+      postImage = "/dith-homee.png",
       avatarAlt = "User avatar",
       imageAlt = "Facebook post image",
       menuIcon,

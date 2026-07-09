@@ -26,7 +26,7 @@ export const SlowLivingPolaroidCard = forwardRef<
   (
     {
       className,
-      image = "/wallpaper-5.png",
+      image = "/dith-homee.png",
       imageAlt = "Slow morning portrait",
       category = "LIFESTYLE",
       issue = "01",

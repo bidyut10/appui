@@ -31,7 +31,7 @@ export const EventTicketCard = forwardRef<HTMLDivElement, EventTicketCardProps>(
       location = "Kolkata, India",
       ticketId = "#DS2026-0042",
       ticketType = "VIP Pass",
-      coverImageSrc = "/wallpaper-3.png",
+      coverImageSrc = "/dith-homee.png",
       coverImageAlt = "Event cover image",
       ...props
     },

@@ -20,8 +20,8 @@ export const DenimProductEditorialCard = forwardRef<
   (
     {
       className,
-      detailImage = "/wallpaper-3.png",
-      outfitImage = "/wallpaper-6.png",
+      detailImage = "/dith-homee.png",
+      outfitImage = "/dith-homee.png",
       description = "THE NEW DENIM CASUAL DRESS HAS BEEN THOUGHTFULLY DESIGNED FOR YOUR COMFORT AND CONSCIENCE. MADE FROM ALL RECYCLED FABRICS WITH AN ADJUSTABLE FIT, THIS IS THE STAPLE FOR YOUR WARDROBE.",
       ...props
     },

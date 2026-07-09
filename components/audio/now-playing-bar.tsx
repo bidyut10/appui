@@ -26,7 +26,7 @@ export const NowPlayingBar = forwardRef<HTMLDivElement, NowPlayingBarProps>(
       title = "Midnight Dreams",
       artist = "The Weekend",
       progress = 60,
-      artwork = "/wallpaper-1.png",
+      artwork = "/dith-homee.png",
       defaultPlaying = true,
       ...props
     },
