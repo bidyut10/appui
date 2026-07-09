@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { BOX_PATTERN } from "@/app/_components/Pattern";
+import { BOX_PATTERN } from "@/app/_components/pattern";
 import { SaveScrollLink } from "@/app/save-scroll-link";
 import { ArrowRight } from "lucide-react";
 

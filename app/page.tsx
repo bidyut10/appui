@@ -1,12 +1,12 @@
 import Image from "next/image";
-import { Badge } from "./_components/Badge";
-import { Heading } from "./_components/Heading";
-import { Paragraph } from "./_components/Paragraph";
-import { BOX_PATTERN } from "./_components/Pattern";
-import { LinkedBlock } from "./_components/LinkedBlock";
-import { PhoneColumn } from "./_components/PhoneColumn";
-import { CtaButtons } from "./_components/CtaButtons";
-import { SiteFooter } from "./_components/SiteFooter";
+import { Badge } from "./_components/badge";
+import { Heading } from "./_components/heading";
+import { Paragraph } from "./_components/paragraph";
+import { BOX_PATTERN } from "./_components/pattern";
+import { LinkedBlock } from "./_components/linked-block";
+import { PhoneColumn } from "./_components/phone-column";
+import { CtaButtons } from "./_components/cta-buttons";
+import { SiteFooter } from "./_components/site-footer";
 import { AnnotatedText } from "@/components/underlines/AnnotatedText";
 import { DndFaceWidget } from "@/components/activity/dnd-face-widget";
 import { TorchFaceWidget } from "@/components/torch/torch-face-widget";
@@ -15,9 +15,9 @@ import { BrowserMockupCard } from "@/components/mockups/browser-mockup-card";
 import { AnalogClockWidget } from "@/components/clocks/analog-clock-widget";
 import { JournalWritingCard } from "@/components/text/journal-writing-card";
 import { BluetoothFaceWidget } from "@/components/bluetooth/bluetooth-face-widget";
-import { TechStack, TECH_STACK_ITEMS } from "./_components/TechStack";
-import { InstallOptions } from "./_components/InstallOptions";
-import { OpenSourcePanel } from "./_components/OpenSourcePanel";
+import { TechStack, TECH_STACK_ITEMS } from "./_components/tech-stack";
+import { InstallOptions } from "./_components/compoent-deisgn-copy-demo";
+import { OpenSourcePanel } from "./_components/sponser-resource";
 import { ShowcaseScrollRestoration } from "./showcase-scroll-restoration";
 
 export default function Home() {

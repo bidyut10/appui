@@ -3,12 +3,12 @@ import type { ComponentType } from "react";
 import { TailwindCSS } from "@/icons/brands/tailwind-css";
 import { Typescript } from "@/icons/brands/typescript";
 import { mailtoLinks } from "@/lib/site";
-import { ShadcnUI } from "@/icons/brands/ShadcnUI";
+import { ShadcnUI } from "@/icons/brands/shadcn-ui";
 import { Vercel } from "@/icons/brands/Vercel";
-import { Unplash } from "@/icons/brands/Unplash";
-import { Anthropic } from "@/icons/brands/Anthropic";
+import { Unplash } from "@/icons/brands/unplash";
+import { Anthropic } from "@/icons/brands/anthropic";
 import { NextJs } from "@/icons/brands/next-js";
-import { Canva } from "@/icons/brands/Canva";
+import { Canva } from "@/icons/brands/canva";
 
 type ResourceItem = {
   name: string;

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { PhoneMockupCard } from "@/components/mockups/phone-mockup-card";
-import { ViewLink } from "./ViewLink";
-import { PHONE_PANEL, BOX_PATTERN } from "./Pattern";
+import { ViewLink } from "./view-link";
+import { PHONE_PANEL, BOX_PATTERN } from "./pattern";
 
 export function PhoneColumn({
   variant,

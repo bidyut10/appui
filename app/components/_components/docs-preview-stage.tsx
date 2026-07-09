@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { BOX_PATTERN } from "@/app/_components/Pattern";
+import { BOX_PATTERN } from "@/app/_components/pattern";
 
 type DocsPreviewStageProps = Readonly<{
   children: ReactNode;

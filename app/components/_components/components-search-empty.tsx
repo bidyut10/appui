@@ -1,4 +1,4 @@
-import { BOX_PATTERN } from "@/app/_components/Pattern";
+import { BOX_PATTERN } from "@/app/_components/pattern";
 
 type ComponentsSearchEmptyProps = Readonly<{
   query: string;

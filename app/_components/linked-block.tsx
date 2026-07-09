@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { ViewLink } from "./ViewLink";
+import { ViewLink } from "./view-link";
 
 export function LinkedBlock({
   className,

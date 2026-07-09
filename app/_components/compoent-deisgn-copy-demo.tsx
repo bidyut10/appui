@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
-import { BOX_PATTERN } from "./Pattern";
+import { BOX_PATTERN } from "./pattern";
 
 const cardVars =
   "[--left-w:7.5rem] [--connector-w:2.75rem] [--card-inner:15rem] [--pad-x:1.25rem] [--right-w:5rem] max-[549px]:[--left-w:5.75rem] max-[549px]:[--connector-w:1.75rem] max-[549px]:[--card-inner:10rem] max-[549px]:[--pad-x:0.75rem] max-[549px]:[--right-w:3.75rem]";
