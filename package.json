@@ -24,6 +24,7 @@
     "mongodb": "^7.3.0",
     "next": "16.2.7",
     "postcss": "^8.5.15",
+    "posthog-js": "^1.399.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "tailwind-merge": "^3.6.0"
