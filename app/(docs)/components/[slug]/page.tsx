@@ -1,0 +1,209 @@
+import { notFound } from "next/navigation";
+
+import { CopyCodeBlock, SetupGuide, SaveScrollLink } from "@/lib/docs";
+import { AnnotatedText } from "@/components/underlines/AnnotatedText";
+import { ChevronLeft, ChevronRight, MoveLeft, MoveRight } from "lucide-react";
+import {
+  getAllShowcaseSlugs,
+  getShowcaseEntry,
+  readShowcaseSource,
+} from "@/lib/showcase";
+import type { Props } from "@/types/types";
+
+import { DocsPreviewStage } from "../_components/detail";
+import { DocsToc } from "../_components/shell";
+
+export async function generateStaticParams() {
+  return getAllShowcaseSlugs().map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  const entry = getShowcaseEntry(slug);
+  if (!entry) return {};
+
+  return {
+    title: entry.title,
+    description: entry.description,
+  };
+}
+
+export default async function ComponentDetailPage({ params }: Readonly<Props>) {
+  const { slug } = await params;
+  const entry = getShowcaseEntry(slug);
+  if (!entry) notFound();
+
+  const allSlugs = getAllShowcaseSlugs();
+  const currentIndex = allSlugs.indexOf(slug);
+  const previousEntry =
+    currentIndex > 0 ? getShowcaseEntry(allSlugs[currentIndex - 1]) : null;
+  const nextEntry =
+    currentIndex >= 0 && currentIndex < allSlugs.length - 1
+      ? getShowcaseEntry(allSlugs[currentIndex + 1])
+      : null;
+  const categoryHref = `/components?category=${encodeURIComponent(entry.category)}`;
+
+  const { cnSource, componentSource } = await readShowcaseSource(entry.file);
+
+  const tocItems = [
+    {
+      id: "overview",
+      label: "Overview",
+      description: "What it does & how to use it",
+    },
+    {
+      id: "preview",
+      label: "Preview",
+      description: "Live component demo",
+    },
+    {
+      id: "setup",
+      label: "Setup",
+      description: "Install steps & source code",
+    },
+    { id: "cn", label: "lib/cn.ts", nested: true },
+    { id: "code", label: entry.file, nested: true },
+  ] as const;
+
+  return (
+    <div className="flex min-h-0 flex-1">
+      <main
+        data-docs-scroll
+        className="scrollbar-hover min-h-0 min-w-0 flex-1 overflow-y-auto"
+      >
+        <article className="mx-auto w-full max-w-3xl px-4 py-8 md:px-8 md:py-10">
+          <div id="overview" className="scroll-mt-8">
+            <SaveScrollLink
+              href={categoryHref}
+              className="group mb-5 inline-flex items-center gap-1.5 font-sans text-sm text-neutral-500 underline decoration-neutral-200 underline-offset-4 transition-colors hover:text-neutral-700 hover:decoration-neutral-400"
+            >
+              <span className="relative inline-flex size-3 shrink-0 items-center justify-center">
+                <ChevronLeft
+                  size={12}
+                  strokeWidth={3}
+                  className="transition-[opacity,transform] duration-500 ease-smooth group-hover:-translate-x-0.5 group-hover:scale-95 group-hover:opacity-0"
+                />
+                <MoveLeft
+                  size={12}
+                  strokeWidth={2.5}
+                  className="absolute scale-95 translate-x-0.5 opacity-0 transition-[opacity,transform] duration-500 ease-smooth group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
+                />
+              </span>
+              Back to {entry.category}
+            </SaveScrollLink>
+
+            <p className="font-mono text-[11px] tracking-[0.14em] text-neutral-400 uppercase">
+              Components / {entry.category}
+            </p>
+
+            <header className="mt-3">
+              <h1 className="font-serif text-3xl text-neutral-900 ">
+                {entry.title}
+              </h1>
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-neutral-500">
+                {entry.description}
+              </p>
+            </header>
+          </div>
+
+          <section id="preview" className="mt-10 scroll-mt-8 md:mt-12">
+            <h2 className="font-serif text-xl text-neutral-900">
+              <AnnotatedText variant="wavy" color="text-rose-200">
+                Preview
+              </AnnotatedText>
+            </h2>
+            <div className="mt-5">
+              <DocsPreviewStage>{entry.preview}</DocsPreviewStage>
+            </div>
+          </section>
+
+          <section
+            id="setup"
+            className="mt-10 space-y-5 scroll-mt-8 md:mt-12"
+          >
+            <div>
+              <h2 className="font-serif text-xl text-neutral-900">
+                <AnnotatedText variant="doubleUnderline">Setup</AnnotatedText>
+              </h2>
+            </div>
+
+            <SetupGuide
+              componentFile={entry.file}
+              exportName={entry.exportName}
+              usage={entry.usage}
+            />
+
+            <div id="cn" className="scroll-mt-8">
+              <CopyCodeBlock
+                filename="lib/cn.ts"
+                code={cnSource.trim()}
+                hint="clsx + tailwind-merge"
+              />
+            </div>
+
+            <div id="code" className="scroll-mt-8">
+              <CopyCodeBlock
+                filename={entry.file}
+                code={componentSource.trim()}
+                hint="icons + images"
+              />
+            </div>
+          </section>
+
+          <nav
+            aria-label="Component navigation"
+            className="mt-12 border-t border-neutral-200 pt-8"
+          >
+            <div className="flex items-center justify-between gap-4">
+              {previousEntry ? (
+                <SaveScrollLink
+                  href={`/components/${previousEntry.slug}`}
+                  className="group inline-flex items-center gap-1.5 text-sm text-neutral-500 underline decoration-neutral-200 underline-offset-4 transition-colors hover:text-neutral-900 hover:decoration-neutral-400"
+                >
+                  <span className="relative inline-flex size-3 shrink-0 items-center justify-center">
+                    <ChevronLeft
+                      size={12}
+                      strokeWidth={3}
+                      className="transition-[opacity,transform] duration-500 ease-smooth group-hover:-translate-x-0.5 group-hover:scale-95 group-hover:opacity-0"
+                    />
+                    <MoveLeft
+                      size={12}
+                      strokeWidth={2.5}
+                      className="absolute scale-95 translate-x-0.5 opacity-0 transition-[opacity,transform] duration-500 ease-smooth group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
+                    />
+                  </span>
+                  Previous
+                </SaveScrollLink>
+              ) : (
+                <span />
+              )}
+
+              {nextEntry ? (
+                <SaveScrollLink
+                  href={`/components/${nextEntry.slug}`}
+                  className="group inline-flex items-center gap-1.5 text-sm text-neutral-500 underline decoration-neutral-200 underline-offset-4 transition-colors hover:text-neutral-900 hover:decoration-neutral-400"
+                >
+                  Next
+                  <span className="relative inline-flex size-3 shrink-0 items-center justify-center">
+                    <ChevronRight
+                      size={12}
+                      strokeWidth={3}
+                      className="transition-[opacity,transform] duration-500 ease-smooth group-hover:translate-x-0.5 group-hover:scale-95 group-hover:opacity-0"
+                    />
+                    <MoveRight
+                      size={12}
+                      strokeWidth={2.5}
+                      className="absolute scale-95 -translate-x-0.5 opacity-0 transition-[opacity,transform] duration-500 ease-smooth group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
+                    />
+                  </span>
+                </SaveScrollLink>
+              ) : null}
+            </div>
+          </nav>
+        </article>
+      </main>
+
+      <DocsToc items={[...tocItems]} />
+    </div>
+  );
+}

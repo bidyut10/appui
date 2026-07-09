@@ -1,0 +1,62 @@
+"use client";
+
+import { useSearchParams } from "next/navigation";
+
+import { SaveScrollLink } from "@/lib/docs";
+import { cn } from "@/lib/cn";
+import type { ShowcaseCategoryGroup } from "@/lib/showcase";
+
+type ComponentsCategoryNavProps = Readonly<{
+  categories: ShowcaseCategoryGroup[];
+  activeCategory: string;
+  isBrowseAll?: boolean;
+}>;
+
+function categoryHref(category: string) {
+  return `/components?category=${encodeURIComponent(category)}`;
+}
+
+export function ComponentsCategoryNav({
+  categories,
+  activeCategory,
+  isBrowseAll = false,
+}: ComponentsCategoryNavProps) {
+  useSearchParams();
+
+  return (
+    <div className="border-b border-neutral-200 bg-white px-4 py-3 md:hidden">
+      <div className="scrollbar-none flex items-center gap-2 overflow-x-auto">
+        <SaveScrollLink
+          href="/components"
+          className={cn(
+            "shrink-0 rounded-full px-3 py-1.5 font-sans text-xs whitespace-nowrap transition-colors",
+            isBrowseAll
+              ? "bg-neutral-900 text-white"
+              : "bg-neutral-100 text-neutral-600",
+          )}
+        >
+          All components
+        </SaveScrollLink>
+
+        {categories.map((group) => {
+          const isActive = !isBrowseAll && group.category === activeCategory;
+
+          return (
+            <SaveScrollLink
+              key={group.category}
+              href={categoryHref(group.category)}
+              className={cn(
+                "shrink-0 rounded-full px-3 py-1.5 font-sans text-xs whitespace-nowrap transition-colors",
+                isActive
+                  ? "bg-neutral-900 text-white"
+                  : "bg-neutral-100 text-neutral-600",
+              )}
+            >
+              {group.category}
+            </SaveScrollLink>
+          );
+        })}
+      </div>
+    </div>
+  );
+}

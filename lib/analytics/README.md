@@ -1,13 +1,13 @@
 # Analytics
 
-Self-hosted, privacy-minded analytics for opensourceui.in. No Google Analytics, no third-party scripts — events go to your own MongoDB Atlas cluster via Next.js API routes.
+Self-hosted, privacy-minded analytics for [opensourceui.in](https://opensourceui.in). No Google Analytics, no third-party scripts — events go to your own MongoDB Atlas cluster via Next.js API routes.
 
 ## What gets tracked
 
 | Event | When | Stored in |
 |-------|------|-----------|
 | `pageview` | Route change on public pages | `analytics_page_views` |
-| `component_click` | Click on a showcase card link | `analytics_component_clicks` |
+| `component_click` | Click on a component link in docs (sidebar, browse list, cards) | `analytics_component_clicks` |
 | `heartbeat` | Every ~3 min while tab is visible | updates `analytics_sessions` |
 | `leave` | Tab hidden or closed | session `durationSec` |
 
@@ -17,7 +17,7 @@ We store anonymous `visitorId` (localStorage) and `sessionId` (sessionStorage). 
 
 ## Environment variables
 
-Copy `.env.example` and set:
+Copy `.env.example` to `.env.local`:
 
 ```env
 MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/dbname
@@ -33,7 +33,11 @@ On Vercel, allow `0.0.0.0/0` in Atlas Network Access so serverless functions can
 
 Visit `/dashboard` after deploy. Log in with `ANALYTICS_DASHBOARD_SECRET`. The page is `noindex` and not linked from the public site.
 
-Date filters: All time (default), Today, 7d, 30d, or custom `?from=YYYY-MM-DD&to=YYYY-MM-DD`. Live users always reflect the last 5 minutes.
+**Date filters:** All time (default), Today, Last 7 days, Last 30 days, or custom `?from=YYYY-MM-DD&to=YYYY-MM-DD`.
+
+**Live users** always reflect the last 5 minutes, regardless of the selected date range.
+
+The dashboard UI lives in `app/(dashboard)/dashboard/` and matches the docs site aesthetic — stat cards, ranking panels, and date-range pills.
 
 ## Folder layout
 
@@ -57,17 +61,22 @@ lib/analytics/
       resolve-srv-uri.ts  Windows SRV DNS fallback
 ```
 
-UI lives outside this folder:
+Related files outside `lib/analytics/`:
 
-- `components/analytics/tracker.tsx` — mounted in root layout
-- `app/api/analytics/*` — track, auth, dashboard API
-- `app/dashboard/` — password-protected dashboard UI
+| Path | Purpose |
+|------|---------|
+| `components/system/analytics/tracker.tsx` | Invisible tracker mounted in root layout |
+| `lib/docs/save-scroll-link.tsx` | Docs links that record component clicks |
+| `app/api/analytics/track/route.ts` | POST endpoint for browser events |
+| `app/api/analytics/auth/route.ts` | Dashboard login / logout |
+| `app/api/analytics/dashboard/route.ts` | GET aggregated stats |
+| `app/(dashboard)/dashboard/` | Password-protected dashboard UI |
 
 ## Import paths
 
 ```ts
 // Browser components
-import { trackPageView } from "@/lib/analytics/client";
+import { trackPageView, trackComponentClick } from "@/lib/analytics/client";
 
 // API routes / server pages only — never import from client components
 import { getDashboardStats, geoFromRequest } from "@/lib/analytics/server";

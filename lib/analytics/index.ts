@@ -2,7 +2,7 @@
  * Analytics module entry — shared types and convenient server re-exports.
  *
  * Browser code should import from @/lib/analytics/client instead.
- * React UI for tracking lives in @/components/analytics/tracker.
+ * React UI for tracking lives in @/components/system/analytics.
  */
 
 export type { DashboardStats, GeoLocation, TrackPayload } from "./types";

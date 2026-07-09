@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
-import { AnalyticsTracker } from "@/components/analytics/tracker";
-import { NavigationLoader } from "@/app/navigation-loader";
-import { ScrollToTopButton } from "@/app/scroll-to-top-button";
+import { AnalyticsTracker } from "@/components/system/analytics";
+import { NavigationLoader } from "@/app/_shared/navigation/navigation-loader";
+import { ScrollToTopButton } from "@/app/_shared/scroll/scroll-to-top-button";
 import { siteConfig } from "@/lib/site";
 
 const geistSans = Geist({
