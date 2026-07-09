@@ -1,8 +1,7 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
-
-import { QrCode } from "@/icons/elements/qr-code";
+import { QrCode } from "lucide-react";
 
 export type ThermalReceiptItem = Readonly<{
   name: string;

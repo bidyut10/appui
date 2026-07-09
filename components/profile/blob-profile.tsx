@@ -4,7 +4,7 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 
 import { cn } from "@/lib/cn";
-import { Check } from "@/icons/activity/check";
+import { Check } from "lucide-react";
 
 // Blob-shaped profile card with verified badge — swap name, handle, and image via props.
 export type BlobProfileCardProps = Readonly<

@@ -3,7 +3,7 @@
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
-import { Torch } from "@/icons/elements/torch";
+import { Flashlight } from "lucide-react";
 
 // Flashlight face widget — tap the mascot dial to toggle the torch on or off.
 const MASCOT = "#FACC15";
@@ -110,7 +110,7 @@ export const TorchFaceWidget = forwardRef<
       </svg>
 
       <span className="absolute top-3.5 right-3.5 z-10" aria-hidden>
-        <Torch size={14} color={on ? ACCENT : "#FFFFFF66"} />
+        <Flashlight size={14} color={on ? ACCENT : "#FFFFFF66"} />
       </span>
 
       <p

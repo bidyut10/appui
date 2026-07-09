@@ -3,7 +3,7 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
-import { Clock } from "@/icons/elements/clock";
+import { Clock } from "lucide-react";
 
 /** Monthly activity calendar — highlight active days and a selected date. */
 const WEEKDAY_HEADERS = [

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { House } from "@/icons/elements/house";
+import { Home } from "lucide-react";
 
 export default function NotFound() {
   return (
@@ -24,7 +24,7 @@ export default function NotFound() {
             href="/"
             className="inline-flex items-center gap-2 bg-neutral-900 px-5 py-2.5 font-mono text-xs text-white transition-colors hover:bg-neutral-800"
           >
-            <House size={12} />
+            <Home size={12} />
             Back to home
           </Link>
         </div>

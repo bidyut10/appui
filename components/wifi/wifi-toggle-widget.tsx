@@ -3,7 +3,7 @@
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
-import { Wifi } from "@/icons/elements/wifi";
+import { Wifi } from "lucide-react";
 
 // iOS-style Wi-Fi card with a status dot, network label, and on/off switch.
 export type WiFiToggleWidgetProps = Readonly<

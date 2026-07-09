@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 import { BOX_PATTERN } from "@/app/_components/Pattern";
 import { SaveScrollLink } from "@/app/save-scroll-link";
-import { ArrowRight } from "@/icons/actions/arrow-right";
+import { ArrowRight } from "lucide-react";
 
 type ComponentPreviewCardProps = Readonly<{
   slug: string;

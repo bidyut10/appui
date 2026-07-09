@@ -5,10 +5,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-import { Heart } from "@/icons/elements/heart";
-import { Chat } from "@/icons/actions/chat";
-import { Repeat } from "@/icons/keys/repeat";
-import { Send } from "@/icons/keys/send";
+import { Heart, MessageCircle, Repeat, Send } from "lucide-react";
 
 export type ThreadsPostCardProps = Readonly<
   {
@@ -110,7 +107,7 @@ export const ThreadsPostCard = forwardRef<HTMLDivElement, ThreadsPostCardProps>(
                   {
                     id: "reply",
                     label: "Reply",
-                    icon: Chat,
+                    icon: MessageCircle,
                     count: replies,
                   },
                   {

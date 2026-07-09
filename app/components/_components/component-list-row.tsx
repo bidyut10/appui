@@ -1,6 +1,5 @@
 import { SaveScrollLink } from "@/app/save-scroll-link";
-import { ChevronRight } from "@/icons/actions/chevron-right";
-import { MoveRight } from "@/icons/keys/move-right";
+import { ChevronRight, MoveRight } from "lucide-react";
 import { cn } from "@/lib/cn";
 import type { ShowcaseEntry } from "@/lib/showcase";
 

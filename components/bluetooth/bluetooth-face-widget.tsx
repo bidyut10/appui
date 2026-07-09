@@ -3,7 +3,7 @@
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
-import { Bluetooth } from "@/icons/elements/bluetooth";
+import { Bluetooth } from "lucide-react";
 
 const MASCOT = "#14B8A6";
 const ACCENT = "#22D3EE";

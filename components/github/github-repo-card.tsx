@@ -5,7 +5,7 @@ import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import { cn } from "@/lib/cn";
 
 import { Github } from "@/icons/brands/github";
-import { Star } from "@/icons/elements/star";
+import { Star } from "lucide-react";
 
 export type GitHubRepoCardProps = Readonly<
   {

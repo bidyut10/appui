@@ -7,7 +7,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-import { Sun } from "@/icons/elements/sun";
+import { Sun } from "lucide-react";
 
 export type GalleryGridCardProps = Readonly<
   {

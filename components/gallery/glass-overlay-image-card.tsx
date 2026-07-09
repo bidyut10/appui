@@ -9,10 +9,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-import { Heart } from "@/icons/elements/heart";
-import { Share } from "@/icons/activity/share";
-import { Location } from "@/icons/activity/location";
-import { ArrowRight } from "@/icons/actions/arrow-right";
+import { Heart, Share, MapPin, ArrowRight } from "lucide-react";
 
 export type GlassOverlayImageCardProps = Readonly<
   {
@@ -106,7 +103,7 @@ export const GlassOverlayImageCard = forwardRef<
           <div className="rounded-2xl border border-white/25 bg-white/15 p-4 backdrop-blur-xl">
             {/* Location */}
             <div className="mb-1.5 flex items-center gap-1.5 text-[10px] text-white/70">
-              {locationIcon ?? <Location size={10} />}
+              {locationIcon ?? <MapPin size={10} />}
               <span>{location}</span>
             </div>
 

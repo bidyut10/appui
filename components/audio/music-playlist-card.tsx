@@ -6,8 +6,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-import { Play } from "@/icons/keys/play";
-import { Pause } from "@/icons/keys/pause";
+import { Pause, Play } from "lucide-react";
 
 export type PlaylistTrack = {
   title: string;

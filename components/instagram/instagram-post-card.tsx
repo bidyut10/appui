@@ -9,11 +9,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-import { Ellipsis } from "@/icons/elements/ellipsis";
-import { Like } from "@/icons/elements/like";
-import { Chat } from "@/icons/actions/chat";
-import { Bookmark } from "@/icons/activity/bookmark";
-import { Send } from "@/icons/keys/send";
+import { Ellipsis, ThumbsUp, MessageCircle, Bookmark, Share2 } from "lucide-react";
 
 export type InstagramPostCardProps = Readonly<
   {
@@ -149,7 +145,7 @@ export const InstagramPostCard = forwardRef<
                 onClick={onLike}
                 className="cursor-pointer text-neutral-700 transition-colors hover:text-black"
               >
-                {likeIcon ?? <Like size={15} />}
+                {likeIcon ?? <ThumbsUp size={15} />}
               </button>
 
               <button
@@ -158,7 +154,7 @@ export const InstagramPostCard = forwardRef<
                 onClick={onComment}
                 className="cursor-pointer text-neutral-700 transition-colors hover:text-black"
               >
-                {commentIcon ?? <Chat size={15} />}
+                {commentIcon ?? <MessageCircle size={15} />}
               </button>
 
               <button
@@ -167,7 +163,7 @@ export const InstagramPostCard = forwardRef<
                 onClick={onShare}
                 className="cursor-pointer text-neutral-700 transition-colors hover:text-black"
               >
-                {shareIcon ?? <Send size={15} />}
+                {shareIcon ?? <Share2 size={15} />}
               </button>
             </div>
 

@@ -6,10 +6,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-import { Play } from "@/icons/keys/play";
-import { Pause } from "@/icons/keys/pause";
-import { SkipPrevious } from "@/icons/keys/skip-previous";
-import { SkipNext } from "@/icons/keys/skip-next";
+import { Play, Pause, SkipForward, SkipBack  } from "lucide-react";
 
 export type MusicPlayerCardProps = Readonly<
   {
@@ -116,7 +113,7 @@ export const MusicPlayerCard = forwardRef<HTMLDivElement, MusicPlayerCardProps>(
               aria-label="Previous track"
               className="cursor-pointer text-lg text-neutral-500 transition-colors hover:text-white"
             >
-              <SkipPrevious />
+              <SkipForward />
             </button>
 
             <button
@@ -133,7 +130,7 @@ export const MusicPlayerCard = forwardRef<HTMLDivElement, MusicPlayerCardProps>(
               aria-label="Next track"
               className="cursor-pointer text-lg text-neutral-500 transition-colors hover:text-white"
             >
-              <SkipNext />
+              <SkipBack />
             </button>
           </div>
         </div>

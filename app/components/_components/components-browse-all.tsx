@@ -1,4 +1,3 @@
-import { SaveScrollLink } from "@/app/save-scroll-link";
 import { AnnotatedText } from "@/components/underlines/AnnotatedText";
 import type { ShowcaseCategoryGroup } from "@/lib/showcase";
 

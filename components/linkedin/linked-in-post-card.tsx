@@ -9,12 +9,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-import { Clock } from "@/icons/elements/clock";
-import { Ellipsis } from "@/icons/elements/ellipsis";
-import { Like } from "@/icons/elements/like";
-import { Chat } from "@/icons/actions/chat";
-import { Repeat } from "@/icons/keys/repeat";
-import { Send } from "@/icons/keys/send";
+import { Clock, Ellipsis, ThumbsUp, MessageCircle, Repeat, Share2 } from "lucide-react";
 
 export type LinkedInPostCardProps = Readonly<
   {
@@ -148,7 +143,7 @@ export const LinkedInPostCard = forwardRef<
           className="flex items-center justify-between border-t border-neutral-100 pt-3 text-xs text-neutral-500"
         >
           <span className="flex items-center gap-1">
-            {likeIcon ?? <Like size={13} className="text-blue-600" />}
+            {likeIcon ?? <ThumbsUp size={13} className="text-blue-600" />}
             {reactions.toLocaleString()} reactions
           </span>
 
@@ -169,7 +164,7 @@ export const LinkedInPostCard = forwardRef<
             onClick={onLike}
             className="flex flex-1 cursor-pointer flex-col items-center gap-1 rounded-md py-1 text-[11px] font-medium text-neutral-500 transition-colors hover:bg-neutral-50 hover:text-neutral-900"
           >
-            {likeIcon ?? <Like size={14} />}
+            {likeIcon ?? <ThumbsUp size={14} />}
             Like
           </button>
 
@@ -179,7 +174,7 @@ export const LinkedInPostCard = forwardRef<
             onClick={onComment}
             className="flex flex-1 cursor-pointer flex-col items-center gap-1 rounded-md py-1 text-[11px] font-medium text-neutral-500 transition-colors hover:bg-neutral-50 hover:text-neutral-900"
           >
-            {commentIcon ?? <Chat size={14} />}
+            {commentIcon ?? <MessageCircle size={14} />}
             Comment
           </button>
 
@@ -199,7 +194,7 @@ export const LinkedInPostCard = forwardRef<
             onClick={onSend}
             className="flex flex-1 cursor-pointer flex-col items-center gap-1 rounded-md py-1 text-[11px] font-medium text-neutral-500 transition-colors hover:bg-neutral-50 hover:text-neutral-900"
           >
-            {sendIcon ?? <Send size={14} />}
+            {sendIcon ?? <Share2 size={14} />}
             Send
           </button>
         </div>

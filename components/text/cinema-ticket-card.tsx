@@ -2,8 +2,7 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
 
-import { Clock } from "@/icons/elements/clock";
-import { Location } from "@/icons/activity/location";
+import { Clock, MapPin } from "lucide-react";
 
 export type CinemaTicketCardProps = Readonly<
   {
@@ -69,7 +68,7 @@ export const CinemaTicketCard = forwardRef<
               <p className="text-xs text-neutral-300">{showTime}</p>
             </div>
             <div className="flex items-center gap-1">
-              <Location size={11} className="text-neutral-600" />
+              <MapPin size={11} className="text-neutral-600" />
               <p className="truncate text-xs text-neutral-300">{date}</p>
             </div>
           </div>

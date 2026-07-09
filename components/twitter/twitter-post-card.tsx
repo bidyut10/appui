@@ -8,13 +8,7 @@ import {
 import Image from "next/image";
 
 import { cn } from "@/lib/cn";
-
-import { Bookmark } from "@/icons/activity/bookmark";
-import { Chat } from "@/icons/actions/chat";
-import { Ellipsis } from "@/icons/elements/ellipsis";
-import { Heart } from "@/icons/elements/heart";
-import { Repeat } from "@/icons/keys/repeat";
-import { Share } from "@/icons/activity/share";
+import { Bookmark, MessageCircle, Ellipsis, Heart, Repeat, Share } from "lucide-react";
 
 export type TwitterPostCardProps = Readonly<
   {
@@ -131,7 +125,7 @@ export const TwitterPostCard = forwardRef<HTMLDivElement, TwitterPostCardProps>(
                 onClick={onComment}
                 className="flex cursor-pointer items-center gap-1 transition-colors hover:text-sky-500"
               >
-                {commentIcon ?? <Chat size={14} />}
+                {commentIcon ?? <MessageCircle size={14} />}
                 <span className="text-xs">{comments.toLocaleString()}</span>
               </button>
 

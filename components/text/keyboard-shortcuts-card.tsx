@@ -2,7 +2,7 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
 
-import { Command } from "@/icons/keys/command";
+import { Command } from "lucide-react";
 
 export type KeyboardShortcut = {
   keys: string[];

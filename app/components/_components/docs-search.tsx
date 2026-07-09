@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-import { Search } from "@/icons/keys/search";
-import { Command } from "@/icons/keys/command";
+import { Search } from "lucide-react";
+import { Command } from "lucide-react";
 
 function getComponentsSearchPath(pathname: string) {
   return pathname.startsWith("/components") ? "/components" : pathname;

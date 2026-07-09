@@ -2,7 +2,7 @@ import React from "react";
 
 import { CrosshairOverlay } from "@/app/crosshair-frame";
 import { SaveScrollLink } from "@/app/save-scroll-link";
-import { ArrowRight } from "@/icons/actions/arrow-right";
+import { ArrowRight } from "lucide-react";
 
 const BOX_PATTERN: React.CSSProperties = {
   backgroundImage:

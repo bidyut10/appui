@@ -3,7 +3,7 @@
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
-import { Moon } from "@/icons/elements/moon";
+import { Moon } from "lucide-react";
 
 const MASCOT = "#A78BFA";
 const ACCENT = "#C4B5FD";

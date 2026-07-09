@@ -3,7 +3,7 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
-import { Battery } from "@/icons/elements/battery";
+import { Battery } from "lucide-react";
 
 const MASCOT_GOOD = "#A3E635";
 const MASCOT_LOW = "#FB923C";

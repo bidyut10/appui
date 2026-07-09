@@ -4,8 +4,7 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 
 import { cn } from "@/lib/cn";
-import { Leaf } from "@/icons/elements/leaf";
-import { Bike } from "@/icons/elements/bike";
+import { Leaf, Bike } from "lucide-react";
 
 export type ElectricScooterWidgetProps = Readonly<
   {

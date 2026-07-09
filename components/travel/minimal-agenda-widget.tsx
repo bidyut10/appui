@@ -3,7 +3,7 @@
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
-import { Check } from "@/icons/activity/check";
+import { Check } from "lucide-react";
 
 // Minimal daily agenda — tap rows to toggle done state with strikethrough animation.
 type AgendaItem = Readonly<{

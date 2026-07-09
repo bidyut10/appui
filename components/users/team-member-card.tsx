@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/cn";
 import { Github } from "@/icons/brands/github";
-import { Mail } from "@/icons/elements/mail";
+import { Mail } from "lucide-react";
 
 export const TeamMemberCard = forwardRef<
   HTMLDivElement,

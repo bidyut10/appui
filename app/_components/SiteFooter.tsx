@@ -1,8 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
-import { ChevronRight } from "@/icons/actions/chevron-right";
-import { MoveRight } from "@/icons/keys/move-right";
+import { ChevronRight, MoveRight } from "lucide-react";
 import { CopyEmailLink } from "./CopyEmailLink";
 import { mailtoLinks, siteConfig } from "@/lib/site";
 

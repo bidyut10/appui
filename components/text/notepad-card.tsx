@@ -5,7 +5,7 @@ import {
 } from "react";
 
 import { cn } from "@/lib/cn";
-import { Bookmark } from "@/icons/activity/bookmark";
+import { Bookmark } from "lucide-react";
 
 export type NotepadCardProps = Readonly<
   {

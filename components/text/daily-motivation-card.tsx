@@ -2,7 +2,7 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 
 import { cn } from "@/lib/cn";
-import { Flower } from "@/icons/elements/flower";
+import { Flower } from "lucide-react";
 
 type DailyMotivationCardOwnProps = {
   image?: string;

@@ -9,8 +9,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-import { Location } from "@/icons/activity/location";
-import { Web } from "@/icons/elements/web";
+import { MapPin, Globe } from "lucide-react";
 
 export type TwitterProfileCardProps = Readonly<
   {
@@ -139,12 +138,12 @@ export const TwitterProfileCard = forwardRef<
             className="mt-4 flex flex-wrap gap-4 text-sm text-neutral-500"
           >
             <span className="flex items-center gap-1">
-              {locationIcon ?? <Location size={13} />}
+              {locationIcon ?? <MapPin size={13} />}
               {location}
             </span>
 
             <span className="flex items-center gap-1">
-              {websiteIcon ?? <Web size={13} />}
+              {websiteIcon ?? <Globe size={13} />}
               {website}
             </span>
           </div>

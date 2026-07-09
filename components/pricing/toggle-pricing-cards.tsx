@@ -4,7 +4,7 @@ import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
 
-import { Check } from "@/icons/activity/check";
+import { Check } from "lucide-react";
 
 /**
  * Toggle pricing cards built with Next.js, React,

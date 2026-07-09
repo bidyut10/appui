@@ -9,9 +9,7 @@ import {
 } from "react";
 
 import { cn } from "@/lib/cn";
-import { Play } from "@/icons/keys/play";
-import { Pause } from "@/icons/keys/pause";
-import { Repeat } from "@/icons/keys/repeat";
+import { Play, Pause, Repeat } from "lucide-react";
 
 // Stopwatch widget — start, pause, lap, and reset with centisecond precision.
 // Splits elapsed milliseconds into MM:SS and centiseconds for the display

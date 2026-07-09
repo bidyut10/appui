@@ -2,7 +2,7 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
 
-import { PlaneTakeoff } from "@/icons/activity/plane-takeoff";
+import { PlaneTakeoff } from "lucide-react";
 
 export type FlightBoardingCardProps = Readonly<
   {

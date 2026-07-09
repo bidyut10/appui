@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-import { Check } from "@/icons/activity/check";
-import { Copy } from "@/icons/activity/copy";
+import { Check } from "lucide-react";
+import { Copy } from "lucide-react";
 import { HighlightedCode } from "@/lib/showcase/highlight-code";
 
 type CopyCodeBlockProps = Readonly<{

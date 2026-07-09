@@ -5,7 +5,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-import { Send } from "@/icons/keys/send";
+import { Send } from "lucide-react";
 import { Discord } from "@/icons/brands/discord";
 
 export type DiscordMessage = {

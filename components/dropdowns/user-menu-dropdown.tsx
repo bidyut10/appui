@@ -14,10 +14,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-import { User } from "@/icons/elements/user";
-import { Settings } from "@/icons/keys/settings";
-import { Mail } from "@/icons/elements/mail";
-import { ChevronDown } from "@/icons/actions/chevron-down";
+import { User, Settings, Mail, ChevronDown } from "lucide-react";
 
 /** Single row in the user menu — action, shortcut, or separator. */
 export type UserMenuItem = Readonly<{

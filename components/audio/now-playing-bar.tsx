@@ -6,10 +6,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-import { Play } from "@/icons/keys/play";
-import { Pause } from "@/icons/keys/pause";
-import { SkipNext } from "@/icons/keys/skip-next";
-import { SkipPrevious } from "@/icons/keys/skip-previous";
+import { Play, Pause, SkipForward, SkipBack  } from "lucide-react";
 
 export type NowPlayingBarProps = Readonly<
   {
@@ -75,7 +72,7 @@ export const NowPlayingBar = forwardRef<HTMLDivElement, NowPlayingBarProps>(
             aria-label="Previous track"
             className="cursor-pointer text-sm text-neutral-500 transition-colors hover:text-white"
           >
-            <SkipPrevious />
+            <SkipForward />
           </button>
 
           <button
@@ -92,7 +89,7 @@ export const NowPlayingBar = forwardRef<HTMLDivElement, NowPlayingBarProps>(
             aria-label="Next track"
             className="cursor-pointer text-sm text-neutral-500 transition-colors hover:text-white"
           >
-            <SkipNext />
+            <SkipBack />
           </button>
         </div>
 

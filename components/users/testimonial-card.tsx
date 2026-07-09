@@ -9,11 +9,7 @@ import {
 import Image from "next/image";
 
 import { cn } from "@/lib/cn";
-
-import { Star } from "@/icons/elements/star";
-import { QuoteRight } from "@/icons/keys/quote-right";
-import { ChevronLeft } from "@/icons/actions/chevron-left";
-import { ChevronRight } from "@/icons/actions/chevron-right";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
 export type TestimonialItem = {
   quote: string;
@@ -146,7 +142,7 @@ export const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
           data-slot="testimonial-card-quote-icon"
           className="pointer-events-none absolute top-5 right-5 text-neutral-100 select-none"
         >
-          {quoteIcon ?? <QuoteRight size={24} />}
+          {quoteIcon ?? <Quote size={24} />}
         </div>
 
         <div

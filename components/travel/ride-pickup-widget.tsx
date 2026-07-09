@@ -4,7 +4,7 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import Image from "next/image";
 
 import { cn } from "@/lib/cn";
-import { Car } from "@/icons/elements/car";
+import { Car } from "lucide-react";
 
 // Ride-hailing pickup card — ETA, vehicle info, and driver photo.
 export type RidePickupWidgetProps = Readonly<

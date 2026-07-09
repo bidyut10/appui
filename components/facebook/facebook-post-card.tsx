@@ -9,12 +9,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-import { Clock } from "@/icons/elements/clock";
-import { Ellipsis } from "@/icons/elements/ellipsis";
-import { Like } from "@/icons/elements/like";
-import { Heart } from "@/icons/elements/heart";
-import { Chat } from "@/icons/actions/chat";
-import { Share } from "@/icons/activity/share";
+import { Clock, Ellipsis, ThumbsUp, Heart, MessageCircle, Share2 } from "lucide-react";
 
 export type FacebookPostCardProps = Readonly<
   {
@@ -137,7 +132,7 @@ export const FacebookPostCard = forwardRef<
         >
           <span className="flex items-center gap-1">
             <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-blue-500 text-white">
-              {likeIcon ?? <Like size={9} />}
+              {likeIcon ?? <ThumbsUp size={9} />}
             </span>
 
             <span className="-ml-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-rose-500 text-white">
@@ -164,7 +159,7 @@ export const FacebookPostCard = forwardRef<
             onClick={onLike}
             className="flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-md py-1.5 text-xs font-medium text-neutral-500 transition-colors hover:bg-neutral-50 hover:text-black"
           >
-            {likeIcon ?? <Like size={14} />}
+            {likeIcon ?? <ThumbsUp size={14} />}
             Like
           </button>
 
@@ -174,7 +169,7 @@ export const FacebookPostCard = forwardRef<
             onClick={onComment}
             className="flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-md py-1.5 text-xs font-medium text-neutral-500 transition-colors hover:bg-neutral-50 hover:text-black"
           >
-            {commentIcon ?? <Chat size={14} />}
+            {commentIcon ?? <MessageCircle size={14} />}
             Comment
           </button>
 
@@ -184,7 +179,7 @@ export const FacebookPostCard = forwardRef<
             onClick={onShare}
             className="flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-md py-1.5 text-xs font-medium text-neutral-500 transition-colors hover:bg-neutral-50 hover:text-black"
           >
-            {shareIcon ?? <Share size={14} />}
+            {shareIcon ?? <Share2 size={14} />}
             Share
           </button>
         </div>

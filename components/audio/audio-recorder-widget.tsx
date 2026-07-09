@@ -8,8 +8,7 @@ import {
 } from "react";
 
 import { cn } from "@/lib/cn";
-import { Pause } from "@/icons/keys/pause";
-import { Play } from "@/icons/keys/play";
+import { Pause, Play } from "lucide-react";
 
 const BAR_COUNT = 12;
 const BAR_IDS = Array.from({ length: BAR_COUNT }, (_, bar) => bar);

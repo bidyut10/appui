@@ -2,7 +2,7 @@ import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
 
-import { QuoteRight } from "@/icons/keys/quote-right";
+import { Quote } from "lucide-react";
 
 export type EditorialQuoteCardProps = Readonly<
   {
@@ -59,7 +59,7 @@ export const EditorialQuoteCard = forwardRef<
           <span className="font-mono text-[10px] font-semibold tracking-widest text-neutral-500 uppercase">
             {issue}
           </span>
-          <QuoteRight size={18} className="text-neutral-400" />
+          <Quote size={18} className="text-neutral-400" />
         </div>
 
         <blockquote

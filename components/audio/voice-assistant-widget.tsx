@@ -8,7 +8,7 @@ import {
 } from "react";
 
 import { cn } from "@/lib/cn";
-import { Sound } from "@/icons/elements/sound";
+import { Mic } from "lucide-react";
 
 const WAVEFORM_BAR_COUNT = 16;
 
@@ -90,7 +90,7 @@ export const VoiceAssistantWidget = forwardRef<
           active ? "bg-red-500 text-white" : "bg-neutral-900 text-white",
         )}
       >
-        <Sound size={18} />
+        <Mic size={18} />
       </button>
 
       <p className="text-[11px] font-normal text-neutral-600">

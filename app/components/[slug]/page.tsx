@@ -3,10 +3,7 @@ import { notFound } from "next/navigation";
 import { CopyCodeBlock, SetupGuide } from "@/app/copy-code-block";
 import { SaveScrollLink } from "@/app/save-scroll-link";
 import { AnnotatedText } from "@/components/underlines/AnnotatedText";
-import { ChevronLeft } from "@/icons/actions/chevron-left";
-import { ChevronRight } from "@/icons/actions/chevron-right";
-import { MoveLeft } from "@/icons/keys/move-left";
-import { MoveRight } from "@/icons/keys/move-right";
+import { ChevronLeft, ChevronRight, MoveLeft, MoveRight } from "lucide-react";
 import {
   getAllShowcaseSlugs,
   getShowcaseEntry,

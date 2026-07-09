@@ -3,7 +3,7 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
-import { PlaneTakeoff } from "@/icons/activity/plane-takeoff";
+import { PlaneTakeoff } from "lucide-react";
 
 // Flight arrival countdown card — departure and arrival airports with minutes remaining.
 export type FlightArrivalWidgetProps = Readonly<

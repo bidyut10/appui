@@ -9,8 +9,7 @@ import {
 import Image from "next/image";
 
 import { cn } from "@/lib/cn";
-
-import { X } from "@/icons/keys/cross";
+import { X } from "lucide-react";
 
 const EXIT_MS = 260;
 

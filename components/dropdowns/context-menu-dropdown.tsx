@@ -11,11 +11,7 @@ import {
 
 import { cn } from "@/lib/cn";
 
-import { Edit } from "@/icons/activity/edit";
-import { Copy } from "@/icons/activity/copy";
-import { Pin } from "@/icons/elements/pin";
-import { Folder } from "@/icons/elements/folder";
-import { Trash } from "@/icons/elements/trash";
+import { Edit , Copy, Pin, Folder, Trash } from "lucide-react";
 
 type IconComponent = ComponentType<
   Readonly<{ size?: number; className?: string }>

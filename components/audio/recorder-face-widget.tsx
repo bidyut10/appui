@@ -10,8 +10,7 @@ import {
 } from "react";
 
 import { cn } from "@/lib/cn";
-import { Play } from "@/icons/keys/play";
-import { Pause } from "@/icons/keys/pause";
+import { Pause, Play } from "lucide-react";
 
 const ACCENT = "#FF453A";
 const MASCOT = "#6CA8FF";

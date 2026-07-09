@@ -8,8 +8,7 @@ import {
 import Image from "next/image";
 
 import { cn } from "@/lib/cn";
-
-import { ArrowRight } from "@/icons/actions/arrow-right";
+import { ArrowRight } from "lucide-react";
 
 export type MagazineCoverCardProps = Readonly<
   {

@@ -2,9 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-
-import { ChevronUp } from "@/icons/actions/chevron-up";
-import { MoveUp } from "@/icons/keys/move-up";
+import { ChevronUp, MoveUp } from "lucide-react";
 
 const SCROLL_THRESHOLD = 320;
 

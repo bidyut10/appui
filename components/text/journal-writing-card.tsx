@@ -8,8 +8,7 @@ import {
 } from "react";
 
 import { cn } from "@/lib/cn";
-
-import { Signature } from "@/icons/activity/signature";
+import { Signature } from "lucide-react";
 
 export type JournalWritingCardProps = Readonly<
   {

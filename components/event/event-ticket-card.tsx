@@ -3,8 +3,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-import { Location } from "@/icons/activity/location";
-import { Clock } from "@/icons/elements/clock";
+import { MapPin, Clock } from "lucide-react";
 
 export type EventTicketCardProps = Readonly<
   {
@@ -95,7 +94,7 @@ export const EventTicketCard = forwardRef<HTMLDivElement, EventTicketCardProps>(
           </div>
 
           <div className="mt-1 flex items-center gap-1.5 text-[11px] text-neutral-500">
-            <Location size={10} />
+            <MapPin size={10} />
             <span>{location}</span>
           </div>
 

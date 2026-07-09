@@ -3,8 +3,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-import { Location } from "@/icons/activity/location";
-import { MapPinned } from "@/icons/activity/map-pinned";
+import { MapPin } from "lucide-react";
 
 export type TravelPostcardCardProps = Readonly<
   {
@@ -61,7 +60,7 @@ export const TravelPostcardCard = forwardRef<
 
           {/* Map badge */}
           <div className="absolute top-2 right-2 flex h-10 w-8 flex-col items-center justify-center border border-neutral-100 bg-white/90 shadow-sm">
-            {icon ?? <MapPinned size={10} className="text-[#55534f]" />}
+            {icon ?? <MapPin size={10} className="text-[#55534f]" />}
             <span className="mt-0.5 font-mono text-[6px] text-neutral-500">
               {country}
             </span>
@@ -81,7 +80,7 @@ export const TravelPostcardCard = forwardRef<
           </h3>
 
           <div className="flex items-center gap-1.5 text-[11px] text-[#8a7e70]">
-            <Location size={10} />
+            <MapPin size={10} />
             <span>{location}</span>
           </div>
 

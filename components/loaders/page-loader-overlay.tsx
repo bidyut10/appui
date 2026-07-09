@@ -1,4 +1,4 @@
-import { Loader } from "@/icons/elements/Loader";
+import { Loader } from "lucide-react";
 
 // Full-screen loader used during route transitions and dashboard fetches. 
 export function PageLoaderOverlay() {

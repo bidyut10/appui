@@ -11,8 +11,7 @@ import {
 } from "react";
 
 import { cn } from "@/lib/cn";
-import { ChevronDown } from "@/icons/actions/chevron-down";
-import { ChevronUp } from "@/icons/actions/chevron-up";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 // Tailwind-only scroll area — self-contained, no global CSS.
 const HIDE_SCROLLBAR =
