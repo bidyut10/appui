@@ -1,8 +1,37 @@
 # Analytics
 
-Self-hosted, privacy-minded analytics for [opensourceui.in](https://opensourceui.in). No Google Analytics, no third-party scripts — events go to your own MongoDB Atlas cluster via Next.js API routes.
+Two optional layers for [opensourceui.in](https://opensourceui.in):
+
+1. **Self-hosted dashboard** — MongoDB + `/dashboard`
+2. **PostHog** — product analytics in PostHog cloud
+
+Use either, both, or neither.
+
+## Which one do you need?
+
+| | Self-hosted `/dashboard` | PostHog |
+|---|---|---|
+| Page views | Yes | Yes |
+| Component clicks | Yes | Yes |
+| Live users | Yes | Yes |
+| Country / region | Yes | Yes |
+| Session replay | No | Yes |
+| Funnels / retention | No | Yes |
+| Data ownership | Your MongoDB | PostHog cloud |
+| Extra cost | MongoDB free tier | PostHog free tier |
+
+**If you use PostHog, you do not need the MongoDB dashboard** unless you want your own private copy of the data. To run PostHog only, set:
+
+```env
+NEXT_PUBLIC_POSTHOG_KEY=phc_your_key
+NEXT_PUBLIC_SELF_HOSTED_ANALYTICS=false
+```
+
+Then remove `MONGODB_URI` and `ANALYTICS_DASHBOARD_SECRET` from Vercel.
 
 ## What gets tracked
+
+### MongoDB dashboard
 
 | Event | When | Stored in |
 |-------|------|-----------|
@@ -10,6 +39,14 @@ Self-hosted, privacy-minded analytics for [opensourceui.in](https://opensourceui
 | `component_click` | Click on a component link in docs (sidebar, browse list, cards) | `analytics_component_clicks` |
 | `heartbeat` | Every ~3 min while tab is visible | updates `analytics_sessions` |
 | `leave` | Tab hidden or closed | session `durationSec` |
+
+### PostHog (when `NEXT_PUBLIC_POSTHOG_KEY` is set)
+
+| Event | PostHog name |
+|-------|--------------|
+| Page view | `$pageview` |
+| Component click | `component_click` |
+| Tab leave | `$pageleave` (automatic) |
 
 We store anonymous `visitorId` (localStorage) and `sessionId` (sessionStorage). Country / region / city come from Vercel geo headers — **no IP addresses are saved**.
 
@@ -20,14 +57,33 @@ We store anonymous `visitorId` (localStorage) and `sessionId` (sessionStorage). 
 Copy `.env.example` to `.env.local`:
 
 ```env
+# Self-hosted dashboard (optional)
 MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/dbname
 ANALYTICS_DASHBOARD_SECRET=your-long-random-password
+NEXT_PUBLIC_SELF_HOSTED_ANALYTICS=true
+
+# PostHog (optional)
+NEXT_PUBLIC_POSTHOG_KEY=phc_your_project_key_here
+NEXT_PUBLIC_POSTHOG_HOST=/ingest
+NEXT_PUBLIC_POSTHOG_UI_HOST=https://us.posthog.com
 ```
 
-- **MONGODB_URI** — MongoDB Atlas connection string (free tier works).
-- **ANALYTICS_DASHBOARD_SECRET** — Password for `/dashboard`. Also used to sign the auth cookie.
+- **MONGODB_URI** — MongoDB Atlas connection string.
+- **ANALYTICS_DASHBOARD_SECRET** — Password for `/dashboard`.
+- **NEXT_PUBLIC_SELF_HOSTED_ANALYTICS** — Set to `false` to disable MongoDB tracking when using PostHog only.
+- **NEXT_PUBLIC_POSTHOG_KEY** — PostHog project API key. Leave blank to disable PostHog.
+- **NEXT_PUBLIC_POSTHOG_HOST** — Defaults to `/ingest` (proxied via `next.config.ts`).
 
 On Vercel, allow `0.0.0.0/0` in Atlas Network Access so serverless functions can connect.
+
+## PostHog setup
+
+1. Sign up at [posthog.com](https://posthog.com) and create a project.
+2. Copy the **Project API Key** (`phc_...`).
+3. Add env vars to `.env.local` and Vercel.
+4. Redeploy and check **Activity** in PostHog.
+
+Events are sent from `lib/analytics/client/posthog.ts` via the same `trackPageView` / `trackComponentClick` helpers — no extra tracker needed.
 
 ## Dashboard
 
@@ -48,6 +104,7 @@ lib/analytics/
   index.ts              Types + common server re-exports
   client/
     send-events.ts      Browser tracking (sendBeacon / fetch)
+    posthog.ts          Optional PostHog bridge
     index.ts
   server/
     auth.ts             Dashboard password + cookie

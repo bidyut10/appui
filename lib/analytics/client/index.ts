@@ -8,3 +8,4 @@ export {
   trackLeave,
   trackPageView,
 } from "./send-events";
+export { initPostHog, isPostHogEnabled } from "./posthog";

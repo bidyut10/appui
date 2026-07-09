@@ -101,7 +101,7 @@ export default function Home() {
       <LinkedBlock className="relative mx-auto pb-14 w-full md:w-xl" link="view more variants">
         <LaptopMockupCard>
           <Image
-            src="/wallpaper-4.png"
+            src="/wallpaper-3.png"
             alt="App screen"
             fill
             sizes="100%"

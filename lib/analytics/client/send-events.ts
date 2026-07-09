@@ -7,7 +7,16 @@
  * prefer sendBeacon so navigation never waits on analytics.
  */
 
-const VISITOR_KEY = "oui_vid";const SESSION_KEY = "oui_sid";
+import {
+  capturePostHogComponentClick,
+  capturePostHogPageView,
+  identifyPostHogVisitor,
+  initPostHog,
+  isPostHogEnabled,
+} from "./posthog";
+
+const VISITOR_KEY = "oui_vid";
+const SESSION_KEY = "oui_sid";
 const PAGEVIEW_DEBOUNCE_MS = 800;
 
 function randomId(): string {
@@ -70,7 +79,12 @@ function postEvents(events: TrackBody[]): void {
 }
 
 function sendAnalyticsEvent(body: TrackBody): void {
+  if (!isSelfHostedAnalyticsEnabled()) return;
   postEvents([body]);
+}
+
+function isSelfHostedAnalyticsEnabled(): boolean {
+  return process.env.NEXT_PUBLIC_SELF_HOSTED_ANALYTICS !== "false";
 }
 
 export function trackPageView(path: string): void {
@@ -82,15 +96,22 @@ export function trackPageView(path: string): void {
   lastPageViewPath = path;
   lastPageViewAt = now;
 
+  const visitorId = getVisitorId();
+  initPostHog();
+  identifyPostHogVisitor(visitorId);
+  capturePostHogPageView(path);
+
   sendAnalyticsEvent({
     type: "pageview",
     sessionId: getSessionId(),
-    visitorId: getVisitorId(),
+    visitorId,
     path,
   });
 }
 
 export function trackComponentClick(path: string, slug: string): void {
+  capturePostHogComponentClick(path, slug);
+
   sendAnalyticsEvent({
     type: "component_click",
     sessionId: getSessionId(),
