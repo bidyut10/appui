@@ -46,18 +46,19 @@ export const IosCalenderWidget = forwardRef<
       {...props}
     >
       {now ? (
-        <>
-          {/* Red weekday label — matches iOS Calendar widget accent. */}
+        <div className="flex h-full flex-col opacity-100 starting:opacity-0 transition-opacity duration-500 ease-out">
           <p
-            className="text-[13px] leading-none font-semibold tracking-[-0.02em]"
+            className="text-[13px] leading-none font-semibold tracking-[-0.02em] transition-colors duration-300"
             style={{ color: IOS_RED }}
           >
             {weekday}
           </p>
 
           <div className="mt-auto flex items-baseline gap-1.5">
-            {/* Large day number with the month name beside it. */}
-            <p className="text-7xl leading-none font-medium tracking-tighter text-black tabular-nums">
+            <p
+              key={day}
+              className="text-7xl leading-none font-medium tracking-tighter text-black tabular-nums opacity-100 starting:opacity-0 starting:translate-y-1 transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
+            >
               {day}
             </p>
             <p
@@ -67,9 +68,8 @@ export const IosCalenderWidget = forwardRef<
               {month}
             </p>
           </div>
-        </>
+        </div>
       ) : (
-        // Placeholder blocks mirror the final layout while the date loads.
         <div className="flex h-full flex-col pt-0.5">
           <div className="h-3 w-9 rounded bg-neutral-100" aria-hidden />
           <div className="mt-auto flex items-baseline gap-1.5">

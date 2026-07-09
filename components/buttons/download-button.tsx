@@ -40,7 +40,7 @@ export const DownloadButton = forwardRef<HTMLButtonElement, DownloadButtonProps>
   ) => {
     const [phase, setPhase] = useState<Phase>("idle");
     const [progress, setProgress] = useState(0);
-    const timers = useRef<number[]>([]);
+    const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
     const rafRef = useRef<number | null>(null);
     const startRef = useRef(0);
 

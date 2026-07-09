@@ -42,7 +42,7 @@ export const AddToCartButton = forwardRef<
     ref,
   ) => {
     const [phase, setPhase] = useState<Phase>("idle");
-    const timers = useRef<number[]>([]);
+    const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
 
     useEffect(() => {
       return () => {

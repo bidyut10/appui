@@ -35,7 +35,7 @@ export const CopyButton = forwardRef<HTMLButtonElement, CopyButtonProps>(
     ref,
   ) => {
     const [copied, setCopied] = useState(false);
-    const timerRef = useRef<number | null>(null);
+    const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     useEffect(() => {
       return () => {

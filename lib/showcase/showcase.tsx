@@ -30,8 +30,20 @@ import { QuantityStepperButton } from "@/components/buttons/quantity-stepper-but
 import { SegmentedToggleButton } from "@/components/buttons/segmented-toggle-button";
 import { SlideToConfirmButton } from "@/components/buttons/slide-to-confirm-button";
 import { BluetoothFaceWidget } from "@/components/bluetooth/bluetooth-face-widget";
+import { BookingSlotCalendar } from "@/components/calender/booking-slot-calendar";
 import { DailyActivityCalendarWidget } from "@/components/calender/daily-activity-calendar-widget";
+import { DateRangePickerCard } from "@/components/calender/date-range-picker-card";
+import { EventCountdownCard } from "@/components/calender/event-countdown-card";
 import { IosCalenderWidget } from "@/components/calender/ios-calender-widget";
+import { MonthPickerCalendar } from "@/components/calender/month-picker-calendar";
+import { WeekStripCalendar } from "@/components/calender/week-strip-calendar";
+import { CustomersTable } from "@/components/table/customers-table";
+import { OrdersTable } from "@/components/table/orders-table";
+import { RecentTransactionsTable } from "@/components/table/recent-transactions-table";
+import { ResourceLinksPanel } from "@/components/resources/resource-links-panel";
+import { TasksTable } from "@/components/table/tasks-table";
+import { TeamMembersTable } from "@/components/table/team-members-table";
+import { UsersSelectTable } from "@/components/table/users-select-table";
 import { CinemaTicketCard } from "@/components/text/cinema-ticket-card";
 import { DailyMotivationCard } from "@/components/text/daily-motivation-card";
 import { DenimProductEditorialCard } from "@/components/text/denim-product-editorial-card";
@@ -531,6 +543,148 @@ export const showcaseRows = [
           "Month grid with a highlighted day — like a lightweight activity calendar without the GitHub heatmap complexity. Good for habit trackers and dashboards.",
         usage:
           '<DailyActivityCalendarWidget month="August 2024" year={2024} highlightDay={15} />',
+      },
+    ),
+  ],
+  [
+    c(
+      "month-picker-calendar",
+      <MonthPickerCalendar />,
+      "components/calender/month-picker-calendar.tsx",
+      "MonthPickerCalendar",
+      {
+        description:
+          "Full month picker with prev/next navigation — tap any day to select it, today gets a quiet ring.",
+        usage: '<MonthPickerCalendar onSelect={(date) => console.log(date)} />',
+      },
+    ),
+    c(
+      "week-strip-calendar",
+      <WeekStripCalendar />,
+      "components/calender/week-strip-calendar.tsx",
+      "WeekStripCalendar",
+      {
+        description:
+          "Horizontal week strip for booking and scheduling apps — arrow through weeks, tap a day to select.",
+        usage: '<WeekStripCalendar onSelect={(date) => {}} />',
+      },
+    ),
+    c(
+      "date-range-picker",
+      <DateRangePickerCard />,
+      "components/calender/date-range-picker-card.tsx",
+      "DateRangePickerCard",
+      {
+        description:
+          "Travel-style date range picker — first tap sets check-in, second sets check-out, days between fill in.",
+        usage: '<DateRangePickerCard onChange={(start, end) => {}} />',
+      },
+    ),
+  ],
+  [
+    c(
+      "team-members-table",
+      <TeamMembersTable />,
+      "components/table/team-members-table.tsx",
+      "TeamMembersTable",
+      {
+        description:
+          "Team members with profile photos, email, role, and status. Uses /profile-picture.png and /woman.png avatars.",
+        usage: "<TeamMembersTable />",
+      },
+    ),
+    c(
+      "orders-table",
+      <OrdersTable />,
+      "components/table/orders-table.tsx",
+      "OrdersTable",
+      {
+        description:
+          "E-commerce orders table — sort by date, total, or status. The standard admin dashboard orders view.",
+        usage: "<OrdersTable />",
+      },
+    ),
+    c(
+      "users-select-table",
+      <UsersSelectTable />,
+      "components/table/users-select-table.tsx",
+      "UsersSelectTable",
+      {
+        description:
+          "Bulk-select users table with header checkbox and live selection count. Clean white admin pattern for permissions or exports.",
+        usage: "<UsersSelectTable />",
+      },
+    ),
+  ],
+  [
+    c(
+      "recent-transactions-table",
+      <RecentTransactionsTable />,
+      "components/table/recent-transactions-table.tsx",
+      "RecentTransactionsTable",
+      {
+        description:
+          "Stripe-style transaction list with positive and negative amounts and simple pagination.",
+        usage: "<RecentTransactionsTable />",
+      },
+    ),
+    c(
+      "tasks-table",
+      <TasksTable />,
+      "components/table/tasks-table.tsx",
+      "TasksTable",
+      {
+        description:
+          "Project tasks with checkboxes, assignee avatars, and due dates. Tap to mark complete.",
+        usage: "<TasksTable />",
+      },
+    ),
+    c(
+      "customers-table",
+      <CustomersTable />,
+      "components/table/customers-table.tsx",
+      "CustomersTable",
+      {
+        description:
+          "SaaS customer list with plan, last active, and MRR. Common billing dashboard table.",
+        usage: "<CustomersTable />",
+      },
+    ),
+  ],
+  [
+    c(
+      "resource-links-panel",
+      <ResourceLinksPanel className="mt-0" />,
+      "components/resources/resource-links-panel.tsx",
+      "ResourceLinksPanel",
+      {
+        description:
+          "Resource link list with logo, name, description, and domain per row — same layout as the homepage Resources section. Copy and pass title + items.",
+        usage:
+          '<ResourceLinksPanel title="Resources" items={[{ name: "Lucide", description: "For icons", href: "https://lucide.dev", imageSrc: "/lucide-logo.svg" }]} />',
+      },
+    ),
+    c(
+      "event-countdown-card",
+      <EventCountdownCard />,
+      "components/calender/event-countdown-card.tsx",
+      "EventCountdownCard",
+      {
+        description:
+          "Live countdown to an event — days, hours, and minutes update every minute. Editorial typography, no ticker gimmicks.",
+        usage:
+          '<EventCountdownCard title="Product launch" targetDate="2026-12-01T09:00:00" />',
+      },
+    ),
+    c(
+      "booking-slot-calendar",
+      <BookingSlotCalendar />,
+      "components/calender/booking-slot-calendar.tsx",
+      "BookingSlotCalendar",
+      {
+        description:
+          "Appointment booking flow — week strip on top, time slots below. Unavailable slots are crossed out, tap to book.",
+        usage: '<BookingSlotCalendar onBook={(date, slot) => {}} />',
       },
     ),
     c(

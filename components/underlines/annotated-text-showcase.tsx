@@ -12,13 +12,10 @@ const VARIANTS = [
   { variant: "arrow", text: "Arrow underline", color: "text-rose-300" },
 ] as const;
 
-function usageLine({
-  variant,
-  text,
-  color,
-}: (typeof VARIANTS)[number]): string {
+function usageLine(item: (typeof VARIANTS)[number]): string {
+  const color = "color" in item ? item.color : undefined;
   const colorProp = color ? ` color="${color}"` : "";
-  return `<AnnotatedText variant="${variant}"${colorProp}>${text}</AnnotatedText>`;
+  return `<AnnotatedText variant="${item.variant}"${colorProp}>${item.text}</AnnotatedText>`;
 }
 
 export const ANNOTATED_TEXT_USAGE = VARIANTS.map(usageLine).join("\n\n");
@@ -26,9 +23,13 @@ export const ANNOTATED_TEXT_USAGE = VARIANTS.map(usageLine).join("\n\n");
 export function AnnotatedTextShowcase() {
   return (
     <div className="scrollbar-none flex max-h-[22rem] flex-col items-start gap-2.5 overflow-y-auto py-1 [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-      {VARIANTS.map(({ variant, text, color }) => (
-        <AnnotatedText key={variant} variant={variant} color={color}>
-          {text}
+      {VARIANTS.map((item) => (
+        <AnnotatedText
+          key={item.variant}
+          variant={item.variant}
+          color={"color" in item ? item.color : undefined}
+        >
+          {item.text}
         </AnnotatedText>
       ))}
     </div>
