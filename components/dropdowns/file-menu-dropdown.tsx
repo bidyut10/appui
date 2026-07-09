@@ -26,7 +26,7 @@ export type ContextMenuItem = Readonly<{
   separator?: boolean;
 }>;
 
-export type ContextMenuDropdownProps = Readonly<
+export type FileMenuDropdownProps = Readonly<
   {
     cardTitle?: string;
     cardHint?: string;
@@ -88,9 +88,9 @@ function ContextMenuItemRow({ item, onSelect }: ContextMenuItemRowProps) {
 }
 
 // Production-ready Context Menu component — styled with Tailwind CSS.
-export const ContextMenuDropdown = forwardRef<
+export const FileMenuDropdown = forwardRef<
   HTMLDivElement,
-  ContextMenuDropdownProps
+  FileMenuDropdownProps
 >(
   (
     {
@@ -189,4 +189,4 @@ export const ContextMenuDropdown = forwardRef<
   },
 );
 
-ContextMenuDropdown.displayName = "ContextMenuDropdown";
+FileMenuDropdown.displayName = "FileMenuDropdown";

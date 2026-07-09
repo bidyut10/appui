@@ -3,7 +3,7 @@
 import { LockKeyhole } from "lucide-react";
 import { useState, type SubmitEvent } from "react";
 
-import { AnnotatedText } from "@/components/underlines/AnnotatedText";
+import { AnnotatedText } from "@/components/underlines/annotated-text";
 import { BOX_PATTERN } from "@/lib/shared";
 
 type DashboardLoginFormProps = Readonly<{

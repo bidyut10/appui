@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import { AnnotatedText } from "@/components/underlines/AnnotatedText";
+import { AnnotatedText } from "@/components/underlines/annotated-text";
 import { cn } from "@/lib/cn";
 
 import { DocsSponsorCard } from "./docs-sponsor-card";

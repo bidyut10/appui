@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { LogOut, RefreshCw } from "lucide-react";
 
-import { AnnotatedText } from "@/components/underlines/AnnotatedText";
+import { AnnotatedText } from "@/components/underlines/annotated-text";
 import { PageLoaderOverlay } from "@/components/system/loaders";
 import { formatCountry, formatRegion } from "@/lib/analytics/server/geo";
 import type { DashboardStats } from "@/lib/analytics/types";

@@ -7,7 +7,7 @@ import { LinkedBlock } from "./_components/linked-block";
 import { PhoneColumn } from "./_components/phone-column";
 import { CtaButtons } from "./_components/cta-buttons";
 import { SiteFooter } from "./_components/site-footer";
-import { AnnotatedText } from "@/components/underlines/AnnotatedText";
+import { AnnotatedText } from "@/components/underlines/annotated-text";
 import { DndFaceWidget } from "@/components/activity/dnd-face-widget";
 import { TorchFaceWidget } from "@/components/torch/torch-face-widget";
 import { LaptopMockupCard } from "@/components/mockups/laptop-mockup-card";

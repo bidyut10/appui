@@ -1,5 +1,5 @@
 import type { ShowcaseCategoryGroup } from "@/lib/showcase";
-import { AnnotatedText } from "@/components/underlines/AnnotatedText";
+import { AnnotatedText } from "@/components/underlines/annotated-text";
 
 import { ComponentPreviewCard } from "./component-preview-card";
 

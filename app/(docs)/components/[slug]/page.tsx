@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { CopyCodeBlock, SetupGuide, SaveScrollLink } from "@/lib/docs";
-import { AnnotatedText } from "@/components/underlines/AnnotatedText";
+import { AnnotatedText } from "@/components/underlines/annotated-text";
 import { ChevronLeft, ChevronRight, MoveLeft, MoveRight } from "lucide-react";
 import {
   getAllShowcaseSlugs,

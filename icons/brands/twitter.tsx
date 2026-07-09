@@ -1,7 +1,7 @@
 import { IconProps } from "@/types/types";
 
 export const Twitter = ({
-  size = 14,
+  size = 12,
   color = "currentColor",
   className,
   ...props

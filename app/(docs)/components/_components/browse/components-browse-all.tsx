@@ -1,4 +1,4 @@
-import { AnnotatedText } from "@/components/underlines/AnnotatedText";
+import { AnnotatedText } from "@/components/underlines/annotated-text";
 import type { ShowcaseCategoryGroup } from "@/lib/showcase";
 
 import { ComponentListRow } from "./component-list-row";

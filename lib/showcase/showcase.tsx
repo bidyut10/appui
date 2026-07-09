@@ -9,11 +9,26 @@ import { cloneElement, type ReactElement, type ReactNode } from "react";
 
 import { DndFaceWidget } from "@/components/activity/dnd-face-widget";
 import { FocusBreathWidget } from "@/components/activity/focus-breath-widget";
+import { HeartRateWidget } from "@/components/activity/heart-rate-widget";
+import { HydrationWidget } from "@/components/activity/hydration-widget";
+import { PomodoroWidget } from "@/components/activity/pomodoro-widget";
+import { SleepScoreWidget } from "@/components/activity/sleep-score-widget";
+import { StepCountWidget } from "@/components/activity/step-count-widget";
 import { AudioRecorderWidget } from "@/components/audio/audio-recorder-widget";
 import { IosEarbudsWidget } from "@/components/audio/ios-earbuds-widget";
 import { RecorderFaceWidget } from "@/components/audio/recorder-face-widget";
 import { VoiceAssistantWidget } from "@/components/audio/voice-assistant-widget";
 import { BatteryFaceWidget } from "@/components/battery/battery-face-widget";
+import { AddToCartButton } from "@/components/buttons/add-to-cart-button";
+import { BookmarkSaveButton } from "@/components/buttons/bookmark-save-button";
+import { CopyButton } from "@/components/buttons/copy-button";
+import { DownloadButton } from "@/components/buttons/download-button";
+import { FollowButton } from "@/components/buttons/follow-button";
+import { HoldToDeleteButton } from "@/components/buttons/hold-to-delete-button";
+import { LikeButton } from "@/components/buttons/like-button";
+import { QuantityStepperButton } from "@/components/buttons/quantity-stepper-button";
+import { SegmentedToggleButton } from "@/components/buttons/segmented-toggle-button";
+import { SlideToConfirmButton } from "@/components/buttons/slide-to-confirm-button";
 import { BluetoothFaceWidget } from "@/components/bluetooth/bluetooth-face-widget";
 import { DailyActivityCalendarWidget } from "@/components/calender/daily-activity-calendar-widget";
 import { IosCalenderWidget } from "@/components/calender/ios-calender-widget";
@@ -63,14 +78,28 @@ import { WalletPassCard } from "@/components/wallet/wallet-pass-card";
 import { AnalogClockWidget } from "@/components/clocks/analog-clock-widget";
 import { IosDigitalClockWidget } from "@/components/clocks/ios-digital-clock-widget";
 import { CompassWidget } from "@/components/compass/compass-widget";
-import { ContextMenuDropdown } from "@/components/dropdowns/context-menu-dropdown";
+import { FileMenuDropdown } from "@/components/dropdowns/file-menu-dropdown";
+import { FilterSortDropdown } from "@/components/dropdowns/filter-sort-dropdown";
+import { KebabActionsDropdown } from "@/components/dropdowns/kebab-actions-dropdown";
+import { NotificationDropdown } from "@/components/dropdowns/notification-dropdown";
+import { ShareMenuDropdown } from "@/components/dropdowns/share-menu-dropdown";
 import { UserMenuDropdown } from "@/components/dropdowns/user-menu-dropdown";
+import { WorkspaceSwitcherDropdown } from "@/components/dropdowns/workspace-switcher-dropdown";
 import { GithubContributionCard } from "@/components/github/github-contribution";
 import { IosMapLocationWidget } from "@/components/map-location/ios-map-location-widget";
 import { BrowserMockupCard } from "@/components/mockups/browser-mockup-card";
 import { LaptopMockupCard } from "@/components/mockups/laptop-mockup-card";
 import { PhoneMockupCard } from "@/components/mockups/phone-mockup-card";
 import { AppleNotificationBanner } from "@/components/notifications/apple-notification-banner";
+import { CalendarReminderNotificationBanner } from "@/components/notifications/calendar-reminder-notification-banner";
+import { ChatBubbleNotificationBanner } from "@/components/notifications/chat-bubble-notification-banner";
+import { DeliveryNotificationBanner } from "@/components/notifications/delivery-notification-banner";
+import { DeployNotificationBanner } from "@/components/notifications/deploy-notification-banner";
+import { EmailNotificationBanner } from "@/components/notifications/email-notification-banner";
+import { IncomingCallNotificationBanner } from "@/components/notifications/incoming-call-notification-banner";
+import { PaymentNotificationBanner } from "@/components/notifications/payment-notification-banner";
+import { SystemAlertBanner } from "@/components/notifications/system-alert-banner";
+import { ToastNotificationBanner } from "@/components/notifications/toast-notification-banner";
 import { BlobProfileCard } from "@/components/profile/blob-profile";
 import { StopwatchWidget } from "@/components/stopwatch/stopwatch-widget";
 import { TorchFaceWidget } from "@/components/torch/torch-face-widget";
@@ -79,6 +108,7 @@ import { FlightArrivalWidget } from "@/components/travel/flight-arrival-widget";
 import { MinimalAgendaWidget } from "@/components/travel/minimal-agenda-widget";
 import { RidePickupWidget } from "@/components/travel/ride-pickup-widget";
 import { WiFiToggleWidget } from "@/components/wifi/wifi-toggle-widget";
+import { AnnotatedTextShowcase, ANNOTATED_TEXT_USAGE } from "@/components/underlines/annotated-text-showcase";
 
 type ShowcaseOpts = {
   title?: string;
@@ -106,6 +136,125 @@ export function c(
 // Each inner array is one homepage row.
 export const showcaseRows = [
   [
+    c(
+      "slide-to-confirm-button",
+      <SlideToConfirmButton />,
+      "components/buttons/slide-to-confirm-button.tsx",
+      "SlideToConfirmButton",
+      {
+        description:
+          "Drag the knob across the track to commit an action — snaps back if you release early, locks green when confirmed. Great for irreversible or high-intent actions.",
+        usage:
+          '<SlideToConfirmButton label="Slide to pay" onConfirm={handlePay} />',
+      },
+    ),
+    c(
+      "hold-to-delete-button",
+      <HoldToDeleteButton />,
+      "components/buttons/hold-to-delete-button.tsx",
+      "HoldToDeleteButton",
+      {
+        description:
+          "Press and hold as a fill sweeps across; release early to cancel, hold to the end to delete. Prevents accidental destructive taps.",
+        usage:
+          '<HoldToDeleteButton holdMs={1100} onHoldComplete={handleDelete} />',
+      },
+    ),
+  ],
+  [
+    c(
+      "add-to-cart-button",
+      <AddToCartButton />,
+      "components/buttons/add-to-cart-button.tsx",
+      "AddToCartButton",
+      {
+        description:
+          "A single button that morphs through idle → loading → added, then settles back. The label slides vertically between states — no layout shift.",
+        usage: '<AddToCartButton label="Add to cart" loadingMs={1200} />',
+      },
+    ),
+    c(
+      "like-button",
+      <LikeButton />,
+      "components/buttons/like-button.tsx",
+      "LikeButton",
+      {
+        description:
+          "Heart toggle that pops and scatters particles on the way up, with a live count. Pill fills rose when active — no glow, no gradient.",
+        usage: '<LikeButton count={128} defaultLiked={false} />',
+      },
+    ),
+    c(
+      "copy-button",
+      <CopyButton />,
+      "components/buttons/copy-button.tsx",
+      "CopyButton",
+      {
+        description:
+          "Copies text to the clipboard and cross-fades the copy icon into a check with a Copied label. Monospace value, resets on its own.",
+        usage: '<CopyButton value="npm i @appui/components" />',
+      },
+    ),
+  ],
+  [
+    c(
+      "quantity-stepper-button",
+      <QuantityStepperButton />,
+      "components/buttons/quantity-stepper-button.tsx",
+      "QuantityStepperButton",
+      {
+        description:
+          "Inline minus / count / plus control for carts and forms. Clamps between min and max, disables at the edges.",
+        usage: '<QuantityStepperButton value={1} min={0} max={99} onChange={setQty} />',
+      },
+    ),
+    c(
+      "download-button",
+      <DownloadButton />,
+      "components/buttons/download-button.tsx",
+      "DownloadButton",
+      {
+        description:
+          "Download with a horizontal sky fill while the file loads, then a green done state. Different rhythm from the add-to-cart morph.",
+        usage: '<DownloadButton label="Download" onDownload={fetchFile} />',
+      },
+    ),
+    c(
+      "follow-button",
+      <FollowButton />,
+      "components/buttons/follow-button.tsx",
+      "FollowButton",
+      {
+        description:
+          "Social follow toggle — dark Follow pill becomes a quiet Following state with a user-check icon. Tap again to unfollow.",
+        usage: '<FollowButton label="Follow" followingLabel="Following" />',
+      },
+    ),
+  ],
+  [
+    c(
+      "bookmark-save-button",
+      <BookmarkSaveButton />,
+      "components/buttons/bookmark-save-button.tsx",
+      "BookmarkSaveButton",
+      {
+        description:
+          "Save for later — bookmark icon fills amber and label swaps to Saved. Square-ish control for articles and products.",
+        usage: '<BookmarkSaveButton label="Save" savedLabel="Saved" />',
+      },
+    ),
+    c(
+      "segmented-toggle-button",
+      <SegmentedToggleButton />,
+      "components/buttons/segmented-toggle-button.tsx",
+      "SegmentedToggleButton",
+      {
+        description:
+          "iOS segmented control — sliding white pill between Day, Week, and Month. Pass your own options array for view modes or filters.",
+        usage:
+          '<SegmentedToggleButton options={["Day", "Week", "Month"]} onChange={(i, v) => {}} />',
+      },
+    ),
     c(
       "analog-clock-roman",
       <AnalogClockWidget variant="roman" />,
@@ -315,6 +464,63 @@ export const showcaseRows = [
     ),
   ],
   [
+    c(
+      "step-count",
+      <StepCountWidget />,
+      "components/activity/step-count-widget.tsx",
+      "StepCountWidget",
+      {
+        description:
+          "Editorial step stat — light wide card, large number, goal in a quiet footer row. No progress bars or icons.",
+        usage: '<StepCountWidget steps={8432} goal={10000} label="steps today" />',
+      },
+    ),
+    c(
+      "pomodoro",
+      <PomodoroWidget />,
+      "components/activity/pomodoro-widget.tsx",
+      "PomodoroWidget",
+      {
+        description:
+          "Dark pomodoro timer — thin ring, split monospace time, tap to start or pause. Polished to match the DND card size and proportions.",
+        usage: '<PomodoroWidget minutes={25} label="Focus" />',
+      },
+    ),
+    c(
+      "hydration",
+      <HydrationWidget />,
+      "components/activity/hydration-widget.tsx",
+      "HydrationWidget",
+      {
+        description:
+          "Tall bottle card — count at the top, water level rises inside a simple bottle outline. Tap to log a glass.",
+        usage: '<HydrationWidget glasses={5} goal={8} label="glasses" />',
+      },
+    ),
+  ],
+  [
+    c(
+      "sleep-score",
+      <SleepScoreWidget />,
+      "components/activity/sleep-score-widget.tsx",
+      "SleepScoreWidget",
+      {
+        description:
+          "Sleep score in the DND face layout — sleeping mascot at the bottom, score and quality above, duration tucked below.",
+        usage: '<SleepScoreWidget score={87} quality="Good" duration="7h 24m" />',
+      },
+    ),
+    c(
+      "heart-rate",
+      <HeartRateWidget />,
+      "components/activity/heart-rate-widget.tsx",
+      "HeartRateWidget",
+      {
+        description:
+          "Heart rate in the DND face layout — mascot at the bottom, BPM above the dial, soft pulse on the ring.",
+        usage: '<HeartRateWidget bpm={72} />',
+      },
+    ),
     c(
       "daily-activity-calendar",
       <DailyActivityCalendarWidget />,
@@ -544,15 +750,129 @@ export const showcaseRows = [
       },
     ),
     c(
-      "context-menu",
-      <ContextMenuDropdown />,
-      "components/dropdowns/context-menu-dropdown.tsx",
-      "ContextMenuDropdown",
+      "toast-notification",
+      <ToastNotificationBanner />,
+      "components/notifications/toast-notification-banner.tsx",
+      "ToastNotificationBanner",
+      {
+        description:
+          "Light snackbar with check icon — message, undo action, slides up on dismiss. For save confirmations and quick feedback.",
+        usage:
+          '<ToastNotificationBanner message="Changes saved" actionLabel="Undo" />',
+      },
+    ),
+    c(
+      "email-notification",
+      <EmailNotificationBanner />,
+      "components/notifications/email-notification-banner.tsx",
+      "EmailNotificationBanner",
+      {
+        description:
+          "Mail alert on the iOS grid — sender avatar, app name header, natural from: subject — preview body line.",
+        usage:
+          '<EmailNotificationBanner appName="Mail" from="Alex" subject="Re: roadmap" preview="Two notes on the timeline..." />',
+      },
+    ),
+  ],
+  [
+    c(
+      "system-alert",
+      <SystemAlertBanner />,
+      "components/notifications/system-alert-banner.tsx",
+      "SystemAlertBanner",
+      {
+        description:
+          "Settings-style iOS alert — amber app tile, title: description in one natural line. For storage, limits, and warnings.",
+        usage:
+          '<SystemAlertBanner appName="Settings" title="Storage" description="Your device is almost full." />',
+      },
+    ),
+    c(
+      "chat-bubble-notification",
+      <ChatBubbleNotificationBanner />,
+      "components/notifications/chat-bubble-notification-banner.tsx",
+      "ChatBubbleNotificationBanner",
+      {
+        description:
+          "Messenger-style bubble — small avatar, sender name, rounded message bubble with a flat tail corner.",
+        usage:
+          '<ChatBubbleNotificationBanner sender="Maya" message="Running 5 min late" />',
+      },
+    ),
+    c(
+      "deploy-notification",
+      <DeployNotificationBanner />,
+      "components/notifications/deploy-notification-banner.tsx",
+      "DeployNotificationBanner",
+      {
+        description:
+          "Deploy alert on the iOS grid — Vercel triangle tile, short status line with project, branch, and duration.",
+        usage:
+          '<DeployNotificationBanner appName="Vercel" project="app-ui" branch="main" duration="42s" />',
+      },
+    ),
+  ],
+  [
+    c(
+      "calendar-reminder-notification",
+      <CalendarReminderNotificationBanner />,
+      "components/notifications/calendar-reminder-notification-banner.tsx",
+      "CalendarReminderNotificationBanner",
+      {
+        description:
+          "Calendar reminder on the iOS grid — red app tile, event name, and time until it starts.",
+        usage:
+          '<CalendarReminderNotificationBanner event="Design review" when="in 15 minutes" />',
+      },
+    ),
+    c(
+      "payment-notification",
+      <PaymentNotificationBanner />,
+      "components/notifications/payment-notification-banner.tsx",
+      "PaymentNotificationBanner",
+      {
+        description:
+          "Payment received on the iOS grid — emerald tile, amount, and sender name.",
+        usage:
+          '<PaymentNotificationBanner amount="$128.00" from="Acme Corp" />',
+      },
+    ),
+    c(
+      "incoming-call-notification",
+      <IncomingCallNotificationBanner />,
+      "components/notifications/incoming-call-notification-banner.tsx",
+      "IncomingCallNotificationBanner",
+      {
+        description:
+          "Incoming call card — large avatar, caller name, FaceTime label, Accept and Decline buttons.",
+        usage:
+          '<IncomingCallNotificationBanner caller="Sarah Chen" callType="FaceTime Audio" />',
+      },
+    ),
+  ],
+  [
+    c(
+      "delivery-notification",
+      <DeliveryNotificationBanner />,
+      "components/notifications/delivery-notification-banner.tsx",
+      "DeliveryNotificationBanner",
+      {
+        description:
+          "Shipping update — package icon, delivery status, ETA, and order number in a compact row.",
+        usage:
+          '<DeliveryNotificationBanner status="Out for delivery" eta="Arriving today by 6:15 PM" orderId="#4821" />',
+      },
+    ),
+    c(
+      "file-menu",
+      <FileMenuDropdown />,
+      "components/dropdowns/file-menu-dropdown.tsx",
+      "FileMenuDropdown",
       {
         description:
           "Folder icon you can right-click or tap to open a centered action menu — edit, duplicate, pin, move, delete. Keyboard-friendly item hints included.",
         usage:
-          '<ContextMenuDropdown cardTitle="My file" onItemClick={(item) => console.log(item.id)} />',
+          '<FileMenuDropdown cardTitle="My file" onItemClick={(item) => console.log(item.id)} />',
       },
     ),
     c(
@@ -565,6 +885,70 @@ export const showcaseRows = [
           "Account pill with avatar, name, and email that opens into profile, settings, messages, and sign out. The header dropdown every SaaS app needs, with keyboard shortcut labels.",
         usage:
           '<UserMenuDropdown userName="Your Name" userEmail="you@email.com" avatarSrc="/avatar.png" />',
+      },
+    ),
+    c(
+      "kebab-actions",
+      <KebabActionsDropdown />,
+      "components/dropdowns/kebab-actions-dropdown.tsx",
+      "KebabActionsDropdown",
+      {
+        description:
+          "List row that expands inline — actions open inside the same card so widths always align.",
+        usage:
+          '<KebabActionsDropdown onItemClick={(item) => console.log(item.id)} />',
+      },
+    ),
+  ],
+  [
+    c(
+      "share-menu",
+      <ShareMenuDropdown />,
+      "components/dropdowns/share-menu-dropdown.tsx",
+      "ShareMenuDropdown",
+      {
+        description:
+          "Square icon trigger opens a horizontal brand rail — four social tiles in a row plus a full-width copy button.",
+        usage:
+          '<ShareMenuDropdown copied={false} onItemClick={(item) => console.log(item.id)} />',
+      },
+    ),
+    c(
+      "notification",
+      <NotificationDropdown />,
+      "components/dropdowns/notification-dropdown.tsx",
+      "NotificationDropdown",
+      {
+        description:
+          "Square bell trigger with a gray inset tray — each notification is a small bordered card inside the panel.",
+        usage:
+          '<NotificationDropdown onNotificationClick={(n) => console.log(n.id)} />',
+      },
+    ),
+    c(
+      "filter-sort",
+      <FilterSortDropdown />,
+      "components/dropdowns/filter-sort-dropdown.tsx",
+      "FilterSortDropdown",
+      {
+        description:
+          "Native select-style box — dropdown is flush below the trigger with matching width and a left-border active state.",
+        usage:
+          '<FilterSortDropdown value="newest" onValueChange={(o) => console.log(o.id)} />',
+      },
+    ),
+  ],
+  [
+    c(
+      "workspace-switcher",
+      <WorkspaceSwitcherDropdown />,
+      "components/dropdowns/workspace-switcher-dropdown.tsx",
+      "WorkspaceSwitcherDropdown",
+      {
+        description:
+          "Rectangular org bar that expands inline — workspace list opens inside the same bordered box, not a floating panel.",
+        usage:
+          '<WorkspaceSwitcherDropdown onWorkspaceChange={(w) => console.log(w.id)} />',
       },
     ),
   ],
@@ -945,6 +1329,17 @@ export const showcaseRows = [
       {
         description:
           "Editorial poster with multi-line headline, flower icon, tilted polaroid, and a GOOD DAY sticker. Morning routine apps and wellness newsletters.",
+      },
+    ),
+    c(
+      "annotated-text",
+      <AnnotatedTextShowcase />,
+      "components/underlines/annotated-text.tsx",
+      "AnnotatedText",
+      {
+        description:
+          "Hand-drawn text annotations — wavy underlines, highlights, arrows, brackets, and more. Pass variant and optional color to style any inline label or callout.",
+        usage: ANNOTATED_TEXT_USAGE,
       },
     ),
   ],

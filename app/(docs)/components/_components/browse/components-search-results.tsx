@@ -1,4 +1,4 @@
-import { AnnotatedText } from "@/components/underlines/AnnotatedText";
+import { AnnotatedText } from "@/components/underlines/annotated-text";
 import { searchShowcaseEntries } from "@/lib/showcase/search-showcase";
 import { ComponentListRow } from "./component-list-row";
 import { ComponentsSearchEmpty } from "./components-search-empty";
