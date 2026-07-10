@@ -758,14 +758,14 @@ export const showcaseRows = [
     ),
     c(
       "phone",
-      <PhoneMockupCard />,
+      <PhoneMockupCard variant="orange" />,
       "components/mockups/phone-mockup-card.tsx",
       "PhoneMockupCard",
       {
         description:
           "iPhone 15 Pro frame with Dynamic Island and a full-screen preview slot. Pass variant for purple, orange, white, titanium, or cherry finishes. Use visibleRatio to crop from the top, and showDynamicIsland to toggle the island and camera.",
         usage:
-          '<PhoneMockupCard variant="titanium" visibleRatio={2 / 3} showDynamicIsland={false} />',
+          '<PhoneMockupCard variant="orange" visibleRatio={2 / 3} showDynamicIsland={false} />',
       },
     ),
   ],
