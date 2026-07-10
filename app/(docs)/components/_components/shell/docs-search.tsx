@@ -1,10 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useTransition,
+} from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-import { Search } from "lucide-react";
-import { Command } from "lucide-react";
+import { Command, Search } from "lucide-react";
 
 function getComponentsSearchPath(pathname: string) {
   return pathname.startsWith("/components") ? "/components" : pathname;
@@ -24,22 +29,30 @@ function getSearchShortcutLabel() {
   return isApple ? "Command K" : "Control K";
 }
 
-function DocsSearchInput({ query }: Readonly<{ query: string }>) {
+export function DocsSearch() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const urlQuery = searchParams.get("q") ?? "";
+
   const inputRef = useRef<HTMLInputElement>(null);
-  const [value, setValue] = useState(query);
+  const isFocusedRef = useRef(false);
+  const committedRef = useRef(urlQuery);
+  const [value, setValue] = useState(urlQuery);
   const [shortcutLabel] = useState(getSearchShortcutLabel);
+  const [, startTransition] = useTransition();
 
-  useEffect(() => {
-    const timer = globalThis.setTimeout(() => {
-      const trimmed = value.trim();
-      const current = query.trim();
+  const applySearch = useCallback(
+    (next: string) => {
+      const trimmed = next.trim();
+      if (trimmed === committedRef.current.trim()) return;
 
-      if (trimmed === current) return;
+      committedRef.current = trimmed;
 
-      const params = new URLSearchParams(searchParams.toString());
+      const params = new URLSearchParams(
+        typeof window === "undefined" ? "" : window.location.search,
+      );
+
       if (trimmed) {
         params.set("q", trimmed);
         params.delete("category");
@@ -49,11 +62,31 @@ function DocsSearchInput({ query }: Readonly<{ query: string }>) {
 
       const nextQuery = params.toString();
       const base = getComponentsSearchPath(pathname);
-      router.push(nextQuery ? `${base}?${nextQuery}` : base, { scroll: false });
-    }, 250);
+      const href = nextQuery ? `${base}?${nextQuery}` : base;
+
+      startTransition(() => {
+        router.replace(href, { scroll: false });
+      });
+    },
+    [pathname, router],
+  );
+
+  // Sync URL → input for back/forward and external links, never while the field is focused.
+  useEffect(() => {
+    committedRef.current = urlQuery;
+    if (!isFocusedRef.current) {
+      setValue(urlQuery);
+    }
+  }, [urlQuery]);
+
+  // Debounce typing before updating the URL so keystrokes stay local and fast.
+  useEffect(() => {
+    const timer = globalThis.setTimeout(() => {
+      applySearch(value);
+    }, 300);
 
     return () => globalThis.clearTimeout(timer);
-  }, [value, query, pathname, router, searchParams]);
+  }, [value, applySearch]);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -61,20 +94,23 @@ function DocsSearchInput({ query }: Readonly<{ query: string }>) {
         event.preventDefault();
         inputRef.current?.focus();
         inputRef.current?.select();
+        return;
       }
 
       if (
         event.key === "Escape" &&
         document.activeElement === inputRef.current
       ) {
+        event.preventDefault();
         setValue("");
+        applySearch("");
         inputRef.current?.blur();
       }
     }
 
     globalThis.addEventListener("keydown", onKeyDown);
     return () => globalThis.removeEventListener("keydown", onKeyDown);
-  }, []);
+  }, [applySearch]);
 
   return (
     <label className="relative block w-full md:max-w-sm">
@@ -89,7 +125,16 @@ function DocsSearchInput({ query }: Readonly<{ query: string }>) {
         type="search"
         value={value}
         onChange={(event) => setValue(event.target.value)}
+        onFocus={() => {
+          isFocusedRef.current = true;
+        }}
+        onBlur={() => {
+          isFocusedRef.current = false;
+        }}
         placeholder="Search components…"
+        autoComplete="off"
+        autoCorrect="off"
+        spellCheck={false}
         className="w-full rounded-lg border border-neutral-100 bg-neutral-50/50 py-1.5 pr-3 pl-8 font-sans text-sm text-neutral-800 transition-colors outline-none placeholder:text-neutral-400 focus:border-rose-200 focus:bg-white md:pr-14"
       />
       <kbd
@@ -101,11 +146,4 @@ function DocsSearchInput({ query }: Readonly<{ query: string }>) {
       </kbd>
     </label>
   );
-}
-
-export function DocsSearch() {
-  const searchParams = useSearchParams();
-  const query = searchParams.get("q") ?? "";
-
-  return <DocsSearchInput key={query} query={query} />;
 }
