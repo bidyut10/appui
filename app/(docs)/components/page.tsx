@@ -1,4 +1,4 @@
-import { getAllShowcaseSlugs, getShowcaseByCategory } from "@/lib/showcase";
+import { getAllShowcaseSlugs, getShowcaseByCategory, resolveShowcaseCategory } from "@/lib/showcase";
 
 import {
   ComponentsBrowseAll,
@@ -26,14 +26,10 @@ export default async function ComponentsPage({
   const searchQuery = queryParam?.trim() ?? "";
   const isSearching = searchQuery.length > 0;
 
-  const hasCategory =
-    !isSearching &&
-    !!categoryParam &&
-    categories.some((group) => group.category === categoryParam);
-
-  const activeGroup = hasCategory
-    ? categories.find((group) => group.category === categoryParam)
-    : null;
+  const activeGroup = categoryParam
+    ? resolveShowcaseCategory(categories, categoryParam)
+    : undefined;
+  const hasCategory = !isSearching && !!activeGroup;
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
@@ -47,7 +43,7 @@ export default async function ComponentsPage({
           ) : hasCategory && activeGroup ? (
             <ComponentsCatalog
               categories={categories}
-              category={categoryParam!}
+              category={activeGroup.category}
             />
           ) : (
             <ComponentsBrowseAll

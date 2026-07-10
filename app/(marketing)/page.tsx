@@ -81,6 +81,7 @@ export default function Home() {
             variant="titanium"
             src="/iphone-wallpaper.png"
             link="view more colors"
+            href="/components/phone"
           />
         </div>
       </section>
@@ -104,6 +105,7 @@ export default function Home() {
       <LinkedBlock
         className="relative mx-auto w-full pb-14 md:w-xl"
         link="view more variants"
+        href="/components/laptop"
       >
         <LaptopMockupCard>
           <Image
@@ -131,6 +133,7 @@ export default function Home() {
       <LinkedBlock
         className="relative mx-auto w-full max-w-xl px-4 pb-14 md:px-0"
         link="view more themes"
+        href="/components/browser"
       >
         <BrowserMockupCard theme="transparent">
           <Image
@@ -146,6 +149,7 @@ export default function Home() {
       <LinkedBlock
         className="relative mx-auto my-10 max-w-xl px-4 pb-14 md:px-0"
         link="view more annotations"
+        href="/components/annotated-text"
       >
         <Paragraph tone="dark">
           Draw attention where it matters most with clean, customizable{" "}
@@ -164,6 +168,7 @@ export default function Home() {
       <LinkedBlock
         className="relative mx-auto my-10 max-w-xl px-4 pb-14 md:px-0"
         link="view more variants"
+        href="/components?category=Clocks"
       >
         <Heading>
           <AnnotatedText variant="line" color="text-orange-300">
@@ -185,6 +190,7 @@ export default function Home() {
       <LinkedBlock
         className="relative mx-auto my-10 max-w-xl px-4 pb-14 md:px-0"
         link="view more widgets"
+        href="/components?q=face"
       >
         <Heading>
           Interactive Components{" "}
@@ -207,6 +213,7 @@ export default function Home() {
       <LinkedBlock
         className="relative mx-auto my-10 max-w-xl px-4 pb-14 md:px-0"
         link="view more notebooks"
+        href="/components/journal-writing"
       >
         <Heading>
           Writing That Feels{" "}

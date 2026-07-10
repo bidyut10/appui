@@ -9,7 +9,7 @@ export function LinkedBlock({
 }: {
   className: string;
   link: string;
-  href?: string;
+  href: string;
   children: ReactNode;
 }) {
   return (

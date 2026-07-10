@@ -1,4 +1,4 @@
-import type { ShowcaseCategoryGroup } from "@/lib/showcase";
+import { resolveShowcaseCategory, type ShowcaseCategoryGroup } from "@/lib/showcase";
 import { AnnotatedText } from "@/components/underlines/annotated-text";
 
 import { ComponentPreviewCard } from "./component-preview-card";
@@ -13,7 +13,7 @@ export function ComponentsCatalog({
   category,
 }: ComponentsCatalogProps) {
   const activeGroup =
-    categories.find((group) => group.category === category) ?? categories[0];
+    resolveShowcaseCategory(categories, category) ?? categories[0];
 
   if (!activeGroup) return null;
 

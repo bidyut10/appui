@@ -6,6 +6,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 
 import { SaveScrollLink } from "@/lib/docs";
 import { cn } from "@/lib/cn";
+import { resolveShowcaseCategory } from "@/lib/showcase/resolve-category";
 import type { ShowcaseCategoryGroup } from "@/lib/showcase";
 
 function categoryHref(category: string) {
@@ -28,8 +29,12 @@ export function DocsSidebarNav({
     ? pathname.replace("/components/", "")
     : null;
 
+  const categoryParam = searchParams.get("category");
+
   const activeCategory =
-    searchParams.get("category") ??
+    (categoryParam
+      ? resolveShowcaseCategory(categories, categoryParam)?.category
+      : null) ??
     (activeSlug
       ? categories.find((group) =>
           group.items.some((item) => item.slug === activeSlug),

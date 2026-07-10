@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 
 import { SaveScrollLink } from "@/lib/docs";
 import { cn } from "@/lib/cn";
+import { resolveShowcaseCategory } from "@/lib/showcase/resolve-category";
 import type { ShowcaseCategoryGroup } from "@/lib/showcase";
 
 type ComponentsCategoryNavProps = Readonly<{
@@ -39,7 +40,10 @@ export function ComponentsCategoryNav({
         </SaveScrollLink>
 
         {categories.map((group) => {
-          const isActive = !isBrowseAll && group.category === activeCategory;
+          const isActive =
+            !isBrowseAll &&
+            resolveShowcaseCategory(categories, activeCategory)?.category ===
+              group.category;
 
           return (
             <SaveScrollLink

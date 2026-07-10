@@ -7,10 +7,12 @@ export function PhoneColumn({
   variant,
   src,
   link,
+  href,
 }: {
   variant: "purple" | "orange" | "titanium";
   src: string;
   link?: string;
+  href?: string;
 }) {
   const panel = (
     <div
@@ -39,7 +41,7 @@ export function PhoneColumn({
   return (
     <div className="relative flex w-full items-stretch min-[1300px]:flex-1">
       {panel}
-      <ViewLink>{link}</ViewLink>
+      <ViewLink href={href ?? "/components/phone"}>{link}</ViewLink>
     </div>
   );
 }
