@@ -27,7 +27,16 @@ export function DocsSidebarFooter() {
       </p>
 
       <p className="mt-2 font-sans text-xs leading-relaxed text-neutral-500">
-        Free, open source, and yours to own. Made &amp; maintained by{" "}
+        {siteConfig.license.shortNote}{" "}
+        <a
+          href={siteConfig.license.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-medium text-neutral-700 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-neutral-900 hover:decoration-neutral-500"
+        >
+          {siteConfig.license.name} License
+        </a>
+        . Made &amp; maintained by{" "}
         <a
           href={author.url}
           target="_blank"
@@ -73,7 +82,7 @@ export function DocsSidebarFooter() {
       </div>
 
       <div className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 font-sans text-xs text-neutral-400">
-        <span>© {year} Opensource UI </span>
+        <span>© {year} {siteConfig.displayName} </span>
         <span aria-hidden="true">·</span>
         <span> Made in India </span>
       </div>

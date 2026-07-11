@@ -4,6 +4,7 @@ import { useCallback, useState, type ReactNode } from "react";
 
 import { Check, Copy } from "lucide-react";
 import { HighlightedCode } from "@/lib/showcase/highlight-code";
+import { siteConfig } from "@/lib/site";
 
 function useCopyToClipboard() {
   const [copied, setCopied] = useState(false);
@@ -274,6 +275,18 @@ export function SetupGuide({
     <section className="rounded-xl border border-neutral-100">
       <div className="border-b border-neutral-100 px-4 py-3 md:px-5">
         <h2 className="text-base font-medium text-neutral-900">How to use</h2>
+        <p className="mt-1 text-xs leading-relaxed text-neutral-500">
+          {siteConfig.license.shortNote} {siteConfig.license.copyNote}{" "}
+          <a
+            href={siteConfig.license.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-neutral-700 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-neutral-900 hover:decoration-neutral-500"
+          >
+            Read the {siteConfig.license.name} license
+          </a>
+          .
+        </p>
       </div>
       <ol>
         {steps.map((step, index) => (

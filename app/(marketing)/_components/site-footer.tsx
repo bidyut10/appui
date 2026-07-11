@@ -16,7 +16,7 @@ export function SiteFooter() {
       <div className="border-t border-neutral-200 pt-12 pb-8">
         <Image
           src="/osui-logo.png"
-          alt="Opensource UI"
+          alt={siteConfig.displayName}
           width={0}
           height={0}
           sizes="128px"
@@ -35,8 +35,16 @@ export function SiteFooter() {
           />
         </p>
         <p className="mt-3 max-w-md text-sm leading-relaxed text-neutral-500">
-          Pick a component, copy the code, and ship. Free, open source, and
-          yours to own. Made &amp; maintained by{" "}
+          Pick a component, copy the code, and ship.{" "}
+          <a
+            href={siteConfig.license.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-neutral-700 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-neutral-900 hover:decoration-neutral-500"
+          >
+            {siteConfig.license.name} licensed
+          </a>{" "}
+          — {siteConfig.license.shortNote} Made &amp; maintained by{" "}
           <a
             href={author.url}
             target="_blank"
@@ -88,10 +96,10 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-neutral-400">
-          <span>© {year} Opensource UI</span>
+          <span>© {year} {siteConfig.displayName}</span>
           <span aria-hidden="true">·</span>
           <a
-            href="https://github.com/bidyut10/appui"
+            href={siteConfig.github.url}
             target="_blank"
             rel="noopener noreferrer"
             className="transition-colors hover:text-neutral-600"

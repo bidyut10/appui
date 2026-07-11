@@ -20,6 +20,7 @@ import { InstallOptions } from "./_components/compoent-deisgn-copy-demo";
 import { OpenSourcePanel } from "./_components/sponser-resource";
 import { HomeTestimonials } from "./_components/home-testimonials";
 import { ShowcaseScrollRestoration } from "@/app/_shared/scroll/showcase-scroll-restoration";
+import { siteConfig } from "@/lib/site";
 
 export default function Home() {
   return (
@@ -29,7 +30,7 @@ export default function Home() {
       <div className="mt-4 mb-10 max-w-xl px-4 md:px-0">
         <Image
           src="/osui-logo.png"
-          alt="Logo"
+          alt={siteConfig.displayName}
           width={0}
           height={0}
           sizes="512px"
@@ -50,11 +51,20 @@ export default function Home() {
           Building for the web has never been easier. Creating something
           memorable still takes care.{" "}
           <AnnotatedText variant="highlight" color="text-yellow-100">
-            OpenSource UI
+            {siteConfig.displayName}
           </AnnotatedText>{" "}
-          is a collection of thoughtfully crafted, production-ready components
-          designed to help you build interfaces that feel polished, intentional,
-          and worth sharing.
+          is a copy-paste library of thoughtfully crafted, production-ready
+          components — pick one, drop the code in, and ship interfaces that feel
+          polished, intentional, and worth sharing.{" "}
+          <a
+            href={siteConfig.license.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-neutral-800 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-neutral-950 hover:decoration-neutral-500"
+          >
+            {siteConfig.license.name} licensed
+          </a>{" "}
+          — free for personal and commercial use.
         </Paragraph>
         <CtaButtons />
       </div>
@@ -287,7 +297,16 @@ export default function Home() {
           <AnnotatedText variant="underline" color="text-green-300">
             Copy and paste
           </AnnotatedText>{" "}
-          into your project when you&apos;re ready. No install, no lock-in.
+          into your project when you&apos;re ready —{" "}
+          <a
+            href={siteConfig.license.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-neutral-800 underline decoration-neutral-300 underline-offset-2 transition-colors hover:text-neutral-950 hover:decoration-neutral-500"
+          >
+            {siteConfig.license.name} licensed
+          </a>
+          , free for personal and commercial use. No install, no lock-in.
         </Paragraph>
         <InstallOptions />
       </div>
@@ -324,8 +343,8 @@ export default function Home() {
           </AnnotatedText>
         </Heading>
         <Paragraph>
-          Tools, people, and services that power Opensource UI — plus a spot for
-          sponsors who want to support the project.
+          Tools, people, and services that power {siteConfig.displayName} — plus
+          a spot for sponsors who want to support the project.
         </Paragraph>
         <OpenSourcePanel />
       </div>

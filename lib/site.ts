@@ -1,10 +1,14 @@
 export const siteConfig = {
   name: "opensourceui",
+  displayName: "Opensource UI",
   title: "opensourceui — Free Open-Source UI Components for React & Next.js",
   description:
-    "opensourceui is a free, open-source library of 250+ production-ready UI components for React and Next.js. Built with TypeScript and Tailwind CSS v4. Explore live previews at opensourceui.in.",
+    "opensourceui is a free, MIT-licensed copy-paste library of 100+ production-ready UI components for React and Next.js. Built with TypeScript and Tailwind CSS v4. Explore live previews at opensourceui.in.",
   url: "https://opensourceui.in",
   ogImage: "/favicon.ico",
+  github: {
+    url: "https://github.com/bidyut10/appui",
+  },
   keywords: [
     "opensourceui",
     "open source ui",
@@ -25,6 +29,14 @@ export const siteConfig = {
     name: "Bidyut Kundu",
     url: "https://x.com/BidyutKundu12",
     email: "bidyut.kundu.dev@gmail.com",
+  },
+  license: {
+    name: "MIT",
+    url: "https://github.com/bidyut10/appui/blob/main/LICENSE",
+    shortNote:
+      "Free for personal and commercial use. No UI attribution required.",
+    copyNote:
+      "Include the MIT copyright notice when copying component source into your project.",
   },
 } as const;
 
