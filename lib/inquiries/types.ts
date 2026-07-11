@@ -7,7 +7,6 @@ export type InquirySubmitPayload = Readonly<{
   subject: string;
   message: string;
   source?: string;
-  company?: string;
 }>;
 
 export type InquiryRecord = Readonly<{

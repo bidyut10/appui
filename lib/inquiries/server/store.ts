@@ -4,7 +4,7 @@ import { getAnalyticsDb } from "@/lib/analytics/server/connection/db";
 import { INQUIRIES, INQUIRY_LIMITS } from "@/lib/inquiries/constants";
 import type { InquiryRecord, InquirySubmitPayload } from "@/lib/inquiries/types";
 
-type StoredInquiry = Omit<InquirySubmitPayload, "company"> &
+type StoredInquiry = InquirySubmitPayload &
   Readonly<{ createdAt: Date; source: string }>;
 
 export async function hasRecentInquiry(email: string): Promise<boolean> {

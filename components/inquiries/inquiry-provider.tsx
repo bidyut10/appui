@@ -6,6 +6,7 @@ import {
   useContext,
   useEffect,
   useId,
+  useRef,
   useState,
   type FormEvent,
   type ReactNode,
@@ -68,12 +69,12 @@ function InquiryDialog({ open, type, onClose }: InquiryDialogProps) {
   const template = inquiryTemplates[type];
   const styles = TYPE_STYLES[type];
   const formId = useId();
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState(template.subject);
   const [message, setMessage] = useState(template.message);
-  const [company, setCompany] = useState("");
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -86,7 +87,7 @@ function InquiryDialog({ open, type, onClose }: InquiryDialogProps) {
     setEmail("");
     setSubject(template.subject);
     setMessage(template.message);
-    setCompany("");
+    if (honeypotRef.current) honeypotRef.current.value = "";
     setError("");
     setSubmitting(false);
     setSuccess(false);
@@ -117,6 +118,11 @@ function InquiryDialog({ open, type, onClose }: InquiryDialogProps) {
     event.preventDefault();
     if (submitting || success || !canSubmitInquiry(name, email)) return;
 
+    if (honeypotRef.current?.value.trim()) {
+      setSuccess(true);
+      return;
+    }
+
     setSubmitting(true);
     setError("");
 
@@ -126,11 +132,10 @@ function InquiryDialog({ open, type, onClose }: InquiryDialogProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           type,
-          name,
-          email,
-          subject,
-          message,
-          company,
+          name: name.trim(),
+          email: email.trim().toLowerCase(),
+          subject: subject.trim(),
+          message: message.trim(),
           source: globalThis.location.pathname,
         }),
       });
@@ -325,13 +330,13 @@ function InquiryDialog({ open, type, onClose }: InquiryDialogProps) {
                 </label>
 
                 <div className="pointer-events-none absolute -left-[9999px] h-px w-px overflow-hidden opacity-0">
-                  <label htmlFor={`${formId}-company`}>Company</label>
                   <input
-                    id={`${formId}-company`}
+                    ref={honeypotRef}
                     tabIndex={-1}
+                    name="_bhp"
                     autoComplete="off"
-                    value={company}
-                    onChange={(event) => setCompany(event.target.value)}
+                    defaultValue=""
+                    aria-hidden
                   />
                 </div>
               </div>

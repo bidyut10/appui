@@ -26,10 +26,6 @@ export function parseInquiryBody(body: unknown): ParsedInquiry {
     return { ok: false, error: "Choose a valid inquiry type." };
   }
 
-  if (readString(record.company)) {
-    return { ok: false, error: "Submission rejected." };
-  }
-
   const name = readString(record.name);
   const email = readString(record.email).toLowerCase();
   const subject = readString(record.subject);
