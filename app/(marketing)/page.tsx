@@ -18,6 +18,7 @@ import { BluetoothFaceWidget } from "@/components/bluetooth/bluetooth-face-widge
 import { TechStack, TECH_STACK_ITEMS } from "./_components/tech-stack";
 import { InstallOptions } from "./_components/compoent-deisgn-copy-demo";
 import { OpenSourcePanel } from "./_components/sponser-resource";
+import { HomeTestimonials } from "./_components/home-testimonials";
 import { ShowcaseScrollRestoration } from "@/app/_shared/scroll/showcase-scroll-restoration";
 
 export default function Home() {
@@ -289,6 +290,27 @@ export default function Home() {
           into your project when you&apos;re ready. No install, no lock-in.
         </Paragraph>
         <InstallOptions />
+      </div>
+
+      <div className="relative mt-36 max-w-xl px-4 md:px-0">
+        <Badge className="-top-7 -left-1 -rotate-3 text-rose-500 max-[499px]:left-4">
+          community
+        </Badge>
+        <Heading>
+          What People Are{" "}
+          <AnnotatedText variant="line" color="text-cyan-300">
+            Saying.
+          </AnnotatedText>
+        </Heading>
+        <Paragraph>
+          Real feedback from Product Hunt and Twitter — on cohesion, spacing,
+          typography, and how easy the components are to drop into real
+          projects.
+        </Paragraph>
+      </div>
+
+      <div className="w-full max-w-7xl px-4 md:px-0">
+        <HomeTestimonials />
       </div>
 
       <div className="relative mt-36 max-w-xl px-4 md:px-0">

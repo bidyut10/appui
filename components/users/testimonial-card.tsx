@@ -34,6 +34,8 @@ export type TestimonialCardProps = Readonly<
   } & ComponentPropsWithoutRef<"div">
 >;
 
+import { PRODUCT_HUNT_TESTIMONIALS } from "@/lib/home/testimonials";
+
 const RATING_STARS = [
   "star-1",
   "star-2",
@@ -42,32 +44,7 @@ const RATING_STARS = [
   "star-5",
 ] as const;
 
-const defaultTestimonials: TestimonialItem[] = [
-  {
-    quote:
-      "These components saved us weeks of design work. Every card feels production-ready out of the box.",
-    name: "Rupam Sen",
-    role: "Lead Designer · OUI",
-    rating: 5,
-    avatar: "/profile-picture.png",
-  },
-  {
-    quote:
-      "The copy-paste workflow is perfect. I shipped a dashboard in a day without fighting layout bugs.",
-    name: "Sarah",
-    role: "Engineer · HCL",
-    rating: 5,
-    avatar: "/woman.png",
-  },
-  {
-    quote:
-      "Clean Tailwind patterns, thoughtful defaults, and components that actually feel interactive.",
-    name: "Somnath Kundu",
-    role: "Founder · Nexticons",
-    rating: 5,
-    avatar: "/profile-picture.png",
-  },
-];
+const defaultTestimonials: TestimonialItem[] = PRODUCT_HUNT_TESTIMONIALS;
 
 // Production-ready Testimonial component — styled with Tailwind CSS.
 export const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
