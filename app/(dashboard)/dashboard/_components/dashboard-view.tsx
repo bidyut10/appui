@@ -9,7 +9,9 @@ import { formatCountry, formatRegion } from "@/lib/analytics/server/geo";
 import type { DashboardStats } from "@/lib/analytics/types";
 
 import { DateRangeFilter, buildQueryFromPreset } from "./date-range-filter";
+import { DashboardMessagesPanel } from "./dashboard-messages-panel";
 import { RankPanel, RankRow, StatPanel } from "./dashboard-panels";
+import type { InquiryRecord } from "@/lib/inquiries/types";
 
 function formatDuration(seconds: number): string {
   if (seconds < 60) return `${seconds}s`;
@@ -57,8 +59,32 @@ async function fetchDashboardStats(nextQuery: string): Promise<DashboardStats> {
   return (await response.json()) as DashboardStats;
 }
 
+async function fetchInquiries(): Promise<InquiryRecord[]> {
+  const response = await fetch("/api/inquiries/dashboard", {
+    cache: "no-store",
+  });
+
+  if (response.status === 401) {
+    globalThis.location.reload();
+    throw new Error("Unauthorized");
+  }
+
+  if (!response.ok) {
+    const data = (await response.json().catch(() => null)) as {
+      error?: string;
+    } | null;
+    throw new Error(data?.error ?? "Could not load messages.");
+  }
+
+  const data = (await response.json()) as { inquiries: InquiryRecord[] };
+  return data.inquiries;
+}
+
 export function DashboardView() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [inquiries, setInquiries] = useState<InquiryRecord[]>([]);
+  const [messagesError, setMessagesError] = useState("");
+  const [messagesLoading, setMessagesLoading] = useState(true);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -118,9 +144,29 @@ export function DashboardView() {
     };
   }, [query]);
 
+  const loadInquiries = useCallback(async () => {
+    try {
+      const data = await fetchInquiries();
+      setInquiries(data);
+      setMessagesError("");
+    } catch (err) {
+      if (err instanceof Error && err.message === "Unauthorized") return;
+      setMessagesError(
+        err instanceof Error ? err.message : "Could not load messages.",
+      );
+    } finally {
+      setMessagesLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    void loadInquiries();
+  }, [loadInquiries]);
+
   function refreshStats() {
     setRefreshing(true);
     void loadStats(query);
+    void loadInquiries();
   }
 
   function applyPreset(nextPreset: string) {
@@ -371,6 +417,12 @@ export function DashboardView() {
             </RankPanel>
           </div>
         </section>
+
+        <DashboardMessagesPanel
+          inquiries={inquiries}
+          loading={messagesLoading}
+          error={messagesError}
+        />
       </div>
     </>
   );

@@ -2,7 +2,6 @@ import Image from "next/image";
 import type { ComponentType } from "react";
 import { TailwindCSS } from "@/icons/brands/tailwind-css";
 import { Typescript } from "@/icons/brands/typescript";
-import { mailtoLinks } from "@/lib/site";
 import { ShadcnUI } from "@/icons/brands/shadcn-ui";
 import { Vercel } from "@/icons/brands/vercel";
 import { Unplash } from "@/icons/brands/unplash";
@@ -10,6 +9,7 @@ import { Anthropic } from "@/icons/brands/anthropic";
 import { NextJs } from "@/icons/brands/next-js";
 import { Canva } from "@/icons/brands/canva";
 import { ProductHunt } from "@/icons/brands/producthunt";
+import { SponsorPlaceholderRow } from "@/components/inquiries/sponsor-placeholder-row";
 
 type ResourceItem = {
   name: string;
@@ -226,13 +226,12 @@ function ListRow({
   );
 }
 
-const sponsorPlaceholder: ResourceItem = {
+const sponsorPlaceholder = {
   name: "Your brand",
   description: "Be the first sponsor — get in touch",
   shortDescription: "Get in touch",
-  href: mailtoLinks.sponsor,
   domain: "yoursite.com",
-};
+} as const;
 
 export function OpenSourcePanel() {
   return (
@@ -242,7 +241,7 @@ export function OpenSourcePanel() {
           Sponsors
         </h3>
         <ul className="mt-4 flex flex-col gap-2.5">
-          <ListRow item={sponsorPlaceholder} placeholder />
+          <SponsorPlaceholderRow {...sponsorPlaceholder} />
         </ul>
       </section>
 

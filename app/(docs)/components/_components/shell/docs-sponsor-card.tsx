@@ -1,5 +1,8 @@
+"use client";
+
 import { ChevronRight, MoveRight } from "lucide-react";
-import { mailtoLinks } from "@/lib/site";
+
+import { InquiryTrigger } from "@/components/inquiries/inquiry-provider";
 
 export function DocsSponsorCard() {
   return (
@@ -44,8 +47,8 @@ export function DocsSponsorCard() {
           This slot is available. Sponsor Opensource UI and reach developers
           browsing components every day.
         </p>
-        <a
-          href={mailtoLinks.sponsor}
+        <InquiryTrigger
+          type="sponsor"
           className="group mt-3 inline-flex items-center gap-1.5 font-sans text-xs text-neutral-500 underline decoration-neutral-200 underline-offset-4 transition-colors hover:text-neutral-800 hover:decoration-neutral-400"
         >
           Become a sponsor
@@ -61,7 +64,7 @@ export function DocsSponsorCard() {
               className="ease-smooth absolute -translate-x-0.5 scale-95 opacity-0 transition-[opacity,transform] duration-500 group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
             />
           </span>
-        </a>
+        </InquiryTrigger>
       </div>
     </div>
   );

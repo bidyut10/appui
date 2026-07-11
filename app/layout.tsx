@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
 import { AnalyticsTracker } from "@/components/system/analytics";
+import { InquiryProvider } from "@/components/inquiries/inquiry-provider";
 import { NavigationLoader } from "@/app/_shared/navigation/navigation-loader";
 import { ScrollToTopButton } from "@/app/_shared/scroll/scroll-to-top-button";
 import { VercelToolbarBlocker } from "@/components/system/vercel-toolbar-blocker";
@@ -131,8 +132,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {children}
-        <AnalyticsTracker />
+        <InquiryProvider>
+          {children}
+          <AnalyticsTracker />
+        </InquiryProvider>
         <NavigationLoader />
         <ScrollToTopButton />
         <VercelToolbarBlocker />

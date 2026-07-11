@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, MoveRight } from "lucide-react";
 import { CopyEmailLink } from "./copy-email";
-import { mailtoLinks, siteConfig } from "@/lib/site";
+import { InquiryTrigger } from "@/components/inquiries/inquiry-provider";
+import { siteConfig } from "@/lib/site";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -64,8 +67,8 @@ export function SiteFooter() {
               />
             </span>
           </Link>
-          <a
-            href={mailtoLinks.work}
+          <InquiryTrigger
+            type="work"
             className="group inline-flex items-center gap-1.5 text-sm text-neutral-500 underline decoration-neutral-200 underline-offset-4 transition-colors hover:text-neutral-700 hover:decoration-neutral-400"
           >
             Work with me
@@ -81,7 +84,7 @@ export function SiteFooter() {
                 className="ease-smooth absolute -translate-x-0.5 scale-95 opacity-0 transition-[opacity,transform] duration-500 group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
               />
             </span>
-          </a>
+          </InquiryTrigger>
         </div>
 
         <div className="mt-10 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-neutral-400">

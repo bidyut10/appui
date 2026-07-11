@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 
 import { ChevronRight, MoveRight } from "lucide-react";
-import { mailtoLinks, siteConfig } from "@/lib/site";
+import { siteConfig } from "@/lib/site";
 
+import { InquiryTrigger } from "@/components/inquiries/inquiry-provider";
 import { DocsCopyEmailButton } from "./docs-copy-email-button";
 
 export function DocsSidebarFooter() {
@@ -37,8 +40,8 @@ export function DocsSidebarFooter() {
       </p>
 
       <div className="mt-4 grid grid-cols-2 gap-2">
-        <a
-          href={mailtoLinks.work}
+        <InquiryTrigger
+          type="work"
           className="group inline-flex w-full items-center justify-center gap-1.5 rounded-md border border-neutral-200 bg-white px-2 py-1.5 font-sans text-xs whitespace-nowrap text-neutral-800 transition-colors hover:border-neutral-300 hover:bg-neutral-50"
         >
           <span className="ease-smooth inline-flex shrink-0 origin-[70%_90%] transition-transform duration-500 group-hover:-rotate-12">
@@ -64,7 +67,7 @@ export function DocsSidebarFooter() {
               className="ease-smooth absolute -translate-x-0.5 scale-95 opacity-0 transition-[opacity,transform] duration-500 group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
             />
           </span>
-        </a>
+        </InquiryTrigger>
 
         <DocsCopyEmailButton />
       </div>

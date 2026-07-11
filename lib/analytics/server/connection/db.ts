@@ -11,6 +11,7 @@ import {
   PAGE_VIEWS,
   SESSIONS,
 } from "@/lib/analytics/constants";
+import { INQUIRIES } from "@/lib/inquiries/constants";
 import {
   isSrvResolutionError,
   resolveMongoUri,
@@ -122,6 +123,13 @@ async function ensureIndexes(db: Db): Promise<void> {
         { key: { timestamp: -1 } },
         { key: { slug: 1 } },
         { key: { sessionId: 1 } },
+      ]),
+    db
+      .collection(INQUIRIES)
+      .createIndexes([
+        { key: { createdAt: -1 } },
+        { key: { email: 1, createdAt: -1 } },
+        { key: { type: 1 } },
       ]),
   ]);
 
