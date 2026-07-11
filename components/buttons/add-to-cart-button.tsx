@@ -45,8 +45,9 @@ export const AddToCartButton = forwardRef<
     const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
 
     useEffect(() => {
+      const timeoutIds = timers;
       return () => {
-        timers.current.forEach((id) => globalThis.clearTimeout(id));
+        timeoutIds.current.forEach((id) => globalThis.clearTimeout(id));
       };
     }, []);
 

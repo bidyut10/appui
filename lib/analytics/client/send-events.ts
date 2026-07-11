@@ -12,7 +12,6 @@ import {
   capturePostHogPageView,
   identifyPostHogVisitor,
   initPostHog,
-  isPostHogEnabled,
 } from "./posthog";
 
 const VISITOR_KEY = "oui_vid";

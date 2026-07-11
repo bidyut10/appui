@@ -81,21 +81,9 @@ function InquiryDialog({ open, type, onClose }: InquiryDialogProps) {
   const [entered, setEntered] = useState(false);
 
   useEffect(() => {
-    if (!open) return;
-
-    setName("");
-    setEmail("");
-    setSubject(template.subject);
-    setMessage(template.message);
-    if (honeypotRef.current) honeypotRef.current.value = "";
-    setError("");
-    setSubmitting(false);
-    setSuccess(false);
-    setEntered(false);
-
     const frame = requestAnimationFrame(() => setEntered(true));
     return () => cancelAnimationFrame(frame);
-  }, [open, type, template.message, template.subject]);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -390,9 +378,11 @@ function InquiryDialog({ open, type, onClose }: InquiryDialogProps) {
 export function InquiryProvider({ children }: Readonly<{ children: ReactNode }>) {
   const [open, setOpen] = useState(false);
   const [type, setType] = useState<InquiryType>("work");
+  const [dialogKey, setDialogKey] = useState(0);
 
   const openInquiry = useCallback((nextType: InquiryType) => {
     setType(nextType);
+    setDialogKey((current) => current + 1);
     setOpen(true);
   }, []);
 
@@ -403,7 +393,14 @@ export function InquiryProvider({ children }: Readonly<{ children: ReactNode }>)
   return (
     <InquiryContext.Provider value={{ openInquiry }}>
       {children}
-      <InquiryDialog open={open} type={type} onClose={closeInquiry} />
+      {open ? (
+        <InquiryDialog
+          key={dialogKey}
+          open={open}
+          type={type}
+          onClose={closeInquiry}
+        />
+      ) : null}
     </InquiryContext.Provider>
   );
 }

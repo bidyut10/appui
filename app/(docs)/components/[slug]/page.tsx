@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 
 import { CopyCodeBlock, SetupGuide, SaveScrollLink } from "@/lib/docs";
 import { AnnotatedText } from "@/components/underlines/annotated-text";
@@ -78,13 +79,13 @@ export default async function ComponentDetailPage({ params }: Readonly<Props>) {
           <nav aria-label="Breadcrumb" className="sr-only">
             <ol>
               <li>
-                <a href="/">Home</a>
+                <Link href="/">Home</Link>
               </li>
               <li>
-                <a href="/components">Components</a>
+                <Link href="/components">Components</Link>
               </li>
               <li>
-                <a href={categoryHref}>{entry.category}</a>
+                <Link href={categoryHref}>{entry.category}</Link>
               </li>
               <li>{entry.title}</li>
             </ol>

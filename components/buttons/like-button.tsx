@@ -94,6 +94,7 @@ export const LikeButton = forwardRef<HTMLButtonElement, LikeButtonProps>(
         ref={ref}
         type="button"
         aria-pressed={liked}
+        aria-label={liked ? likedLabel : label}
         data-slot="like-button"
         onClick={handleClick}
         className={cn(

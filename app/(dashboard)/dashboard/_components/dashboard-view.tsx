@@ -160,8 +160,29 @@ export function DashboardView() {
   }, []);
 
   useEffect(() => {
-    void loadInquiries();
-  }, [loadInquiries]);
+    let cancelled = false;
+
+    void (async () => {
+      try {
+        const data = await fetchInquiries();
+        if (cancelled) return;
+        setInquiries(data);
+        setMessagesError("");
+      } catch (err) {
+        if (cancelled) return;
+        if (err instanceof Error && err.message === "Unauthorized") return;
+        setMessagesError(
+          err instanceof Error ? err.message : "Could not load messages.",
+        );
+      } finally {
+        if (!cancelled) setMessagesLoading(false);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   function refreshStats() {
     setRefreshing(true);

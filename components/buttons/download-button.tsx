@@ -45,8 +45,9 @@ export const DownloadButton = forwardRef<HTMLButtonElement, DownloadButtonProps>
     const startRef = useRef(0);
 
     useEffect(() => {
+      const timeoutIds = timers;
       return () => {
-        timers.current.forEach((id) => globalThis.clearTimeout(id));
+        timeoutIds.current.forEach((id) => globalThis.clearTimeout(id));
         if (rafRef.current !== null) globalThis.cancelAnimationFrame(rafRef.current);
       };
     }, []);

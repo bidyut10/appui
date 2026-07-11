@@ -60,6 +60,7 @@ export const OpensourceFolderTabCard = forwardRef<
 
         <div className="absolute top-4 right-4 z-20 text-right leading-snug">
           <p className="text-xs font-medium text-neutral-600">{appName}</p>
+          <p className="sr-only">{cardLabel}</p>
         </div>
       </div>
 

@@ -11,7 +11,7 @@ import {
 
 import { cn } from "@/lib/cn";
 
-import { ArrowUpDown, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 export type FilterSortOption = Readonly<{
   id: string;
