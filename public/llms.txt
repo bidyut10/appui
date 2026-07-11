@@ -1,0 +1,48 @@
+# Opensource UI
+
+> Free, MIT-licensed copy-paste React and Next.js UI components with live previews and source code.
+
+Opensource UI (https://opensourceui.in) is an open-source component library for React and Next.js. Components are copy-pasted into your project — no npm package install required. Built with TypeScript and Tailwind CSS v4.
+
+## Primary pages
+
+- Homepage: https://opensourceui.in
+- Browse all components: https://opensourceui.in/components
+- GitHub: https://github.com/bidyut10/appui
+- License: MIT — free for personal and commercial use
+
+## Component pages
+
+Each component has a dedicated page with:
+- Live preview
+- Setup guide
+- Copy-ready TypeScript source code
+
+URL pattern: https://opensourceui.in/components/{slug}
+
+Examples:
+- https://opensourceui.in/components/slide-to-confirm-button
+- https://opensourceui.in/components/analog-clock-widget
+- https://opensourceui.in/components/annotated-text
+
+## Categories
+
+Browse by category: https://opensourceui.in/components?category={CategoryName}
+
+Categories include Buttons, Clocks, Mockups, Activity widgets, Calendars, Cards, and more.
+
+## Search
+
+Search components: https://opensourceui.in/components?q={query}
+
+## Stack
+
+- React
+- Next.js
+- TypeScript
+- Tailwind CSS v4
+- Lucide icons
+
+## Author
+
+Bidyut Kundu — https://x.com/BidyutKundu12

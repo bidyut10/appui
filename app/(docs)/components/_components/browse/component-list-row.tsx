@@ -33,6 +33,7 @@ export function ComponentListRow({ item, index }: ComponentListRowProps) {
     <li className="min-w-0">
       <SaveScrollLink
         href={`/components/${item.slug}`}
+        title={`${item.title} — ${item.description}`}
         className="group flex min-w-0 items-center gap-2.5 py-1 max-[499px]:gap-2"
       >
         <div
@@ -58,6 +59,7 @@ export function ComponentListRow({ item, index }: ComponentListRowProps) {
             </span>
             <span className="text-neutral-300"> / </span>
             <span className="text-neutral-500">{item.category}</span>
+            <span className="sr-only"> — {item.description}</span>
           </p>
 
           <span className="relative inline-flex size-3 shrink-0 items-center justify-center text-neutral-400 group-hover:text-neutral-700">

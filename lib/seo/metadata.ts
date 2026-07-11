@@ -220,6 +220,69 @@ export function getComponentJsonLd(
         },
         keywords: `${entry.exportName}, ${entry.category}, React, Next.js, Tailwind CSS`,
       },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: `How do I use ${entry.title} in my project?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `Copy the ${entry.exportName} source code from ${pageUrl}, add lib/cn.ts if needed, install clsx tailwind-merge and lucide-react, then import and render the component in your React or Next.js app.`,
+            },
+          },
+          {
+            "@type": "Question",
+            name: `Can I use ${entry.title} in a commercial project?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: `Yes. ${siteConfig.displayName} is MIT licensed. You can use ${entry.exportName} in personal and commercial projects without UI attribution.`,
+            },
+          },
+        ],
+      },
     ],
+  };
+}
+
+type ListItemEntry = Readonly<{
+  slug: string;
+  title: string;
+  description: string;
+}>;
+
+export function getComponentsItemListJsonLd(
+  items: readonly ListItemEntry[],
+  listName: string,
+  listUrl: string,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: listName,
+    url: listUrl,
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.title,
+      description: item.description,
+      url: `${siteConfig.url}/components/${item.slug}`,
+    })),
+  };
+}
+
+export function getComponentsBreadcrumbJsonLd(
+  crumbs: readonly { name: string; path: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: crumbs.map((crumb, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: crumb.name,
+      item: absoluteUrl(crumb.path),
+    })),
   };
 }

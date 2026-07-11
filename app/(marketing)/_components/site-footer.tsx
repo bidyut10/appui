@@ -13,7 +13,7 @@ export function SiteFooter() {
 
   return (
     <footer className="mt-36 w-full max-w-xl px-4 md:px-0">
-      <div className="border-t border-neutral-200 pt-12 pb-8">
+      <div className="border-t border-neutral-100 pt-12 pb-8">
         <Image
           src="/osui-logo.png"
           alt={siteConfig.displayName}

@@ -106,26 +106,28 @@ export function HomeTestimonials() {
         ))}
       </div>
 
-      <Link
-        href={PRODUCT_HUNT_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group mt-4 inline-flex items-center gap-1.5 font-sans text-xs text-neutral-400 underline decoration-neutral-200 underline-offset-4 transition-colors hover:text-neutral-600 hover:decoration-neutral-400"
-      >
-        See the Product Hunt launch
-        <span className="relative inline-flex size-3.5 shrink-0 items-center justify-center">
-          <ChevronRight
-            size={14}
-            strokeWidth={2.5}
-            className="ease-smooth transition-[opacity,transform] duration-500 group-hover:translate-x-0.5 group-hover:scale-95 group-hover:opacity-0"
-          />
-          <MoveRight
-            size={14}
-            strokeWidth={1.5}
-            className="ease-smooth absolute -translate-x-0.5 scale-95 opacity-0 transition-[opacity,transform] duration-500 group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
-          />
-        </span>
-      </Link>
+      <div className="mt-4 flex justify-end">
+        <Link
+          href={PRODUCT_HUNT_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-1.5 font-sans text-xs text-neutral-400 underline decoration-neutral-200 underline-offset-4 transition-colors hover:text-neutral-600 hover:decoration-neutral-400"
+        >
+          see the producthunt launch
+          <span className="relative inline-flex size-3.5 shrink-0 items-center justify-center">
+            <ChevronRight
+              size={14}
+              strokeWidth={2.5}
+              className="ease-smooth transition-[opacity,transform] duration-500 group-hover:translate-x-0.5 group-hover:scale-95 group-hover:opacity-0"
+            />
+            <MoveRight
+              size={14}
+              strokeWidth={1.5}
+              className="ease-smooth absolute -translate-x-0.5 scale-95 opacity-0 transition-[opacity,transform] duration-500 group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
+            />
+          </span>
+        </Link>
+      </div>
     </div>
   );
 }

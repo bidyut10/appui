@@ -3,7 +3,15 @@ import {
   getShowcaseByCategory,
   resolveShowcaseCategory,
 } from "@/lib/showcase";
-import { createPageMetadata } from "@/lib/seo";
+import {
+  createPageMetadata,
+  JsonLd,
+  getComponentsItemListJsonLd,
+  getBrowseAllSeoDescription,
+  getBrowseAllSeoTitle,
+  getCategorySeoDescription,
+  getCategorySeoTitle,
+} from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
 import {
@@ -36,13 +44,17 @@ export async function generateMetadata({ searchParams }: ComponentsPageProps) {
 
     if (activeGroup) {
       return createPageMetadata({
-        title: `${activeGroup.category} React Components`,
-        description: `Browse ${activeGroup.items.length} free ${activeGroup.category.toLowerCase()} components for React and Next.js. Copy-paste source code with live previews.`,
+        title: getCategorySeoTitle(activeGroup.category),
+        description: getCategorySeoDescription(
+          activeGroup.category,
+          activeGroup.items.length,
+        ),
         path: `/components?category=${encodeURIComponent(activeGroup.category)}`,
         keywords: [
-          `${activeGroup.category.toLowerCase()} components`,
-          "react components",
-          "next.js ui",
+          `${activeGroup.category.toLowerCase()} react components`,
+          `${activeGroup.category.toLowerCase()} ui components`,
+          "copy paste react components",
+          "tailwind react components",
           ...siteConfig.keywords,
         ],
       });
@@ -52,8 +64,8 @@ export async function generateMetadata({ searchParams }: ComponentsPageProps) {
   const totalCount = getAllShowcaseSlugs().length;
 
   return createPageMetadata({
-    title: "Browse React UI Components",
-    description: `Browse ${totalCount}+ free, MIT-licensed React and Next.js UI components. Copy and paste production-ready TypeScript source code with live previews.`,
+    title: getBrowseAllSeoTitle(),
+    description: getBrowseAllSeoDescription(totalCount),
     path: "/components",
   });
 }
@@ -72,8 +84,23 @@ export default async function ComponentsPage({
     : undefined;
   const hasCategory = !isSearching && !!activeGroup;
 
+  const listJsonLd = isSearching
+    ? null
+    : hasCategory && activeGroup
+      ? getComponentsItemListJsonLd(
+          activeGroup.items,
+          `${activeGroup.category} React Components`,
+          `${siteConfig.url}/components?category=${encodeURIComponent(activeGroup.category)}`,
+        )
+      : getComponentsItemListJsonLd(
+          categories.flatMap((group) => group.items),
+          "All React UI Components",
+          `${siteConfig.url}/components`,
+        );
+
   return (
     <div className="flex min-h-0 flex-1 flex-col">
+      {listJsonLd ? <JsonLd data={listJsonLd} /> : null}
       <div className="flex min-h-0 flex-1">
         <main
           data-docs-scroll

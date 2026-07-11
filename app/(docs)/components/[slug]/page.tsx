@@ -75,6 +75,21 @@ export default async function ComponentDetailPage({ params }: Readonly<Props>) {
         className="scrollbar-hover min-h-0 min-w-0 flex-1 overflow-y-auto"
       >
         <article className="mx-auto w-full max-w-3xl px-4 py-8 md:px-8 md:py-10">
+          <nav aria-label="Breadcrumb" className="sr-only">
+            <ol>
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/components">Components</a>
+              </li>
+              <li>
+                <a href={categoryHref}>{entry.category}</a>
+              </li>
+              <li>{entry.title}</li>
+            </ol>
+          </nav>
+
           <div id="overview" className="scroll-mt-8">
             <SaveScrollLink
               href={categoryHref}
@@ -103,6 +118,10 @@ export default async function ComponentDetailPage({ params }: Readonly<Props>) {
               <h1 className="font-serif text-3xl text-neutral-900">
                 {entry.title}
               </h1>
+              <p className="sr-only">
+                Free {entry.category} React component — {entry.exportName}.
+                MIT licensed, copy-paste ready for Next.js and Tailwind CSS.
+              </p>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-neutral-500">
                 {entry.description}
               </p>
