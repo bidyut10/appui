@@ -8,6 +8,11 @@ import {
   getShowcaseEntry,
   readShowcaseSource,
 } from "@/lib/showcase";
+import {
+  JsonLd,
+  createComponentMetadata,
+  getComponentJsonLd,
+} from "@/lib/seo";
 import type { Props } from "@/types/types";
 
 import { DocsPreviewStage } from "../_components/detail";
@@ -22,10 +27,7 @@ export async function generateMetadata({ params }: Props) {
   const entry = getShowcaseEntry(slug);
   if (!entry) return {};
 
-  return {
-    title: entry.title,
-    description: entry.description,
-  };
+  return createComponentMetadata(entry);
 }
 
 export default async function ComponentDetailPage({ params }: Readonly<Props>) {
@@ -67,6 +69,7 @@ export default async function ComponentDetailPage({ params }: Readonly<Props>) {
 
   return (
     <div className="flex min-h-0 flex-1">
+      <JsonLd data={getComponentJsonLd(entry)} />
       <main
         data-docs-scroll
         className="scrollbar-hover min-h-0 min-w-0 flex-1 overflow-y-auto"

@@ -1,4 +1,10 @@
-import { getAllShowcaseSlugs, getShowcaseByCategory, resolveShowcaseCategory } from "@/lib/showcase";
+import {
+  getAllShowcaseSlugs,
+  getShowcaseByCategory,
+  resolveShowcaseCategory,
+} from "@/lib/showcase";
+import { createPageMetadata } from "@/lib/seo";
+import { siteConfig } from "@/lib/site";
 
 import {
   ComponentsBrowseAll,
@@ -7,15 +13,50 @@ import {
 } from "./_components/browse";
 import { DocsToc } from "./_components/shell";
 
-export const metadata = {
-  title: "Components",
-  description:
-    "Browse free, open-source UI components by category. Copy and paste production-ready React components into your project.",
-};
-
 type ComponentsPageProps = Readonly<{
   searchParams: Promise<{ category?: string; q?: string }>;
 }>;
+
+export async function generateMetadata({ searchParams }: ComponentsPageProps) {
+  const { category: categoryParam, q: queryParam } = await searchParams;
+  const searchQuery = queryParam?.trim() ?? "";
+
+  if (searchQuery) {
+    return createPageMetadata({
+      title: `Search components for “${searchQuery}”`,
+      description: `Search results for “${searchQuery}” in ${siteConfig.displayName}. Browse free React and Next.js UI components to copy into your project.`,
+      path: `/components?q=${encodeURIComponent(searchQuery)}`,
+      noIndex: true,
+    });
+  }
+
+  if (categoryParam) {
+    const categories = getShowcaseByCategory();
+    const activeGroup = resolveShowcaseCategory(categories, categoryParam);
+
+    if (activeGroup) {
+      return createPageMetadata({
+        title: `${activeGroup.category} React Components`,
+        description: `Browse ${activeGroup.items.length} free ${activeGroup.category.toLowerCase()} components for React and Next.js. Copy-paste source code with live previews.`,
+        path: `/components?category=${encodeURIComponent(activeGroup.category)}`,
+        keywords: [
+          `${activeGroup.category.toLowerCase()} components`,
+          "react components",
+          "next.js ui",
+          ...siteConfig.keywords,
+        ],
+      });
+    }
+  }
+
+  const totalCount = getAllShowcaseSlugs().length;
+
+  return createPageMetadata({
+    title: "Browse React UI Components",
+    description: `Browse ${totalCount}+ free, MIT-licensed React and Next.js UI components. Copy and paste production-ready TypeScript source code with live previews.`,
+    path: "/components",
+  });
+}
 
 export default async function ComponentsPage({
   searchParams,

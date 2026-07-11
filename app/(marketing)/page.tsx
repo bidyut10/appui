@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { Badge } from "./_components/badge";
 import { Heading } from "./_components/heading";
 import { Paragraph } from "./_components/paragraph";
@@ -20,7 +21,14 @@ import { InstallOptions } from "./_components/compoent-deisgn-copy-demo";
 import { OpenSourcePanel } from "./_components/sponser-resource";
 import { HomeTestimonials } from "./_components/home-testimonials";
 import { ShowcaseScrollRestoration } from "@/app/_shared/scroll/showcase-scroll-restoration";
+import { createPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
+
+export const metadata: Metadata = createPageMetadata({
+  title: siteConfig.title,
+  description: siteConfig.description,
+  path: "/",
+});
 
 export default function Home() {
   return (

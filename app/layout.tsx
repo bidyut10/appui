@@ -7,6 +7,7 @@ import { InquiryProvider } from "@/components/inquiries/inquiry-provider";
 import { NavigationLoader } from "@/app/_shared/navigation/navigation-loader";
 import { ScrollToTopButton } from "@/app/_shared/scroll/scroll-to-top-button";
 import { VercelToolbarBlocker } from "@/components/system/vercel-toolbar-blocker";
+import { JsonLd, getRootSiteJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
 const geistSans = Geist({
@@ -24,17 +25,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.title,
-    template: `%s | ${siteConfig.name}`,
+    template: `%s | ${siteConfig.displayName}`,
   },
   description: siteConfig.description,
-  applicationName: siteConfig.name,
+  applicationName: siteConfig.displayName,
   authors: [{ name: siteConfig.author.name, url: siteConfig.author.url }],
   creator: siteConfig.author.name,
-  publisher: siteConfig.name,
+  publisher: siteConfig.displayName,
   keywords: [...siteConfig.keywords],
   category: "technology",
   robots: {
@@ -48,20 +51,19 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteConfig.url,
-    siteName: siteConfig.name,
+    siteName: siteConfig.displayName,
     title: siteConfig.title,
     description: siteConfig.description,
     images: [
       {
         url: siteConfig.ogImage,
-        alt: `${siteConfig.name} — open-source UI components`,
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.displayName} — free React UI components`,
       },
     ],
   },
@@ -69,52 +71,23 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
+    creator: siteConfig.author.twitter,
+    site: siteConfig.author.twitter,
     images: [siteConfig.ogImage],
   },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
   },
+  ...(googleSiteVerification
+    ? { verification: { google: googleSiteVerification } }
+    : {}),
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: "#ffffff",
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "@id": `${siteConfig.url}/#website`,
-      url: siteConfig.url,
-      name: siteConfig.name,
-      description: siteConfig.description,
-      inLanguage: "en-US",
-      publisher: { "@id": `${siteConfig.url}/#organization` },
-    },
-    {
-      "@type": "Organization",
-      "@id": `${siteConfig.url}/#organization`,
-      name: siteConfig.name,
-      url: siteConfig.url,
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteConfig.url}/favicon.ico`,
-      },
-    },
-    {
-      "@type": "WebPage",
-      "@id": `${siteConfig.url}/#webpage`,
-      url: siteConfig.url,
-      name: siteConfig.title,
-      description: siteConfig.description,
-      isPartOf: { "@id": `${siteConfig.url}/#website` },
-      inLanguage: "en-US",
-    },
-  ],
 };
 
 export default function RootLayout({
@@ -128,10 +101,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col overflow-x-hidden">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <JsonLd data={getRootSiteJsonLd()} />
         <InquiryProvider>
           {children}
           <AnalyticsTracker />
