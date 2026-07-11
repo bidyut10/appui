@@ -9,6 +9,7 @@ import { Unplash } from "@/icons/brands/unplash";
 import { Anthropic } from "@/icons/brands/anthropic";
 import { NextJs } from "@/icons/brands/next-js";
 import { Canva } from "@/icons/brands/canva";
+import { ProductHunt } from "@/icons/brands/producthunt";
 
 type ResourceItem = {
   name: string;
@@ -43,28 +44,11 @@ const resources: ResourceItem[] = [
     color: "text-[#00C4CC]",
   },
   {
-    name: "Manu sir",
-    description: "For inspiration",
-    href: "https://www.manuarora.in",
-    imageSrc: "/manu.webp",
-  },
-  {
-    name: "Evil Rabbit",
-    description: "For inspiration",
-    href: "https://www.evilrabbit.com",
-    imageSrc: "/evilrabbit.png",
-  },
-  {
-    name: "Chánh Đại",
-    description: "For inspiration",
-    href: "https://chanhdai.com",
-    imageSrc: "/chanhdai-icon.svg",
-  },
-  {
-    name: "Akash sir",
-    description: "For inspiration",
-    href: "https://www.designerdada.com",
-    imageSrc: "/akash.png",
+    name: "Product Hunt",
+    description: "For promoting",
+    href: "https://www.producthunt.com/products/opensource-ui",
+    Icon: ProductHunt,
+    color: "text-red-500",
   },
   {
     name: "Tailwind CSS",

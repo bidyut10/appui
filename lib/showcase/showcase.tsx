@@ -67,6 +67,8 @@ import { MagazineCoverCard } from "@/components/text/magazine-cover-card";
 import { MusicPlayerCard } from "@/components/audio/music-player-card";
 import { MusicPlaylistCard } from "@/components/audio/music-playlist-card";
 import { NotepadCard } from "@/components/text/notepad-card";
+import { StackedFolderCard } from "@/components/files/stacked-folder-card";
+import { OpensourceFolderTabCard } from "@/components/folder/opensource-folder-tab-card";
 import { NowPlayingBar } from "@/components/audio/now-playing-bar";
 import { PhotoAlbumCard } from "@/components/gallery/photo-album-card";
 import { PhotoContactSheetCard } from "@/components/gallery/photo-contact-sheet-card";
@@ -1269,6 +1271,34 @@ export const showcaseRows = [
     ),
   ],
   [
+    c(
+      "stacked-folder-card",
+      <StackedFolderCard
+        imageSrc="/wallpaper-3.png"
+        backImageSrc="/wallpaper-2.png"
+        middleImageSrc="/wallpaper-11.png"
+      />,
+      "components/files/stacked-folder-card.tsx",
+      "StackedFolderCard",
+      {
+        description:
+          "Three stacked folder cards with thick white borders and smooth hover rotation — back and middle peeks bring any card to the front.",
+        usage:
+          '<StackedFolderCard imageSrc="/wallpaper-3.png" backImageSrc="/wallpaper-2.png" middleImageSrc="/wallpaper-11.png" />',
+      },
+    ),
+    c(
+      "opensource-folder-tab-card",
+      <OpensourceFolderTabCard />,
+      "components/folder/opensource-folder-tab-card.tsx",
+      "OpensourceFolderTabCard",
+      {
+        description:
+          "Folder tab card with black frame, top-half image, and dark panel showing library stats. Opensource App branding by default.",
+        usage:
+          '<OpensourceFolderTabCard title="UI blocks" primaryValue="116" primaryLabel="Components" />',
+      },
+    ),
     c(
       "journal-writing",
       <JournalWritingCard />,
