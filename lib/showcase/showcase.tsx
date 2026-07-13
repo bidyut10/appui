@@ -57,6 +57,20 @@ import { FilmStripCard } from "@/components/gallery/film-strip-card";
 import { GalleryGridCard } from "@/components/gallery/gallery-grid-card";
 import { GitHubRepoCard } from "@/components/github/github-repo-card";
 import { GlassOverlayImageCard } from "@/components/gallery/glass-overlay-image-card";
+import { ComboboxFieldInput } from "@/components/inputs/combobox-field-input";
+import { DateFieldInput } from "@/components/inputs/date-field-input";
+import { FileUploadFieldInput } from "@/components/inputs/file-upload-field-input";
+import { FloatingLabelFieldInput } from "@/components/inputs/floating-label-field-input";
+import { CheckboxFieldInput } from "@/components/inputs/checkbox-field-input";
+import { InputGroupField } from "@/components/inputs/input-group-field";
+import { PasswordFieldInput } from "@/components/inputs/password-field-input";
+import { PhoneFieldInput } from "@/components/inputs/phone-field-input";
+import { RadioGroupFieldInput } from "@/components/inputs/radio-group-field-input";
+import { SearchInput } from "@/components/inputs/search-input";
+import { SelectFieldInput } from "@/components/inputs/select-field-input";
+import { SwitchFieldInput } from "@/components/inputs/switch-field-input";
+import { TextFieldInput } from "@/components/inputs/text-field-input";
+import { TextareaFieldInput } from "@/components/inputs/textarea-field-input";
 import { InstagramPostCard } from "@/components/instagram/instagram-post-card";
 import { JournalWritingCard } from "@/components/text/journal-writing-card";
 import { KeyboardShortcutsCard } from "@/components/text/keyboard-shortcuts-card";
@@ -123,6 +137,8 @@ import { MinimalAgendaWidget } from "@/components/travel/minimal-agenda-widget";
 import { RidePickupWidget } from "@/components/travel/ride-pickup-widget";
 import { WiFiToggleWidget } from "@/components/wifi/wifi-toggle-widget";
 import { AnnotatedTextShowcase, ANNOTATED_TEXT_USAGE } from "@/components/underlines/annotated-text-showcase";
+import { OtpBoxedInput } from "@/components/otp/otp-boxed-input";
+import { OtpUnderlineInput } from "@/components/otp/otp-underline-input";
 
 type ShowcaseOpts = {
   title?: string;
@@ -1527,6 +1543,219 @@ export const showcaseRows = [
       },
     ),
   ],
+  [
+    c(
+      "otp-boxed-input",
+      <OtpBoxedInput autoFocus={false} destination="s•••@icloud.com" />,
+      "components/otp/otp-boxed-input.tsx",
+      "OtpBoxedInput",
+      {
+        description:
+          "Full email verification card with icon header, destination text, animated square cells, progress dots, shake-on-error, and resend countdown.",
+        usage:
+          '<OtpBoxedInput destination="you@email.com" error={invalid} onComplete={verify} onResend={sendAgain} />',
+      },
+    ),
+    c(
+      "otp-underline-input",
+      <OtpUnderlineInput autoFocus={false} />,
+      "components/otp/otp-underline-input.tsx",
+      "OtpUnderlineInput",
+      {
+        description:
+          "Editorial underline OTP with serif heading and animated focus rules. Same edge-case handling as boxed — typing, delete, paste, and one-time-code autocomplete.",
+        usage:
+          '<OtpUnderlineInput length={6} label="Enter code" onComplete={handleVerify} />',
+      },
+    ),
+  ],
+  [
+    c(
+      "text-field-input",
+      <TextFieldInput
+        label="Full name"
+        placeholder="Jane Cooper"
+        hint="As shown on your government ID."
+      />,
+      "components/inputs/text-field-input.tsx",
+      "TextFieldInput",
+      {
+        description:
+          "Standard labeled text field with hint and error states. Supports all native input types, required marker, disabled, and full a11y wiring.",
+        usage:
+          '<TextFieldInput label="Email" type="email" required error={!valid} errorMessage="Invalid email." />',
+      },
+    ),
+    c(
+      "search-input",
+      <SearchInput defaultValue="" placeholder="Search components…" />,
+      "components/inputs/search-input.tsx",
+      "SearchInput",
+      {
+        description:
+          "Search field with leading icon and clear button. Controlled or uncontrolled value, hidden native cancel, and keyboard-friendly reset.",
+        usage:
+          '<SearchInput value={query} onChange={setQuery} onClear={() => setQuery("")} hint="Filter by name or category." />',
+      },
+    ),
+    c(
+      "password-field-input",
+      <PasswordFieldInput placeholder="Enter password" />,
+      "components/inputs/password-field-input.tsx",
+      "PasswordFieldInput",
+      {
+        description:
+          "Password input with show/hide toggle, hint text, and error state. Keeps autocomplete defaults and accessible visibility control.",
+        usage:
+          '<PasswordFieldInput label="Password" required autoComplete="new-password" error={weak} />',
+      },
+    ),
+  ],
+  [
+    c(
+      "textarea-field-input",
+      <TextareaFieldInput
+        placeholder="Tell us about your project…"
+        defaultValue=""
+      />,
+      "components/inputs/textarea-field-input.tsx",
+      "TextareaFieldInput",
+      {
+        description:
+          "Multiline field with live character count, max length guard, resize support, and the same label/hint/error pattern as text fields.",
+        usage:
+          '<TextareaFieldInput label="Bio" maxLength={280} showCount value={bio} onChange={setBio} />',
+      },
+    ),
+    c(
+      "input-group-field",
+      <InputGroupField prefix="https://" placeholder="opensourceui.in" />,
+      "components/inputs/input-group-field.tsx",
+      "InputGroupField",
+      {
+        description:
+          "Grouped input with prefix and suffix slots — URLs, currency, units. Wrapper border highlights on focus; inputs use border-only focus with ring-0.",
+        usage:
+          '<InputGroupField label="Price" prefix="$" suffix="USD" type="number" min={0} />',
+      },
+    ),
+    c(
+      "floating-label-field-input",
+      <FloatingLabelFieldInput hint="We never share your email." />,
+      "components/inputs/floating-label-field-input.tsx",
+      "FloatingLabelFieldInput",
+      {
+        description:
+          "Outlined floating label that rests on the border notch when focused or filled — matches Material-style fields with autofill detection.",
+        usage:
+          '<FloatingLabelFieldInput label="Work email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />',
+      },
+    ),
+  ],
+  [
+    c(
+      "select-field-input",
+      <SelectFieldInput hint="Shipping rates vary by region." />,
+      "components/inputs/select-field-input.tsx",
+      "SelectFieldInput",
+      {
+        description:
+          "Custom listbox select with styled dropdown, keyboard navigation, click-outside close, and hidden input for native form posts.",
+        usage:
+          '<SelectFieldInput label="Country" name="country" value={country} onValueChange={setCountry} options={countries} />',
+      },
+    ),
+    c(
+      "phone-field-input",
+      <PhoneFieldInput />,
+      "components/inputs/phone-field-input.tsx",
+      "PhoneFieldInput",
+      {
+        description:
+          "Phone field with dial-code prefix and live US-style formatting. Returns raw digits via onChange for validation and API calls.",
+        usage:
+          '<PhoneFieldInput dialCode="+44" required onChange={(digits) => setPhone(digits)} />',
+      },
+    ),
+    c(
+      "checkbox-field-input",
+      <CheckboxFieldInput hint="You can unsubscribe at any time." />,
+      "components/inputs/checkbox-field-input.tsx",
+      "CheckboxFieldInput",
+      {
+        description:
+          "Accessible checkbox with custom mark, inline label, hint, and error. Controlled or uncontrolled checked state.",
+        usage:
+          '<CheckboxFieldInput required checked={accepted} onCheckedChange={setAccepted} error={!accepted} />',
+      },
+    ),
+  ],
+  [
+    c(
+      "switch-field-input",
+      <SwitchFieldInput defaultChecked />,
+      "components/inputs/switch-field-input.tsx",
+      "SwitchFieldInput",
+      {
+        description:
+          "Toggle switch with role=switch, keyboard support, hidden input for forms, and label/hint/error layout.",
+        usage:
+          '<SwitchFieldInput label="Dark mode" checked={enabled} onCheckedChange={setEnabled} name="dark-mode" />',
+      },
+    ),
+  ],
+  [
+    c(
+      "combobox-field-input",
+      <ComboboxFieldInput hint="Type to filter the list." />,
+      "components/inputs/combobox-field-input.tsx",
+      "ComboboxFieldInput",
+      {
+        description:
+          "Searchable combobox with filtered listbox, keyboard navigation, click-outside close, and hidden field for form posts.",
+        usage:
+          '<ComboboxFieldInput label="City" options={cities} value={city} onValueChange={setCity} />',
+      },
+    ),
+    c(
+      "radio-group-field-input",
+      <RadioGroupFieldInput />,
+      "components/inputs/radio-group-field-input.tsx",
+      "RadioGroupFieldInput",
+      {
+        description:
+          "Card-style radio group for checkout and settings flows. Vertical or horizontal layout, descriptions, and arrow-key navigation.",
+        usage:
+          '<RadioGroupFieldInput name="payment" value={method} onValueChange={setMethod} options={methods} />',
+      },
+    ),
+    c(
+      "file-upload-field-input",
+      <FileUploadFieldInput />,
+      "components/inputs/file-upload-field-input.tsx",
+      "FileUploadFieldInput",
+      {
+        description:
+          "Card-style file upload with drag-and-drop zone, browse button, format/size hints, typed file rows, and remove actions.",
+        usage:
+          '<FileUploadFieldInput accept=".pdf,.png" multiple maxFiles={3} onFilesChange={setFiles} />',
+      },
+    ),
+  ],
+  [
+    c(
+      "date-field-input",
+      <DateFieldInput hint="Must match your ID document." />,
+      "components/inputs/date-field-input.tsx",
+      "DateFieldInput",
+      {
+        description:
+          "Custom calendar popover with month navigation, today shortcut, min/max limits, and styled day grid — no native browser picker.",
+        usage:
+          '<DateFieldInput label="Start date" required min="2026-01-01" value={date} onValueChange={setDate} name="start-date" />',
+      },
+    ),
+  ],
 ];
 
 // Catalog (auto — no need to edit)
@@ -1554,6 +1783,10 @@ function titleFromSlug(slug: string): string {
 function categoryFromFile(file: string): string {
   const segment = file.split("/")[1] ?? "components";
   return segment.charAt(0).toUpperCase() + segment.slice(1);
+}
+
+export function isInputShowcaseFile(file: string): boolean {
+  return file.startsWith("components/inputs/");
 }
 
 function buildCatalog(): Record<string, ShowcaseEntry> {

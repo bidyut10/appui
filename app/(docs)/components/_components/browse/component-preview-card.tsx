@@ -4,12 +4,15 @@ import { BOX_PATTERN } from "@/lib/shared";
 import { SaveScrollLink } from "@/lib/docs";
 import { ArrowRight } from "lucide-react";
 
+import { ShowcasePreviewContent } from "../shared/showcase-preview-content";
+
 type ComponentPreviewCardProps = Readonly<{
   slug: string;
   title: string;
   category: string;
   description: string;
   preview: ReactNode;
+  variant?: "default" | "input";
 }>;
 
 export function ComponentPreviewCard({
@@ -18,6 +21,7 @@ export function ComponentPreviewCard({
   category,
   description,
   preview,
+  variant = "default",
 }: ComponentPreviewCardProps) {
   return (
     <article className="group overflow-hidden rounded-xl border border-neutral-100 bg-white">
@@ -25,9 +29,7 @@ export function ComponentPreviewCard({
         className="relative flex min-h-96 items-center justify-center overflow-hidden border-b border-neutral-100 p-7 md:min-h-120 md:p-9"
         style={BOX_PATTERN}
       >
-        <div className="relative z-0 flex w-full min-w-0 items-center justify-center *:max-w-full *:min-w-0">
-          {preview}
-        </div>
+        <ShowcasePreviewContent variant={variant}>{preview}</ShowcasePreviewContent>
       </div>
 
       <div className="p-4">

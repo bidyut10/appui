@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight, MoveLeft, MoveRight } from "lucide-react";
 import {
   getAllShowcaseSlugs,
   getShowcaseEntry,
+  isInputShowcaseFile,
   readShowcaseSource,
 } from "@/lib/showcase";
 import {
@@ -136,7 +137,11 @@ export default async function ComponentDetailPage({ params }: Readonly<Props>) {
               </AnnotatedText>
             </h2>
             <div className="mt-5">
-              <DocsPreviewStage>{entry.preview}</DocsPreviewStage>
+              <DocsPreviewStage
+                variant={isInputShowcaseFile(entry.file) ? "input" : "default"}
+              >
+                {entry.preview}
+              </DocsPreviewStage>
             </div>
           </section>
 

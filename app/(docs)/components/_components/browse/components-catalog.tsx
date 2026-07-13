@@ -1,4 +1,4 @@
-import { resolveShowcaseCategory, type ShowcaseCategoryGroup } from "@/lib/showcase";
+import { resolveShowcaseCategory, isInputShowcaseFile, type ShowcaseCategoryGroup } from "@/lib/showcase";
 import { AnnotatedText } from "@/components/underlines/annotated-text";
 
 import { ComponentPreviewCard } from "./component-preview-card";
@@ -58,6 +58,7 @@ export function ComponentsCatalog({
               category={activeGroup.category}
               description={item.description}
               preview={item.preview}
+              variant={isInputShowcaseFile(item.file) ? "input" : "default"}
             />
           ))}
         </div>

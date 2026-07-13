@@ -2,14 +2,18 @@ import type { ReactNode } from "react";
 
 import { BOX_PATTERN } from "@/lib/shared";
 
+import { ShowcasePreviewContent } from "../shared/showcase-preview-content";
+
 type DocsPreviewStageProps = Readonly<{
   children: ReactNode;
   className?: string;
+  variant?: "default" | "input";
 }>;
 
 export function DocsPreviewStage({
   children,
   className,
+  variant = "default",
 }: DocsPreviewStageProps) {
   return (
     <div
@@ -21,9 +25,7 @@ export function DocsPreviewStage({
         .join(" ")}
       style={BOX_PATTERN}
     >
-      <div className="relative z-0 flex w-full min-w-0 items-center justify-center *:max-w-full *:min-w-0">
-        {children}
-      </div>
+      <ShowcasePreviewContent variant={variant}>{children}</ShowcasePreviewContent>
     </div>
   );
 }
