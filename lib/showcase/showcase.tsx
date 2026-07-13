@@ -38,15 +38,14 @@ import { IosCalenderWidget } from "@/components/calender/ios-calender-widget";
 import { MonthPickerCalendar } from "@/components/calender/month-picker-calendar";
 import { WeekStripCalendar } from "@/components/calender/week-strip-calendar";
 import { CustomersTable } from "@/components/table/customers-table";
-import { ActivityFeedPanel } from "@/components/dashboard/activity-feed-panel";
-import { DashboardSidebarNav } from "@/components/dashboard/dashboard-sidebar-nav";
-import { DashboardTopBar } from "@/components/dashboard/dashboard-top-bar";
-import { DateRangeFilterPills } from "@/components/dashboard/date-range-filter-pills";
-import { GoalProgressCard } from "@/components/dashboard/goal-progress-card";
-import { KpiStatCard } from "@/components/dashboard/kpi-stat-card";
-import { QuickActionsPanel } from "@/components/dashboard/quick-actions-panel";
-import { RankingListPanel } from "@/components/dashboard/ranking-list-panel";
-import { TrendStatCard } from "@/components/dashboard/trend-stat-card";
+import { AiScriptCard } from "@/components/dashboard/ai-script-card";
+import { FloatingToolRail } from "@/components/dashboard/floating-tool-rail";
+import { IndustryInsightsCard } from "@/components/dashboard/industry-insights-card";
+import { InsightsUpgradeCard } from "@/components/dashboard/insights-upgrade-card";
+import { PaymentScheduleCard } from "@/components/dashboard/payment-schedule-card";
+import { PaymentTemplatesCard } from "@/components/dashboard/payment-templates-card";
+import { RecentTransactionsCard } from "@/components/dashboard/recent-transactions-card";
+import { TasksDashboardCard } from "@/components/dashboard/tasks-dashboard-card";
 import { OrdersTable } from "@/components/table/orders-table";
 import { RecentTransactionsTable } from "@/components/table/recent-transactions-table";
 import { ResourceLinksPanel } from "@/components/resources/resource-links-panel";
@@ -563,115 +562,100 @@ export const showcaseRows = [
   ],
   [
     c(
-      "kpi-stat-card",
-      <KpiStatCard />,
-      "components/dashboard/kpi-stat-card.tsx",
-      "KpiStatCard",
+      "payment-templates-card",
+      <PaymentTemplatesCard />,
+      "components/dashboard/payment-templates-card.tsx",
+      "PaymentTemplatesCard",
       {
         description:
-          "KPI stat card with label, large value, trend delta, and icon tone. The analytics metric block every React dashboard needs.",
-        usage:
-          '<KpiStatCard label="Total revenue" value="$48,290" change="+12.4%" trend="up" tone="revenue" />',
+          "Payment templates balance card with nested mandatory payments block and member avatars.",
+        usage: '<PaymentTemplatesCard total="$486.32" extraCount={8} />',
       },
     ),
     c(
-      "trend-stat-card",
-      <TrendStatCard />,
-      "components/dashboard/trend-stat-card.tsx",
-      "TrendStatCard",
+      "payment-schedule-card",
+      <PaymentScheduleCard />,
+      "components/dashboard/payment-schedule-card.tsx",
+      "PaymentScheduleCard",
       {
         description:
-          "Dashboard stat card with inline sparkline and period change. Copy-paste trend KPI for SaaS and admin panels.",
+          "Payment schedule list with date badges, amounts, and paid/upcoming checkbox states.",
         usage:
-          '<TrendStatCard label="Active users" value="2,481" change="+8.2%" data={[12, 18, 22, 28, 32, 41]} />',
-      },
-    ),
-    c(
-      "goal-progress-card",
-      <GoalProgressCard />,
-      "components/dashboard/goal-progress-card.tsx",
-      "GoalProgressCard",
-      {
-        description:
-          "Goal progress card with current vs target and accessible progress bar. Built for revenue, sales, and quota dashboards.",
-        usage:
-          '<GoalProgressCard label="Monthly target" current={72400} goal={100000} unit="USD" />',
+          '<PaymentScheduleCard items={[{ id: "1", month: "Feb", day: "18", label: "Framer", amount: "$21.58", upcoming: true }]} />',
       },
     ),
   ],
   [
     c(
-      "date-range-filter-pills",
-      <DateRangeFilterPills />,
-      "components/dashboard/date-range-filter-pills.tsx",
-      "DateRangeFilterPills",
+      "industry-insights-card",
+      <IndustryInsightsCard />,
+      "components/dashboard/industry-insights-card.tsx",
+      "IndustryInsightsCard",
       {
         description:
-          "Date range filter pills for dashboard analytics — presets plus custom from/to with validation. Controlled or uncontrolled.",
+          "Dark industry insights summary card with highlighted metric and source selector pills.",
         usage:
-          '<DateRangeFilterPills defaultValue={{ preset: "30d", from: "", to: "" }} onChange={(range) => console.log(range)} />',
+          '<IndustryInsightsCard highlight="retail spending increased 4.2%" />',
       },
     ),
     c(
-      "ranking-list-panel",
-      <RankingListPanel />,
-      "components/dashboard/ranking-list-panel.tsx",
-      "RankingListPanel",
+      "recent-transactions-card",
+      <RecentTransactionsCard />,
+      "components/dashboard/recent-transactions-card.tsx",
+      "RecentTransactionsCard",
       {
         description:
-          "Top pages or products ranking panel for admin dashboards. Ranked list with values and optional links.",
+          "Recent transactions feed with merchant avatars, categories, income markers, and row actions.",
         usage:
-          '<RankingListPanel title="Top pages" items={[{ id: "1", label: "Billing", value: "3,104" }]} />',
+          '<RecentTransactionsCard items={[{ id: "1", merchant: "Spotify", category: "Subscription", amount: "$50.24", time: "07 Feb" }]} />',
       },
     ),
     c(
-      "activity-feed-panel",
-      <ActivityFeedPanel />,
-      "components/dashboard/activity-feed-panel.tsx",
-      "ActivityFeedPanel",
+      "tasks-dashboard-card",
+      <TasksDashboardCard />,
+      "components/dashboard/tasks-dashboard-card.tsx",
+      "TasksDashboardCard",
       {
         description:
-          "Recent activity feed for SaaS dashboards — signups, billing, logins, and settings events in a clean timeline.",
-        usage:
-          '<ActivityFeedPanel items={[{ id: "1", title: "Invoice paid", time: "2m ago", kind: "billing" }]} />',
+          "Tasks widget with parent progress, nested checklist, date range, comments, and team avatars.",
+        usage: '<TasksDashboardCard mainTask="New BrandBook" progress={62} />',
       },
     ),
   ],
   [
     c(
-      "dashboard-sidebar-nav",
-      <DashboardSidebarNav />,
-      "components/dashboard/dashboard-sidebar-nav.tsx",
-      "DashboardSidebarNav",
+      "ai-script-card",
+      <AiScriptCard />,
+      "components/dashboard/ai-script-card.tsx",
+      "AiScriptCard",
       {
         description:
-          "Dashboard sidebar navigation with grouped menu sections and active state. The admin shell block developers search for most.",
-        usage:
-          '<DashboardSidebarNav brandName="Your App" activeId="dashboard" sections={[...]} />',
+          "AI script card with duration badge, edit/regenerate actions, and audio waveform playback row.",
+        usage: '<AiScriptCard duration="1:38" currentTime="00:00" totalTime="01:20" />',
+      },
+    ),
+  ],
+  [
+    c(
+      "insights-upgrade-card",
+      <InsightsUpgradeCard />,
+      "components/dashboard/insights-upgrade-card.tsx",
+      "InsightsUpgradeCard",
+      {
+        description:
+          "PRO insights upgrade CTA tile for dashboard sidebars and upsell rows.",
+        usage: '<InsightsUpgradeCard badge="PRO" title="Switch to AI Insights Professional today!" />',
       },
     ),
     c(
-      "dashboard-top-bar",
-      <DashboardTopBar />,
-      "components/dashboard/dashboard-top-bar.tsx",
-      "DashboardTopBar",
+      "floating-tool-rail",
+      <FloatingToolRail />,
+      "components/dashboard/floating-tool-rail.tsx",
+      "FloatingToolRail",
       {
         description:
-          "Dashboard top bar with page title, search, notification badge, and signed-in user summary.",
-        usage:
-          '<DashboardTopBar title="Dashboard" userName="Bidyut Kundu" onSearchSubmit={(q) => console.log(q)} />',
-      },
-    ),
-    c(
-      "quick-actions-panel",
-      <QuickActionsPanel />,
-      "components/dashboard/quick-actions-panel.tsx",
-      "QuickActionsPanel",
-      {
-        description:
-          "Quick actions panel for dashboard home screens — invite, import, export, and create shortcuts in a compact grid.",
-        usage:
-          '<QuickActionsPanel actions={[{ id: "invite", label: "Invite member", href: "/invite" }]} />',
+          "Floating vertical tool rail for editor and creator dashboards with active tool state.",
+        usage: '<FloatingToolRail activeId="select" onSelect={(id) => console.log(id)} />',
       },
     ),
   ],
