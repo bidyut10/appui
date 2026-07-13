@@ -38,6 +38,15 @@ import { IosCalenderWidget } from "@/components/calender/ios-calender-widget";
 import { MonthPickerCalendar } from "@/components/calender/month-picker-calendar";
 import { WeekStripCalendar } from "@/components/calender/week-strip-calendar";
 import { CustomersTable } from "@/components/table/customers-table";
+import { ActivityFeedPanel } from "@/components/dashboard/activity-feed-panel";
+import { DashboardSidebarNav } from "@/components/dashboard/dashboard-sidebar-nav";
+import { DashboardTopBar } from "@/components/dashboard/dashboard-top-bar";
+import { DateRangeFilterPills } from "@/components/dashboard/date-range-filter-pills";
+import { GoalProgressCard } from "@/components/dashboard/goal-progress-card";
+import { KpiStatCard } from "@/components/dashboard/kpi-stat-card";
+import { QuickActionsPanel } from "@/components/dashboard/quick-actions-panel";
+import { RankingListPanel } from "@/components/dashboard/ranking-list-panel";
+import { TrendStatCard } from "@/components/dashboard/trend-stat-card";
 import { OrdersTable } from "@/components/table/orders-table";
 import { RecentTransactionsTable } from "@/components/table/recent-transactions-table";
 import { ResourceLinksPanel } from "@/components/resources/resource-links-panel";
@@ -133,7 +142,11 @@ import { IncomingCallNotificationBanner } from "@/components/notifications/incom
 import { PaymentNotificationBanner } from "@/components/notifications/payment-notification-banner";
 import { SystemAlertBanner } from "@/components/notifications/system-alert-banner";
 import { ToastNotificationBanner } from "@/components/notifications/toast-notification-banner";
+import { TeamMemberProfileGrid } from "@/components/profile/team-member-profile-grid";
 import { BlobProfileCard } from "@/components/profile/blob-profile";
+import { ContactProfileCard } from "@/components/profile/contact-profile-card";
+import { EditorialStaffProfileCard } from "@/components/profile/editorial-staff-profile-card";
+import { UserProfileCard } from "@/components/profile/user-profile-card";
 import { StopwatchWidget } from "@/components/stopwatch/stopwatch-widget";
 import { TorchFaceWidget } from "@/components/torch/torch-face-widget";
 import { ElectricScooterWidget } from "@/components/travel/electric-scooter-widget";
@@ -495,6 +508,170 @@ export const showcaseRows = [
           "Profile card with an organic blob-shaped photo frame, name, verified check, and handle. Stands out from every circular-avatar layout on the web.",
         usage:
           '<BlobProfileCard name="Bidyut Kundu" handle="@bidyut.dev" image="/your-photo.png" />',
+      },
+    ),
+    c(
+      "editorial-staff-profile",
+      <EditorialStaffProfileCard />,
+      "components/profile/editorial-staff-profile-card.tsx",
+      "EditorialStaffProfileCard",
+      {
+        description:
+          "Numbered editorial roster row with serif name, uppercase role, and a square photo. Built for about pages and team indexes.",
+        usage:
+          '<EditorialStaffProfileCard index="04" name="Mira Okonkwo" role="Design editor" image="/profile-picture.png" />',
+      },
+    ),
+    c(
+      "user-profile",
+      <UserProfileCard />,
+      "components/profile/user-profile-card.tsx",
+      "UserProfileCard",
+      {
+        description:
+          "Author byline on warm editorial paper — square portrait, serif name, and text links. Built for personal sites and portfolio sidebars.",
+        usage:
+          '<UserProfileCard name="Bidyut Kundu" title="Founder" emailHref="mailto:hello@site.com" websiteHref="https://yoursite.com" />',
+      },
+    ),
+  ],
+  [
+    c(
+      "contact-profile",
+      <ContactProfileCard />,
+      "components/profile/contact-profile-card.tsx",
+      "ContactProfileCard",
+      {
+        description:
+          "Museum placard contact directory — mono labels, serif name, and typographic rows without icon clutter.",
+        usage:
+          '<ContactProfileCard name="Bidyut Kundu" email="hello@site.com" phone="+1 555 0100" location="Berlin" />',
+      },
+    ),
+    c(
+      "team-member-profile-grid",
+      <TeamMemberProfileGrid />,
+      "components/profile/team-member-profile-grid.tsx",
+      "TeamMemberProfileGrid",
+      {
+        description:
+          "Responsive team grid with vertical portrait cards — section header plus name, role, bio, and profile link per member.",
+        usage:
+          '<TeamMemberProfileGrid title="The team" members={[{ name: "Bidyut Kundu", role: "Founder", bio: "...", image: "/profile-picture.png", profileHref: "/about" }]} />',
+      },
+    ),
+  ],
+  [
+    c(
+      "kpi-stat-card",
+      <KpiStatCard />,
+      "components/dashboard/kpi-stat-card.tsx",
+      "KpiStatCard",
+      {
+        description:
+          "KPI stat card with label, large value, trend delta, and icon tone. The analytics metric block every React dashboard needs.",
+        usage:
+          '<KpiStatCard label="Total revenue" value="$48,290" change="+12.4%" trend="up" tone="revenue" />',
+      },
+    ),
+    c(
+      "trend-stat-card",
+      <TrendStatCard />,
+      "components/dashboard/trend-stat-card.tsx",
+      "TrendStatCard",
+      {
+        description:
+          "Dashboard stat card with inline sparkline and period change. Copy-paste trend KPI for SaaS and admin panels.",
+        usage:
+          '<TrendStatCard label="Active users" value="2,481" change="+8.2%" data={[12, 18, 22, 28, 32, 41]} />',
+      },
+    ),
+    c(
+      "goal-progress-card",
+      <GoalProgressCard />,
+      "components/dashboard/goal-progress-card.tsx",
+      "GoalProgressCard",
+      {
+        description:
+          "Goal progress card with current vs target and accessible progress bar. Built for revenue, sales, and quota dashboards.",
+        usage:
+          '<GoalProgressCard label="Monthly target" current={72400} goal={100000} unit="USD" />',
+      },
+    ),
+  ],
+  [
+    c(
+      "date-range-filter-pills",
+      <DateRangeFilterPills />,
+      "components/dashboard/date-range-filter-pills.tsx",
+      "DateRangeFilterPills",
+      {
+        description:
+          "Date range filter pills for dashboard analytics — presets plus custom from/to with validation. Controlled or uncontrolled.",
+        usage:
+          '<DateRangeFilterPills defaultValue={{ preset: "30d", from: "", to: "" }} onChange={(range) => console.log(range)} />',
+      },
+    ),
+    c(
+      "ranking-list-panel",
+      <RankingListPanel />,
+      "components/dashboard/ranking-list-panel.tsx",
+      "RankingListPanel",
+      {
+        description:
+          "Top pages or products ranking panel for admin dashboards. Ranked list with values and optional links.",
+        usage:
+          '<RankingListPanel title="Top pages" items={[{ id: "1", label: "Billing", value: "3,104" }]} />',
+      },
+    ),
+    c(
+      "activity-feed-panel",
+      <ActivityFeedPanel />,
+      "components/dashboard/activity-feed-panel.tsx",
+      "ActivityFeedPanel",
+      {
+        description:
+          "Recent activity feed for SaaS dashboards — signups, billing, logins, and settings events in a clean timeline.",
+        usage:
+          '<ActivityFeedPanel items={[{ id: "1", title: "Invoice paid", time: "2m ago", kind: "billing" }]} />',
+      },
+    ),
+  ],
+  [
+    c(
+      "dashboard-sidebar-nav",
+      <DashboardSidebarNav />,
+      "components/dashboard/dashboard-sidebar-nav.tsx",
+      "DashboardSidebarNav",
+      {
+        description:
+          "Dashboard sidebar navigation with grouped menu sections and active state. The admin shell block developers search for most.",
+        usage:
+          '<DashboardSidebarNav brandName="Your App" activeId="dashboard" sections={[...]} />',
+      },
+    ),
+    c(
+      "dashboard-top-bar",
+      <DashboardTopBar />,
+      "components/dashboard/dashboard-top-bar.tsx",
+      "DashboardTopBar",
+      {
+        description:
+          "Dashboard top bar with page title, search, notification badge, and signed-in user summary.",
+        usage:
+          '<DashboardTopBar title="Dashboard" userName="Bidyut Kundu" onSearchSubmit={(q) => console.log(q)} />',
+      },
+    ),
+    c(
+      "quick-actions-panel",
+      <QuickActionsPanel />,
+      "components/dashboard/quick-actions-panel.tsx",
+      "QuickActionsPanel",
+      {
+        description:
+          "Quick actions panel for dashboard home screens — invite, import, export, and create shortcuts in a compact grid.",
+        usage:
+          '<QuickActionsPanel actions={[{ id: "invite", label: "Invite member", href: "/invite" }]} />',
       },
     ),
   ],
