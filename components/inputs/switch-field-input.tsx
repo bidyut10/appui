@@ -90,15 +90,24 @@ export const SwitchFieldInput = forwardRef<
       data-checked={isOn || undefined}
       className={cn("w-full max-w-sm font-sans", containerClassName)}
     >
-      {name ? (
+      {name || required ? (
         <input
-          type="hidden"
+          type="checkbox"
           name={name}
-          value={isOn ? "on" : "off"}
-          required={required && !isOn}
-          readOnly
+          value="on"
+          checked={isOn}
+          required={required}
+          disabled={disabled}
           tabIndex={-1}
           aria-hidden
+          onChange={() => undefined}
+          onInvalid={(event) => {
+            event.preventDefault();
+            event.currentTarget.parentElement
+              ?.querySelector<HTMLButtonElement>('[role="switch"]')
+              ?.focus();
+          }}
+          className="sr-only"
         />
       ) : null}
 

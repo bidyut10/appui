@@ -118,6 +118,7 @@ export const ComboboxFieldInput = forwardRef<
   const errorId = `${fieldId}-error`;
   const rootRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const blurTimerRef = useRef<number | null>(null);
 
   const isControlled = value !== undefined;
   const [internalValue, setInternalValue] = useState(String(defaultValue));
@@ -148,6 +149,10 @@ export const ComboboxFieldInput = forwardRef<
   );
 
   const close = useCallback(() => {
+    if (blurTimerRef.current !== null) {
+      window.clearTimeout(blurTimerRef.current);
+      blurTimerRef.current = null;
+    }
     setOpen(false);
     setHighlighted(-1);
     setQuery(selectedOption?.label ?? "");
@@ -180,7 +185,7 @@ export const ComboboxFieldInput = forwardRef<
   useEffect(() => {
     if (!open) return;
 
-    function handlePointerDown(event: MouseEvent) {
+    function handlePointerDown(event: PointerEvent) {
       if (!rootRef.current?.contains(event.target as Node)) close();
     }
 
@@ -191,13 +196,29 @@ export const ComboboxFieldInput = forwardRef<
       }
     }
 
-    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("pointerdown", handlePointerDown);
     document.addEventListener("keydown", handleEscape);
     return () => {
-      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("pointerdown", handlePointerDown);
       document.removeEventListener("keydown", handleEscape);
     };
   }, [close, open]);
+
+  useEffect(() => {
+    if (disabled && open) close();
+  }, [close, disabled, open]);
+
+  useEffect(() => {
+    inputRef.current?.setCustomValidity(
+      required && !currentValue ? errorMessage : "",
+    );
+  }, [currentValue, errorMessage, required]);
+
+  useEffect(() => {
+    return () => {
+      if (blurTimerRef.current !== null) window.clearTimeout(blurTimerRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -212,10 +233,14 @@ export const ComboboxFieldInput = forwardRef<
       const nextQuery = event.target.value;
       setQuery(nextQuery);
       setOpen(true);
-      setHighlighted(0);
+      const normalized = nextQuery.trim().toLowerCase();
+      const nextOptions = normalized
+        ? options.filter((option) => option.label.toLowerCase().includes(normalized))
+        : options;
+      setHighlighted(nextOptions.findIndex((option) => !option.disabled));
       if (!nextQuery.trim()) emitChange("");
     },
-    [emitChange],
+    [emitChange, options],
   );
 
   const handleKeyDown = useCallback(
@@ -231,7 +256,7 @@ export const ComboboxFieldInput = forwardRef<
         }
         const next = findNextEnabledIndex(
           filtered,
-          highlighted < 0 ? 0 : highlighted,
+          highlighted < 0 ? -1 : highlighted,
           1,
         );
         if (next >= 0) setHighlighted(next);
@@ -246,7 +271,7 @@ export const ComboboxFieldInput = forwardRef<
         }
         const next = findNextEnabledIndex(
           filtered,
-          highlighted < 0 ? filtered.length - 1 : highlighted,
+          highlighted < 0 ? filtered.length : highlighted,
           -1,
         );
         if (next >= 0) setHighlighted(next);
@@ -286,7 +311,7 @@ export const ComboboxFieldInput = forwardRef<
       className={cn("relative w-full max-w-sm font-sans", containerClassName)}
     >
       {name ? (
-        <input type="hidden" name={name} value={currentValue} readOnly />
+        <input type="hidden" name={name} value={currentValue} disabled={disabled} readOnly />
       ) : null}
 
       <label
@@ -329,7 +354,11 @@ export const ComboboxFieldInput = forwardRef<
           }}
           onBlur={(event) => {
             onBlur?.(event);
-            window.setTimeout(() => close(), 120);
+            if (event.defaultPrevented) return;
+            blurTimerRef.current = window.setTimeout(() => close(), 120);
+          }}
+          onInvalid={() => {
+            inputRef.current?.focus();
           }}
           onKeyDown={handleKeyDown}
           className={cn(

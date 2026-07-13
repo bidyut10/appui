@@ -24,8 +24,9 @@ export type PhoneFieldInputProps = Readonly<
   onChange?: (value: string, event: ChangeEvent<HTMLInputElement>) => void;
 };
 
-function formatPhoneDisplay(raw: string): string {
+function formatPhoneDisplay(raw: string, dialCode: string): string {
   const digits = raw.replace(/\D/g, "").slice(0, 15);
+  if (dialCode.replace(/\s/g, "") !== "+1") return digits;
   if (digits.length <= 3) return digits;
   if (digits.length <= 6) {
     return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
@@ -64,18 +65,15 @@ export const PhoneFieldInput = forwardRef<HTMLInputElement, PhoneFieldInputProps
     const errorId = `${inputId}-error`;
 
     const isControlled = value !== undefined;
-    const [internal, setInternal] = useState(() =>
-      formatPhoneDisplay(String(defaultValue)),
-    );
+    const [internal, setInternal] = useState(() => digitsOnly(String(defaultValue)));
     const display = isControlled
-      ? formatPhoneDisplay(String(value))
-      : internal;
+      ? formatPhoneDisplay(String(value), dialCode)
+      : formatPhoneDisplay(internal, dialCode);
 
     const handleChange = useCallback(
       (event: ChangeEvent<HTMLInputElement>) => {
-        const nextDisplay = formatPhoneDisplay(event.target.value);
-        const nextRaw = digitsOnly(nextDisplay);
-        if (!isControlled) setInternal(nextDisplay);
+        const nextRaw = digitsOnly(event.target.value);
+        if (!isControlled) setInternal(nextRaw);
         onChange?.(nextRaw, event);
       },
       [isControlled, onChange],

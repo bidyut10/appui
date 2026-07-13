@@ -61,6 +61,22 @@ function parseAcceptTokens(accept: string): string[] {
     .filter(Boolean);
 }
 
+function fileMatchesAccept(file: File, accept: string): boolean {
+  const tokens = accept
+    .split(",")
+    .map((token) => token.trim().toLowerCase())
+    .filter(Boolean);
+  if (tokens.length === 0) return true;
+
+  const fileName = file.name.toLowerCase();
+  const fileType = file.type.toLowerCase();
+  return tokens.some((token) => {
+    if (token.startsWith(".")) return fileName.endsWith(token);
+    if (token.endsWith("/*")) return fileType.startsWith(token.slice(0, -1));
+    return fileType === token;
+  });
+}
+
 function createEntry(file: File): FileEntry {
   return {
     id: `${file.name}-${file.size}-${file.lastModified}`,
@@ -106,6 +122,12 @@ export const FileUploadFieldInput = forwardRef<
   const [entries, setEntries] = useState<FileEntry[]>([]);
   const [dragging, setDragging] = useState(false);
   const [localError, setLocalError] = useState("");
+  const safeMaxFiles = Number.isFinite(maxFiles)
+    ? Math.max(1, Math.floor(maxFiles))
+    : 3;
+  const safeMaxSizeBytes = Number.isFinite(maxSizeBytes)
+    ? Math.max(0, maxSizeBytes)
+    : 5 * 1024 * 1024;
 
   entriesRef.current = entries;
 
@@ -124,46 +146,75 @@ export const FileUploadFieldInput = forwardRef<
     };
   }, []);
 
+  useEffect(() => {
+    const form = localRef.current?.form;
+    if (!form) return;
+
+    const handleReset = () => {
+      for (const entry of entriesRef.current) revokeEntryPreview(entry);
+      entriesRef.current = [];
+      setEntries([]);
+      setLocalError("");
+      setDragging(false);
+      onFilesChange?.([]);
+    };
+
+    form.addEventListener("reset", handleReset);
+    return () => form.removeEventListener("reset", handleReset);
+  }, [onFilesChange]);
+
   const validateAndAdd = useCallback(
     (incoming: File[]) => {
       setLocalError("");
-      const valid: FileEntry[] = [];
+      const validFiles: File[] = [];
 
       for (const file of incoming) {
-        if (file.size > maxSizeBytes) {
+        if (!fileMatchesAccept(file, accept)) {
+          setLocalError(`"${file.name}" is not an accepted file type.`);
+          continue;
+        }
+        if (file.size > safeMaxSizeBytes) {
           setLocalError(`"${file.name}" exceeds the size limit.`);
           continue;
         }
-        valid.push(createEntry(file));
+        validFiles.push(file);
       }
 
-      if (valid.length === 0) return;
+      if (validFiles.length === 0) return;
 
-      setEntries((prev) => {
-        for (const entry of prev) revokeEntryPreview(entry);
+      const previous = entriesRef.current;
+      const existingIds = new Set(previous.map((entry) => entry.id));
+      const uniqueFiles = validFiles.filter(
+        (file) => !existingIds.has(`${file.name}-${file.size}-${file.lastModified}`),
+      );
+      const availableSlots = multiple ? Math.max(0, safeMaxFiles - previous.length) : 1;
+      const filesToAdd = uniqueFiles.slice(0, availableSlots);
 
-        const merged = multiple
-          ? [
-              ...prev,
-              ...valid.filter((entry) => !prev.some((item) => item.id === entry.id)),
-            ]
-          : [valid[0]!];
+      if (uniqueFiles.length > availableSlots) {
+        setLocalError(`You can upload up to ${safeMaxFiles} ${safeMaxFiles === 1 ? "file" : "files"}.`);
+      }
+      if (filesToAdd.length === 0) return;
 
-        return merged.slice(0, maxFiles);
-      });
+      const nextEntries = filesToAdd.map(createEntry);
+      if (!multiple) {
+        for (const entry of previous) revokeEntryPreview(entry);
+      }
+
+      const next = multiple ? [...previous, ...nextEntries] : nextEntries;
+      entriesRef.current = next;
+      setEntries(next);
+      onFilesChange?.(next.map((entry) => entry.file));
     },
-    [maxFiles, maxSizeBytes, multiple],
+    [accept, multiple, onFilesChange, safeMaxFiles, safeMaxSizeBytes],
   );
 
   useEffect(() => {
-    onFilesChange?.(entries.map((entry) => entry.file));
-
-    if (localRef.current) {
+    if (localRef.current && typeof DataTransfer !== "undefined") {
       const transfer = new DataTransfer();
       for (const entry of entries) transfer.items.add(entry.file);
       localRef.current.files = transfer.files;
     }
-  }, [entries, onFilesChange]);
+  }, [entries]);
 
   const openPicker = useCallback(() => {
     if (!disabled) localRef.current?.click();
@@ -199,19 +250,21 @@ export const FileUploadFieldInput = forwardRef<
   );
 
   const removeFile = useCallback((id: string) => {
-    setEntries((prev) => {
-      const target = prev.find((entry) => entry.id === id);
-      if (target) revokeEntryPreview(target);
-      return prev.filter((entry) => entry.id !== id);
-    });
+    const previous = entriesRef.current;
+    const target = previous.find((entry) => entry.id === id);
+    if (target) revokeEntryPreview(target);
+    const next = previous.filter((entry) => entry.id !== id);
+    entriesRef.current = next;
+    setEntries(next);
+    onFilesChange?.(next.map((entry) => entry.file));
     setLocalError("");
-  }, []);
+  }, [onFilesChange]);
 
   const showError = error || Boolean(localError);
   const message = localError || errorMessage;
   const hasFiles = entries.length > 0;
   const acceptTokens = parseAcceptTokens(accept);
-  const maxSizeLabel = formatFileSize(maxSizeBytes);
+  const maxSizeLabel = formatFileSize(safeMaxSizeBytes);
   const primaryEntry = entries[0];
   const showSinglePreview = !multiple && primaryEntry && isImageFile(primaryEntry.file);
 
@@ -222,14 +275,14 @@ export const FileUploadFieldInput = forwardRef<
       data-filled={hasFiles || undefined}
       className={cn("w-full max-w-sm font-sans", containerClassName)}
     >
-      <p className="mb-1.5 text-sm font-medium text-neutral-900">
+      <label htmlFor={inputId} className="mb-1.5 block w-fit cursor-pointer text-sm font-medium text-neutral-900">
         {label}
         {required ? (
           <span className="ml-0.5 text-rose-500" aria-hidden>
             *
           </span>
         ) : null}
-      </p>
+      </label>
 
       <input
         ref={mergeRef}
@@ -345,7 +398,7 @@ export const FileUploadFieldInput = forwardRef<
                 </p>
                 <p className="mt-0.5 text-xs text-neutral-500">
                   {acceptTokens.join(", ")} · max {maxSizeLabel}
-                  {multiple ? ` · up to ${maxFiles} files` : ""}
+                  {multiple ? ` · up to ${safeMaxFiles} files` : ""}
                 </p>
               </div>
 
@@ -465,7 +518,7 @@ export const FileUploadFieldInput = forwardRef<
               ))}
             </ul>
 
-            {multiple && entries.length < maxFiles && !disabled ? (
+            {multiple && entries.length < safeMaxFiles && !disabled ? (
               <button
                 type="button"
                 onClick={openPicker}

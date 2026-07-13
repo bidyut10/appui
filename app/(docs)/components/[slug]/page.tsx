@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight, MoveLeft, MoveRight } from "lucide-react";
 import {
   getAllShowcaseSlugs,
   getShowcaseEntry,
+  isFormShowcaseFile,
   isInputShowcaseFile,
   readShowcaseSource,
 } from "@/lib/showcase";
@@ -138,7 +139,13 @@ export default async function ComponentDetailPage({ params }: Readonly<Props>) {
             </h2>
             <div className="mt-5">
               <DocsPreviewStage
-                variant={isInputShowcaseFile(entry.file) ? "input" : "default"}
+                variant={
+                  isFormShowcaseFile(entry.file)
+                    ? "form"
+                    : isInputShowcaseFile(entry.file)
+                      ? "input"
+                      : "default"
+                }
               >
                 {entry.preview}
               </DocsPreviewStage>

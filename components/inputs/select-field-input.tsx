@@ -34,6 +34,7 @@ export type SelectFieldInputProps = Readonly<
     options?: readonly SelectFieldOption[];
     containerClassName?: string;
     name?: string;
+    required?: boolean;
     onValueChange?: (value: string) => void;
   } & Omit<
     ComponentPropsWithoutRef<"button">,
@@ -101,6 +102,7 @@ export const SelectFieldInput = forwardRef<
     onChange,
     onValueChange,
     onClick,
+    onBlur,
     onKeyDown,
     ...props
   },
@@ -163,7 +165,7 @@ export const SelectFieldInput = forwardRef<
   useEffect(() => {
     if (!open) return;
 
-    function handlePointerDown(event: MouseEvent) {
+    function handlePointerDown(event: PointerEvent) {
       if (!rootRef.current?.contains(event.target as Node)) close();
     }
 
@@ -174,10 +176,10 @@ export const SelectFieldInput = forwardRef<
       }
     }
 
-    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("pointerdown", handlePointerDown);
     document.addEventListener("keydown", handleEscape);
     return () => {
-      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("pointerdown", handlePointerDown);
       document.removeEventListener("keydown", handleEscape);
     };
   }, [close, open]);
@@ -201,7 +203,7 @@ export const SelectFieldInput = forwardRef<
         event.preventDefault();
         const next = findNextEnabledIndex(
           options,
-          highlighted < 0 ? 0 : highlighted,
+          highlighted < 0 ? -1 : highlighted,
           1,
         );
         if (next >= 0) setHighlighted(next);
@@ -212,7 +214,7 @@ export const SelectFieldInput = forwardRef<
         event.preventDefault();
         const next = findNextEnabledIndex(
           options,
-          highlighted < 0 ? options.length - 1 : highlighted,
+          highlighted < 0 ? options.length : highlighted,
           -1,
         );
         if (next >= 0) setHighlighted(next);
@@ -249,8 +251,29 @@ export const SelectFieldInput = forwardRef<
       data-open={open || undefined}
       className={cn("relative w-full max-w-sm font-sans", containerClassName)}
     >
-      {name ? (
-        <input type="hidden" name={name} value={current} required={required} readOnly />
+      {name || required ? (
+        <select
+          name={name}
+          value={current}
+          required={required}
+          disabled={disabled}
+          aria-invalid={error || undefined}
+          tabIndex={-1}
+          aria-hidden
+          onChange={() => undefined}
+          onInvalid={(event) => {
+            event.preventDefault();
+            triggerRef.current?.focus();
+          }}
+          className="sr-only"
+        >
+          <option value="" />
+          {options.map((option) => (
+            <option key={option.value} value={option.value} disabled={option.disabled}>
+              {option.label}
+            </option>
+          ))}
+        </select>
       ) : null}
 
       <label
@@ -273,12 +296,22 @@ export const SelectFieldInput = forwardRef<
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={listboxId}
+        aria-activedescendant={
+          open && highlighted >= 0 ? `${listboxId}-option-${highlighted}` : undefined
+        }
         aria-describedby={error ? errorId : hint ? hintId : undefined}
         onClick={(event) => {
           onClick?.(event);
           if (event.defaultPrevented || disabled) return;
           if (open) close();
           else openList();
+        }}
+        onBlur={(event) => {
+          onBlur?.(event);
+          if (event.defaultPrevented) return;
+          window.requestAnimationFrame(() => {
+            if (!rootRef.current?.contains(document.activeElement)) close();
+          });
         }}
         onKeyDown={handleTriggerKeyDown}
         className={cn(
@@ -321,6 +354,7 @@ export const SelectFieldInput = forwardRef<
             return (
               <li
                 key={option.value}
+                id={`${listboxId}-option-${index}`}
                 role="option"
                 aria-selected={isSelected}
                 aria-disabled={option.disabled || undefined}

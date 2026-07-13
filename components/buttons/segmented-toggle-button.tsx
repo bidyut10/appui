@@ -12,7 +12,54 @@ export type SegmentedToggleButtonProps = Readonly<
   } & ComponentPropsWithoutRef<"div">
 >;
 
-// Segmented toggle — iOS-style sliding pill between two or three options.
+const SEGMENT_MOTION =
+  "transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none";
+
+const LABEL_MOTION =
+  "transition-[color,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none";
+
+function segmentGridClass(count: number): string {
+  if (count <= 2) return "grid-cols-2";
+  if (count === 3) return "grid-cols-3";
+  if (count === 4) return "grid-cols-4";
+  return "grid-cols-5";
+}
+
+function indicatorWidthClass(count: number): string {
+  // Subtract horizontal padding (0.5rem) plus inter-segment gaps (gap-1 each).
+  if (count <= 2) return "w-[calc((100%-0.75rem)/2)]";
+  if (count === 3) return "w-[calc((100%-1rem)/3)]";
+  if (count === 4) return "w-[calc((100%-1.25rem)/4)]";
+  return "w-[calc((100%-1.5rem)/5)]";
+}
+
+function indicatorOffsetClass(count: number, active: number): string {
+  if (active <= 0) return "translate-x-0";
+
+  const offsets: Record<number, Record<number, string>> = {
+    2: { 1: "translate-x-[calc(100%+0.25rem)]" },
+    3: {
+      1: "translate-x-[calc(100%+0.25rem)]",
+      2: "translate-x-[calc(200%+0.5rem)]",
+    },
+    4: {
+      1: "translate-x-[calc(100%+0.25rem)]",
+      2: "translate-x-[calc(200%+0.5rem)]",
+      3: "translate-x-[calc(300%+0.75rem)]",
+    },
+    5: {
+      1: "translate-x-[calc(100%+0.25rem)]",
+      2: "translate-x-[calc(200%+0.5rem)]",
+      3: "translate-x-[calc(300%+0.75rem)]",
+      4: "translate-x-[calc(400%+1rem)]",
+    },
+  };
+
+  const capped = Math.min(count, 5);
+  return offsets[capped]?.[active] ?? "translate-x-0";
+}
+
+// Segmented toggle — iOS-style sliding pill with smooth eased motion.
 export const SegmentedToggleButton = forwardRef<
   HTMLDivElement,
   SegmentedToggleButtonProps
@@ -29,6 +76,7 @@ export const SegmentedToggleButton = forwardRef<
   ) => {
     const [active, setActive] = useState(defaultIndex);
     const count = options.length;
+    const safeActive = Math.min(Math.max(active, 0), Math.max(count - 1, 0));
 
     const select = (index: number) => {
       setActive(index);
@@ -41,18 +89,20 @@ export const SegmentedToggleButton = forwardRef<
         role="tablist"
         data-slot="segmented-toggle-button"
         className={cn(
-          "relative inline-flex h-10 rounded-xl bg-neutral-100 p-1 font-sans text-sm font-medium select-none",
+          "relative inline-grid w-fit gap-1 rounded-xl border border-neutral-200/80 bg-neutral-100 p-1 font-sans text-sm font-medium shadow-sm select-none",
+          segmentGridClass(count),
           className,
         )}
         {...props}
       >
         <span
           aria-hidden
-          className="absolute top-1 bottom-1 rounded-lg bg-white shadow-sm transition-[left,width] duration-200 ease-out"
-          style={{
-            left: `calc(${active} * (100% / ${count}) + 4px)`,
-            width: `calc(100% / ${count} - 8px)`,
-          }}
+          className={cn(
+            "pointer-events-none absolute top-1 bottom-1 left-1 rounded-lg border border-neutral-200/60 bg-white shadow-sm",
+            SEGMENT_MOTION,
+            indicatorWidthClass(count),
+            indicatorOffsetClass(count, safeActive),
+          )}
         />
 
         {options.map((option, index) => (
@@ -60,11 +110,15 @@ export const SegmentedToggleButton = forwardRef<
             key={option}
             type="button"
             role="tab"
-            aria-selected={active === index}
+            aria-selected={safeActive === index}
+            tabIndex={safeActive === index ? 0 : -1}
             onClick={() => select(index)}
             className={cn(
-              "relative z-10 flex-1 cursor-pointer px-4 py-1.5 transition-colors duration-200",
-              active === index ? "text-neutral-900" : "text-neutral-500",
+              "relative z-10 min-w-[4.5rem] cursor-pointer rounded-lg px-4 py-2 text-center whitespace-nowrap outline-none focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-neutral-900",
+              LABEL_MOTION,
+              safeActive === index
+                ? "text-neutral-900"
+                : "text-neutral-500 hover:text-neutral-700",
             )}
           >
             {option}

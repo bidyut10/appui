@@ -42,9 +42,9 @@ export const BookmarkSaveButton = forwardRef<
           onClick?.(event);
         }}
         className={cn(
-          "inline-flex h-10 cursor-pointer items-center gap-2 rounded-lg border px-3.5 font-sans text-sm font-medium transition-all duration-200 active:scale-[0.98] select-none",
+          "inline-flex h-10 cursor-pointer items-center gap-2 rounded-lg border px-3.5 font-sans text-sm font-medium transition-[background-color,border-color,color,transform] duration-500 ease-in-out active:scale-[0.98] select-none",
           saved
-            ? "border-amber-200 bg-amber-50 text-amber-800"
+            ? "border-yellow-200 bg-yellow-400 text-white"
             : "border-neutral-200 bg-white text-neutral-700 hover:border-neutral-300",
           className,
         )}
@@ -54,8 +54,8 @@ export const BookmarkSaveButton = forwardRef<
           size={16}
           strokeWidth={2}
           className={cn(
-            "transition-transform duration-200",
-            saved ? "scale-110 fill-amber-500 text-amber-500" : "scale-100",
+            "transition-[fill,color,transform] duration-500 ease-in-out",
+            saved ? "scale-110 fill-white text-white" : "scale-100 fill-transparent text-current",
           )}
         />
         {saved ? savedLabel : label}

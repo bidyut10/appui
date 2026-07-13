@@ -73,7 +73,7 @@ export const CopyButton = forwardRef<HTMLButtonElement, CopyButtonProps>(
         <span
           className={cn(
             "flex size-6 items-center justify-center rounded-md transition-colors duration-200",
-            copied ? "bg-emerald-50 text-emerald-600" : "bg-neutral-100 text-neutral-500",
+            copied ? "bg-neutral-50 text-emerald-600" : "bg-neutral-50/50 text-neutral-500",
           )}
         >
           <span className="relative flex size-4 items-center justify-center">

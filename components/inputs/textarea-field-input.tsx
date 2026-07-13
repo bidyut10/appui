@@ -58,7 +58,13 @@ export const TextareaFieldInput = forwardRef<
   const [internal, setInternal] = useState(String(defaultValue));
   const current = isControlled ? String(value) : internal;
   const length = current.length;
-  const atLimit = maxLength !== undefined && length >= maxLength;
+  const safeMaxLength =
+    maxLength === undefined
+      ? undefined
+      : Number.isFinite(maxLength)
+        ? Math.max(0, Math.floor(maxLength))
+        : 500;
+  const atLimit = safeMaxLength !== undefined && length >= safeMaxLength;
 
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -88,7 +94,7 @@ export const TextareaFieldInput = forwardRef<
           ) : null}
         </label>
 
-        {showCount && maxLength !== undefined ? (
+        {showCount && safeMaxLength !== undefined ? (
           <span
             id={countId}
             className={cn(
@@ -96,7 +102,7 @@ export const TextareaFieldInput = forwardRef<
               atLimit && "text-amber-600",
             )}
           >
-            {length}/{maxLength}
+            {length}/{safeMaxLength}
           </span>
         ) : null}
       </div>
@@ -108,13 +114,13 @@ export const TextareaFieldInput = forwardRef<
         disabled={disabled}
         required={required}
         value={current}
-        maxLength={maxLength}
+        maxLength={safeMaxLength}
         aria-invalid={error || undefined}
         aria-describedby={
           [
             error ? errorId : null,
             hint ? hintId : null,
-            showCount && maxLength !== undefined ? countId : null,
+            showCount && safeMaxLength !== undefined ? countId : null,
           ]
             .filter(Boolean)
             .join(" ") || undefined

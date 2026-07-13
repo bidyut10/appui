@@ -29,6 +29,7 @@ export type DateFieldInputProps = Readonly<
     containerClassName?: string;
     openPickerLabel?: string;
     name?: string;
+    required?: boolean;
     onValueChange?: (value: string) => void;
   } & Omit<
     ComponentPropsWithoutRef<"button">,
@@ -118,13 +119,15 @@ function buildMonthGrid(month: Date): Date[] {
 }
 
 function isDisabledDay(day: Date, min?: string, max?: string): boolean {
-  const iso = toIsoDate(day);
-  if (min && iso < min) return true;
-  if (max && iso > max) return true;
+  const minDate = min ? parseIsoDate(min) : null;
+  const maxDate = max ? parseIsoDate(max) : null;
+  const time = new Date(day.getFullYear(), day.getMonth(), day.getDate()).getTime();
+  if (minDate && time < minDate.getTime()) return true;
+  if (maxDate && time > maxDate.getTime()) return true;
   return false;
 }
 
-export const DateFieldInput = forwardRef<HTMLInputElement, DateFieldInputProps>(
+export const DateFieldInput = forwardRef<HTMLButtonElement, DateFieldInputProps>(
   function DateFieldInput(
     {
       className,
@@ -146,6 +149,7 @@ export const DateFieldInput = forwardRef<HTMLInputElement, DateFieldInputProps>(
       onChange,
       onValueChange,
       onClick,
+      onBlur,
       onKeyDown,
       ...props
     },
@@ -157,7 +161,7 @@ export const DateFieldInput = forwardRef<HTMLInputElement, DateFieldInputProps>(
     const hintId = `${fieldId}-hint`;
     const errorId = `${fieldId}-error`;
     const rootRef = useRef<HTMLDivElement | null>(null);
-    const hiddenRef = useRef<HTMLInputElement | null>(null);
+    const triggerRef = useRef<HTMLButtonElement | null>(null);
     const today = useMemo(() => new Date(), []);
 
     const isControlled = value !== undefined;
@@ -195,7 +199,7 @@ export const DateFieldInput = forwardRef<HTMLInputElement, DateFieldInputProps>(
         const next = toIsoDate(day);
         emitChange(next);
         close();
-        hiddenRef.current?.focus();
+        triggerRef.current?.focus();
       },
       [close, emitChange, max, min],
     );
@@ -203,18 +207,21 @@ export const DateFieldInput = forwardRef<HTMLInputElement, DateFieldInputProps>(
     useEffect(() => {
       if (!open) return;
 
-      function handlePointerDown(event: MouseEvent) {
+      function handlePointerDown(event: PointerEvent) {
         if (!rootRef.current?.contains(event.target as Node)) close();
       }
 
       function handleEscape(event: globalThis.KeyboardEvent) {
-        if (event.key === "Escape") close();
+        if (event.key === "Escape") {
+          close();
+          triggerRef.current?.focus();
+        }
       }
 
-      document.addEventListener("mousedown", handlePointerDown);
+      document.addEventListener("pointerdown", handlePointerDown);
       document.addEventListener("keydown", handleEscape);
       return () => {
-        document.removeEventListener("mousedown", handlePointerDown);
+        document.removeEventListener("pointerdown", handlePointerDown);
         document.removeEventListener("keydown", handleEscape);
       };
     }, [close, open]);
@@ -243,13 +250,20 @@ export const DateFieldInput = forwardRef<HTMLInputElement, DateFieldInputProps>(
         className={cn("relative w-full max-w-sm font-sans", containerClassName)}
       >
         <input
-          ref={mergeRefs(ref, hiddenRef)}
-          type="hidden"
+          type="text"
           name={name}
           value={current}
+          disabled={disabled}
           required={required}
+          aria-invalid={error || undefined}
           tabIndex={-1}
           aria-hidden
+          onInvalid={(event) => {
+            event.preventDefault();
+            triggerRef.current?.focus();
+          }}
+          className="sr-only"
+          readOnly
         />
 
         <label
@@ -265,12 +279,14 @@ export const DateFieldInput = forwardRef<HTMLInputElement, DateFieldInputProps>(
         </label>
 
         <button
+          ref={mergeRefs(ref, triggerRef)}
           id={fieldId}
           type="button"
           disabled={disabled}
           aria-haspopup="dialog"
           aria-expanded={open}
           aria-controls={calendarId}
+          aria-label={`${openPickerLabel}: ${label}`}
           aria-describedby={error ? errorId : hint ? hintId : undefined}
           onClick={(event) => {
             onClick?.(event);
@@ -280,6 +296,13 @@ export const DateFieldInput = forwardRef<HTMLInputElement, DateFieldInputProps>(
               if (selectedDate) setViewMonth(startOfMonth(selectedDate));
               setOpen(true);
             }
+          }}
+          onBlur={(event) => {
+            onBlur?.(event);
+            if (event.defaultPrevented) return;
+            window.requestAnimationFrame(() => {
+              if (!rootRef.current?.contains(document.activeElement)) close();
+            });
           }}
           onKeyDown={handleTriggerKeyDown}
           className={cn(

@@ -61,6 +61,11 @@ import { ComboboxFieldInput } from "@/components/inputs/combobox-field-input";
 import { DateFieldInput } from "@/components/inputs/date-field-input";
 import { FileUploadFieldInput } from "@/components/inputs/file-upload-field-input";
 import { FloatingLabelFieldInput } from "@/components/inputs/floating-label-field-input";
+import { ContactForm } from "@/components/forms/contact-form";
+import { ForgotPasswordForm } from "@/components/forms/forgot-password-form";
+import { LoginForm } from "@/components/forms/login-form";
+import { NewsletterForm } from "@/components/forms/newsletter-form";
+import { SignupForm } from "@/components/forms/signup-form";
 import { CheckboxFieldInput } from "@/components/inputs/checkbox-field-input";
 import { InputGroupField } from "@/components/inputs/input-group-field";
 import { PasswordFieldInput } from "@/components/inputs/password-field-input";
@@ -1756,6 +1761,65 @@ export const showcaseRows = [
       },
     ),
   ],
+  [
+    c(
+      "login-form",
+      <LoginForm />,
+      "components/forms/login-form.tsx",
+      "LoginForm",
+      {
+        description:
+          "Production login form with email/password validation, remember me, show password, loading state, and forgot-password link.",
+        usage: '<LoginForm onSubmit={async (values) => signIn(values)} />',
+      },
+    ),
+    c(
+      "signup-form",
+      <SignupForm />,
+      "components/forms/signup-form.tsx",
+      "SignupForm",
+      {
+        description:
+          "Registration form with name, email, password strength rules, confirm password match, and required terms acceptance.",
+        usage: '<SignupForm onSubmit={async (values) => register(values)} />',
+      },
+    ),
+    c(
+      "contact-form",
+      <ContactForm />,
+      "components/forms/contact-form.tsx",
+      "ContactForm",
+      {
+        description:
+          "Contact form with honeypot spam guard, character count, field validation, loading state, and success confirmation screen.",
+        usage: '<ContactForm onSubmit={async (values) => sendMessage(values)} />',
+      },
+    ),
+  ],
+  [
+    c(
+      "newsletter-form",
+      <NewsletterForm />,
+      "components/forms/newsletter-form.tsx",
+      "NewsletterForm",
+      {
+        description:
+          "Email subscribe form with inline button, validation, privacy note, and inline success message — built for footers and landing pages.",
+        usage: '<NewsletterForm onSubmit={async (email) => subscribe(email)} />',
+      },
+    ),
+    c(
+      "forgot-password-form",
+      <ForgotPasswordForm />,
+      "components/forms/forgot-password-form.tsx",
+      "ForgotPasswordForm",
+      {
+        description:
+          "Password reset request form with email validation, loading state, success screen, and back-to-login navigation.",
+        usage: '<ForgotPasswordForm onSubmit={async (email) => requestReset(email)} />',
+      },
+    ),
+  ],
 ];
 
 // Catalog (auto — no need to edit)
@@ -1787,6 +1851,14 @@ function categoryFromFile(file: string): string {
 
 export function isInputShowcaseFile(file: string): boolean {
   return file.startsWith("components/inputs/");
+}
+
+export function isFormShowcaseFile(file: string): boolean {
+  return file.startsWith("components/forms/");
+}
+
+export function isNarrowShowcaseFile(file: string): boolean {
+  return isInputShowcaseFile(file) || isFormShowcaseFile(file);
 }
 
 function buildCatalog(): Record<string, ShowcaseEntry> {

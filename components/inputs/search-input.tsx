@@ -3,6 +3,7 @@
 import {
   forwardRef,
   useCallback,
+  useEffect,
   useId,
   useRef,
   useState,
@@ -83,6 +84,15 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
       },
       [ref],
     );
+
+    useEffect(() => {
+      if (isControlled) return;
+      const form = localRef.current?.form;
+      if (!form) return;
+      const handleReset = () => setInternal(String(defaultValue));
+      form.addEventListener("reset", handleReset);
+      return () => form.removeEventListener("reset", handleReset);
+    }, [defaultValue, isControlled]);
 
     return (
       <div

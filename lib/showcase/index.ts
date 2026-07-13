@@ -5,6 +5,8 @@ export {
   getAllShowcaseSlugs,
   getShowcaseByCategory,
   isInputShowcaseFile,
+  isFormShowcaseFile,
+  isNarrowShowcaseFile,
   type ShowcaseItem,
   type ShowcaseEntry,
   type ShowcaseCategoryGroup,

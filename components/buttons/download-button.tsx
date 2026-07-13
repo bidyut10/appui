@@ -9,7 +9,7 @@ import {
 } from "react";
 
 import { cn } from "@/lib/cn";
-import { Check, Download } from "lucide-react";
+import { ArrowDownToLine, Check, Loader2 } from "lucide-react";
 
 type Phase = "idle" | "downloading" | "done";
 
@@ -23,7 +23,13 @@ export type DownloadButtonProps = Readonly<
   } & Omit<ComponentPropsWithoutRef<"button">, "onDownload">
 >;
 
-// Download — horizontal fill sweeps across while downloading, then shows done.
+const WASH_MOTION =
+  "transition-opacity duration-700 ease-in-out motion-reduce:transition-none";
+
+const ICON_MOTION =
+  "transition-[opacity,color] duration-500 ease-in-out motion-reduce:transition-none";
+
+// Download — layered washes crossfade from neutral to emerald; spinner while loading.
 export const DownloadButton = forwardRef<HTMLButtonElement, DownloadButtonProps>(
   (
     {
@@ -39,56 +45,42 @@ export const DownloadButton = forwardRef<HTMLButtonElement, DownloadButtonProps>
     ref,
   ) => {
     const [phase, setPhase] = useState<Phase>("idle");
-    const [progress, setProgress] = useState(0);
-    const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
-    const rafRef = useRef<number | null>(null);
-    const startRef = useRef(0);
+    const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     useEffect(() => {
-      const timeoutIds = timers;
       return () => {
-        timeoutIds.current.forEach((id) => globalThis.clearTimeout(id));
-        if (rafRef.current !== null) globalThis.cancelAnimationFrame(rafRef.current);
+        if (timerRef.current !== null) globalThis.clearTimeout(timerRef.current);
       };
     }, []);
 
-    const stopRaf = () => {
-      if (rafRef.current !== null) {
-        globalThis.cancelAnimationFrame(rafRef.current);
-        rafRef.current = null;
+    const clearTimer = () => {
+      if (timerRef.current !== null) {
+        globalThis.clearTimeout(timerRef.current);
+        timerRef.current = null;
       }
     };
 
-    const startDownload = () => {
-      setPhase("downloading");
-      setProgress(0);
-      startRef.current = performance.now();
-      onDownload?.();
-
-      const tick = (now: number) => {
-        const next = Math.min(1, (now - startRef.current) / downloadMs);
-        setProgress(next);
-        if (next >= 1) {
-          stopRaf();
-          setPhase("done");
-          timers.current.push(
-            globalThis.setTimeout(() => {
-              setPhase("idle");
-              setProgress(0);
-            }, resetMs),
-          );
-          return;
-        }
-        rafRef.current = globalThis.requestAnimationFrame(tick);
-      };
-      rafRef.current = globalThis.requestAnimationFrame(tick);
+    const schedule = (fn: () => void, ms: number) => {
+      clearTimer();
+      timerRef.current = globalThis.setTimeout(fn, ms);
     };
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
       onClick?.(event);
       if (phase !== "idle") return;
-      startDownload();
+
+      setPhase("downloading");
+      onDownload?.();
+
+      schedule(() => {
+        setPhase("done");
+        schedule(() => setPhase("idle"), resetMs);
+      }, downloadMs);
     };
+
+    const idle = phase === "idle";
+    const downloading = phase === "downloading";
+    const done = phase === "done";
 
     return (
       <button
@@ -96,38 +88,92 @@ export const DownloadButton = forwardRef<HTMLButtonElement, DownloadButtonProps>
         type="button"
         data-slot="download-button"
         data-phase={phase}
+        aria-busy={downloading}
         onClick={handleClick}
-        disabled={phase !== "idle"}
         className={cn(
-          "relative h-11 min-w-40 cursor-pointer overflow-hidden rounded-xl border px-4 font-sans text-sm font-semibold transition-colors duration-300 disabled:cursor-default",
-          phase === "done"
-            ? "border-emerald-200 bg-emerald-50 text-emerald-700"
-            : "border-neutral-200 bg-white text-neutral-800 hover:border-neutral-300",
+          "relative inline-flex h-10 min-w-36 cursor-pointer items-center gap-2.5 overflow-hidden rounded-lg bg-white px-3.5 font-sans text-sm font-medium shadow-sm outline-none select-none",
+          "transition-colors duration-200 ease-out motion-reduce:transition-none",
+          idle && "text-neutral-700 hover:text-neutral-900",
+          downloading && "text-neutral-800",
+          done && "text-emerald-800",
+          "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900",
           className,
         )}
         {...props}
       >
-        {phase === "downloading" && (
-          <span
-            aria-hidden
-            className="absolute inset-y-0 left-0 bg-sky-100 transition-[width] duration-75 ease-linear"
-            style={{ width: `${progress * 100}%` }}
-          />
-        )}
-
-        <span className="relative z-10 flex items-center justify-center gap-2">
-          {phase === "done" ? (
-            <>
-              <Check size={15} strokeWidth={2.5} />
-              {doneLabel}
-            </>
-          ) : (
-            <>
-              <Download size={15} strokeWidth={2} />
-              {label}
-            </>
+        <span
+          aria-hidden
+          className={cn(
+            "pointer-events-none absolute inset-0 bg-neutral-100",
+            WASH_MOTION,
+            downloading ? "opacity-100" : "opacity-0",
           )}
+        />
+        <span
+          aria-hidden
+          className={cn(
+            "pointer-events-none absolute inset-0 bg-emerald-50",
+            WASH_MOTION,
+            done ? "opacity-100" : "opacity-0",
+          )}
+        />
+        <span
+          aria-hidden
+          className={cn(
+            "pointer-events-none absolute inset-0 bg-emerald-100/40",
+            WASH_MOTION,
+            done ? "opacity-100" : "opacity-0",
+          )}
+        />
+
+        <span
+          className={cn(
+            "relative z-10 flex size-6 shrink-0 items-center justify-center",
+            ICON_MOTION,
+            idle && "text-neutral-500",
+            downloading && "text-neutral-700",
+            done && "text-emerald-700",
+          )}
+        >
+          <span className="relative size-3.5 shrink-0">
+            <ArrowDownToLine
+              size={14}
+              strokeWidth={2}
+              aria-hidden
+              className={cn(
+                "absolute inset-0",
+                ICON_MOTION,
+                idle ? "opacity-100" : "opacity-0",
+              )}
+            />
+            <span
+              aria-hidden
+              className={cn(
+                "absolute inset-0 grid place-items-center",
+                ICON_MOTION,
+                downloading ? "opacity-100" : "opacity-0",
+              )}
+            >
+              <Loader2
+                size={14}
+                strokeWidth={2}
+                className="motion-reduce:animate-none animate-spin"
+              />
+            </span>
+            <Check
+              size={14}
+              strokeWidth={2.5}
+              aria-hidden
+              className={cn(
+                "absolute inset-0",
+                ICON_MOTION,
+                done ? "opacity-100" : "opacity-0",
+              )}
+            />
+          </span>
         </span>
+
+        <span className="relative z-10 tabular-nums">{done ? doneLabel : label}</span>
       </button>
     );
   },

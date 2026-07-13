@@ -7,7 +7,7 @@ import { ShowcasePreviewContent } from "../shared/showcase-preview-content";
 type DocsPreviewStageProps = Readonly<{
   children: ReactNode;
   className?: string;
-  variant?: "default" | "input";
+  variant?: "default" | "input" | "form";
 }>;
 
 export function DocsPreviewStage({

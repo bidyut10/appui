@@ -12,7 +12,7 @@ type ComponentPreviewCardProps = Readonly<{
   category: string;
   description: string;
   preview: ReactNode;
-  variant?: "default" | "input";
+  variant?: "default" | "input" | "form";
 }>;
 
 export function ComponentPreviewCard({

@@ -7,7 +7,6 @@ import {
   useState,
   type ChangeEvent,
   type ComponentPropsWithoutRef,
-  type KeyboardEvent,
 } from "react";
 
 import { cn } from "@/lib/cn";
@@ -29,6 +28,7 @@ export type RadioGroupFieldInputProps = Readonly<
     orientation?: "vertical" | "horizontal";
     containerClassName?: string;
     name?: string;
+    required?: boolean;
     onValueChange?: (value: string) => void;
   } & Omit<ComponentPropsWithoutRef<"fieldset">, "onChange">
 > & {
@@ -100,33 +100,6 @@ export const RadioGroupFieldInput = forwardRef<
     [isControlled, onChange, onValueChange],
   );
 
-  const handleKeyDown = useCallback(
-    (event: KeyboardEvent<HTMLFieldSetElement>) => {
-      if (disabled || orientation !== "vertical") return;
-
-      const enabled = options.filter((option) => !option.disabled);
-      const currentIndex = enabled.findIndex((option) => option.value === current);
-      if (currentIndex < 0) return;
-
-      let nextIndex = currentIndex;
-      if (event.key === "ArrowDown" || event.key === "ArrowRight") {
-        event.preventDefault();
-        nextIndex = (currentIndex + 1) % enabled.length;
-      } else if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
-        event.preventDefault();
-        nextIndex = (currentIndex - 1 + enabled.length) % enabled.length;
-      } else {
-        return;
-      }
-
-      const nextOption = enabled[nextIndex];
-      if (!nextOption) return;
-      if (!isControlled) setInternal(nextOption.value);
-      onValueChange?.(nextOption.value);
-    },
-    [current, disabled, isControlled, onValueChange, options, orientation],
-  );
-
   return (
     <fieldset
       ref={ref}
@@ -134,7 +107,6 @@ export const RadioGroupFieldInput = forwardRef<
       disabled={disabled}
       aria-invalid={error || undefined}
       aria-describedby={error ? errorId : hint ? hintId : undefined}
-      onKeyDown={handleKeyDown}
       data-slot="radio-group-field-input"
       data-error={error || undefined}
       className={cn("w-full max-w-sm border-0 p-0 font-sans", containerClassName, className)}
