@@ -42,7 +42,7 @@ export const QuantityStepperButton = forwardRef<
     // bottom edge. Pressing sinks it and flips the shadows inward.
     const keyClass = cn(
       "group flex w-10 cursor-pointer items-center justify-center rounded-lg bg-neutral-50 text-neutral-600 transition-[box-shadow,color,transform,background-color] duration-200 ease-[cubic-bezier(0.32,0.72,0,1)]",
-      "shadow-[0_1px_1px_rgba(0,0,0,0.12),0_2px_3px_rgba(0,0,0,0.1),0_4px_8px_rgba(0,0,0,0.06),inset_0_1.5px_0_rgba(255,255,255,1),inset_0_-2px_3px_rgba(0,0,0,0.1),inset_1px_0_1px_rgba(255,255,255,0.5),inset_-1px_0_1px_rgba(255,255,255,0.5)]",
+      "shadow-[0_1px_1px_rgba(0,0,0,0.12),0_2px_3px_rgba(0,0,0,0.1),0_4px_8px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.55),inset_0_-2px_3px_rgba(0,0,0,0.1),inset_1px_0_1px_rgba(255,255,255,0.25),inset_-1px_0_1px_rgba(255,255,255,0.25)]",
       "hover:text-neutral-900",
       "active:bg-neutral-100 active:shadow-[0_1px_1px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(0,0,0,0.06),inset_0_2px_3px_rgba(0,0,0,0.03),inset_0_-2px_3px_rgba(0,0,0,0.05)]",
       "disabled:cursor-default disabled:bg-transparent disabled:text-neutral-300 disabled:shadow-none",
