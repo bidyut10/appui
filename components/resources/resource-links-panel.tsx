@@ -41,22 +41,10 @@ const DEMO_ITEMS: ResourceLinkItem[] = [
     imageSrc: "/lucide-logo.svg",
   },
   {
-    name: "Manu sir",
-    description: "For inspiration",
-    href: "https://www.manuarora.in",
-    imageSrc: "/manu.webp",
-  },
-  {
-    name: "PostHog",
-    description: "For tracking",
-    href: "https://posthog.com",
-    imageSrc: "/posthog.png",
-  },
-  {
-    name: "Flaticon",
-    description: "For image PNGs",
-    href: "https://www.flaticon.com",
-    imageSrc: "/flaticon.png",
+    name: "Product Hunt",
+    description: "For new products",
+    href: "https://www.producthunt.com",
+    imageSrc: "/producthunt.png",
   },
 ];
 

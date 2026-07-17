@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { siteConfig } from "@/lib/site";
+import { LogoIcon } from "@/app/(marketing)/_components/Logo";
 
 type DashboardShellProps = Readonly<{
   children: ReactNode;
@@ -14,14 +15,20 @@ export function DashboardShell({ children }: DashboardShellProps) {
       <header className="shrink-0 border-b border-neutral-200 bg-white">
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4 md:px-6">
           <Link href="/" className="inline-flex shrink-0 items-center">
-            <Image
+            {/* <Image
               src="/osui-logo.png"
               alt={siteConfig.name}
               width={0}
               height={0}
               sizes="96px"
               className="h-auto w-16 md:w-20"
-            />
+            /> */}
+                    <div className="flex items-center gap-1">
+          <LogoIcon className="w-6" fill="text-rose-300"/>
+          <span className="text-lg tracking-tighter font-medium font-sans">
+            {siteConfig.displayName}
+          </span>
+        </div>
           </Link>
 
           <div className="flex items-center gap-4">

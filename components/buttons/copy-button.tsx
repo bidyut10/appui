@@ -28,9 +28,11 @@ const ICON_LAYER =
 const LABEL_LAYER =
   "col-start-1 row-start-1 text-left transition-opacity ease-out motion-reduce:transition-none";
 
-// Embossed glyph: white highlight below the strokes, faint shade above.
-const EMBOSS =
-  "filter-[drop-shadow(0_1px_0_rgba(255,255,255,0.9))_drop-shadow(0_-1px_0.5px_rgba(0,0,0,0.12))]";
+// Soft cast shadow under the glyph — 3D lift, no hard outline rim.
+const ICON_SHADOW =
+  "filter-[drop-shadow(0_1px_1px_rgba(0,0,0,0.22))_drop-shadow(0_2px_3px_rgba(0,0,0,0.12))]";
+const ICON_SHADOW_COPIED =
+  "filter-[drop-shadow(0_1px_1px_rgba(4,120,87,0.3))_drop-shadow(0_2px_3px_rgba(4,120,87,0.15))]";
 
 // Copy — writes to clipboard and fades the icon and label to a confirmation.
 export const CopyButton = forwardRef<HTMLButtonElement, CopyButtonProps>(
@@ -98,7 +100,7 @@ export const CopyButton = forwardRef<HTMLButtonElement, CopyButtonProps>(
               copied ? "opacity-0 duration-200" : "opacity-100 duration-300 delay-200",
             )}
           >
-            <Copy size={12} strokeWidth={2} className={EMBOSS} />
+            <Copy size={12} strokeWidth={2} className={ICON_SHADOW} />
           </span>
           <span
             aria-hidden
@@ -107,7 +109,7 @@ export const CopyButton = forwardRef<HTMLButtonElement, CopyButtonProps>(
               copied ? "opacity-100 duration-300 delay-200" : "opacity-0 duration-200",
             )}
           >
-            <Check size={14} strokeWidth={2.5} className={EMBOSS} />
+            <Check size={14} strokeWidth={2.5} className={ICON_SHADOW_COPIED} />
           </span>
         </span>
 

@@ -2,6 +2,7 @@ import { resolveShowcaseCategory, isFormShowcaseFile, isInputShowcaseFile, type 
 import { AnnotatedText } from "@/components/underlines/annotated-text";
 
 import { ComponentPreviewCard } from "./component-preview-card";
+import Link from "next/link";
 
 type ComponentsCatalogProps = Readonly<{
   categories: ShowcaseCategoryGroup[];
@@ -20,9 +21,9 @@ export function ComponentsCatalog({
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-8 md:px-8 md:py-10">
       <div id="overview" className="scroll-mt-8">
-        <p className="font-mono text-[11px] tracking-[0.14em] text-neutral-400 uppercase">
+        <Link href="/components" className="font-mono text-[11px] tracking-[0.14em] text-neutral-400 uppercase">
           Components / Docs
-        </p>
+        </Link>
 
         <h1 className="mt-3 font-serif text-3xl text-neutral-900">
           {activeGroup.category}

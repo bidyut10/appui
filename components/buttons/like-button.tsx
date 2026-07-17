@@ -100,11 +100,9 @@ export const LikeButton = forwardRef<HTMLButtonElement, LikeButtonProps>(
         className={cn(
           "inline-flex h-10 cursor-pointer items-center gap-2 rounded-full pr-4 pl-3 font-sans text-sm font-medium select-none",
           "transition-[background-color,box-shadow,color] duration-200 ease-[cubic-bezier(0.32,0.72,0,1)]",
-          // Raised keycap: hairline outline so the edge reads on white pages,
-          // tight downward shadows, white bevel on top, shaded bottom edge.
-          // Pressing flips the shadows inward so the pill sinks.
-          "shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_1px_rgba(0,0,0,0.12),0_2px_3px_rgba(0,0,0,0.12),inset_0_1.5px_0_rgba(255,255,255,1),inset_0_-2px_3px_rgba(0,0,0,0.1)]",
-          "active:shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_1px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(0,0,0,0.06),inset_0_2px_3px_rgba(0,0,0,0.03),inset_0_-2px_3px_rgba(0,0,0,0.05)]",
+          // Soft blurred top highlight (not a hard white rim) + lift shadows.
+          "shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_1px_rgba(0,0,0,0.1),0_2px_4px_rgba(0,0,0,0.08),inset_0_1px_2px_rgba(255,255,255,0.4),inset_0_-2px_4px_rgba(0,0,0,0.08)]",
+          "active:shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_1px_rgba(0,0,0,0.06),inset_0_1px_2px_rgba(0,0,0,0.08),inset_0_2px_4px_rgba(0,0,0,0.04),inset_0_-1px_2px_rgba(0,0,0,0.05)]",
           liked
             ? "bg-rose-50 text-rose-600 active:bg-rose-100"
             : "bg-neutral-50 text-neutral-600 hover:text-neutral-900 active:bg-neutral-100",
@@ -119,16 +117,16 @@ export const LikeButton = forwardRef<HTMLButtonElement, LikeButtonProps>(
             strokeWidth={2}
             aria-hidden
             className={cn(
-              "relative z-10 transition-[transform,fill,color] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]",
-              "filter-[drop-shadow(0_1px_0_rgba(255,255,255,0.9))_drop-shadow(0_-1px_0.5px_rgba(0,0,0,0.12))]",
+              "relative z-10 transition-[transform,fill,color,filter] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]",
+              "filter-[drop-shadow(0_1px_1px_rgba(0,0,0,0.22))_drop-shadow(0_2px_3px_rgba(0,0,0,0.12))]",
               liked
-                ? "scale-110 fill-rose-500 text-rose-500"
+                ? "scale-110 fill-rose-500 text-rose-500 filter-[drop-shadow(0_1px_1px_rgba(244,63,94,0.35))_drop-shadow(0_2px_4px_rgba(244,63,94,0.2))]"
                 : "scale-100 fill-transparent text-current",
             )}
           />
         </span>
 
-        <span className="tabular-nums [text-shadow:0_1px_0_rgba(255,255,255,0.8)]">
+        <span className="tabular-nums">
           {shown.toLocaleString()}
         </span>
       </button>

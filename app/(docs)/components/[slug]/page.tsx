@@ -94,28 +94,33 @@ export default async function ComponentDetailPage({ params }: Readonly<Props>) {
           </nav>
 
           <div id="overview" className="scroll-mt-8">
-            <SaveScrollLink
-              href={categoryHref}
-              className="group mb-5 inline-flex items-center gap-1.5 font-sans text-sm text-neutral-500 underline decoration-neutral-200 underline-offset-4 transition-colors hover:text-neutral-700 hover:decoration-neutral-400"
-            >
-              <span className="relative inline-flex size-3 shrink-0 items-center justify-center">
-                <ChevronLeft
-                  size={12}
-                  strokeWidth={3}
-                  className="ease-smooth transition-[opacity,transform] duration-500 group-hover:-translate-x-0.5 group-hover:scale-95 group-hover:opacity-0"
-                />
-                <MoveLeft
-                  size={12}
-                  strokeWidth={2.5}
-                  className="ease-smooth absolute translate-x-0.5 scale-95 opacity-0 transition-[opacity,transform] duration-500 group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
-                />
-              </span>
-              Back to {entry.category}
-            </SaveScrollLink>
+            <div className="mb-5 flex flex-col items-start gap-3">
+              <SaveScrollLink
+                href={categoryHref}
+                className="group inline-flex items-center gap-1.5 font-sans text-sm text-neutral-500 underline decoration-neutral-200 underline-offset-4 transition-colors hover:text-neutral-700 hover:decoration-neutral-400"
+              >
+                <span className="relative inline-flex size-3 shrink-0 items-center justify-center">
+                  <ChevronLeft
+                    size={12}
+                    strokeWidth={3}
+                    className="ease-smooth transition-[opacity,transform] duration-500 group-hover:-translate-x-0.5 group-hover:scale-95 group-hover:opacity-0"
+                  />
+                  <MoveLeft
+                    size={12}
+                    strokeWidth={2.5}
+                    className="ease-smooth absolute translate-x-0.5 scale-95 opacity-0 transition-[opacity,transform] duration-500 group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
+                  />
+                </span>
+                Back to {entry.category}
+              </SaveScrollLink>
 
-            <p className="font-mono text-[11px] tracking-[0.14em] text-neutral-400 uppercase">
-              Components / {entry.category}
-            </p>
+              <Link
+                href="/components"
+                className="font-mono text-[11px] tracking-[0.14em] text-neutral-400 uppercase"
+              >
+                Components / {entry.category}
+              </Link>
+            </div>
 
             <header className="mt-3">
               <h1 className="font-serif text-3xl text-neutral-900">

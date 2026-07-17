@@ -23,6 +23,7 @@ import { HomeTestimonials } from "./_components/home-testimonials";
 import { ShowcaseScrollRestoration } from "@/app/_shared/scroll/showcase-scroll-restoration";
 import { createPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
+import { LogoIcon } from "./_components/Logo";
 
 export const metadata: Metadata = createPageMetadata({
   title: siteConfig.title,
@@ -36,14 +37,20 @@ export default function Home() {
       <ShowcaseScrollRestoration />
 
       <div className="mt-4 mb-10 max-w-xl px-4 md:px-0">
-        <Image
+        {/* <Image
           src="/osui-logo.png"
           alt={siteConfig.displayName}
           width={0}
           height={0}
           sizes="512px"
           className="h-auto w-30"
-        />
+        /> */}
+        <div className="flex items-center gap-1">
+          <LogoIcon className="w-6" fill="text-rose-300"/>
+          <span className="text-lg tracking-tighter font-medium font-sans">
+            {siteConfig.displayName}
+          </span>
+        </div>
         <Heading className="mt-36">
           Build Better{" "}
           <span className="relative inline-block">

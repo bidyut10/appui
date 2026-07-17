@@ -48,10 +48,9 @@ export const QuantityStepperButton = forwardRef<
       "disabled:cursor-default disabled:bg-transparent disabled:text-neutral-300 disabled:shadow-none",
     );
 
-    // Embossed icon: white highlight below the strokes plus a faint shadow
-    // above. The icon stays put — the key itself sinks on press.
+    // Soft cast shadow under the glyph — 3D lift, no hard outline rim.
     const iconClass = cn(
-      "shrink-0 filter-[drop-shadow(0_1px_0_rgba(255,255,255,0.9))_drop-shadow(0_-1px_0.5px_rgba(0,0,0,0.12))]",
+      "shrink-0 filter-[drop-shadow(0_1px_1px_rgba(0,0,0,0.22))_drop-shadow(0_2px_3px_rgba(0,0,0,0.12))]",
       "group-disabled:filter-none",
     );
 

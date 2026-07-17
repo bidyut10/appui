@@ -92,16 +92,16 @@ export const DownloadButton = forwardRef<HTMLButtonElement, DownloadButtonProps>
           "inline-flex h-10 items-center gap-2 rounded-lg px-4 font-sans text-sm font-medium outline-none select-none",
           "transition-[background-color,box-shadow,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] motion-reduce:transition-none",
           "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900",
-          // Raised keycap; sinks in while pressed or downloading.
-          "shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_1px_rgba(0,0,0,0.12),0_2px_3px_rgba(0,0,0,0.12),inset_0_-2px_3px_rgba(0,0,0,0.08)]",
+          // Soft 3D key; sinks in while pressed or downloading.
+          "shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_1px_rgba(0,0,0,0.1),0_2px_4px_rgba(0,0,0,0.08),inset_0_1px_2px_rgba(255,255,255,0.4),inset_0_-2px_4px_rgba(0,0,0,0.08)]",
           downloading &&
-            "shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_1px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(0,0,0,0.06),inset_0_2px_3px_rgba(0,0,0,0.03),inset_0_-2px_3px_rgba(0,0,0,0.05)]",
+            "shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_1px_rgba(0,0,0,0.06),inset_0_1px_2px_rgba(0,0,0,0.08),inset_0_2px_4px_rgba(0,0,0,0.04),inset_0_-1px_2px_rgba(0,0,0,0.05)]",
           idle &&
-            "cursor-pointer bg-neutral-50 text-neutral-700 hover:text-neutral-900 active:bg-neutral-100 active:shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_1px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(0,0,0,0.06),inset_0_2px_3px_rgba(0,0,0,0.03),inset_0_-2px_3px_rgba(0,0,0,0.05)]",
+            "cursor-pointer bg-neutral-50 text-neutral-700 hover:text-neutral-900 active:bg-neutral-100 active:shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_1px_rgba(0,0,0,0.06),inset_0_1px_2px_rgba(0,0,0,0.08),inset_0_2px_4px_rgba(0,0,0,0.04),inset_0_-1px_2px_rgba(0,0,0,0.05)]",
           downloading && "cursor-default bg-neutral-100 text-neutral-500",
-          // Done: solid raised emerald key with white text, dark-tuned bevels.
+          // Done: emerald 3D key — soft sheen + deep lift (no hard white rim).
           done &&
-            "cursor-default bg-emerald-600 text-white shadow-[0_0_0_1px_rgba(0,0,0,0.15),0_1px_1px_rgba(0,0,0,0.15),0_2px_3px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-2px_3px_rgba(0,0,0,0.25)]",
+            "cursor-default bg-emerald-600 text-white shadow-[0_1px_1px_rgba(0,0,0,0.25),0_3px_6px_rgba(0,0,0,0.2),0_6px_12px_rgba(0,0,0,0.15),inset_0_1px_2px_rgba(255,255,255,0.22),inset_0_-3px_6px_rgba(0,0,0,0.35)]",
           className,
         )}
         {...props}

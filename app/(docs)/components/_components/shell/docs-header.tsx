@@ -9,6 +9,7 @@ import { siteConfig } from "@/lib/site";
 
 import { useDocsShell } from "./docs-shell-context";
 import { DocsSearch } from "./docs-search";
+import { LogoIcon } from "@/app/(marketing)/_components/Logo";
 
 const metaLinkClass =
   "font-sans text-sm text-neutral-400 transition-colors hover:text-neutral-700";
@@ -21,14 +22,20 @@ export function DocsHeader() {
     <header className="shrink-0 border-b border-neutral-200 bg-white">
       <div className="flex h-14 items-center gap-2 px-3 md:gap-4 md:px-6">
         <Link href="/" className="inline-flex shrink-0 items-center">
-          <Image
+          {/* <Image
             src="/osui-logo.png"
             alt={siteConfig.name}
             width={0}
             height={0}
             sizes="96px"
             className="h-auto w-14 md:w-24"
-          />
+          /> */}
+                  <div className="flex items-center gap-1">
+          <LogoIcon className="w-6" fill="text-rose-300"/>
+          <span className="text-lg tracking-tighter font-medium font-sans">
+            {siteConfig.displayName}
+          </span>
+        </div>
         </Link>
 
         <div className="flex min-w-0 flex-1 items-center gap-2 md:justify-center">

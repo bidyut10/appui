@@ -50,16 +50,16 @@ export const FollowButton = forwardRef<HTMLButtonElement, FollowButtonProps>(
           "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900",
           following
             ? cn(
-                // Light raised keycap, like the rest of the 3D set.
+                // Light raised keycap — soft blurred highlight, not a hard rim.
                 "bg-neutral-50 text-neutral-600",
-                "shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_1px_rgba(0,0,0,0.12),0_2px_3px_rgba(0,0,0,0.12),inset_0_-2px_3px_rgba(0,0,0,0.08)]",
-                "active:bg-neutral-100 active:shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_1px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(0,0,0,0.06),inset_0_2px_3px_rgba(0,0,0,0.03),inset_0_-2px_3px_rgba(0,0,0,0.05)]",
+                "shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_1px_rgba(0,0,0,0.1),0_2px_4px_rgba(0,0,0,0.08),inset_0_1px_2px_rgba(255,255,255,0.4),inset_0_-2px_4px_rgba(0,0,0,0.08)]",
+                "active:bg-neutral-100 active:shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_1px_rgba(0,0,0,0.06),inset_0_1px_2px_rgba(0,0,0,0.08),inset_0_2px_4px_rgba(0,0,0,0.04),inset_0_-1px_2px_rgba(0,0,0,0.05)]",
               )
             : cn(
-                // Dark raised keycap: soft top sheen, deep bottom shade.
-                "bg-neutral-900 text-white",
-                "shadow-[0_0_0_1px_rgba(0,0,0,0.4),0_1px_1px_rgba(0,0,0,0.2),0_2px_3px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.2),inset_0_-2px_3px_rgba(0,0,0,0.5)]",
-                "active:bg-neutral-950 active:shadow-[0_0_0_1px_rgba(0,0,0,0.4),0_1px_1px_rgba(0,0,0,0.15),inset_0_2px_4px_rgba(0,0,0,0.5),inset_0_-1px_0_rgba(255,255,255,0.08)]",
+                // Dark 3D key: soft top sheen + deep lift + bottom recess.
+                "bg-neutral-900 text-white hover:bg-neutral-800",
+                "shadow-[0_1px_1px_rgba(0,0,0,0.35),0_3px_6px_rgba(0,0,0,0.28),0_8px_16px_rgba(0,0,0,0.22),inset_0_1px_2px_rgba(255,255,255,0.14),inset_0_-3px_6px_rgba(0,0,0,0.55)]",
+                "active:bg-neutral-950 active:shadow-[0_1px_2px_rgba(0,0,0,0.25),inset_0_2px_6px_rgba(0,0,0,0.55),inset_0_-1px_1px_rgba(255,255,255,0.06)]",
               ),
           className,
         )}
