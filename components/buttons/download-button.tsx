@@ -16,6 +16,7 @@ type Phase = "idle" | "downloading" | "done";
 export type DownloadButtonProps = Readonly<
   {
     label?: string;
+    downloadingLabel?: string;
     doneLabel?: string;
     downloadMs?: number;
     resetMs?: number;
@@ -23,18 +24,22 @@ export type DownloadButtonProps = Readonly<
   } & Omit<ComponentPropsWithoutRef<"button">, "onDownload">
 >;
 
-const WASH_MOTION =
-  "transition-opacity duration-700 ease-in-out motion-reduce:transition-none";
+// Icons stack in one fixed slot and crossfade, so nothing shifts.
+const ICON_LAYER =
+  "absolute inset-0 grid place-items-center transition-opacity duration-300 ease-out motion-reduce:transition-none";
 
-const ICON_MOTION =
-  "transition-[opacity,color] duration-500 ease-in-out motion-reduce:transition-none";
+// Labels stack in one grid cell; outgoing fades out, incoming fades in after.
+const LABEL_LAYER =
+  "col-start-1 row-start-1 text-left transition-opacity ease-out motion-reduce:transition-none";
 
-// Download — layered washes crossfade from neutral to emerald; spinner while loading.
+// Download — raised key sinks while downloading, then settles into a green
+// done state; icon morphs arrow → spinner → check in place.
 export const DownloadButton = forwardRef<HTMLButtonElement, DownloadButtonProps>(
   (
     {
       className,
-      label = "Download",
+      label = "Download File",
+      downloadingLabel = "Downloading...",
       doneLabel = "Downloaded",
       downloadMs = 1400,
       resetMs = 1800,
@@ -53,15 +58,8 @@ export const DownloadButton = forwardRef<HTMLButtonElement, DownloadButtonProps>
       };
     }, []);
 
-    const clearTimer = () => {
-      if (timerRef.current !== null) {
-        globalThis.clearTimeout(timerRef.current);
-        timerRef.current = null;
-      }
-    };
-
     const schedule = (fn: () => void, ms: number) => {
-      clearTimer();
+      if (timerRef.current !== null) globalThis.clearTimeout(timerRef.current);
       timerRef.current = globalThis.setTimeout(fn, ms);
     };
 
@@ -88,92 +86,87 @@ export const DownloadButton = forwardRef<HTMLButtonElement, DownloadButtonProps>
         type="button"
         data-slot="download-button"
         data-phase={phase}
-        aria-busy={downloading}
+        aria-busy={downloading || undefined}
         onClick={handleClick}
         className={cn(
-          "relative inline-flex h-10 min-w-36 cursor-pointer items-center gap-2.5 overflow-hidden rounded-lg bg-white px-3.5 font-sans text-sm font-medium shadow-sm outline-none select-none",
-          "transition-colors duration-200 ease-out motion-reduce:transition-none",
-          idle && "text-neutral-700 hover:text-neutral-900",
-          downloading && "text-neutral-800",
-          done && "text-emerald-800",
+          "inline-flex h-10 items-center gap-2 rounded-lg px-4 font-sans text-sm font-medium outline-none select-none",
+          "transition-[background-color,box-shadow,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] motion-reduce:transition-none",
           "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900",
+          // Raised keycap; sinks in while pressed or downloading.
+          "shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_1px_rgba(0,0,0,0.12),0_2px_3px_rgba(0,0,0,0.12),inset_0_-2px_3px_rgba(0,0,0,0.08)]",
+          downloading &&
+            "shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_1px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(0,0,0,0.06),inset_0_2px_3px_rgba(0,0,0,0.03),inset_0_-2px_3px_rgba(0,0,0,0.05)]",
+          idle &&
+            "cursor-pointer bg-neutral-50 text-neutral-700 hover:text-neutral-900 active:bg-neutral-100 active:shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_1px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(0,0,0,0.06),inset_0_2px_3px_rgba(0,0,0,0.03),inset_0_-2px_3px_rgba(0,0,0,0.05)]",
+          downloading && "cursor-default bg-neutral-100 text-neutral-500",
+          // Done: solid raised emerald key with white text, dark-tuned bevels.
+          done &&
+            "cursor-default bg-emerald-600 text-white shadow-[0_0_0_1px_rgba(0,0,0,0.15),0_1px_1px_rgba(0,0,0,0.15),0_2px_3px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-2px_3px_rgba(0,0,0,0.25)]",
           className,
         )}
         {...props}
       >
-        <span
-          aria-hidden
-          className={cn(
-            "pointer-events-none absolute inset-0 bg-neutral-100",
-            WASH_MOTION,
-            downloading ? "opacity-100" : "opacity-0",
-          )}
-        />
-        <span
-          aria-hidden
-          className={cn(
-            "pointer-events-none absolute inset-0 bg-emerald-50",
-            WASH_MOTION,
-            done ? "opacity-100" : "opacity-0",
-          )}
-        />
-        <span
-          aria-hidden
-          className={cn(
-            "pointer-events-none absolute inset-0 bg-emerald-100/40",
-            WASH_MOTION,
-            done ? "opacity-100" : "opacity-0",
-          )}
-        />
+        <span className="sr-only" aria-live="polite">
+          {downloading ? downloadingLabel : done ? doneLabel : ""}
+        </span>
 
-        <span
-          className={cn(
-            "relative z-10 flex size-6 shrink-0 items-center justify-center",
-            ICON_MOTION,
-            idle && "text-neutral-500",
-            downloading && "text-neutral-700",
-            done && "text-emerald-700",
-          )}
-        >
-          <span className="relative size-3.5 shrink-0">
-            <ArrowDownToLine
-              size={14}
+        {/* Fixed icon slot keeps the icon and label aligned in every phase. */}
+        <span className="relative size-4 shrink-0">
+          <span
+            aria-hidden
+            className={cn(ICON_LAYER, idle ? "opacity-100" : "opacity-0")}
+          >
+            <ArrowDownToLine size={15} strokeWidth={2} />
+          </span>
+          <span
+            aria-hidden
+            className={cn(ICON_LAYER, downloading ? "opacity-100" : "opacity-0")}
+          >
+            <Loader2
+              size={15}
               strokeWidth={2}
-              aria-hidden
-              className={cn(
-                "absolute inset-0",
-                ICON_MOTION,
-                idle ? "opacity-100" : "opacity-0",
-              )}
+              className="animate-spin motion-reduce:animate-none"
             />
-            <span
-              aria-hidden
-              className={cn(
-                "absolute inset-0 grid place-items-center",
-                ICON_MOTION,
-                downloading ? "opacity-100" : "opacity-0",
-              )}
-            >
-              <Loader2
-                size={14}
-                strokeWidth={2}
-                className="motion-reduce:animate-none animate-spin"
-              />
-            </span>
-            <Check
-              size={14}
-              strokeWidth={2.5}
-              aria-hidden
-              className={cn(
-                "absolute inset-0",
-                ICON_MOTION,
-                done ? "opacity-100" : "opacity-0",
-              )}
-            />
+          </span>
+          <span
+            aria-hidden
+            className={cn(ICON_LAYER, done ? "opacity-100" : "opacity-0")}
+          >
+            <Check size={15} strokeWidth={2.5} />
           </span>
         </span>
 
-        <span className="relative z-10 tabular-nums">{done ? doneLabel : label}</span>
+        <span className="grid">
+          <span
+            aria-hidden={!idle}
+            className={cn(
+              LABEL_LAYER,
+              idle ? "opacity-100 duration-300 delay-200" : "opacity-0 duration-200",
+            )}
+          >
+            {label}
+          </span>
+          <span
+            aria-hidden={!downloading}
+            className={cn(
+              LABEL_LAYER,
+              downloading
+                ? "opacity-100 duration-300 delay-200"
+                : "opacity-0 duration-200",
+            )}
+          >
+            {downloadingLabel}
+          </span>
+          <span
+            aria-hidden={!done}
+            className={cn(
+              LABEL_LAYER,
+              done ? "opacity-100 duration-300 delay-200" : "opacity-0 duration-200",
+            )}
+          >
+            {doneLabel}
+          </span>
+        </span>
       </button>
     );
   },

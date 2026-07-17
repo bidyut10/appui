@@ -20,7 +20,19 @@ export type CopyButtonProps = Readonly<
   } & ComponentPropsWithoutRef<"button">
 >;
 
-// Copy — writes to clipboard and swaps the icon and label for confirmation.
+// Icons stack in one fixed slot and fade with the same rhythm as the labels.
+const ICON_LAYER =
+  "absolute inset-0 grid place-items-center transition-opacity ease-out motion-reduce:transition-none";
+
+// Labels stack in one grid cell; outgoing fades out, incoming fades in after.
+const LABEL_LAYER =
+  "col-start-1 row-start-1 text-left transition-opacity ease-out motion-reduce:transition-none";
+
+// Embossed glyph: white highlight below the strokes, faint shade above.
+const EMBOSS =
+  "filter-[drop-shadow(0_1px_0_rgba(255,255,255,0.9))_drop-shadow(0_-1px_0.5px_rgba(0,0,0,0.12))]";
+
+// Copy — writes to clipboard and fades the icon and label to a confirmation.
 export const CopyButton = forwardRef<HTMLButtonElement, CopyButtonProps>(
   (
     {
@@ -65,39 +77,63 @@ export const CopyButton = forwardRef<HTMLButtonElement, CopyButtonProps>(
         data-copied={copied}
         onClick={handleClick}
         className={cn(
-          "group inline-flex h-10 cursor-pointer items-center gap-2.5 rounded-lg border border-neutral-200 bg-white pr-3.5 pl-2.5 font-mono text-[13px] text-neutral-700 transition-colors duration-200 hover:border-neutral-300 select-none",
+          "inline-flex h-10 cursor-pointer items-center gap-2 rounded-lg bg-neutral-50 px-3.5 font-sans text-sm font-medium outline-none select-none",
+          "transition-[background-color,box-shadow,color] duration-200 ease-[cubic-bezier(0.32,0.72,0,1)] motion-reduce:transition-none",
+          "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900",
+          // Raised keycap: hairline outline, downward shadows, bottom shade.
+          "shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_1px_rgba(0,0,0,0.12),0_2px_3px_rgba(0,0,0,0.12),inset_0_-2px_3px_rgba(0,0,0,0.08)]",
+          // Pressing sinks the key with the balanced inset recipe.
+          "active:bg-neutral-100 active:shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_1px_1px_rgba(0,0,0,0.06),inset_0_1px_1px_rgba(0,0,0,0.06),inset_0_2px_3px_rgba(0,0,0,0.03),inset_0_-2px_3px_rgba(0,0,0,0.05)]",
+          copied ? "text-emerald-700" : "text-neutral-700 hover:text-neutral-900",
           className,
         )}
         {...props}
       >
-        <span
-          className={cn(
-            "flex size-6 items-center justify-center rounded-md transition-colors duration-200",
-            copied ? "bg-neutral-50 text-emerald-600" : "bg-neutral-50/50 text-neutral-500",
-          )}
-        >
-          <span className="relative flex size-4 items-center justify-center">
-            <Copy
-              size={14}
-              strokeWidth={2}
-              className={cn(
-                "absolute transition-all duration-200",
-                copied ? "scale-50 opacity-0" : "scale-100 opacity-100",
-              )}
-            />
-            <Check
-              size={14}
-              strokeWidth={2.5}
-              className={cn(
-                "absolute transition-all duration-200",
-                copied ? "scale-100 opacity-100" : "scale-50 opacity-0",
-              )}
-            />
+        {/* Bare icon in a fixed slot — no chip background. */}
+        <span className="relative size-4 shrink-0">
+          <span
+            aria-hidden
+            className={cn(
+              ICON_LAYER,
+              copied ? "opacity-0 duration-200" : "opacity-100 duration-300 delay-200",
+            )}
+          >
+            <Copy size={12} strokeWidth={2} className={EMBOSS} />
+          </span>
+          <span
+            aria-hidden
+            className={cn(
+              ICON_LAYER,
+              copied ? "opacity-100 duration-300 delay-200" : "opacity-0 duration-200",
+            )}
+          >
+            <Check size={14} strokeWidth={2.5} className={EMBOSS} />
           </span>
         </span>
 
-        <span className="font-sans text-sm font-medium tabular-nums">
-          {copied ? copiedLabel : label}
+        <span className="grid [text-shadow:0_1px_0_rgba(255,255,255,0.8)]">
+          <span
+            aria-hidden={copied}
+            className={cn(
+              LABEL_LAYER,
+              copied ? "opacity-0 duration-200" : "opacity-100 duration-300 delay-200",
+            )}
+          >
+            {label}
+          </span>
+          <span
+            aria-hidden={!copied}
+            className={cn(
+              LABEL_LAYER,
+              copied ? "opacity-100 duration-300 delay-200" : "opacity-0 duration-200",
+            )}
+          >
+            {copiedLabel}
+          </span>
+        </span>
+
+        <span className="sr-only" aria-live="polite">
+          {copied ? copiedLabel : ""}
         </span>
       </button>
     );

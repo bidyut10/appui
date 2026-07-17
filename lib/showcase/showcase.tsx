@@ -216,8 +216,9 @@ export const showcaseRows = [
       "AddToCartButton",
       {
         description:
-          "A single button that morphs through idle → loading → added, then settles back. The label slides vertically between states — no layout shift.",
-        usage: '<AddToCartButton label="Add to cart" loadingMs={1200} />',
+          "Raised 3D add-to-cart key that sinks in while adding, with gentle label crossfades, then pops back up in a solid emerald added state before resetting.",
+        usage:
+          '<AddToCartButton label="Add to cart" onAddToCart={async () => addItem(id)} />',
       },
     ),
     c(
@@ -262,7 +263,7 @@ export const showcaseRows = [
       "DownloadButton",
       {
         description:
-          "Download with a horizontal sky fill while the file loads, then a green done state. Different rhythm from the add-to-cart morph.",
+          "Raised 3D download key that sinks while downloading — arrow morphs to spinner to check — then pops back up as a solid emerald done state.",
         usage: '<DownloadButton label="Download" onDownload={fetchFile} />',
       },
     ),

@@ -23,7 +23,16 @@ export type AddToCartButtonProps = Readonly<
   } & ComponentPropsWithoutRef<"button">
 >;
 
-// Add-to-cart — morphs idle → loading → added, then settles back.
+// Icons stack in one fixed slot and fade with the same rhythm as the labels.
+const ICON_LAYER =
+  "absolute inset-0 grid place-items-center transition-opacity ease-out motion-reduce:transition-none";
+
+// Labels stack in one grid cell; outgoing fades out, incoming fades in after.
+const LABEL_LAYER =
+  "col-start-1 row-start-1 text-center transition-opacity ease-out motion-reduce:transition-none";
+
+// Add-to-cart — raised dark key that sinks while adding, then settles into a
+// green added state; icon morphs bag → spinner → check in place.
 export const AddToCartButton = forwardRef<
   HTMLButtonElement,
   AddToCartButtonProps
@@ -32,7 +41,7 @@ export const AddToCartButton = forwardRef<
     {
       className,
       label = "Add to cart",
-      loadingLabel = "Adding",
+      loadingLabel = "Adding...",
       addedLabel = "Added to cart",
       loadingMs = 1200,
       resetMs = 1600,
@@ -51,9 +60,13 @@ export const AddToCartButton = forwardRef<
       };
     }, []);
 
+    const idle = phase === "idle";
+    const loading = phase === "loading";
+    const added = phase === "added";
+
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
       onClick?.(event);
-      if (phase !== "idle") return;
+      if (!idle) return;
       setPhase("loading");
       timers.current.push(
         globalThis.setTimeout(() => setPhase("added"), loadingMs),
@@ -67,50 +80,95 @@ export const AddToCartButton = forwardRef<
         type="button"
         data-slot="add-to-cart-button"
         data-phase={phase}
+        aria-busy={loading || undefined}
+        aria-disabled={!idle || undefined}
         onClick={handleClick}
-        disabled={phase !== "idle"}
         className={cn(
-          "relative flex h-12 min-w-44 cursor-pointer items-center justify-center overflow-hidden rounded-xl px-6 font-sans text-sm font-semibold text-white transition-colors duration-300",
-          phase === "added" ? "bg-emerald-500" : "bg-neutral-900",
-          "disabled:cursor-default",
+          "inline-flex h-12 min-w-44 items-center justify-center gap-2 rounded-xl px-5 font-sans text-sm font-semibold outline-none select-none",
+          "transition-[background-color,box-shadow,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] motion-reduce:transition-none",
+          "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900",
+          // Raised dark keycap: soft top sheen, deep bottom shade.
+          idle &&
+            "cursor-pointer bg-neutral-900 text-white shadow-[0_0_0_1px_rgba(0,0,0,0.4),0_1px_1px_rgba(0,0,0,0.2),0_2px_3px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.2),inset_0_-2px_3px_rgba(0,0,0,0.5)]",
+          idle &&
+            "hover:bg-neutral-800 active:bg-neutral-950 active:shadow-[0_0_0_1px_rgba(0,0,0,0.4),0_1px_1px_rgba(0,0,0,0.15),inset_0_2px_4px_rgba(0,0,0,0.5),inset_0_-1px_0_rgba(255,255,255,0.08)]",
+          // Adding: stays sunken while it works.
+          loading &&
+            "cursor-default bg-neutral-950 text-neutral-300 shadow-[0_0_0_1px_rgba(0,0,0,0.4),0_1px_1px_rgba(0,0,0,0.15),inset_0_2px_4px_rgba(0,0,0,0.5),inset_0_-1px_0_rgba(255,255,255,0.08)]",
+          // Added: pops back up as a solid emerald key.
+          added &&
+            "cursor-default bg-emerald-600 text-white shadow-[0_0_0_1px_rgba(0,0,0,0.15),0_1px_1px_rgba(0,0,0,0.15),0_2px_3px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-2px_3px_rgba(0,0,0,0.25)]",
           className,
         )}
         {...props}
       >
-        <span
-          className={cn(
-            "flex items-center gap-2 transition-all duration-300",
-            phase === "idle"
-              ? "translate-y-0 opacity-100"
-              : "-translate-y-6 opacity-0",
-          )}
-        >
-          <ShoppingBag size={15} strokeWidth={2} />
-          {label}
+        <span className="sr-only" aria-live="polite">
+          {loading ? loadingLabel : added ? addedLabel : ""}
         </span>
 
-        <span
-          className={cn(
-            "absolute flex items-center gap-2 transition-all duration-300",
-            phase === "loading"
-              ? "translate-y-0 opacity-100"
-              : "translate-y-6 opacity-0",
-          )}
-        >
-          <Loader2 size={15} strokeWidth={2.5} className="animate-spin" />
-          {loadingLabel}
+        {/* Fixed icon slot keeps the icon and label aligned in every phase. */}
+        <span className="relative size-4 shrink-0">
+          <span
+            aria-hidden
+            className={cn(
+              ICON_LAYER,
+              idle ? "opacity-100 duration-300 delay-200" : "opacity-0 duration-200",
+            )}
+          >
+            <ShoppingBag size={15} strokeWidth={2} />
+          </span>
+          <span
+            aria-hidden
+            className={cn(
+              ICON_LAYER,
+              loading ? "opacity-100 duration-300 delay-200" : "opacity-0 duration-200",
+            )}
+          >
+            <Loader2
+              size={15}
+              strokeWidth={2.5}
+              className="animate-spin motion-reduce:animate-none"
+            />
+          </span>
+          <span
+            aria-hidden
+            className={cn(
+              ICON_LAYER,
+              added ? "opacity-100 duration-300 delay-200" : "opacity-0 duration-200",
+            )}
+          >
+            <Check size={16} strokeWidth={2.5} />
+          </span>
         </span>
 
-        <span
-          className={cn(
-            "absolute flex items-center gap-2 transition-all duration-300",
-            phase === "added"
-              ? "translate-y-0 opacity-100"
-              : "translate-y-6 opacity-0",
-          )}
-        >
-          <Check size={16} strokeWidth={2.5} />
-          {addedLabel}
+        <span className="grid">
+          <span
+            aria-hidden={!idle}
+            className={cn(
+              LABEL_LAYER,
+              idle ? "opacity-100 duration-300 delay-200" : "opacity-0 duration-200",
+            )}
+          >
+            {label}
+          </span>
+          <span
+            aria-hidden={!loading}
+            className={cn(
+              LABEL_LAYER,
+              loading ? "opacity-100 duration-300 delay-200" : "opacity-0 duration-200",
+            )}
+          >
+            {loadingLabel}
+          </span>
+          <span
+            aria-hidden={!added}
+            className={cn(
+              LABEL_LAYER,
+              added ? "opacity-100 duration-300 delay-200" : "opacity-0 duration-200",
+            )}
+          >
+            {addedLabel}
+          </span>
         </span>
       </button>
     );

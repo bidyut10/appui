@@ -12,6 +12,8 @@
 !.yarn/versions
 .cursor/
 .vscode/
+.github/
+.impeccable/
 
 # testing
 /coverage
