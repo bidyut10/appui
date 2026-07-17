@@ -1,6 +1,10 @@
 "use client";
 
-import { forwardRef, type ComponentPropsWithoutRef } from "react";
+import {
+  forwardRef,
+  useMemo,
+  type ComponentPropsWithoutRef,
+} from "react";
 
 import { cn } from "@/lib/cn";
 import { Clock } from "lucide-react";
@@ -16,14 +20,20 @@ const WEEKDAY_HEADERS = [
   { id: "sat", label: "S" },
 ] as const;
 
-// Empty cells before the 1st — grid slots 0..3 when the month starts on a Friday
-const MONTH_START_EMPTY_SLOTS = [0, 1, 2, 3] as const;
+function daysInMonth(year: number, month: number) {
+  return new Date(year, month + 1, 0).getDate();
+}
 
-// month, year — header label; activeDays — emerald dots; highlightDay — orange selected day
+/** Up to six day numbers before today in the same month — demo streak. */
+function defaultActiveDays(today: Date) {
+  const day = today.getDate();
+  const start = Math.max(1, day - 6);
+  return Array.from({ length: day - start }, (_, index) => start + index);
+}
+
+// activeDays — emerald dots; highlightDay — orange selected day (defaults to today)
 export type DailyActivityCalendarWidgetProps = Readonly<
   {
-    month?: string;
-    year?: number;
     activeDays?: number[];
     highlightDay?: number;
   } & ComponentPropsWithoutRef<"div">
@@ -36,15 +46,31 @@ export const DailyActivityCalendarWidget = forwardRef<
   (
     {
       className,
-      month = "August 2024",
-      year = 2024,
-      activeDays = [2, 3, 4, 5, 6, 7],
-      highlightDay = 8,
+      activeDays: activeDaysProp,
+      highlightDay: highlightDayProp,
       ...props
     },
     ref,
   ) => {
-    const daysInMonth = 31;
+    const today = useMemo(() => {
+      const date = new Date();
+      date.setHours(0, 0, 0, 0);
+      return date;
+    }, []);
+
+    const year = today.getFullYear();
+    const monthIndex = today.getMonth();
+    const daysCount = daysInMonth(year, monthIndex);
+    const leadingBlanks = new Date(year, monthIndex, 1).getDay();
+
+    const monthLabel = today.toLocaleDateString("en-US", {
+      month: "long",
+      year: "numeric",
+    });
+    const monthBadge = today.toLocaleDateString("en-US", { month: "short" });
+
+    const activeDays = activeDaysProp ?? defaultActiveDays(today);
+    const highlightDay = highlightDayProp ?? today.getDate();
 
     return (
       <div
@@ -64,9 +90,9 @@ export const DailyActivityCalendarWidget = forwardRef<
 
         <div className="mb-2 flex items-center justify-between">
           <span className="rounded-full bg-neutral-700 px-2 py-0.5 text-[9px]">
-            Nov
+            {monthBadge}
           </span>
-          <span className="text-[10px] text-neutral-400">{month}</span>
+          <span className="text-[10px] text-neutral-400">{monthLabel}</span>
         </div>
 
         <div className="mb-1 grid grid-cols-7 gap-0.5 text-center text-[8px] text-neutral-500">
@@ -76,31 +102,32 @@ export const DailyActivityCalendarWidget = forwardRef<
         </div>
 
         <div className="grid grid-cols-7 gap-0.5 text-center">
-          {MONTH_START_EMPTY_SLOTS.map((slot) => (
+          {Array.from({ length: leadingBlanks }, (_, slot) => (
             <span key={`start-${slot}`} />
           ))}
-          {Array.from(
-            { length: daysInMonth },
-            (_, dayIndex) => dayIndex + 1,
-          ).map((day) => {
-            const isActive = activeDays.includes(day);
-            const isHighlight = day === highlightDay;
-            const isIdle = !isActive && !isHighlight;
+          {Array.from({ length: daysCount }, (_, dayIndex) => dayIndex + 1).map(
+            (day) => {
+              const isActive = activeDays.includes(day);
+              const isHighlight = day === highlightDay;
+              const isIdle = !isActive && !isHighlight;
 
-            return (
-              <span
-                key={day}
-                className={cn(
-                  "flex h-5 w-5 items-center justify-center rounded-full text-[9px] transition-all duration-200 ease-out",
-                  isActive && "scale-100 bg-emerald-500 font-semibold text-white",
-                  isHighlight && "scale-100 bg-orange-500 font-semibold text-white",
-                  isIdle && "text-neutral-400",
-                )}
-              >
-                {day}
-              </span>
-            );
-          })}
+              return (
+                <span
+                  key={day}
+                  className={cn(
+                    "flex h-5 w-5 items-center justify-center rounded-full text-[9px] transition-all duration-200 ease-out",
+                    isActive &&
+                      "scale-100 bg-emerald-500 font-semibold text-white",
+                    isHighlight &&
+                      "scale-100 bg-orange-500 font-semibold text-white",
+                    isIdle && "text-neutral-400",
+                  )}
+                >
+                  {day}
+                </span>
+              );
+            },
+          )}
         </div>
       </div>
     );

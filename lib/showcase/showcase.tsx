@@ -725,9 +725,9 @@ export const showcaseRows = [
       "DailyActivityCalendarWidget",
       {
         description:
-          "Month grid with a highlighted day — like a lightweight activity calendar without the GitHub heatmap complexity. Good for habit trackers and dashboards.",
+          "Month grid for the current month — today is highlighted in orange, with a short emerald streak on prior days. Pass activeDays or highlightDay to override.",
         usage:
-          '<DailyActivityCalendarWidget month="August 2024" year={2024} highlightDay={15} />',
+          '<DailyActivityCalendarWidget activeDays={[12, 13, 14, 15, 16]} highlightDay={17} />',
       },
     ),
   ],

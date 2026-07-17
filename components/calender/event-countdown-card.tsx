@@ -67,7 +67,7 @@ export const EventCountdownCard = forwardRef<
         ref={ref}
         data-slot="event-countdown-card"
         className={cn(
-          "w-56 rounded-2xl border border-neutral-200/80 bg-white p-5 font-sans shadow-lg shadow-black/5 select-none",
+          "w-56 rounded-2xl border border-neutral-100 bg-white p-5 font-sans shadow-lg shadow-black/5 select-none",
           className,
         )}
         {...props}

@@ -96,7 +96,7 @@ export const MonthPickerCalendar = forwardRef<
         ref={ref}
         data-slot="month-picker-calendar"
         className={cn(
-          "w-72 overflow-hidden rounded-2xl border border-neutral-200/80 bg-white p-4 font-sans shadow-lg shadow-black/5 select-none",
+          "w-72 overflow-hidden rounded-2xl border border-neutral-100 bg-white p-4 font-sans shadow-lg shadow-black/5 select-none",
           className,
         )}
         {...props}
