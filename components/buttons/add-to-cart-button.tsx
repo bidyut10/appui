@@ -87,17 +87,17 @@ export const AddToCartButton = forwardRef<
           "inline-flex h-12 min-w-44 items-center justify-center gap-2 rounded-xl px-5 font-sans text-sm font-semibold outline-none select-none",
           "transition-[background-color,box-shadow,color] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] motion-reduce:transition-none",
           "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900",
-          // Raised dark keycap: soft top sheen, deep bottom shade.
+          // Raised dark key: soft blurred top sheen, deep lift + bottom recess.
           idle &&
-            "cursor-pointer bg-neutral-900 text-white shadow-[0_0_0_1px_rgba(0,0,0,0.4),0_1px_1px_rgba(0,0,0,0.2),0_2px_3px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.2),inset_0_-2px_3px_rgba(0,0,0,0.5)]",
+            "cursor-pointer bg-neutral-800 text-white shadow-[0_1px_1px_rgba(0,0,0,0.35),0_3px_6px_rgba(0,0,0,0.28),0_8px_16px_rgba(0,0,0,0.22),inset_0_1px_2px_rgba(255,255,255,0.14),inset_0_-3px_6px_rgba(0,0,0,0.55)]",
           idle &&
-            "hover:bg-neutral-800 active:bg-neutral-950 active:shadow-[0_0_0_1px_rgba(0,0,0,0.4),0_1px_1px_rgba(0,0,0,0.15),inset_0_2px_4px_rgba(0,0,0,0.5),inset_0_-1px_0_rgba(255,255,255,0.08)]",
+            "hover:bg-neutral-700 active:bg-neutral-900 active:shadow-[0_1px_2px_rgba(0,0,0,0.25),inset_0_2px_6px_rgba(0,0,0,0.55),inset_0_-1px_1px_rgba(255,255,255,0.06)]",
           // Adding: stays sunken while it works.
           loading &&
-            "cursor-default bg-neutral-950 text-neutral-300 shadow-[0_0_0_1px_rgba(0,0,0,0.4),0_1px_1px_rgba(0,0,0,0.15),inset_0_2px_4px_rgba(0,0,0,0.5),inset_0_-1px_0_rgba(255,255,255,0.08)]",
+            "cursor-default bg-neutral-900 text-neutral-300 shadow-[0_1px_2px_rgba(0,0,0,0.25),inset_0_2px_6px_rgba(0,0,0,0.55),inset_0_-1px_1px_rgba(255,255,255,0.06)]",
           // Added: pops back up as a solid emerald key.
           added &&
-            "cursor-default bg-emerald-600 text-white shadow-[0_0_0_1px_rgba(0,0,0,0.15),0_1px_1px_rgba(0,0,0,0.15),0_2px_3px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-2px_3px_rgba(0,0,0,0.25)]",
+            "cursor-default bg-emerald-600 text-white shadow-[0_1px_1px_rgba(0,0,0,0.2),0_3px_6px_rgba(0,0,0,0.18),0_8px_16px_rgba(0,0,0,0.14),inset_0_1px_2px_rgba(255,255,255,0.2),inset_0_-3px_6px_rgba(0,0,0,0.35)]",
           className,
         )}
         {...props}

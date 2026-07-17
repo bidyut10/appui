@@ -6,6 +6,7 @@
  * 3. Each inner array = one row — use 1, 2, or 3 items
  */
 import { cloneElement, type ReactElement, type ReactNode } from "react";
+import { ArrowRight, MessageCircle, Plus, Settings } from "lucide-react";
 
 import { DndFaceWidget } from "@/components/activity/dnd-face-widget";
 import { FocusBreathWidget } from "@/components/activity/focus-breath-widget";
@@ -22,11 +23,17 @@ import { BatteryFaceWidget } from "@/components/battery/battery-face-widget";
 import { AddToCartButton } from "@/components/buttons/add-to-cart-button";
 import { BookmarkSaveButton } from "@/components/buttons/bookmark-save-button";
 import { CopyButton } from "@/components/buttons/copy-button";
+import { DepthOutlineButton } from "@/components/buttons/depth-outline-button";
 import { DownloadButton } from "@/components/buttons/download-button";
 import { FollowButton } from "@/components/buttons/follow-button";
 import { HoldToDeleteButton } from "@/components/buttons/hold-to-delete-button";
+import { InsetButton } from "@/components/buttons/inset-button";
 import { LikeButton } from "@/components/buttons/like-button";
 import { QuantityStepperButton } from "@/components/buttons/quantity-stepper-button";
+import { SoftPillButton } from "@/components/buttons/soft-pill-button";
+import { SoftUiButton } from "@/components/buttons/soft-ui-button";
+import { ThreeDButton } from "@/components/buttons/three-d-button";
+import { ThreeDIconButton } from "@/components/buttons/three-d-icon-button";
 import { SegmentedToggleButton } from "@/components/buttons/segmented-toggle-button";
 import { SlideToConfirmButton } from "@/components/buttons/slide-to-confirm-button";
 import { BluetoothFaceWidget } from "@/components/bluetooth/bluetooth-face-widget";
@@ -182,6 +189,126 @@ export function c(
 
 // Each inner array is one homepage row.
 export const showcaseRows = [
+  [
+    c(
+      "3d-button",
+      <div className="flex flex-wrap items-center justify-center gap-3">
+        <ThreeDButton>
+          Continue
+          <ArrowRight size={15} strokeWidth={2} aria-hidden />
+        </ThreeDButton>
+        <ThreeDButton variant="soft">Cancel</ThreeDButton>
+        <ThreeDButton variant="muted" size="sm">
+          Learn more
+        </ThreeDButton>
+      </div>,
+      "components/buttons/three-d-button.tsx",
+      "ThreeDButton",
+      {
+        title: "3D Button",
+        description:
+          "Universal 3D button with tactile keycap shadows — pass any children (label, icon + label). Variants: solid, soft, muted. Sizes: sm, md, lg, icon. Press sinks the key in.",
+        usage:
+          '<ThreeDButton variant="solid"><ArrowRight /> Continue</ThreeDButton>',
+      },
+    ),
+    c(
+      "3d-icon-button",
+      <div className="flex items-center justify-center gap-3">
+        <ThreeDIconButton label="Add" variant="solid">
+          <Plus size={16} strokeWidth={2} aria-hidden />
+        </ThreeDIconButton>
+        <ThreeDIconButton label="Settings" variant="soft">
+          <Settings size={16} strokeWidth={2} aria-hidden />
+        </ThreeDIconButton>
+        <ThreeDIconButton label="Add muted" variant="muted">
+          <MessageCircle size={16} strokeWidth={2} aria-hidden />
+        </ThreeDIconButton>
+      </div>,
+      "components/buttons/three-d-icon-button.tsx",
+      "ThreeDIconButton",
+      {
+        title: "3D Icon Button",
+        description:
+          "Square 3D icon button — pass any icon as children and a required label for accessibility. Same solid / soft / muted materials as ThreeDButton.",
+        usage:
+          '<ThreeDIconButton label="Settings" variant="soft"><Settings /></ThreeDIconButton>',
+      },
+    ),
+  ],
+  [
+    c(
+      "soft-ui-button",
+      <div className="flex flex-wrap items-center justify-center gap-3 bg-neutral-100 p-4 rounded-2xl">
+        <SoftUiButton>
+          Get started
+          <ArrowRight size={15} strokeWidth={2} aria-hidden />
+        </SoftUiButton>
+        <SoftUiButton size="sm">Cancel</SoftUiButton>
+      </div>,
+      "components/buttons/soft-ui-button.tsx",
+      "SoftUiButton",
+      {
+        title: "Soft UI Button",
+        description:
+          "Universal soft-UI / neumorphic button — even light and dark shadows. Pass any children. Press flips to an inset look.",
+        usage: "<SoftUiButton>Get started</SoftUiButton>",
+      },
+    ),
+    c(
+      "inset-button",
+      <div className="flex flex-wrap items-center justify-center gap-3">
+        <InsetButton>Secondary</InsetButton>
+        <InsetButton variant="dark">Confirm</InsetButton>
+      </div>,
+      "components/buttons/inset-button.tsx",
+      "InsetButton",
+      {
+        title: "Inset Button",
+        description:
+          "Recessed inset button — looks pressed into the surface. Light or dark variant. Pass any children.",
+        usage: '<InsetButton variant="dark">Confirm</InsetButton>',
+      },
+    ),
+  ],
+  [
+    c(
+      "soft-pill-button",
+      <div className="flex flex-wrap items-center justify-center gap-3">
+        <SoftPillButton>
+          Book now
+          <ArrowRight size={15} strokeWidth={2} aria-hidden />
+        </SoftPillButton>
+        <SoftPillButton variant="dark">Subscribe</SoftPillButton>
+      </div>,
+      "components/buttons/soft-pill-button.tsx",
+      "SoftPillButton",
+      {
+        title: "Soft Pill Button",
+        description:
+          "Floating rounded pill with a soft drop shadow — light or dark. Pass any children. Nudges down slightly on press.",
+        usage: '<SoftPillButton variant="dark">Subscribe</SoftPillButton>',
+      },
+    ),
+    c(
+      "depth-outline-button",
+      <div className="flex flex-wrap items-center justify-center gap-3">
+        <DepthOutlineButton>Learn more</DepthOutlineButton>
+        <DepthOutlineButton size="lg">
+          Continue
+          <ArrowRight size={15} strokeWidth={2} aria-hidden />
+        </DepthOutlineButton>
+      </div>,
+      "components/buttons/depth-outline-button.tsx",
+      "DepthOutlineButton",
+      {
+        title: "Depth Outline Button",
+        description:
+          "Premium outline button with layered float depth, a soft top lip, and a press-in sink — secondary CTA that still feels tactile. Pass any children.",
+        usage: "<DepthOutlineButton>Learn more</DepthOutlineButton>",
+      },
+    ),
+  ],
   [
     c(
       "slide-to-confirm-button",
