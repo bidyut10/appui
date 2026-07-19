@@ -9,13 +9,13 @@ import { PhoneColumn } from "./_components/phone-column";
 import { CtaButtons } from "./_components/cta-buttons";
 import { SiteFooter } from "./_components/site-footer";
 import { AnnotatedText } from "@/components/underlines/annotated-text";
-import { DndFaceWidget } from "@/components/activity/dnd-face-widget";
-import { TorchFaceWidget } from "@/components/torch/torch-face-widget";
+import { DndFaceWidget } from "@/components/widgets/dnd-face-widget";
+import { TorchFaceWidget } from "@/components/widgets/torch-face-widget";
 import { LaptopMockupCard } from "@/components/mockups/laptop-mockup-card";
 import { BrowserMockupCard } from "@/components/mockups/browser-mockup-card";
-import { AnalogClockWidget } from "@/components/clocks/analog-clock-widget";
+import { AnalogClockWidget } from "@/components/widgets/analog-clock-widget";
 import { JournalWritingCard } from "@/components/text/journal-writing-card";
-import { BluetoothFaceWidget } from "@/components/bluetooth/bluetooth-face-widget";
+import { BluetoothFaceWidget } from "@/components/widgets/bluetooth-face-widget";
 import { TechStack, TECH_STACK_ITEMS } from "./_components/tech-stack";
 import { InstallOptions } from "./_components/compoent-deisgn-copy-demo";
 import { OpenSourcePanel } from "./_components/sponser-resource";
@@ -194,7 +194,7 @@ export default function Home() {
       <LinkedBlock
         className="relative mx-auto my-10 max-w-xl px-4 pb-14 md:px-0"
         link="view more variants"
-        href="/components?category=Clocks"
+        href="/components?category=widgets"
       >
         <Heading>
           <AnnotatedText variant="line" color="text-orange-300">

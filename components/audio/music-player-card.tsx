@@ -26,7 +26,7 @@ export const MusicPlayerCard = forwardRef<HTMLDivElement, MusicPlayerCardProps>(
   (
     {
       className,
-      coverImage = "/wallpaper-3.png",
+      coverImage = "/wallpaper-15.png",
       title = "Midnight Dreams",
       artist = "The Weekend",
       album = "After Hours",

@@ -7,6 +7,7 @@ import {
 } from "react";
 
 import { cn } from "@/lib/cn";
+import { ProductHunt } from "@/icons/brands/producthunt";
 
 export type ResourceLinkItem = Readonly<{
   name: string;
@@ -44,7 +45,8 @@ const DEMO_ITEMS: ResourceLinkItem[] = [
     name: "Product Hunt",
     description: "For new products",
     href: "https://www.producthunt.com",
-    imageSrc: "/producthunt.png",
+    Icon: ProductHunt,
+    color: "text-red-400",
   },
 ];
 

@@ -4,22 +4,25 @@
  * 1. Import your component at the top
  * 2. Add c("slug", <Component />, "components/.../file.tsx", "ExportName") to a row
  * 3. Each inner array = one row — use 1, 2, or 3 items
+ *
+ * Moving a file? Update the import AND the c(..., "components/...", ...) path.
+ * Category comes from that path. Verify with: npm run check:showcase
  */
 import { cloneElement, type ReactElement, type ReactNode } from "react";
 import { ArrowRight, MessageCircle, Plus, Settings } from "lucide-react";
 
-import { DndFaceWidget } from "@/components/activity/dnd-face-widget";
-import { FocusBreathWidget } from "@/components/activity/focus-breath-widget";
-import { HeartRateWidget } from "@/components/activity/heart-rate-widget";
-import { HydrationWidget } from "@/components/activity/hydration-widget";
-import { PomodoroWidget } from "@/components/activity/pomodoro-widget";
-import { SleepScoreWidget } from "@/components/activity/sleep-score-widget";
-import { StepCountWidget } from "@/components/activity/step-count-widget";
-import { AudioRecorderWidget } from "@/components/audio/audio-recorder-widget";
-import { IosEarbudsWidget } from "@/components/audio/ios-earbuds-widget";
-import { RecorderFaceWidget } from "@/components/audio/recorder-face-widget";
-import { VoiceAssistantWidget } from "@/components/audio/voice-assistant-widget";
-import { BatteryFaceWidget } from "@/components/battery/battery-face-widget";
+import { DndFaceWidget } from "@/components/widgets/dnd-face-widget";
+import { FocusBreathWidget } from "@/components/widgets/focus-breath-widget";
+import { HeartRateWidget } from "@/components/widgets/heart-rate-widget";
+import { HydrationWidget } from "@/components/widgets/hydration-widget";
+import { PomodoroWidget } from "@/components/widgets/pomodoro-widget";
+import { SleepScoreWidget } from "@/components/widgets/sleep-score-widget";
+import { StepCountWidget } from "@/components/widgets/step-count-widget";
+import { AudioRecorderWidget } from "@/components/widgets/audio-recorder-widget";
+import { IosEarbudsWidget } from "@/components/widgets/ios-earbuds-widget";
+import { RecorderFaceWidget } from "@/components/widgets/recorder-face-widget";
+import { VoiceAssistantWidget } from "@/components/widgets/voice-assistant-widget";
+import { BatteryFaceWidget } from "@/components/widgets/battery-face-widget";
 import { AddToCartButton } from "@/components/buttons/add-to-cart-button";
 import { BookmarkSaveButton } from "@/components/buttons/bookmark-save-button";
 import { CopyButton } from "@/components/buttons/copy-button";
@@ -36,12 +39,12 @@ import { ThreeDButton } from "@/components/buttons/three-d-button";
 import { ThreeDIconButton } from "@/components/buttons/three-d-icon-button";
 import { SegmentedToggleButton } from "@/components/buttons/segmented-toggle-button";
 import { SlideToConfirmButton } from "@/components/buttons/slide-to-confirm-button";
-import { BluetoothFaceWidget } from "@/components/bluetooth/bluetooth-face-widget";
+import { BluetoothFaceWidget } from "@/components/widgets/bluetooth-face-widget";
 import { BookingSlotCalendar } from "@/components/calender/booking-slot-calendar";
-import { DailyActivityCalendarWidget } from "@/components/calender/daily-activity-calendar-widget";
+import { DailyActivityCalendarWidget } from "@/components/widgets/daily-activity-calendar-widget";
 import { DateRangePickerCard } from "@/components/calender/date-range-picker-card";
 import { EventCountdownCard } from "@/components/calender/event-countdown-card";
-import { IosCalenderWidget } from "@/components/calender/ios-calender-widget";
+import { IosCalenderWidget } from "@/components/widgets/ios-calender-widget";
 import { MonthPickerCalendar } from "@/components/calender/month-picker-calendar";
 import { WeekStripCalendar } from "@/components/calender/week-strip-calendar";
 import { CustomersTable } from "@/components/table/customers-table";
@@ -63,14 +66,14 @@ import { CinemaTicketCard } from "@/components/text/cinema-ticket-card";
 import { DailyMotivationCard } from "@/components/text/daily-motivation-card";
 import { DenimProductEditorialCard } from "@/components/text/denim-product-editorial-card";
 import { CreditCardGlass } from "@/components/users/credit-card-glass";
-import { DiscordChatCard } from "@/components/discord/discord-chat-card";
+import { DiscordChatCard } from "@/components/socials/discord-chat-card";
 import { DropCapEditorialCard } from "@/components/text/drop-cap-editorial-card";
 import { EditorialQuoteCard } from "@/components/text/editorial-quote-card";
 import { EventTicketCard } from "@/components/event/event-ticket-card";
-import { FacebookPostCard } from "@/components/facebook/facebook-post-card";
+import { FacebookPostCard } from "@/components/socials/facebook-post-card";
 import { FilmStripCard } from "@/components/gallery/film-strip-card";
 import { GalleryGridCard } from "@/components/gallery/gallery-grid-card";
-import { GitHubRepoCard } from "@/components/github/github-repo-card";
+import { GitHubRepoCard } from "@/components/socials/github-repo-card";
 import { GlassOverlayImageCard } from "@/components/gallery/glass-overlay-image-card";
 import { ComboboxFieldInput } from "@/components/inputs/combobox-field-input";
 import { DateFieldInput } from "@/components/inputs/date-field-input";
@@ -91,11 +94,11 @@ import { SelectFieldInput } from "@/components/inputs/select-field-input";
 import { SwitchFieldInput } from "@/components/inputs/switch-field-input";
 import { TextFieldInput } from "@/components/inputs/text-field-input";
 import { TextareaFieldInput } from "@/components/inputs/textarea-field-input";
-import { InstagramPostCard } from "@/components/instagram/instagram-post-card";
+import { InstagramPostCard } from "@/components/socials/instagram-post-card";
 import { JournalWritingCard } from "@/components/text/journal-writing-card";
 import { KeyboardShortcutsCard } from "@/components/text/keyboard-shortcuts-card";
-import { LinkedInPostCard } from "@/components/linkedin/linked-in-post-card";
-import { LinkedInProfileCard } from "@/components/linkedin/linked-in-profile-card";
+import { LinkedInPostCard } from "@/components/socials/linked-in-post-card";
+import { LinkedInProfileCard } from "@/components/socials/linked-in-profile-card";
 import { MuseumPlacardCard } from "@/components/gallery/museum-placard-card";
 import { MagazineCoverCard } from "@/components/text/magazine-cover-card";
 import { MusicPlayerCard } from "@/components/audio/music-player-card";
@@ -117,15 +120,15 @@ import { TerminalLogCard } from "@/components/others/terminal-log-card";
 import { TestimonialCard } from "@/components/users/testimonial-card";
 import { FlightBoardingCard } from "@/components/travel/flight-boarding-card";
 import { ThermalReceiptCard } from "@/components/others/thermal-receipt-card";
-import { ThreadsPostCard } from "@/components/facebook/threads-post-card";
+import { ThreadsPostCard } from "@/components/socials/threads-post-card";
 import { TogglePricingCards } from "@/components/pricing/toggle-pricing-cards";
 import { TravelPostcardCard } from "@/components/travel/travel-postcard-card";
-import { TwitterPostCard } from "@/components/twitter/twitter-post-card";
-import { TwitterProfileCard } from "@/components/twitter/twitter-profile-card";
+import { TwitterPostCard } from "@/components/socials/twitter-post-card";
+import { TwitterProfileCard } from "@/components/socials/twitter-profile-card";
 import { WalletPassCard } from "@/components/wallet/wallet-pass-card";
-import { AnalogClockWidget } from "@/components/clocks/analog-clock-widget";
-import { IosDigitalClockWidget } from "@/components/clocks/ios-digital-clock-widget";
-import { CompassWidget } from "@/components/compass/compass-widget";
+import { AnalogClockWidget } from "@/components/widgets/analog-clock-widget";
+import { IosDigitalClockWidget } from "@/components/widgets/ios-digital-clock-widget";
+import { CompassWidget } from "@/components/widgets/compass-widget";
 import { FileMenuDropdown } from "@/components/dropdowns/file-menu-dropdown";
 import { FilterSortDropdown } from "@/components/dropdowns/filter-sort-dropdown";
 import { KebabActionsDropdown } from "@/components/dropdowns/kebab-actions-dropdown";
@@ -133,8 +136,8 @@ import { NotificationDropdown } from "@/components/dropdowns/notification-dropdo
 import { ShareMenuDropdown } from "@/components/dropdowns/share-menu-dropdown";
 import { UserMenuDropdown } from "@/components/dropdowns/user-menu-dropdown";
 import { WorkspaceSwitcherDropdown } from "@/components/dropdowns/workspace-switcher-dropdown";
-import { GithubContributionCard } from "@/components/github/github-contribution";
-import { IosMapLocationWidget } from "@/components/map-location/ios-map-location-widget";
+import { GithubContributionCard } from "@/components/socials/github-contribution";
+import { IosMapLocationWidget } from "@/components/widgets/ios-map-location-widget";
 import { BrowserMockupCard } from "@/components/mockups/browser-mockup-card";
 import { LaptopMockupCard } from "@/components/mockups/laptop-mockup-card";
 import { PhoneMockupCard } from "@/components/mockups/phone-mockup-card";
@@ -149,17 +152,17 @@ import { PaymentNotificationBanner } from "@/components/notifications/payment-no
 import { SystemAlertBanner } from "@/components/notifications/system-alert-banner";
 import { ToastNotificationBanner } from "@/components/notifications/toast-notification-banner";
 import { TeamMemberProfileGrid } from "@/components/profile/team-member-profile-grid";
-import { BlobProfileCard } from "@/components/profile/blob-profile";
+import { BlobProfileCard } from "@/components/widgets/blob-profile";
 import { ContactProfileCard } from "@/components/profile/contact-profile-card";
 import { EditorialStaffProfileCard } from "@/components/profile/editorial-staff-profile-card";
 import { UserProfileCard } from "@/components/profile/user-profile-card";
-import { StopwatchWidget } from "@/components/stopwatch/stopwatch-widget";
-import { TorchFaceWidget } from "@/components/torch/torch-face-widget";
-import { ElectricScooterWidget } from "@/components/travel/electric-scooter-widget";
-import { FlightArrivalWidget } from "@/components/travel/flight-arrival-widget";
-import { MinimalAgendaWidget } from "@/components/travel/minimal-agenda-widget";
-import { RidePickupWidget } from "@/components/travel/ride-pickup-widget";
-import { WiFiToggleWidget } from "@/components/wifi/wifi-toggle-widget";
+import { StopwatchWidget } from "@/components/widgets/stopwatch-widget";
+import { TorchFaceWidget } from "@/components/widgets/torch-face-widget";
+import { ElectricScooterWidget } from "@/components/widgets/electric-scooter-widget";
+import { FlightArrivalWidget } from "@/components/widgets/flight-arrival-widget";
+import { MinimalAgendaWidget } from "@/components/widgets/minimal-agenda-widget";
+import { RidePickupWidget } from "@/components/widgets/ride-pickup-widget";
+import { WiFiToggleWidget } from "@/components/widgets/wifi-toggle-widget";
 import { AnnotatedTextShowcase, ANNOTATED_TEXT_USAGE } from "@/components/underlines/annotated-text-showcase";
 import { OtpBoxedInput } from "@/components/otp/otp-boxed-input";
 import { OtpUnderlineInput } from "@/components/otp/otp-underline-input";
@@ -433,7 +436,7 @@ export const showcaseRows = [
     c(
       "analog-clock-roman",
       <AnalogClockWidget variant="roman" />,
-      "components/clocks/analog-clock-widget.tsx",
+      "components/widgets/analog-clock-widget.tsx",
       "AnalogClockWidget",
       {
         title: "Analog Clock — Roman",
@@ -445,7 +448,7 @@ export const showcaseRows = [
     c(
       "analog-clock-minimal",
       <AnalogClockWidget variant="minimal" />,
-      "components/clocks/analog-clock-widget.tsx",
+      "components/widgets/analog-clock-widget.tsx",
       "AnalogClockWidget",
       {
         title: "Analog Clock — Minimal",
@@ -457,7 +460,7 @@ export const showcaseRows = [
     c(
       "analog-clock-numeric",
       <AnalogClockWidget variant="numeric" />,
-      "components/clocks/analog-clock-widget.tsx",
+      "components/widgets/analog-clock-widget.tsx",
       "AnalogClockWidget",
       {
         title: "Analog Clock — Numeric",
@@ -471,7 +474,7 @@ export const showcaseRows = [
     c(
       "wifi-toggle",
       <WiFiToggleWidget />,
-      "components/wifi/wifi-toggle-widget.tsx",
+      "components/widgets/wifi-toggle-widget.tsx",
       "WiFiToggleWidget",
       {
         description:
@@ -482,7 +485,7 @@ export const showcaseRows = [
     c(
       "voice-assistant",
       <VoiceAssistantWidget />,
-      "components/audio/voice-assistant-widget.tsx",
+      "components/widgets/voice-assistant-widget.tsx",
       "VoiceAssistantWidget",
       {
         description:
@@ -493,7 +496,7 @@ export const showcaseRows = [
     c(
       "ios-earbuds",
       <IosEarbudsWidget />,
-      "components/audio/ios-earbuds-widget.tsx",
+      "components/widgets/ios-earbuds-widget.tsx",
       "IosEarbudsWidget",
       {
         description:
@@ -506,7 +509,7 @@ export const showcaseRows = [
     c(
       "recorder-face",
       <RecorderFaceWidget />,
-      "components/audio/recorder-face-widget.tsx",
+      "components/widgets/recorder-face-widget.tsx",
       "RecorderFaceWidget",
       {
         description:
@@ -516,7 +519,7 @@ export const showcaseRows = [
     c(
       "battery-face",
       <BatteryFaceWidget />,
-      "components/battery/battery-face-widget.tsx",
+      "components/widgets/battery-face-widget.tsx",
       "BatteryFaceWidget",
       {
         description:
@@ -527,7 +530,7 @@ export const showcaseRows = [
     c(
       "compass",
       <CompassWidget />,
-      "components/compass/compass-widget.tsx",
+      "components/widgets/compass-widget.tsx",
       "CompassWidget",
       {
         description:
@@ -540,7 +543,7 @@ export const showcaseRows = [
     c(
       "bluetooth-face",
       <BluetoothFaceWidget />,
-      "components/bluetooth/bluetooth-face-widget.tsx",
+      "components/widgets/bluetooth-face-widget.tsx",
       "BluetoothFaceWidget",
       {
         description:
@@ -551,7 +554,7 @@ export const showcaseRows = [
     c(
       "torch-face",
       <TorchFaceWidget />,
-      "components/torch/torch-face-widget.tsx",
+      "components/widgets/torch-face-widget.tsx",
       "TorchFaceWidget",
       {
         description:
@@ -561,7 +564,7 @@ export const showcaseRows = [
     c(
       "dnd-face",
       <DndFaceWidget />,
-      "components/activity/dnd-face-widget.tsx",
+      "components/widgets/dnd-face-widget.tsx",
       "DndFaceWidget",
       {
         description:
@@ -574,7 +577,7 @@ export const showcaseRows = [
     c(
       "ios-digital-clock",
       <IosDigitalClockWidget />,
-      "components/clocks/ios-digital-clock-widget.tsx",
+      "components/widgets/ios-digital-clock-widget.tsx",
       "IosDigitalClockWidget",
       {
         description:
@@ -584,7 +587,7 @@ export const showcaseRows = [
     c(
       "ios-calender",
       <IosCalenderWidget />,
-      "components/calender/ios-calender-widget.tsx",
+      "components/widgets/ios-calender-widget.tsx",
       "IosCalenderWidget",
       {
         description:
@@ -594,7 +597,7 @@ export const showcaseRows = [
     c(
       "stopwatch",
       <StopwatchWidget />,
-      "components/stopwatch/stopwatch-widget.tsx",
+      "components/widgets/stopwatch-widget.tsx",
       "StopwatchWidget",
       {
         description:
@@ -606,7 +609,7 @@ export const showcaseRows = [
     c(
       "ios-map-location",
       <IosMapLocationWidget />,
-      "components/map-location/ios-map-location-widget.tsx",
+      "components/widgets/ios-map-location-widget.tsx",
       "IosMapLocationWidget",
       {
         description:
@@ -617,7 +620,7 @@ export const showcaseRows = [
     c(
       "focus-breath",
       <FocusBreathWidget />,
-      "components/activity/focus-breath-widget.tsx",
+      "components/widgets/focus-breath-widget.tsx",
       "FocusBreathWidget",
       {
         description:
@@ -628,7 +631,7 @@ export const showcaseRows = [
     c(
       "blob-profile",
       <BlobProfileCard />,
-      "components/profile/blob-profile.tsx",
+      "components/widgets/blob-profile.tsx",
       "BlobProfileCard",
       {
         description:
@@ -791,7 +794,7 @@ export const showcaseRows = [
     c(
       "step-count",
       <StepCountWidget />,
-      "components/activity/step-count-widget.tsx",
+      "components/widgets/step-count-widget.tsx",
       "StepCountWidget",
       {
         description:
@@ -802,7 +805,7 @@ export const showcaseRows = [
     c(
       "pomodoro",
       <PomodoroWidget />,
-      "components/activity/pomodoro-widget.tsx",
+      "components/widgets/pomodoro-widget.tsx",
       "PomodoroWidget",
       {
         description:
@@ -813,7 +816,7 @@ export const showcaseRows = [
     c(
       "hydration",
       <HydrationWidget />,
-      "components/activity/hydration-widget.tsx",
+      "components/widgets/hydration-widget.tsx",
       "HydrationWidget",
       {
         description:
@@ -826,7 +829,7 @@ export const showcaseRows = [
     c(
       "sleep-score",
       <SleepScoreWidget />,
-      "components/activity/sleep-score-widget.tsx",
+      "components/widgets/sleep-score-widget.tsx",
       "SleepScoreWidget",
       {
         description:
@@ -837,7 +840,7 @@ export const showcaseRows = [
     c(
       "heart-rate",
       <HeartRateWidget />,
-      "components/activity/heart-rate-widget.tsx",
+      "components/widgets/heart-rate-widget.tsx",
       "HeartRateWidget",
       {
         description:
@@ -848,7 +851,7 @@ export const showcaseRows = [
     c(
       "daily-activity-calendar",
       <DailyActivityCalendarWidget />,
-      "components/calender/daily-activity-calendar-widget.tsx",
+      "components/widgets/daily-activity-calendar-widget.tsx",
       "DailyActivityCalendarWidget",
       {
         description:
@@ -1002,7 +1005,7 @@ export const showcaseRows = [
     c(
       "audio-recorder",
       <AudioRecorderWidget />,
-      "components/audio/audio-recorder-widget.tsx",
+      "components/widgets/audio-recorder-widget.tsx",
       "AudioRecorderWidget",
       {
         description:
@@ -1013,7 +1016,7 @@ export const showcaseRows = [
     c(
       "flight-arrival",
       <FlightArrivalWidget />,
-      "components/travel/flight-arrival-widget.tsx",
+      "components/widgets/flight-arrival-widget.tsx",
       "FlightArrivalWidget",
       {
         description:
@@ -1026,7 +1029,7 @@ export const showcaseRows = [
     c(
       "minimal-agenda",
       <MinimalAgendaWidget />,
-      "components/travel/minimal-agenda-widget.tsx",
+      "components/widgets/minimal-agenda-widget.tsx",
       "MinimalAgendaWidget",
       {
         description:
@@ -1036,7 +1039,7 @@ export const showcaseRows = [
     c(
       "ride-pickup",
       <RidePickupWidget />,
-      "components/travel/ride-pickup-widget.tsx",
+      "components/widgets/ride-pickup-widget.tsx",
       "RidePickupWidget",
       {
         description:
@@ -1048,7 +1051,7 @@ export const showcaseRows = [
     c(
       "electric-scooter",
       <ElectricScooterWidget />,
-      "components/travel/electric-scooter-widget.tsx",
+      "components/widgets/electric-scooter-widget.tsx",
       "ElectricScooterWidget",
       {
         description:
@@ -1135,7 +1138,7 @@ export const showcaseRows = [
     c(
       "instagram-post",
       <InstagramPostCard />,
-      "components/instagram/instagram-post-card.tsx",
+      "components/socials/instagram-post-card.tsx",
       "InstagramPostCard",
       {
         description:
@@ -1147,7 +1150,7 @@ export const showcaseRows = [
     c(
       "threads-post",
       <ThreadsPostCard />,
-      "components/facebook/threads-post-card.tsx",
+      "components/socials/threads-post-card.tsx",
       "ThreadsPostCard",
       {
         description:
@@ -1171,7 +1174,7 @@ export const showcaseRows = [
     c(
       "twitter-post",
       <TwitterPostCard />,
-      "components/twitter/twitter-post-card.tsx",
+      "components/socials/twitter-post-card.tsx",
       "TwitterPostCard",
       {
         description:
@@ -1193,7 +1196,7 @@ export const showcaseRows = [
     c(
       "github-contribution",
       <GithubContributionCard />,
-      "components/github/github-contribution.tsx",
+      "components/socials/github-contribution.tsx",
       "GithubContributionCard",
       {
         description:
@@ -1475,7 +1478,7 @@ export const showcaseRows = [
     c(
       "discord-chat",
       <DiscordChatCard />,
-      "components/discord/discord-chat-card.tsx",
+      "components/socials/discord-chat-card.tsx",
       "DiscordChatCard",
       {
         description:
@@ -1487,7 +1490,7 @@ export const showcaseRows = [
     c(
       "linked-in-profile",
       <LinkedInProfileCard />,
-      "components/linkedin/linked-in-profile-card.tsx",
+      "components/socials/linked-in-profile-card.tsx",
       "LinkedInProfileCard",
       {
         description:
@@ -1497,7 +1500,7 @@ export const showcaseRows = [
     c(
       "facebook-post",
       <FacebookPostCard />,
-      "components/facebook/facebook-post-card.tsx",
+      "components/socials/facebook-post-card.tsx",
       "FacebookPostCard",
       {
         description:
@@ -1507,7 +1510,7 @@ export const showcaseRows = [
     c(
       "twitter-profile",
       <TwitterProfileCard />,
-      "components/twitter/twitter-profile-card.tsx",
+      "components/socials/twitter-profile-card.tsx",
       "TwitterProfileCard",
       {
         description:
@@ -1644,7 +1647,7 @@ export const showcaseRows = [
     c(
       "github-repo",
       <GitHubRepoCard />,
-      "components/github/github-repo-card.tsx",
+      "components/socials/github-repo-card.tsx",
       "GitHubRepoCard",
       {
         description:
@@ -1667,7 +1670,7 @@ export const showcaseRows = [
     c(
       "linked-in-post",
       <LinkedInPostCard />,
-      "components/linkedin/linked-in-post-card.tsx",
+      "components/socials/linked-in-post-card.tsx",
       "LinkedInPostCard",
       {
         description:
