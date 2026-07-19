@@ -206,7 +206,7 @@ export function DashboardView() {
   if (loading && !stats) {
     return (
       <div className="flex h-dvh items-center justify-center bg-white">
-        <PageLoaderOverlay variant="light" />
+        <PageLoaderOverlay />
       </div>
     );
   }
@@ -228,7 +228,7 @@ export function DashboardView() {
 
   return (
     <div className="flex h-dvh w-full min-w-0 flex-col overflow-hidden bg-neutral-50 selection:bg-neutral-900 selection:text-white">
-      {refreshing ? <PageLoaderOverlay variant="light" /> : null}
+      {refreshing ? <PageLoaderOverlay /> : null}
 
       {/* Mobile-only bar — desktop uses sidebars */}
       <header className="z-20 flex h-14 shrink-0 items-center gap-3 border-b border-neutral-200 bg-white px-4 md:hidden">

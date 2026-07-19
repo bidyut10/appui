@@ -1,6 +1,5 @@
 import { PageLoaderOverlay } from "@/components/system/loaders";
 
-/** Docs / component pages are white — keep the light loader. */
 export default function ComponentLoading() {
-  return <PageLoaderOverlay variant="light" />;
+  return <PageLoaderOverlay />;
 }
