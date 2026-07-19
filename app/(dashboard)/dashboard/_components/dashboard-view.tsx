@@ -205,17 +205,17 @@ export function DashboardView() {
 
   if (loading && !stats) {
     return (
-      <div className="flex h-dvh items-center justify-center bg-neutral-950">
-        <PageLoaderOverlay />
+      <div className="flex h-dvh items-center justify-center bg-white">
+        <PageLoaderOverlay variant="light" />
       </div>
     );
   }
 
   if (error && !stats) {
     return (
-      <div className="flex h-dvh items-center justify-center bg-neutral-950 p-6">
-        <div className="max-w-md rounded-2xl border border-red-900/50 bg-red-950/40 px-4 py-6">
-          <p className="font-sans text-sm text-rose-700/70">{error}</p>
+      <div className="flex h-dvh items-center justify-center bg-neutral-50 p-6">
+        <div className="max-w-md rounded-2xl border border-red-200 bg-red-50 px-4 py-6">
+          <p className="font-sans text-sm text-red-700">{error}</p>
         </div>
       </div>
     );
@@ -227,18 +227,18 @@ export function DashboardView() {
   const showPeriod = section !== "emails";
 
   return (
-    <div className="flex h-dvh w-full min-w-0 flex-col overflow-hidden bg-neutral-950 selection:bg-neutral-100 selection:text-neutral-950">
-      {refreshing ? <PageLoaderOverlay /> : null}
+    <div className="flex h-dvh w-full min-w-0 flex-col overflow-hidden bg-neutral-50 selection:bg-neutral-900 selection:text-white">
+      {refreshing ? <PageLoaderOverlay variant="light" /> : null}
 
       {/* Mobile-only bar — desktop uses sidebars */}
-      <header className="z-20 flex h-14 shrink-0 items-center gap-3 border-b border-white/[0.04] px-4 md:hidden">
+      <header className="z-20 flex h-14 shrink-0 items-center gap-3 border-b border-neutral-200 bg-white px-4 md:hidden">
         <DashboardMenuButton onClick={() => setSidebarOpen(true)} />
         <div className="flex min-w-0 flex-1 items-center gap-2">
           <LogoIcon
-            className="w-5 shrink-0 text-neutral-300"
+            className="w-5 shrink-0 text-neutral-900"
             fill="currentColor"
           />
-          <p className="truncate font-sans text-sm font-semibold text-neutral-200">
+          <p className="truncate font-sans text-sm font-semibold text-neutral-900">
             {meta.title}
           </p>
         </div>

@@ -3,13 +3,17 @@ import { Loader } from "lucide-react";
 import { cn } from "@/lib/cn";
 
 type PageLoaderOverlayProps = Readonly<{
-  /** `dark` = black screen + white spinner; `light` = white screen + black spinner. */
-  variant?: "dark" | "light";
+  /**
+   * `light` — white page + black spinner (marketing / docs).
+   * `dark` — black page + white spinner (dashboard only).
+   * Defaults to `light` so route `loading.tsx` files stay correct on white pages.
+   */
+  variant?: "light" | "dark";
 }>;
 
-// Full-screen loader used during route transitions and dashboard fetches.
+/** Full-screen page loader for route transitions and dashboard fetches. */
 export function PageLoaderOverlay({
-  variant = "dark",
+  variant = "light",
 }: PageLoaderOverlayProps) {
   const isDark = variant === "dark";
 

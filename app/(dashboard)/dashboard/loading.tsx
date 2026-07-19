@@ -1,6 +1,6 @@
 import { PageLoaderOverlay } from "@/components/system/loaders";
 
-/** Docs / component pages are white — keep the light loader. */
-export default function ComponentLoading() {
+/** Dashboard route loading — light page + dark spinner. */
+export default function DashboardLoading() {
   return <PageLoaderOverlay variant="light" />;
 }

@@ -103,13 +103,13 @@ export function DashboardAside({
   return (
     <aside
       aria-label="Date filter"
-      className="hidden w-80 shrink-0 flex-col border-l border-white/[0.04] bg-neutral-950 xl:flex"
+      className="hidden w-80 shrink-0 flex-col border-l border-neutral-200 bg-white xl:flex"
     >
       <div className="scrollbar-hover min-h-0 flex-1 overflow-y-auto px-5 py-6">
         <div className="flex items-center gap-2.5">
-          <Google size={16} className="shrink-0 text-neutral-300" aria-hidden />
+          <Google size={16} className="shrink-0 text-neutral-700" aria-hidden />
           <div>
-            <p className="font-sans text-sm font-semibold text-neutral-400">
+            <p className="font-sans text-sm font-semibold text-neutral-900">
               Date range
             </p>
             <p className="font-sans text-[11px] text-neutral-500">
@@ -135,8 +135,8 @@ export function DashboardAside({
                 className={cn(
                   "w-full rounded-lg px-2.5 py-2 text-left font-sans text-sm transition-colors",
                   preset === item.id
-                    ? "bg-white/[0.06] font-medium text-neutral-300"
-                    : "text-neutral-500 hover:bg-white/[0.03] hover:text-neutral-400",
+                    ? "bg-neutral-100 font-medium text-neutral-900"
+                    : "text-neutral-500 hover:bg-neutral-50 hover:text-neutral-700",
                 )}
               >
                 {item.label}
@@ -145,7 +145,7 @@ export function DashboardAside({
           ))}
         </ul>
 
-        <div className="mt-6 rounded-xl border border-white/[0.04] p-3">
+        <div className="mt-6 rounded-xl border border-neutral-200 p-3">
           <div className="mb-3 flex items-center justify-between">
             <button
               type="button"
@@ -154,12 +154,12 @@ export function DashboardAside({
                   new Date(cursor.getFullYear(), cursor.getMonth() - 1, 1),
                 )
               }
-              className="inline-flex size-7 items-center justify-center rounded-md text-neutral-500 hover:bg-white/[0.04] hover:text-neutral-300"
+              className="inline-flex size-7 items-center justify-center rounded-md text-neutral-500 hover:bg-neutral-50 hover:text-neutral-800"
               aria-label="Previous month"
             >
               <ChevronLeft size={16} aria-hidden />
             </button>
-            <p className="font-sans text-xs font-semibold text-neutral-300">
+            <p className="font-sans text-xs font-semibold text-neutral-800">
               {monthLabel}
             </p>
             <button
@@ -169,7 +169,7 @@ export function DashboardAside({
                   new Date(cursor.getFullYear(), cursor.getMonth() + 1, 1),
                 )
               }
-              className="inline-flex size-7 items-center justify-center rounded-md text-neutral-500 hover:bg-white/[0.04] hover:text-neutral-300"
+              className="inline-flex size-7 items-center justify-center rounded-md text-neutral-500 hover:bg-neutral-50 hover:text-neutral-800"
               aria-label="Next month"
             >
               <ChevronRight size={16} aria-hidden />
@@ -180,7 +180,7 @@ export function DashboardAside({
             {WEEKDAYS.map((d, i) => (
               <span
                 key={`${d}-${i}`}
-                className="py-1 text-center font-sans text-[10px] font-medium text-neutral-600"
+                className="py-1 text-center font-sans text-[10px] font-medium text-neutral-400"
               >
                 {d}
               </span>
@@ -207,11 +207,11 @@ export function DashboardAside({
                   onClick={() => selectDay(iso, day)}
                   className={cn(
                     "aspect-square rounded-md font-sans text-[11px] tabular-nums transition-colors",
-                    !inMonth && "text-neutral-700",
-                    inMonth && "text-neutral-400 hover:bg-white/[0.04]",
-                    inRange && "bg-white/[0.06] text-neutral-300",
+                    !inMonth && "text-neutral-300",
+                    inMonth && "text-neutral-700 hover:bg-neutral-50",
+                    inRange && "bg-neutral-100 text-neutral-800",
                     (isStart || isEnd || picking) &&
-                      "bg-neutral-300/90 font-medium text-neutral-900 hover:bg-neutral-200",
+                      "bg-neutral-900 font-medium text-white hover:bg-neutral-800",
                   )}
                 >
                   {day.getDate()}
@@ -250,7 +250,7 @@ export function DashboardAside({
                     onCustomRange(start, end);
                   }
                 }}
-                className="mt-1 w-full rounded-lg border border-white/[0.05] bg-white/[0.03] px-2 py-1.5 font-sans text-xs text-neutral-300 outline-none ring-0 focus:border-white/20 focus:ring-0"
+                className="mt-1 w-full rounded-lg border border-neutral-200 bg-white px-2 py-1.5 font-sans text-xs text-neutral-900 outline-none ring-0 focus:border-neutral-400 focus:ring-0"
               />
             </label>
             <label className="block">
@@ -276,7 +276,7 @@ export function DashboardAside({
                     onCustomRange(start, end);
                   }
                 }}
-                className="mt-1 w-full rounded-lg border border-white/[0.05] bg-white/[0.03] px-2 py-1.5 font-sans text-xs text-neutral-300 outline-none ring-0 focus:border-white/20 focus:ring-0"
+                className="mt-1 w-full rounded-lg border border-neutral-200 bg-white px-2 py-1.5 font-sans text-xs text-neutral-900 outline-none ring-0 focus:border-neutral-400 focus:ring-0"
               />
             </label>
           </div>
@@ -284,7 +284,7 @@ export function DashboardAside({
             type="button"
             onClick={commitInputs}
             disabled={!draftFrom || !draftTo}
-            className="w-full rounded-lg bg-neutral-200/90 px-3 py-2 font-sans text-xs font-medium text-neutral-900 transition-colors hover:bg-neutral-100 disabled:opacity-40"
+            className="w-full rounded-lg bg-neutral-900 px-3 py-2 font-sans text-xs font-medium text-white transition-colors hover:bg-neutral-800 disabled:opacity-40"
           >
             Apply range
           </button>

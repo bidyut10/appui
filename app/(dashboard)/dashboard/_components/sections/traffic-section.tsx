@@ -19,7 +19,7 @@ function pctOf(part: number, whole: number) {
   return whole > 0 ? Math.round((part / whole) * 100) : 0;
 }
 
-const card = "rounded-xl border border-white/[0.03] bg-neutral-900/30";
+const card = "rounded-xl border border-neutral-200 bg-white";
 
 type Props = Readonly<{ stats: DashboardStats }>;
 
@@ -35,31 +35,31 @@ export function TrafficSection({ stats }: Props) {
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="font-sans text-xs text-neutral-500">Page views</p>
-            <p className="mt-1 font-sans text-3xl font-semibold tabular-nums text-neutral-400">
+            <p className="mt-1 font-sans text-3xl font-semibold tabular-nums text-neutral-900">
               {stats.pageViews.toLocaleString()}
             </p>
           </div>
-          <Eye size={16} className="text-rose-700/60" aria-hidden />
+          <Eye size={16} className="text-rose-600" aria-hidden />
         </div>
-        <Sparkline values={series} tone="dark" className="mt-4 h-12 w-full" />
+        <Sparkline values={series} tone="rose" className="mt-4 h-12 w-full" />
       </article>
 
       <article className={cn(card, "p-4")}>
-        <Users size={14} className="text-rose-700/60" aria-hidden />
+        <Users size={14} className="text-rose-600" aria-hidden />
         <p className="mt-3 font-sans text-xs text-neutral-500">Visitors</p>
-        <p className="mt-1 font-sans text-2xl font-semibold tabular-nums text-neutral-400">
+        <p className="mt-1 font-sans text-2xl font-semibold tabular-nums text-neutral-900">
           {stats.uniqueVisitors.toLocaleString()}
         </p>
       </article>
 
       <article className={cn(card, "p-4")}>
-        <Waypoints size={14} className="text-rose-700/70" aria-hidden />
+        <Waypoints size={14} className="text-rose-700" aria-hidden />
         <p className="mt-3 font-sans text-xs text-neutral-500">Sessions</p>
-        <p className="mt-1 font-sans text-2xl font-semibold tabular-nums text-neutral-400">
+        <p className="mt-1 font-sans text-2xl font-semibold tabular-nums text-neutral-900">
           {stats.totalSessions.toLocaleString()}
         </p>
         <ColumnBars
-          tone="dark"
+          tone="rose"
           values={seriesFromRanks(
             [stats.totalSessions, stats.uniqueVisitors, stats.pageViews],
             5,
@@ -74,10 +74,10 @@ export function TrafficSection({ stats }: Props) {
           "col-span-2 flex items-center gap-4 px-5 py-4 md:col-span-4",
         )}
       >
-        <Clock3 size={18} className="shrink-0 text-rose-700/70" aria-hidden />
+        <Clock3 size={18} className="shrink-0 text-rose-700" aria-hidden />
         <div>
           <p className="font-sans text-xs text-neutral-500">Average session</p>
-          <p className="font-sans text-lg font-semibold text-neutral-400 tabular-nums">
+          <p className="font-sans text-lg font-semibold text-neutral-900 tabular-nums">
             {formatDuration(stats.avgSessionSec)}
           </p>
         </div>
@@ -88,35 +88,35 @@ export function TrafficSection({ stats }: Props) {
         className={cn(card, "col-span-2 overflow-hidden md:col-span-4")}
       >
         <header className="px-5 py-3">
-          <h3 className="font-sans text-sm font-medium text-neutral-400">
+          <h3 className="font-sans text-sm font-medium text-neutral-800">
             Paths by views
           </h3>
         </header>
-        <ul className="border-t border-white/[0.04]">
+        <ul className="border-t border-neutral-200">
           {stats.topPages.map((row, i) => (
             <li
               key={row.path}
-              className="border-b border-white/[0.03] last:border-0"
+              className="border-b border-neutral-200 last:border-0"
             >
               <Link
                 href={row.path}
-                className="flex items-center gap-3 px-5 py-3 transition-colors hover:bg-white/[0.03]"
+                className="flex items-center gap-3 px-5 py-3 transition-colors hover:bg-neutral-50"
               >
                 <span
                   className={cn(
                     "w-5 font-sans text-[11px] tabular-nums",
-                    i === 0 ? "text-neutral-400" : "text-neutral-600",
+                    i === 0 ? "text-neutral-800" : "text-neutral-400",
                   )}
                 >
                   {i + 1}
                 </span>
                 <div className="min-w-0 flex-1">
-                  <p className="truncate font-sans text-sm text-neutral-400">
+                  <p className="truncate font-sans text-sm text-neutral-800">
                     {row.path}
                   </p>
-                  <div className="mt-1.5 h-1 overflow-hidden rounded bg-rose-800/8">
+                  <div className="mt-1.5 h-1 overflow-hidden rounded bg-rose-100">
                     <div
-                      className="h-full rounded bg-rose-800/45"
+                      className="h-full rounded bg-rose-600"
                       style={{
                         width: `${pctOf(row.views, stats.pageViews)}%`,
                       }}
@@ -126,12 +126,12 @@ export function TrafficSection({ stats }: Props) {
                 <span className="font-sans text-[11px] text-neutral-500 tabular-nums">
                   {pctOf(row.views, stats.pageViews)}%
                 </span>
-                <span className="font-sans text-sm tabular-nums text-neutral-400">
+                <span className="font-sans text-sm tabular-nums text-neutral-900">
                   {row.views}
                 </span>
                 <ArrowUpRight
                   size={14}
-                  className="text-neutral-600"
+                  className="text-neutral-400"
                   aria-hidden
                 />
               </Link>

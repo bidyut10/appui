@@ -105,15 +105,15 @@ export function DashboardEmailsPanel({
   ];
 
   return (
-    <div className="flex h-full min-h-0 flex-col overflow-hidden bg-neutral-950">
-      <div className="flex shrink-0 flex-col gap-3 border-b border-white/[0.04] px-3 py-3 md:flex-row md:items-center md:justify-between md:px-4">
+    <div className="flex h-full min-h-0 flex-col overflow-hidden bg-white">
+      <div className="flex shrink-0 flex-col gap-3 border-b border-neutral-200 px-3 py-3 md:flex-row md:items-center md:justify-between md:px-4">
         <div className="flex items-center gap-2.5">
-          <Gmail size={18} className="shrink-0 text-rose-700/70" aria-hidden />
+          <Gmail size={18} className="shrink-0 text-rose-600" aria-hidden />
           <div>
-            <p className="font-sans text-sm font-semibold text-neutral-400">
+            <p className="font-sans text-sm font-semibold text-neutral-900">
               Inbox
             </p>
-            <p className="font-mono text-[10px] text-neutral-600">
+            <p className="font-mono text-[10px] text-neutral-400">
               {loading
                 ? "Loading…"
                 : `${inquiries.length} message${inquiries.length === 1 ? "" : "s"}`}
@@ -131,11 +131,11 @@ export function DashboardEmailsPanel({
                 "inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-sans text-xs font-medium transition-colors",
                 filter === item.id
                   ? item.id === "sponsor"
-                    ? "bg-rose-800/10 text-rose-700/70"
+                    ? "bg-rose-50 text-rose-700"
                     : item.id === "work"
-                      ? "bg-rose-800/10 text-rose-700/60"
-                      : "bg-white/[0.08] text-neutral-300"
-                  : "border border-white/[0.05] text-neutral-500 hover:border-white/10 hover:text-neutral-400",
+                      ? "bg-rose-50 text-rose-700"
+                      : "bg-neutral-100 text-neutral-900"
+                  : "border border-neutral-200 text-neutral-500 hover:bg-neutral-50 hover:text-neutral-700",
               )}
             >
               {item.label}
@@ -143,8 +143,8 @@ export function DashboardEmailsPanel({
                 className={cn(
                   "rounded-md px-1.5 py-0.5 font-sans text-[10px] font-semibold tabular-nums",
                   filter === item.id
-                    ? "bg-black/20 text-inherit opacity-80"
-                    : "bg-white/[0.04] text-neutral-500",
+                    ? "bg-black/5 text-inherit opacity-80"
+                    : "bg-neutral-100 text-neutral-500",
                 )}
               >
                 {item.count}
@@ -157,15 +157,15 @@ export function DashboardEmailsPanel({
       <div className="flex min-h-0 flex-1 flex-col md:flex-row">
         <aside
           className={cn(
-            "flex min-h-0 w-full flex-col border-white/[0.04] md:w-88 md:shrink-0 md:border-r",
+            "flex min-h-0 w-full flex-col border-neutral-200 md:w-88 md:shrink-0 md:border-r",
             selected ? "hidden md:flex" : "flex",
           )}
         >
-          <div className="shrink-0 border-b border-white/[0.04] p-3">
+          <div className="shrink-0 border-b border-neutral-200 p-3">
             <label className="relative block">
               <Search
                 size={14}
-                className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-neutral-500"
+                className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-neutral-400"
                 aria-hidden
               />
               <input
@@ -173,14 +173,14 @@ export function DashboardEmailsPanel({
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Search mail"
-                className="w-full rounded-lg border border-white/[0.05] bg-white/[0.03] py-2 pr-3 pl-9 font-sans text-sm text-neutral-400 outline-none ring-0 placeholder:text-neutral-600 focus:border-white/10 focus:ring-0"
+                className="w-full rounded-lg border border-neutral-200 bg-white py-2 pr-3 pl-9 font-sans text-sm text-neutral-900 outline-none ring-0 placeholder:text-neutral-400 focus:border-neutral-400 focus:ring-0"
               />
             </label>
           </div>
 
           <div className="scrollbar-hover min-h-0 flex-1 overflow-y-auto">
             {error && inquiries.length === 0 ? (
-              <p className="px-4 py-10 text-center font-sans text-sm text-rose-700/70">
+              <p className="px-4 py-10 text-center font-sans text-sm text-rose-700">
                 {error}
               </p>
             ) : loading && inquiries.length === 0 ? (
@@ -189,7 +189,7 @@ export function DashboardEmailsPanel({
               </p>
             ) : filtered.length === 0 ? (
               <div className="flex flex-col items-center px-4 py-12 text-center">
-                <Inbox size={28} className="text-neutral-600" aria-hidden />
+                <Inbox size={28} className="text-neutral-400" aria-hidden />
                 <p className="mt-3 font-sans text-sm text-neutral-500">
                   {query || filter !== "all"
                     ? "No messages match this filter."
@@ -204,7 +204,7 @@ export function DashboardEmailsPanel({
                   return (
                     <li
                       key={item.id}
-                      className="border-b border-white/[0.03]"
+                      className="border-b border-neutral-200"
                     >
                       <button
                         type="button"
@@ -212,8 +212,8 @@ export function DashboardEmailsPanel({
                         className={cn(
                           "w-full px-3 py-3 text-left transition-colors",
                           active
-                            ? "bg-white/[0.05]"
-                            : "hover:bg-white/[0.03]",
+                            ? "bg-neutral-100"
+                            : "hover:bg-neutral-50",
                         )}
                       >
                         <div className="flex items-start justify-between gap-2">
@@ -221,17 +221,17 @@ export function DashboardEmailsPanel({
                             className={cn(
                               "truncate font-sans text-sm",
                               active
-                                ? "font-semibold text-neutral-300"
-                                : "font-medium text-neutral-500",
+                                ? "font-semibold text-neutral-900"
+                                : "font-medium text-neutral-700",
                             )}
                           >
                             {item.name}
                           </p>
-                          <span className="shrink-0 font-mono text-[10px] text-neutral-600">
+                          <span className="shrink-0 font-mono text-[10px] text-neutral-400">
                             {formatWhen(item.createdAt)}
                           </span>
                         </div>
-                        <p className="mt-0.5 truncate font-sans text-xs text-neutral-600">
+                        <p className="mt-0.5 truncate font-sans text-xs text-neutral-500">
                           {item.email}
                         </p>
                         <div className="mt-2 flex items-center gap-2">
@@ -248,11 +248,11 @@ export function DashboardEmailsPanel({
                             />
                             {meta.label}
                           </span>
-                          <p className="truncate font-sans text-xs font-medium text-neutral-500">
+                          <p className="truncate font-sans text-xs font-medium text-neutral-700">
                             {item.subject}
                           </p>
                         </div>
-                        <p className="mt-1 line-clamp-2 font-sans text-xs leading-relaxed text-neutral-600">
+                        <p className="mt-1 line-clamp-2 font-sans text-xs leading-relaxed text-neutral-500">
                           {item.message}
                         </p>
                       </button>
@@ -266,24 +266,24 @@ export function DashboardEmailsPanel({
 
         <section
           className={cn(
-            "min-h-0 flex-1 flex-col bg-neutral-950",
+            "min-h-0 flex-1 flex-col bg-white",
             selected ? "flex" : "hidden md:flex",
           )}
         >
           {!selected ? (
             <div className="flex flex-1 flex-col items-center justify-center px-6 text-center">
-              <Mail size={32} className="text-neutral-600" aria-hidden />
+              <Mail size={32} className="text-neutral-400" aria-hidden />
               <p className="mt-3 font-sans text-sm text-neutral-500">
                 Select a message to read it.
               </p>
             </div>
           ) : (
             <>
-              <div className="flex shrink-0 items-start gap-3 border-b border-white/[0.04] px-3 py-3 md:px-5 md:py-4">
+              <div className="flex shrink-0 items-start gap-3 border-b border-neutral-200 px-3 py-3 md:px-5 md:py-4">
                 <button
                   type="button"
                   onClick={() => setSelectedId(null)}
-                  className="mt-0.5 inline-flex size-8 items-center justify-center rounded-lg border border-white/[0.05] text-neutral-400 transition-colors hover:border-white/10 hover:text-neutral-300 md:hidden"
+                  className="mt-0.5 inline-flex size-8 items-center justify-center rounded-lg border border-neutral-200 text-neutral-500 transition-colors hover:bg-neutral-50 hover:text-neutral-800 md:hidden"
                   aria-label="Back to inbox"
                 >
                   <ArrowLeft size={16} aria-hidden />
@@ -291,7 +291,7 @@ export function DashboardEmailsPanel({
 
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-2">
-                    <h2 className="font-sans text-base font-semibold text-neutral-400 md:text-lg">
+                    <h2 className="font-sans text-base font-semibold text-neutral-900 md:text-lg">
                       {selected.subject}
                     </h2>
                     {(() => {
@@ -313,14 +313,14 @@ export function DashboardEmailsPanel({
                       );
                     })()}
                   </div>
-                  <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-neutral-600">
-                    <span className="font-sans font-medium text-neutral-400">
+                  <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-neutral-500">
+                    <span className="font-sans font-medium text-neutral-800">
                       {selected.name}
                     </span>
                     <span className="font-mono text-neutral-500">
                       &lt;{selected.email}&gt;
                     </span>
-                    <span className="inline-flex items-center gap-1 font-mono text-[11px] text-neutral-600">
+                    <span className="inline-flex items-center gap-1 font-mono text-[11px] text-neutral-400">
                       <Clock3 size={11} aria-hidden />
                       {formatFullWhen(selected.createdAt)}
                     </span>
@@ -337,11 +337,11 @@ export function DashboardEmailsPanel({
               </div>
 
               <div className="scrollbar-hover min-h-0 flex-1 overflow-y-auto px-3 py-5 md:px-8 md:py-6">
-                <article className="mx-auto max-w-2xl rounded-xl border border-white/[0.03] bg-neutral-900/30 p-4 md:p-6">
-                  <p className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-neutral-500">
+                <article className="mx-auto max-w-2xl rounded-xl border border-neutral-200 bg-white p-4 md:p-6">
+                  <p className="whitespace-pre-wrap font-sans text-sm leading-relaxed text-neutral-700">
                     {selected.message}
                   </p>
-                  <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-white/[0.04] pt-4 font-mono text-[10px] text-neutral-600">
+                  <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-neutral-200 pt-4 font-mono text-[10px] text-neutral-400">
                     <span>Source · {selected.source}</span>
                     <span>ID · {selected.id.slice(0, 8)}</span>
                   </div>
