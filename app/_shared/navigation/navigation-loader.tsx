@@ -92,5 +92,5 @@ export function NavigationLoader() {
 
   if (!visible) return null;
 
-  return <PageLoaderOverlay />;
+  return <PageLoaderOverlay variant="light" />;
 }

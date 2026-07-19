@@ -1,10 +1,10 @@
 "use client";
 
-import { LockKeyhole } from "lucide-react";
 import { useState, type SubmitEvent } from "react";
+import { Eye, EyeOff, Loader } from "lucide-react";
 
-import { AnnotatedText } from "@/components/underlines/annotated-text";
-import { BOX_PATTERN } from "@/lib/shared";
+import { LogoIcon } from "@/app/(marketing)/_components/Logo";
+import { siteConfig } from "@/lib/site";
 
 type DashboardLoginFormProps = Readonly<{
   onSuccess: () => void;
@@ -12,6 +12,7 @@ type DashboardLoginFormProps = Readonly<{
 
 export function DashboardLoginForm({ onSuccess }: DashboardLoginFormProps) {
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -41,74 +42,93 @@ export function DashboardLoginForm({ onSuccess }: DashboardLoginFormProps) {
   }
 
   return (
-    <div className="mx-auto w-full max-w-md">
-      <p className="font-mono text-[10px] tracking-[0.14em] text-neutral-400 uppercase">
-        Dashboard / Private
-      </p>
+    <div className="relative flex min-h-dvh w-full flex-col bg-neutral-950">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.04),transparent_55%)]"
+      />
 
-      <h1 className="mt-3 font-serif text-2xl text-neutral-900 md:text-3xl">
-        Analytics{" "}
-        <AnnotatedText variant="underline" color="text-cyan-200">
-          overview
-        </AnnotatedText>
-      </h1>
+      <header className="relative z-10 flex items-center gap-2.5 px-5 py-5 md:px-8">
+        <LogoIcon className="w-5 text-neutral-200" fill="currentColor" />
+        <span className="font-sans text-sm font-medium text-neutral-300">
+          {siteConfig.displayName}
+        </span>
+      </header>
 
-      <p className="mt-3 max-w-sm font-sans text-sm leading-relaxed text-neutral-500">
-        Sign in to view live traffic, component clicks, and visitor geography.
-      </p>
+      <main className="relative z-10 flex flex-1 flex-col items-center justify-center px-5 pb-16 md:px-8">
+        <div className="w-full max-w-[22rem]">
+          <p className="font-mono text-[10px] tracking-[0.18em] text-neutral-600 uppercase">
+            Private analytics
+          </p>
+          <h1 className="mt-3 font-sans text-2xl font-semibold tracking-tight text-neutral-100 md:text-[1.75rem]">
+            Sign in
+          </h1>
+          <p className="mt-2 font-sans text-sm leading-relaxed text-neutral-500">
+            Enter the dashboard password to view traffic, components, and
+            inbox.
+          </p>
 
-      <form
-        onSubmit={onSubmit}
-        className="relative mt-8 overflow-hidden rounded-xl border border-neutral-100 bg-white"
-      >
-        <div
-          aria-hidden
-          className="absolute inset-0 opacity-60"
-          style={BOX_PATTERN}
-        />
+          <form onSubmit={onSubmit} className="mt-8 space-y-4">
+            <label className="block">
+              <span className="sr-only">Password</span>
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  className="w-full rounded-xl border border-white/[0.07] bg-white/[0.04] px-3.5 py-3 pr-11 font-sans text-sm text-neutral-200 outline-none ring-0 transition-colors placeholder:text-neutral-600 focus:border-white/20 focus:bg-white/[0.06] focus:ring-0"
+                  autoComplete="current-password"
+                  placeholder="Password"
+                  required
+                  autoFocus
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((v) => !v)}
+                  className="absolute top-1/2 right-2.5 -translate-y-1/2 rounded-lg p-1.5 text-neutral-500 transition-colors hover:text-neutral-300"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? (
+                    <EyeOff size={16} aria-hidden />
+                  ) : (
+                    <Eye size={16} aria-hidden />
+                  )}
+                </button>
+              </div>
+            </label>
 
-        <div className="relative z-10 p-6 md:p-8">
-          <div className="mb-6 flex items-center gap-2.5">
-            <div className="flex size-9 items-center justify-center rounded-lg bg-neutral-900 text-white">
-              <LockKeyhole size={16} aria-hidden />
-            </div>
-            <div>
-              <p className="font-sans text-sm font-medium text-neutral-900">
-                Protected access
+            {error ? (
+              <p
+                role="alert"
+                className="rounded-lg border border-rose-500/20 bg-rose-500/10 px-3 py-2 font-sans text-sm text-rose-300"
+              >
+                {error}
               </p>
-              <p className="font-mono text-[10px] text-neutral-400">
-                Dashboard password required
-              </p>
-            </div>
-          </div>
+            ) : null}
 
-          <label className="block">
-            <span className="font-mono text-[10px] tracking-[0.12em] text-neutral-400 uppercase">
-              Password
-            </span>
-            <input
-              type="password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              className="mt-2 w-full rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-2.5 font-sans text-sm text-neutral-900 transition-colors outline-none focus:border-neutral-300 focus:bg-white"
-              autoComplete="current-password"
-              required
-            />
-          </label>
-
-          {error ? (
-            <p className="mt-3 font-sans text-sm text-red-600">{error}</p>
-          ) : null}
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="mt-6 w-full rounded-lg bg-neutral-900 px-4 py-2.5 font-sans text-sm text-white transition-colors hover:bg-neutral-800 disabled:opacity-60"
-          >
-            {loading ? "Signing in…" : "Sign in"}
-          </button>
+            <button
+              type="submit"
+              disabled={loading || !password.trim()}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-neutral-100 px-4 py-3 font-sans text-sm font-medium text-neutral-950 transition-colors hover:bg-white disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              {loading ? (
+                <>
+                  <Loader size={15} className="animate-spin" aria-hidden />
+                  Signing in…
+                </>
+              ) : (
+                "Continue"
+              )}
+            </button>
+          </form>
         </div>
-      </form>
+      </main>
+
+      <footer className="relative z-10 px-5 py-5 text-center md:px-8">
+        <p className="font-mono text-[10px] tracking-wide text-neutral-700">
+          Authorized access only
+        </p>
+      </footer>
     </div>
   );
 }

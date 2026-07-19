@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { cookies } from "next/headers";
 
 import { DashboardLoginGate } from "./_components/dashboard-login-gate";
-import { DashboardShell } from "./_components/dashboard-shell";
 import { DashboardView } from "./_components/dashboard-view";
 import { AUTH_COOKIE } from "@/lib/analytics/constants";
 import {
@@ -18,12 +17,12 @@ export const metadata: Metadata = {
 export default async function DashboardPage() {
   if (!isAnalyticsConfigured()) {
     return (
-      <DashboardShell>
-        <div className="mx-auto max-w-lg">
+      <div className="flex h-dvh items-center justify-center bg-white px-4">
+        <div className="w-full max-w-md rounded-2xl border border-neutral-200 bg-white p-6 md:p-8">
           <p className="font-mono text-[10px] tracking-[0.14em] text-neutral-400 uppercase">
             Dashboard / Setup
           </p>
-          <h1 className="mt-3 font-serif text-2xl text-neutral-900">
+          <h1 className="mt-3 font-sans text-2xl font-semibold tracking-tight text-neutral-900">
             Analytics not configured
           </h1>
           <p className="mt-3 font-sans text-sm leading-relaxed text-neutral-500">
@@ -38,7 +37,7 @@ export default async function DashboardPage() {
             to your environment, then redeploy.
           </p>
         </div>
-      </DashboardShell>
+      </div>
     );
   }
 
@@ -46,9 +45,9 @@ export default async function DashboardPage() {
   const token = cookieStore.get(AUTH_COOKIE)?.value;
   const authed = isValidAuthToken(token);
 
-  return (
-    <DashboardShell>
-      {authed ? <DashboardView /> : <DashboardLoginGate />}
-    </DashboardShell>
-  );
+  if (authed) {
+    return <DashboardView />;
+  }
+
+  return <DashboardLoginGate />;
 }
