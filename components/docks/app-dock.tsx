@@ -65,7 +65,7 @@ export const AppDock = forwardRef<HTMLDivElement, AppDockProps>(
       >
         <nav
           aria-label="App dock"
-          className="mx-auto inline-flex items-end gap-2.5 rounded-2xl border border-neutral-50 bg-white/50 p-3 shadow-xl shadow-black/10 backdrop-blur-md"
+          className="mx-auto inline-flex items-end gap-2.5 rounded-2xl border border-neutral-50/20 bg-white/10 p-3 shadow-xl shadow-black/10 backdrop-blur-md"
         >
           {items.map((item) => {
             const Icon = item.icon ?? Home;
@@ -89,7 +89,7 @@ export const AppDock = forwardRef<HTMLDivElement, AppDockProps>(
 
                 <span
                   className={cn(
-                    "flex size-11 origin-bottom items-center justify-center cursor-pointer rounded-lg shadow-xs shadow-neutral-100 transition-transform duration-300 ease-smooth will-change-transform group-hover:-translate-y-2 group-hover:scale-125 group-focus-visible:-translate-y-2 group-focus-visible:scale-125",
+                    "flex size-11 origin-bottom items-center justify-center cursor-pointer rounded-lg shadow-md transition-transform duration-300 ease-smooth will-change-transform group-hover:-translate-y-2 group-hover:scale-125 group-focus-visible:-translate-y-2 group-focus-visible:scale-125",
                     active
                       ? "bg-neutral-900 text-white"
                       : "bg-neutral-50 text-neutral-700",

@@ -96,14 +96,17 @@ function DockIcon({ item }: Readonly<{ item: MacDockItem }>) {
     <DockLink
       href={item.href}
       ariaLabel={item.title}
-      className="group relative flex flex-col items-center outline-none"
+      className="group relative z-10 flex flex-col items-center outline-none"
     >
       <span className="pointer-events-none absolute -top-10 left-1/2 z-20 -translate-x-1/2 rounded-md bg-neutral-950 px-2 py-0.5 text-[10px] font-medium whitespace-nowrap text-white opacity-0 shadow-sm transition-[opacity,transform] duration-200 ease-smooth group-hover:-translate-y-0.5 group-hover:opacity-100 group-focus-visible:opacity-100">
         {item.title}
       </span>
 
-      <span className="flex size-11 origin-bottom cursor-pointer items-center justify-center rounded-lg bg-neutral-50 shadow-xs shadow-neutral-100 transition-transform duration-300 ease-smooth will-change-transform group-hover:-translate-y-2 group-hover:scale-125 group-focus-visible:-translate-y-2 group-focus-visible:scale-125">
-        <span className="size-8">{item.icon}</span>
+      {/* Transform on the outer wrapper — backdrop-blur fails if transform/will-change sit on the same node. */}
+      <span className="origin-bottom cursor-pointer transition-transform duration-300 ease-smooth group-hover:-translate-y-2 group-hover:scale-125 group-focus-visible:-translate-y-2 group-focus-visible:scale-125">
+        <span className="flex size-11 items-center justify-center rounded-lg border border-white/20 bg-white/50 shadow-xs shadow-black/5 backdrop-blur-xl">
+          <span className="size-8">{item.icon}</span>
+        </span>
       </span>
     </DockLink>
   );
@@ -129,10 +132,15 @@ export const MacDock = forwardRef<HTMLDivElement, MacDockProps>(
       <nav
         aria-label="Application dock"
         className={cn(
-          "mx-auto inline-flex items-end gap-2.5 rounded-2xl border border-neutral-50 bg-white/50 p-3 shadow-xl shadow-black/10 backdrop-blur-md",
+          "relative mx-auto inline-flex items-end gap-2.5 p-3",
           desktopClassName,
         )}
       >
+        {/* Tray glass as a sibling layer so icon tiles can blur the page behind, not a nested filter. */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0 rounded-2xl border border-white/20 bg-white/10 shadow-xl shadow-black/10 backdrop-blur-md"
+        />
         {items.map((item) => (
           <DockIcon key={item.title} item={item} />
         ))}
