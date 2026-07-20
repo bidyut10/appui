@@ -5,7 +5,7 @@ export const siteConfig = {
   description:
     "Opensource UI is a free, MIT-licensed copy-paste library of 100+ production-ready React and Next.js components. Built with TypeScript and Tailwind CSS v4. Browse live previews and copy source code at opensourceui.in.",
   url: "https://opensourceui.in",
-  ogImage: "/opengraph-image",
+  ogImage: "/opensourceui-banner.png",
   github: {
     url: "https://github.com/bidyut10/appui",
   },

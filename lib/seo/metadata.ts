@@ -3,9 +3,10 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site";
 
 const OG_IMAGE = {
-  url: "/opengraph-image",
+  url: siteConfig.ogImage,
   width: 1200,
   height: 630,
+  alt: `${siteConfig.displayName} — free React UI components`,
 } as const;
 
 type PageMetadataOptions = Readonly<{
@@ -72,7 +73,14 @@ export function createPageMetadata({
       description,
       creator: siteConfig.author.twitter,
       site: siteConfig.author.twitter,
-      images: [OG_IMAGE.url],
+      images: [
+        {
+          url: OG_IMAGE.url,
+          width: OG_IMAGE.width,
+          height: OG_IMAGE.height,
+          alt: title,
+        },
+      ],
     },
   };
 }

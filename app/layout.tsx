@@ -64,6 +64,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: `${siteConfig.displayName} — free React UI components`,
+        type: "image/png",
       },
     ],
   },
@@ -73,7 +74,14 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     creator: siteConfig.author.twitter,
     site: siteConfig.author.twitter,
-    images: [siteConfig.ogImage],
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.displayName} — free React UI components`,
+      },
+    ],
   },
   icons: {
     icon: "/favicon.ico",
