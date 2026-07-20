@@ -48,14 +48,11 @@ import { IosCalenderWidget } from "@/components/widgets/ios-calender-widget";
 import { MonthPickerCalendar } from "@/components/calender/month-picker-calendar";
 import { WeekStripCalendar } from "@/components/calender/week-strip-calendar";
 import { CustomersTable } from "@/components/table/customers-table";
-import { AiScriptCard } from "@/components/dashboard/ai-script-card";
-import { FloatingToolRail } from "@/components/dashboard/floating-tool-rail";
-import { IndustryInsightsCard } from "@/components/dashboard/industry-insights-card";
-import { InsightsUpgradeCard } from "@/components/dashboard/insights-upgrade-card";
-import { PaymentScheduleCard } from "@/components/dashboard/payment-schedule-card";
-import { PaymentTemplatesCard } from "@/components/dashboard/payment-templates-card";
-import { RecentTransactionsCard } from "@/components/dashboard/recent-transactions-card";
-import { TasksDashboardCard } from "@/components/dashboard/tasks-dashboard-card";
+import { AppDock } from "@/components/docks/app-dock";
+import { EditorToolDock } from "@/components/docks/editor-tool-dock";
+import { MacDock } from "@/components/docks/mac-dock";
+import { PresenceDock } from "@/components/docks/presence-dock";
+import { SpotlightBar } from "@/components/docks/spotlight-bar";
 import { OrdersTable } from "@/components/table/orders-table";
 import { RecentTransactionsTable } from "@/components/table/recent-transactions-table";
 import { ResourceLinksPanel } from "@/components/resources/resource-links-panel";
@@ -693,100 +690,67 @@ export const showcaseRows = [
   ],
   [
     c(
-      "payment-templates-card",
-      <PaymentTemplatesCard />,
-      "components/dashboard/payment-templates-card.tsx",
-      "PaymentTemplatesCard",
+      "mac-dock",
+      <MacDock />,
+      "components/docks/mac-dock.tsx",
+      "MacDock",
       {
         description:
-          "Payment templates balance card with nested mandatory payments block and member avatars.",
-        usage: '<PaymentTemplatesCard total="$486.32" extraCount={8} />',
+          "Frosted macOS-style app dock with smooth hover lift, tooltips, and brand icons — Tailwind-only, no motion library.",
+        usage:
+          '<MacDock items={[{ title: "Home", href: "/", icon: <Home className="size-full" /> }]} />',
       },
     ),
     c(
-      "payment-schedule-card",
-      <PaymentScheduleCard />,
-      "components/dashboard/payment-schedule-card.tsx",
-      "PaymentScheduleCard",
+      "app-dock",
+      <AppDock />,
+      "components/docks/app-dock.tsx",
+      "AppDock",
       {
         description:
-          "Payment schedule list with date badges, amounts, and paid/upcoming checkbox states.",
+          "Bottom app launcher dock matching MacDock shell, spacing, and hover lift — with active state and optional labels.",
         usage:
-          '<PaymentScheduleCard items={[{ id: "1", month: "Feb", day: "18", label: "Framer", amount: "$21.58", upcoming: true }]} />',
+          '<AppDock activeId="home" showLabels onSelect={(id) => console.log(id)} />',
       },
     ),
   ],
   [
     c(
-      "industry-insights-card",
-      <IndustryInsightsCard />,
-      "components/dashboard/industry-insights-card.tsx",
-      "IndustryInsightsCard",
+      "editor-tool-dock",
+      <EditorToolDock />,
+      "components/docks/editor-tool-dock.tsx",
+      "EditorToolDock",
       {
         description:
-          "Dark industry insights summary card with highlighted metric and source selector pills.",
+          "Vertical editor tool dock using MacDock tile size, padding, and ease-smooth hover scale.",
         usage:
-          '<IndustryInsightsCard highlight="retail spending increased 4.2%" />',
+          '<EditorToolDock activeId="select" onSelect={(id) => console.log(id)} />',
       },
     ),
     c(
-      "recent-transactions-card",
-      <RecentTransactionsCard />,
-      "components/dashboard/recent-transactions-card.tsx",
-      "RecentTransactionsCard",
+      "presence-dock",
+      <PresenceDock />,
+      "components/docks/presence-dock.tsx",
+      "PresenceDock",
       {
         description:
-          "Recent transactions feed with merchant avatars, categories, income markers, and row actions.",
+          "Collaborator presence dock with MacDock-sized avatar tiles and expandable member list.",
         usage:
-          '<RecentTransactionsCard items={[{ id: "1", merchant: "Spotify", category: "Subscription", amount: "$50.24", time: "07 Feb" }]} />',
-      },
-    ),
-    c(
-      "tasks-dashboard-card",
-      <TasksDashboardCard />,
-      "components/dashboard/tasks-dashboard-card.tsx",
-      "TasksDashboardCard",
-      {
-        description:
-          "Tasks widget with parent progress, nested checklist, date range, comments, and team avatars.",
-        usage: '<TasksDashboardCard mainTask="New BrandBook" progress={62} />',
+          '<PresenceDock maxVisible={3} onSelect={(id) => console.log(id)} />',
       },
     ),
   ],
   [
     c(
-      "ai-script-card",
-      <AiScriptCard />,
-      "components/dashboard/ai-script-card.tsx",
-      "AiScriptCard",
+      "spotlight-bar",
+      <SpotlightBar />,
+      "components/docks/spotlight-bar.tsx",
+      "SpotlightBar",
       {
         description:
-          "AI script card with duration badge, edit/regenerate actions, and audio waveform playback row.",
-        usage: '<AiScriptCard duration="1:38" currentTime="00:00" totalTime="01:20" />',
-      },
-    ),
-  ],
-  [
-    c(
-      "insights-upgrade-card",
-      <InsightsUpgradeCard />,
-      "components/dashboard/insights-upgrade-card.tsx",
-      "InsightsUpgradeCard",
-      {
-        description:
-          "PRO insights upgrade CTA tile for dashboard sidebars and upsell rows.",
-        usage: '<InsightsUpgradeCard badge="PRO" title="Switch to AI Insights Professional today!" />',
-      },
-    ),
-    c(
-      "floating-tool-rail",
-      <FloatingToolRail />,
-      "components/dashboard/floating-tool-rail.tsx",
-      "FloatingToolRail",
-      {
-        description:
-          "Floating vertical tool rail for editor and creator dashboards with active tool state.",
-        usage: '<FloatingToolRail activeId="select" onSelect={(id) => console.log(id)} />',
+          "Spotlight-style command search in the frosted dock shell — keyboard nav and suggestions.",
+        usage:
+          '<SpotlightBar onSelectSuggestion={(id) => console.log(id)} />',
       },
     ),
   ],

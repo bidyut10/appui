@@ -17,9 +17,9 @@ export function SiteFooter() {
         <Image
           src="/osui-logo.png"
           alt={siteConfig.displayName}
-          width={0}
-          height={0}
-          sizes="128px"
+          width={500}
+          height={500}
+          sizes="500px"
           className="h-auto w-28"
         />
 
