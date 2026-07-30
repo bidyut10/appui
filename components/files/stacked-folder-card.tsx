@@ -57,7 +57,7 @@ export const StackedFolderCard = forwardRef<HTMLDivElement, StackedFolderCardPro
   function StackedFolderCard(
     {
       className,
-      imageSrc = "/wallpaper-3.png",
+      imageSrc = "/background1.webp",
       imageAlt = "Folder cover",
       backImageSrc,
       middleImageSrc,

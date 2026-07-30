@@ -28,7 +28,7 @@ export const GalleryGridCard = forwardRef<HTMLDivElement, GalleryGridCardProps>(
       title = "Summer Collection",
       subtitle = "Jun 2026",
       count = "24 photos",
-      images = ["/wallpaper-15.png", "/wallpaper-3.png", "/wallpaper-11.png"],
+      images = ["/background5.webp", "/background1.webp", "/wallpaper-11.png"],
       overlayText = "+21",
       icon,
       ...props

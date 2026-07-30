@@ -23,7 +23,7 @@ export const StampPostcardCard = forwardRef<
       message = "Wish you were here! The Sundarbans at golden hour — absolutely unreal.",
       location = "Sundarbans, WB",
       stampValue = "₹5",
-      imageSrc = "/wallpaper-3.png",
+      imageSrc = "/background1.webp",
       ...props
     },
     ref,

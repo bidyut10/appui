@@ -24,8 +24,8 @@ const browserThemes = {
   transparent: {
     shell: "border-neutral-300/50",
     chrome: "border-neutral-300/50 bg-white/40 backdrop-blur-sm",
-    urlBar: "bg-white/30",
-    urlText: "text-neutral-500",
+    urlBar: "bg-white/20",
+    urlText: "text-neutral-800",
     content: "bg-transparent",
   },
 } as const;
@@ -49,7 +49,7 @@ export const BrowserMockupCard = forwardRef<
       className,
       children,
       theme = "light",
-      url = "opensourceui.in/components",
+      url = "https://bidyut.cc",
       ...props
     },
     ref,
@@ -62,7 +62,7 @@ export const BrowserMockupCard = forwardRef<
         data-slot="browser-mockup-card"
         data-theme={theme}
         className={cn(
-          "w-full max-w-full min-w-0 overflow-hidden rounded-xl border font-sans",
+          "w-full max-w-full min-w-0 overflow-hidden rounded-xl border font-sans select-none",
           styles.shell,
           className,
         )}
@@ -70,23 +70,23 @@ export const BrowserMockupCard = forwardRef<
       >
         <div
           className={cn(
-            "flex items-center gap-2 border-b px-3 py-2",
+            "flex items-center gap-2 rounded-t-[calc(0.75rem-1px)] border-b px-3 py-1.5",
             styles.chrome,
           )}
         >
           <div className="flex gap-1.5">
-            <div className="h-2.5 w-2.5 rounded-full bg-red-400" />
-            <div className="h-2.5 w-2.5 rounded-full bg-amber-400" />
-            <div className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+            <div className="h-2 w-2 rounded-full bg-red-400" />
+            <div className="h-2 w-2 rounded-full bg-amber-400" />
+            <div className="h-2 w-2 rounded-full bg-emerald-400" />
           </div>
           <div
             className={cn(
-              "flex h-6 flex-1 items-center rounded-md px-2",
+              "flex h-5 flex-1 items-center rounded-md px-2",
               styles.urlBar,
             )}
           >
             <span
-              className={cn("truncate font-mono text-[9px]", styles.urlText)}
+              className={cn("truncate font-mono text-[7px]", styles.urlText)}
             >
               {url}
             </span>
@@ -95,7 +95,7 @@ export const BrowserMockupCard = forwardRef<
 
         <div
           className={cn(
-            "relative h-[200px] overflow-hidden md:h-[320px]",
+            "relative h-96 w-full overflow-hidden rounded-b-[calc(0.75rem-1px)]",
             styles.content,
           )}
         >

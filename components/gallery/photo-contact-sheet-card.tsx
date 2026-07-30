@@ -16,8 +16,8 @@ export type PhotoContactSheetCardProps = Readonly<
 >;
 
 const defaultFrames: ContactSheetFrame[] = [
-  { src: "/wallpaper-15.png", number: "01" },
-  { src: "/wallpaper-3.png", number: "03" },
+  { src: "/background5.webp", number: "01" },
+  { src: "/background1.webp", number: "03" },
   { src: "/wallpaper-11.png", number: "04" },
   { src: "/wallpaper-2.png", number: "02" },
 ];

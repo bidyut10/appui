@@ -46,8 +46,8 @@ export default function Home() {
           className="h-auto w-30"
         /> */}
         <div className="flex items-center gap-1">
-          <LogoIcon className="w-6" fill="text-rose-300"/>
-          <span className="text-lg tracking-tighter font-medium font-sans">
+          <LogoIcon className="w-6" fill="text-rose-300" />
+          <span className="font-sans text-lg font-medium tracking-tighter">
             {siteConfig.displayName}
           </span>
         </div>
@@ -101,11 +101,11 @@ export default function Home() {
 
       <section className="-mx-3 w-[calc(100%+1.5rem)] overflow-visible pt-6 pb-14 min-[550px]:mx-0 min-[550px]:w-full min-[1300px]:-mr-3 min-[1300px]:ml-0 min-[1300px]:w-[calc(100%+0.75rem)] md:min-[1300px]:-mr-4 md:min-[1300px]:w-[calc(100%+1rem)]">
         <div className="mx-auto flex w-full max-w-xl flex-col items-stretch gap-10 min-[1300px]:mx-0 min-[1300px]:max-w-none min-[1300px]:flex-row min-[1300px]:items-stretch min-[1300px]:gap-10 min-[1300px]:pl-[max(0px,calc((100%-36rem)/2))]">
-          <PhoneColumn variant="purple" src="/wallpaper-15.png" />
-          <PhoneColumn variant="orange" src="/wallpaper-2.png" />
+          <PhoneColumn variant="purple" src="/background4.webp" />
+          <PhoneColumn variant="orange" src="/background5.webp" />
           <PhoneColumn
             variant="titanium"
-            src="/iphone-wallpaper.png"
+            src="/background1.webp"
             link="view more colors"
             href="/components/phone"
           />
@@ -135,7 +135,7 @@ export default function Home() {
       >
         <LaptopMockupCard>
           <Image
-            src="/wallpaper-3.png"
+            src="/background1.webp"
             alt="App screen"
             fill
             sizes="100%"
@@ -163,7 +163,7 @@ export default function Home() {
       >
         <BrowserMockupCard theme="transparent">
           <Image
-            src="/dith-homee.png"
+            src="/background4.webp"
             alt="App screen"
             fill
             sizes="100%"

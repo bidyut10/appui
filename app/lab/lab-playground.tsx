@@ -127,7 +127,7 @@ export function LabPlayground({
 
       {background === "image" ? (
         <Image
-          src="/dith-homee.png"
+          src="/background4.webp"
           alt=""
           fill
           priority

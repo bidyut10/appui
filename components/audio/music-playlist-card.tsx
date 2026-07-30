@@ -33,7 +33,7 @@ export const MusicPlaylistCard = forwardRef<
   (
     {
       className,
-      coverImage = "/wallpaper-3.png",
+      coverImage = "/background1.webp",
       playlistType = "Playlist",
       title = "Chill Vibes",
       songCount = "24 songs",

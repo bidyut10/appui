@@ -56,7 +56,7 @@ export const FacebookPostCard = forwardRef<
       comments = 48,
       shares = 9,
       avatar = "/profile-picture.png",
-      postImage = "/wallpaper-3.png",
+      postImage = "/background1.webp",
       avatarAlt = "User avatar",
       imageAlt = "Facebook post image",
       menuIcon,

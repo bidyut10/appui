@@ -12,9 +12,9 @@ export type FilmStripCardProps = Readonly<
 
 const defaultFrames = [
   "/wallpaper-2.png",
-  "/wallpaper-3.png",
+  "/background1.webp",
   "/wallpaper-11.png",
-  "/wallpaper-15.png",
+  "/background5.webp",
 ];
 
 const LEFT_SPROCKET_HOLES = [

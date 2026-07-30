@@ -1551,7 +1551,7 @@ export const showcaseRows = [
     c(
       "stacked-folder-card",
       <StackedFolderCard
-        imageSrc="/wallpaper-3.png"
+        imageSrc="/background1.webp"
         backImageSrc="/wallpaper-2.png"
         middleImageSrc="/wallpaper-11.png"
       />,
@@ -1561,7 +1561,7 @@ export const showcaseRows = [
         description:
           "Three stacked folder cards with thick white borders and smooth hover rotation — back and middle peeks bring any card to the front.",
         usage:
-          '<StackedFolderCard imageSrc="/wallpaper-3.png" backImageSrc="/wallpaper-2.png" middleImageSrc="/wallpaper-11.png" />',
+          '<StackedFolderCard imageSrc="/background1.webp" backImageSrc="/wallpaper-2.png" middleImageSrc="/wallpaper-11.png" />',
       },
     ),
     c(

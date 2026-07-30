@@ -41,7 +41,7 @@ export const MagazineCoverCard = forwardRef<
       subtitle = "Minimal Interfaces",
       author = "Bidyut Kundu",
       readTime = "8 min read",
-      image = "/wallpaper-3.png",
+      image = "/background1.webp",
       imageAlt = "Magazine cover",
       arrowIcon,
       onClick,

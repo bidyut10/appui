@@ -111,7 +111,7 @@ export const ChatBubbleNotificationBanner = forwardRef<
               src={avatarSrc}
               alt={avatarAlt}
               fill
-              sizes="28px"
+              sizes="508px"
               className="object-cover"
             />
           </div>

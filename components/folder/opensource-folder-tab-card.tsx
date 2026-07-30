@@ -33,7 +33,7 @@ export const OpensourceFolderTabCard = forwardRef<
     primaryLabel = "Components",
     secondaryValue = "Free",
     secondaryLabel = "Open source",
-    imageSrc = "/wallpaper-3.png",
+    imageSrc = "/background1.webp",
     imageAlt = "Card preview",
     ...props
   },
