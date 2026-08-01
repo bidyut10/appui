@@ -7,7 +7,7 @@
 
 Live site: [opensourceui.in](https://opensourceui.in)
 
-Copy-paste UI components for React and Next.js — Next.js 16, Tailwind v4, icons from [nexticons.in](https://nexticons.in). Browse **74+ components** with live previews, setup guides, and copy-ready source at `/components`.
+Premium free React/Next.js components, built with Tailwind CSS and TypeScript. No subscriptions, no paywalls. Browse **150+ components** with live previews, setup guides, and copy-ready source at `/components`.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/bidyut10/appui)
 
