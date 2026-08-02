@@ -15,7 +15,7 @@ export function DashboardShell({ children, headerRight }: DashboardShellProps) {
       <header className="z-20 shrink-0 border-b border-neutral-200/80 bg-white">
         <div className="flex h-14 w-full items-center justify-between gap-3 px-3 md:px-5">
           <div className="flex min-w-0 items-center gap-2">
-            <LogoIcon className="w-5 shrink-0 text-neutral-900" fill="currentColor" />
+            <LogoIcon className="w-5 shrink-0" />
             <div className="min-w-0">
               <p className="truncate font-sans text-sm font-semibold tracking-tight text-neutral-900">
                 {siteConfig.displayName}

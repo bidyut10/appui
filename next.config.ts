@@ -3,6 +3,11 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Hide the Next.js compiling / route indicator badge in local dev
   devIndicators: false,
+
+  images: {
+    qualities: [75, 100],
+  },
+
   async rewrites() {
     return [
       {
@@ -15,6 +20,7 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
   skipTrailingSlashRedirect: true,
 };
 

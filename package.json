@@ -5,11 +5,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bidyut10/appui.git"
+    "url": "https://github.com/bidyut10/opensourceui.git"
   },
   "homepage": "https://opensourceui.in",
   "bugs": {
-    "url": "https://github.com/bidyut10/appui/issues"
+    "url": "https://github.com/bidyut10/opensourceui/issues"
   },
   "scripts": {
     "dev": "next dev",

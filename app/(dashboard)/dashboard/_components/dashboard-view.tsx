@@ -235,8 +235,7 @@ export function DashboardView() {
         <DashboardMenuButton onClick={() => setSidebarOpen(true)} />
         <div className="flex min-w-0 flex-1 items-center gap-2">
           <LogoIcon
-            className="w-5 shrink-0 text-neutral-900"
-            fill="currentColor"
+            className="w-5 shrink-0"
           />
           <p className="truncate font-sans text-sm font-semibold text-neutral-900">
             {meta.title}

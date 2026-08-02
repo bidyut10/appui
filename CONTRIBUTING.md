@@ -8,7 +8,7 @@ This project follows the [Contributor Covenant Code of Conduct](./CODE_OF_CONDUC
 
 ## Ways to contribute
 
-- Report bugs or suggest components via [GitHub Issues](https://github.com/bidyut10/appui/issues)
+- Report bugs or suggest components via [GitHub Issues](https://github.com/bidyut10/opensourceui/issues)
 - Fix bugs or improve docs with a pull request
 - Add new showcase components (see below)
 - Improve accessibility, performance, or copy on existing components
@@ -18,7 +18,7 @@ This project follows the [Contributor Covenant Code of Conduct](./CODE_OF_CONDUC
 Requirements: **Node.js 18+**, **npm**
 
 ```bash
-git clone https://github.com/bidyut10/appui.git
+git clone https://github.com/bidyut10/opensourceui.git
 cd appui
 npm install
 npm run dev
@@ -81,4 +81,4 @@ See the [README](./README.md#folder-structure) for the full layout. Key paths:
 
 ## Questions
 
-Open a [GitHub Issue](https://github.com/bidyut10/appui/issues) or reach out on [X (@BidyutKundu12)](https://x.com/BidyutKundu12).
+Open a [GitHub Issue](https://github.com/bidyut10/opensourceui/issues) or reach out on [X (@BidyutKundu12)](https://x.com/BidyutKundu12).

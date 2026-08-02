@@ -60,7 +60,7 @@ representative at an online or offline event.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement at
-[GitHub Issues](https://github.com/bidyut10/appui/issues) or via direct message
+[GitHub Issues](https://github.com/bidyut10/opensourceui/issues) or via direct message
 to the maintainer on [X (@BidyutKundu12)](https://x.com/BidyutKundu12).
 
 All complaints will be reviewed and investigated promptly and fairly.

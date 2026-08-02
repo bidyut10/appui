@@ -3,13 +3,13 @@
 [![Live site](https://img.shields.io/badge/live-opensourceui.in-000000?style=flat-square)](https://opensourceui.in)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](./LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org)
-[![Deploy with Vercel](https://img.shields.io/badge/deploy-Vercel-000000?style=flat-square&logo=vercel)](https://vercel.com/new/clone?repository-url=https://github.com/bidyut10/appui)
+[![Deploy with Vercel](https://img.shields.io/badge/deploy-Vercel-000000?style=flat-square&logo=vercel)](https://vercel.com/new/clone?repository-url=https://github.com/bidyut10/opensourceui)
 
 Live site: [opensourceui.in](https://opensourceui.in)
 
 Copy-paste UI components for React and Next.js — Next.js 16, Tailwind v4, icons from [nexticons.in](https://nexticons.in). Browse **74+ components** with live previews, setup guides, and copy-ready source at `/components`.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/bidyut10/appui)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/bidyut10/opensourceui)
 
 ## Why I built this
 
@@ -142,7 +142,7 @@ More icons at [nexticons.in](https://nexticons.in).
 ## Getting started
 
 ```bash
-git clone https://github.com/bidyut10/appui.git
+git clone https://github.com/bidyut10/opensourceui.git
 cd appui
 npm install
 npm run dev
@@ -242,11 +242,11 @@ Analytics is optional — the public site works without any env vars.
 
 This project is built for [Vercel](https://vercel.com). Connect the GitHub repo and deploy:
 
-1. Fork or clone [github.com/bidyut10/appui](https://github.com/bidyut10/appui)
+1. Fork or clone [github.com/bidyut10/appui](https://github.com/bidyut10/opensourceui)
 2. Import the project in [Vercel](https://vercel.com/new)
 3. Add env vars from `.env.example` only if you want the analytics dashboard
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/bidyut10/appui)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/bidyut10/opensourceui)
 
 ## Contributing
 
@@ -261,11 +261,11 @@ To report a vulnerability, see [SECURITY.md](./SECURITY.md). Do not open public 
 ## Project links
 
 - Website: [opensourceui.in](https://opensourceui.in)
-- Repository: [github.com/bidyut10/appui](https://github.com/bidyut10/appui)
+- Repository: [github.com/bidyut10/appui](https://github.com/bidyut10/opensourceui)
 - Author: [Bidyut Kundu](https://x.com/BidyutKundu12)
 
 ## License
 
 [MIT](./LICENSE) — free for personal and commercial use. Attribution is appreciated but not required.
 
-If something breaks in your setup, open an issue on [GitHub](https://github.com/bidyut10/appui/issues).
+If something breaks in your setup, open an issue on [GitHub](https://github.com/bidyut10/opensourceui/issues).

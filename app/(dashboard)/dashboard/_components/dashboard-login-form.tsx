@@ -44,7 +44,7 @@ export function DashboardLoginForm({ onSuccess }: DashboardLoginFormProps) {
   return (
     <div className="relative flex min-h-dvh w-full flex-col bg-neutral-50">
       <header className="relative z-10 flex items-center gap-2.5 px-5 py-5 md:px-8">
-        <LogoIcon className="w-5 text-neutral-900" fill="currentColor" />
+        <LogoIcon className="w-5" />
         <span className="font-sans text-sm font-medium text-neutral-800">
           {siteConfig.displayName}
         </span>

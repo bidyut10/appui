@@ -28,9 +28,9 @@ export function PhoneColumn({
           src={src}
           alt="App screen"
           fill
-          sizes="500px"
-          quality={100}
-          className="object-cover select-none"
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
       </PhoneMockupCard>
     </div>

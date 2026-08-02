@@ -8,7 +8,7 @@ Opensource UI (https://opensourceui.in) is an open-source component library for 
 
 - Homepage: https://opensourceui.in
 - Browse all components: https://opensourceui.in/components
-- GitHub: https://github.com/bidyut10/appui
+- GitHub: https://github.com/bidyut10/opensourceui
 - License: MIT — free for personal and commercial use
 
 ## Component pages

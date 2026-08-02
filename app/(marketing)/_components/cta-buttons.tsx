@@ -1,4 +1,3 @@
-"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -12,7 +11,7 @@ export function CtaButtons() {
     <div className="mt-6 flex flex-col gap-4 md:flex-row">
       <Link
         href="/components"
-        className="group flex cursor-pointer items-center justify-center gap-2 rounded-md border border-neutral-900 bg-neutral-800 px-4 py-2 text-base font-light text-white shadow-xl shadow-neutral-300/50"
+        className="group flex cursor-pointer items-center justify-center gap-2 rounded-md border border-neutral-900 bg-neutral-800 px-4 py-2 text-base font-light text-white shadow-sm transition-all duration-300 hover:shadow-xl"
       >
         Browse Components
         <span className="relative inline-flex size-3.5 shrink-0 items-center justify-center">
@@ -31,7 +30,7 @@ export function CtaButtons() {
 
       <InquiryTrigger
         type="work"
-        className="group flex w-full items-center justify-center gap-2 rounded-md border border-neutral-800 bg-white px-4 py-2 text-base text-neutral-800 md:w-auto"
+        className="group flex w-full items-center justify-center gap-2 rounded-md border border-neutral-100/80 bg-white px-4 py-2 text-base text-neutral-800 shadow-sm transition-all duration-300 hover:border-neutral-100 hover:shadow-md md:w-auto"
       >
         <span className="ease-smooth inline-flex origin-[70%_90%] transition-transform duration-500 group-hover:-rotate-12">
           <Image

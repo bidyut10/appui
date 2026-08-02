@@ -21,7 +21,7 @@ export function DocsCopyEmailButton() {
     <button
       type="button"
       onClick={handleCopy}
-      className="inline-flex w-full items-center justify-center rounded-md border border-rose-200 bg-rose-300 px-2 py-1.5 font-sans text-xs whitespace-nowrap text-neutral-900 transition-colors hover:border-rose-300 hover:bg-rose-400"
+      className="inline-flex w-full cursor-pointer items-center justify-center rounded-md border border-rose-100/50 bg-rose-50 px-2 py-1.5 font-sans text-xs whitespace-nowrap text-neutral-900 transition-colors hover:border-rose-100 hover:bg-rose-100"
     >
       {copied ? "Copied" : "Copy email"}
     </button>

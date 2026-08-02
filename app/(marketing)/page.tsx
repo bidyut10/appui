@@ -24,6 +24,8 @@ import { ShowcaseScrollRestoration } from "@/app/_shared/scroll/showcase-scroll-
 import { createPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import { LogoIcon } from "./_components/Logo";
+import GitHubBadge from "./_components/github-badge";
+import Link from "next/link";
 
 export const metadata: Metadata = createPageMetadata({
   title: siteConfig.title,
@@ -37,19 +39,18 @@ export default function Home() {
       <ShowcaseScrollRestoration />
 
       <div className="mt-4 mb-10 max-w-xl px-4 md:px-0">
-        {/* <Image
-          src="/osui-logo.png"
-          alt={siteConfig.displayName}
-          width={0}
-          height={0}
-          sizes="512px"
-          className="h-auto w-30"
-        /> */}
-        <div className="flex items-center gap-1">
-          <LogoIcon className="w-6" fill="text-rose-300" />
-          <span className="font-sans text-lg font-medium tracking-tighter">
-            {siteConfig.displayName}
-          </span>
+        <div className="flex max-w-full items-center justify-between">
+          <Link
+            href="/"
+            className="hover:bg-muted flex items-center gap-2 transition-colors"
+          >
+            <LogoIcon className="w-6" />
+            <span className="font-sans text-lg font-medium tracking-tighter">
+              {siteConfig.displayName}
+            </span>
+          </Link>
+
+          <GitHubBadge />
         </div>
         <Heading className="mt-36">
           Build Better{" "}

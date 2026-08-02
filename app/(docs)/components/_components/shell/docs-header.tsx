@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { Suspense } from "react";
@@ -31,7 +30,7 @@ export function DocsHeader() {
             className="h-auto w-14 md:w-24"
           /> */}
                   <div className="flex items-center gap-1">
-          <LogoIcon className="w-6" fill="text-rose-300"/>
+          <LogoIcon className="w-6"/>
           <span className="text-lg tracking-tighter font-medium font-sans">
             {siteConfig.displayName}
           </span>
@@ -58,7 +57,7 @@ export function DocsHeader() {
 
         <div className="hidden shrink-0 items-center gap-4 md:flex md:gap-5">
           <a
-            href="https://github.com/bidyut10/appui"
+            href="https://github.com/bidyut10/opensourceui"
             target="_blank"
             rel="noopener noreferrer"
             className={metaLinkClass}
