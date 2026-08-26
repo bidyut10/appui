@@ -195,7 +195,7 @@ Restrained and copy-ready. Every interactive piece should feel pasteable into a 
 - **Mobile:** Overlay `neutral-900/20`; drawer pattern — no purple accent
 
 ### Signature: Marketing CTA row
-Primary “Browse Components” + secondary “Work With Me” with waving-hand micro-motion. Ease: `--ease-smooth` (`cubic-bezier(0.22, 1, 0.36, 1)`). Respect `prefers-reduced-motion`.
+Primary “Browse Components” + secondary “Work WIth Us” with waving-hand micro-motion. Ease: `--ease-smooth` (`cubic-bezier(0.22, 1, 0.36, 1)`). Respect `prefers-reduced-motion`.
 
 ## 6. Do's and Don'ts
 

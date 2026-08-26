@@ -10,6 +10,11 @@ export const siteConfig = {
   github: {
     url: "https://github.com/bidyut10/opensourceui",
   },
+  stats: {
+    pageViews: "96k+",
+    visitors: "7.4k+",
+    avgVisitMinutes: 5,
+  },
   keywords: [
     "opensource ui",
     "opensourceui",
@@ -44,20 +49,4 @@ export const siteConfig = {
     copyNote:
       "Include the MIT copyright notice when copying component source into your project.",
   },
-} as const;
-
-function buildMailto(subject: string, body: string) {
-  const params = new URLSearchParams({ subject, body });
-  return `mailto:${siteConfig.author.email}?${params.toString()}`;
-}
-
-export const mailtoLinks = {
-  work: buildMailto(
-    "Let's work together",
-    "Hi Bidyut,\n\nI came across Opensource UI and I'd love to work with you on a project.\n\nHere's what I have in mind:\n\n",
-  ),
-  sponsor: buildMailto(
-    "I'd like to sponsor Opensource UI",
-    "Hi Bidyut,\n\nI'd like to sponsor Opensource UI. Please share the details on how to get started.\n\nBrand / Company:\nWebsite:\n\n",
-  ),
 } as const;

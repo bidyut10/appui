@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 
+import { useForwardWheelToDocsMain, usePanelWheelScroll } from "@/app/_shared/scroll/docs-scroll";
 import { AnnotatedText } from "@/components/underlines/annotated-text";
 import { cn } from "@/lib/cn";
 
@@ -69,6 +70,11 @@ export function DocsToc({
   const [activeId, setActiveId] = useState(sectionIds[0] ?? "");
   const lockedIdRef = useRef<string | null>(null);
   const scrollEndTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const sponsorRef = useRef<HTMLDivElement>(null);
+
+  usePanelWheelScroll(panelRef);
+  useForwardWheelToDocsMain(sponsorRef);
 
   useEffect(() => {
     const container = getScrollContainer();
@@ -131,11 +137,14 @@ export function DocsToc({
     <aside
       aria-label="Table of contents"
       className={cn(
-        "hidden w-80 shrink-0 flex-col border-l border-neutral-200 bg-white xl:flex",
+        "hidden h-full max-h-full min-h-0 w-80 shrink-0 flex-col overflow-hidden border-l border-neutral-200 bg-white xl:flex",
         className,
       )}
     >
-      <div className="scrollbar-hover min-h-0 flex-1 overflow-y-auto px-6 py-8">
+      <div
+        ref={panelRef}
+        className="scrollbar-hover data-docs-panel-scroll min-h-0 flex-1 overflow-y-auto overscroll-y-contain px-6 py-8"
+      >
         <div className="mb-6">
           {titleLead ? (
             <p className="font-mono text-[10px] tracking-[0.14em] text-neutral-400 uppercase">
@@ -213,7 +222,9 @@ export function DocsToc({
         </ul>
       </div>
 
-      <DocsSponsorCard />
+      <div ref={sponsorRef}>
+        <DocsSponsorCard />
+      </div>
     </aside>
   );
 }

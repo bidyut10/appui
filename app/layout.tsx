@@ -3,10 +3,9 @@ import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
 import { AnalyticsTracker } from "@/components/system/analytics";
-import { InquiryProvider } from "@/components/inquiries/inquiry-provider";
+import { ContactEmailProvider } from "@/components/contact/contact-email";
 import { NavigationLoader } from "@/app/_shared/navigation/navigation-loader";
 import { ScrollToTopButton } from "@/app/_shared/scroll/scroll-to-top-button";
-import { VercelToolbarBlocker } from "@/components/system/vercel-toolbar-blocker";
 import { JsonLd, getRootSiteJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
@@ -106,17 +105,20 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full antialiased`}
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} h-full antialiased selection:bg-neutral-800 selection:text-white`}
     >
-      <body className="flex min-h-full flex-col overflow-x-hidden">
+      <body
+        suppressHydrationWarning
+        className="flex min-h-full flex-col overflow-x-hidden"
+      >
         <JsonLd data={getRootSiteJsonLd()} />
-        <InquiryProvider>
+        <ContactEmailProvider>
           {children}
           <AnalyticsTracker />
-        </InquiryProvider>
+        </ContactEmailProvider>
         <NavigationLoader />
         <ScrollToTopButton />
-        <VercelToolbarBlocker />
       </body>
     </html>
   );

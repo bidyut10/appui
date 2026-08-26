@@ -7,9 +7,14 @@ import {
   useState,
   useTransition,
 } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { Command, Search } from "lucide-react";
+
+import {
+  getHydratedSearchParam,
+  useHydratedSearchParams,
+} from "@/app/_shared/navigation/use-hydrated-search-params";
 
 function getComponentsSearchPath(pathname: string) {
   return pathname.startsWith("/components") ? "/components" : pathname;
@@ -32,15 +37,19 @@ function getSearchShortcutLabel() {
 export function DocsSearch() {
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const urlQuery = searchParams.get("q") ?? "";
+  const searchParams = useHydratedSearchParams();
+  const urlQuery = getHydratedSearchParam(searchParams, "q") ?? "";
 
   const inputRef = useRef<HTMLInputElement>(null);
   const isFocusedRef = useRef(false);
   const committedRef = useRef(urlQuery);
-  const [value, setValue] = useState(urlQuery);
-  const [shortcutLabel] = useState(getSearchShortcutLabel);
+  const [value, setValue] = useState("");
+  const [shortcutLabel, setShortcutLabel] = useState("Control K");
   const [, startTransition] = useTransition();
+
+  useEffect(() => {
+    setShortcutLabel(getSearchShortcutLabel());
+  }, []);
 
   const applySearch = useCallback(
     (next: string) => {
@@ -49,9 +58,7 @@ export function DocsSearch() {
 
       committedRef.current = trimmed;
 
-      const params = new URLSearchParams(
-        typeof window === "undefined" ? "" : window.location.search,
-      );
+      const params = new URLSearchParams(searchParams?.toString() ?? "");
 
       if (trimmed) {
         params.set("q", trimmed);
@@ -68,7 +75,7 @@ export function DocsSearch() {
         router.replace(href, { scroll: false });
       });
     },
-    [pathname, router],
+    [pathname, router, searchParams],
   );
 
   // Sync URL → input for back/forward and external links, never while the field is focused.
@@ -139,6 +146,7 @@ export function DocsSearch() {
       />
       <kbd
         aria-label={shortcutLabel}
+        suppressHydrationWarning
         className="pointer-events-none absolute top-1/2 right-2.5 hidden -translate-y-1/2 items-center gap-0.5 rounded border border-neutral-100 bg-white px-1.5 py-0.5 font-mono text-[10px] text-neutral-400 md:inline-flex"
       >
         <Command size={10} aria-hidden className="text-neutral-400" />

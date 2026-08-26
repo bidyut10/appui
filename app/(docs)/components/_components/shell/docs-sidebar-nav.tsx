@@ -1,8 +1,16 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
 import { Home, LayoutGrid } from "lucide-react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
+
+import { usePanelWheelScroll } from "@/app/_shared/scroll/docs-scroll";
+
+import {
+  getHydratedSearchParam,
+  useHydratedSearchParams,
+} from "@/app/_shared/navigation/use-hydrated-search-params";
 
 import { SaveScrollLink } from "@/lib/docs";
 import { cn } from "@/lib/cn";
@@ -22,14 +30,17 @@ export function DocsSidebarNav({
   categories,
   onNavigate,
 }: DocsSidebarNavProps) {
+  const navRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const searchParams = useHydratedSearchParams();
+
+  usePanelWheelScroll(navRef);
 
   const activeSlug = pathname.startsWith("/components/")
     ? pathname.replace("/components/", "")
     : null;
 
-  const categoryParam = searchParams.get("category");
+  const categoryParam = getHydratedSearchParam(searchParams, "category");
 
   const activeCategory =
     (categoryParam
@@ -44,13 +55,14 @@ export function DocsSidebarNav({
 
   const isBrowseAll =
     pathname === "/components" &&
-    !searchParams.get("category") &&
-    !searchParams.get("q");
+    !getHydratedSearchParam(searchParams, "category") &&
+    !getHydratedSearchParam(searchParams, "q");
 
   return (
     <nav
+      ref={navRef}
       aria-label="Component documentation"
-      className="scrollbar-hover min-h-0 flex-1 overflow-y-auto px-5 py-5"
+      className="scrollbar-hover data-docs-panel-scroll h-full min-h-0 overflow-y-auto overscroll-y-contain px-5 py-5"
     >
       <p className="mt-4 mb-2 font-mono text-[10px] tracking-[0.12em] text-neutral-400 uppercase">
         Getting started

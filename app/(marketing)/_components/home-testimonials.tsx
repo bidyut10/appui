@@ -100,7 +100,7 @@ function ReviewCard({
 export function HomeTestimonials() {
   return (
     <div className="mt-10 w-full min-w-0">
-      <div className="flex w-full flex-col gap-3 md:grid md:grid-cols-4 md:items-stretch">
+      <div className="flex w-full flex-col gap-3 md:grid md:grid-cols-5 md:items-stretch">
         {HOME_REVIEWS.map((review) => (
           <ReviewCard key={`${review.name}-${review.platform}`} {...review} />
         ))}

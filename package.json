@@ -20,10 +20,8 @@
     "check:showcase": "node scripts/check-showcase-files.mjs"
   },
   "dependencies": {
-    "@vercel/functions": "^3.7.2",
     "clsx": "^2.1.1",
     "lucide-react": "^1.23.0",
-    "mongodb": "^7.3.0",
     "next": "16.2.7",
     "postcss": "^8.5.15",
     "posthog-js": "^1.399.0",

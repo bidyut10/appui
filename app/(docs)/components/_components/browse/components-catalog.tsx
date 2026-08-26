@@ -1,4 +1,9 @@
-import { resolveShowcaseCategory, isFormShowcaseFile, isInputShowcaseFile, type ShowcaseCategoryGroup } from "@/lib/showcase";
+import {
+  isFormShowcaseFile,
+  isInputShowcaseFile,
+  type ShowcaseCategoryGroup,
+} from "@/lib/showcase/showcase";
+import { resolveShowcaseCategory } from "@/lib/showcase/resolve-category";
 import { AnnotatedText } from "@/components/underlines/annotated-text";
 
 import { ComponentPreviewCard } from "./component-preview-card";

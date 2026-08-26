@@ -6,13 +6,22 @@ import { Paragraph } from "./_components/paragraph";
 import { BOX_PATTERN } from "@/lib/shared";
 import { LinkedBlock } from "./_components/linked-block";
 import { PhoneColumn } from "./_components/phone-column";
+import {
+  HelloPhoneScreen,
+  LibraryPhoneScreen,
+  WeatherPhoneScreen,
+  NowPlayingPhoneScreen,
+} from "./_components/phone-showcase-screens";
 import { CtaButtons } from "./_components/cta-buttons";
+import { HomeStats } from "./_components/home-stats";
 import { SiteFooter } from "./_components/site-footer";
 import { AnnotatedText } from "@/components/underlines/annotated-text";
 import { DndFaceWidget } from "@/components/widgets/dnd-face-widget";
 import { TorchFaceWidget } from "@/components/widgets/torch-face-widget";
 import { LaptopMockupCard } from "@/components/mockups/laptop-mockup-card";
+import { LaptopShowcaseScreen } from "./_components/laptop-showcase-screen";
 import { BrowserMockupCard } from "@/components/mockups/browser-mockup-card";
+import { BrowserShowcaseScreen } from "./_components/browser-showcase-screen";
 import { AnalogClockWidget } from "@/components/widgets/analog-clock-widget";
 import { JournalWritingCard } from "@/components/text/journal-writing-card";
 import { BluetoothFaceWidget } from "@/components/widgets/bluetooth-face-widget";
@@ -24,7 +33,7 @@ import { ShowcaseScrollRestoration } from "@/app/_shared/scroll/showcase-scroll-
 import { createPageMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import { LogoIcon } from "./_components/Logo";
-import GitHubBadge from "./_components/github-badge";
+import { GithubRepoLink } from "@/app/_shared/github-repo-link";
 import Link from "next/link";
 
 export const metadata: Metadata = createPageMetadata({
@@ -50,7 +59,7 @@ export default function Home() {
             </span>
           </Link>
 
-          <GitHubBadge />
+          <GithubRepoLink />
         </div>
         <Heading className="mt-36">
           Build Better{" "}
@@ -85,6 +94,10 @@ export default function Home() {
         <CtaButtons />
       </div>
 
+      <div className="w-full max-w-7xl px-4 md:px-0">
+        <HomeStats />
+      </div>
+
       <div className="relative mt-36 max-w-xl px-4 md:px-0">
         <Badge className="-top-7 -left-1 -rotate-3 text-neutral-500">
           why us?
@@ -100,16 +113,24 @@ export default function Home() {
         </Paragraph>
       </div>
 
-      <section className="-mx-3 w-[calc(100%+1.5rem)] overflow-visible pt-6 pb-14 min-[550px]:mx-0 min-[550px]:w-full min-[1300px]:-mr-3 min-[1300px]:ml-0 min-[1300px]:w-[calc(100%+0.75rem)] md:min-[1300px]:-mr-4 md:min-[1300px]:w-[calc(100%+1rem)]">
-        <div className="mx-auto flex w-full max-w-xl flex-col items-stretch gap-10 min-[1300px]:mx-0 min-[1300px]:max-w-none min-[1300px]:flex-row min-[1300px]:items-stretch min-[1300px]:gap-10 min-[1300px]:pl-[max(0px,calc((100%-36rem)/2))]">
-          <PhoneColumn variant="purple" src="/background4.webp" />
-          <PhoneColumn variant="orange" src="/background5.webp" />
+      <section className="w-full px-3 pt-6 pb-14">
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-end gap-4 min-[900px]:grid-cols-2 min-[1350px]:grid-cols-4 min-[1500px]:gap-6">
+          <PhoneColumn variant="orange">
+            <HelloPhoneScreen />
+          </PhoneColumn>
+          <PhoneColumn variant="purple">
+            <LibraryPhoneScreen />
+          </PhoneColumn>
+          <PhoneColumn variant="titanium">
+            <WeatherPhoneScreen />
+          </PhoneColumn>
           <PhoneColumn
-            variant="titanium"
-            src="/background1.webp"
+            variant="white"
             link="view more colors"
             href="/components/phone"
-          />
+          >
+            <NowPlayingPhoneScreen />
+          </PhoneColumn>
         </div>
       </section>
 
@@ -135,13 +156,7 @@ export default function Home() {
         href="/components/laptop"
       >
         <LaptopMockupCard>
-          <Image
-            src="/background1.webp"
-            alt="App screen"
-            fill
-            sizes="100%"
-            className="object-cover"
-          />
+          <LaptopShowcaseScreen />
         </LaptopMockupCard>
       </LinkedBlock>
 
@@ -163,13 +178,7 @@ export default function Home() {
         href="/components/browser"
       >
         <BrowserMockupCard theme="transparent">
-          <Image
-            src="/background4.webp"
-            alt="App screen"
-            fill
-            sizes="100%"
-            className="object-cover"
-          />
+          <BrowserShowcaseScreen />
         </BrowserMockupCard>
       </LinkedBlock>
 
@@ -344,7 +353,7 @@ export default function Home() {
         </Paragraph>
       </div>
 
-      <div className="w-full max-w-7xl px-4 md:px-0">
+      <div className="w-full max-w-340 px-4 md:px-0">
         <HomeTestimonials />
       </div>
 

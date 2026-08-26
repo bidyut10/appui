@@ -71,11 +71,11 @@ export default async function ComponentDetailPage({ params }: Readonly<Props>) {
   ] as const;
 
   return (
-    <div className="flex min-h-0 flex-1">
+    <div className="flex min-h-0 flex-1 overflow-hidden">
       <JsonLd data={getComponentJsonLd(entry)} />
       <main
         data-docs-scroll
-        className="scrollbar-hover min-h-0 min-w-0 flex-1 overflow-y-auto"
+        className="scrollbar-hover data-docs-scroll min-h-0 min-w-0 flex-1 overflow-y-auto overscroll-y-contain"
       >
         <article className="mx-auto w-full max-w-3xl px-4 py-8 md:px-8 md:py-10">
           <nav aria-label="Breadcrumb" className="sr-only">

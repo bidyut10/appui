@@ -9,7 +9,7 @@ import { Anthropic } from "@/icons/brands/anthropic";
 import { NextJs } from "@/icons/brands/next-js";
 import { Canva } from "@/icons/brands/canva";
 import { ProductHunt } from "@/icons/brands/producthunt";
-import { SponsorPlaceholderRow } from "@/components/inquiries/sponsor-placeholder-row";
+import { SponsorPlaceholderRow } from "./sponsor-placeholder-row";
 
 type ResourceItem = {
   name: string;

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { ChevronRight, MoveRight } from "lucide-react";
 
-import { InquiryTrigger } from "@/components/inquiries/inquiry-provider";
+import { ContactEmailTrigger } from "@/components/contact/contact-email";
 
 export function CtaButtons() {
   return (
@@ -28,8 +28,11 @@ export function CtaButtons() {
         </span>
       </Link>
 
-      <InquiryTrigger
-        type="work"
+      <ContactEmailTrigger
+        title="Work WIth Us"
+        description="Feel free to copy my email and send me a bit about your project. I read and reply to every message.
+
+"
         className="group flex w-full items-center justify-center gap-2 rounded-md border border-neutral-100/80 bg-white px-4 py-2 text-base text-neutral-800 shadow-sm transition-all duration-300 hover:border-neutral-100 hover:shadow-md md:w-auto"
       >
         <span className="ease-smooth inline-flex origin-[70%_90%] transition-transform duration-500 group-hover:-rotate-12">
@@ -42,8 +45,8 @@ export function CtaButtons() {
             className="size-4.5"
           />
         </span>
-        Work With Me
-      </InquiryTrigger>
+        Work WIth Us
+      </ContactEmailTrigger>
     </div>
   );
 }

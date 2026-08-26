@@ -7,14 +7,11 @@ import { Suspense } from "react";
 import { siteConfig } from "@/lib/site";
 
 import { useDocsShell } from "./docs-shell-context";
+import { DocsGithubLink } from "./docs-github-link";
 import { DocsSearch } from "./docs-search";
 import { LogoIcon } from "@/app/(marketing)/_components/Logo";
 
-const metaLinkClass =
-  "font-sans text-sm text-neutral-400 transition-colors hover:text-neutral-700";
-
 export function DocsHeader() {
-  const { author } = siteConfig;
   const shell = useDocsShell();
 
   return (
@@ -55,23 +52,8 @@ export function DocsHeader() {
           </button>
         </div>
 
-        <div className="hidden shrink-0 items-center gap-4 md:flex md:gap-5">
-          <a
-            href="https://github.com/bidyut10/opensourceui"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={metaLinkClass}
-          >
-            GitHub
-          </a>
-          <a
-            href={author.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={metaLinkClass}
-          >
-            Twitter/X
-          </a>
+        <div className="hidden shrink-0 md:block">
+          <DocsGithubLink />
         </div>
       </div>
     </header>

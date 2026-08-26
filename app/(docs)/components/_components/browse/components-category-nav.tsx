@@ -1,7 +1,5 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-
 import { SaveScrollLink } from "@/lib/docs";
 import { cn } from "@/lib/cn";
 import { resolveShowcaseCategory } from "@/lib/showcase/resolve-category";
@@ -22,8 +20,6 @@ export function ComponentsCategoryNav({
   activeCategory,
   isBrowseAll = false,
 }: ComponentsCategoryNavProps) {
-  useSearchParams();
-
   return (
     <div className="border-b border-neutral-200 bg-white px-4 py-3 md:hidden">
       <div className="flex scrollbar-none items-center gap-2 overflow-x-auto">

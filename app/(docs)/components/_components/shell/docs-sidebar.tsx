@@ -32,7 +32,7 @@ export function DocsSidebar({ categories }: DocsSidebarProps) {
 
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-50 flex w-[min(20rem,88vw)] shrink-0 flex-col border-r border-neutral-100 bg-white transition-transform duration-300 ease-out md:static md:z-auto md:flex md:w-80 md:translate-x-0",
+          "fixed inset-y-0 left-0 z-50 flex h-dvh min-h-0 w-[min(20rem,88vw)] shrink-0 flex-col overflow-hidden border-r border-neutral-100 bg-white transition-transform duration-300 ease-out md:static md:z-auto md:h-full md:max-h-full md:w-80 md:translate-x-0",
           isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0",
         )}
       >
@@ -50,7 +50,9 @@ export function DocsSidebar({ categories }: DocsSidebarProps) {
           </button>
         </div>
 
-        <DocsSidebarNav categories={categories} onNavigate={closeSidebar} />
+        <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
+          <DocsSidebarNav categories={categories} onNavigate={closeSidebar} />
+        </div>
         <DocsSidebarFooter />
       </aside>
     </>

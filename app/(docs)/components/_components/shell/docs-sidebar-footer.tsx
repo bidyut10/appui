@@ -1,19 +1,23 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
 
 import { ChevronRight, MoveRight } from "lucide-react";
 import { siteConfig } from "@/lib/site";
 
-import { InquiryTrigger } from "@/components/inquiries/inquiry-provider";
-import { DocsCopyEmailButton } from "./docs-copy-email-button";
+import { useForwardWheelToDocsMain } from "@/app/_shared/scroll/docs-scroll";
+import { ContactEmailCopyButton, ContactEmailTrigger } from "@/components/contact/contact-email";
 
 export function DocsSidebarFooter() {
+  const footerRef = useRef<HTMLDivElement>(null);
   const year = new Date().getFullYear();
   const { author } = siteConfig;
 
+  useForwardWheelToDocsMain(footerRef);
+
   return (
-    <div className="shrink-0 border-t border-neutral-100 px-5 py-5">
+    <div ref={footerRef} className="shrink-0 border-t border-neutral-100 px-5 py-5">
       <p className="flex items-center gap-1.5 font-serif text-lg text-neutral-900">
         Ready when you are.
         <Image
@@ -49,9 +53,12 @@ export function DocsSidebarFooter() {
       </p>
 
       <div className="mt-4 grid grid-cols-2 gap-2">
-        <InquiryTrigger
-          type="work"
-          className="group inline-flex w-full items-center justify-center gap-1.5 rounded-md border border-neutral-200 bg-white px-2 py-1.5 font-sans text-xs whitespace-nowrap text-neutral-800 transition-colors hover:border-neutral-300 hover:bg-neutral-50"
+        <ContactEmailTrigger
+          title="Work WIth Us"
+          description="Feel free to copy my email and send me a bit about your project. I read and reply to every message.
+
+"
+          className="group inline-flex w-full items-center justify-center gap-1.5 rounded-md border border-neutral-200 bg-white px-2 py-1.5 font-sans text-xs whitespace-nowrap text-neutral-800 transition-colors hover:border-neutral-100 hover:bg-neutral-50 shadow-sm"
         >
           <span className="ease-smooth inline-flex shrink-0 origin-[70%_90%] transition-transform duration-500 group-hover:-rotate-12">
             <Image
@@ -63,7 +70,7 @@ export function DocsSidebarFooter() {
               className="size-3.5"
             />
           </span>
-          Work with me
+          Work WIth Us
           <span className="relative inline-flex size-3 shrink-0 items-center justify-center">
             <ChevronRight
               size={12}
@@ -76,15 +83,17 @@ export function DocsSidebarFooter() {
               className="ease-smooth absolute -translate-x-0.5 scale-95 opacity-0 transition-[opacity,transform] duration-500 group-hover:translate-x-0 group-hover:scale-100 group-hover:opacity-100"
             />
           </span>
-        </InquiryTrigger>
+        </ContactEmailTrigger>
 
-        <DocsCopyEmailButton />
+        <ContactEmailCopyButton
+          className="inline-flex w-full items-center justify-center rounded-md border border-neutral-800 bg-neutral-800 px-2 py-1.5 font-sans text-xs whitespace-nowrap text-neutral-100 transition-colors hover:border-neutral-900 hover:bg-neutral-900 hover:text-neutral-100"
+        />
       </div>
 
       <div className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 font-sans text-xs text-neutral-400">
         <span>© {year} {siteConfig.displayName} </span>
         <span aria-hidden="true">·</span>
-        <span> Made in India </span>
+        <span> India </span>
       </div>
     </div>
   );

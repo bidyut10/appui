@@ -9,4 +9,3 @@ export { DocsToc } from "./docs-toc";
 export type { DocsTocItem } from "./docs-toc";
 export { DocsSponsorCard } from "./docs-sponsor-card";
 export { DocsSearch } from "./docs-search";
-export { DocsCopyEmailButton } from "./docs-copy-email-button";

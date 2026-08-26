@@ -46,6 +46,15 @@ export const HOME_REVIEWS: HomeReview[] = [
     role: "The founder of Microlaunch",
     rating: 5,
   },
+  {
+    quote: "Genuinely well put together — 154 components across 26 categories is no joke, and the tone throughout feels intentional, not templated",
+    name: "Patrick Chen",
+    platform: "twitter",
+    href: "https://x.com/sublimeartsio",
+    avatar: "/profile-picture.png",
+    role: "The founder of runs.space",
+    rating: 5,
+  },
 ];
 
 export const PRODUCT_HUNT_TESTIMONIALS: TestimonialItem[] = HOME_REVIEWS.filter(

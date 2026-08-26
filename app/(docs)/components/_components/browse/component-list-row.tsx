@@ -33,7 +33,6 @@ export function ComponentListRow({ item, index }: ComponentListRowProps) {
     <li className="min-w-0">
       <SaveScrollLink
         href={`/components/${item.slug}`}
-        title={`${item.title} — ${item.description}`}
         className="group flex min-w-0 items-center gap-2.5 py-1 max-[499px]:gap-2"
       >
         <div
