@@ -19,6 +19,7 @@ const PHASES = [
     cards: 3,
     showHero: false,
     showNav: false,
+    list: false,
   },
   {
     id: "partial",
@@ -26,6 +27,7 @@ const PHASES = [
     cards: 3,
     showHero: true,
     showNav: true,
+    list: false,
   },
   {
     id: "cards",
@@ -33,6 +35,7 @@ const PHASES = [
     cards: 2,
     showHero: true,
     showNav: true,
+    list: false,
   },
   {
     id: "list",
