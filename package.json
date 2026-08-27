@@ -17,7 +17,12 @@
     "prebuild": "npm run check:showcase",
     "start": "next start",
     "lint": "eslint",
-    "check:showcase": "node scripts/check-showcase-files.mjs"
+    "check:showcase": "node scripts/check-showcase-files.mjs",
+    "pages:dev": "npm run build && npx wrangler pages dev out",
+    "pages:deploy": "npm run build && npx wrangler pages deploy"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "dependencies": {
     "clsx": "^2.1.1",

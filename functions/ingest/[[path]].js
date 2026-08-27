@@ -4,6 +4,19 @@
  */
 export async function onRequest(context) {
   const request = context.request;
+
+  if (request.method === "OPTIONS") {
+    return new Response(null, {
+      status: 204,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Max-Age": "86400",
+      },
+    });
+  }
+
   const url = new URL(request.url);
   const ingestPrefix = "/ingest/";
 
@@ -32,5 +45,13 @@ export async function onRequest(context) {
     init.body = request.body;
   }
 
-  return fetch(targetUrl.toString(), init);
+  const response = await fetch(targetUrl.toString(), init);
+  const responseHeaders = new Headers(response.headers);
+  responseHeaders.set("Access-Control-Allow-Origin", "*");
+
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: responseHeaders,
+  });
 }

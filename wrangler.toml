@@ -1,0 +1,13 @@
+# Cloudflare Pages — static Next.js export (output: "export" → out/)
+# https://developers.cloudflare.com/pages/functions/wrangler-configuration/
+#
+# Dashboard (if not using this file yet):
+#   Framework preset: Next.js (Static HTML Export) — NOT plain "Next.js"
+#   Build command:    npm run build
+#   Output directory: out
+#
+# Plain "Next.js" runs OpenNext after the build and will fail with output: "export".
+
+name = "opensourceui"
+compatibility_date = "2025-08-27"
+pages_build_output_dir = "./out"
