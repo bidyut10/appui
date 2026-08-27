@@ -26,7 +26,7 @@ Icons are plain SVG React components in `icons/`—no extra npm package. I also 
 - **TypeScript**
 - **Tailwind CSS v4**
 - **clsx** + **tailwind-merge** (`cn()` helper)
-- **MongoDB** (optional, for self-hosted analytics)
+- **PostHog** (optional client-side analytics)
 
 No shadcn, no MUI, no Radix underneath. Just React, Tailwind, and SVG.
 
@@ -39,7 +39,6 @@ No shadcn, no MUI, no Radix underneath. Just React, Tailwind, and SVG.
 | `/components?category=Audio`         | Category catalog with preview cards          |
 | `/components?category=Audio&q=music` | Search results (also via header search)      |
 | `/components/[slug]`                 | Component detail — preview, setup, copy code |
-| `/dashboard`                         | Password-protected analytics (optional)      |
 
 The docs section uses a three-column layout on large screens: sidebar navigation, main content, and on-page table of contents.
 
@@ -80,18 +79,11 @@ app/
         browse/                 Catalog, browse-all, search results
         detail/                 Preview stage
 
-  (dashboard)/                  Analytics UI (/dashboard)
-    dashboard/
-      page.tsx
-      _components/              Login, stats panels, date filters
-
-  _shared/                      Global client widgets
-    navigation/                 Route transition loader
+  _shared/                      Shared client utilities
+    navigation/                 Hydrated search params
     scroll/                     Scroll-to-top, scroll restoration
 
-  api/analytics/                track, auth, dashboard API routes
-
-components/                     Copy-paste UI library (74+ widgets)
+components/                     Copy-paste UI library (150+ widgets)
   activity/, audio/, battery/, bluetooth/, calender/, clocks/
   discord/, dropdowns/, gallery/, github/, instagram/, linkedin/
   mockups/, notifications/, pricing/, text/, travel/, twitter/
@@ -114,7 +106,7 @@ lib/
     highlight-code.tsx            Syntax highlighting for code blocks
     scroll-restoration.ts       Scroll position on back navigation
     server.ts                   Read component source files from disk
-  analytics/                    Self-hosted MongoDB analytics (see below)
+  analytics/client/             Optional PostHog page views + component clicks
 
 types/
   types.tsx                     Shared TypeScript types
@@ -198,45 +190,9 @@ c(
 
 Add the `c(...)` entry to a row in `showcaseRows`. Each inner array is one homepage row (1, 2, or 3 items). The slug automatically powers `/components/my-new-card` and sidebar navigation.
 
-## Analytics
+## Analytics (optional)
 
-Privacy-first, self-hosted analytics — no third-party scripts. Events are stored in your own MongoDB Atlas database and viewed at `/dashboard` (password-protected, not indexed).
-
-### Setup
-
-Copy `.env.example` to `.env.local`:
-
-```env
-MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/dbname
-ANALYTICS_DASHBOARD_SECRET=choose-a-long-random-password
-```
-
-Deploy with those env vars on Vercel. In Atlas, allow `0.0.0.0/0` under Network Access so serverless functions can connect.
-
-### What is tracked
-
-- Page views on public routes (debounced)
-- Component link clicks from the docs sidebar and browse pages
-- Sparse heartbeats while a tab is visible (~every 3 minutes)
-- Session duration when the user leaves the tab
-
-Anonymous `visitorId` and per-tab `sessionId` only. Country / region / city from Vercel geo — **no IP addresses stored**. `/dashboard` and `/api/*` are excluded.
-
-### Dashboard
-
-Open `/dashboard` and sign in with `ANALYTICS_DASHBOARD_SECRET`. Filter by All time, Today, 7d, 30d, or a custom date range. "Live users" always reflects the last 5 minutes.
-
-### Code layout
-
-- **Logic:** `lib/analytics/` (`client/` for browser helpers, `server/` for API + MongoDB)
-- **Tracker:** `components/system/analytics/tracker.tsx` (mounted in root layout)
-- **Loader:** `components/system/loaders/page-loader-overlay.tsx`
-- **UI:** `app/(dashboard)/dashboard/`
-- **API:** `app/api/analytics/`
-
-Full details: [`lib/analytics/README.md`](lib/analytics/README.md).
-
-Analytics is optional — the public site works without any env vars.
+Set `NEXT_PUBLIC_POSTHOG_KEY` in `.env.local` to enable client-side page views and component click tracking. Leave it empty to run without analytics.
 
 ## Deploy on Vercel
 
@@ -244,7 +200,7 @@ This project is built for [Vercel](https://vercel.com). Connect the GitHub repo 
 
 1. Fork or clone [github.com/bidyut10/appui](https://github.com/bidyut10/opensourceui)
 2. Import the project in [Vercel](https://vercel.com/new)
-3. Add env vars from `.env.example` only if you want the analytics dashboard
+3. Add env vars from `.env.example` only if you want PostHog analytics
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/bidyut10/opensourceui)
 
