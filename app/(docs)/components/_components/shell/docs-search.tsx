@@ -5,6 +5,7 @@ import {
   useEffect,
   useRef,
   useState,
+  useSyncExternalStore,
   useTransition,
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
@@ -34,6 +35,10 @@ function getSearchShortcutLabel() {
   return isApple ? "Command K" : "Control K";
 }
 
+function subscribeShortcutLabel() {
+  return () => {};
+}
+
 export function DocsSearch() {
   const router = useRouter();
   const pathname = usePathname();
@@ -44,12 +49,12 @@ export function DocsSearch() {
   const isFocusedRef = useRef(false);
   const committedRef = useRef(urlQuery);
   const [value, setValue] = useState("");
-  const [shortcutLabel, setShortcutLabel] = useState("Control K");
+  const shortcutLabel = useSyncExternalStore(
+    subscribeShortcutLabel,
+    getSearchShortcutLabel,
+    () => "Control K",
+  );
   const [, startTransition] = useTransition();
-
-  useEffect(() => {
-    setShortcutLabel(getSearchShortcutLabel());
-  }, []);
 
   const applySearch = useCallback(
     (next: string) => {

@@ -1,12 +1,9 @@
 "use client";
 
-import { Suspense, useEffect, useRef, useState, type ReactNode } from "react";
+import { Suspense, useEffect, useState, type ReactNode } from "react";
 
 import type { ShowcaseCategoryGroup } from "@/lib/showcase";
-import {
-  useForwardWheelToDocsMain,
-  useLockDocsPageScroll,
-} from "@/app/_shared/scroll/docs-scroll";
+import { useLockDocsPageScroll } from "@/app/_shared/scroll/docs-scroll";
 
 import { DocsHeader } from "./docs-header";
 import { DocsShellProvider } from "./docs-shell-context";

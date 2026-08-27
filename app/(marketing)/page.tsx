@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { Metadata } from "next";
 import { Badge } from "./_components/badge";
 import { Heading } from "./_components/heading";

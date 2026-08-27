@@ -1,7 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { useSearchParams, type ReadonlyURLSearchParams } from "next/navigation";
+
+function subscribe() {
+  return () => {};
+}
+
+function getHydratedSnapshot() {
+  return true;
+}
+
+function getHydratedServerSnapshot() {
+  return false;
+}
 
 /**
  * Query params are unavailable in static HTML exports. Defer reading them until
@@ -9,11 +21,11 @@ import { useSearchParams, type ReadonlyURLSearchParams } from "next/navigation";
  */
 export function useHydratedSearchParams(): ReadonlyURLSearchParams | null {
   const searchParams = useSearchParams();
-  const [hydrated, setHydrated] = useState(false);
-
-  useEffect(() => {
-    setHydrated(true);
-  }, []);
+  const hydrated = useSyncExternalStore(
+    subscribe,
+    getHydratedSnapshot,
+    getHydratedServerSnapshot,
+  );
 
   return hydrated ? searchParams : null;
 }
