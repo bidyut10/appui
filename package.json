@@ -19,7 +19,7 @@
     "lint": "eslint",
     "check:showcase": "node scripts/check-showcase-files.mjs",
     "pages:dev": "npm run build && npx wrangler pages dev out",
-    "pages:deploy": "wrangler pages deploy out --project-name=opensourceui"
+    "pages:deploy": "npx wrangler pages deploy out --project-name=opensourceui"
   },
   "engines": {
     "node": ">=20"
