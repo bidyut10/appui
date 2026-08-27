@@ -113,7 +113,7 @@ export default function Home() {
       </div>
 
       <section className="w-full px-3 pt-6 pb-14">
-        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-end gap-4 min-[900px]:grid-cols-2 min-[1350px]:grid-cols-4 min-[1500px]:gap-6">
+        <div className="mx-auto grid w-full grid-cols-1 items-end gap-4 min-[900px]:grid-cols-2 min-[1350px]:grid-cols-4 min-[1500px]:gap-6">
           <PhoneColumn variant="orange">
             <HelloPhoneScreen />
           </PhoneColumn>

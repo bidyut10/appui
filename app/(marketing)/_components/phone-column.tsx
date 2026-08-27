@@ -9,7 +9,7 @@ import { ViewLink } from "./view-link";
 type PhoneFrameVariant = "purple" | "orange" | "titanium" | "white";
 
 const PANEL_CLASS =
-  "flex w-full items-end justify-center overflow-hidden rounded-2xl border border-neutral-100 py-8 px-3 min-[900px]:px-4 min-[1500px]:p-6";
+  "flex w-full items-end justify-center overflow-hidden rounded-2xl border border-neutral-100 py-20 px-3 min-[900px]:px-4 min-[1500px]:px-6 min-[1500px]:py-16";
 
 export function PhoneColumn({
   variant,

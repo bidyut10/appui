@@ -128,7 +128,7 @@ export function HelloPhoneScreen() {
     <div className="absolute inset-0 flex items-center justify-center bg-black">
       <p
         className={cn(
-          "px-4 text-center font-sans text-[1.9rem] font-extralight tracking-tight text-white capitalize transition-all duration-500 motion-reduce:transition-none",
+          "px-4 text-center font-sans text-lg font-extralight tracking-tight text-white capitalize transition-all duration-500 motion-reduce:transition-none",
           visible ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0",
         )}
       >
@@ -254,20 +254,6 @@ export function WeatherPhoneScreen() {
             itemIndex === index ? "opacity-100" : "opacity-0",
           )}
         >
-          <div className="flex flex-col items-center">
-            <button
-              type="button"
-              className="inline-flex items-center gap-1 rounded-full bg-white/15 px-3 py-1.5 text-[11px] font-medium text-white backdrop-blur-sm"
-            >
-              <MapPin size={11} strokeWidth={2} aria-hidden />
-              San Francisco
-              <ChevronDown size={12} strokeWidth={2} aria-hidden />
-            </button>
-            <p className="mt-2 text-[10px] font-medium tracking-wide text-white/65 uppercase">
-              {item.period}
-            </p>
-          </div>
-
           <div className="mt-4 flex flex-col items-center text-center">
             <div className="flex h-14 items-center justify-center">
               {item.type === "night" ? (
