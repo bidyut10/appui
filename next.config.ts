@@ -13,8 +13,8 @@ const nextConfig: NextConfig = {
   skipTrailingSlashRedirect: true,
 };
 
-// Dev-only PostHog proxy (/ingest). Static export ignores rewrites on build;
-// production uses functions/ingest/[[path]].js + public/_redirects on Cloudflare.
+// Dev-only PostHog proxy (/ingest). Production uses vercel.json rewrites on Vercel
+// and functions/ingest/[[path]].js + public/_redirects on Cloudflare Pages.
 if (process.env.NODE_ENV === "development") {
   nextConfig.rewrites = async () => [
     {

@@ -158,7 +158,7 @@ npx prettier --write .
 npx prettier --check .   # dry run
 ```
 
-Node.js 18 or later.
+Node.js 20 or later.
 
 ## Using a component in your project
 

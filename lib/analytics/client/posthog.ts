@@ -8,8 +8,16 @@ function getPostHogKey() {
   return process.env.NEXT_PUBLIC_POSTHOG_KEY?.trim() ?? "";
 }
 
-function getPostHogHost() {
-  return process.env.NEXT_PUBLIC_POSTHOG_HOST?.trim() || "/ingest";
+function resolvePostHogHost() {
+  const host = process.env.NEXT_PUBLIC_POSTHOG_HOST?.trim();
+
+  // /ingest reverse proxy is optional and often breaks on static hosting (404s).
+  // Fall back to PostHog's direct API so analytics keep working.
+  if (!host || host === "/ingest") {
+    return "https://us.i.posthog.com";
+  }
+
+  return host;
 }
 
 function getPostHogUiHost() {
@@ -29,7 +37,7 @@ export function initPostHog() {
   }
 
   posthog.init(getPostHogKey(), {
-    api_host: getPostHogHost(),
+    api_host: resolvePostHogHost(),
     ui_host: getPostHogUiHost(),
     person_profiles: "identified_only",
     capture_pageview: false,
