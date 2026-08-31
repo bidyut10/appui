@@ -15,14 +15,16 @@ import {
 import { SaveScrollLink } from "@/lib/docs";
 import { cn } from "@/lib/cn";
 import { resolveShowcaseCategory } from "@/lib/showcase/resolve-category";
-import type { ShowcaseCategoryGroup } from "@/lib/showcase";
+import type { ShowcaseNavCategoryGroup } from "@/lib/showcase";
+
+import { ShowcaseNewBadge } from "../shared/showcase-new-badge";
 
 function categoryHref(category: string) {
   return `/components?category=${encodeURIComponent(category)}`;
 }
 
 type DocsSidebarNavProps = Readonly<{
-  categories: ShowcaseCategoryGroup[];
+  categories: ShowcaseNavCategoryGroup[];
   onNavigate?: () => void;
 }>;
 
@@ -138,13 +140,14 @@ export function DocsSidebarNav({
                       href={`/components/${item.slug}`}
                       onClick={onNavigate}
                       className={cn(
-                        "block py-1 font-sans text-[13px] leading-snug transition-colors",
+                        "flex items-center gap-1.5 py-1 font-sans text-[13px] leading-snug transition-colors",
                         isActive
                           ? "font-medium text-neutral-900"
                           : "text-neutral-500 hover:text-neutral-900",
                       )}
                     >
-                      {item.title}
+                      <span className="truncate">{item.title}</span>
+                      {item.isNew ? <ShowcaseNewBadge /> : null}
                     </SaveScrollLink>
                   </li>
                 );

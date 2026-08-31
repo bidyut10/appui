@@ -2,7 +2,7 @@
 
 import { Suspense, useEffect, useState, type ReactNode } from "react";
 
-import type { ShowcaseCategoryGroup } from "@/lib/showcase";
+import type { ShowcaseNavCategoryGroup } from "@/lib/showcase";
 import { useLockDocsPageScroll } from "@/app/_shared/scroll/docs-scroll";
 
 import { DocsHeader } from "./docs-header";
@@ -10,7 +10,7 @@ import { DocsShellProvider } from "./docs-shell-context";
 import { DocsSidebar } from "./docs-sidebar";
 
 type DocsShellClientProps = Readonly<{
-  categories: ShowcaseCategoryGroup[];
+  categories: ShowcaseNavCategoryGroup[];
   children: ReactNode;
 }>;
 

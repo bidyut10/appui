@@ -3,6 +3,8 @@ import { ChevronRight, MoveRight } from "lucide-react";
 import { cn } from "@/lib/cn";
 import type { ShowcaseEntry } from "@/lib/showcase";
 
+import { ShowcaseNewBadge } from "../shared/showcase-new-badge";
+
 const LETTER_COLORS = [
   { bg: "bg-neutral-100", text: "text-sky-700" },
   { bg: "bg-neutral-100", text: "text-rose-600" },
@@ -56,6 +58,11 @@ export function ComponentListRow({ item, index }: ComponentListRowProps) {
             <span className="font-semibold text-neutral-900 group-hover:text-neutral-700">
               {item.title}
             </span>
+            {item.isNew ? (
+              <span className="ml-1.5 align-middle">
+                <ShowcaseNewBadge />
+              </span>
+            ) : null}
             <span className="text-neutral-300"> / </span>
             <span className="text-neutral-500">{item.category}</span>
             <span className="sr-only"> — {item.description}</span>

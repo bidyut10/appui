@@ -1,5 +1,7 @@
 import {
+  getShowcasePreviewBackdrop,
   isFormShowcaseFile,
+  isFullBleedShowcaseFile,
   isInputShowcaseFile,
   type ShowcaseCategoryGroup,
 } from "@/lib/showcase/showcase";
@@ -64,6 +66,7 @@ export function ComponentsCatalog({
               category={activeGroup.category}
               description={item.description}
               preview={item.preview}
+              isNew={item.isNew}
               variant={
                 isFormShowcaseFile(item.file)
                   ? "form"
@@ -71,6 +74,8 @@ export function ComponentsCatalog({
                     ? "input"
                     : "default"
               }
+              fullBleed={isFullBleedShowcaseFile(item.file)}
+              backdropImage={getShowcasePreviewBackdrop(item.file)}
             />
           ))}
         </div>

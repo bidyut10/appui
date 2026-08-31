@@ -1,4 +1,4 @@
-import { getShowcaseByCategory } from "@/lib/showcase";
+import { getShowcaseNavByCategory } from "@/lib/showcase";
 
 import { ComponentsDocsShell } from "./_components/shell";
 
@@ -7,7 +7,7 @@ export default function ComponentsLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const categories = getShowcaseByCategory();
+  const categories = getShowcaseNavByCategory();
 
   return (
     <ComponentsDocsShell categories={categories}>

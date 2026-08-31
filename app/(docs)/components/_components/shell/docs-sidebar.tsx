@@ -2,7 +2,7 @@
 
 import { X } from "lucide-react";
 
-import type { ShowcaseCategoryGroup } from "@/lib/showcase";
+import type { ShowcaseNavCategoryGroup } from "@/lib/showcase";
 import { cn } from "@/lib/cn";
 
 import { DocsSidebarFooter } from "./docs-sidebar-footer";
@@ -10,7 +10,7 @@ import { DocsSidebarNav } from "./docs-sidebar-nav";
 import { useDocsShell } from "./docs-shell-context";
 
 type DocsSidebarProps = Readonly<{
-  categories: ShowcaseCategoryGroup[];
+  categories: ShowcaseNavCategoryGroup[];
 }>;
 
 export function DocsSidebar({ categories }: DocsSidebarProps) {

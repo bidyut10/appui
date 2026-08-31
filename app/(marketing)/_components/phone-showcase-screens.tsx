@@ -4,9 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import {
-  ChevronDown,
   Cloud,
-  MapPin,
   Moon,
   Pause,
   Play,
@@ -15,9 +13,8 @@ import {
   Sun,
 } from "lucide-react";
 
+import { AppleHelloLoader } from "@/components/loaders/apple-hello-loader";
 import { cn } from "@/lib/cn";
-
-const GREETINGS = ["hello", "bonjour", "hola", "ciao", "olá", "namaste"] as const;
 
 const MEMORY_SETS = [
   {
@@ -106,36 +103,7 @@ function usePrefersReducedMotion() {
 }
 
 export function HelloPhoneScreen() {
-  const reducedMotion = usePrefersReducedMotion();
-  const [index, setIndex] = useState(0);
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    if (reducedMotion) return;
-
-    const interval = globalThis.setInterval(() => {
-      setVisible(false);
-      globalThis.setTimeout(() => {
-        setIndex((current) => (current + 1) % GREETINGS.length);
-        setVisible(true);
-      }, 400);
-    }, 2600);
-
-    return () => globalThis.clearInterval(interval);
-  }, [reducedMotion]);
-
-  return (
-    <div className="absolute inset-0 flex items-center justify-center bg-black">
-      <p
-        className={cn(
-          "px-4 text-center font-sans text-lg font-extralight tracking-tight text-white capitalize transition-all duration-500 motion-reduce:transition-none",
-          visible ? "translate-y-0 opacity-100" : "translate-y-1 opacity-0",
-        )}
-      >
-        {GREETINGS[index]}
-      </p>
-    </div>
-  );
+  return <AppleHelloLoader fill />;
 }
 
 export function LibraryPhoneScreen() {

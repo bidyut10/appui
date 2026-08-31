@@ -1,11 +1,11 @@
 import { Suspense, type ReactNode } from "react";
 
-import type { ShowcaseCategoryGroup } from "@/lib/showcase";
+import type { ShowcaseNavCategoryGroup } from "@/lib/showcase";
 
 import { DocsShellClient } from "./docs-shell-client";
 
 type ComponentsDocsShellProps = Readonly<{
-  categories: ShowcaseCategoryGroup[];
+  categories: ShowcaseNavCategoryGroup[];
   children: ReactNode;
 }>;
 

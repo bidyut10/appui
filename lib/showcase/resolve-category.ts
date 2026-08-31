@@ -1,10 +1,12 @@
-import type { ShowcaseCategoryGroup } from "./showcase";
+type ShowcaseCategoryLike = Readonly<{
+  category: string;
+}>;
 
 // Category URLs are matched case-insensitively — clocks, Clocks, and CLOCKS all resolve.
-export function resolveShowcaseCategory(
-  categories: readonly ShowcaseCategoryGroup[],
+export function resolveShowcaseCategory<T extends ShowcaseCategoryLike>(
+  categories: readonly T[],
   param: string,
-): ShowcaseCategoryGroup | undefined {
+): T | undefined {
   const normalized = param.trim().toLowerCase();
   if (!normalized) return undefined;
 

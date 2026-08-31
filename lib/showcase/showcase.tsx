@@ -25,14 +25,23 @@ import { VoiceAssistantWidget } from "@/components/widgets/voice-assistant-widge
 import { BatteryFaceWidget } from "@/components/widgets/battery-face-widget";
 import { AddToCartButton } from "@/components/buttons/add-to-cart-button";
 import { BookmarkSaveButton } from "@/components/buttons/bookmark-save-button";
+import { CinderLatchButton } from "@/components/buttons/cinder-latch-button";
 import { CopyButton } from "@/components/buttons/copy-button";
 import { DepthOutlineButton } from "@/components/buttons/depth-outline-button";
 import { DownloadButton } from "@/components/buttons/download-button";
+import { DimpleSwitch } from "@/components/buttons/dimple-switch";
 import { FollowButton } from "@/components/buttons/follow-button";
 import { HoldToDeleteButton } from "@/components/buttons/hold-to-delete-button";
 import { InsetButton } from "@/components/buttons/inset-button";
 import { LikeButton } from "@/components/buttons/like-button";
+import { LinenTabButton } from "@/components/buttons/linen-tab-button";
+import { AppleHelloLoader } from "@/components/loaders/apple-hello-loader";
+import { SpinLoader } from "@/components/loaders/spin-loader";
+import { TextLoader } from "@/components/loaders/text-loader";
+import { PrismDepthButton } from "@/components/buttons/prism-depth-button";
 import { QuantityStepperButton } from "@/components/buttons/quantity-stepper-button";
+import { SheenPillButton } from "@/components/buttons/sheen-pill-button";
+import { SlateChipSwitch } from "@/components/buttons/slate-chip-switch";
 import { SoftPillButton } from "@/components/buttons/soft-pill-button";
 import { SoftUiButton } from "@/components/buttons/soft-ui-button";
 import { ThreeDButton } from "@/components/buttons/three-d-button";
@@ -59,6 +68,7 @@ import { ResourceLinksPanel } from "@/components/resources/resource-links-panel"
 import { TasksTable } from "@/components/table/tasks-table";
 import { TeamMembersTable } from "@/components/table/team-members-table";
 import { UsersSelectTable } from "@/components/table/users-select-table";
+import { CafeMenuBoardCard } from "@/components/text/cafe-menu-board-card";
 import { CinemaTicketCard } from "@/components/text/cinema-ticket-card";
 import { DailyMotivationCard } from "@/components/text/daily-motivation-card";
 import { DenimProductEditorialCard } from "@/components/text/denim-product-editorial-card";
@@ -68,6 +78,7 @@ import { DropCapEditorialCard } from "@/components/text/drop-cap-editorial-card"
 import { EditorialQuoteCard } from "@/components/text/editorial-quote-card";
 import { EventTicketCard } from "@/components/event/event-ticket-card";
 import { FacebookPostCard } from "@/components/socials/facebook-post-card";
+import { ArtFrameCard } from "@/components/gallery/art-frame-card";
 import { FilmStripCard } from "@/components/gallery/film-strip-card";
 import { GalleryGridCard } from "@/components/gallery/gallery-grid-card";
 import { GitHubRepoCard } from "@/components/socials/github-repo-card";
@@ -102,6 +113,7 @@ import { MusicPlayerCard } from "@/components/audio/music-player-card";
 import { MusicPlaylistCard } from "@/components/audio/music-playlist-card";
 import { NotepadCard } from "@/components/text/notepad-card";
 import { StackedFolderCard } from "@/components/files/stacked-folder-card";
+import { InkStampDocumentCard } from "@/components/files/ink-stamp-document-card";
 import { OpensourceFolderTabCard } from "@/components/folder/opensource-folder-tab-card";
 import { NowPlayingBar } from "@/components/audio/now-playing-bar";
 import { PhotoAlbumCard } from "@/components/gallery/photo-album-card";
@@ -117,6 +129,7 @@ import { TerminalLogCard } from "@/components/others/terminal-log-card";
 import { TestimonialCard } from "@/components/users/testimonial-card";
 import { FlightBoardingCard } from "@/components/travel/flight-boarding-card";
 import { ThermalReceiptCard } from "@/components/others/thermal-receipt-card";
+import { WeatherSnapshotCard } from "@/components/others/weather-snapshot-card";
 import { ThreadsPostCard } from "@/components/socials/threads-post-card";
 import { TogglePricingCards } from "@/components/pricing/toggle-pricing-cards";
 import { TravelPostcardCard } from "@/components/travel/travel-postcard-card";
@@ -135,7 +148,10 @@ import { UserMenuDropdown } from "@/components/dropdowns/user-menu-dropdown";
 import { WorkspaceSwitcherDropdown } from "@/components/dropdowns/workspace-switcher-dropdown";
 import { GithubContributionCard } from "@/components/socials/github-contribution";
 import { IosMapLocationWidget } from "@/components/widgets/ios-map-location-widget";
+import { AppleWatchMockupCard } from "@/components/mockups/apple-watch-mockup-card";
 import { BrowserMockupCard } from "@/components/mockups/browser-mockup-card";
+import { IpodMockupCard } from "@/components/mockups/apple-ipod-mockup-card";
+import { IpadMockupCard } from "@/components/mockups/tablet-mockup-card";
 import { LaptopMockupCard } from "@/components/mockups/laptop-mockup-card";
 import { PhoneMockupCard } from "@/components/mockups/phone-mockup-card";
 import { AppleNotificationBanner } from "@/components/notifications/apple-notification-banner";
@@ -168,6 +184,7 @@ type ShowcaseOpts = {
   title?: string;
   description?: string;
   usage?: string;
+  isNew?: boolean;
 };
 
 // Add a showcased component to a row.
@@ -205,7 +222,7 @@ export const showcaseRows = [
       "components/buttons/three-d-button.tsx",
       "ThreeDButton",
       {
-        title: "3D Button",
+        title: "Tactile 3D",
         description:
           "Universal 3D button with tactile keycap shadows — pass any children (label, icon + label). Variants: solid, soft, muted. Sizes: sm, md, lg, icon. Press sinks the key in.",
         usage:
@@ -228,7 +245,7 @@ export const showcaseRows = [
       "components/buttons/three-d-icon-button.tsx",
       "ThreeDIconButton",
       {
-        title: "3D Icon Button",
+        title: "Tactile 3D Icon",
         description:
           "Square 3D icon button — pass any icon as children and a required label for accessibility. Same solid / soft / muted materials as ThreeDButton.",
         usage:
@@ -249,7 +266,7 @@ export const showcaseRows = [
       "components/buttons/soft-ui-button.tsx",
       "SoftUiButton",
       {
-        title: "Soft UI Button",
+        title: "Neumorphic Soft UI",
         description:
           "Universal soft-UI / neumorphic button — even light and dark shadows. Pass any children. Press flips to an inset look.",
         usage: "<SoftUiButton>Get started</SoftUiButton>",
@@ -264,7 +281,7 @@ export const showcaseRows = [
       "components/buttons/inset-button.tsx",
       "InsetButton",
       {
-        title: "Inset Button",
+        title: "Recessed Inset",
         description:
           "Recessed inset button — looks pressed into the surface. Light or dark variant. Pass any children.",
         usage: '<InsetButton variant="dark">Confirm</InsetButton>',
@@ -284,7 +301,7 @@ export const showcaseRows = [
       "components/buttons/soft-pill-button.tsx",
       "SoftPillButton",
       {
-        title: "Soft Pill Button",
+        title: "Floating Pill",
         description:
           "Floating rounded pill with a soft drop shadow — light or dark. Pass any children. Nudges down slightly on press.",
         usage: '<SoftPillButton variant="dark">Subscribe</SoftPillButton>',
@@ -302,10 +319,100 @@ export const showcaseRows = [
       "components/buttons/depth-outline-button.tsx",
       "DepthOutlineButton",
       {
-        title: "Depth Outline Button",
+        title: "Depth Outline",
         description:
           "Premium outline button with layered float depth, a soft top lip, and a press-in sink — secondary CTA that still feels tactile. Pass any children.",
         usage: "<DepthOutlineButton>Learn more</DepthOutlineButton>",
+      },
+    ),
+  ],
+  [
+    c(
+      "sheen-pill-button",
+      <SheenPillButton>Get started</SheenPillButton>,
+      "components/buttons/sheen-pill-button.tsx",
+      "SheenPillButton",
+      {
+        title: "Sheen Pill",
+        isNew: true,
+        description:
+          "Frosted pill with layered shade veil, light band, and rim wire — hover brightens the sheen and clears the fill. Pass width, height, and highlight to tune the frame.",
+        usage: '<SheenPillButton width={200} height={60}>Get started</SheenPillButton>',
+      },
+    ),
+  ],
+  [
+    c(
+      "prism-depth-button",
+      <PrismDepthButton>Get started</PrismDepthButton>,
+      "components/buttons/prism-depth-button.tsx",
+      "PrismDepthButton",
+      {
+        title: "Prism Depth",
+        isNew: true,
+        description:
+          "Dark depth button with a cyan edge flare, rim glow, and layered core veil — pass any label as children.",
+        usage: '<PrismDepthButton>Get started</PrismDepthButton>',
+      },
+    ),
+  ],
+  [
+    c(
+      "dimple-switch",
+      <DimpleSwitch defaultChecked />,
+      "components/buttons/dimple-switch.tsx",
+      "DimpleSwitch",
+      {
+        title: "Dimple Switch",
+        isNew: true,
+        description:
+          "Tactile switch with a dimpled knob, metallic track, and amber on-state fill. Hidden checkbox drives the slide — controlled or uncontrolled.",
+        usage:
+          '<DimpleSwitch defaultChecked onCheckedChange={setEnabled} label="Enable setting" />',
+      },
+    ),
+  ],
+  [
+    c(
+      "cinder-latch-button",
+      <CinderLatchButton>Unlock</CinderLatchButton>,
+      "components/buttons/cinder-latch-button.tsx",
+      "CinderLatchButton",
+      {
+        title: "Cinder Latch",
+        isNew: true,
+        description:
+          "Charcoal latch button with a warm ember under-glow, center groove, and face sheen — built for secure-action CTAs.",
+        usage: '<CinderLatchButton>Unlock</CinderLatchButton>',
+      },
+    ),
+    c(
+      "slate-chip-switch",
+      <SlateChipSwitch defaultChecked />,
+      "components/buttons/slate-chip-switch.tsx",
+      "SlateChipSwitch",
+      {
+        title: "Slate Chip Switch",
+        isNew: true,
+        description:
+          "Smooth pill chip switch with a white thumb and sky on-state fill — a cleaner alternative to textured toggles.",
+        usage:
+          '<SlateChipSwitch defaultChecked onCheckedChange={setMode} label="Enable mode" />',
+      },
+    ),
+  ],
+  [
+    c(
+      "linen-tab-button",
+      <LinenTabButton>View details</LinenTabButton>,
+      "components/buttons/linen-tab-button.tsx",
+      "LinenTabButton",
+      {
+        title: "Linen Tab",
+        isNew: true,
+        description:
+          "Woven linen tab with dashed stitch borders and a soft fold sheen — warm, editorial, and understated.",
+        usage: '<LinenTabButton>View details</LinenTabButton>',
       },
     ),
   ],
@@ -316,6 +423,7 @@ export const showcaseRows = [
       "components/buttons/slide-to-confirm-button.tsx",
       "SlideToConfirmButton",
       {
+        title: "Slide to Confirm",
         description:
           "Drag the knob across the track to commit an action — snaps back if you release early, locks green when confirmed. Great for irreversible or high-intent actions.",
         usage:
@@ -328,6 +436,7 @@ export const showcaseRows = [
       "components/buttons/hold-to-delete-button.tsx",
       "HoldToDeleteButton",
       {
+        title: "Hold to Delete",
         description:
           "Press and hold as a fill sweeps across; release early to cancel, hold to the end to delete. Prevents accidental destructive taps.",
         usage:
@@ -342,6 +451,7 @@ export const showcaseRows = [
       "components/buttons/add-to-cart-button.tsx",
       "AddToCartButton",
       {
+        title: "Add to Cart",
         description:
           "Raised 3D add-to-cart key that sinks in while adding, with gentle label crossfades, then pops back up in a solid emerald added state before resetting.",
         usage:
@@ -354,6 +464,7 @@ export const showcaseRows = [
       "components/buttons/like-button.tsx",
       "LikeButton",
       {
+        title: "Like Toggle",
         description:
           "Heart toggle that pops and scatters particles on the way up, with a live count. Pill fills rose when active — no glow, no gradient.",
         usage: '<LikeButton count={128} defaultLiked={false} />',
@@ -365,6 +476,7 @@ export const showcaseRows = [
       "components/buttons/copy-button.tsx",
       "CopyButton",
       {
+        title: "Copy to Clipboard",
         description:
           "Copies text to the clipboard and cross-fades the copy icon into a check with a Copied label. Monospace value, resets on its own.",
         usage: '<CopyButton value="npm i @appui/components" />',
@@ -378,6 +490,7 @@ export const showcaseRows = [
       "components/buttons/quantity-stepper-button.tsx",
       "QuantityStepperButton",
       {
+        title: "Quantity Stepper",
         description:
           "Inline minus / count / plus control for carts and forms. Clamps between min and max, disables at the edges.",
         usage: '<QuantityStepperButton value={1} min={0} max={99} onChange={setQty} />',
@@ -389,6 +502,7 @@ export const showcaseRows = [
       "components/buttons/download-button.tsx",
       "DownloadButton",
       {
+        title: "Download with States",
         description:
           "Raised 3D download key that sinks while downloading — arrow morphs to spinner to check — then pops back up as a solid emerald done state.",
         usage: '<DownloadButton label="Download" onDownload={fetchFile} />',
@@ -400,6 +514,7 @@ export const showcaseRows = [
       "components/buttons/follow-button.tsx",
       "FollowButton",
       {
+        title: "Follow Toggle",
         description:
           "Social follow toggle — dark Follow pill becomes a quiet Following state with a user-check icon. Tap again to unfollow.",
         usage: '<FollowButton label="Follow" followingLabel="Following" />',
@@ -413,6 +528,7 @@ export const showcaseRows = [
       "components/buttons/bookmark-save-button.tsx",
       "BookmarkSaveButton",
       {
+        title: "Bookmark Save",
         description:
           "Save for later — bookmark icon fills amber and label swaps to Saved. Square-ish control for articles and products.",
         usage: '<BookmarkSaveButton label="Save" savedLabel="Saved" />',
@@ -424,6 +540,7 @@ export const showcaseRows = [
       "components/buttons/segmented-toggle-button.tsx",
       "SegmentedToggleButton",
       {
+        title: "Segmented Control",
         description:
           "iOS segmented control — sliding white pill between Day, Week, and Month. Pass your own options array for view modes or filters.",
         usage:
@@ -1030,6 +1147,7 @@ export const showcaseRows = [
       "components/mockups/laptop-mockup-card.tsx",
       "LaptopMockupCard",
       {
+        title: "Apple Macbook",
         description:
           'MacBook Pro frame wrapping your screenshot — black lid and bezel with a gray outer frame and base. Pass variant="titanium" for a titanium outer frame and base.',
         usage: '<LaptopMockupCard variant="titanium" />',
@@ -1041,10 +1159,40 @@ export const showcaseRows = [
       "components/mockups/phone-mockup-card.tsx",
       "PhoneMockupCard",
       {
+        title: "Apple iPhone",
         description:
           "iPhone 15 Pro frame with Dynamic Island and a full-screen preview slot. Pass variant for purple, orange, white, titanium, or cherry finishes. Use visibleRatio to crop from the top, and showDynamicIsland to toggle the island and camera.",
         usage:
           '<PhoneMockupCard variant="orange" visibleRatio={2 / 3} showDynamicIsland={false} />',
+      },
+    ),
+  ],
+  [
+    c(
+      "ipad",
+      <IpadMockupCard variant="spaceGray" />,
+      "components/mockups/tablet-mockup-card.tsx",
+      "IpadMockupCard",
+      {
+        title: "Apple iPad",
+        isNew: true,
+        description:
+          "iPad Air frame with metallic bezel, top-edge buttons, and a full-screen preview slot. Pass variant for space gray, space black, silver, starlight, blue, purple, pink, or yellow finishes. Use visibleRatio to crop from the top, and showCamera to toggle the front camera dot.",
+        usage:
+          '<IpadMockupCard variant="spaceGray" visibleRatio={2 / 3} showCamera={false} />',
+      },
+    ),
+    c(
+      "apple-watch",
+      <AppleWatchMockupCard variant="black" />,
+      "components/mockups/apple-watch-mockup-card.tsx",
+      "AppleWatchMockupCard",
+      {
+        title: "Apple Watch",
+        isNew: true,
+        description:
+          "Apple Watch frame with sport band and a rounded display slot for your UI. Pass variant for black, silver, titanium, starlight, blue, gold, or rose finishes.",
+        usage: '<AppleWatchMockupCard variant="black" />',
       },
     ),
   ],
@@ -1055,10 +1203,24 @@ export const showcaseRows = [
       "components/mockups/browser-mockup-card.tsx",
       "BrowserMockupCard",
       {
+        title: "Apple Browser",
         description:
           "Desktop browser chrome with traffic lights and a URL bar framing your website screenshot. Pass theme for light, dark, or transparent chrome.",
         usage:
           '<BrowserMockupCard theme="dark" url="yoursite.com/dashboard" />',
+      },
+    ),
+    c(
+      "ipod",
+      <IpodMockupCard variant="silver" />,
+      "components/mockups/apple-ipod-mockup-card.tsx",
+      "IpodMockupCard",
+      {
+        title: "Apple iPod",
+        isNew: true,
+        description:
+          "Classic iPod frame with a screen slot and click wheel — silver, black, white, pink, blue, green, or red finishes. Drop any UI into the screen area.",
+        usage: '<IpodMockupCard variant="silver">{screenContent}</IpodMockupCard>',
       },
     ),
   ],
@@ -1095,6 +1257,19 @@ export const showcaseRows = [
       {
         description:
           "Monospace receipt with line items, tax, total, perforated edges, and a QR footer. Reads like paper from a real register.",
+      },
+    ),
+    c(
+      "weather-snapshot",
+      <WeatherSnapshotCard />,
+      "components/others/weather-snapshot-card.tsx",
+      "WeatherSnapshotCard",
+      {
+        title: "Weather Snapshot",
+        isNew: true,
+        description:
+          "Compact weather card with temperature, highs/lows, humidity, and wind — clear or rain variants.",
+        usage: '<WeatherSnapshotCard city="Kolkata" variant="rain" temperature={28} />',
       },
     ),
   ],
@@ -1565,6 +1740,19 @@ export const showcaseRows = [
       },
     ),
     c(
+      "ink-stamp-document",
+      <InkStampDocumentCard />,
+      "components/files/ink-stamp-document-card.tsx",
+      "InkStampDocumentCard",
+      {
+        title: "Ink Stamp Document",
+        isNew: true,
+        description:
+          "Paper filing card with reference metadata and a rotated approval stamp — contracts, invoices, and admin dashboards.",
+        usage: '<InkStampDocumentCard stampLabel="Approved" title="Vendor Agreement" />',
+      },
+    ),
+    c(
       "opensource-folder-tab-card",
       <OpensourceFolderTabCard />,
       "components/folder/opensource-folder-tab-card.tsx",
@@ -1629,6 +1817,19 @@ export const showcaseRows = [
           "Gallery exhibition label that flips to reveal curator notes and acquisition details. Art portfolios and culture sites love this interaction.",
         usage:
           '<MuseumPlacardCard artist="Name" title="Artwork title" year="2024" />',
+      },
+    ),
+    c(
+      "art-frame",
+      <ArtFrameCard />,
+      "components/gallery/art-frame-card.tsx",
+      "ArtFrameCard",
+      {
+        title: "Art Frame",
+        isNew: true,
+        description:
+          "Gallery wall frame with cream matting, artwork preview, and caption block — clean exhibition styling.",
+        usage: '<ArtFrameCard title="Winter Light Study" artist="Elena Marchetti" />',
       },
     ),
     c(
@@ -1790,6 +1991,19 @@ export const showcaseRows = [
       {
         description:
           "Editorial poster with multi-line headline, flower icon, tilted polaroid, and a GOOD DAY sticker. Morning routine apps and wellness newsletters.",
+      },
+    ),
+    c(
+      "cafe-menu-board",
+      <CafeMenuBoardCard />,
+      "components/text/cafe-menu-board-card.tsx",
+      "CafeMenuBoardCard",
+      {
+        title: "Cafe Menu Board",
+        isNew: true,
+        description:
+          "Dark chalkboard-style menu with cafe header, item notes, and amber price accents — hospitality and local brand sites.",
+        usage: '<CafeMenuBoardCard cafeName="Corner & Steam" items={menuItems} />',
       },
     ),
     c(
@@ -2076,6 +2290,50 @@ export const showcaseRows = [
       },
     ),
   ],
+  [
+    c(
+      "apple-hello-loader",
+      <AppleHelloLoader fill />,
+      "components/loaders/apple-hello-loader.tsx",
+      "AppleHelloLoader",
+      {
+        title: "Apple Hello Loader",
+        isNew: true,
+        description:
+          "Apple-style greeting loader that cycles through hello, bonjour, hola, and more with a soft fade. Pass greetings, intervalMs, and fadeMs to tune the loop.",
+        usage:
+          '<AppleHelloLoader greetings={["hello", "hola"]} intervalMs={2600} />',
+      },
+    ),
+    c(
+      "spin-loader",
+      <div className="flex items-center justify-center p-8">
+        <SpinLoader size="lg" />
+      </div>,
+      "components/loaders/spin-loader.tsx",
+      "SpinLoader",
+      {
+        title: "Spin Loader",
+        isNew: true,
+        description:
+          "Minimal spinning loader built on a lucide icon — defaults to Loader, but pass any icon prop. Sizes: sm, md, lg.",
+        usage: '<SpinLoader size="lg" iconClassName="text-sky-600" />',
+      },
+    ),
+    c(
+      "text-loader",
+      <TextLoader text="Searching" />,
+      "components/loaders/text-loader.tsx",
+      "TextLoader",
+      {
+        title: "Text Loader",
+        isNew: true,
+        description:
+          "Animated text loader with a spinning color orb and staggered letter pulses. Pass text, variant, and textColor to match your UI.",
+        usage: '<TextLoader text="Searching" variant="ocean" textColor="#ffffff" />',
+      },
+    ),
+  ],
 ];
 
 // Catalog (auto — no need to edit)
@@ -2090,6 +2348,7 @@ export type ShowcaseEntry = Readonly<{
   exportName: string;
   description: string;
   usage: string;
+  isNew?: boolean;
   preview: ReactElement;
 }>;
 
@@ -2117,6 +2376,23 @@ export function isNarrowShowcaseFile(file: string): boolean {
   return isInputShowcaseFile(file) || isFormShowcaseFile(file);
 }
 
+export function isFullBleedShowcaseFile(file: string): boolean {
+  return (
+    file === "components/loaders/apple-hello-loader.tsx" ||
+    file === "components/loaders/text-loader.tsx" ||
+    file === "components/buttons/prism-depth-button.tsx" ||
+    file === "components/buttons/cinder-latch-button.tsx"
+  );
+}
+
+export function getShowcasePreviewBackdrop(file: string): string | undefined {
+  if (file === "components/buttons/sheen-pill-button.tsx") {
+    return "/background4.webp";
+  }
+
+  return undefined;
+}
+
 function buildCatalog(): Record<string, ShowcaseEntry> {
   const catalog: Record<string, ShowcaseEntry> = {};
 
@@ -2132,6 +2408,7 @@ function buildCatalog(): Record<string, ShowcaseEntry> {
           item.description ??
           `Copy ${item.exportName} into your app and pass props to match your content.`,
         usage: item.usage ?? `<${item.exportName} />`,
+        ...(item.isNew ? { isNew: true as const } : {}),
         preview: item.preview,
       };
     }
@@ -2155,6 +2432,13 @@ export type ShowcaseCategoryGroup = Readonly<{
   items: ShowcaseEntry[];
 }>;
 
+export type ShowcaseNavEntry = Readonly<Omit<ShowcaseEntry, "preview">>;
+
+export type ShowcaseNavCategoryGroup = Readonly<{
+  category: string;
+  items: ShowcaseNavEntry[];
+}>;
+
 export function getShowcaseByCategory(): ShowcaseCategoryGroup[] {
   const groups = new Map<string, ShowcaseEntry[]>();
 
@@ -2171,4 +2455,15 @@ export function getShowcaseByCategory(): ShowcaseCategoryGroup[] {
       category,
       items: [...items].sort((a, b) => a.title.localeCompare(b.title)),
     }));
+}
+
+export function getShowcaseNavByCategory(): ShowcaseNavCategoryGroup[] {
+  return getShowcaseByCategory().map((group) => ({
+    category: group.category,
+    items: group.items.map((entry) => {
+      const { preview, ...item } = entry;
+      void preview;
+      return item;
+    }),
+  }));
 }

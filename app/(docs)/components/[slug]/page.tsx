@@ -5,9 +5,11 @@ import { CopyCodeBlock, SetupGuide, SaveScrollLink } from "@/lib/docs";
 import { AnnotatedText } from "@/components/underlines/annotated-text";
 import { ChevronLeft, ChevronRight, MoveLeft, MoveRight } from "lucide-react";
 import {
-  getAllShowcaseSlugs,
   getShowcaseEntry,
+  getAllShowcaseSlugs,
+  getShowcasePreviewBackdrop,
   isFormShowcaseFile,
+  isFullBleedShowcaseFile,
   isInputShowcaseFile,
   readShowcaseSource,
 } from "@/lib/showcase";
@@ -151,6 +153,8 @@ export default async function ComponentDetailPage({ params }: Readonly<Props>) {
                       ? "input"
                       : "default"
                 }
+                fullBleed={isFullBleedShowcaseFile(entry.file)}
+                backdropImage={getShowcasePreviewBackdrop(entry.file)}
               >
                 {entry.preview}
               </DocsPreviewStage>
