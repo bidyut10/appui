@@ -1,11 +1,11 @@
 /**
- * Deploy script for Cloudflare dashboard "Deploy command".
+ * Cloudflare dashboard "Deploy command" — must NOT call wrangler in Git CI.
  *
- * On Cloudflare CI (Git-connected Pages / Workers Builds), the platform uploads
- * `out/` automatically after a successful build. Running `wrangler pages deploy`
- * again causes auth errors or duplicate deploys — so we exit 0 in CI.
+ * Git-connected Pages / Workers Builds upload `out/` automatically after
+ * `npm run build`. Running `wrangler pages deploy` again fails with auth
+ * errors when CLOUDFLARE_API_TOKEN lacks Pages permissions.
  *
- * Locally: runs `wrangler pages deploy` for manual uploads.
+ * Manual upload from your machine: npm run pages:upload
  *
  * Usage: node scripts/cloudflare-pages-deploy.mjs
  */
@@ -15,18 +15,25 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
-function isCloudflareCI() {
+function isRemoteBuildEnvironment() {
+  if (process.env.FORCE_PAGES_UPLOAD === "1") return false;
+
   return (
+    process.env.CI === "true" ||
+    process.env.CI === "1" ||
     process.env.CF_PAGES === "1" ||
+    process.env.WORKERS_CI === "1" ||
     Boolean(process.env.CF_PAGES_URL) ||
     Boolean(process.env.CF_PAGES_COMMIT_SHA) ||
-    process.env.WORKERS_CI === "1"
+    root.includes("buildhome") ||
+    process.cwd().includes("buildhome") ||
+    !process.stdin.isTTY
   );
 }
 
-if (isCloudflareCI()) {
+if (isRemoteBuildEnvironment()) {
   console.log(
-    "✓ Cloudflare CI detected — skipping wrangler pages deploy (platform publishes out/ after build).",
+    "✓ Remote/CI build — skipping wrangler pages deploy (Cloudflare publishes out/ automatically).",
   );
   process.exit(0);
 }

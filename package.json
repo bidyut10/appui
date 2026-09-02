@@ -22,7 +22,8 @@
     "format:check": "prettier --check .",
     "check:showcase": "node scripts/check-showcase-files.mjs",
     "pages:dev": "npm run build && wrangler pages dev out",
-    "pages:deploy": "node scripts/cloudflare-pages-deploy.mjs"
+    "pages:deploy": "node scripts/cloudflare-pages-deploy.mjs",
+    "pages:upload": "wrangler pages deploy out --project-name=opensourceui"
   },
   "engines": {
     "node": ">=20"
