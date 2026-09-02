@@ -1,17 +1,20 @@
-# Static Next.js export → out/
+# Workers static site — Next.js export in out/
 #
-# Cloudflare dashboard — Builds & deployments (copy EXACTLY):
-#   Framework preset: Next.js (Static HTML Export)  — NOT plain "Next.js"
+# This project deploys to *.workers.dev (Worker + static assets), not Pages.
+#
+# Cloudflare dashboard — Builds & deployments:
 #   Build command:    npm run build
 #   Deploy command:   npm run pages:deploy
 #   Version command:  exit 0
 #   Output directory: out
 #
-# IMPORTANT:
-# - Do NOT set Deploy command to npx wrangler pages deploy (causes auth errors).
-# - Delete CLOUDFLARE_API_TOKEN from Settings → Environment variables.
-# - Manual CLI upload: npm run pages:upload
+# Do NOT use npx wrangler pages deploy (Pages API — wrong project type).
+# Do NOT set CLOUDFLARE_API_TOKEN in Environment variables.
 
 name = "opensourceui"
 compatibility_date = "2025-08-27"
-pages_build_output_dir = "./out"
+account_id = "aa80904ac82949fe89814f98b5a3894d"
+
+[assets]
+directory = "./out"
+not_found_handling = "404-page"
