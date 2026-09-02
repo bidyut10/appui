@@ -29,7 +29,7 @@ Examples:
 
 Browse by category: https://opensourceui.in/components?category={CategoryName}
 
-Categories include Buttons, Clocks, Mockups, Activity widgets, Calendars, Cards, and more.
+Categories include Audio, Buttons, Calender, Docks, Dropdowns, Forms, Gallery, Inputs, Loaders, Mockups, Notifications, Socials, Tables, Text, Travel, Widgets, and more. Browse: https://opensourceui.in/components
 
 ## Search
 

@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-/.vscode
 /.pnp
 .pnp.*
 .yarn/*
@@ -10,9 +9,25 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
-.cursor/
+
+# editor — local settings only
 .vscode/
-.github/
+/.vscode
+
+# Cursor — commit shared rules; ignore local hooks
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
+
+# GitHub — commit CI workflows and contributor templates; ignore local hooks
+.github/*
+!.github/workflows/
+!.github/workflows/**
+!.github/ISSUE_TEMPLATE/
+!.github/ISSUE_TEMPLATE/**
+!.github/pull_request_template.md
+
+# Impeccable (local design tool cache — do not commit)
 .impeccable/
 
 # testing

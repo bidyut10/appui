@@ -7,7 +7,7 @@
 
 Live site: [opensourceui.in](https://opensourceui.in)
 
-Premium free React/Next.js components, built with Tailwind CSS and TypeScript. No subscriptions, no paywalls. Browse **150+ components** with live previews, setup guides, and copy-ready source at `/components`.
+Premium free React/Next.js components, built with Tailwind CSS and TypeScript. No subscriptions, no paywalls. Browse **170 components** with live previews, setup guides, and copy-ready source at `/components`.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/bidyut10/opensourceui)
 
@@ -18,6 +18,20 @@ Most UI kits either look the same or need you to learn a whole system before you
 These components are meant to be copied, not installed as a package. No provider wrappers, no theme config to decode. Each file is self-contained.
 
 Icons are plain SVG React components in `icons/`—no extra npm package. I also use [nexticons.in](https://nexticons.in) alongside them.
+
+## Use with AI coding assistants
+
+Opensource UI works with **any** coding agent — Cursor, Claude Code, Codex, Copilot, Grok, ChatGPT, and others.
+
+The agent kit lives at **`skills/opensource-ui/`** and includes a skill workflow plus reference docs (catalog, design system, implementation guide, and file inventory). See **[AGENTS.md](./AGENTS.md)** for setup steps per tool and example prompts.
+
+Quick start:
+
+```text
+Read skills/opensource-ui/SKILL.md and add the Opensource UI Login Form to my Next.js app.
+```
+
+No second copy needed — use `skills/opensource-ui/` directly in any agent (including Cursor via `@skills/opensource-ui/SKILL.md` or by mentioning the path in your prompt).
 
 ## Tech stack
 
@@ -83,14 +97,11 @@ app/
     navigation/                 Hydrated search params
     scroll/                     Scroll-to-top, scroll restoration
 
-components/                     Copy-paste UI library (150+ widgets)
-  activity/, audio/, battery/, bluetooth/, calender/, clocks/
-  discord/, dropdowns/, gallery/, github/, instagram/, linkedin/
-  mockups/, notifications/, pricing/, text/, travel/, twitter/
-  underlines/                   AnnotatedText decorations
-  system/
-    loaders/                    PageLoaderOverlay
-    analytics/                  AnalyticsTracker (root layout)
+components/                     Copy-paste UI library (170 widgets)
+  audio/, buttons/, calender/, docks/, dropdowns/, forms/, gallery/
+  inputs/, loaders/, mockups/, notifications/, socials/, table/
+  text/, travel/, underlines/, widgets/, wallet/, …
+  system/                       App-only (analytics, page loader)
 
 icons/
   actions/, activity/, brands/, elements/, keys/
@@ -112,6 +123,9 @@ types/
   types.tsx                     Shared TypeScript types
 
 public/                         Static assets (images, favicon)
+
+skills/opensource-ui/          Agent kit (SKILL.md + references/)
+AGENTS.md                       AI assistant setup guide
 ```
 
 Route groups like `(marketing)` and `(docs)` organize files without changing URLs.
@@ -135,7 +149,7 @@ More icons at [nexticons.in](https://nexticons.in).
 
 ```bash
 git clone https://github.com/bidyut10/opensourceui.git
-cd appui
+cd opensourceui
 npm install
 npm run dev
 ```
@@ -149,6 +163,8 @@ npm run dev      # local dev server
 npm run build    # production build
 npm run start    # run production build
 npm run lint     # eslint
+npm run typecheck
+npm run format:check
 ```
 
 Format files and sort Tailwind classes (uses `prettier-plugin-tailwindcss`):
@@ -198,7 +214,7 @@ Set `NEXT_PUBLIC_POSTHOG_KEY` in `.env.local` to enable client-side page views a
 
 This project is built for [Vercel](https://vercel.com). Connect the GitHub repo and deploy:
 
-1. Fork or clone [github.com/bidyut10/appui](https://github.com/bidyut10/opensourceui)
+1. Fork or clone [github.com/bidyut10/opensourceui](https://github.com/bidyut10/opensourceui)
 2. Import the project in [Vercel](https://vercel.com/new)
 3. Add env vars from `.env.example` only if you want PostHog analytics
 
@@ -217,7 +233,7 @@ To report a vulnerability, see [SECURITY.md](./SECURITY.md). Do not open public 
 ## Project links
 
 - Website: [opensourceui.in](https://opensourceui.in)
-- Repository: [github.com/bidyut10/appui](https://github.com/bidyut10/opensourceui)
+- Repository: [github.com/bidyut10/opensourceui](https://github.com/bidyut10/opensourceui)
 - Author: [Bidyut Kundu](https://x.com/BidyutKundu12)
 
 ## License

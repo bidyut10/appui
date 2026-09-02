@@ -1,0 +1,29 @@
+---
+description: Opensource UI responsive rule — base + md only, never sm
+alwaysApply: true
+---
+
+# No `sm:` Tailwind Breakpoints
+
+Opensource UI uses a **two-step** responsive system. Do **not** use `sm:` anywhere in this project — components, marketing, or docs.
+
+## Use instead
+
+1. **Base (default)** — mobile / small screens
+2. **`md:`** — tablet and larger (covers `lg:` and up)
+
+```tsx
+// ❌ BAD
+<div className="px-3 sm:px-4 md:px-6" />
+<div className="w-64 sm:w-80 md:w-96" />
+<div className="hidden sm:block" />
+
+// ✅ GOOD
+<div className="px-3 md:px-6" />
+<div className="w-64 md:w-96" />
+<div className="hidden md:block" />
+```
+
+## Why
+
+`sm:` breakpoints are unreliable in this project's Tailwind v4 setup. Base styles target mobile; `md:` handles all larger viewports. This is part of the Opensource UI design system (`skills/opensource-ui/references/design.md`).

@@ -1,9 +1,15 @@
 # Static Next.js export → out/
-# Dashboard build settings (copy exactly):
+#
+# Cloudflare dashboard — Builds & deployments (copy exactly):
+#   Framework preset: Next.js (Static HTML Export)  — NOT plain "Next.js"
 #   Build command:    npm run build
 #   Deploy command:   npm run pages:deploy
 #   Version command:  exit 0
 #   Output directory: out
+#
+# Do NOT use `npx wrangler deploy` — that is for Workers, not this static site.
+# On Git-connected CI, pages:deploy exits 0 so Cloudflare uploads out/ itself.
+# Plain "Next.js" preset runs OpenNext after build and fails with output: "export".
 
 name = "opensourceui"
 compatibility_date = "2025-08-27"

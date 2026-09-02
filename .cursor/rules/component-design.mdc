@@ -1,0 +1,107 @@
+---
+description: Opensource UI copy-paste component standards — styling, structure, API, a11y
+globs: components/**/*.tsx
+alwaysApply: false
+---
+
+# Opensource UI — Component Design
+
+Apply when creating or editing files under `components/`. Each file must be **copy-paste ready** — a user copies one file (+ `cn`, icons) into their Next.js app without providers or theme config.
+
+Design authority: `skills/opensource-ui/references/design.md`.
+
+## Visual language
+
+### Colors (Tailwind)
+
+| Role | Token | Usage |
+| ---- | ----- | ----- |
+| Ink | `neutral-900` | Primary text, focus borders |
+| Ink soft | `neutral-800` | Primary button fill |
+| Body | `neutral-700` | Muted paragraphs |
+| Muted | `neutral-500` | Meta, secondary nav |
+| Faint | `neutral-400` | Placeholders, hints |
+| Paper | `white` | Card and field backgrounds |
+| Paper tint | `neutral-50` | Disabled / recessed fills |
+| Border | `neutral-200` | Default input borders |
+| Border subtle | `neutral-100` | Hairline card edges |
+| Rose | `rose-500` | Errors, required `*` |
+| Cyan | `cyan-200` | Rare demo accents only |
+
+**Banned:** `purple-*`, `violet-*`, `indigo-*` anywhere.
+
+### Typography
+
+- **UI controls** (buttons, inputs, labels, nav): Geist sans — default body classes
+- **Never** put Instrument Serif on dense controls
+- **Never** introduce Inter, Plus Jakarta, DM Sans, or other default AI fonts
+
+### Shape and spacing
+
+- Buttons: `rounded-md` (6px), `px-4 py-2`
+- Fields and small cards: `rounded-lg` (8px), `h-10` for inputs
+- Editorial / testimonial surfaces: `rounded-2xl` (16px)
+- Internal padding: `p-4` typical
+- Flat surfaces — no ambient card shadows; no gradients or glow
+
+### Inputs and focus
+
+```tsx
+// ✅ Opensource UI input focus
+className="border border-neutral-200 bg-white outline-none ring-0 focus:border-neutral-900 focus:ring-0"
+
+// ❌ Never
+className="focus:ring-2 focus:ring-sky-500"
+```
+
+Errors: `border-rose-500` + visible error text. Required fields: rose asterisk.
+
+## File structure and imports
+
+**Allowed external imports only:**
+
+- `cn` from `@/lib/cn`
+- `Link` from `next/link`
+- `Image` from `next/image` (when the component uses images)
+- Icons from `lucide-react` and/or `@/icons/...`
+
+Everything else — types, hooks, helpers, sub-components — lives **in the same file**.
+
+```tsx
+// ✅ GOOD
+import Link from "next/link";
+import { Mail } from "lucide-react";
+import { Github } from "@/icons/brands/github";
+import { cn } from "@/lib/cn";
+
+// ❌ BAD — shared hook, barrel, or raw anchor
+import { useOtpField } from "./use-otp-input";
+<a href="/login">Sign in</a>
+```
+
+### Navigation links
+
+- Use **`Link`** for real routes
+- Use **`<button type="button">`** styled as a link for `#` or empty demo hrefs
+
+## Component API
+
+- Interactive elements: **`forwardRef`**
+- Props: extend native HTML element types (`ComponentPropsWithoutRef<"button">`, etc.)
+- Classes: merge with **`cn()`**
+- **`"use client"`** only when needed (state, effects, events, browser APIs)
+- Export named component matching filename (`login-form.tsx` → `LoginForm`)
+- Ship **real demo content** — names, numbers, labels that look like real UI, not gray placeholders
+
+## Production quality
+
+- Pass ESLint with no errors or warnings
+- Handle disabled, error, controlled/uncontrolled, keyboard, and a11y labels
+- Match conventions in sibling files in the same category folder
+- **Tailwind v4 utilities only** — no `<style>`, no `@keyframes` in component files, no inline `style={{}}`, no new rules in `globals.css` for component styling
+
+## Category folders
+
+Organize by purpose: `buttons/`, `inputs/`, `forms/`, `widgets/`, `mockups/`, `notifications/`, `table/`, `travel/`, `socials/`, etc. Folder name drives docs category in the showcase (e.g. `widgets/` → **Widgets**).
+
+After adding a component, register it in `lib/showcase/showcase.tsx` — see `showcase-registry.mdc`.

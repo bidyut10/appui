@@ -122,6 +122,13 @@ export function SiteFooter() {
             Twitter/X
           </a>
           <span aria-hidden="true">·</span>
+          <a
+            href="/privacy"
+            className="transition-colors hover:text-neutral-600"
+          >
+            Privacy
+          </a>
+          <span aria-hidden="true">·</span>
           <ContactEmailCopyButton />
         </div>
       </div>

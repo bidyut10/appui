@@ -12,14 +12,31 @@ This project follows the [Contributor Covenant Code of Conduct](./CODE_OF_CONDUC
 - Fix bugs or improve docs with a pull request
 - Add new showcase components (see below)
 - Improve accessibility, performance, or copy on existing components
+- Update agent reference docs when adding components (see below)
+
+## Agent kit (AI assistants)
+
+Reference files for coding agents live in **`skills/opensource-ui/`**:
+
+| File | Purpose |
+| ---- | ------- |
+| `skills/opensource-ui/SKILL.md` | Workflow and design rules for agents |
+| `skills/opensource-ui/references/catalog.md` | Component index (names, slugs, routes) |
+| `skills/opensource-ui/references/design.md` | Full design system |
+| `skills/opensource-ui/references/implementation.md` | Repo layout and copy-paste steps |
+| `skills/opensource-ui/references/source_inventory.txt` | Exact component file paths |
+
+When you add a component, update `source_inventory.txt` and `catalog.md` if needed. See [AGENTS.md](./AGENTS.md) for how users set this up with Cursor, Claude Code, Codex, and other tools.
+
+Cursor project rules live in **`.cursor/rules/`** (`opensource-ui.mdc`, `component-design.mdc`, `site-chrome.mdc`, `showcase-registry.mdc`, `no-sm-breakpoints.mdc`) and align with the agent kit above.
 
 ## Local development
 
-Requirements: **Node.js 18+**, **npm**
+Requirements: **Node.js 20+**, **npm**
 
 ```bash
 git clone https://github.com/bidyut10/opensourceui.git
-cd appui
+cd opensourceui
 npm install
 npm run dev
 ```
@@ -29,12 +46,16 @@ Open [http://localhost:3000](http://localhost:3000).
 ### Useful commands
 
 ```bash
-npm run dev      # start dev server
-npm run build    # production build
-npm run lint     # eslint
+npm run dev            # start dev server
+npm run build          # production build (runs check:showcase)
+npm run lint           # eslint
+npm run typecheck      # TypeScript check
+npm run format         # prettier write
+npm run format:check   # prettier check (dry run)
+npm run check:showcase # verify showcase file paths
 ```
 
-Analytics is **optional** for local dev. The site works without `MONGODB_URI`. To test the dashboard, copy `.env.example` to `.env.local` and fill in the values.
+Analytics is **optional** for local dev. Copy `.env.example` to `.env.local` only if you want to test PostHog or Google Search Console verification.
 
 ## Adding a component to the showcase
 
@@ -61,7 +82,7 @@ c(
 - Keep changes focused — one component or one fix per PR when possible
 - Match existing code style (TypeScript, Tailwind, `cn()` helper)
 - Use `"use client"` only when the component needs client features
-- Do not commit secrets (`.env`, API keys, MongoDB URIs)
+- Do not commit secrets (`.env`, API keys)
 - Ensure CI passes (build + lint)
 
 ## Project structure
@@ -76,8 +97,9 @@ See the [README](./README.md#folder-structure) for the full layout. Key paths:
 | `lib/showcase/showcase.tsx`  | Component registry + homepage grid                   |
 | `lib/docs/`                  | Docs shared code (`SaveScrollLink`, `CopyCodeBlock`) |
 | `app/(docs)/components/`     | Docs routes — browse, search, detail pages           |
-| `app/(marketing)/`           | Homepage                                             |
-| `app/(dashboard)/dashboard/` | Analytics dashboard UI                               |
+| `app/(marketing)/`           | Homepage + privacy page                              |
+| `skills/opensource-ui/`      | Agent kit for AI coding assistants                   |
+| `AGENTS.md`                  | AI assistant setup guide                             |
 
 ## Questions
 

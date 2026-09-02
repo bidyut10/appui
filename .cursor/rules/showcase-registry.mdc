@@ -1,0 +1,71 @@
+---
+description: Opensource UI showcase registry — register components, keep paths in sync
+globs: lib/showcase/**/*.tsx,components/**/*.tsx
+alwaysApply: false
+---
+
+# Opensource UI — Showcase Registry
+
+The docs site, homepage grid, search, and `/components/[slug]` pages are driven by **`lib/showcase/showcase.tsx`**. Every showcased component must be registered here.
+
+## Adding a new component
+
+1. Create the file under `components/<category>/<kebab-name>.tsx`
+2. Add icons to `icons/` if needed (not already in lucide-react)
+3. Import at the top of `showcase.tsx`
+4. Add a `c(...)` entry inside a `showcaseRows` inner array (1–3 items per row)
+
+```tsx
+import { MyNewCard } from "@/components/text/my-new-card";
+
+c(
+  "my-new-card",                              // slug → /components/my-new-card
+  <MyNewCard />,                              // preview JSX
+  "components/text/my-new-card.tsx",          // file path from repo root (must exist)
+  "MyNewCard",                                // export name
+  {
+    title: "My New Card",                     // optional — defaults from slug
+    description: "Shown on the detail page.",
+    usage: '<MyNewCard title="Hello" />',     // optional
+    isNew: true,                              // optional badge
+  },
+),
+```
+
+5. Update `skills/opensource-ui/references/source_inventory.txt` with the new file path
+6. Verify:
+
+```bash
+npm run check:showcase   # runs on prebuild
+npm run lint
+npm run build
+```
+
+## Path rules
+
+The string in `c(..., "components/...", ...)` must match the **real file on disk**. Category in the docs sidebar is derived from the folder after `components/`:
+
+| Path | Docs category |
+| ---- | ------------- |
+| `components/widgets/foo.tsx` | Widgets |
+| `components/buttons/foo.tsx` | Buttons |
+| `components/calender/foo.tsx` | Calender |
+
+## When moving or renaming
+
+Update **both** in `showcase.tsx`:
+
+1. The `import` path (`@/components/...`)
+2. The `c(..., "components/.../file.tsx", ...)` string
+
+Moving a file under `components/` does **not** auto-update the registry.
+
+## Special preview flags
+
+`showcase.tsx` exports helpers used by the docs preview stage:
+
+- `isNarrowShowcaseFile` — inputs and forms
+- `isFullBleedShowcaseFile` — hello loader, text loader, prism/cinder buttons
+- `getShowcasePreviewBackdrop` — e.g. sheen pill button background
+
+Add cases there when a preview needs non-default staging.

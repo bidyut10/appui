@@ -23,6 +23,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    {
+      url: `${siteConfig.url}/privacy`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
     ...categories.map(({ category }) => ({
       url: `${siteConfig.url}/components?category=${encodeURIComponent(category)}`,
       lastModified,

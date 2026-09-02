@@ -25,23 +25,23 @@ We aim to acknowledge reports within **72 hours** and will work on a fix as quic
 
 In scope:
 
-- The opensourceui web application and its API routes
-- Authentication for `/dashboard`
-- Analytics data handling (no IP storage design)
+- The opensourceui.in static site (Next.js export)
+- Client-side analytics integration (PostHog)
 - Dependency vulnerabilities introduced by this repository
+- Misconfiguration in deployment files (`vercel.json`, `wrangler.toml`, env handling)
 
 Out of scope:
 
-- Vulnerabilities in third-party services (Vercel, MongoDB Atlas) — report those to the respective vendors
+- Vulnerabilities in third-party services (Vercel, Cloudflare, PostHog) — report those to the respective vendors
 - Social engineering or physical attacks
 - Issues in forked deployments with modified secrets or configuration
+- Applications built by users who copy components into their own projects
 
 ## Security notes for self-hosting
 
 - Never commit `.env` or `.env.local` — use `.env.example` as a template only
-- Set a strong `ANALYTICS_DASHBOARD_SECRET` for production
-- Restrict MongoDB Atlas network access appropriately
-- The analytics dashboard at `/dashboard` is password-protected and excluded from search indexing
+- PostHog keys are public client keys (`NEXT_PUBLIC_*`) — restrict project access in PostHog dashboard
+- Review `public/_headers` and hosting provider security settings for your deployment
 
 ## Disclosure
 

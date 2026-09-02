@@ -1,0 +1,63 @@
+---
+description: Opensource UI marketing and docs shell — typography, layout, brand voice
+globs: app/**/*.tsx
+alwaysApply: false
+---
+
+# Opensource UI — Site Chrome (Marketing + Docs)
+
+Apply when editing `app/(marketing)/`, `app/(docs)/`, or shared `app/_shared/` UI. This is the **opensourceui.in** brand surface — not the copy-paste `components/` library.
+
+Design authority: `skills/opensource-ui/references/design.md`.
+
+## Typography pairing ("Two-Voice Rule")
+
+| Voice | Font | Where |
+| ----- | ---- | ----- |
+| **Display** | Instrument Serif (`font-serif`) | Marketing H1, brand headlines, docs section titles, footer brand line |
+| **UI / body** | Geist (`font-sans`, `tracking-tight`) | Buttons, nav, paragraphs, form labels, docs sidebar |
+| **Mono** | Geist Mono (`font-mono`, ~10px) | Keyboard hints, code chrome, platform tags |
+
+```tsx
+// ✅ Marketing headline
+<h1 className="font-serif text-3xl text-neutral-900">...</h1>
+
+// ✅ Docs / product UI
+<p className="text-base tracking-tight text-neutral-700">...</p>
+```
+
+Marketing body columns: cap near **`max-w-xl`** (~65ch).
+
+## Color and elevation
+
+- **Stage stays neutral** — white/near-white backgrounds, ink text, `border-neutral-100`/`200` structure
+- **Accents** (cyan underlines, rose callout dots on the design-card demo): craft moments only, not site chrome
+- **Flat by default** — no stacked card shadows; depth from borders and tonal fills
+- **CTA lift** (`shadow-xl shadow-neutral-300/50`): primary marketing CTA only (e.g. "Browse Components")
+- **Docs nav:** idle `text-neutral-500`, active/hover `text-neutral-900`; active TOC uses a **2px ink left bar**
+
+## Layout patterns
+
+- **Marketing (`/`):** centered column, `px-3 md:px-4`, component demos as hero content
+- **Docs (`/components`):** three-column on large screens — sidebar nav, main content, on-page TOC
+- **Responsive:** base + `md:` only — never `sm:`
+
+## Imports in app code
+
+App shell **may** import from `@/components/`, `@/lib/`, `@/icons/`, `next/link`, `next/image` — unlike copy-paste components, the app is not meant to be copied as a single file.
+
+Use existing shared pieces: `createPageMetadata` from `@/lib/seo`, `siteConfig` from `@/lib/site`, `BOX_PATTERN` from `@/lib/shared`, docs shell components under `app/(docs)/components/_components/`.
+
+## Motion
+
+- Marketing micro-interactions: `--ease-smooth` (`cubic-bezier(0.22, 1, 0.36, 1)`) via `ease-smooth` or `duration-300`/`duration-500`
+- Always respect **`prefers-reduced-motion`**
+- No motion theater — clarity over wow
+
+## Do not
+
+- Purple/violet/indigo accents, gradients, glow, glassmorphism
+- Instrument Serif on dense controls (inputs, button rows, nav lists)
+- Inter or other off-brand fonts
+- `sm:` breakpoints
+- Raw `<a href>` — use `Link` from `next/link`

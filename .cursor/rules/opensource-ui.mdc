@@ -1,0 +1,50 @@
+---
+description: Opensource UI project context — opensourceui.in, agent kit, stack, and global constraints
+alwaysApply: true
+---
+
+# Opensource UI (opensourceui.in)
+
+This repo is **[Opensource UI](https://opensourceui.in)** — a free, MIT-licensed copy-paste library of **170** production-ready React/Next.js components across **27** categories.
+
+Creative north star: **"The Craft Bench"** — quiet neutral stage, pick a component, copy it, ship.
+
+## Agent kit (read before building UI)
+
+Canonical reference lives at **`skills/opensource-ui/`**:
+
+| File | Use for |
+| ---- | ------- |
+| `skills/opensource-ui/SKILL.md` | Workflow — catalog lookup, copy-paste steps |
+| `skills/opensource-ui/references/design.md` | Full design system (colors, type, elevation) |
+| `skills/opensource-ui/references/catalog.md` | Component index by slug and category |
+| `skills/opensource-ui/references/implementation.md` | Repo layout, icons, showcase registration |
+| `skills/opensource-ui/references/source_inventory.txt` | Exact `components/` file paths |
+
+Also see **`AGENTS.md`** at the repo root.
+
+When adding or matching UI, search the catalog first. Do not invent prop APIs when source exists in `components/`.
+
+## Tech stack
+
+- **Next.js 16** App Router, static export (`output: "export"`)
+- **React 19**, **TypeScript**, **Tailwind CSS v4** (`@import "tailwindcss"` in `globals.css`)
+- **`cn()`** from `@/lib/cn` (`clsx` + `tailwind-merge`)
+- **Icons:** hand-written SVGs in `icons/` (kebab-case files, PascalCase exports) and `lucide-react` in many components
+- **Fonts:** Instrument Serif (`font-serif`) for brand display; Geist (`font-sans`) for UI; Geist Mono (`font-mono`) for code chrome — loaded in `app/layout.tsx`
+- No shadcn, MUI, or Radix
+
+## Global design constraints (every file)
+
+- **Neutral stage:** paper white, ink text, hairline `neutral-100`/`200` borders
+- **Accents:** cyan, rose, amber, teal, emerald — sparingly in demos and state only (≤10% of a screen)
+- **Never:** purple/violet/indigo family, gradients, glow, glassmorphism, generic AI-dashboard chrome
+- **Responsive:** base (mobile) + `md:` only — **never `sm:`**
+- **Focus:** border color change + `ring-0 outline-none` — never colored `ring-*` on inputs
+- **Motion:** respect `prefers-reduced-motion`; marketing ease uses `--ease-smooth` from `globals.css`
+
+## Where rules apply
+
+- **`components/`** → copy-paste widgets; see `component-design.mdc`
+- **`app/`** → marketing homepage + docs shell; see `site-chrome.mdc`
+- **`lib/showcase/showcase.tsx`** → registry; see `showcase-registry.mdc`
