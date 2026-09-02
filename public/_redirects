@@ -1,2 +1,0 @@
-/ingest/static/* https://us-assets.i.posthog.com/static/:splat 200
-/ingest/* https://us.i.posthog.com/:splat 200

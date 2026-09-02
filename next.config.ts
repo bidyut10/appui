@@ -13,8 +13,8 @@ const nextConfig: NextConfig = {
   skipTrailingSlashRedirect: true,
 };
 
-// Dev-only PostHog proxy (/ingest). Production uses vercel.json rewrites on Vercel
-// and functions/ingest/[[path]].js + public/_redirects on Cloudflare Pages.
+// Dev-only PostHog proxy (/ingest). Production: Vercel uses vercel.json rewrites;
+// Cloudflare Workers use direct PostHog API (see lib/analytics/client/posthog.ts).
 if (process.env.NODE_ENV === "development") {
   nextConfig.rewrites = async () => [
     {
