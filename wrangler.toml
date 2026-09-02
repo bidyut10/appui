@@ -1,15 +1,16 @@
 # Static Next.js export → out/
 #
-# Cloudflare dashboard — Builds & deployments (copy exactly):
+# Cloudflare dashboard — Builds & deployments (copy EXACTLY):
 #   Framework preset: Next.js (Static HTML Export)  — NOT plain "Next.js"
 #   Build command:    npm run build
-#   Deploy command:   npm run pages:deploy   (no-op in CI — platform uploads out/)
+#   Deploy command:   npm run pages:deploy
 #   Version command:  exit 0
 #   Output directory: out
 #
-# Do NOT use `npx wrangler deploy` or `npx wrangler pages deploy` as Deploy command.
-# Remove CLOUDFLARE_API_TOKEN from project env vars (causes auth errors in CI).
-# Manual CLI upload from your machine: npm run pages:upload
+# IMPORTANT:
+# - Do NOT set Deploy command to npx wrangler pages deploy (causes auth errors).
+# - Delete CLOUDFLARE_API_TOKEN from Settings → Environment variables.
+# - Manual CLI upload: npm run pages:upload
 
 name = "opensourceui"
 compatibility_date = "2025-08-27"
