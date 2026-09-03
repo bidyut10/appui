@@ -1,3 +1,8 @@
+type CompensatedElement = Readonly<{
+  el: HTMLElement;
+  marginRight: string;
+}>;
+
 type StyleSnapshot = Readonly<{
   scrollY: number;
   body: {
@@ -13,10 +18,7 @@ type StyleSnapshot = Readonly<{
     overflow: string;
     scrollbarGutter: string;
   };
-  compensated: ReadonlyArray<{
-    el: HTMLElement;
-    marginRight: string;
-  }>;
+  compensated: ReadonlyArray<CompensatedElement>;
 }>;
 
 let lockCount = 0;
@@ -89,7 +91,7 @@ export function lockPageScroll(): () => void {
     body.style.paddingRight = `${scrollbarWidth}px`;
     html.style.setProperty("--scrollbar-width", `${scrollbarWidth}px`);
 
-    const compensated: StyleSnapshot["compensated"] = [];
+    const compensated: CompensatedElement[] = [];
     document
       .querySelectorAll<HTMLElement>("[data-scroll-lock-compensate]")
       .forEach((el) => {
