@@ -29,6 +29,7 @@ export function ScrollToTopButton() {
     <button
       type="button"
       aria-label="Scroll to top"
+      data-scroll-lock-compensate
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       className={`group fixed right-5 bottom-5 z-40 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-neutral-800 text-white shadow-lg shadow-neutral-600/30 transition-[background-color,box-shadow,opacity,transform] duration-300 hover:bg-neutral-900 hover:shadow-neutral-700/35 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-neutral-600 ${
         visible

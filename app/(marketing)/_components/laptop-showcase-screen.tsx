@@ -4,48 +4,99 @@ import { useEffect, useState } from "react";
 
 import { cn } from "@/lib/cn";
 
-const SHOWCASE_ITEMS = [
-  {
-    id: "button",
-    label: "Button",
-    preview: (
+function ShellChrome() {
+  return (
+    <div className="flex items-center justify-between border-b border-neutral-100 px-3 py-1.5">
+      <div className="flex items-center gap-1.5">
+        <div className="size-2 rounded-sm bg-neutral-900" aria-hidden />
+        <span className="text-[8px] font-medium text-neutral-700">
+          Opensource UI
+        </span>
+      </div>
+      <div className="flex gap-1" aria-hidden>
+        <span className="size-1 rounded-full bg-neutral-300" />
+        <span className="size-1 rounded-full bg-neutral-300" />
+        <span className="size-1 rounded-full bg-neutral-300" />
+      </div>
+    </div>
+  );
+}
+
+function HeroScene() {
+  return (
+    <div className="flex flex-1 flex-col items-center justify-center px-4 text-center">
+      <p className="font-serif text-[13px] leading-tight text-neutral-900">
+        Ship UI faster
+      </p>
+      <p className="mt-1 max-w-36 text-[8px] leading-relaxed text-neutral-400">
+        Copy-paste components for your next project
+      </p>
       <button
         type="button"
-        className="rounded-full bg-neutral-900 px-4 py-1.5 text-[10px] font-medium text-white"
+        className="mt-3 rounded-md bg-neutral-900 px-3 py-1 text-[9px] font-medium text-white"
       >
         Get started
       </button>
-    ),
-  },
-  {
-    id: "card",
-    label: "Card",
-    preview: (
-      <div className="w-28 rounded-xl border border-neutral-200 bg-white p-2.5 shadow-sm">
-        <div className="h-1.5 w-10 rounded-full bg-neutral-200" />
-        <div className="mt-1.5 h-1 w-16 rounded-full bg-neutral-100" />
-        <div className="mt-1 h-1 w-12 rounded-full bg-neutral-100" />
+    </div>
+  );
+}
+
+function CardsScene() {
+  return (
+    <div className="grid flex-1 grid-cols-2 gap-2 p-3">
+      <div className="relative rounded-lg border border-neutral-200 bg-white p-2">
+        <span className="absolute top-1.5 right-1.5 rounded bg-neutral-900 px-1 py-px text-[6px] font-medium tracking-wide text-white uppercase">
+          New
+        </span>
+        <div className="h-8 rounded-md bg-neutral-100" />
+        <div className="mt-1.5 h-1 w-3/4 rounded-full bg-neutral-200" />
+        <div className="mt-1 h-1 w-1/2 rounded-full bg-neutral-100" />
       </div>
-    ),
-  },
-  {
-    id: "badge",
-    label: "Badge",
-    preview: (
-      <span className="inline-flex items-center rounded-full border border-rose-200 bg-rose-50 px-2.5 py-1 text-[10px] font-medium text-rose-700">
-        New release
-      </span>
-    ),
-  },
-  {
-    id: "input",
-    label: "Input",
-    preview: (
-      <div className="w-32 rounded-lg border border-neutral-200 bg-white px-2.5 py-1.5 text-[10px] text-neutral-400">
-        Search components
+      <div className="rounded-lg border border-neutral-200 bg-white p-2">
+        <div className="h-8 rounded-md bg-neutral-100" />
+        <div className="mt-1.5 h-1 w-3/4 rounded-full bg-neutral-200" />
+        <div className="mt-1 h-1 w-1/2 rounded-full bg-neutral-100" />
       </div>
-    ),
-  },
+      <div className="rounded-lg border border-neutral-200 bg-white p-2">
+        <div className="h-8 rounded-md bg-neutral-100" />
+        <div className="mt-1.5 h-1 w-3/4 rounded-full bg-neutral-200" />
+        <div className="mt-1 h-1 w-1/2 rounded-full bg-neutral-100" />
+      </div>
+      <div className="rounded-lg border border-neutral-200 bg-white p-2">
+        <div className="h-8 rounded-md bg-neutral-100" />
+        <div className="mt-1.5 h-1 w-3/4 rounded-full bg-neutral-200" />
+        <div className="mt-1 h-1 w-1/2 rounded-full bg-neutral-100" />
+      </div>
+    </div>
+  );
+}
+
+function SearchScene() {
+  return (
+    <div className="flex flex-1 flex-col justify-center px-4">
+      <p className="text-[8px] font-medium text-neutral-500">Browse</p>
+      <div className="mt-1 rounded-md border border-neutral-200 bg-white px-2 py-1.5 text-[9px] text-neutral-400">
+        Search components…
+      </div>
+      <div className="mt-2 space-y-1.5">
+        {["Buttons", "Cards", "Forms"].map((item) => (
+          <div
+            key={item}
+            className="flex items-center justify-between rounded-md border border-neutral-100 bg-white px-2 py-1"
+          >
+            <span className="text-[8px] text-neutral-600">{item}</span>
+            <span className="text-[7px] text-neutral-300">›</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const SCENES = [
+  { id: "hero", Scene: HeroScene },
+  { id: "cards", Scene: CardsScene },
+  { id: "search", Scene: SearchScene },
 ] as const;
 
 function usePrefersReducedMotion() {
@@ -70,58 +121,43 @@ export function LaptopShowcaseScreen() {
     if (reducedMotion) return;
 
     const interval = globalThis.setInterval(() => {
-      setIndex((current) => (current + 1) % SHOWCASE_ITEMS.length);
-    }, 2800);
+      setIndex((current) => (current + 1) % SCENES.length);
+    }, 3500);
 
     return () => globalThis.clearInterval(interval);
   }, [reducedMotion]);
 
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center bg-neutral-50 px-4 font-sans">
-      <p className="font-serif text-sm text-neutral-900">Opensource UI</p>
-      <p className="mt-0.5 text-[9px] text-neutral-400">Copy-paste components</p>
+    <div className="absolute inset-0 flex flex-col bg-neutral-50 font-sans">
+      <ShellChrome />
 
-      <div className="relative mt-4 flex h-20 w-full items-center justify-center">
-        {SHOWCASE_ITEMS.map((item, itemIndex) => (
+      <div className="relative flex min-h-0 flex-1 flex-col">
+        {SCENES.map(({ id, Scene }, sceneIndex) => (
           <div
-            key={item.id}
-            aria-hidden={itemIndex !== index}
+            key={id}
+            aria-hidden={sceneIndex !== index}
             className={cn(
-              "absolute flex items-center justify-center transition-all duration-500 ease-out motion-reduce:transition-none",
-              itemIndex === index
-                ? "translate-y-0 scale-100 opacity-100"
-                : "translate-y-1 scale-95 opacity-0",
+              "absolute inset-0 flex flex-col",
+              sceneIndex === index
+                ? "z-10 opacity-100 transition-opacity duration-500 ease-smooth motion-reduce:transition-none"
+                : "z-0 pointer-events-none opacity-0",
             )}
           >
-            {item.preview}
+            <Scene />
           </div>
         ))}
       </div>
 
-      <div className="mt-3 flex items-center gap-3">
-        {SHOWCASE_ITEMS.map((item, itemIndex) => (
+      <div className="flex justify-center gap-1 border-t border-neutral-100 py-1.5">
+        {SCENES.map((scene, sceneIndex) => (
           <span
-            key={item.id}
-            className={cn(
-              "text-[8px] font-medium transition-colors duration-300 motion-reduce:transition-none",
-              itemIndex === index
-                ? "text-neutral-900"
-                : "text-neutral-300",
-            )}
-          >
-            {item.label}
-          </span>
-        ))}
-      </div>
-
-      <div className="mt-2 flex gap-1">
-        {SHOWCASE_ITEMS.map((item, itemIndex) => (
-          <span
-            key={item.id}
+            key={scene.id}
             aria-hidden
             className={cn(
-              "h-0.5 rounded-full transition-all duration-300 motion-reduce:transition-none",
-              itemIndex === index ? "w-3 bg-neutral-900" : "w-1 bg-neutral-200",
+              "rounded-full transition-all duration-300 ease-smooth motion-reduce:transition-none",
+              sceneIndex === index
+                ? "size-1 bg-neutral-800"
+                : "size-0.5 bg-neutral-300",
             )}
           />
         ))}

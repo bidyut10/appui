@@ -1,157 +1,155 @@
 import {
-    forwardRef,
-    type ComponentPropsWithoutRef,
-    type ReactNode,
-  } from "react";
-  
-  import { cn } from "@/lib/cn";
-  
-  const ipodFrameVariants = {
-    silver: {
-      body: "bg-linear-to-b from-[#ececef] to-[#d4d4d8]",
-      ring: "ring-black/10",
-      wheel: "bg-linear-to-b from-[#f4f4f6] to-[#d8d8de]",
-      wheelRing: "ring-black/10",
-      label: "text-neutral-500",
-    },
-    black: {
-      body: "bg-linear-to-b from-[#3a3a3e] to-[#1c1c1f]",
-      ring: "ring-white/10",
-      wheel: "bg-linear-to-b from-[#4a4a4f] to-[#2a2a2e]",
-      wheelRing: "ring-white/10",
-      label: "text-neutral-400",
-    },
-    white: {
-      body: "bg-linear-to-b from-[#fafafa] to-[#e8e8ec]",
-      ring: "ring-black/8",
-      wheel: "bg-linear-to-b from-[#ffffff] to-[#e4e4e8]",
-      wheelRing: "ring-black/8",
-      label: "text-neutral-500",
-    },
-    pink: {
-      body: "bg-linear-to-b from-[#f5c4d0] to-[#e8a0b2]",
-      ring: "ring-black/8",
-      wheel: "bg-linear-to-b from-[#f8d2dc] to-[#dea0b0]",
-      wheelRing: "ring-black/8",
-      label: "text-rose-700/70",
-    },
-    blue: {
-      body: "bg-linear-to-b from-[#b8d4f0] to-[#8eb8dc]",
-      ring: "ring-black/8",
-      wheel: "bg-linear-to-b from-[#c8dff5] to-[#9ec0e0]",
-      wheelRing: "ring-black/8",
-      label: "text-sky-800/70",
-    },
-    green: {
-      body: "bg-linear-to-b from-[#b8dcb8] to-[#8ec48e]",
-      ring: "ring-black/8",
-      wheel: "bg-linear-to-b from-[#c8e8c8] to-[#9ed09e]",
-      wheelRing: "ring-black/8",
-      label: "text-emerald-800/70",
-    },
-    red: {
-      body: "bg-linear-to-b from-[#e87878] to-[#d05050]",
-      ring: "ring-black/8",
-      wheel: "bg-linear-to-b from-[#f08888] to-[#d86060]",
-      wheelRing: "ring-black/8",
-      label: "text-red-900/70",
-    },
-  } as const;
-  
-  export type IpodFrameVariant = keyof typeof ipodFrameVariants;
-  
-  type IpodMockupCardProps = Readonly<
-    ComponentPropsWithoutRef<"div"> & {
-      variant?: IpodFrameVariant;
-      children?: ReactNode;
-    }
-  >;
-  
-  function ClickWheel({
-    frame,
-  }: {
-    frame: (typeof ipodFrameVariants)[IpodFrameVariant];
-  }) {
-    return (
+  forwardRef,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
+} from "react";
+
+import { cn } from "@/lib/cn";
+
+const ipodFrameVariants = {
+  silver: {
+    body: "border-neutral-200/80 bg-[#e8e8ec]",
+    wheel: "border-neutral-200/80 bg-[#efeff2]",
+    wheelCenter: "border-neutral-200/70 bg-[#f8f8fa]",
+    label: "text-neutral-500",
+  },
+  black: {
+    body: "border-neutral-700/50 bg-[#2a2a2e]",
+    wheel: "border-neutral-600/50 bg-[#3a3a3e]",
+    wheelCenter: "border-neutral-600/40 bg-[#4a4a4f]",
+    label: "text-neutral-400",
+  },
+  white: {
+    body: "border-neutral-200/80 bg-[#f2f2f6]",
+    wheel: "border-neutral-200/80 bg-[#fafafa]",
+    wheelCenter: "border-neutral-200/70 bg-white",
+    label: "text-neutral-500",
+  },
+  pink: {
+    body: "border-rose-200/60 bg-[#eec0cc]",
+    wheel: "border-rose-200/60 bg-[#f4d0da]",
+    wheelCenter: "border-rose-200/50 bg-[#fae8ee]",
+    label: "text-rose-700/70",
+  },
+  blue: {
+    body: "border-sky-200/60 bg-[#a8c8e8]",
+    wheel: "border-sky-200/60 bg-[#c0d8f0]",
+    wheelCenter: "border-sky-200/50 bg-[#d8e8f8]",
+    label: "text-sky-800/70",
+  },
+  green: {
+    body: "border-emerald-200/60 bg-[#a8d4a8]",
+    wheel: "border-emerald-200/60 bg-[#c0e0c0]",
+    wheelCenter: "border-emerald-200/50 bg-[#d8f0d8]",
+    label: "text-emerald-800/70",
+  },
+  red: {
+    body: "border-red-200/50 bg-[#e07070]",
+    wheel: "border-red-200/50 bg-[#e88888]",
+    wheelCenter: "border-red-200/40 bg-[#f0a0a0]",
+    label: "text-red-900/70",
+  },
+} as const;
+
+export type IpodFrameVariant = keyof typeof ipodFrameVariants;
+
+const FRAME_RADIUS = "1.35rem";
+const FRAME_PADDING = "0.625rem";
+const SCREEN_RADIUS = `calc(${FRAME_RADIUS} - ${FRAME_PADDING})`;
+
+type IpodMockupCardProps = Readonly<
+  ComponentPropsWithoutRef<"div"> & {
+    variant?: IpodFrameVariant;
+    children?: ReactNode;
+  }
+>;
+
+function ClickWheel({
+  frame,
+}: {
+  frame: (typeof ipodFrameVariants)[IpodFrameVariant];
+}) {
+  return (
+    <div
+      className={cn(
+        "relative flex h-22 w-22 items-center justify-center rounded-full border",
+        frame.wheel,
+      )}
+      aria-hidden="true"
+    >
+      <span
+        className={cn(
+          "absolute top-2 left-1/2 -translate-x-1/2 text-[6px] font-semibold tracking-wide uppercase",
+          frame.label,
+        )}
+      >
+        Menu
+      </span>
+      <span
+        className={cn(
+          "absolute top-1/2 left-2 -translate-y-1/2 text-[7px] font-bold",
+          frame.label,
+        )}
+      >
+        {"\u25C0\u25C0"}
+      </span>
+      <span
+        className={cn(
+          "absolute top-1/2 right-2 -translate-y-1/2 text-[7px] font-bold",
+          frame.label,
+        )}
+      >
+        {"\u25B6\u25B6"}
+      </span>
+      <span
+        className={cn(
+          "absolute bottom-2 left-1/2 -translate-x-1/2 text-[7px] font-bold",
+          frame.label,
+        )}
+      >
+        {"\u25B6\u275A"}
+      </span>
+
       <div
         className={cn(
-          "relative flex h-[5.5rem] w-[5.5rem] items-center justify-center rounded-full ring-1",
-          frame.wheel,
-          frame.wheelRing,
+          "flex h-8 w-8 items-center justify-center rounded-full border",
+          frame.wheelCenter,
         )}
-        aria-hidden="true"
+      />
+    </div>
+  );
+}
+
+export const IpodMockupCard = forwardRef<HTMLDivElement, IpodMockupCardProps>(
+  ({ className, children, variant = "silver", ...props }, ref) => {
+    const frame = ipodFrameVariants[variant];
+
+    return (
+      <div
+        ref={ref}
+        data-slot="ipod-mockup-card"
+        data-variant={variant}
+        className={cn(
+          "flex w-55 flex-col border p-2.5 pb-3.5 shadow-[0_8px_24px_rgba(0,0,0,0.07)]",
+          frame.body,
+          className,
+        )}
+        style={{ borderRadius: FRAME_RADIUS }}
+        {...props}
       >
-        <span
-          className={cn(
-            "absolute top-2 left-1/2 -translate-x-1/2 text-[6px] font-semibold tracking-wide uppercase",
-            frame.label,
-          )}
-        >
-          Menu
-        </span>
-        <span
-          className={cn(
-            "absolute top-1/2 left-2 -translate-y-1/2 text-[7px] font-bold",
-            frame.label,
-          )}
-        >
-          {"\u25C0\u25C0"}
-        </span>
-        <span
-          className={cn(
-            "absolute top-1/2 right-2 -translate-y-1/2 text-[7px] font-bold",
-            frame.label,
-          )}
-        >
-          {"\u25B6\u25B6"}
-        </span>
-        <span
-          className={cn(
-            "absolute bottom-2 left-1/2 -translate-x-1/2 text-[7px] font-bold",
-            frame.label,
-          )}
-        >
-          {"\u25B6\u275A"}
-        </span>
-  
         <div
-          className={cn(
-            "flex h-8 w-8 items-center justify-center rounded-full bg-white/35 ring-1",
-            frame.wheelRing,
-          )}
-        />
+          className="relative aspect-[1.32] w-full overflow-hidden bg-white shadow-[inset_0_0_0_1px_rgba(0,0,0,0.06)]"
+          style={{ borderRadius: SCREEN_RADIUS }}
+        >
+          {children}
+        </div>
+
+        <div className="mt-3 flex justify-center">
+          <ClickWheel frame={frame} />
+        </div>
       </div>
     );
-  }
-  
-  export const IpodMockupCard = forwardRef<HTMLDivElement, IpodMockupCardProps>(
-    ({ className, children, variant = "silver", ...props }, ref) => {
-      const frame = ipodFrameVariants[variant];
-  
-      return (
-        <div
-          ref={ref}
-          data-slot="ipod-mockup-card"
-          data-variant={variant}
-          className={cn(
-            "flex w-[220px] flex-col rounded-[1.35rem] p-2.5 pb-3.5 shadow-lg ring-1",
-            frame.body,
-            frame.ring,
-            className,
-          )}
-          {...props}
-        >
-          <div className="relative aspect-[1.32] w-full overflow-hidden rounded-md bg-black ring-1 ring-black/25">
-            {children}
-          </div>
-  
-          <div className="mt-3 flex justify-center">
-            <ClickWheel frame={frame} />
-          </div>
-        </div>
-      );
-    },
-  );
-  
-  IpodMockupCard.displayName = "IpodMockupCard";
-  
+  },
+);
+
+IpodMockupCard.displayName = "IpodMockupCard";

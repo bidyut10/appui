@@ -25,30 +25,10 @@ type ResourceItem = {
 
 const resources: ResourceItem[] = [
   {
-    name: "Anthropic",
-    description: "For AI models",
-    href: "https://www.anthropic.com/",
-    Icon: Anthropic,
-  },
-  {
     name: "Vercel",
     description: "For deploying",
     href: "https://vercel.com",
     Icon: Vercel,
-  },
-  {
-    name: "Canva",
-    description: "For designing",
-    href: "https://canva.com",
-    Icon: Canva,
-    color: "text-[#00C4CC]",
-  },
-  {
-    name: "Product Hunt",
-    description: "For promoting",
-    href: "https://www.producthunt.com/products/opensource-ui",
-    Icon: ProductHunt,
-    color: "text-red-500",
   },
   {
     name: "Tailwind CSS",
@@ -56,12 +36,6 @@ const resources: ResourceItem[] = [
     href: "https://tailwindcss.com",
     Icon: TailwindCSS,
     color: "text-sky-400",
-  },
-  {
-    name: "shadcn/ui",
-    description: "For UI",
-    href: "https://ui.shadcn.com",
-    Icon: ShadcnUI,
   },
   {
     name: "PostHog",
@@ -93,12 +67,6 @@ const resources: ResourceItem[] = [
     description: "For icons",
     href: "https://lucide.dev",
     imageSrc: "/lucide-logo.svg",
-  },
-  {
-    name: "Hostinger",
-    description: "For managing the domain",
-    href: "https://www.hostinger.com",
-    imageSrc: "/hostinger.png",
   },
   {
     name: "TypeScript",

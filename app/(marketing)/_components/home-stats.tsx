@@ -96,11 +96,12 @@ function VisitorsCard() {
       label="Visitors"
     >
       <div className="flex flex-col gap-5">
-        <div className="flex -space-x-2">
-          {VISITOR_AVATARS.map((review) => (
+        <div className="flex items-center">
+          {VISITOR_AVATARS.map((review, index) => (
             <div
               key={review.name}
-              className="relative size-8 overflow-hidden rounded-full border border-white"
+              className="relative size-8 shrink-0 overflow-hidden rounded-full bg-neutral-200 ring-2 ring-white not-first:-ml-2"
+              style={{ zIndex: VISITOR_AVATARS.length - index }}
             >
               <Image
                 src={review.avatar}

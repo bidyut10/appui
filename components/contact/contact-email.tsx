@@ -14,6 +14,7 @@ import Link from "next/link";
 import { X } from "lucide-react";
 
 import { cn } from "@/lib/cn";
+import { lockPageScroll } from "@/lib/scroll-lock";
 import { siteConfig } from "@/lib/site";
 
 type ContactEmailOptions = Readonly<{
@@ -54,26 +55,22 @@ function ContactEmailDialog({
 }: ContactEmailDialogProps) {
   const titleId = useId();
   const [copied, setCopied] = useState(false);
-  const [entered, setEntered] = useState(false);
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => setEntered(true));
-    return () => cancelAnimationFrame(frame);
-  }, []);
-
-  useEffect(() => {
-    if (!open) return;
+    if (!open) {
+      setCopied(false);
+      return;
+    }
 
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") onClose();
     }
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const unlockScroll = lockPageScroll();
     document.addEventListener("keydown", onKeyDown);
 
     return () => {
-      document.body.style.overflow = previousOverflow;
+      unlockScroll();
       document.removeEventListener("keydown", onKeyDown);
     };
   }, [open, onClose]);
@@ -96,23 +93,14 @@ function ContactEmailDialog({
         type="button"
         aria-label="Close dialog"
         onClick={onClose}
-        className={cn(
-          "absolute inset-0 cursor-default bg-neutral-950/40 transition-opacity duration-200",
-          entered ? "opacity-100" : "opacity-0",
-        )}
+        className="absolute inset-0 cursor-default bg-white/80 backdrop-blur-[6px]"
       />
 
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className={cn(
-          "relative z-10 w-full max-w-sm border border-neutral-200 bg-white p-5 shadow-lg transition-[opacity,transform] duration-200 ease-out",
-          "rounded-t-xl md:rounded-xl",
-          entered
-            ? "translate-y-0 opacity-100"
-            : "translate-y-4 opacity-0 md:translate-y-2",
-        )}
+        className="relative z-10 w-full max-w-sm rounded-t-xl border border-neutral-200 bg-white p-5 shadow-[0_24px_64px_rgba(0,0,0,0.12)] ring-1 ring-black/5 md:rounded-xl"
       >
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
@@ -165,12 +153,10 @@ export function ContactEmailProvider({
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState(DEFAULT_TITLE);
   const [description, setDescription] = useState(DEFAULT_DESCRIPTION);
-  const [dialogKey, setDialogKey] = useState(0);
 
   const openContactEmail = useCallback((options?: ContactEmailOptions) => {
     setTitle(options?.title ?? DEFAULT_TITLE);
     setDescription(options?.description ?? DEFAULT_DESCRIPTION);
-    setDialogKey((current) => current + 1);
     setOpen(true);
   }, []);
 
@@ -181,15 +167,12 @@ export function ContactEmailProvider({
   return (
     <ContactEmailContext.Provider value={{ openContactEmail }}>
       {children}
-      {open ? (
-        <ContactEmailDialog
-          key={dialogKey}
-          open={open}
-          title={title}
-          description={description}
-          onClose={closeContactEmail}
-        />
-      ) : null}
+      <ContactEmailDialog
+        open={open}
+        title={title}
+        description={description}
+        onClose={closeContactEmail}
+      />
     </ContactEmailContext.Provider>
   );
 }
@@ -243,7 +226,10 @@ export function ContactEmailCopyButton({
     <button
       type="button"
       onClick={handleCopy}
-      className={cn("cursor-pointer transition-colors hover:text-neutral-600", className)}
+      className={cn(
+        "cursor-pointer transition-colors hover:text-neutral-600",
+        className,
+      )}
     >
       {copied ? "Copied" : copyLabel}
     </button>

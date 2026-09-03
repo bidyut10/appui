@@ -80,6 +80,22 @@ const TOKEN_CLASS: Record<TokenType, string> = {
   plain: "text-neutral-300",
 };
 
+const DUAL_TONE_CLASS: Record<TokenType, string> = {
+  comment: "text-neutral-500",
+  string: "text-neutral-100",
+  keyword: "text-neutral-100",
+  type: "text-neutral-100",
+  function: "text-neutral-100",
+  jsx: "text-neutral-100",
+  attr: "text-neutral-400",
+  path: "text-neutral-100",
+  number: "text-neutral-100",
+  punctuation: "text-neutral-500",
+  plain: "text-neutral-500",
+};
+
+type HighlightTone = "color" | "dual";
+
 type TokenSlice = Readonly<{ token: Token; length: number }>;
 
 function matchPrefix(pattern: RegExp, text: string): string | null {
@@ -229,19 +245,40 @@ function tokenKey(lineNumber: number, token: Token, offset: number): string {
   return `${lineNumber}:${offset}:${token.type}:${token.value}`;
 }
 
-function renderLineContent(line: string, lineNumber: number) {
+function renderLineContent(
+  line: string,
+  lineNumber: number,
+  tone: HighlightTone = "color",
+) {
   if (line.length === 0) return "\u00a0";
 
+  const classes = tone === "dual" ? DUAL_TONE_CLASS : TOKEN_CLASS;
   let offset = 0;
   return tokenizeLine(line).map((token) => {
     const key = tokenKey(lineNumber, token, offset);
     offset += token.value.length;
     return (
-      <span key={key} className={TOKEN_CLASS[token.type]}>
+      <span key={key} className={classes[token.type]}>
         {token.value}
       </span>
     );
   });
+}
+
+export function HighlightedPartialLine({
+  text,
+  lineNumber,
+  tone = "color",
+}: Readonly<{
+  text: string;
+  lineNumber: number;
+  tone?: HighlightTone;
+}>) {
+  return (
+    <span className="whitespace-pre-wrap wrap-break-word">
+      {renderLineContent(text, lineNumber, tone)}
+    </span>
+  );
 }
 
 type CodeLineProps = Readonly<{

@@ -11,6 +11,12 @@
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+@layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
+}
+
 @layer utilities {
   .scrollbar-none {
     -ms-overflow-style: none;
@@ -53,6 +59,27 @@
   }
 }
 
+@keyframes code-panel-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes caret-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes wave-hand {
   0%,
   100% {
@@ -60,6 +87,84 @@
   }
   50% {
     transform: rotate(-12deg);
+  }
+}
+
+@keyframes showcase-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes watch-ring-draw-outer {
+  from {
+    stroke-dasharray: 0 163;
+  }
+  to {
+    stroke-dasharray: 121 163;
+  }
+}
+
+@keyframes watch-ring-draw-middle {
+  from {
+    stroke-dasharray: 0 119;
+  }
+  to {
+    stroke-dasharray: 74 119;
+  }
+}
+
+@keyframes watch-ring-draw-inner {
+  from {
+    stroke-dasharray: 0 75;
+  }
+  to {
+    stroke-dasharray: 66 75;
+  }
+}
+
+@keyframes watch-brand-line {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes showcase-progress {
+  0% {
+    transform: scaleX(0.12);
+  }
+  100% {
+    transform: scaleX(0.96);
+  }
+}
+
+@keyframes showcase-art-zoom {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.07);
+  }
+}
+
+@keyframes ipod-bar {
+  0%,
+  100% {
+    transform: scaleY(0.28);
+  }
+  50% {
+    transform: scaleY(1);
   }
 }
 

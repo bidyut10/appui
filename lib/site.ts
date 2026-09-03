@@ -11,9 +11,9 @@ export const siteConfig = {
     url: "https://github.com/bidyut10/opensourceui",
   },
   stats: {
-    pageViews: "115k+",
-    visitors: "9.5k+",
-    avgVisitMinutes: 5,
+    pageViews: "125k+",
+    visitors: "10.5k+",
+    avgVisitMinutes: 4.5,
   },
   keywords: [
     "opensource ui",

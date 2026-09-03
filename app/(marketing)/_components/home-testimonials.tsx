@@ -50,7 +50,7 @@ function ReviewCard({
   return (
     <figure className="flex w-full flex-col rounded-2xl border border-neutral-100 bg-white p-4 md:h-full md:min-w-0">
       <div className="mb-3 flex items-start justify-between gap-2">
-        <div className="relative size-9 shrink-0 overflow-hidden rounded-full border border-neutral-100">
+        <div className="relative size-9 shrink-0 overflow-hidden rounded-full bg-neutral-200 ring-1 ring-neutral-100">
           <Image
             src={avatar}
             alt=""

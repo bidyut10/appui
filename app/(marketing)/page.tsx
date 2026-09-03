@@ -4,13 +4,7 @@ import { Heading } from "./_components/heading";
 import { Paragraph } from "./_components/paragraph";
 import { BOX_PATTERN } from "@/lib/shared";
 import { LinkedBlock } from "./_components/linked-block";
-import { PhoneColumn } from "./_components/phone-column";
-import {
-  HelloPhoneScreen,
-  LibraryPhoneScreen,
-  WeatherPhoneScreen,
-  NowPlayingPhoneScreen,
-} from "./_components/phone-showcase-screens";
+import { MockupStage } from "@/app/(marketing)/_components/mockup-stage";
 import { CtaButtons } from "./_components/cta-buttons";
 import { HomeStats } from "./_components/home-stats";
 import { SiteFooter } from "./_components/site-footer";
@@ -19,6 +13,10 @@ import { DndFaceWidget } from "@/components/widgets/dnd-face-widget";
 import { TorchFaceWidget } from "@/components/widgets/torch-face-widget";
 import { LaptopMockupCard } from "@/components/mockups/laptop-mockup-card";
 import { LaptopShowcaseScreen } from "./_components/laptop-showcase-screen";
+import { AppleWatchMockupCard } from "@/components/mockups/apple-watch-mockup-card";
+import { WatchShowcaseScreen } from "./_components/watch-showcase-screen";
+import { IpodMockupCard } from "@/components/mockups/apple-ipod-mockup-card";
+import { IpodShowcaseScreen } from "./_components/ipod-showcase-screen";
 import { BrowserMockupCard } from "@/components/mockups/browser-mockup-card";
 import { BrowserShowcaseScreen } from "./_components/browser-showcase-screen";
 import { AnalogClockWidget } from "@/components/widgets/analog-clock-widget";
@@ -34,6 +32,7 @@ import { siteConfig } from "@/lib/site";
 import { LogoIcon } from "./_components/Logo";
 import { GithubRepoLink } from "@/app/_shared/github-repo-link";
 import Link from "next/link";
+import { PhoneCustomizeDemo } from "./_components/phone-customize-demo";
 
 export const metadata: Metadata = createPageMetadata({
   title: siteConfig.title,
@@ -112,26 +111,13 @@ export default function Home() {
         </Paragraph>
       </div>
 
-      <section className="w-full px-3 pt-6 pb-14">
-        <div className="mx-auto grid w-full grid-cols-1 items-end gap-4 min-[900px]:grid-cols-2 min-[1350px]:grid-cols-4 min-[1500px]:gap-6">
-          <PhoneColumn variant="orange">
-            <HelloPhoneScreen />
-          </PhoneColumn>
-          <PhoneColumn variant="purple">
-            <LibraryPhoneScreen />
-          </PhoneColumn>
-          <PhoneColumn variant="titanium">
-            <WeatherPhoneScreen />
-          </PhoneColumn>
-          <PhoneColumn
-            variant="white"
-            link="view more colors"
-            href="/components/phone"
-          >
-            <NowPlayingPhoneScreen />
-          </PhoneColumn>
-        </div>
-      </section>
+      <LinkedBlock
+        className="relative mx-auto w-full max-w-xl px-4 pb-14 md:px-0"
+        link="view more variants"
+        href="/components/phone"
+      >
+        <PhoneCustomizeDemo />
+      </LinkedBlock>
 
       <div className="my-10 max-w-xl px-4 md:px-0">
         <Heading>
@@ -154,9 +140,63 @@ export default function Home() {
         link="view more variants"
         href="/components/laptop"
       >
-        <LaptopMockupCard>
-          <LaptopShowcaseScreen />
-        </LaptopMockupCard>
+          <LaptopMockupCard>
+            <LaptopShowcaseScreen />
+          </LaptopMockupCard>
+      </LinkedBlock>
+
+      <div className="my-10 max-w-xl px-4 md:px-0">
+        <Heading>
+          Built for the{" "}
+          <AnnotatedText variant="underline" color="text-cyan-200">
+            Watch
+          </AnnotatedText>
+          . Ready for Your UI.
+        </Heading>
+        <Paragraph>
+          Apple Watch frames with sport band, rounded display, and seven metal
+          finishes. Drop in complications, fitness rings, or now-playing screens
+          — and present wrist UI that feels native, not pasted on.
+        </Paragraph>
+      </div>
+
+      <LinkedBlock
+        className="relative mx-auto w-full pb-14 md:w-xl"
+        link="view more variants"
+        href="/components/apple-watch"
+      >
+        <MockupStage pattern="watch">
+          <AppleWatchMockupCard variant="black">
+            <WatchShowcaseScreen />
+          </AppleWatchMockupCard>
+        </MockupStage>
+      </LinkedBlock>
+
+      <div className="my-10 max-w-xl px-4 md:px-0">
+        <Heading>
+          The Classic{" "}
+          <AnnotatedText variant="highlight" color="text-yellow-100">
+            iPod
+          </AnnotatedText>
+          . Your Screen Inside.
+        </Heading>
+        <Paragraph>
+          Screen slot, click wheel, and nostalgic colorways — silver, black,
+          pink, blue, and more. Drop in music players, menus, or retro UI and
+          make every presentation feel instantly memorable.
+        </Paragraph>
+      </div>
+
+      <LinkedBlock
+        className="relative mx-auto w-full pb-14 md:w-xl"
+        link="view more variants"
+        href="/components/ipod"
+      >
+        <MockupStage pattern="grid">
+          <IpodMockupCard variant="black">
+            <IpodShowcaseScreen />
+          </IpodMockupCard>
+        </MockupStage>
       </LinkedBlock>
 
       <div className="my-10 max-w-xl px-4 md:px-0">
@@ -176,9 +216,9 @@ export default function Home() {
         link="view more themes"
         href="/components/browser"
       >
-        <BrowserMockupCard theme="transparent">
-          <BrowserShowcaseScreen />
-        </BrowserMockupCard>
+          <BrowserMockupCard theme="transparent">
+            <BrowserShowcaseScreen />
+          </BrowserMockupCard>
       </LinkedBlock>
 
       <LinkedBlock
