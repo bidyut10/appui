@@ -23,6 +23,8 @@ import type { Props } from "@/types/types";
 import { DocsPreviewStage } from "../_components/detail";
 import { DocsToc } from "../_components/shell";
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return getAllShowcaseSlugs().map((slug) => ({ slug }));
 }

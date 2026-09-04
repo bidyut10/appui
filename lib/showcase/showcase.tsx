@@ -78,7 +78,12 @@ import { DropCapEditorialCard } from "@/components/text/drop-cap-editorial-card"
 import { EditorialQuoteCard } from "@/components/text/editorial-quote-card";
 import { EventTicketCard } from "@/components/event/event-ticket-card";
 import { FacebookPostCard } from "@/components/socials/facebook-post-card";
-import { ArtFrameCard } from "@/components/gallery/art-frame-card";
+import { GalleryWallCard } from "@/components/gallery/gallery-wall-card";
+import { CircleCutFrame } from "@/components/frames/circle-cut-frame";
+import { HardShadowPolaroidFrame } from "@/components/frames/hard-shadow-polaroid-frame";
+import { StickyNotePolaroidFrame } from "@/components/frames/sticky-note-polaroid-frame";
+import { TransformBoxFrame } from "@/components/frames/transform-box-frame";
+import { TransformPlusFrame } from "@/components/frames/transform-plus-frame";
 import { FilmStripCard } from "@/components/gallery/film-strip-card";
 import { GalleryGridCard } from "@/components/gallery/gallery-grid-card";
 import { GitHubRepoCard } from "@/components/socials/github-repo-card";
@@ -334,7 +339,6 @@ export const showcaseRows = [
       "SheenPillButton",
       {
         title: "Sheen Pill",
-        isNew: true,
         description:
           "Frosted pill with layered shade veil, light band, and rim wire — hover brightens the sheen and clears the fill. Pass width, height, and highlight to tune the frame.",
         usage: '<SheenPillButton width={200} height={60}>Get started</SheenPillButton>',
@@ -349,7 +353,6 @@ export const showcaseRows = [
       "PrismDepthButton",
       {
         title: "Prism Depth",
-        isNew: true,
         description:
           "Dark depth button with a cyan edge flare, rim glow, and layered core veil — pass any label as children.",
         usage: '<PrismDepthButton>Get started</PrismDepthButton>',
@@ -393,7 +396,6 @@ export const showcaseRows = [
       "SlateChipSwitch",
       {
         title: "Slate Chip Switch",
-        isNew: true,
         description:
           "Smooth pill chip switch with a white thumb and sky on-state fill — a cleaner alternative to textured toggles.",
         usage:
@@ -409,7 +411,6 @@ export const showcaseRows = [
       "LinenTabButton",
       {
         title: "Linen Tab",
-        isNew: true,
         description:
           "Woven linen tab with dashed stitch borders and a soft fold sheen — warm, editorial, and understated.",
         usage: '<LinenTabButton>View details</LinenTabButton>',
@@ -1266,7 +1267,6 @@ export const showcaseRows = [
       "WeatherSnapshotCard",
       {
         title: "Weather Snapshot",
-        isNew: true,
         description:
           "Compact weather card with temperature, highs/lows, humidity, and wind — clear or rain variants.",
         usage: '<WeatherSnapshotCard city="Kolkata" variant="rain" temperature={28} />',
@@ -1746,7 +1746,6 @@ export const showcaseRows = [
       "InkStampDocumentCard",
       {
         title: "Ink Stamp Document",
-        isNew: true,
         description:
           "Paper filing card with reference metadata and a rotated approval stamp — contracts, invoices, and admin dashboards.",
         usage: '<InkStampDocumentCard stampLabel="Approved" title="Vendor Agreement" />',
@@ -1820,16 +1819,15 @@ export const showcaseRows = [
       },
     ),
     c(
-      "art-frame",
-      <ArtFrameCard />,
-      "components/gallery/art-frame-card.tsx",
-      "ArtFrameCard",
+      "gallery-wall",
+      <GalleryWallCard />,
+      "components/gallery/gallery-wall-card.tsx",
+      "GalleryWallCard",
       {
-        title: "Art Frame",
-        isNew: true,
+        title: "Gallery Wall",
         description:
-          "Gallery wall frame with cream matting, artwork preview, and caption block — clean exhibition styling.",
-        usage: '<ArtFrameCard title="Winter Light Study" artist="Elena Marchetti" />',
+          "Gallery wall mat with cream matting, artwork preview, and caption block — clean exhibition styling.",
+        usage: '<GalleryWallCard title="Winter Light Study" artist="Elena Marchetti" />',
       },
     ),
     c(
@@ -1840,6 +1838,107 @@ export const showcaseRows = [
       {
         description:
           "LinkedIn feed post with headline, body text, link preview card, reaction counts, and like/comment/repost/send actions.",
+      },
+    ),
+  ],
+  [
+    c(
+      "transform-box-frame",
+      <TransformBoxFrame
+        skeleton
+        width={320}
+        height={320}
+        lineColor="#737373"
+        handleColor="#171717"
+        className="max-w-none"
+      />,
+      "components/frames/transform-box-frame.tsx",
+      "TransformBoxFrame",
+      {
+        title: "Transform Box Frame",
+        isNew: true,
+        description:
+          "Design-tool bounding box with separate line and handle colors — defaults to all black; pass lineColor and handleColor for dual-tone frames.",
+        usage:
+          '<TransformBoxFrame width={320} height={320} lineColor="#737373" handleColor="#171717"><img src="/photo.jpg" alt="" /></TransformBoxFrame>',
+      },
+    ),
+    c(
+      "transform-plus-frame",
+      <TransformPlusFrame
+        skeleton
+        width={320}
+        height={320}
+        lineColor="#737373"
+        handleColor="#171717"
+        className="max-w-none"
+      />,
+      "components/frames/transform-plus-frame.tsx",
+      "TransformPlusFrame",
+      {
+        title: "Transform Plus Frame",
+        isNew: true,
+        description:
+          "Bounding box with plus corner handles — thicker handle strokes than border lines. Defaults to all black; pass lineColor and handleColor for dual-tone frames.",
+        usage:
+          '<TransformPlusFrame width={320} height={320} lineColor="#737373" handleColor="#171717"><img src="/photo.jpg" alt="" /></TransformPlusFrame>',
+      },
+    ),
+    c(
+      "sticky-note-polaroid-frame",
+      <StickyNotePolaroidFrame
+        skeleton
+        noteBody="open studio this weekend — drop by anytime"
+        noteFooter="details @bidyut.cc"
+        className="max-w-none"
+      />,
+      "components/frames/sticky-note-polaroid-frame.tsx",
+      "StickyNotePolaroidFrame",
+      {
+        title: "Sticky Note Polaroid Frame",
+        isNew: true,
+        description:
+          "Polaroid-style frame with a paper-clipped sticky note overlay — pass noteHeader, noteBody, noteFooter, and any image or video as children.",
+        usage:
+          '<StickyNotePolaroidFrame noteBody="open studio this weekend" noteFooter="details @bidyut.cc"><img src="/photo.jpg" alt="" /></StickyNotePolaroidFrame>',
+      },
+    ),
+    c(
+      "hard-shadow-polaroid-frame",
+      <HardShadowPolaroidFrame
+        skeleton
+        caption="Bidyut Kundu"
+        className="max-w-none"
+      />,
+      "components/frames/hard-shadow-polaroid-frame.tsx",
+      "HardShadowPolaroidFrame",
+      {
+        title: "Hard Shadow Polaroid Frame",
+        isNew: true,
+        description:
+          "Polaroid frame with a crisp inner border, thick caption chin, and hard offset shadow — pass caption and any image or video as children.",
+        usage:
+          '<HardShadowPolaroidFrame caption="Bidyut Kundu"><img src="/photo.jpg" alt="" /></HardShadowPolaroidFrame>',
+      },
+    ),
+    c(
+      "circle-cut-frame",
+      <CircleCutFrame
+        skeleton
+        width={320}
+        height={320}
+        frameColor="#d4d4d4"
+        className="max-w-none"
+      />,
+      "components/frames/circle-cut-frame.tsx",
+      "CircleCutFrame",
+      {
+        title: "Circle Cut Frame",
+        isNew: true,
+        description:
+          "Ticket-style frame with circle-cut edges on all sides — defaults to white; pass width, height, frameColor, and any image, video, or content as children.",
+        usage:
+          '<CircleCutFrame width={320} height={320} frameColor="#d4d4d4"><img src="/photo.jpg" alt="" /></CircleCutFrame>',
       },
     ),
   ],
@@ -2000,7 +2099,6 @@ export const showcaseRows = [
       "CafeMenuBoardCard",
       {
         title: "Cafe Menu Board",
-        isNew: true,
         description:
           "Dark chalkboard-style menu with cafe header, item notes, and amber price accents — hospitality and local brand sites.",
         usage: '<CafeMenuBoardCard cafeName="Corner & Steam" items={menuItems} />',

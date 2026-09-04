@@ -38,17 +38,13 @@ Follow Toggle
 Hold to Delete
 Like Toggle
 Linen Tab
-New
 Neumorphic Soft UI
 Prism Depth
-New
 Quantity Stepper
 Recessed Inset
 Segmented Control
 Sheen Pill
-New
 Slate Chip Switch
-New
 Slide to Confirm
 Tactile 3D
 Tactile 3D Icon
@@ -81,7 +77,6 @@ Event Ticket
 Files
 2
 Ink Stamp Document
-New
 Stacked Folder Card
 Folder
 1
@@ -95,8 +90,7 @@ Newsletter Form
 Signup Form
 Gallery
 10
-Art Frame
-New
+Gallery Wall
 Film Strip
 Gallery Grid
 Glass Overlay Image
@@ -160,7 +154,6 @@ Stacked Cards Effect
 Terminal Log
 Thermal Receipt
 Weather Snapshot
-New
 Otp
 2
 Otp Boxed Input
@@ -201,7 +194,6 @@ Users Select Table
 Text
 10
 Cafe Menu Board
-New
 Cinema Ticket
 Daily Motivation
 Denim Product Editorial
@@ -350,8 +342,8 @@ Apple WatchNew / Mockups
 
 A
 
-Art FrameNew / Gallery
-— Gallery wall frame with cream matting, artwork preview, and caption block — clean exhibition styling.
+Gallery Wall / Gallery
+— Gallery wall mat with cream matting, artwork preview, and caption block — clean exhibition styling.
 
 A
 
@@ -385,7 +377,7 @@ Bookmark Save / Buttons
 
 C
 
-Cafe Menu BoardNew / Text
+Cafe Menu Board / Text
 — Dark chalkboard-style menu with cafe header, item notes, and amber price accents — hospitality and local brand sites.
 
 C
@@ -650,7 +642,7 @@ Incoming Call Notification / Notifications
 
 I
 
-Ink Stamp DocumentNew / Files
+Ink Stamp Document / Files
 — Paper filing card with reference metadata and a rotated approval stamp — contracts, invoices, and admin dashboards.
 
 I
@@ -705,7 +697,7 @@ Like Toggle / Buttons
 
 L
 
-Linen TabNew / Buttons
+Linen Tab / Buttons
 — Woven linen tab with dashed stitch borders and a soft fold sheen — warm, editorial, and understated.
 
 L
@@ -845,7 +837,7 @@ Presence Dock / Docks
 
 P
 
-Prism DepthNew / Buttons
+Prism Depth / Buttons
 — Dark depth button with a cyan edge flare, rim glow, and layered core veil — pass any label as children.
 
 P
@@ -915,7 +907,7 @@ Share Menu / Dropdowns
 
 S
 
-Sheen PillNew / Buttons
+Sheen Pill / Buttons
 — Frosted pill with layered shade veil, light band, and rim wire — hover brightens the sheen and clears the fill. Pass width, height, and highlight to tune the frame.
 
 S
@@ -925,7 +917,7 @@ Signup Form / Forms
 
 S
 
-Slate Chip SwitchNew / Buttons
+Slate Chip Switch / Buttons
 — Smooth pill chip switch with a white thumb and sky on-state fill — a cleaner alternative to textured toggles.
 
 S
@@ -1110,7 +1102,7 @@ Wallet Pass / Wallet
 
 W
 
-Weather SnapshotNew / Others
+Weather Snapshot / Others
 — Compact weather card with temperature, highs/lows, humidity, and wind — clear or rain variants.
 
 W

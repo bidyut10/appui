@@ -5,7 +5,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/cn";
 
-export type ArtFrameCardProps = Readonly<
+export type GalleryWallCardProps = Readonly<
   {
     imageSrc?: string;
     imageAlt?: string;
@@ -16,7 +16,7 @@ export type ArtFrameCardProps = Readonly<
   } & ComponentPropsWithoutRef<"div">
 >;
 
-export const ArtFrameCard = forwardRef<HTMLDivElement, ArtFrameCardProps>(
+export const GalleryWallCard = forwardRef<HTMLDivElement, GalleryWallCardProps>(
   (
     {
       className,
@@ -33,7 +33,7 @@ export const ArtFrameCard = forwardRef<HTMLDivElement, ArtFrameCardProps>(
     return (
       <div
         ref={ref}
-        data-slot="art-frame-card"
+        data-slot="gallery-wall-card"
         className={cn("w-72 font-sans", className)}
         {...props}
       >
@@ -66,4 +66,4 @@ export const ArtFrameCard = forwardRef<HTMLDivElement, ArtFrameCardProps>(
   },
 );
 
-ArtFrameCard.displayName = "ArtFrameCard";
+GalleryWallCard.displayName = "GalleryWallCard";

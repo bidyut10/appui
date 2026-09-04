@@ -53,7 +53,12 @@ components/forms/forgot-password-form.tsx
 components/forms/login-form.tsx
 components/forms/newsletter-form.tsx
 components/forms/signup-form.tsx
-components/gallery/art-frame-card.tsx
+components/frames/circle-cut-frame.tsx
+components/frames/hard-shadow-polaroid-frame.tsx
+components/frames/sticky-note-polaroid-frame.tsx
+components/frames/transform-box-frame.tsx
+components/frames/transform-plus-frame.tsx
+components/gallery/gallery-wall-card.tsx
 components/gallery/film-strip-card.tsx
 components/gallery/gallery-grid-card.tsx
 components/gallery/glass-overlay-image-card.tsx
