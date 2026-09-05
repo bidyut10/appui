@@ -13,6 +13,7 @@ import {
 } from "@/app/_shared/navigation/use-hydrated-search-params";
 
 import { SaveScrollLink } from "@/lib/docs";
+import { shouldShowShowcaseItemNewBadge } from "@/lib/showcase/showcase";
 import { cn } from "@/lib/cn";
 import { resolveShowcaseCategory } from "@/lib/showcase/resolve-category";
 import type { ShowcaseNavCategoryGroup } from "@/lib/showcase";
@@ -124,7 +125,10 @@ export function DocsSidebarNav({
                   : "text-neutral-500 hover:text-neutral-900",
               )}
             >
-              <span className="truncate">{group.category}</span>
+              <span className="flex min-w-0 items-center gap-1.5 truncate">
+                <span className="truncate">{group.category}</span>
+                {group.isCategoryNew ? <ShowcaseNewBadge /> : null}
+              </span>
               <span className="shrink-0 font-mono text-[10px] text-neutral-300">
                 {group.items.length}
               </span>
@@ -147,7 +151,9 @@ export function DocsSidebarNav({
                       )}
                     >
                       <span className="truncate">{item.title}</span>
-                      {item.isNew ? <ShowcaseNewBadge /> : null}
+                      {shouldShowShowcaseItemNewBadge(item, group.isCategoryNew)
+                        ? <ShowcaseNewBadge />
+                        : null}
                     </SaveScrollLink>
                   </li>
                 );

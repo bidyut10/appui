@@ -5,6 +5,8 @@ import { cn } from "@/lib/cn";
 import { resolveShowcaseCategory } from "@/lib/showcase/resolve-category";
 import type { ShowcaseCategoryGroup } from "@/lib/showcase";
 
+import { ShowcaseNewBadge } from "../shared/showcase-new-badge";
+
 type ComponentsCategoryNavProps = Readonly<{
   categories: ShowcaseCategoryGroup[];
   activeCategory: string;
@@ -46,13 +48,16 @@ export function ComponentsCategoryNav({
               key={group.category}
               href={categoryHref(group.category)}
               className={cn(
-                "shrink-0 rounded-full px-3 py-1.5 font-sans text-xs whitespace-nowrap transition-colors",
+                "inline-flex shrink-0 items-center rounded-full px-3 py-1.5 font-sans text-xs whitespace-nowrap transition-colors",
                 isActive
                   ? "bg-neutral-900 text-white"
                   : "bg-neutral-100 text-neutral-600",
               )}
             >
               {group.category}
+              {group.isCategoryNew ? (
+                <ShowcaseNewBadge className="ml-1.5" />
+              ) : null}
             </SaveScrollLink>
           );
         })}

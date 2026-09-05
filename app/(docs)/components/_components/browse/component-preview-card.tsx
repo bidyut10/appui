@@ -17,6 +17,7 @@ type ComponentPreviewCardProps = Readonly<{
   isNew?: boolean;
   variant?: "default" | "input" | "form";
   fullBleed?: boolean;
+  flushPreview?: boolean;
   backdropImage?: string;
 }>;
 
@@ -29,6 +30,7 @@ export function ComponentPreviewCard({
   isNew,
   variant = "default",
   fullBleed = false,
+  flushPreview = false,
   backdropImage,
 }: ComponentPreviewCardProps) {
   const stageStyle: CSSProperties | undefined = backdropImage
@@ -45,9 +47,12 @@ export function ComponentPreviewCard({
     <article className="group overflow-hidden rounded-xl border border-neutral-100 bg-white">
       <div
         className={cn(
-          "relative flex overflow-hidden border-b border-neutral-100",
+          "relative flex overflow-hidden",
+          !flushPreview && "border-b border-neutral-100",
           fullBleed
-            ? "min-h-96 bg-black p-0 md:min-h-120"
+            ? flushPreview
+              ? "min-h-96 bg-transparent p-0 md:min-h-120"
+              : "min-h-96 bg-black p-0 md:min-h-120"
             : "min-h-96 items-center justify-center p-7 md:min-h-120 md:p-9",
           backdropImage && "items-center justify-center p-7 md:p-9",
         )}
@@ -66,11 +71,7 @@ export function ComponentPreviewCard({
               className="transition-colors outline-none hover:text-neutral-700"
             >
               <span className="font-semibold text-neutral-900">{title}</span>
-              {isNew ? (
-                <span className="ml-1.5 align-middle">
-                  <ShowcaseNewBadge />
-                </span>
-              ) : null}
+              {isNew ? <ShowcaseNewBadge className="ml-1.5" /> : null}
               <span className="text-neutral-300"> / </span>
               <span className="font-normal text-neutral-400">{category}</span>
             </SaveScrollLink>

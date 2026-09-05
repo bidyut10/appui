@@ -1,4 +1,5 @@
 import { AnnotatedText } from "@/components/underlines/annotated-text";
+import { getShowcaseByCategory } from "@/lib/showcase/showcase";
 import { searchShowcaseEntries } from "@/lib/showcase/search-showcase";
 import { ComponentListRow } from "./component-list-row";
 import { ComponentsSearchEmpty } from "./components-search-empty";
@@ -11,6 +12,9 @@ export function ComponentsSearchResults({
   query,
 }: ComponentsSearchResultsProps) {
   const results = searchShowcaseEntries(query);
+  const categoryAllNewMap = new Map(
+    getShowcaseByCategory().map((group) => [group.category, group.isCategoryNew]),
+  );
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-8 md:px-8 md:py-10">
@@ -48,7 +52,12 @@ export function ComponentsSearchResults({
         ) : (
           <ul className="flex flex-col gap-2">
             {results.map((item, index) => (
-              <ComponentListRow key={item.slug} item={item} index={index} />
+              <ComponentListRow
+                key={item.slug}
+                item={item}
+                index={index}
+                categoryIsAllNew={categoryAllNewMap.get(item.category) ?? false}
+              />
             ))}
           </ul>
         )}

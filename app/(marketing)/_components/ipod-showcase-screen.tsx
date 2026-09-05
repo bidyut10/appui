@@ -103,8 +103,11 @@ function IpodMenu({ active }: { active: boolean }) {
 
   useEffect(() => {
     if (!active) {
-      setSelected(MENU_ITEMS.length - 1);
-      return;
+      const resetTimer = globalThis.setTimeout(
+        () => setSelected(MENU_ITEMS.length - 1),
+        0,
+      );
+      return () => globalThis.clearTimeout(resetTimer);
     }
 
     const timers = [
@@ -166,8 +169,11 @@ function IpodLibrary({ active }: { active: boolean }) {
 
   useEffect(() => {
     if (!active) {
-      setActiveTrack(tracks.length - 1);
-      return;
+      const resetTimer = globalThis.setTimeout(
+        () => setActiveTrack(tracks.length - 1),
+        0,
+      );
+      return () => globalThis.clearTimeout(resetTimer);
     }
 
     const timers = [

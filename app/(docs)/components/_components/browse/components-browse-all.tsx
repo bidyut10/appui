@@ -14,7 +14,11 @@ export function ComponentsBrowseAll({
 }: ComponentsBrowseAllProps) {
   const allComponents = categories
     .flatMap((group) =>
-      group.items.map((item) => ({ ...item, category: group.category })),
+      group.items.map((item) => ({
+        ...item,
+        category: group.category,
+        categoryIsAllNew: group.isCategoryNew,
+      })),
     )
     .sort((a, b) => a.title.localeCompare(b.title));
 
@@ -51,7 +55,12 @@ export function ComponentsBrowseAll({
       <section id="components" className="mt-16 min-w-0 scroll-mt-8 md:mt-10">
         <ul className="mt-6 flex flex-col gap-2">
           {allComponents.map((item, index) => (
-            <ComponentListRow key={item.slug} item={item} index={index} />
+            <ComponentListRow
+              key={item.slug}
+              item={item}
+              index={index}
+              categoryIsAllNew={item.categoryIsAllNew}
+            />
           ))}
         </ul>
       </section>

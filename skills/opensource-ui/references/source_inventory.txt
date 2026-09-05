@@ -1,8 +1,40 @@
 # Opensource UI — component file inventory
-# 168 showcase component files + 5 app/support files (contact-email, docks/Icons, system/*, annotated-text-showcase)
+# 199 showcase component files + 5 app/support files (contact-email, docks/Icons, system/*, annotated-text-showcase)
 components/audio/music-player-card.tsx
 components/audio/music-playlist-card.tsx
 components/audio/now-playing-bar.tsx
+components/background-gradient/arc-bands-background.tsx
+components/background-gradient/aurora-background.tsx
+components/background-gradient/cherry-petal-background.tsx
+components/background-gradient/coral-glow-background.tsx
+components/background-gradient/dark-arc-bands-background.tsx
+components/background-gradient/dark-aurora-background.tsx
+components/background-gradient/dark-carbon-spotlight-background.tsx
+components/background-gradient/dark-ember-background.tsx
+components/background-gradient/dark-ink-field-background.tsx
+components/background-gradient/dark-midnight-mesh-background.tsx
+components/background-gradient/dark-rose-noir-background.tsx
+components/background-gradient/dark-teal-depth-background.tsx
+components/background-gradient/frost-mesh-background.tsx
+components/background-gradient/halftone-pop-background.tsx
+components/background-gradient/honey-ember-background.tsx
+components/background-gradient/ink-wash-background.tsx
+components/background-gradient/linen-weave-background.tsx
+components/background-gradient/mint-lagoon-background.tsx
+components/background-gradient/paper-fold-background.tsx
+components/background-gradient/rain-prism-background.tsx
+components/background-gradient/sand-drift-background.tsx
+components/background-gradient/soft-spotlight-background.tsx
+components/background-gradient/sunrise-horizon-background.tsx
+components/background-gradient/sunset-bloom-background.tsx
+components/background-gradient/terrazzo-fragment-background.tsx
+components/background-gradient/tropical-tide-background.tsx
+components/background-pattern/diagonal-box-pattern.tsx
+components/background-pattern/reverse-diagonal-box-pattern.tsx
+components/background-pattern/dot-grid-pattern.tsx
+components/background-pattern/fine-grain-pattern.tsx
+components/background-pattern/graph-paper-pattern.tsx
+components/background-pattern/line-grid-pattern.tsx
 components/buttons/add-to-cart-button.tsx
 components/buttons/bookmark-save-button.tsx
 components/buttons/cinder-latch-button.tsx

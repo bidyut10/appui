@@ -56,14 +56,16 @@ function ContactEmailDialog({
   const titleId = useId();
   const [copied, setCopied] = useState(false);
 
+  const handleClose = useCallback(() => {
+    setCopied(false);
+    onClose();
+  }, [onClose]);
+
   useEffect(() => {
-    if (!open) {
-      setCopied(false);
-      return;
-    }
+    if (!open) return;
 
     function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") handleClose();
     }
 
     const unlockScroll = lockPageScroll();
@@ -73,7 +75,7 @@ function ContactEmailDialog({
       unlockScroll();
       document.removeEventListener("keydown", onKeyDown);
     };
-  }, [open, onClose]);
+  }, [open, handleClose]);
 
   async function handleCopy() {
     try {
@@ -92,7 +94,7 @@ function ContactEmailDialog({
       <button
         type="button"
         aria-label="Close dialog"
-        onClick={onClose}
+        onClick={handleClose}
         className="absolute inset-0 cursor-default bg-white/80 backdrop-blur-[6px]"
       />
 
@@ -117,7 +119,7 @@ function ContactEmailDialog({
 
           <button
             type="button"
-            onClick={onClose}
+            onClick={handleClose}
             aria-label="Close"
             className="inline-flex size-8 shrink-0 items-center justify-center rounded-md text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-neutral-700"
           >

@@ -10,6 +10,7 @@ type DocsPreviewStageProps = Readonly<{
   className?: string;
   variant?: "default" | "input" | "form";
   fullBleed?: boolean;
+  flushPreview?: boolean;
   backdropImage?: string;
 }>;
 
@@ -18,6 +19,7 @@ export function DocsPreviewStage({
   className,
   variant = "default",
   fullBleed = false,
+  flushPreview = false,
   backdropImage,
 }: DocsPreviewStageProps) {
   const stageStyle: CSSProperties | undefined = backdropImage
@@ -33,11 +35,16 @@ export function DocsPreviewStage({
   return (
     <div
       className={cn(
-        "relative flex overflow-hidden rounded-xl border border-neutral-100",
-        fullBleed
-          ? "min-h-96 bg-black p-0 md:min-h-120"
-          : "min-h-96 items-center justify-center p-8 md:min-h-120 md:p-12",
-        backdropImage && "items-center justify-center p-8 md:p-12",
+        "relative flex overflow-hidden",
+        flushPreview
+          ? "min-h-96 bg-transparent p-0 md:min-h-120"
+          : cn(
+              "rounded-xl border border-neutral-100",
+              fullBleed
+                ? "min-h-96 bg-black p-0 md:min-h-120"
+                : "min-h-96 items-center justify-center p-8 md:min-h-120 md:p-12",
+              backdropImage && "items-center justify-center p-8 md:p-12",
+            ),
         className,
       )}
       style={stageStyle}

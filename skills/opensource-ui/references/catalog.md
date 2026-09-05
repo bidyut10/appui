@@ -8,7 +8,7 @@ Opensource UI
 Search components
 + K
 GitHub
-170
+201
 
 GETTING STARTED
 
@@ -48,6 +48,74 @@ Slate Chip Switch
 Slide to Confirm
 Tactile 3D
 Tactile 3D Icon
+Background Pattern
+6
+Diagonal Box
+New
+Reverse Diagonal Box
+New
+Dot Grid
+New
+Fine Grain
+New
+Graph Paper
+New
+Line Grid
+New
+Background Gradient
+26
+Arc Bands
+New
+Aurora Background
+New
+Cherry Petal
+New
+Coral Glow
+New
+Dark Arc Bands
+New
+Dark Aurora
+New
+Dark Carbon Spotlight
+New
+Dark Ember
+New
+Dark Ink Field
+New
+Dark Midnight Mesh
+New
+Dark Rose Noir
+New
+Dark Teal Depth
+New
+Frost Mesh
+New
+Halftone Pop
+New
+Honey Ember
+New
+Ink Wash
+New
+Linen Weave
+New
+Mint Lagoon
+New
+Paper Fold
+New
+Rain Prism
+New
+Sand Drift
+New
+Soft Spotlight
+New
+Sunrise Horizon
+New
+Sunset Bloom
+New
+Terrazzo Fragment
+New
+Tropical Tide
+New
 Calender
 5
 Booking Slot Calendar
@@ -256,7 +324,7 @@ Free for personal and commercial use. No UI attribution required. MIT License. M
 
 Work WIth Us
 Copy email
-© 2026 Opensource UI
+© 2016 Opensource UI
 ·
 India
 
@@ -266,7 +334,7 @@ All
 Available components
 .
 
-Explore 170 polished React and Next.js components, organized across 27 categories. Pick what you need,
+Explore 201 polished React and Next.js components, organized across 29 categories. Pick what you need,
 copy the code
 , and make it yours.
 
@@ -344,6 +412,126 @@ A
 
 Gallery Wall / Gallery
 — Gallery wall mat with cream matting, artwork preview, and caption block — clean exhibition styling.
+
+A
+
+Diagonal BoxNew / Background Pattern
+— Classic 45° hairline hatch on white — the same quiet stage used across marketing mockups and component previews.
+
+A
+
+Reverse Diagonal BoxNew / Background Pattern
+— Mirrored 45° hairline hatch — same quiet stage as Diagonal Box, rotated right to left for visual variety.
+
+A
+
+Dot GridNew / Background Pattern
+— Soft dotted grid on neutral paper — watch mockup stages, device demos, and minimal product sections.
+
+A
+
+Fine GrainNew / Background Pattern
+— Micro dot grain for a film-paper feel — hero backgrounds that need texture without competing with content.
+
+A
+
+Graph PaperNew / Background Pattern
+— Clean square grid for sketches, wireframes, and planning boards — subtle ink lines on white.
+
+A
+
+Line GridNew / Background Pattern
+— Horizontal ruled lines with a soft paper gradient — editorial layouts, docs, and notebook-style sections.
+
+A
+
+Aurora BackgroundNew / Background Gradient
+— Soft aurora wash with lime, mint, cyan, and blue blobs over a warm paper base — wrap any page section or hero and pass children on top.
+
+A
+
+Arc BandsNew / Background Gradient
+— Retro poster arcs in rose, amber, teal, and sky from the base — festivals, launches, and playful brand moments.
+
+A
+
+Cherry PetalNew / Background Gradient
+— Soft spring canvas with drifting cherry petals and a blush radial glow — weddings, florists, and seasonal campaigns.
+
+A
+
+Coral GlowNew / Background Gradient
+— Warm aurora wash in rose, peach, coral, and gold over a blush paper base — beauty, lifestyle, and invitation hero sections.
+
+A
+
+Frost MeshNew / Background Gradient
+— Cool frost-white mesh with teal and emerald corner washes — SaaS dashboards, health apps, and minimal product launches.
+
+A
+
+Honey EmberNew / Background Gradient
+— Cozy aurora glow in honey, amber, ember orange, and soft rose over warm ivory — food, bakery, and autumn campaigns.
+
+A
+
+Halftone PopNew / Background Gradient
+— Risograph-style halftone dots in rose, teal, and amber on cream — posters, zines, and bold creative brands.
+
+A
+
+Ink WashNew / Background Gradient
+— Minimal sumi-e ink clouds in soft stone gray on warm paper — galleries, studios, and calm editorial layouts.
+
+A
+
+Linen WeaveNew / Background Gradient
+— Warm editorial linen with crosshatch weave, soft paper grain, and a gentle vignette — portfolios, magazines, and craft-brand pages.
+
+A
+
+Mint LagoonNew / Background Gradient
+— Cool aurora wash in emerald, teal, cyan, and mint over a fresh white base — wellness, spa, and clean product launches.
+
+A
+
+Paper FoldNew / Background Gradient
+— Tactile cardstock with a diagonal crease, soft highlight, and shadow — invitations, stationery, and craft portfolios.
+
+A
+
+Rain PrismNew / Background Gradient
+— Moody rainfall with angled streaks and a soft prism band across the scene — music, film, and reflective editorial layouts.
+
+A
+
+Sand DriftNew / Background Gradient
+— Layered desert dunes in stone and amber tones with fine grain — travel, hospitality, and calm wellness layouts.
+
+A
+
+Soft SpotlightNew / Background Gradient
+— Gallery stage light from above with a gentle vignette — product reveals, keynote heroes, and museum-style layouts.
+
+A
+
+Sunrise HorizonNew / Background Gradient
+— Warm dawn sky with peach horizon bands, a soft sun glow, and cool teal lift at the base — editorial hero sections and landing pages.
+
+A
+
+Sunset BloomNew / Background Gradient
+— Golden-hour aurora with orange, rose, amber, and sun yellow blooms — events, photography, and warm brand storytelling.
+
+A
+
+Terrazzo FragmentNew / Background Gradient
+— Stone terrazzo base with scattered rose, teal, amber, and clay fragments — interior brands, cafés, and design studios.
+
+A
+
+Tropical TideNew / Background Gradient
+— Vibrant aurora wash in turquoise, lime, sky blue, and sea green — travel, resorts, and summer product drops.
 
 A
 
@@ -441,6 +629,46 @@ Customers Table / Table
 — SaaS customer list with plan, last active, and MRR. Common billing dashboard table.
 
 D
+
+Dark Arc BandsNew / Background Gradient
+— Blended sky, teal, amber, and rose arcs on a midnight base — cinematic dark posters and event keynotes.
+
+A
+
+Dark AuroraNew / Background Gradient
+— Charcoal stage with soft teal, cyan, and emerald aurora blooms — premium dark hero sections and product launches.
+
+A
+
+Dark Carbon SpotlightNew / Background Gradient
+— Carbon black stage with a soft overhead spotlight and vignette — product reveals, keynotes, and gallery dark modes.
+
+A
+
+Dark EmberNew / Background Gradient
+— Warm noir base with amber, ember orange, and rose glow pools — luxury dining, nightlife, and editorial dark modes.
+
+A
+
+Dark Ink FieldNew / Background Gradient
+— Near-black canvas with soft graphite ink washes — galleries, studios, and minimal dark editorial layouts.
+
+A
+
+Dark Midnight MeshNew / Background Gradient
+— Midnight frost mesh with whisper-soft grid, teal and sky blooms, and a gentle vignette — dashboards, terminals, and refined dark UI.
+
+A
+
+Dark Rose NoirNew / Background Gradient
+— Elegant noir with restrained rose and crimson bloom accents — fashion, beauty, and premium dark branding.
+
+A
+
+Dark Teal DepthNew / Background Gradient
+— Deep oceanic black with layered teal and cyan depth blooms — fintech, dev tools, and refined SaaS dark themes.
+
+A
 
 Daily Activity Calendar / Widgets
 — Month grid for the current month — today is highlighted in orange, with a short emerald streak on prior days. Pass activeDays or highlightDay to override.
@@ -1129,7 +1357,7 @@ Jump to a section on this page.
 Overview
 Open source library intro
 Components
-170 available to open
+201 available to open
 
 SPONSORED
 

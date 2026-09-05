@@ -11,6 +11,14 @@
 import { cloneElement, type ReactElement, type ReactNode } from "react";
 import { ArrowRight, MessageCircle, Plus, Settings } from "lucide-react";
 
+import { DarkArcBandsBackground } from "@/components/background-gradient/dark-arc-bands-background";
+import { DarkAuroraBackground } from "@/components/background-gradient/dark-aurora-background";
+import { DarkCarbonSpotlightBackground } from "@/components/background-gradient/dark-carbon-spotlight-background";
+import { DarkEmberBackground } from "@/components/background-gradient/dark-ember-background";
+import { DarkInkFieldBackground } from "@/components/background-gradient/dark-ink-field-background";
+import { DarkMidnightMeshBackground } from "@/components/background-gradient/dark-midnight-mesh-background";
+import { DarkRoseNoirBackground } from "@/components/background-gradient/dark-rose-noir-background";
+import { DarkTealDepthBackground } from "@/components/background-gradient/dark-teal-depth-background";
 import { DndFaceWidget } from "@/components/widgets/dnd-face-widget";
 import { FocusBreathWidget } from "@/components/widgets/focus-breath-widget";
 import { HeartRateWidget } from "@/components/widgets/heart-rate-widget";
@@ -23,6 +31,30 @@ import { IosEarbudsWidget } from "@/components/widgets/ios-earbuds-widget";
 import { RecorderFaceWidget } from "@/components/widgets/recorder-face-widget";
 import { VoiceAssistantWidget } from "@/components/widgets/voice-assistant-widget";
 import { BatteryFaceWidget } from "@/components/widgets/battery-face-widget";
+import { ArcBandsBackground } from "@/components/background-gradient/arc-bands-background";
+import { DiagonalBoxPattern } from "@/components/background-pattern/diagonal-box-pattern";
+import { ReverseDiagonalBoxPattern } from "@/components/background-pattern/reverse-diagonal-box-pattern";
+import { DotGridPattern } from "@/components/background-pattern/dot-grid-pattern";
+import { FineGrainPattern } from "@/components/background-pattern/fine-grain-pattern";
+import { GraphPaperPattern } from "@/components/background-pattern/graph-paper-pattern";
+import { LineGridPattern } from "@/components/background-pattern/line-grid-pattern";
+import { AuroraBackground } from "@/components/background-gradient/aurora-background";
+import { CherryPetalBackground } from "@/components/background-gradient/cherry-petal-background";
+import { CoralGlowBackground } from "@/components/background-gradient/coral-glow-background";
+import { FrostMeshBackground } from "@/components/background-gradient/frost-mesh-background";
+import { HalftonePopBackground } from "@/components/background-gradient/halftone-pop-background";
+import { HoneyEmberBackground } from "@/components/background-gradient/honey-ember-background";
+import { InkWashBackground } from "@/components/background-gradient/ink-wash-background";
+import { LinenWeaveBackground } from "@/components/background-gradient/linen-weave-background";
+import { MintLagoonBackground } from "@/components/background-gradient/mint-lagoon-background";
+import { PaperFoldBackground } from "@/components/background-gradient/paper-fold-background";
+import { RainPrismBackground } from "@/components/background-gradient/rain-prism-background";
+import { SandDriftBackground } from "@/components/background-gradient/sand-drift-background";
+import { SoftSpotlightBackground } from "@/components/background-gradient/soft-spotlight-background";
+import { SunriseHorizonBackground } from "@/components/background-gradient/sunrise-horizon-background";
+import { SunsetBloomBackground } from "@/components/background-gradient/sunset-bloom-background";
+import { TerrazzoFragmentBackground } from "@/components/background-gradient/terrazzo-fragment-background";
+import { TropicalTideBackground } from "@/components/background-gradient/tropical-tide-background";
 import { AddToCartButton } from "@/components/buttons/add-to-cart-button";
 import { BookmarkSaveButton } from "@/components/buttons/bookmark-save-button";
 import { CinderLatchButton } from "@/components/buttons/cinder-latch-button";
@@ -2432,6 +2464,544 @@ export const showcaseRows = [
       },
     ),
   ],
+  [
+    c(
+      "aurora-background",
+      <AuroraBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </AuroraBackground>,
+      "components/background-gradient/aurora-background.tsx",
+      "AuroraBackground",
+      {
+        title: "Aurora Background",
+        isNew: true,
+        description:
+          "Soft aurora wash with lime, mint, cyan, and blue blobs over a warm paper base — wrap any page section or hero and pass children on top.",
+        usage:
+          '<AuroraBackground className="min-h-screen p-8"><h1>Hello</h1></AuroraBackground>',
+      },
+    ),
+    c(
+      "coral-glow-background",
+      <CoralGlowBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </CoralGlowBackground>,
+      "components/background-gradient/coral-glow-background.tsx",
+      "CoralGlowBackground",
+      {
+        title: "Coral Glow",
+        isNew: true,
+        description:
+          "Warm aurora wash in rose, peach, coral, and gold over a blush paper base — beauty, lifestyle, and invitation hero sections.",
+        usage:
+          '<CoralGlowBackground className="min-h-screen p-8"><h1>Welcome</h1></CoralGlowBackground>',
+      },
+    ),
+    c(
+      "mint-lagoon-background",
+      <MintLagoonBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </MintLagoonBackground>,
+      "components/background-gradient/mint-lagoon-background.tsx",
+      "MintLagoonBackground",
+      {
+        title: "Mint Lagoon",
+        isNew: true,
+        description:
+          "Cool aurora wash in emerald, teal, cyan, and mint over a fresh white base — wellness, spa, and clean product launches.",
+        usage:
+          '<MintLagoonBackground className="min-h-screen p-8"><h1>Refresh</h1></MintLagoonBackground>',
+      },
+    ),
+  ],
+  [
+    c(
+      "sunset-bloom-background",
+      <SunsetBloomBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </SunsetBloomBackground>,
+      "components/background-gradient/sunset-bloom-background.tsx",
+      "SunsetBloomBackground",
+      {
+        title: "Sunset Bloom",
+        isNew: true,
+        description:
+          "Golden-hour aurora with orange, rose, amber, and sun yellow blooms — events, photography, and warm brand storytelling.",
+        usage:
+          '<SunsetBloomBackground className="min-h-screen p-8"><h1>Golden hour</h1></SunsetBloomBackground>',
+      },
+    ),
+    c(
+      "honey-ember-background",
+      <HoneyEmberBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </HoneyEmberBackground>,
+      "components/background-gradient/honey-ember-background.tsx",
+      "HoneyEmberBackground",
+      {
+        title: "Honey Ember",
+        isNew: true,
+        description:
+          "Cozy aurora glow in honey, amber, ember orange, and soft rose over warm ivory — food, bakery, and autumn campaigns.",
+        usage:
+          '<HoneyEmberBackground className="min-h-screen p-8"><h1>Harvest</h1></HoneyEmberBackground>',
+      },
+    ),
+    c(
+      "tropical-tide-background",
+      <TropicalTideBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </TropicalTideBackground>,
+      "components/background-gradient/tropical-tide-background.tsx",
+      "TropicalTideBackground",
+      {
+        title: "Tropical Tide",
+        isNew: true,
+        description:
+          "Vibrant aurora wash in turquoise, lime, sky blue, and sea green — travel, resorts, and summer product drops.",
+        usage:
+          '<TropicalTideBackground className="min-h-screen p-8"><h1>Island</h1></TropicalTideBackground>',
+      },
+    ),
+  ],
+  [
+    c(
+      "sunrise-horizon-background",
+      <SunriseHorizonBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </SunriseHorizonBackground>,
+      "components/background-gradient/sunrise-horizon-background.tsx",
+      "SunriseHorizonBackground",
+      {
+        title: "Sunrise Horizon",
+        isNew: true,
+        description:
+          "Warm dawn sky with peach horizon bands, a soft sun glow, and cool teal lift at the base — editorial hero sections and landing pages.",
+        usage:
+          '<SunriseHorizonBackground className="min-h-screen p-8"><h1>Morning</h1></SunriseHorizonBackground>',
+      },
+    ),
+  ],
+  [
+    c(
+      "linen-weave-background",
+      <LinenWeaveBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </LinenWeaveBackground>,
+      "components/background-gradient/linen-weave-background.tsx",
+      "LinenWeaveBackground",
+      {
+        title: "Linen Weave",
+        isNew: true,
+        description:
+          "Warm editorial linen with crosshatch weave, soft paper grain, and a gentle vignette — portfolios, magazines, and craft-brand pages.",
+        usage:
+          '<LinenWeaveBackground className="min-h-screen p-8"><article>Story</article></LinenWeaveBackground>',
+      },
+    ),
+    c(
+      "sand-drift-background",
+      <SandDriftBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </SandDriftBackground>,
+      "components/background-gradient/sand-drift-background.tsx",
+      "SandDriftBackground",
+      {
+        title: "Sand Drift",
+        isNew: true,
+        description:
+          "Layered desert dunes in stone and amber tones with fine grain — travel, hospitality, and calm wellness layouts.",
+        usage:
+          '<SandDriftBackground className="min-h-screen p-8"><h1>Escape</h1></SandDriftBackground>',
+      },
+    ),
+    c(
+      "frost-mesh-background",
+      <FrostMeshBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </FrostMeshBackground>,
+      "components/background-gradient/frost-mesh-background.tsx",
+      "FrostMeshBackground",
+      {
+        title: "Frost Mesh",
+        isNew: true,
+        description:
+          "Cool frost-white mesh with teal and emerald corner washes — SaaS dashboards, health apps, and minimal product launches.",
+        usage:
+          '<FrostMeshBackground className="min-h-screen p-8"><h1>Launch</h1></FrostMeshBackground>',
+      },
+    ),
+  ],
+  [
+    c(
+      "terrazzo-fragment-background",
+      <TerrazzoFragmentBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </TerrazzoFragmentBackground>,
+      "components/background-gradient/terrazzo-fragment-background.tsx",
+      "TerrazzoFragmentBackground",
+      {
+        title: "Terrazzo Fragment",
+        isNew: true,
+        description:
+          "Stone terrazzo base with scattered rose, teal, amber, and clay fragments — interior brands, cafés, and design studios.",
+        usage:
+          '<TerrazzoFragmentBackground className="min-h-screen p-8"><h1>Studio</h1></TerrazzoFragmentBackground>',
+      },
+    ),
+    c(
+      "rain-prism-background",
+      <RainPrismBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-800">Your content</p>
+      </RainPrismBackground>,
+      "components/background-gradient/rain-prism-background.tsx",
+      "RainPrismBackground",
+      {
+        title: "Rain Prism",
+        isNew: true,
+        description:
+          "Moody rainfall with angled streaks and a soft prism band across the scene — music, film, and reflective editorial layouts.",
+        usage:
+          '<RainPrismBackground className="min-h-screen p-8"><h1>Rain</h1></RainPrismBackground>',
+      },
+    ),
+  ],
+  [
+    c(
+      "cherry-petal-background",
+      <CherryPetalBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </CherryPetalBackground>,
+      "components/background-gradient/cherry-petal-background.tsx",
+      "CherryPetalBackground",
+      {
+        title: "Cherry Petal",
+        isNew: true,
+        description:
+          "Soft spring canvas with drifting cherry petals and a blush radial glow — weddings, florists, and seasonal campaigns.",
+        usage:
+          '<CherryPetalBackground className="min-h-screen p-8"><h1>Spring</h1></CherryPetalBackground>',
+      },
+    ),
+  ],
+  [
+    c(
+      "ink-wash-background",
+      <InkWashBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </InkWashBackground>,
+      "components/background-gradient/ink-wash-background.tsx",
+      "InkWashBackground",
+      {
+        title: "Ink Wash",
+        isNew: true,
+        description:
+          "Minimal sumi-e ink clouds in soft stone gray on warm paper — galleries, studios, and calm editorial layouts.",
+        usage:
+          '<InkWashBackground className="min-h-screen p-8"><h1>Studio</h1></InkWashBackground>',
+      },
+    ),
+    c(
+      "halftone-pop-background",
+      <HalftonePopBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </HalftonePopBackground>,
+      "components/background-gradient/halftone-pop-background.tsx",
+      "HalftonePopBackground",
+      {
+        title: "Halftone Pop",
+        isNew: true,
+        description:
+          "Risograph-style halftone dots in rose, teal, and amber on cream — posters, zines, and bold creative brands.",
+        usage:
+          '<HalftonePopBackground className="min-h-screen p-8"><h1>Print</h1></HalftonePopBackground>',
+      },
+    ),
+    c(
+      "paper-fold-background",
+      <PaperFoldBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </PaperFoldBackground>,
+      "components/background-gradient/paper-fold-background.tsx",
+      "PaperFoldBackground",
+      {
+        title: "Paper Fold",
+        isNew: true,
+        description:
+          "Tactile cardstock with a diagonal crease, soft highlight, and shadow — invitations, stationery, and craft portfolios.",
+        usage:
+          '<PaperFoldBackground className="min-h-screen p-8"><h1>Folded</h1></PaperFoldBackground>',
+      },
+    ),
+  ],
+  [
+    c(
+      "soft-spotlight-background",
+      <SoftSpotlightBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </SoftSpotlightBackground>,
+      "components/background-gradient/soft-spotlight-background.tsx",
+      "SoftSpotlightBackground",
+      {
+        title: "Soft Spotlight",
+        isNew: true,
+        description:
+          "Gallery stage light from above with a gentle vignette — product reveals, keynote heroes, and museum-style layouts.",
+        usage:
+          '<SoftSpotlightBackground className="min-h-screen p-8"><h1>Featured</h1></SoftSpotlightBackground>',
+      },
+    ),
+    c(
+      "arc-bands-background",
+      <ArcBandsBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </ArcBandsBackground>,
+      "components/background-gradient/arc-bands-background.tsx",
+      "ArcBandsBackground",
+      {
+        title: "Arc Bands",
+        isNew: true,
+        description:
+          "Retro poster arcs with sky, teal, amber, and rose blending in soft radial gradients from the base — festivals, launches, and playful brand moments.",
+        usage:
+          '<ArcBandsBackground className="min-h-screen p-8"><h1>Celebrate</h1></ArcBandsBackground>',
+      },
+    ),
+  ],
+  [
+    c(
+      "dark-aurora-background",
+      <DarkAuroraBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-100">Your content</p>
+      </DarkAuroraBackground>,
+      "components/background-gradient/dark-aurora-background.tsx",
+      "DarkAuroraBackground",
+      {
+        title: "Dark Aurora",
+        isNew: true,
+        description:
+          "Charcoal stage with soft teal, cyan, and emerald aurora blooms — premium dark hero sections and product launches.",
+        usage:
+          '<DarkAuroraBackground className="min-h-screen p-8"><h1 className="text-neutral-100">Launch</h1></DarkAuroraBackground>',
+      },
+    ),
+    c(
+      "dark-ember-background",
+      <DarkEmberBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-100">Your content</p>
+      </DarkEmberBackground>,
+      "components/background-gradient/dark-ember-background.tsx",
+      "DarkEmberBackground",
+      {
+        title: "Dark Ember",
+        isNew: true,
+        description:
+          "Warm noir base with amber, ember orange, and rose glow pools — luxury dining, nightlife, and editorial dark modes.",
+        usage:
+          '<DarkEmberBackground className="min-h-screen p-8"><h1 className="text-neutral-100">Ember</h1></DarkEmberBackground>',
+      },
+    ),
+    c(
+      "dark-teal-depth-background",
+      <DarkTealDepthBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-100">Your content</p>
+      </DarkTealDepthBackground>,
+      "components/background-gradient/dark-teal-depth-background.tsx",
+      "DarkTealDepthBackground",
+      {
+        title: "Dark Teal Depth",
+        isNew: true,
+        description:
+          "Deep oceanic black with layered teal and cyan depth blooms — fintech, dev tools, and refined SaaS dark themes.",
+        usage:
+          '<DarkTealDepthBackground className="min-h-screen p-8"><h1 className="text-neutral-100">Depth</h1></DarkTealDepthBackground>',
+      },
+    ),
+  ],
+  [
+    c(
+      "dark-arc-bands-background",
+      <DarkArcBandsBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-100">Your content</p>
+      </DarkArcBandsBackground>,
+      "components/background-gradient/dark-arc-bands-background.tsx",
+      "DarkArcBandsBackground",
+      {
+        title: "Dark Arc Bands",
+        isNew: true,
+        description:
+          "Blended sky, teal, amber, and rose arcs on a midnight base — cinematic dark posters and event keynotes.",
+        usage:
+          '<DarkArcBandsBackground className="min-h-screen p-8"><h1 className="text-neutral-100">Arc</h1></DarkArcBandsBackground>',
+      },
+    ),
+    c(
+      "dark-carbon-spotlight-background",
+      <DarkCarbonSpotlightBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-100">Your content</p>
+      </DarkCarbonSpotlightBackground>,
+      "components/background-gradient/dark-carbon-spotlight-background.tsx",
+      "DarkCarbonSpotlightBackground",
+      {
+        title: "Dark Carbon Spotlight",
+        isNew: true,
+        description:
+          "Carbon black stage with a soft overhead spotlight and vignette — product reveals, keynotes, and gallery dark modes.",
+        usage:
+          '<DarkCarbonSpotlightBackground className="min-h-screen p-8"><h1 className="text-neutral-100">Reveal</h1></DarkCarbonSpotlightBackground>',
+      },
+    ),
+    c(
+      "dark-midnight-mesh-background",
+      <DarkMidnightMeshBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-100">Your content</p>
+      </DarkMidnightMeshBackground>,
+      "components/background-gradient/dark-midnight-mesh-background.tsx",
+      "DarkMidnightMeshBackground",
+      {
+        title: "Dark Midnight Mesh",
+        isNew: true,
+        description:
+          "Midnight frost mesh with whisper-soft grid, teal and sky blooms, and a gentle vignette — dashboards, terminals, and refined dark UI.",
+        usage:
+          '<DarkMidnightMeshBackground className="min-h-screen p-8"><h1 className="text-neutral-100">Console</h1></DarkMidnightMeshBackground>',
+      },
+    ),
+  ],
+  [
+    c(
+      "dark-ink-field-background",
+      <DarkInkFieldBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-100">Your content</p>
+      </DarkInkFieldBackground>,
+      "components/background-gradient/dark-ink-field-background.tsx",
+      "DarkInkFieldBackground",
+      {
+        title: "Dark Ink Field",
+        isNew: true,
+        description:
+          "Near-black canvas with soft graphite ink washes — galleries, studios, and minimal dark editorial layouts.",
+        usage:
+          '<DarkInkFieldBackground className="min-h-screen p-8"><h1 className="text-neutral-100">Field</h1></DarkInkFieldBackground>',
+      },
+    ),
+    c(
+      "dark-rose-noir-background",
+      <DarkRoseNoirBackground className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-100">Your content</p>
+      </DarkRoseNoirBackground>,
+      "components/background-gradient/dark-rose-noir-background.tsx",
+      "DarkRoseNoirBackground",
+      {
+        title: "Dark Rose Noir",
+        isNew: true,
+        description:
+          "Elegant noir with restrained rose and crimson bloom accents — fashion, beauty, and premium dark branding.",
+        usage:
+          '<DarkRoseNoirBackground className="min-h-screen p-8"><h1 className="text-neutral-100">Noir</h1></DarkRoseNoirBackground>',
+      },
+    ),
+  ],
+  [
+    c(
+      "diagonal-box-pattern",
+      <DiagonalBoxPattern className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </DiagonalBoxPattern>,
+      "components/background-pattern/diagonal-box-pattern.tsx",
+      "DiagonalBoxPattern",
+      {
+        title: "Diagonal Box",
+        isNew: true,
+        description:
+          "Classic 45° hairline hatch on white — the same quiet stage used across marketing mockups and component previews.",
+        usage:
+          '<DiagonalBoxPattern className="min-h-screen p-8"><section>Content</section></DiagonalBoxPattern>',
+      },
+    ),
+    c(
+      "reverse-diagonal-box-pattern",
+      <ReverseDiagonalBoxPattern className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </ReverseDiagonalBoxPattern>,
+      "components/background-pattern/reverse-diagonal-box-pattern.tsx",
+      "ReverseDiagonalBoxPattern",
+      {
+        title: "Reverse Diagonal Box",
+        isNew: true,
+        description:
+          "Mirrored 45° hairline hatch — same quiet stage as Diagonal Box, rotated right to left for visual variety.",
+        usage:
+          '<ReverseDiagonalBoxPattern className="min-h-screen p-8"><section>Content</section></ReverseDiagonalBoxPattern>',
+      },
+    ),
+    c(
+      "dot-grid-pattern",
+      <DotGridPattern className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </DotGridPattern>,
+      "components/background-pattern/dot-grid-pattern.tsx",
+      "DotGridPattern",
+      {
+        title: "Dot Grid",
+        isNew: true,
+        description:
+          "Soft dotted grid on neutral paper — watch mockup stages, device demos, and minimal product sections.",
+        usage:
+          '<DotGridPattern className="min-h-screen p-8"><section>Content</section></DotGridPattern>',
+      },
+    ),
+    c(
+      "line-grid-pattern",
+      <LineGridPattern className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </LineGridPattern>,
+      "components/background-pattern/line-grid-pattern.tsx",
+      "LineGridPattern",
+      {
+        title: "Line Grid",
+        isNew: true,
+        description:
+          "Horizontal ruled lines with a soft paper gradient — editorial layouts, docs, and notebook-style sections.",
+        usage:
+          '<LineGridPattern className="min-h-screen p-8"><article>Notes</article></LineGridPattern>',
+      },
+    ),
+  ],
+  [
+    c(
+      "graph-paper-pattern",
+      <GraphPaperPattern className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </GraphPaperPattern>,
+      "components/background-pattern/graph-paper-pattern.tsx",
+      "GraphPaperPattern",
+      {
+        title: "Graph Paper",
+        isNew: true,
+        description:
+          "Clean square grid for sketches, wireframes, and planning boards — subtle ink lines on white.",
+        usage:
+          '<GraphPaperPattern className="min-h-screen p-8"><div>Wireframe</div></GraphPaperPattern>',
+      },
+    ),
+    c(
+      "fine-grain-pattern",
+      <FineGrainPattern className="flex h-full min-h-96 w-full items-center justify-center md:min-h-120">
+        <p className="font-serif text-2xl text-neutral-900">Your content</p>
+      </FineGrainPattern>,
+      "components/background-pattern/fine-grain-pattern.tsx",
+      "FineGrainPattern",
+      {
+        title: "Fine Grain",
+        isNew: true,
+        description:
+          "Micro dot grain for a film-paper feel — hero backgrounds that need texture without competing with content.",
+        usage:
+          '<FineGrainPattern className="min-h-screen p-8"><h1>Quiet stage</h1></FineGrainPattern>',
+      },
+    ),
+  ],
 ];
 
 // Catalog (auto — no need to edit)
@@ -2474,8 +3044,24 @@ export function isNarrowShowcaseFile(file: string): boolean {
   return isInputShowcaseFile(file) || isFormShowcaseFile(file);
 }
 
+export function isBackgroundPatternShowcaseFile(file: string): boolean {
+  return file.startsWith("components/background-pattern/");
+}
+
+export function isBackgroundGradientShowcaseFile(file: string): boolean {
+  return file.startsWith("components/background-gradient/");
+}
+
+export function isFlushPreviewBackgroundShowcaseFile(file: string): boolean {
+  return (
+    isBackgroundGradientShowcaseFile(file) ||
+    isBackgroundPatternShowcaseFile(file)
+  );
+}
+
 export function isFullBleedShowcaseFile(file: string): boolean {
   return (
+    isFlushPreviewBackgroundShowcaseFile(file) ||
     file === "components/loaders/apple-hello-loader.tsx" ||
     file === "components/loaders/text-loader.tsx" ||
     file === "components/buttons/prism-depth-button.tsx" ||
@@ -2528,6 +3114,7 @@ export function getAllShowcaseSlugs(): string[] {
 export type ShowcaseCategoryGroup = Readonly<{
   category: string;
   items: ShowcaseEntry[];
+  isCategoryNew: boolean;
 }>;
 
 export type ShowcaseNavEntry = Readonly<Omit<ShowcaseEntry, "preview">>;
@@ -2535,7 +3122,34 @@ export type ShowcaseNavEntry = Readonly<Omit<ShowcaseEntry, "preview">>;
 export type ShowcaseNavCategoryGroup = Readonly<{
   category: string;
   items: ShowcaseNavEntry[];
+  isCategoryNew: boolean;
 }>;
+
+export function isShowcaseCategoryAllNew(
+  items: readonly { isNew?: boolean }[],
+): boolean {
+  return items.length > 0 && items.every((item) => item.isNew);
+}
+
+export function shouldShowShowcaseItemNewBadge(
+  item: { isNew?: boolean },
+  categoryIsAllNew: boolean,
+): boolean {
+  return Boolean(item.isNew) && !categoryIsAllNew;
+}
+
+function withCategoryNew(
+  category: string,
+  items: ShowcaseEntry[],
+): ShowcaseCategoryGroup {
+  const isCategoryNew = isShowcaseCategoryAllNew(items);
+
+  return {
+    category,
+    items,
+    isCategoryNew,
+  };
+}
 
 export function getShowcaseByCategory(): ShowcaseCategoryGroup[] {
   const groups = new Map<string, ShowcaseEntry[]>();
@@ -2549,15 +3163,18 @@ export function getShowcaseByCategory(): ShowcaseCategoryGroup[] {
 
   return Array.from(groups.entries())
     .sort(([a], [b]) => a.localeCompare(b))
-    .map(([category, items]) => ({
-      category,
-      items: [...items].sort((a, b) => a.title.localeCompare(b.title)),
-    }));
+    .map(([category, items]) =>
+      withCategoryNew(
+        category,
+        [...items].sort((a, b) => a.title.localeCompare(b.title)),
+      ),
+    );
 }
 
 export function getShowcaseNavByCategory(): ShowcaseNavCategoryGroup[] {
   return getShowcaseByCategory().map((group) => ({
     category: group.category,
+    isCategoryNew: group.isCategoryNew,
     items: group.items.map((entry) => {
       const { preview, ...item } = entry;
       void preview;

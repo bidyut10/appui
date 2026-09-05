@@ -1,14 +1,17 @@
 import {
   getShowcasePreviewBackdrop,
+  isFlushPreviewBackgroundShowcaseFile,
   isFormShowcaseFile,
   isFullBleedShowcaseFile,
   isInputShowcaseFile,
+  shouldShowShowcaseItemNewBadge,
   type ShowcaseCategoryGroup,
 } from "@/lib/showcase/showcase";
 import { resolveShowcaseCategory } from "@/lib/showcase/resolve-category";
 import { AnnotatedText } from "@/components/underlines/annotated-text";
 
 import { ComponentPreviewCard } from "./component-preview-card";
+import { ShowcaseNewBadge } from "../shared/showcase-new-badge";
 import Link from "next/link";
 
 type ComponentsCatalogProps = Readonly<{
@@ -34,6 +37,9 @@ export function ComponentsCatalog({
 
         <h1 className="mt-3 font-serif text-3xl text-neutral-900">
           {activeGroup.category}
+          {activeGroup.isCategoryNew ? (
+            <ShowcaseNewBadge className="ml-2 align-middle" />
+          ) : null}
         </h1>
 
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-neutral-500">
@@ -66,7 +72,10 @@ export function ComponentsCatalog({
               category={activeGroup.category}
               description={item.description}
               preview={item.preview}
-              isNew={item.isNew}
+              isNew={shouldShowShowcaseItemNewBadge(
+                item,
+                activeGroup.isCategoryNew,
+              )}
               variant={
                 isFormShowcaseFile(item.file)
                   ? "form"
@@ -75,6 +84,7 @@ export function ComponentsCatalog({
                     : "default"
               }
               fullBleed={isFullBleedShowcaseFile(item.file)}
+              flushPreview={isFlushPreviewBackgroundShowcaseFile(item.file)}
               backdropImage={getShowcasePreviewBackdrop(item.file)}
             />
           ))}

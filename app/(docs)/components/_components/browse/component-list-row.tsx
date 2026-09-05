@@ -1,4 +1,5 @@
 import { SaveScrollLink } from "@/lib/docs";
+import { shouldShowShowcaseItemNewBadge } from "@/lib/showcase/showcase";
 import { ChevronRight, MoveRight } from "lucide-react";
 import { cn } from "@/lib/cn";
 import type { ShowcaseEntry } from "@/lib/showcase";
@@ -25,9 +26,14 @@ function getLetterColor(index: number) {
 type ComponentListRowProps = Readonly<{
   item: ShowcaseEntry & { category: string };
   index: number;
+  categoryIsAllNew?: boolean;
 }>;
 
-export function ComponentListRow({ item, index }: ComponentListRowProps) {
+export function ComponentListRow({
+  item,
+  index,
+  categoryIsAllNew = false,
+}: ComponentListRowProps) {
   const letterColor = getLetterColor(index);
   const letter = item.title.charAt(0).toUpperCase();
 
@@ -58,10 +64,8 @@ export function ComponentListRow({ item, index }: ComponentListRowProps) {
             <span className="font-semibold text-neutral-900 group-hover:text-neutral-700">
               {item.title}
             </span>
-            {item.isNew ? (
-              <span className="ml-1.5 align-middle">
-                <ShowcaseNewBadge />
-              </span>
+            {shouldShowShowcaseItemNewBadge(item, categoryIsAllNew) ? (
+              <ShowcaseNewBadge className="ml-1.5" />
             ) : null}
             <span className="text-neutral-300"> / </span>
             <span className="text-neutral-500">{item.category}</span>

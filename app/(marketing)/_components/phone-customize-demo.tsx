@@ -153,18 +153,24 @@ export function PhoneCustomizeDemo() {
 
   useEffect(() => {
     if (reducedMotion) {
-      setPhase("preview");
-      setTypedLength(CODE.length);
-      setEditorVisible(false);
-      return;
+      const timer = globalThis.setTimeout(() => {
+        setPhase("preview");
+        setTypedLength(CODE.length);
+        setEditorVisible(false);
+      }, 0);
+      return () => globalThis.clearTimeout(timer);
     }
 
-    setPhase("code");
-    setTypedLength(0);
-    setEditorVisible(false);
-
+    const resetTimer = globalThis.setTimeout(() => {
+      setPhase("code");
+      setTypedLength(0);
+      setEditorVisible(false);
+    }, 0);
     const openTimer = globalThis.setTimeout(() => setEditorVisible(true), 120);
-    return () => globalThis.clearTimeout(openTimer);
+    return () => {
+      globalThis.clearTimeout(resetTimer);
+      globalThis.clearTimeout(openTimer);
+    };
   }, [reducedMotion]);
 
   useEffect(() => {

@@ -8,6 +8,7 @@ import {
   getShowcaseEntry,
   getAllShowcaseSlugs,
   getShowcasePreviewBackdrop,
+  isFlushPreviewBackgroundShowcaseFile,
   isFormShowcaseFile,
   isFullBleedShowcaseFile,
   isInputShowcaseFile,
@@ -156,6 +157,7 @@ export default async function ComponentDetailPage({ params }: Readonly<Props>) {
                       : "default"
                 }
                 fullBleed={isFullBleedShowcaseFile(entry.file)}
+                flushPreview={isFlushPreviewBackgroundShowcaseFile(entry.file)}
                 backdropImage={getShowcasePreviewBackdrop(entry.file)}
               >
                 {entry.preview}

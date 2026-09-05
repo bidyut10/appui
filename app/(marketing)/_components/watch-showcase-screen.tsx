@@ -77,12 +77,7 @@ function WatchAnalogFace({ active }: { active: boolean }) {
   const [now, setNow] = useState<number | null>(null);
 
   useEffect(() => {
-    if (!active) {
-      setNow(null);
-      return;
-    }
-
-    setNow(Date.now());
+    if (!active) return;
 
     let frame = 0;
     const tick = () => {
@@ -94,7 +89,7 @@ function WatchAnalogFace({ active }: { active: boolean }) {
     return () => globalThis.cancelAnimationFrame(frame);
   }, [active]);
 
-  const date = now === null ? null : new Date(now);
+  const date = !active || now === null ? null : new Date(now);
   const hours = date ? date.getHours() % 12 : 0;
   const minutes = date ? date.getMinutes() : 0;
   const seconds = date ? date.getSeconds() + date.getMilliseconds() / 1000 : 0;
@@ -171,10 +166,7 @@ function WatchActivityFace({ active }: { active: boolean }) {
   const [draw, setDraw] = useState(false);
 
   useEffect(() => {
-    if (!active) {
-      setDraw(false);
-      return;
-    }
+    if (!active) return;
 
     const frame = globalThis.requestAnimationFrame(() => setDraw(true));
     return () => globalThis.cancelAnimationFrame(frame);
@@ -208,7 +200,7 @@ function WatchActivityFace({ active }: { active: boolean }) {
                 strokeLinecap="round"
                 className={cn(
                   ring.color,
-                  draw && !reducedMotion && ring.draw,
+                  active && draw && !reducedMotion && ring.draw,
                 )}
               />
             </g>
