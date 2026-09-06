@@ -117,7 +117,7 @@ function ImportLine({
     <p className="font-mono text-[13px] leading-6 break-all text-neutral-800">
       <span className="text-sky-700">import</span>
       <span> {"{ "}</span>
-      <span className="text-violet-700">{exportName}</span>
+      <span className="text-fuchsia-700">{exportName}</span>
       <span> {"}"} </span>
       <span className="text-sky-700">from</span>
       <span className="text-emerald-700"> &quot;{importPath}&quot;</span>
@@ -140,9 +140,9 @@ function UsageLine({ line }: Readonly<{ line: string }>) {
     const [, tag, attrs] = selfClosing;
     return (
       <span className="font-mono text-[13px] leading-7">
-        <span className="text-violet-700">&lt;{tag}</span>
-        <span className="text-amber-800">{attrs}</span>
-        <span className="text-violet-700"> /&gt;</span>
+        <span className="text-amber-700">&lt;{tag}</span>
+        <span className="text-yellow-700">{attrs}</span>
+        <span className="text-amber-700"> /&gt;</span>
       </span>
     );
   }
@@ -160,11 +160,11 @@ function UsageLine({ line }: Readonly<{ line: string }>) {
 
   return (
     <span className="font-mono text-[13px] leading-7">
-      <span className="text-violet-700">&lt;{tag}</span>
-      <span className="text-amber-800">{attrs}</span>
-      <span className="text-violet-700">&gt;</span>
+      <span className="text-amber-700">&lt;{tag}</span>
+      <span className="text-yellow-700">{attrs}</span>
+      <span className="text-amber-700">&gt;</span>
       <span className="text-neutral-800">{children}</span>
-      <span className="text-violet-700">&lt;/{tag}&gt;</span>
+      <span className="text-amber-700">&lt;/{tag}&gt;</span>
     </span>
   );
 }

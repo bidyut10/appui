@@ -333,7 +333,7 @@ const annotationStyles = {
     Decoration: WavyDecoration,
     decorationClassName:
       "pointer-events-none absolute bottom-[-0.4em] left-[-2%] h-[0.7em] w-[104%]",
-    defaultColor: "text-purple-300",
+    defaultColor: "text-teal-300",
   },
   circle: {
     wrapper: "relative inline-block px-1 whitespace-nowrap",
@@ -354,7 +354,7 @@ const annotationStyles = {
     Decoration: UnderlineDecoration,
     decorationClassName:
       "pointer-events-none absolute bottom-[-0.32em] left-[-1%] h-[0.5em] w-[102%]",
-    defaultColor: "text-purple-400",
+    defaultColor: "text-emerald-400",
   },
   line: {
     wrapper: "relative inline-block whitespace-nowrap",
