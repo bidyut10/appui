@@ -243,7 +243,7 @@ export default function Home() {
       <LinkedBlock
         className="relative mx-auto my-10 max-w-xl px-4 pb-14 md:px-0"
         link="view more variants"
-        href="/components?category=widgets"
+        href="/components/category/widgets"
       >
         <Heading>
           <AnnotatedText variant="line" color="text-orange-300">

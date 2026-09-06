@@ -2,6 +2,7 @@
 
 import { SaveScrollLink } from "@/lib/docs";
 import { cn } from "@/lib/cn";
+import { getCategoryPath } from "@/lib/showcase/category-slug";
 import { resolveShowcaseCategory } from "@/lib/showcase/resolve-category";
 import type { ShowcaseCategoryGroup } from "@/lib/showcase";
 
@@ -12,10 +13,6 @@ type ComponentsCategoryNavProps = Readonly<{
   activeCategory: string;
   isBrowseAll?: boolean;
 }>;
-
-function categoryHref(category: string) {
-  return `/components?category=${encodeURIComponent(category)}`;
-}
 
 export function ComponentsCategoryNav({
   categories,
@@ -46,7 +43,7 @@ export function ComponentsCategoryNav({
           return (
             <SaveScrollLink
               key={group.category}
-              href={categoryHref(group.category)}
+              href={getCategoryPath(group.category)}
               className={cn(
                 "inline-flex shrink-0 items-center rounded-full px-3 py-1.5 font-sans text-xs whitespace-nowrap transition-colors",
                 isActive

@@ -27,7 +27,11 @@ Examples:
 
 ## Categories
 
-Browse by category: https://opensourceui.in/components?category={CategoryName}
+Browse by category: https://opensourceui.in/components/category/{slug}
+
+Examples:
+- https://opensourceui.in/components/category/widgets
+- https://opensourceui.in/components/category/buttons
 
 Categories include Audio, Buttons, Calender, Docks, Dropdowns, Forms, Gallery, Inputs, Loaders, Mockups, Notifications, Socials, Tables, Text, Travel, Widgets, and more. Browse: https://opensourceui.in/components
 

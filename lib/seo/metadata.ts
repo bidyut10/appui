@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { siteConfig } from "@/lib/site";
+import { getCategoryPath } from "@/lib/showcase/category-slug";
 
 const OG_IMAGE = {
   url: siteConfig.ogImage,
@@ -36,7 +37,7 @@ export function createPageMetadata({
     description,
     keywords: keywords ?? [...siteConfig.keywords],
     alternates: {
-      canonical: path,
+      canonical: absoluteUrl(path),
     },
     robots: noIndex
       ? { index: false, follow: false }
@@ -202,7 +203,7 @@ export function getComponentJsonLd(
             "@type": "ListItem",
             position: 3,
             name: entry.category,
-            item: `${siteConfig.url}/components?category=${encodeURIComponent(entry.category)}`,
+            item: `${siteConfig.url}${getCategoryPath(entry.category)}`,
           },
           {
             "@type": "ListItem",

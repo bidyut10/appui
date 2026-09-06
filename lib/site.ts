@@ -4,16 +4,16 @@ export const siteConfig = {
   title:
     "Opensource UI — Free, open-source, production-ready components for React & Next.js — built with TypeScript and Tailwind CSS.",
   description:
-    "Opensource UI is a free, MIT-licensed copy-paste library of 170 production-ready React and Next.js components. Built with TypeScript and Tailwind CSS v4. Browse live previews and copy source code at opensourceui.in.",
+    "Opensource UI is a free, MIT-licensed copy-paste library of 200+ production-ready React and Next.js components. Built with TypeScript and Tailwind CSS v4. Browse live previews and copy source code at opensourceui.in.",
   url: "https://opensourceui.in",
   ogImage: "/opensourceui-banner.png",
   github: {
     url: "https://github.com/bidyut10/opensourceui",
   },
   stats: {
-    pageViews: "125k+",
-    visitors: "10.5k+",
-    avgVisitMinutes: 4.5,
+    pageViews: "225k+",
+    visitors: "31k+",
+    avgVisitMinutes: 4,
   },
   keywords: [
     "opensource ui",

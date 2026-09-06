@@ -14,6 +14,7 @@ import {
   isInputShowcaseFile,
   readShowcaseSource,
 } from "@/lib/showcase";
+import { getCategoryPath } from "@/lib/showcase/category-slug";
 import {
   JsonLd,
   createComponentMetadata,
@@ -51,7 +52,7 @@ export default async function ComponentDetailPage({ params }: Readonly<Props>) {
     currentIndex >= 0 && currentIndex < allSlugs.length - 1
       ? getShowcaseEntry(allSlugs[currentIndex + 1])
       : null;
-  const categoryHref = `/components?category=${encodeURIComponent(entry.category)}`;
+  const categoryHref = getCategoryPath(entry.category);
 
   const { cnSource, componentSource } = await readShowcaseSource(entry.file);
 

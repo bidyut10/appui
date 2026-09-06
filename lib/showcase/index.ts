@@ -23,6 +23,12 @@ export {
 } from "./showcase";
 
 export { resolveShowcaseCategory } from "./resolve-category";
+export {
+  categoryNameFromSlug,
+  getCategoryGroupBySlug,
+  getCategoryPath,
+  getCategorySlug,
+} from "./category-slug";
 
 export { searchShowcaseEntries } from "./search-showcase";
 

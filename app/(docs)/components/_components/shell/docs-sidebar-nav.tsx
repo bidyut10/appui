@@ -15,14 +15,14 @@ import {
 import { SaveScrollLink } from "@/lib/docs";
 import { shouldShowShowcaseItemNewBadge } from "@/lib/showcase/showcase";
 import { cn } from "@/lib/cn";
+import {
+  categoryNameFromSlug,
+  getCategoryPath,
+} from "@/lib/showcase/category-slug";
 import { resolveShowcaseCategory } from "@/lib/showcase/resolve-category";
 import type { ShowcaseNavCategoryGroup } from "@/lib/showcase";
 
 import { ShowcaseNewBadge } from "../shared/showcase-new-badge";
-
-function categoryHref(category: string) {
-  return `/components?category=${encodeURIComponent(category)}`;
-}
 
 type DocsSidebarNavProps = Readonly<{
   categories: ShowcaseNavCategoryGroup[];
@@ -39,15 +39,24 @@ export function DocsSidebarNav({
 
   usePanelWheelScroll(navRef);
 
-  const activeSlug = pathname.startsWith("/components/")
-    ? pathname.replace("/components/", "")
-    : null;
+  const activeSlug =
+    pathname.startsWith("/components/category/")
+      ? null
+      : pathname.startsWith("/components/")
+        ? pathname.replace("/components/", "")
+        : null;
 
   const categoryParam = getHydratedSearchParam(searchParams, "category");
+  const categoryFromPath = pathname.startsWith("/components/category/")
+    ? categoryNameFromSlug(pathname.replace("/components/category/", ""))
+    : null;
 
   const activeCategory =
     (categoryParam
       ? resolveShowcaseCategory(categories, categoryParam)?.category
+      : null) ??
+    (categoryFromPath
+      ? resolveShowcaseCategory(categories, categoryFromPath)?.category
       : null) ??
     (activeSlug
       ? categories.find((group) =>
@@ -116,7 +125,7 @@ export function DocsSidebarNav({
         {categories.map((group) => (
           <div key={group.category}>
             <SaveScrollLink
-              href={categoryHref(group.category)}
+              href={getCategoryPath(group.category)}
               onClick={onNavigate}
               className={cn(
                 "flex items-center justify-between gap-3 py-1 font-sans text-sm transition-colors",

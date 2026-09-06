@@ -1,11 +1,13 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 import {
   getHydratedSearchParam,
   useHydratedSearchParams,
 } from "@/app/_shared/navigation/use-hydrated-search-params";
+import { getCategoryPath } from "@/lib/showcase/category-slug";
 import { resolveShowcaseCategory } from "@/lib/showcase/resolve-category";
 import type { ShowcaseCategoryGroup } from "@/lib/showcase/showcase";
 import { JsonLd } from "@/lib/seo/json-ld";
@@ -14,7 +16,6 @@ import { siteConfig } from "@/lib/site";
 
 import { DocsToc } from "../shell/docs-toc";
 import { ComponentsBrowseAll } from "./components-browse-all";
-import { ComponentsCatalog } from "./components-catalog";
 import { ComponentsSearchResults } from "./components-search-results";
 
 type ComponentsPageClientProps = Readonly<{
@@ -26,29 +27,28 @@ function ComponentsPageContent({
   categories,
   totalCount,
 }: ComponentsPageClientProps) {
+  const router = useRouter();
   const searchParams = useHydratedSearchParams();
   const categoryParam = getHydratedSearchParam(searchParams, "category") ?? undefined;
   const searchQuery = getHydratedSearchParam(searchParams, "q")?.trim() ?? "";
   const isSearching = searchQuery.length > 0;
 
-  const activeGroup = categoryParam
-    ? resolveShowcaseCategory(categories, categoryParam)
-    : undefined;
-  const hasCategory = !isSearching && !!activeGroup;
+  useEffect(() => {
+    if (!categoryParam || isSearching) return;
+
+    const group = resolveShowcaseCategory(categories, categoryParam);
+    if (!group) return;
+
+    router.replace(getCategoryPath(group.category));
+  }, [categories, categoryParam, isSearching, router]);
 
   const listJsonLd = isSearching
     ? null
-    : hasCategory && activeGroup
-      ? getComponentsItemListJsonLd(
-          activeGroup.items,
-          `${activeGroup.category} React Components`,
-          `${siteConfig.url}/components?category=${encodeURIComponent(activeGroup.category)}`,
-        )
-      : getComponentsItemListJsonLd(
-          categories.flatMap((group) => group.items),
-          "All React UI Components",
-          `${siteConfig.url}/components`,
-        );
+    : getComponentsItemListJsonLd(
+        categories.flatMap((group) => group.items),
+        "All React UI Components",
+        `${siteConfig.url}/components`,
+      );
 
   return (
     <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
@@ -60,11 +60,6 @@ function ComponentsPageContent({
         >
           {isSearching ? (
             <ComponentsSearchResults query={searchQuery} />
-          ) : hasCategory && activeGroup ? (
-            <ComponentsCatalog
-              categories={categories}
-              category={activeGroup.category}
-            />
           ) : (
             <ComponentsBrowseAll
               categories={categories}
@@ -88,31 +83,18 @@ function ComponentsPageContent({
                     description: "Filtered matches",
                   },
                 ]
-              : hasCategory && activeGroup
-                ? [
-                    {
-                      id: "overview",
-                      label: "Overview",
-                      description: "Category intro & usage",
-                    },
-                    {
-                      id: "components",
-                      label: "Components",
-                      description: `${activeGroup.items.length} in this category`,
-                    },
-                  ]
-                : [
-                    {
-                      id: "overview",
-                      label: "Overview",
-                      description: "Open source library intro",
-                    },
-                    {
-                      id: "components",
-                      label: "Components",
-                      description: `${totalCount} available to open`,
-                    },
-                  ]
+              : [
+                  {
+                    id: "overview",
+                    label: "Overview",
+                    description: "Open source library intro",
+                  },
+                  {
+                    id: "components",
+                    label: "Components",
+                    description: `${totalCount} available to open`,
+                  },
+                ]
           }
         />
       </div>

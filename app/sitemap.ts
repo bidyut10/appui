@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { getAllShowcaseSlugs, getShowcaseByCategory } from "@/lib/showcase";
+import { getCategoryPath } from "@/lib/showcase/category-slug";
 import { siteConfig } from "@/lib/site";
 
 export const dynamic = "force-static";
@@ -30,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.3,
     },
     ...categories.map(({ category }) => ({
-      url: `${siteConfig.url}/components?category=${encodeURIComponent(category)}`,
+      url: `${siteConfig.url}${getCategoryPath(category)}`,
       lastModified,
       changeFrequency: "weekly" as const,
       priority: 0.85,
