@@ -150,7 +150,7 @@ export const SwitchFieldInput = forwardRef<
           }}
           onKeyDown={handleKeyDown}
           className={cn(
-            "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 transition-[background-color,border-color] duration-200 outline-none ring-0 focus:ring-0 disabled:cursor-not-allowed disabled:opacity-50",
+            "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 transition-[background-color,border-color] duration-200 outline-none ring-0 focus:ring-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 disabled:cursor-not-allowed disabled:opacity-50",
             isOn
               ? "border-neutral-900 bg-neutral-900"
               : "border-neutral-200 bg-neutral-100",

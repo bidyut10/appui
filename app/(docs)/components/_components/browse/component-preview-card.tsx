@@ -68,7 +68,7 @@ export function ComponentPreviewCard({
           <h3 className="min-w-0 flex-1 truncate font-sans text-[15px] leading-snug">
             <SaveScrollLink
               href={`/components/${slug}`}
-              className="transition-colors outline-none hover:text-neutral-700"
+              className="transition-colors outline-none hover:text-neutral-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900"
             >
               <span className="font-semibold text-neutral-900">{title}</span>
               {isNew ? <ShowcaseNewBadge className="ml-1.5" /> : null}

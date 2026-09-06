@@ -106,15 +106,15 @@ export const WalletPassCard = forwardRef<HTMLDivElement, WalletPassCardProps>(
           aria-label={flipped ? "Show pass front" : "Show pass back"}
           aria-pressed={flipped}
           data-slot="wallet-pass-card-flip"
-          className="relative h-54 w-full cursor-pointer overflow-hidden rounded-2xl border-0 bg-white p-0 shadow-lg outline-none"
-          style={{
-            animation: flipped
-              ? undefined
-              : "wallet-flip-shadow 3s ease-in-out infinite",
-          }}
+          className={cn(
+            "relative h-54 w-full cursor-pointer overflow-hidden rounded-2xl border-0 bg-white p-0 shadow-lg outline-none",
+            "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900",
+            !flipped &&
+              "animate-[wallet-flip-shadow_3s_ease-in-out_infinite] motion-reduce:animate-none",
+          )}
         >
           <div
-            className="relative h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.34,1.2,0.64,1)]"
+            className="relative h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.34,1.2,0.64,1)] motion-reduce:transition-none"
             style={{
               transformStyle: "preserve-3d",
               transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
