@@ -10,7 +10,7 @@ export function DocsSponsorCard() {
       <ContactEmailTrigger
         title="Become a sponsor"
         description="Feel free to copy my email and send over your brand details. I’ll share the sponsorship details with you."
-        className="group block w-full rounded-lg border-2 border-neutral-900 bg-neutral-900 p-4 text-left text-white outline-none transition-colors hover:border-neutral-800 hover:bg-neutral-800"
+        className="group block w-full rounded-lg border-2 border-neutral-900 bg-neutral-900 p-4 text-left text-white outline-none transition-colors hover:border-neutral-800 hover:bg-neutral-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900"
       >
         <div className="flex items-center justify-between gap-2">
           <span className="font-mono text-[10px] tracking-[0.14em] text-neutral-400 uppercase">
