@@ -1,7 +1,7 @@
 import { AnnotatedText } from "@/components/underlines/annotated-text";
 
 const VARIANTS = [
-  { variant: "wavy", text: "Wavy underline", color: "text-purple-300" },
+  { variant: "wavy", text: "Wavy underline", color: "text-teal-300" },
   { variant: "circle", text: "Circled text", color: "text-cyan-200" },
   { variant: "highlight", text: "Highlighted text", color: "text-yellow-100" },
   { variant: "underline", text: "Simple underline", color: "text-cyan-200" },

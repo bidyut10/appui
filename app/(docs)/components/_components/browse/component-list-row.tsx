@@ -8,15 +8,15 @@ import { ShowcaseNewBadge } from "../shared/showcase-new-badge";
 
 const LETTER_COLORS = [
   { bg: "bg-neutral-100", text: "text-sky-700" },
-  { bg: "bg-neutral-100", text: "text-rose-600" },
+  { bg: "bg-neutral-100", text: "text-rose-700" },
   { bg: "bg-neutral-100", text: "text-amber-700" },
   { bg: "bg-neutral-100", text: "text-emerald-700" },
-  { bg: "bg-neutral-100", text: "text-violet-700" },
+  { bg: "bg-neutral-100", text: "text-teal-700" },
   { bg: "bg-neutral-100", text: "text-cyan-700" },
   { bg: "bg-neutral-100", text: "text-orange-700" },
   { bg: "bg-neutral-100", text: "text-fuchsia-700" },
   { bg: "bg-neutral-100", text: "text-lime-700" },
-  { bg: "bg-neutral-100", text: "text-indigo-700" },
+  { bg: "bg-neutral-100", text: "text-blue-700" },
 ] as const;
 
 function getLetterColor(index: number) {
